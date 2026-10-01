@@ -127,6 +127,10 @@ small {
   gap: 12px;
   align-items: center;
 }
+.header-actions > a,
+.notes-strip a {
+  color: #a1d2e2;
+}
 .header-actions > button:first-of-type {
   color: #eaf4f9;
 }
@@ -281,10 +285,14 @@ small {
   height: 100%;
   width: 100%;
   position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  background: #e9f1f5;
 }
 .scene canvas {
   width: 100%;
   height: 100%;
+  min-height: 0;
   display: block;
   touch-action: none;
 }
@@ -301,22 +309,16 @@ small {
   margin-top: 4px;
 }
 .scene-status {
-  position: absolute;
-  left: 24px;
-  right: 24px;
-  bottom: 95px;
+  margin: 8px 24px 0;
   font-size: 11px;
   color: #254556;
-  background: #e9f1f5e8;
+  background: #e9f1f5;
   padding: 8px 12px;
   border-radius: 4px;
   max-width: 640px;
 }
 .scene-tools {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
+  margin: 8px 24px 24px;
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -747,16 +749,14 @@ tr[data-selected="true"] {
     padding-inline: 8px;
   }
   .scene-tools {
-    left: 16px;
-    right: 16px;
-    bottom: 18px;
+    margin: 8px 16px 18px;
   }
   .scene-tools button {
     font-size: 11px;
     padding-inline: 9px;
   }
   .scene-status {
-    bottom: 130px;
+    margin-inline: 16px;
   }
   .notes-strip p {
     width: 175px;
@@ -904,9 +904,7 @@ tr[data-selected="true"] {
     margin: 14px 0;
   }
   .scene-status {
-    left: 12px;
-    right: 12px;
-    bottom: 145px;
+    margin-inline: 12px;
   }
   .scene-tools {
     gap: 6px;
@@ -927,6 +925,20 @@ tr[data-selected="true"] {
   }
 }
 /* Guest editing information remains readable on touch and keyboard focus. */
-.draft-help { position: relative; max-width: 20rem; }
-.draft-help summary { cursor: pointer; padding: .65rem; min-height: 2.75rem; }
-.draft-help p { padding: .75rem; margin: 0; background: #fff; color: #173e48; border: 1px solid #6d8990; line-height: 1.5; }
+.draft-help {
+  position: relative;
+  max-width: 20rem;
+}
+.draft-help summary {
+  cursor: pointer;
+  padding: 0.65rem;
+  min-height: 2.75rem;
+}
+.draft-help p {
+  padding: 0.75rem;
+  margin: 0;
+  background: #fff;
+  color: #173e48;
+  border: 1px solid #6d8990;
+  line-height: 1.5;
+}

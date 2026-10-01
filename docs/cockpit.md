@@ -38,9 +38,11 @@ which revision has actually reached the live site.
 - **Research:** TanStack Query loads the occupied-basket, grant and mount registers and
   132-file v3 catalog and separate 84-record v4 catalog. Search, collection switching and pagination operate on
   those records. Source links and downloads retain their existing targets.
-- **Scenario:** validated browser-local state, JSON import/export and a saved
-  design note persist across studio views. Invalid imports retain the current
-  scenario. Storage failure is visible and export remains available. The
+- **Scenario:** validated temporary state, JSON import/export and a committed
+  design note persist across studio views while the page stays open. Reloading
+  resets guest changes. Export explicitly preserves the scenario and build-board
+  progress in a file; invalid imports retain the current scenario. Account saving
+  and login remain unfinished. The
   large hazer is already owned: $0 acquisition, externally below the sphere,
   with no inflation connection. Consumables remain unpriced. An inside-camera
   geometry study represents the proposed portrait overlay; it captures no video.

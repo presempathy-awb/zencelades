@@ -1,10 +1,16 @@
 # Zencelades
 
-Andrew owns **zencelades.com**, the intended primary address for **Zencelades**.
-Public DNS activation is pending verification; the earlier zenceladus.com
-lookup used the superseded spelling. The existing address below remains live
-during the transition. Historical Enceladus Within assets and thatsnozorb
-service/storage IDs retain their provenance. [Domain correction](docs/plans/p023-owned-zencelades-domain.md).
+The [artwork homepage](https://zenceladus.com/),
+[studio and build board](https://zenceladus.com/studio/), and
+[OSS/AI disclosure](https://zenceladus.com/open-source/) are published.
+Guest studio edits are temporary until exported. Authenticated account saving
+remains under implementation. [Current release evidence](docs/public-pages-release.md)
+separates live model verification from outstanding acceptance and integrations.
+
+Andrew confirmed **zenceladus.com** as the project domain. It currently serves
+the public project with HTTPS and no port. Historical Enceladus Within assets
+and thatsnozorb service/storage IDs retain their provenance. Earlier spelling
+decisions are superseded by [the confirmed domain](docs/plans/p069-confirm-zenceladus-domain.md).
 
 [Truck and option models](docs/truck-and-option-models.md) covers the 2021 Ram
 2500 Laramie Mega Cab 4x4, factory receiver and original Andersen Ultimate,
@@ -33,11 +39,11 @@ separates that live result from unfinished publisher/shared-stack integration.
 
 A project record, source-asset catalog and Much Ado web-module skeleton for Andrew's spherical art installation. Erebe supplies the hosting and preservation conventions. The historical v3 design remains an unoccupied development reference; Andrew's current brief requires a person inside and a $3,000 total DIY build. Physical and event approvals remain unresolved.
 
-Live at https://thatsnozorb.muchadoaboutoneside.com/ with trusted HTTPS and no port.
+Live at https://zenceladus.com/ with trusted HTTPS and no port.
 P056 temporarily opens the site for grant review. The Gitea and GitHub repositories
-are public. Only signed-in `awb` and `akadmin` can use IP management; the application
-still enforces that check. [Public-access record](docs/public-grant-access.md)
-records the restore boundary. The previous Tailnet-or-Authentik policy is described
+are public. The current release does not route the former IP-management adapter.
+[Public-access record](docs/public-grant-access.md) records the historical restore
+boundary. The previous Tailnet-or-Authentik policy is described
 in `docs/ip-access.md`. The site includes the individual downloads and naming
 exploration. The inspected catalog retains verified immutable hesellsheshells
 lakeFS locators. Shared Much Ado PG18/Pawthentik integration remains pending.
