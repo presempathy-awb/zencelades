@@ -58,15 +58,27 @@ def build() -> None:
         "engineering-research.md",
         "mount-options-research.md",
         "v4-fixed15-understanding.md",
+        "grant-application-packet.md",
+        "grant-resource-ledger.md",
+        "grant-prior-art-and-mounts.md",
+        "love-burn-camp-and-vehicle-rules.md",
     ):
         shutil.copyfile(ROOT / "docs" / name, output / "documents" / name)
     for name in ("style.css", "catalog.js", "access.js", "access.css"):
         shutil.copyfile(ROOT / "site" / name, output / name)
     shutil.copytree(ROOT / "site/naming", output / "naming", dirs_exist_ok=True)
-    shutil.copytree(ROOT / "site/name-concepts", output / "name-concepts", dirs_exist_ok=True)
+    shutil.copytree(
+        ROOT / "site/name-concepts", output / "name-concepts", dirs_exist_ok=True
+    )
     shutil.copytree(ROOT / "site/pricing", output / "pricing", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/grants", output / "grants", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/mounts", output / "mounts", dirs_exist_ok=True)
+    shutil.copytree(
+        ROOT / "site/application", output / "application", dirs_exist_ok=True
+    )
+    shutil.copyfile(
+        ROOT / "assets/grant-resource-ledger.json", output / "application/ledger.json"
+    )
     shutil.copyfile(ROOT / "assets/mount-sources.json", output / "mounts/sources.json")
     shutil.copyfile(ROOT / "assets/grant-sources.json", output / "grants/sources.json")
     pricing = json.loads((ROOT / "site/pricing/options.json").read_text())

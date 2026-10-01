@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The Love Burn 2027 application version of Enceladus Within: a hung 2.5 m responsive moon, its schematics, fit check, budget ledger and ask.">
+  <title>The 2027 proposal · Enceladus Within</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/grants/reading.css">
+  <style>
+    .schematic{width:100%;height:auto;display:block;background:var(--surface);border:1px solid var(--line)}
+    .schematic text{fill:var(--ink);font:13px var(--sans)}
+    .schematic .muted{fill:var(--muted)}
+    .schematic .ink{stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .schematic .thin{stroke:var(--muted);fill:none;stroke-width:1.2}
+    .schematic .dash{stroke:var(--accent);fill:none;stroke-width:1.2;stroke-dasharray:6 5}
+    .schematic .beam{fill:var(--accent);fill-opacity:.14;stroke:var(--accent);stroke-width:.8;stroke-opacity:.6}
+    .schematic .solid{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+    .schematic .sphere{fill:#f5fbfd;fill-opacity:.92;stroke:var(--ink);stroke-width:2}
+    .schematic .ground{fill:var(--ocean);stroke:var(--line);stroke-width:1}
+    .schematic .box{fill:var(--ocean);stroke:var(--accent);stroke-width:1.5}
+    .schematic .zone{fill:var(--accent);fill-opacity:.07;stroke:var(--accent);stroke-width:1;stroke-dasharray:4 4}
+    figure.plate{margin:0 0 2.5rem}
+    .fit td:first-child,.fit th:first-child{white-space:nowrap}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the proposal</a>
+  <header class="masthead"><a href="/">Enceladus Within</a><nav aria-label="Proposal"><a href="#hung">Hung version</a><a href="#alternatives">Tree and rest</a><a href="#fallbacks">Fallbacks</a><a href="#lowering">Lowering</a><a href="#signal">Signal and power</a><a href="#plan">Footprint</a><a href="#ledger">Ledger and ask</a><a href="/grants/">Grant library</a></nav></header>
+  <main id="main">
+    <section class="section intro">
+      <p class="kicker">Love Burn 2027 application · prepared September 30, 2026</p>
+      <h1>A moon you can<br>move with your body.</h1>
+      <p>A 2.5 m white sphere hangs at eye level from the artist’s own aerial rig. Two 3,600-lumen projectors paint it with a human presence, fractured ice, the hidden ocean and its plumes. Step onto a marked spot, say “I am the man on the moon” (or woman, or whatever you are), and a cheap phone camera puts you inside it: your live image, blown up to the size of the moon, fades in under the ice, the ice fractures around you, the hidden ocean floods through, plumes rise from where you stand, and the moon slowly takes itself back. Haze makes the beams visible. Nobody is physically inside.</p>
+      <p><a class="action" href="/documents/grant-application-packet.md" download>Download the application answers</a> <a class="action" href="/documents/grant-resource-ledger.md" download>Download the resource ledger</a> <a class="action" href="/application/ledger.json" download>Ledger data (JSON)</a></p>
+      <p>These schematics are the Tier 1 build for the application: unoccupied, dry land, no engineering beyond using an aerial rig within its manual. The occupied over-water concept remains a future ambition with its own approvals.</p>
+      <figure class="hero"><img src="/media/concept-board.png" alt="Generated concept board: a person crouching inside a translucent sphere suspended beside a pickup truck over shallow water at night, with panels showing projector views, the Enceladus visual sequence and a real-time fade between the human and the moon" width="1448" height="1086"><figcaption><strong>Where it is going.</strong> Generated concept art, 2026, preserved as an exact original in lakeFS (thatsnozorb-assets, imports/2026-09-30). It shows the long-term occupied, over-water ambition and the idea the 2027 version keeps: a real person, real time, a bigger you, fading back and forth with Enceladus. In 2027 the person stands outside the moon and is projected into it.</figcaption></figure>
+    </section>
+
+    <section id="hung" class="section" aria-labelledby="hung-title">
+      <h2 id="hung-title">Plate 1 · The hung version.</h2>
+      <figure class="plate">
+        <svg class="schematic" viewBox="0 0 1000 560" role="img" aria-labelledby="p1t p1d">
+          <title id="p1t">Elevation of the hung 2.5 m sphere on a 16 ft aerial rig with two projectors</title>
+          <desc id="p1d">Side view. A four-leg aerial rig about 4.9 metres tall holds a 2.5 metre sphere whose centre is 1.7 metres above the ground. Two projectors on telescoping stands four metres either side throw light onto the sphere. Two phones inside the sphere look out at the marked spots. A mini PC, a blower, a hazer and a GFCI power box sit at ground level.</desc>
+          <rect class="ground" x="0" y="500" width="1000" height="60"/>
+          <line class="thin" x1="0" y1="500" x2="1000" y2="500"/>
+          <!-- rig legs and top bar -->
+          <polyline class="ink" points="280,498 445,132"/><polyline class="ink" points="720,498 555,132"/>
+          <line class="ink" x1="440" y1="132" x2="560" y2="132" stroke-width="4"/>
+          <rect class="solid" x="255" y="492" width="50" height="8"/><rect class="solid" x="695" y="492" width="50" height="8"/>
+          <line class="thin" x1="280" y1="498" x2="720" y2="498"/>
+          <!-- sling, swivel, safety line -->
+          <line class="ink" x1="500" y1="132" x2="500" y2="264"/>
+          <line class="dash" x1="492" y1="140" x2="492" y2="264"/>
+          <circle class="solid" cx="500" cy="190" r="6"/>
+          <!-- sphere -->
+          <circle class="sphere" cx="500" cy="364" r="100"/>
+          <ellipse class="thin" cx="500" cy="364" rx="38" ry="100"/>
+          <!-- blower hose -->
+          <path class="thin" d="M500 464 C500 486 540 486 560 486"/>
+          <rect class="box" x="560" y="474" width="40" height="24"/>
+          <!-- projector stands and beams -->
+          <polygon class="beam" points="190,364 400,276 400,452"/>
+          <polygon class="beam" points="810,364 600,276 600,452"/>
+          <line class="ink" x1="180" y1="500" x2="180" y2="372"/><line class="ink" x1="820" y1="500" x2="820" y2="372"/>
+          <line class="thin" x1="150" y1="500" x2="180" y2="440"/><line class="thin" x1="210" y1="500" x2="180" y2="440"/>
+          <line class="thin" x1="790" y1="500" x2="820" y2="440"/><line class="thin" x1="850" y1="500" x2="820" y2="440"/>
+          <rect class="solid" x="160" y="352" width="40" height="20"/><rect class="solid" x="800" y="352" width="40" height="20"/>
+          <rect class="box" x="160" y="486" width="36" height="12"/><rect class="box" x="804" y="486" width="36" height="12"/>
+          <!-- phones as cameras, inside the zorb looking out -->
+          <rect class="box" x="432" y="356" width="8" height="16"/><rect class="box" x="560" y="356" width="8" height="16"/>
+          <!-- pi and power -->
+          <rect class="box" x="846" y="482" width="28" height="16"/>
+          <rect class="box" x="930" y="470" width="44" height="28"/>
+          <path class="thin" d="M874 490 L930 490"/><path class="thin" d="M840 492 L846 492"/><path class="thin" d="M600 486 L930 486"/>
+          <!-- hazer -->
+          <rect class="box" x="700" y="478" width="44" height="20"/>
+          <path class="thin" d="M722 478 C725 450 750 440 760 420" stroke-dasharray="2 4"/>
+          <!-- dimensions -->
+          <line class="dash" x1="60" y1="132" x2="60" y2="500"/><text x="68" y="320" class="muted">attachment ≈ 4.6 m (16 ft rig nominal 4.88 m)</text>
+          <line class="dash" x1="500" y1="520" x2="820" y2="520"/><text x="590" y="540" class="muted">4.0 m throw (1.47–1.62 × 2.5 m)</text>
+          <line class="dash" x1="400" y1="364" x2="600" y2="364"/><text x="478" y="358" fill="#0a1922" style="fill:#0a1922">2.5 m</text>
+          <line class="dash" x1="640" y1="364" x2="640" y2="500"/><text x="646" y="440" class="muted">centre 1.7 m</text>
+          <!-- labels -->
+          <text x="520" y="124">top bar · halyard over a block + rated swivel + safety sling</text>
+          <text x="110" y="340">projector A · 3,600 lm</text><text x="760" y="340">projector B · 3,600 lm</text>
+          <text x="20" y="440" class="muted">13 ft telescoping</text><text x="20" y="456" class="muted">stand, sandbagged</text>
+          <text x="384" y="474" class="muted">two phones inside the zorb, looking out at the spots</text>
+          <text x="556" y="470" class="muted">blower</text><text x="704" y="470" class="muted">hazer</text>
+          <text x="838" y="476" class="muted">mini PC</text><text x="926" y="462" class="muted">GFCI box</text>
+          <text x="20" y="30">Plate 1 · hung version, elevation · not to a stamped scale</text>
+          <text x="20" y="48" class="muted">unoccupied zorb, tens of kilograms, on rated rigging within the rig's manual; winched down to the cradle above the wind limit</text>
+        </svg>
+        <figcaption><strong>What the committee is funding.</strong> Sphere centre at 1.7 m so a seated viewer sees it whole; projectors 4 m out on each side, matched to the Optoma HD146X throw ratio; the blower runs continuously; the Pi and power box sit behind projector B.</figcaption>
+      </figure>
+      <h3>Does it fit the rig?</h3>
+      <p>Needed attachment height = sphere + 0.3 m ground gap + 0.6 m bridle + 0.2 m hardware + 0.3 m movement. The sphere must also pass between the sloping legs at its widest point.</p>
+      <table class="fit">
+        <caption>Largest sphere by rig height</caption>
+        <thead><tr><th>Rig nominal</th><th>Attachment height</th><th>Largest sphere by height</th><th>2.5 m sphere</th></tr></thead>
+        <tbody>
+          <tr><td>12 ft</td><td>3.66 m</td><td>2.2 m</td><td>no · use 2 m</td></tr>
+          <tr><td>16 ft</td><td>4.88 m</td><td>3.4 m</td><td>yes, 1 m spare</td></tr>
+          <tr><td>20 ft</td><td>6.10 m</td><td>4.7 m</td><td>yes</td></tr>
+        </tbody>
+      </table>
+      <p class="lesson">Andrew’s own rig model decides this row. Its manual, not this table, sets the load and wind limits.</p>
+      <h3>Hanging it: the sphere side and the support side</h3>
+      <p><strong>The moon is the zorb.</strong> A TPU zorb weighs tens of kilograms (a 3 m one 80 to 100 kg) and has no rated top point, so nothing hangs from its skin: it seats in a padded steel loop at the centre of a fabricated triangle, lifts on a three-line bridle through a rated swivel, and a hand winch with a brake on the rig leg does the raising and lowering. Its skin has to diffuse light, frosted or white or with a diffusing liner; the October bench test proves that before anything else is bought.</p>
+      <p><strong>Cheap static metal, done right, is a lighting goalpost.</strong> Two 14 ft ProX crank stands (220 lb each, TUV certified, about $316 to $400 each on sale) and a 10 ft truss span make a rated, resellable goalpost that fits in the truck and cranks the moon down in wind in a minute: $1,010 to $1,824 with contingency, artist-funded, used only if the owned rig fails the fit check. A custom weld costs about the same, is rated by nobody and cannot be lowered.</p>
+    </section>
+
+    <section id="alternatives" class="section" aria-labelledby="alt-title">
+      <h2 id="alt-title">Plates 2 and 3 · A tree, or the ground.</h2>
+      <div class="reading-pair">
+        <figure class="plate">
+          <svg class="schematic" viewBox="0 0 520 420" role="img" aria-labelledby="p2t p2d">
+            <title id="p2t">Tree-hung alternative</title>
+            <desc id="p2d">The sphere hangs from a single assessed branch with a protected sling, the same projectors on stands, and the same ground kit. Only with the event's written approval and an arborist and rigger looking at the exact limb.</desc>
+            <rect class="ground" x="0" y="370" width="520" height="50"/>
+            <path class="ink" d="M90 370 L96 150 C100 110 120 90 150 80" stroke-width="8"/>
+            <path class="ink" d="M98 180 C150 150 230 130 300 110" stroke-width="6"/>
+            <circle class="thin" cx="150" cy="70" r="46"/><circle class="thin" cx="230" cy="90" r="40"/>
+            <rect class="box" x="236" y="118" width="24" height="10"/>
+            <line class="ink" x1="248" y1="128" x2="248" y2="200"/><line class="dash" x1="241" y1="130" x2="241" y2="200"/>
+            <circle class="solid" cx="248" cy="160" r="5"/>
+            <circle class="sphere" cx="248" cy="270" r="70"/>
+            <polygon class="beam" points="70,270 190,208 190,332"/><polygon class="beam" points="430,270 306,208 306,332"/>
+            <line class="ink" x1="68" y1="370" x2="68" y2="278"/><line class="ink" x1="432" y1="370" x2="432" y2="278"/>
+            <rect class="solid" x="52" y="264" width="32" height="16"/><rect class="solid" x="416" y="264" width="32" height="16"/>
+            <rect class="box" x="300" y="356" width="34" height="14"/><rect class="box" x="400" y="352" width="40" height="18"/>
+            <text x="16" y="26">Plate 2 · assessed tree</text>
+            <text x="16" y="44" class="muted">written event approval + arborist + rigger first</text>
+            <text x="266" y="126" class="muted">bark protection pad</text>
+            <text x="258" y="166" class="muted">swivel + safety line</text>
+            <text x="300" y="350" class="muted">blower</text><text x="400" y="346" class="muted">GFCI box</text>
+            <text x="16" y="400" class="muted">no cutting, drilling or pruning; the limb and load direction are assessed together</text>
+          </svg>
+          <figcaption><strong>Same artwork, different hook.</strong> A tree is a candidate only with the event’s written permission for that tree. The research page explains why a healthy branch is not a free rated anchor.</figcaption>
+        </figure>
+        <figure class="plate">
+          <svg class="schematic" viewBox="0 0 520 420" role="img" aria-labelledby="p3t p3d">
+            <title id="p3t">Ground-rest fallback</title>
+            <desc id="p3d">The sphere rests on a padded cradle of foam blocks and sandbags with its centre about 1.45 metres above ground. Projectors, Pi, blower and power are unchanged. This is the configuration used in wind or if the rig fit fails.</desc>
+            <rect class="ground" x="0" y="370" width="520" height="50"/>
+            <rect class="solid" x="190" y="340" width="116" height="30"/>
+            <rect class="solid" x="176" y="356" width="24" height="14"/><rect class="solid" x="296" y="356" width="24" height="14"/>
+            <rect class="box" x="150" y="362" width="30" height="8"/><rect class="box" x="316" y="362" width="30" height="8"/>
+            <circle class="sphere" cx="248" cy="272" r="70"/>
+            <polygon class="beam" points="70,272 190,210 190,334"/><polygon class="beam" points="430,272 306,210 306,334"/>
+            <line class="ink" x1="68" y1="370" x2="68" y2="280"/><line class="ink" x1="432" y1="370" x2="432" y2="280"/>
+            <rect class="solid" x="52" y="266" width="32" height="16"/><rect class="solid" x="416" y="266" width="32" height="16"/>
+            <path class="thin" d="M248 342 C248 352 262 356 300 356"/>
+            <rect class="box" x="300" y="350" width="34" height="14"/><rect class="box" x="400" y="352" width="40" height="18"/>
+            <text x="16" y="26">Plate 3 · resting on a cradle</text>
+            <text x="16" y="44" class="muted">worst case: wind above the limit, or the rig does not fit</text>
+            <text x="200" y="334" class="muted">foam cradle + mats</text>
+            <text x="120" y="398" class="muted">sandbags</text><text x="316" y="398" class="muted">sandbags</text>
+            <text x="340" y="346" class="muted">blower</text><text x="400" y="346" class="muted">GFCI box</text>
+            <line class="dash" x1="340" y1="272" x2="340" y2="370"/><text x="346" y="320" class="muted">centre ≈ 1.45 m</text>
+          </svg>
+          <figcaption><strong>The two-person, five-minute fallback.</strong> Lower the sphere onto the cradle, re-aim the projectors, keep running. The piece still works; it just stops floating.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="fallbacks" class="section" aria-labelledby="fallbacks-title">
+      <h2 id="fallbacks-title">If something is not allowed.</h2>
+      <dl class="reading-list">
+        <dt>No aerial rig or truss</dt><dd>The moon lands. Three pinned legs on the steel triangle stand it like a landed probe (NASA’s Enceladus concept is an Orbilander) with its centre at the same 1.7 m and its top just under 10 ft: same projectors, same cameras, same show, nothing overhead, nothing to climb, sandbags on the foot pads. The landing can also be the nightly show beat.</dd>
+        <dt>The truck</dt><dd>Transport only: it unloads at the placement and parks at Miami Marine Stadium like any car; the kit is hand-carried in one trip with three people. Parking it at the camp as scenery is a later option, not part of the 2027 ask. <a href="/documents/love-burn-camp-and-vehicle-rules.md">What Love Burn allows</a>.</dd>
+        <dt>No event power</dt><dd>An inverter generator under 5,000 W at the artist’s cost, or a battery station for intermittent nights.</dd>
+        <dt>No haze</dt><dd>The piece runs without it; the beams are a bonus.</dd>
+        <dt>No tree, no shoreline</dt><dd>Never assumed; rig or lander legs on dry land.</dd>
+        <dt>Wind</dt><dd>Lowered and strapped in a minute; above the second limit, deflated and covered for the night.</dd>
+      </dl>
+    </section>
+
+    <section id="lowering" class="section" aria-labelledby="lowering-title">
+      <h2 id="lowering-title">Plate 6 · Lowering the moon.</h2>
+      <figure class="plate">
+        <svg class="schematic" viewBox="0 0 1000 560" role="img" aria-labelledby="p6t p6d">
+          <title id="p6t">Halyard, block, cleat and cradle for lowering the sphere</title>
+          <desc id="p6d">Elevation. A rope runs from the top of the sphere over a block shackled to the rig's top bar and down the right leg to a horn cleat at waist height. A separate safety sling hangs slack from the bar to the sphere while it is up. Two light tag lines run from the sphere's lower ring to the legs. A padded cradle sits under the sphere at all times, so lowering is a 25 centimetre ease of the halyard; the dashed circle shows the lowered position.</desc>
+          <rect class="ground" x="0" y="500" width="1000" height="60"/>
+          <line class="thin" x1="0" y1="500" x2="1000" y2="500"/>
+          <polyline class="ink" points="280,498 445,132"/><polyline class="ink" points="720,498 555,132"/>
+          <line class="ink" x1="440" y1="132" x2="560" y2="132" stroke-width="4"/>
+          <rect class="solid" x="255" y="492" width="50" height="8"/><rect class="solid" x="695" y="492" width="50" height="8"/>
+          <!-- block, halyard, cleat -->
+          <circle class="solid" cx="522" cy="142" r="8"/>
+          <path class="ink" d="M500 264 L500 150 C500 136 512 134 522 134"/>
+          <path class="ink" d="M530 140 L676 402"/>
+          <rect class="solid" x="664" y="398" width="28" height="10"/>
+          <path class="thin" d="M676 408 C690 420 660 430 680 440"/>
+          <!-- safety sling, slack -->
+          <path class="dash" d="M486 134 C470 190 476 230 496 262"/>
+          <circle class="solid" cx="500" cy="262" r="6"/>
+          <!-- sphere hung and lowered -->
+          <circle class="sphere" cx="500" cy="364" r="100"/>
+          <circle class="dash" cx="500" cy="384" r="100"/>
+          <!-- tag lines from the lower ring to the legs -->
+          <path class="thin" d="M425 420 L306 440"/><path class="thin" d="M575 420 L694 440"/>
+          <circle class="solid" cx="425" cy="420" r="4"/><circle class="solid" cx="575" cy="420" r="4"/>
+          <!-- cradle and sandbags -->
+          <rect class="solid" x="440" y="484" width="120" height="16"/>
+          <rect class="box" x="400" y="490" width="34" height="10"/><rect class="box" x="566" y="490" width="34" height="10"/>
+          <path class="thin" d="M434 495 L450 470"/><path class="thin" d="M566 495 L550 470"/>
+          <!-- labels -->
+          <text x="20" y="30">Plate 6 · lowering the moon · one person, one minute</text>
+          <text x="20" y="48" class="muted">the cradle stays under the sphere all night; lowering is a 0.25 m ease, then two straps to the sandbags</text>
+          <text x="536" y="128">block shackled to the top bar</text>
+          <text x="330" y="200" class="muted">safety sling, slack while hung;</text><text x="330" y="216" class="muted">unclip before lowering</text>
+          <text x="700" y="396">hand winch with brake at 1.2 m</text>
+          <text x="590" y="300" class="muted">rated halyard, sized for the zorb</text>
+          <text x="150" y="458" class="muted">optional tag line to the leg, both sides:</text><text x="150" y="474" class="muted">damps swing in wind; the moon may still turn</text>
+          <text x="610" y="478" class="muted">strap to sandbag after lowering</text>
+          <text x="880" y="384" class="muted">lowered</text><line class="dash" x1="860" y1="364" x2="860" y2="384"/><text x="868" y="362" class="muted">0.25 m</text>
+        </svg>
+        <figcaption><strong>Lower it, don’t drop it.</strong> To lower: unclip the safety sling, uncleat and ease the halyard 0.25 m until the sphere sits on the cradle, cleat off, strap the two lower rings to the sandbags. To raise: reverse. Parts are in the rigging kit: a hand winch with a brake on the rig leg (a boat-trailer winch is the cheap one), a block at the top bar, rated rope sized for the zorb, a rated swivel, carabiners. The swivel is lyra-style on purpose: the image is projected, so the moon can turn under it and the picture stays put; tag lines only damp swing. A pair of porch-swing springs above the swivel makes it bob gently if we want that. A crank-stand goalpost does the same job with its crank.</figcaption>
+      </figure>
+    </section>
+
+    <section id="signal" class="section" aria-labelledby="signal-title">
+      <h2 id="signal-title">Plate 4 · Signal and power.</h2>
+      <figure class="plate">
+        <svg class="schematic" viewBox="0 0 1000 420" role="img" aria-labelledby="p4t p4d">
+          <title id="p4t">Signal chain and power distribution</title>
+          <desc id="p4d">Two phones inside the zorb stream live video of the marked spots over a private Wi-Fi to the artist's laptop, which composites the feeds with the moon film and sends the finished picture over the same Wi-Fi to a mini PC at the projectors; the mini PC drives one HDMI output to each projector and audio to a small speaker. Nothing is stored. Power: one 20 amp circuit through an inline GFCI to a weatherproof box feeding the projectors, blower, Pi, speaker and hazer.</desc>
+          <text x="20" y="30">Plate 4 · signal (top) and power (bottom)</text>
+          <!-- signal -->
+          <rect class="box" x="40" y="70" width="130" height="50"/><text x="52" y="92">phone A · in the zorb</text><text x="52" y="110" class="muted">live camera, nothing stored</text>
+          <rect class="box" x="40" y="140" width="130" height="50"/><text x="52" y="162">phone B · in the zorb</text><text x="52" y="180" class="muted">live camera, nothing stored</text>
+          <text x="40" y="218" class="muted">the phones’ app streams camera and mic; a switch at each spot turns the AV on; the words “I am the man on the moon” are the trigger</text>
+          <rect class="box" x="260" y="100" width="140" height="60"/><text x="272" y="124">private Wi-Fi</text><text x="272" y="144" class="muted">owned UniFi router · no internet</text>
+          <path class="ink" d="M170 95 L260 120"/><path class="ink" d="M170 165 L260 140"/>
+          <rect class="box" x="470" y="90" width="160" height="80"/><text x="482" y="108">laptop composites</text><text x="482" y="126" class="muted">live feeds + moon film</text><text x="482" y="144" class="muted">→ Wi‑Fi → mini PC node</text><text x="482" y="162" class="muted">→ HDMI to 2 or 3 heads</text>
+          <path class="ink" d="M400 130 L470 130"/>
+          <rect class="box" x="760" y="60" width="180" height="46"/><text x="772" y="82">projector A · HDMI 1</text><text x="772" y="98" class="muted">325 W</text>
+          <rect class="box" x="760" y="120" width="180" height="46"/><text x="772" y="142">projector B · HDMI 2</text><text x="772" y="158" class="muted">325 W</text>
+          <rect class="box" x="760" y="180" width="180" height="40"/><text x="772" y="204">speaker · 3.5 mm / USB</text>
+          <path class="ink" d="M630 110 L760 83"/><path class="ink" d="M630 130 L760 143"/><path class="ink" d="M630 150 L760 200"/>
+          <!-- power -->
+          <line class="thin" x1="20" y1="250" x2="980" y2="250"/>
+          <rect class="box" x="40" y="280" width="150" height="50"/><text x="52" y="302">event circuit</text><text x="52" y="320" class="muted">120 V · 20 A · dusk–midnight</text>
+          <rect class="box" x="250" y="280" width="110" height="50"/><text x="262" y="302">inline GFCI</text><text x="262" y="320" class="muted">outdoor cord</text>
+          <rect class="box" x="420" y="280" width="150" height="50"/><text x="432" y="302">weatherproof box</text><text x="432" y="320" class="muted">cable ramps on walkways</text>
+          <path class="ink" d="M190 305 L250 305"/><path class="ink" d="M360 305 L420 305"/>
+          <path class="ink" d="M570 290 L640 270"/><path class="ink" d="M570 298 L640 300"/><path class="ink" d="M570 306 L640 330"/><path class="ink" d="M570 314 L640 360"/><path class="ink" d="M570 322 L640 390"/>
+          <text x="650" y="274">projectors A + B · 650 W (manufacturer spec)</text>
+          <text x="650" y="304">blower · up to 700 W (product label)</text>
+          <text x="650" y="334">mini PC, speaker, phone chargers · under 100 W</text>
+          <text x="650" y="364">hazer · per its label, still air only (owned)</text>
+          <text x="650" y="394" class="muted">measured schedule after the bench test · generator fallback at artist cost</text>
+        </svg>
+        <figcaption><strong>No internet, no stored images, one circuit.</strong> The phones only stream the marked spots, and the image exists only on the moon while someone stands there. The host keeps a calm loop running if a phone drops, and the physical shutdown (lower, cover, unplug) is independent of the software.</figcaption>
+      </figure>
+    </section>
+
+    <section id="plan" class="section" aria-labelledby="plan-title">
+      <h2 id="plan-title">Plate 5 · Footprint.</h2>
+      <figure class="plate">
+        <svg class="schematic" viewBox="0 0 700 600" role="img" aria-labelledby="p5t p5d">
+          <title id="p5t">Plan view of the 10 by 10 metre footprint</title>
+          <desc id="p5d">A ten by ten metre square with a marked step-up spot in each viewing area. The rig's four legs form a 5.5 metre square in the centre with a 1.5 metre clear zone around them. The sphere is at the centre. Projectors sit four metres east and west with their beams toward the sphere. Viewing areas are north and south. The hazer sits downwind near a leg; the power box is at the north-east corner with a cable ramp to the supply.</desc>
+          <text x="20" y="28">Plate 5 · plan · 1 m grid · north up</text>
+          <g transform="translate(100,70)">
+            <rect class="zone" x="0" y="0" width="500" height="500" stroke-dasharray="0"/>
+            <g class="thin" stroke-opacity=".35">
+              <path d="M50 0V500M100 0V500M150 0V500M200 0V500M250 0V500M300 0V500M350 0V500M400 0V500M450 0V500"/>
+              <path d="M0 50H500M0 100H500M0 150H500M0 200H500M0 250H500M0 300H500M0 350H500M0 400H500M0 450H500"/>
+            </g>
+            <!-- clear zone and rig -->
+            <rect class="zone" x="37.5" y="37.5" width="425" height="425"/>
+            <rect class="thin" x="112.5" y="112.5" width="275" height="275"/>
+            <circle class="solid" cx="112.5" cy="112.5" r="8"/><circle class="solid" cx="387.5" cy="112.5" r="8"/><circle class="solid" cx="112.5" cy="387.5" r="8"/><circle class="solid" cx="387.5" cy="387.5" r="8"/>
+            <line class="ink" x1="212" y1="250" x2="288" y2="250" stroke-width="4"/>
+            <!-- sphere -->
+            <circle class="sphere" cx="250" cy="250" r="62.5"/>
+            <!-- projectors and beams -->
+            <polygon class="beam" points="50,250 190,215 190,285"/><polygon class="beam" points="450,250 310,215 310,285"/>
+            <rect class="solid" x="38" y="240" width="24" height="20"/><rect class="solid" x="438" y="240" width="24" height="20"/>
+            <!-- viewing areas -->
+            <rect class="zone" x="100" y="10" width="300" height="60" stroke-dasharray="0"/><rect class="zone" x="100" y="430" width="300" height="60" stroke-dasharray="0"/>
+            <text x="140" y="46">viewing area · mats</text><circle class="solid" cx="250" cy="75" r="9"/><text x="264" y="80" class="muted">step-up spot</text><text x="140" y="466">viewing area · mats</text><circle class="solid" cx="250" cy="425" r="9"/><text x="264" y="430" class="muted">step-up spot</text>
+            <!-- hazer, blower, pi, power -->
+            <rect class="box" x="300" y="300" width="22" height="14"/><text x="326" y="312" class="muted">hazer</text>
+            <rect class="box" x="258" y="318" width="18" height="12"/><text x="280" y="330" class="muted">blower</text>
+            <rect class="box" x="470" y="268" width="18" height="12"/><text x="404" y="300" class="muted">mini PC</text>
+            <rect class="box" x="470" y="10" width="22" height="16"/><text x="400" y="22" class="muted">GFCI box</text>
+            <path class="dash" d="M481 26 L481 268"/><path class="dash" d="M492 18 L540 18"/><text x="505" y="10" class="muted">to supply, ramped</text>
+            <text x="20" y="130" class="muted">rig leg</text><text x="140" y="104" class="muted">1.5 m clear zone around legs</text>
+            <text x="10" y="236" class="muted">proj. A</text><text x="440" y="236" class="muted">proj. B</text>
+            <text x="200" y="520">10 m × 10 m requested placement · rig footprint 5.5 m square (illustrative)</text>
+          </g>
+        </svg>
+        <figcaption><strong>Where things go.</strong> People approach from north and south, where the two projected faces are brightest and nobody walks through a beam; the step-up spot on each side is what the camera frames. The projectors’ backs face east and west, so spill onto neighbours is minimal.</figcaption>
+      </figure>
+    </section>
+
+    <section id="ledger" class="section" aria-labelledby="ledger-title">
+      <h2 id="ledger-title">Ledger and the ask.</h2>
+      <div class="reading-pair">
+        <div>
+          <h3>What a Love Burn grant usually is</h3>
+          <p>From Love Burn’s own <a href="https://theloveburn.com/fulldisclosure">finance disclosures</a>: LB2024 paid $440,092 in cash art grants across 210 projects, about <strong>$2,096 per project</strong>; LB2023 paid $387,071 across 149, about $2,598. (The 2026 and 2025 links on that page currently open the 2024 and 2023 files.)</p>
+          <p>The form sorts requests into tiers: Spark to $599, Seed $600 to $3,000 for “simple to medium builds, portable art, or small interactive pieces”, Feature $3,000 to $15,000, Anchor above. <strong>Ask: $3,000 cash as a Seed Grant, plus 3 crew tickets</strong> and one power circuit, itemised against the Tier 1 list. It covers the low build in full; the artist covers the rest and every in-kind line.</p>
+        </div>
+        <div>
+          <h3>What the artist brings</h3>
+          <dl class="reading-list">
+            <dt>Aerial rig</dt><dd>Owned. Model and height to confirm; sets the fit row above.</dd>
+            <dt>Hazer</dt><dd>Owned. Still-air beams; fluid is a consumable.</dd>
+            <dt>Laptop and UniFi router</dt><dd>Owned. The laptop composites the live feeds in real time; the router makes the private, internet-free network.</dd>
+            <dt>Truck</dt><dd>2021 Ram 2500 for transport only; carries no load and is not part of the 2027 art.</dd>
+            <dt>Design and labour</dt><dd>v3/v4 design packages, content authoring, build, install, nightly operation, strike, travel.</dd>
+          </dl>
+        </div>
+      </div>
+      <table>
+        <caption>Tier 1 cash · observed retail prices September 30, 2026, allowances marked</caption>
+        <thead><tr><th>Line</th><th>Qty</th><th>Low</th><th>High</th><th>Kind</th></tr></thead>
+        <tbody>
+          <tr><td>The moon: the zorb (owned), plus a diffusing liner or frosting if needed</td><td>1</td><td>$0</td><td>$700</td><td>allowance</td></tr>
+          <tr><td>Optoma HD146X 1080p projector, 3,600 lumens</td><td>2</td><td>$998</td><td>$1,198</td><td>observed price</td></tr>
+          <tr><td>Output node at the projectors: mini PC with two or three video outputs ($0 if the owned laptop drives them directly)</td><td>1</td><td>$0</td><td>$200</td><td>observed price</td></tr>
+          <tr><td>Output-node accessories: weatherproof box, HDMI leads (Wi‑Fi from the owned UniFi router)</td><td>1</td><td>$40</td><td>$90</td><td>allowance</td></tr>
+          <tr><td>Old phones inside the zorb running the project’s app, camera and mic (owned, or $25 each second-hand)</td><td>2</td><td>$0</td><td>$50</td><td>allowance</td></tr>
+          <tr><td>Phone mounts and power banks inside the zorb</td><td>2</td><td>$30</td><td>$44</td><td>observed price</td></tr>
+          <tr><td>Weatherproof switches at the spots that turn the AV inside on and off</td><td>2</td><td>$20</td><td>$40</td><td>allowance</td></tr>
+          <tr><td>13 ft heavy-duty light stands</td><td>2</td><td>$128</td><td>$128</td><td>observed price</td></tr>
+          <tr><td>Projector brackets</td><td>2</td><td>$36</td><td>$38</td><td>observed price</td></tr>
+          <tr><td>Rain and spray covers</td><td>2</td><td>$120</td><td>$300</td><td>allowance</td></tr>
+          <tr><td>Rigging kit: slings, shackles, swivel, safety line, straps, sandbags</td><td>1</td><td>$150</td><td>$400</td><td>allowance</td></tr>
+          <tr><td>Outdoor cords, inline GFCI, cable ramps, weatherproof box</td><td>1</td><td>$150</td><td>$300</td><td>allowance</td></tr>
+          <tr><td>Weather-resistant powered speaker</td><td>1</td><td>$100</td><td>$250</td><td>allowance</td></tr>
+          <tr><td>Lander legs with foot pads, mats, sandbags</td><td>1</td><td>$100</td><td>$300</td><td>allowance</td></tr>
+          <tr><td>Repair kit, tape, spares, batteries</td><td>1</td><td>$50</td><td>$150</td><td>allowance</td></tr>
+          <tr><td>Steel triangle and loop seat, tube and pads (fabricated; labour in-kind)</td><td>1</td><td>$60</td><td>$180</td><td>allowance</td></tr>
+          <tr><th>Subtotal</th><td></td><td>$1,982</td><td>$4,368</td><td></td></tr>
+          <tr><th>Contingency 20%</th><td></td><td>$396</td><td>$874</td><td></td></tr>
+          <tr><th>Tier 1 cash total</th><td></td><td><strong>$2,378</strong></td><td><strong>$5,242</strong></td><td></td></tr>
+          <tr><th>Third projector · continuous wrap, with contingency</th><td></td><td>$902</td><td>$1,345</td><td>first upgrade</td></tr>
+          <tr><th>Tier 2 add-on · two more projectors, stands, second Pi</th><td></td><td>$1,643</td><td>$2,344</td><td>if funded</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <caption>Every option on one scale · rental rows at the pricing page’s defaults</caption>
+        <thead><tr><th>Option</th><th>Projectors</th><th>Basis</th><th>Cash low</th><th>Cash high</th></tr></thead>
+        <tbody>
+          <tr><td>Tier 1: hung 2.5 m sphere, purchased projectors</td><td>2</td><td>purchase</td><td>$2,378</td><td>$5,242</td></tr>
+          <tr><td>A lit moon on the ground</td><td>0</td><td>rental</td><td>$4,500</td><td>$13,750</td></tr>
+          <tr><td>Ground-supported hemisphere</td><td>1</td><td>rental</td><td>$9,338</td><td>$21,463</td></tr>
+          <tr><td>Full sphere on a ground cradle</td><td>2</td><td>rental</td><td>$19,300</td><td>$39,675</td></tr>
+          <tr><td>Fixed in the truck bed</td><td>2</td><td>rental</td><td>$21,050</td><td>$44,050</td></tr>
+          <tr><td>Freestanding fixed pedestal</td><td>2</td><td>rental</td><td>$22,675</td><td>$47,175</td></tr>
+          <tr><td>Hang from an existing approved point</td><td>2</td><td>rental</td><td>$21,675</td><td>$44,675</td></tr>
+          <tr><td>Fixed truck cantilever</td><td>4</td><td>rental</td><td>$42,975</td><td>$79,850</td></tr>
+          <tr><td>Hang from a freestanding gantry</td><td>4</td><td>rental</td><td>$36,975</td><td>$67,975</td></tr>
+        </tbody>
+      </table>
+      <p class="lesson">Sources for every price are in the <a href="/documents/grant-resource-ledger.md">ledger document</a>. The rental rows come from the <a href="/pricing/">pricing workbench</a>; the <a href="/mounts/">mount research</a> explains the rig fit rule.</p>
+    </section>
+  </main>
+  <footer><p>Enceladus Within · the 2027 proposal version. Nothing on this page is an organizer offer; grant, size and placement are valid only after the Art Committee’s Offer Notice. The whole project is open source.</p><p><a href="https://git.telpher.stream/telpher/zencelades">Source on Gitea</a> · <a href="https://github.com/presempathy-awb/zencelades">GitHub mirror</a> · <a href="/grants/">Grant library</a> · <a href="/documents/grant-draft.md">Earlier proposal draft</a></p></footer>
+</body>
+</html>
