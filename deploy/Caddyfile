@@ -6,6 +6,8 @@
 :18131 {
     bind 127.0.0.1
     root * /srv/thatsnozorb/current/site/dist
+    @misspelt host zenceladus.com www.zenceladus.com www.zencelades.com
+    redir @misspelt https://zencelades.com{uri} permanent
   reverse_proxy /naming/api/workbench 127.0.0.1:18132
     header {
         X-Content-Type-Options nosniff
