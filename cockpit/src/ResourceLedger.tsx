@@ -77,7 +77,7 @@ export default function ResourceLedger({
       <p>
         <Link to="/budget">Edit this option’s allowances</Link>
         {" · "}
-        <Link to="/" onClick={() => onModelSelect(context.model)}>
+        <Link to="/model" onClick={() => onModelSelect(context.model)}>
           View selected 3D model
         </Link>
       </p>
@@ -172,7 +172,7 @@ export default function ResourceLedger({
               const model = MODEL_STUDIES.find((item) => item.id === id)!;
               return (
                 <li key={id}>
-                  <Link to="/" onClick={() => onModelSelect(id)}>
+                  <Link to="/model" onClick={() => onModelSelect(id)}>
                     {model.label}
                   </Link>
                   {" · "}

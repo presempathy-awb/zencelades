@@ -42,13 +42,12 @@ def proposal_budget_html(ledger: dict) -> str:
 
 
 def publish_public_surfaces(output: Path, source: Path, studio: Path) -> None:
-    """Publish the artwork home and studio separately without removing retained files."""
+    """Publish the SPA entry and retain standalone artwork pages and original files."""
     shutil.copytree(studio, output, dirs_exist_ok=True)
     (output / "studio").mkdir(exist_ok=True)
     shutil.copyfile(studio / "index.html", output / "studio/index.html")
     for page in ("about", "open-source"):
         shutil.copytree(source / page, output / page, dirs_exist_ok=True)
-    shutil.copyfile(source / "about/index.html", output / "index.html")
 
 
 def build() -> None:

@@ -53,7 +53,7 @@ def test_proposal_budget_displays_purchases_once_and_contingency_separately():
     assert "heads &amp; mounts" in rendered
 
 
-def test_home_and_studio_keep_distinct_entrypoints_and_existing_files(tmp_path):
+def test_spa_home_keeps_studio_artwork_and_existing_files(tmp_path):
     source, studio, output = [tmp_path / name for name in ("site", "cockpit", "dist")]
     for directory in (
         source / "about",
@@ -71,7 +71,7 @@ def test_home_and_studio_keep_distinct_entrypoints_and_existing_files(tmp_path):
 
     publish_public_surfaces(output, source, studio)
 
-    assert (output / "index.html").read_text() == "artwork homepage"
+    assert (output / "index.html").read_text() == (studio / "index.html").read_text()
     assert (output / "studio/index.html").read_text() == "interactive studio"
     assert (output / "about/index.html").read_text() == "artwork homepage"
     assert (output / "open-source/index.html").read_text() == "license disclosure"

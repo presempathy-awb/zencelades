@@ -1,0 +1,128 @@
+.artwork-home {
+  --serif: Georgia, "Times New Roman", serif;
+  --ink: #edf4f4;
+  --muted: #c4d5db;
+  --ocean: #0a1922;
+  --surface: #122b38;
+  --line: #446473;
+  --accent: #99deed;
+  --warm: #f0d2a8;
+  min-height: 100dvh;
+  background: var(--ocean);
+  color: var(--ink);
+  font:
+    1rem / 1.65 "Avenir Next",
+    Avenir,
+    Helvetica,
+    sans-serif;
+}
+.artwork-home :is(.masthead, main, footer) {
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+.artwork-home a {
+  color: var(--accent);
+  text-underline-offset: 0.25em;
+}
+.artwork-home a:focus-visible {
+  outline: 0.2rem solid var(--accent);
+  outline-offset: 0.25rem;
+}
+.artwork-home .skip {
+  position: absolute;
+  top: -5rem;
+  left: 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  z-index: 20;
+}
+.artwork-home .skip:focus {
+  top: 1rem;
+}
+.artwork-home .masthead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.artwork-home .masthead > a {
+  color: var(--ink);
+  font:
+    1.4rem Georgia,
+    serif;
+  text-decoration: none;
+}
+.artwork-home nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.artwork-home nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+}
+.artwork-home :is(h1, h2) {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+}
+.artwork-home h1 {
+  font-size: clamp(2.5rem, 6vw, 5.6rem);
+}
+.artwork-home h2 {
+  font-size: clamp(2rem, 4vw, 3.7rem);
+}
+.artwork-home h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-block: 0 1rem;
+}
+.artwork-home p {
+  max-width: 65ch;
+  margin: 0 0 1.5rem;
+}
+.artwork-home .kicker {
+  color: var(--accent);
+}
+.artwork-home figure {
+  margin: 0;
+  min-width: 0;
+}
+.artwork-home img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.artwork-home figcaption {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.8rem;
+}
+.artwork-home figcaption strong {
+  color: var(--ink);
+}
+.artwork-home .action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--accent);
+  text-decoration: none;
+}
+.artwork-home .section {
+  padding-block: 4rem;
+  border-bottom: 1px solid var(--line);
+}
+.artwork-home .split {
+  display: grid;
+  gap: 2.5rem;
+}
+.artwork-home footer {
+  padding-block: 2rem;
+  color: var(--muted);
+}

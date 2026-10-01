@@ -33,6 +33,7 @@ import {
 import { Button } from "./ui";
 import { chooseModel } from "./option-context";
 import { BuildBoard } from "./BuildBoard";
+import HomePage from "./HomePage";
 
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
@@ -40,7 +41,7 @@ const ResearchView = lazy(() => import("./ResearchView"));
 const PartsView = lazy(() => import("./PartsView"));
 const icons = [Circle, Circle, Lightbulb, Layers, Circle, Truck, Columns3, Anchor, Truck, Columns3];
 const tools = [
-  { path: "/", title: "Model", icon: Box },
+  { path: "/model", title: "Model", icon: Box },
   { path: "/workflow", title: "Workflow", icon: Network },
   { path: "/tasks", title: "Build board", icon: Columns3 },
   { path: "/budget", title: "Budget", icon: Calculator },
@@ -56,6 +57,8 @@ export default function App(): JSX.Element {
   const [referenceModel, setReferenceModel] = useState("scenario");
   const fileInput = useRef<HTMLInputElement>(null);
   const path = useRouterState({ select: (state) => state.location.pathname });
+  const modelVisible =
+    path === "/model" || (path === "/" && window.location.pathname.startsWith("/studio"));
   const option = selectedOption(scenario);
   const result = estimate(scenario);
   const update = (next: Scenario): boolean => {
@@ -110,6 +113,7 @@ export default function App(): JSX.Element {
       "Downloaded your temporary draft and applied note. Unapplied note text is not in the file; no account save was made.",
     );
   };
+  if (path === "/" && !modelVisible) return <HomePage />;
   return (
     <div className="studio">
       <button
@@ -132,7 +136,7 @@ export default function App(): JSX.Element {
           </div>
         </div>
         <div className="header-actions">
-          <a href="/">Artwork home</a>
+          <a href="/#/">Artwork home</a>
           <a href="/models/">Gallery</a>
           <a href="/showtime/">Showtime</a>
           <details className="draft-help">
@@ -195,8 +199,8 @@ export default function App(): JSX.Element {
               key={to}
               to={to}
               activeOptions={{ exact: true }}
-              className={path === to ? "tool active" : "tool"}
-              aria-current={path === to ? "page" : undefined}
+              className={(to === "/model" ? modelVisible : path === to) ? "tool active" : "tool"}
+              aria-current={(to === "/model" ? modelVisible : path === to) ? "page" : undefined}
             >
               <Icon size={17} aria-hidden="true" />
               {title}
@@ -270,11 +274,11 @@ export default function App(): JSX.Element {
           </div>
         </aside>
         <main id="workspace" className="workspace" tabIndex={-1}>
-          <div className="scene-container" hidden={path !== "/"}>
+          <div className="scene-container" hidden={!modelVisible}>
             <Suspense fallback={<p className="loading">Loading the 3D workspace…</p>}>
               <SceneView
                 option={option}
-                visible={path === "/"}
+                visible={modelVisible}
                 model={referenceModel}
                 onModelSelect={selectModel}
                 projectors={scenario.parts.projectors}
@@ -315,10 +319,10 @@ export default function App(): JSX.Element {
               <PartsView scenario={scenario} update={update} />
             ) : path === "/research" ? (
               <ResearchView scenario={scenario} onModelSelect={selectModel} />
-            ) : path !== "/" ? (
+            ) : !modelVisible ? (
               <div className="reading-panel">
                 <h2>That workspace does not exist.</h2>
-                <Link to="/">Return to Model</Link>
+                <Link to="/model">Return to Model</Link>
               </div>
             ) : null}
           </Suspense>

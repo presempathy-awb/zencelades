@@ -13,8 +13,8 @@ import App from "./App";
 import "./style.css";
 
 const rootRoute = createRootRoute({ component: App, notFoundComponent: App });
-const routes = ["/", "/workflow", "/tasks", "/budget", "/parts", "/research"].map((path) =>
-  createRoute({ getParentRoute: () => rootRoute, path }),
+const routes = ["/", "/model", "/workflow", "/tasks", "/budget", "/parts", "/research"].map(
+  (path) => createRoute({ getParentRoute: () => rootRoute, path }),
 );
 const router = createRouter({
   routeTree: rootRoute.addChildren(routes),

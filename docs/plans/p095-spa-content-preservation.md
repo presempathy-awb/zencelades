@@ -1,5 +1,11 @@
 # P095 — SPA layout and content preservation
 
+Resolved by Andrew: “so still single page app but homepage like the renders hero
+description basiclaly”. The SPA stays; its home presents the existing aerial
+render, hero and description, with access to the models, budget and other tools.
+Retain all original public documents, gallery, Showtime and legacy URLs. This
+answers the presentation question only; no backend dependency approval is implied.
+
 Andrew: “no SPa cockpit again just dont lose content”.
 
 The wording could request restoring the SPA cockpit or avoiding another cockpit
