@@ -39,15 +39,19 @@ and guest changes cannot mutate shared or account records. Help must explain
 whether changes are temporary, unsaved, saving, saved or rejected.
 
 Andrew approved the small Go service, gimmesomepaw and pgx on October 1 (P098).
-Implementation and deployment remain to be verified. The current studio has temporary
-in-memory scenarios and file import/export; no account-save endpoint exists.
+Local source now includes a Go account API, PG18 store, cockpit Save/Load and
+separate Naming Save/Load. Whole-suite and isolated PG18 tests pass; see
+[account saves](account-saves.md). The live site still has temporary scenarios
+and file import/export: no production account endpoint is installed. The
+[candidate deployment packet](account-deployment.md) has configuration validation,
+but production login and persistence remain unverified.
 Required acceptance evidence remains:
 
 | Requirement | Evidence needed before completion |
 | --- | --- |
 | Real sign-in and identity | Actual login/return with gimmesomepaw; server identity verified through the deployed trust boundary; spoofed browser headers refused |
 | Guests remain ephemeral | Edit and reload in the browser; direct anonymous write rejected without a database change |
-| Signed-in edits persist | Save, reload and read back the same validated scenario and board under the same identity from PG18 |
+| Signed-in edits persist | Save, reload and read back the same validated scenario, board, parts and funding under the same identity from PG18; independently save/reload the full Naming palette and shelves |
 | Ownership and concurrent edits | Cross-account read/write denial and stale-revision conflict without overwriting a newer save; guest drafts never silently promoted |
 | Expiry, failure and logout | Rejected save retains the local draft and states that it was not saved; login expiry/logout cannot continue writing; no optimistic success before server acknowledgment |
 | Accessible help | Keyboard/touch-accessible explanation at editing and save controls, with visible status and error feedback |
@@ -82,11 +86,14 @@ The all-green-tests request resumes relevant Python tests. Use existing `just
 check` and `just cockpit-check` recipes and the declared Node tests for the
 affected release; report fresh runs separately from earlier receipts.
 
-Prior browser permission covers model/gallery checks and the stated local
-cockpit interactions. Expanded homepage/OSS/board acceptance remains pending;
-the form permission is read-only. None authorizes passwords, MFA or arbitrary
-account changes. A fresh human Telpher hid-in grant is also pending after the
-changed-manifest request timed out. Preserve these exact boundaries.
+Prior browser permission covers model/gallery checks, the stated local cockpit
+interactions and the later approved homepage rendering check. The homepage
+loop → Showtime → Alternate designs path is browser-verified. Account sign-in,
+synthetic personal saves, expiry/conflicts and logout were requested as a
+separate browser scope and remain pending; form inspection stays read-only.
+Andrew handles passwords and MFA. A fresh presvd1 check reports the global
+vault ticket locked, so credential provisioning remains blocked. Preserve
+these exact boundaries.
 
 All eleven preprompt targets exist. That is document coverage, not completion
 of the project, physical engineering, scoped lakeFS delivery, source landing,

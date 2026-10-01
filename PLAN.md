@@ -1,5 +1,30 @@
 # Zencelades working plan
 
+## Current goal — October 1
+
+Complete the outstanding prompts and verify the full project. The immediate
+delivery is gimmesomepaw login with private PG18 saves, temporary guest edits
+and clear tooltips. Historical checkpoints below are not current completion
+claims.
+
+1. Finish the [account deployment packet](docs/plans/p098-account-deployment.md).
+   Scenario and Naming persistence are implemented and tested locally; the
+   service, provider binding and account frontend are not deployed.
+2. Complete required security review and authorized credential provisioning,
+   then install through a reviewed operation that preserves the active release.
+3. Exercise real sign-in, save/load, reload, account isolation, expiry and
+   conflict handling within approved browser scope. Local tests alone do not
+   close this requirement.
+4. Reconcile remaining storage, Pacinman editing, source landing and historical
+   prompt evidence; retain missing measurements, quotes and event decisions as
+   explicit gaps. Do not infer these from green website tests.
+
+The homepage loop and truck-alternatives separation are live and freshly
+browser-checked in release `9b6f2f7c`;
+[P103](docs/plans/p103-homepage-loop-alternatives.md) records the scoped delivery.
+
+## Historical checkpoints
+
 **P056 active:** PR, merge, reviewed deployment, temporary public static site,
 public Gitea/GitHub repositories and visible source links. Resolve the remaining
 cockpit checks before landing, preserve protected management endpoints and

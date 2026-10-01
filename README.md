@@ -3,9 +3,12 @@
 The [artwork homepage](https://zenceladus.com/),
 [studio and build board](https://zenceladus.com/studio/), and
 [OSS/AI disclosure](https://zenceladus.com/open-source/) are published.
-Guest studio edits are temporary until exported. Authenticated account saving
-remains under implementation. [Current release evidence](docs/public-pages-release.md)
-separates live model verification from outstanding acceptance and integrations.
+Guest studio edits are temporary until exported. The [account-save service](docs/account-saves.md)
+and controls are implemented and tested locally, with a
+[validated candidate deployment packet](docs/account-deployment.md); they are
+not deployed. The [latest homepage release](docs/plans/p103-homepage-loop-alternatives.md)
+preserves the renders and adds the looping Showtime preview and truck-alternatives
+page. [Earlier release evidence](docs/public-pages-release.md) remains historical.
 
 Andrew confirmed **zenceladus.com** as the project domain. It currently serves
 the public project with HTTPS and no port. Historical Enceladus Within assets

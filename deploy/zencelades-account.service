@@ -1,0 +1,31 @@
+# Proposed unit; install only after reviewed migration and credential provisioning.
+[Unit]
+Description=Zencelades private scenario and Naming drafts
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+LoadCredential=database-url:/etc/zencelades-account/database-url
+ExecStart=/srv/zencelades-account/current/zencelades-account --listen 127.0.0.1:18134 --origin https://zenceladus.com --outpost http://127.0.0.1:19001/outpost.goauthentik.io/auth/traefik --database-url-file ${CREDENTIALS_DIRECTORY}/database-url
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=15
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+AmbientCapabilities=
+MemoryMax=256M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

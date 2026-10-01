@@ -68,6 +68,10 @@ account-check:
 account-migration *args:
     (cd account-service && go run . --migrate {{args}})
 
+# Build the standalone service for the verified presvd1 Linux/amd64 host.
+account-build output:
+    (cd account-service && GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -o {{quote(output)}} .)
+
 # Plan by default; owner is the Telpher checkout with the existing B2 declaration.
 archives-b2 owner *args:
     uv run --no-project python -m scripts.archive_b2 --owner {{quote(owner)}} {{args}}

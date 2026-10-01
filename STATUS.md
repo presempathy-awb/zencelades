@@ -1,5 +1,31 @@
 # Zencelades status
 
+## Current account delivery — October 1
+
+The public site remains on release `9b6f2f7c`, with the homepage movie linking
+to Showtime and truck imagery grouped in Alternate designs. That browser flow
+was freshly exercised; no account service is present in the live release.
+
+The approved Go/pgx service now implements private scenario and Naming documents
+with verified gimmesomepaw identity, explicit saves, account isolation and
+revision conflicts. Guest edits remain in memory, with export/recovery controls
+and tooltips. This is local source, not production login.
+[Account behavior and verification](docs/account-saves.md).
+
+The Linux/amd64 service binary builds. Telpher's existing contract parser accepts
+the canonical-domain provider contract. presvd1 validates the proposed unit
+(with its executable relocated to a temporary validation directory) and the
+candidate Caddy additions. The Linux binary's migration-plan output exactly
+matches the additive SQL. No migration, provider, live route or service was
+applied. [Deployment packet and limits](docs/account-deployment.md).
+
+Production credential access remains blocked by the locked presvd1 vault.
+Security review, reviewed installation, authenticated browser acceptance and
+the broader storage/Pacinman backlog remain open. The account changes are local
+to the account-drafts lane; no account PR or merge is claimed.
+
+## Earlier release evidence
+
 ## Parts release — October 1
 
 The configuration-specific Parts view is published at

@@ -76,8 +76,8 @@ gimmesomepaw v0.3.0. It requires explicit `--listen`, `--origin`, `--outpost` an
 use HTTPS except explicit loopback addresses. The credential file must be a
 private regular file, not readable by group or others; its value is never logged.
 Provision it through the existing Telpher/hid-in owner workflow, not a checked-in
-file or a command-line URL. No production port or service installation is yet
-committed by this slice.
+file or a command-line URL. The [deployment packet](account-deployment.md)
+proposes loopback port 18134 and a systemd unit; neither is installed.
 
 `just account-migration` prints the additive SQL and changes nothing. Execution
 requires `--apply` and `--database-url-file`. The service never migrates on
