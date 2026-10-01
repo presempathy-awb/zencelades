@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Zencelades at Love Burn 2027: the pitch video, the films, the concept art and the schematics of a moon you climb inside.">
+  <title>Showtime · Zencelades</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/grants/reading.css">
+  <style>
+    .film{margin:0 0 2.5rem}
+    .film video{width:100%;height:auto;display:block;background:#000;border:1px solid var(--line)}
+    .film figcaption{margin-top:.6rem}
+    .pair{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:0 0 2.5rem}
+    .pair figure{margin:0}
+    .pair img{width:100%;height:auto;display:block;border:1px solid var(--line)}
+    @media (max-width:720px){.pair{grid-template-columns:1fr}}
+    .steps{counter-reset:step;list-style:none;padding:0;margin:0 0 2rem}
+    .steps li{counter-increment:step;margin:0 0 .8rem;padding-left:2.4rem;position:relative}
+    .steps li::before{content:counter(step);position:absolute;left:0;top:0;width:1.7rem;height:1.7rem;border:1px solid var(--accent);border-radius:50%;text-align:center;line-height:1.7rem;color:var(--accent)}
+    .note{border-left:3px solid var(--accent);padding:.2rem 0 .2rem 1rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the films</a>
+  <header class="masthead"><a href="/">Zencelades</a><nav aria-label="Showtime"><a href="#pitch">Pitch</a><a href="#films">Films</a><a href="#moon">The moon</a><a href="#how">How it works</a><a href="/application/">Proposal</a><a href="https://git.telpher.stream/telpher/zencelades">Source</a></nav></header>
+  <main id="main">
+    <section class="section intro">
+      <p class="kicker">Love Burn 2027 · SHOWTIME! You are not the audience. You are part of the show.</p>
+      <h1>You are the man<br>on the moon.</h1>
+      <p>Enceladus is a small moon of Saturn with a whole ocean hidden under its ice. Most of a human body is water too. Zencelades is a glowing moon, eight feet across, that you can climb inside. Step through its tunnel, sit on the soft floor, and say the words: “I am the man on the moon” (or woman, or whatever you are). Only then does the moon take you: your own face, blown up to the size of the moon, appears across its surface, fading in beneath the ice. The ice cracks. The hidden ocean floods through. Plumes rise from where you sit, and then, slowly, the moon takes itself back.</p>
+      <p><a class="action" href="#pitch">Watch the pitch</a> <a class="action" href="/application/">Read the proposal and schematics</a></p>
+    </section>
+
+    <section id="pitch" class="section" aria-labelledby="pitch-title">
+      <h2 id="pitch-title">The pitch, in ninety seconds.</h2>
+      @@PITCH@@
+    </section>
+
+    <section id="films" class="section" aria-labelledby="films-title">
+      <h2 id="films-title">The films.</h2>
+      <figure class="film">
+        <video controls preload="metadata" aria-label="Cinematic previsualization of a person inside a glowing sphere fading into Enceladus">
+          <source src="/media/previs.mp4" type="video/mp4">
+        </video>
+        <figcaption><strong>The idea, previsualised.</strong> A person inside the moon, fading back and forth with Enceladus in real time. Illustrative; the 2027 build is the landed and hung moon shown below.</figcaption>
+      </figure>
+      <figure class="film">
+        <video controls preload="metadata" aria-label="Above the ice: Enceladus, a 44-second silent film built from NASA visualizations">
+          <source src="/media/above-the-ice.mp4" type="video/mp4">
+        </video>
+        <figcaption><strong>Above the ice: Enceladus.</strong> Forty-four seconds, silent: the south pole, the geysers from inside the jets, the icy surface, the rings and Saturn rising over it. Built from NASA’s public scientific visualizations with an imagined camera path; this is the material the moon is painted with.</figcaption>
+      </figure>
+    </section>
+
+    <section id="moon" class="section" aria-labelledby="moon-title">
+      <h2 id="moon-title">The moon, landed and hung.</h2>
+      <div class="pair">
+        <figure><img src="/media/concept-landed.png" alt="Concept art: a person sitting inside a clear sphere on a low steel triangle with three lander legs at dusk, their face projected large across the sphere" width="2200" height="1467"><figcaption><strong>Landed.</strong> The triangle holder on three lander legs: this is where people climb in. Nothing overhead, nothing to climb.</figcaption></figure>
+        <figure><img src="/media/concept-suspended.png" alt="Concept art: the same sphere and triangle hung from a freestanding aerial rig by webbing straps over the sphere" width="2200" height="1467"><figcaption><strong>Hung.</strong> The same holder on the artist’s own aerial rig, winched down to a cradle in wind. Occupied only within the rig’s rated load.</figcaption></figure>
+      </div>
+      <p class="note">Generated concept art. The projector heads on arms are the upgrade path; the 2027 build puts two projectors on stands, as the <a href="/application/">schematics</a> show.</p>
+    </section>
+
+    <section id="how" class="section" aria-labelledby="how-title">
+      <h2 id="how-title">How it works.</h2>
+      <ol class="steps">
+        <li><strong>Climb in.</strong> A tunnel at knee height, a soft floor, a crew member at the door. One person at a time. The blower runs the whole time and the tunnel is never closed.</li>
+        <li><strong>Say the words.</strong> A switch at the door turns the cameras on when you go in and off when you leave. Nothing is projected until you say “I am the man on the moon”. A stop switch at the seat ends it whenever you like.</li>
+        <li><strong>Become the moon.</strong> Two small cameras inside see only you, and only while you are there; nothing is recorded. Your face fades in under the ice, the ice cracks, the ocean floods through, plumes rise.</li>
+        <li><strong>The moon takes itself back.</strong> Say the words again, or climb out, and it returns to a calm, breathing loop of ice and water for the next person. Everyone outside gets the best seat: watching a friend become the man on the moon.</li>
+      </ol>
+      <p>Two 3,600-lumen projectors paint the sphere, a little haze in the air outside makes the beams visible, and a quiet soundscape carries the story. By day it is a plain white moon on the sand. After dark it is the show, and so are you.</p>
+      <p><a class="action" href="/application/">The proposal, schematics and budget</a> <a class="action" href="https://git.telpher.stream/telpher/zencelades">Everything is open source</a></p>
+    </section>
+  </main>
+  <footer class="section"><p class="muted">Zencelades · Love Burn 2027 Seed Grant application · source at <a href="https://git.telpher.stream/telpher/zencelades">git.telpher.stream/telpher/zencelades</a>, mirror at <a href="https://github.com/presempathy-awb/zencelades">github.com/presempathy-awb/zencelades</a>.</p></footer>
+</body>
+</html>

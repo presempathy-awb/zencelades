@@ -45,6 +45,7 @@ def build() -> None:
         "variant-a.png": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.png",
         "variant-b.png": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.png",
         "previs.mp4": "source/uploads/enceladus_within_cinematic_previs_h264.mp4",
+        "above-the-ice.mp4": "source/research/enceladus-videos/derived/above-the-ice.mp4",
     }
     (output / "media").mkdir(exist_ok=True)
     for name, source in previews.items():
@@ -75,6 +76,23 @@ def build() -> None:
     shutil.copytree(ROOT / "site/pricing", output / "pricing", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/grants", output / "grants", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/mounts", output / "mounts", dirs_exist_ok=True)
+    shutil.copytree(ROOT / "site/showtime", output / "showtime", dirs_exist_ok=True)
+    pitch = ROOT / "source/uploads/zencelades-pitch.mp4"
+    if pitch.exists():
+        shutil.copyfile(pitch, output / "media/pitch.mp4")
+        pitch_html = (
+            '<figure class="film"><video controls preload="metadata" poster="/media/concept-landed.png"'
+            ' aria-label="The artist introduces Zencelades in ninety seconds">'
+            '<source src="/media/pitch.mp4" type="video/mp4"></video>'
+            "<figcaption><strong>Who, what, why, how.</strong> Shot on a phone, as asked.</figcaption></figure>"
+        )
+    else:
+        pitch_html = (
+            '<p class="note">The pitch video is being recorded; drop it at'
+            " <code>source/uploads/zencelades-pitch.mp4</code> and it appears here. The films below carry the idea.</p>"
+        )
+    showtime = output / "showtime/index.html"
+    showtime.write_text(showtime.read_text().replace("@@PITCH@@", pitch_html))
     shutil.copytree(
         ROOT / "site/application", output / "application", dirs_exist_ok=True
     )
@@ -171,7 +189,7 @@ def build() -> None:
     shutil.copyfile(ROOT / "assets/catalog.json", output / "asset-catalog.json")
     shutil.copyfile(ROOT / "assets/v4-catalog.json", output / "v4-asset-catalog.json")
     print(
-        f"Built {output}: {len(entries)} original + {len(v4)} v4 byte-verified downloads and 7 media previews"
+        f"Built {output}: {len(entries)} original + {len(v4)} v4 byte-verified downloads and {len(previews)} media previews"
     )
 
 

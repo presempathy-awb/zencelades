@@ -150,10 +150,10 @@ the live compositing, the air and heat inside with the blower running, and
 the lowering drill, and time them, before the November purchases. Full
 schematics are attached: hung elevation, plan, landed state, lowering,
 signal and power, and a tree alternative; plus two pieces of generated
-concept art of the landed and hung states. Photos and videos are on the
-project website, https://thatsnozorb.muchadoaboutoneside.com/, and the
-whole open-source build, design files included, is at
-https://git.telpher.stream/telpher/zencelades.
+concept art of the landed and hung states. Photos and videos are at
+https://zencelades.com/showtime, the schematics at
+https://zencelades.com/application, and the whole open-source build, design
+files included, is at https://git.telpher.stream/telpher/zencelades.
 
 ### ART PROJECT PHOTOS
 *JPG/PNG, under 5 MB each, under 20 MB total.* Upload in this order; the
@@ -310,9 +310,8 @@ install, nightly operation, strike, and travel.
 **[co-lead's email, or leave blank]**
 
 ### Your Artist Website
-https://thatsnozorb.muchadoaboutoneside.com/ **[or zencelades.com once it is
-live; today the project site needs a tailnet or a login, so the source
-repository below is the link reviewers can open]**
+https://zencelades.com (the domain must be registered and live before
+submitting; until then https://muchadoaboutoneside.com/ opens)
 
 ### Additional Websites
 Source, open to all: https://git.telpher.stream/telpher/zencelades (design
