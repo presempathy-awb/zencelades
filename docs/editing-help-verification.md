@@ -40,3 +40,23 @@ Vite still warns about large SceneView and entry chunks. Login remains incomplet
 the fresh read-only Telpher grant status reports a stale manifest binding and a
 locked project. Human grant renewal and the pending dependency decision are not
 replaced by this UI change. No account-save endpoint was added or exposed.
+
+## Publication
+
+Source `4dcd273e9e5509b223643a2fd1e952756718cdad` was independently read back
+from the feature branch on both Gitea and GitHub. The scoped overlay activated
+release `7dfd0b8fef01390a1a5378b90099039687671e23aa3892aa14318025ede9c7a2`,
+verifying all 720 preceding manifest entries and changing 57 allowed studio paths.
+Previous release directories and unrelated media, gallery, Showtime and access
+configuration were retained. Caddy validation passed; the initial loopback probe
+failed during restart, then the deployment's bounded readiness check succeeded.
+Existing formatting and loopback HTTP warnings remain.
+
+Normal public HTTPS readback matched all 62 checked files, including changed
+studio files and retained homepage, gallery, Showtime, pricing and grants pages.
+The active release symlink matched the planned digest and the service was active.
+
+The live browser at zenceladus.com/studio rendered the new controls. Clicking Top
+changed the model camera to the plan view; keyboard focus opened its tooltip.
+The screenshot is retained as edit-help/live-top-tooltip.png in the task cache.
+Account login was not attempted.
