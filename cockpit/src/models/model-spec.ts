@@ -65,7 +65,7 @@ export const MODEL_STUDIES: ModelStudy[] = [
     label: "Common holder · landed on detachable legs",
     group: "Seed concepts",
     budget: "seed-zorb",
-    note: "Nominal 3 m occupied sphere, six-foot seating loop and low triangle with detachable lower legs and broad lander feet. Same holder as the aerial mode. 1.8 m corner radius leaves 14.4 mm centreline overhang; joints and contact are schematic. No approved member sizes, entry, deflation support, ground stability or construction detail.",
+    note: "Nominal occupied sphere, six-foot seating loop and low triangle with detachable lower legs and broad lander feet. Same holder as the aerial mode. 1.8 m corner radius leaves 14.4 mm centreline overhang; joints and contact are schematic. No approved member sizes, entry, deflation support, ground stability or construction detail.",
   },
   {
     id: "basket-webbing",

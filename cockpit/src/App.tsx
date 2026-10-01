@@ -261,6 +261,22 @@ export default function App(): JSX.Element {
                 model={referenceModel}
                 onModelSelect={selectModel}
                 projectors={scenario.parts.projectors}
+                diameter={scenario.parts.configuration.endsWith("25") ? 2.5 : 3}
+                onDiameterChange={(diameter) =>
+                  update({
+                    ...scenario,
+                    parts: {
+                      ...scenario.parts,
+                      configuration: scenario.parts.configuration.startsWith("S")
+                        ? diameter === 2.5
+                          ? "S25"
+                          : "S30"
+                        : diameter === 2.5
+                          ? "G25"
+                          : "G30",
+                    },
+                  })
+                }
                 onProjectorCountChange={(projectors) =>
                   update({ ...scenario, parts: { ...scenario.parts, projectors } })
                 }

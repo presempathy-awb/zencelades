@@ -15,7 +15,7 @@ import { MODEL_STUDIES, ACTIVE_MODEL_STUDIES } from "./models/model-spec";
 import { buildModel, dimensionGuides } from "./models/support-models";
 import type { Option } from "./scenario";
 import { Button } from "./ui";
-import { BASKET_MODEL_IDS, type ProjectorCount } from "./models/basket-model";
+import { BASKET_MODEL_IDS, type ProjectorCount, type SphereDiameter } from "./models/basket-model";
 
 export default function SceneView({
   option,
@@ -24,6 +24,8 @@ export default function SceneView({
   onModelSelect,
   projectors,
   onProjectorCountChange,
+  diameter,
+  onDiameterChange,
 }: {
   option: Option;
   visible: boolean;
@@ -31,6 +33,8 @@ export default function SceneView({
   onModelSelect: (id: string) => void;
   projectors: ProjectorCount;
   onProjectorCountChange: (count: ProjectorCount) => void;
+  diameter: SphereDiameter;
+  onDiameterChange: (diameter: SphereDiameter) => void;
 }): JSX.Element {
   const canvas = useRef<HTMLCanvasElement>(null);
   const cameraRef = useRef<ArcRotateCamera | null>(null);
@@ -53,6 +57,7 @@ export default function SceneView({
   const archive = ["a", "b", "v4"].includes(model);
   const configurable = BASKET_MODEL_IDS.includes(selectedId);
   const count = configurable ? projectors : undefined;
+  const sphereDiameter = configurable ? diameter : 3;
   const reset = (): void => {
     const camera = cameraRef.current;
     if (camera) {
@@ -119,7 +124,7 @@ export default function SceneView({
             : `Original ${model.toUpperCase()} · untouched source GLB · metres / Y-up`,
         );
       } else {
-        const built = buildModel(scene, selectedId, count);
+        const built = buildModel(scene, selectedId, count, sphereDiameter);
         guidesRef.current = dimensionGuides(scene, built);
         guidesRef.current.setEnabled(showGuidesRef.current);
         camera.setTarget(new Vector3(...built.target));
@@ -153,7 +158,7 @@ export default function SceneView({
       scene.dispose();
       engine.dispose();
     };
-  }, [selectedId, archive, model, count]);
+  }, [selectedId, archive, model, count, sphereDiameter]);
   useEffect(() => {
     visibleRef.current = visible;
     if (visible) engineRef.current?.resize();
@@ -189,10 +194,10 @@ export default function SceneView({
   const downloadModel = async (): Promise<void> => {
     setExporting(true);
     setExportStatus("");
-    const name = `${selectedId}-${projectors}-head${projectors === 1 ? "" : "s"}`;
+    const name = `${selectedId}-${diameter}m-${projectors}-head${projectors === 1 ? "" : "s"}`;
     try {
       const { exportModel } = await import("./models/model-export");
-      const blob = await exportModel(selectedId, projectors);
+      const blob = await exportModel(selectedId, projectors, diameter);
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
@@ -242,9 +247,12 @@ export default function SceneView({
         </p>
         {configurable && (
           <p>
-            This common-holder study follows the selected head count, using triangle arms. Size,
-            host, camera and independent-stand selections remain separate procurement studies.
-            Current-view GLB exports contain this head count; the gallery keeps its fixed studies.
+            This common-holder study follows the selected sphere size and head count, using triangle
+            arms. The six-foot ring and triangle footprint stay fixed; their elevation and the
+            webbing route change with sphere size. The inner shell is a proportional placeholder,
+            not measured usable space. Host, camera and independent-stand selections remain separate
+            procurement studies. Current-view GLB exports contain this size and head count; the
+            gallery keeps its fixed studies.
           </p>
         )}
         <p>
@@ -263,7 +271,8 @@ export default function SceneView({
         {configurable && (
           <strong>
             {" "}
-            · {projectors} {projectors === 1 ? "head" : "heads"} on triangle arms · 3 m study.
+            · {projectors} {projectors === 1 ? "head" : "heads"} on triangle arms · {diameter} m
+            study.
           </strong>
         )}
         {model !== "scenario" && (
@@ -272,6 +281,19 @@ export default function SceneView({
         {exportStatus && <span> · {exportStatus}</span>}
       </div>
       <div className="scene-tools">
+        {configurable && (
+          <label>
+            <span className="sr-only">Sphere diameter in model</span>
+            <select
+              aria-label="Sphere diameter in model"
+              value={diameter}
+              onChange={(event) => onDiameterChange(Number(event.target.value) as SphereDiameter)}
+            >
+              <option value={2.5}>2.5 m sphere</option>
+              <option value={3}>3 m sphere</option>
+            </select>
+          </label>
+        )}
         {configurable && (
           <label>
             <span className="sr-only">Projector heads in model</span>
@@ -377,7 +399,7 @@ export default function SceneView({
             variant="outline"
             disabled={exporting || failed}
             onClick={() => void downloadModel()}
-            hint="Download the displayed 3 m arm-mounted study with this head count. This is not an approved fabrication model."
+            hint="Download the displayed sphere size and head count on triangle arms. This is not an approved fabrication model."
           >
             {exporting ? "Exporting GLB…" : "Download current GLB"}
           </Button>

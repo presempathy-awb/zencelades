@@ -172,9 +172,17 @@ export function partsPlanForModel(plan: PartsPlan, id: string): PartsPlan {
   };
   const study = studies[id];
   if (!study) return plan;
+  const configuration = plan.configuration.endsWith("25")
+    ? study.configuration === "G30"
+      ? "G25"
+      : study.configuration === "S30"
+        ? "S25"
+        : study.configuration
+    : study.configuration;
   return {
     ...plan,
     ...study,
+    configuration: configuration ?? plan.configuration,
     mounting: "arms",
     choices: {
       ...plan.choices,

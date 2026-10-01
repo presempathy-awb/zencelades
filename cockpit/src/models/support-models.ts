@@ -7,7 +7,7 @@ import { geometry, type Point } from "./geometry";
 import { andersen, receiver, truck } from "./truck-model";
 import { BED_FRONT, BED_REAR, MODEL_STUDIES, RAM, REAR_END } from "./model-spec";
 import { seedGeometry } from "./seed-models";
-import { BASKET_MODEL_IDS, type ProjectorCount } from "./basket-model";
+import { BASKET_MODEL_IDS, type ProjectorCount, type SphereDiameter } from "./basket-model";
 
 export interface BuiltModel {
   root: TransformNode;
@@ -16,7 +16,12 @@ export interface BuiltModel {
   dimensions: { label: string; a: Point; b: Point }[];
 }
 /** Build the named study without lighting, ground or camera for portable export. */
-export function buildModel(scene: Scene, id: string, projectorCount?: ProjectorCount): BuiltModel {
+export function buildModel(
+  scene: Scene,
+  id: string,
+  projectorCount?: ProjectorCount,
+  sphereDiameter: SphereDiameter = 3,
+): BuiltModel {
   const study = MODEL_STUDIES.find((value) => value.id === id);
   if (!study) throw new Error(`Unknown model: ${id}`);
   const root = new TransformNode(`study-${id}`, scene),
@@ -27,6 +32,7 @@ export function buildModel(scene: Scene, id: string, projectorCount?: ProjectorC
     axes: "Y up, truck nose -X; rear axle datum X=0",
     status: "layout reference; no capacity or fit approval",
     ...(projectorCount !== undefined && BASKET_MODEL_IDS.includes(id) ? { projectorCount } : {}),
+    ...(BASKET_MODEL_IDS.includes(id) ? { sphereDiameter } : {}),
   };
   const result: BuiltModel = { root, target: [0, 1.7, 0], radius: 11, dimensions: [] };
   if (
@@ -41,7 +47,8 @@ export function buildModel(scene: Scene, id: string, projectorCount?: ProjectorC
       "basket-live-overlay",
     ].includes(id)
   ) {
-    seedGeometry(scene, g, id, projectorCount);
+    const diameter = BASKET_MODEL_IDS.includes(id) ? sphereDiameter : 3;
+    seedGeometry(scene, g, id, projectorCount, diameter);
     result.radius = ["basket-tripod", "basket-aerial-rig"].includes(id)
       ? 13
       : ["basket-webbing", "occupied-cradle"].includes(id)
@@ -56,9 +63,9 @@ export function buildModel(scene: Scene, id: string, projectorCount?: ProjectorC
     ];
     result.dimensions = [
       {
-        label: "3 m nominal scenic envelope · not a fabrication dimension",
-        a: [-1.5, 0, 1.8],
-        b: [1.5, 0, 1.8],
+        label: `${diameter} m nominal scenic envelope · not a fabrication dimension`,
+        a: [-diameter / 2, 0, 1.8],
+        b: [diameter / 2, 0, 1.8],
       },
     ];
     return result;

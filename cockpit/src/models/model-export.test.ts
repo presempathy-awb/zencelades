@@ -2,7 +2,7 @@ import { expect, test } from "bun:test";
 import { exportModel } from "./model-export";
 
 test("custom GLB retains selected heads and excludes the viewer camera and ground", async () => {
-  const blob = await exportModel("basket-aerial-rig", 1);
+  const blob = await exportModel("basket-aerial-rig", 1, 2.5);
   const bytes = await blob.arrayBuffer();
   const header = new DataView(bytes);
   expect(header.getUint32(0, true)).toBe(0x46546c67);
@@ -17,10 +17,16 @@ test("custom GLB retains selected heads and excludes the viewer camera and groun
     "arm-rain-cover-1",
   ]);
   expect(names).toContain("seat-loop-nominal-six-foot-unrated");
+  expect(names).toContain("double-wall-cutaway-2.5");
+  expect(names).not.toContain("double-wall-cutaway-3");
   expect(names).not.toContain("Ground plane");
   expect(document.cameras ?? []).toEqual([]);
   expect(
     document.nodes.find((node: { name: string }) => node.name === "study-basket-aerial-rig").extras
       .projectorCount,
   ).toBe(1);
+  expect(
+    document.nodes.find((node: { name: string }) => node.name === "study-basket-aerial-rig").extras
+      .sphereDiameter,
+  ).toBe(2.5);
 });

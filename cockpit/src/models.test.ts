@@ -6,6 +6,42 @@ import { buildModel } from "./models/support-models";
 import { MODEL_STUDIES } from "./models/model-spec";
 import { baseline } from "./scenario";
 
+test("sphere size changes shell, holder height and dimensions without scaling the participant", () => {
+  const engine = new NullEngine();
+  try {
+    for (const id of ["seed-zorb", "basket-aerial-rig"]) {
+      for (const diameter of [2.5, 3] as const) {
+        const scene = new Scene(engine);
+        try {
+          const result = buildModel(scene, id, 1, diameter);
+          const shell = scene.getMeshByName(`double-wall-cutaway-${diameter}`)!;
+          expect(shell).not.toBeNull();
+          shell.computeWorldMatrix(true);
+          const bounds = shell.getBoundingInfo().boundingBox;
+          expect(bounds.maximumWorld.y - bounds.minimumWorld.y).toBeCloseTo(diameter, 5);
+          expect(result.dimensions[0].b[0] - result.dimensions[0].a[0]).toBe(diameter);
+          expect(result.dimensions[0].label).toStartWith(`${diameter} m`);
+          expect(result.root.metadata.sphereDiameter).toBe(diameter);
+          const ring = scene.getMeshByName("seat-loop-nominal-six-foot-unrated")!;
+          ring.computeWorldMatrix(true);
+          expect(ring.getBoundingInfo().boundingBox.centerWorld.y).toBeCloseTo(
+            diameter === 2.5 ? 0.847725021 : 0.510936234,
+            4,
+          );
+          const torso = scene.getMeshByName("participant-torso-envelope")!;
+          torso.computeWorldMatrix(true);
+          const human = torso.getBoundingInfo().boundingBox;
+          expect(human.maximumWorld.y - human.minimumWorld.y).toBeCloseTo(0.55, 5);
+        } finally {
+          scene.dispose();
+        }
+      }
+    }
+  } finally {
+    engine.dispose();
+  }
+});
+
 test("selected projector counts change holder heads, covers and stays without changing the frame", () => {
   const engine = new NullEngine();
   try {

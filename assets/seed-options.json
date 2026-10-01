@@ -34,7 +34,7 @@
       "name": "Common holder on detachable lander legs",
       "position": "Keeps the inflatable · conditional on exact manufacturer",
       "projectors": 0,
-      "description": "Andrew's low triangle and padded circular seating-loop concept under an occupied double-wall sphere, shown on ground feet. Fabrication at denhac, labor in-kind. The 3 m sphere and six-foot ring are nominal layout inputs; no donor, stationary-use approval, seam clearance or deflation support is verified. Over-sphere lifting webbing and external hosts are separate unpriced reference studies.",
+      "description": "Andrew's low triangle and padded circular seating-loop concept under an occupied double-wall sphere, shown on ground feet. Fabrication at denhac, labor in-kind. The 2.5 m or 3 m sphere and six-foot ring are nominal layout inputs; no donor, stationary-use approval, seam clearance or deflation support is verified. Over-sphere lifting webbing and external hosts are separate unpriced reference studies.",
       "items": [
         {"label":"Occupied sphere + blower, delivered and taxed","low":1200,"high":1200,"basis":"Procurement CEILING, not a found quote or approved product. Confirm model, occupancy, stationary use and total delivered cost before spending."},
         {"label":"Common holder, detachable legs and joint materials","low":350,"high":350,"basis":"Ground allocation ceiling shared by triangle, seating loop and lander base; labor in-kind at denhac. Compare known remnants and a measured ring donor. No cut list, joint design, donor quote or promise this material ceiling is sufficient."},

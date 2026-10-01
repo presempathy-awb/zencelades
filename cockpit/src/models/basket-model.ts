@@ -13,9 +13,10 @@ export const BASKET_MODEL_IDS = [
   "basket-live-overlay",
 ];
 export type ProjectorCount = 0 | 1 | 2 | 3;
+export type SphereDiameter = 2.5 | 3;
 
 /** Nominal P035/P036 geometry; no tube, sling or hardware specification. */
-export function basketLayout(): {
+export function basketLayout(diameter: SphereDiameter = 3): {
   ringRadius: number;
   ringY: number;
   triangleY: number;
@@ -27,7 +28,7 @@ export function basketLayout(): {
   straps: Point[][];
   collector: Point;
 } {
-  const sphereRadius = 1.5,
+  const sphereRadius = diameter / 2,
     centreY = 1.7;
   const ringRadius = (6 * 0.3048) / 2,
     cornerRadius = 1.8;
@@ -38,7 +39,7 @@ export function basketLayout(): {
     const angle = (index * Math.PI * 2) / 3 + Math.PI / 2;
     return [cornerRadius * Math.cos(angle), triangleY, cornerRadius * Math.sin(angle)];
   });
-  const collector: Point = [0, centreY + 1.72, 0];
+  const collector: Point = [0, centreY + sphereRadius + 0.22, 0];
   // Tangent–arc–tangent routing represents webbing bearing on the skin.
   // The small display offset prevents z-fighting; it is not physical clearance.
   const displayRadius = sphereRadius + 0.012;
@@ -79,8 +80,9 @@ export function basketGeometry(
   g: Geometry,
   id: string,
   projectors?: ProjectorCount,
+  diameter: SphereDiameter = 3,
 ): void {
-  const layout = basketLayout();
+  const layout = basketLayout(diameter);
   const suspended = ["basket-webbing", "basket-tripod", "basket-aerial-rig"].includes(id);
   const projected = ["seed-zorb", "basket-aerial-rig", "basket-live-overlay"].includes(id);
   const count = projectors ?? (projected ? 3 : 0);

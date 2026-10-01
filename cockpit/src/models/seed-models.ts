@@ -7,6 +7,7 @@ import {
   basketLayout,
   BASKET_MODEL_IDS,
   type ProjectorCount,
+  type SphereDiameter,
 } from "./basket-model";
 
 /** Scenic envelopes only: cross-sections, skin contact and all capacities are unresolved. */
@@ -15,12 +16,13 @@ export function seedGeometry(
   g: Geometry,
   id: string,
   projectors?: ProjectorCount,
+  diameter: SphereDiameter = 3,
 ): void {
   const surround = id === "seed-surround";
   const hanging = id === "occupied-cradle";
   const basket = BASKET_MODEL_IDS.includes(id);
   const base = hanging ? 0.7 : 0;
-  const centre = basket ? basketLayout().centreY : base + 1.5;
+  const centre = basket ? basketLayout(diameter).centreY : base + 1.5;
   const humanBase = surround ? 0.02 : centre - 0.85;
   // Seated witness for zorb studies; standing witness for the scenic surround.
   const torsoY = humanBase + (surround ? 1.1 : 0.55);
@@ -67,7 +69,9 @@ export function seedGeometry(
     g.mat("#8ccbd7").alpha = 0.2;
     g.box("clear-entry-ground-marker", [1.1, 0.008, 1.4], [0, 0.004, -1.4], "#47a99d");
   } else {
-    for (const diameter of [3, 2]) {
+    const outerDiameter = basket ? diameter : 3;
+    // Inner space is a proportional display envelope, not a measured product interior.
+    for (const diameter of [outerDiameter, (outerDiameter * 2) / 3]) {
       const shell = g.finish(
         MeshBuilder.CreateSphere(
           `double-wall-cutaway-${diameter}`,
@@ -80,7 +84,7 @@ export function seedGeometry(
       shell.rotation.y = Math.PI / 4;
     }
     g.mat("#a9cedb").alpha = 0.2;
-    if (basket) basketGeometry(scene, g, id, projectors);
+    if (basket) basketGeometry(scene, g, id, projectors, diameter);
     else {
       for (const x of [-1.15, 1.15])
         g.box(`external-restraint-envelope-${x}`, [0.22, 0.4, 2.3], [x, base + 0.2, 0]);

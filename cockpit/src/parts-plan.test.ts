@@ -76,6 +76,14 @@ test("model-derived plans follow known occupied studies without repricing unrela
   expect(plan.configuration).toBe("G30");
 });
 
+test("switching holder support keeps the selected sphere size", () => {
+  const plan = { ...createPartsPlan(), configuration: "G25" as const };
+  const aerial = partsPlanForModel(plan, "basket-aerial-rig");
+  expect(aerial.configuration).toBe("S25");
+  expect(partsPlanForModel(aerial, "seed-zorb").configuration).toBe("G25");
+  expect(partsPlanForModel(aerial, "seed-surround").configuration).toBe("O30");
+});
+
 test("imported plans reject unknown options and cross-group choices without losing the original", () => {
   const plan = createPartsPlan();
   expect(parsePartsPlan(JSON.parse(JSON.stringify(plan)))).toEqual(plan);

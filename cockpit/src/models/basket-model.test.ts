@@ -12,8 +12,8 @@ test("lander leaves the negative-Z entrance between two side legs", () => {
   expect(rear[0][2]).toBeCloseTo(1.8, 8);
 });
 
-test("six-foot ring fit exposes overhang and webbing follows the shell surface", () => {
-  const layout = basketLayout();
+test.each([2.5, 3] as const)("six-foot ring and webbing fit the %s m shell", (diameter) => {
+  const layout = basketLayout(diameter);
   expect(layout.ringRadius).toBeCloseTo(0.9144, 5);
   expect(layout.triangleSide).toBeCloseTo(3.117691, 5);
   expect(layout.ringOverhang).toBeCloseTo(0.0144, 5);
@@ -37,7 +37,7 @@ test("six-foot ring fit exposes overhang and webbing follows the shell surface",
         nearest = Math.min(nearest, distance);
       }
     }
-    expect(nearest).toBeGreaterThanOrEqual(1.5);
-    expect(nearest).toBeLessThan(1.52);
+    expect(nearest).toBeGreaterThanOrEqual(diameter / 2);
+    expect(nearest).toBeLessThan(diameter / 2 + 0.02);
   }
 });

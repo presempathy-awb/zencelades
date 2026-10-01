@@ -6,8 +6,9 @@ rain covers and, for suspended studies, arm stays. One/two-head layouts use the
 flanking corners before the rear corner; the entry bay receives no new mast.
 The ring, triangle, legs or aerial host and over-sphere webbing remain intact.
 
-These are the existing 3 m arm-mounted studies. Size, camera, host and separate
-stand selections in Parts remain procurement choices, explicitly identified as
+The common-holder studies now also follow the 2.5 m / 3 m sphere selection;
+see [sphere-size verification](sphere-size-verification.md). Camera, host and
+separate stand selections remain procurement choices, explicitly identified as
 not reflected in this model. The fixed gallery source studies remain available.
 No total was repriced and no equipment ownership, optical coverage, load rating
 or construction approval was inferred from a head count.
