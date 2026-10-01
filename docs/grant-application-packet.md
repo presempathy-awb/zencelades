@@ -149,8 +149,8 @@ October bench test must validate the diffusing skin with a person inside,
 the live compositing, the air and heat inside with the blower running, and
 the lowering drill, and time them, before the November purchases. Full
 schematics are attached: hung elevation, plan, landed state, lowering,
-signal and power, and a tree alternative; plus two pieces of generated
-concept art of the landed and hung states. Photos and videos are at
+signal and power, and a tree alternative; plus two 3D model renders of the
+landed and hung assemblies and two pieces of generated concept art. Photos and videos are at
 https://zencelades.com/showtime, the schematics at
 https://zencelades.com/application, and the whole open-source build, design
 files included, is at https://git.telpher.stream/telpher/zencelades.
@@ -161,17 +161,22 @@ first image is the thumbnail the committee sees in its list.
 
 1. `submission/01-concept-landed.png` concept art, landed state, a person
    inside the moon with their face on it (2.6 MB)
-2. `submission/02-plate-1-hung-elevation.png` hung version, elevation
-3. `submission/03-plate-5-plan.png` plan view and footprint
-4. `submission/04-plate-3-landed.png` landed state on lander legs
-5. `submission/05-concept-suspended.png` concept art, hung state (2.5 MB)
-6. `submission/06-plate-4-signal-and-power.png` signal and power
-7. `submission/07-plate-6-lowering.png` lowering the moon
-8. `submission/08-plate-2-tree-alternative.png` tree alternative
+2. `submission/02-lander-3d-model.png` 3D model render, landed: the 2.5 m
+   sphere cut away to show the seat, the tunnel, the loop, the triangle and
+   the three lander legs
+3. `submission/03-plate-1-hung-elevation.png` hung version, elevation
+4. `submission/04-plate-5-plan.png` plan view and footprint
+5. `submission/05-plate-3-landed.png` landed state on lander legs, elevation
+6. `submission/06-suspended-3d-model.png` 3D model render, hung on a generic
+   aerial rig
+7. `submission/07-concept-suspended.png` concept art, hung state (2.5 MB)
+8. `submission/08-plate-4-signal-and-power.png` signal and power
+9. `submission/09-plate-6-lowering.png` lowering the moon
+10. `submission/10-plate-2-tree-alternative.png` tree alternative
 
-About 5.9 MB total. The concept art shows the one-unit upgrade (projector
-heads on arms from the triangle); the plates show the 2027 build with the
-projectors on stands.
+About 6.6 MB total. The concept art and the 3D model renders show the
+one-unit upgrade (projector heads on arms from the triangle); the plates
+show the 2027 build with the projectors on stands.
 
 ### Video Proposal
 *Under two minutes. The form says a video moved several grants from Maybe
