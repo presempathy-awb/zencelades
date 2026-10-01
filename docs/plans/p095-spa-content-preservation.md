@@ -6,6 +6,12 @@ render, hero and description, with access to the models, budget and other tools.
 Retain all original public documents, gallery, Showtime and legacy URLs. This
 answers the presentation question only; no backend dependency approval is implied.
 
+Completed: source `ac6f213f`, release `1c12dda8383795d61e51190640000c5c5298e0be0931f13b1b4fd382fef0dc22`.
+The public homepage now lives in the SPA with the existing artwork narrative and
+renders. Model and budget navigation retains temporary scenario state. Public
+readback matched 130 files; live browser checks passed. See
+[publication evidence](../spa-homepage.md). Earlier wording below is history.
+
 Andrew: “no SPa cockpit again just dont lose content”.
 
 The wording could request restoring the SPA cockpit or avoiding another cockpit
