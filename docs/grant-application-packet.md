@@ -174,7 +174,7 @@ first image is the thumbnail the committee sees in its list.
 9. `submission/09-plate-6-lowering.png` lowering the moon
 10. `submission/10-plate-2-tree-alternative.png` tree alternative
 
-About 6.6 MB total. The concept art and the 3D model renders show the
+About 10.2 MB total, every file under 5 MB. The concept art and the 3D model renders show the
 one-unit upgrade (projector heads on arms from the triangle); the plates
 show the 2027 build with the projectors on stands.
 
