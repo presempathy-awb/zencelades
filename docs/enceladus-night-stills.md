@@ -1,5 +1,8 @@
 # Night projection phase stills
 
+Three additional [moon-only phases](enceladus-moon-stills.md) show full-sphere
+ice geography, geysers and the under-ice ocean without an enlarged human overlay.
+
 The [full sphere revisions](enceladus-night-wrap.md) enlarge the projected body
 to surround the orbital and ocean spheres like Andrew's original mockup. Those
 two new files are indexed separately; their lakeFS upload is pending vault unlock.
