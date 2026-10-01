@@ -10,3 +10,9 @@ Implement real verified identity, per-account scenario storage, optimistic
 revision conflicts, anonymous temporary drafts, explicit save/load, expiry and
 logout handling, and accessible help. Verify the whole scenario including board,
 parts and funding, not only a test note. Preserve all deployed public content.
+
+October 1 implementation: the local Go API/PG18 store and cockpit account
+controls now exist; see [account saves](../account-saves.md) for the contract,
+fresh test evidence and deployment gaps. The live canonical-domain outpost
+returns 404 while the old subdomain redirects normally; repair that binding
+before publishing account controls. The presvd1 unlock ticket has expired.

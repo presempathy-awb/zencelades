@@ -1,0 +1,406 @@
+{
+  "schema": 1,
+  "selected": "love-burn",
+  "settings": {
+    "days": 6,
+    "dayRate": 495,
+    "discount": 0,
+    "contingency": 20,
+    "taxAllowance": 0,
+    "credit": 0,
+    "capture": false
+  },
+  "allowances": {
+    "love-burn": [
+      {
+        "low": 0,
+        "high": 700
+      },
+      {
+        "low": 998,
+        "high": 1198
+      },
+      {
+        "low": 0,
+        "high": 200
+      },
+      {
+        "low": 40,
+        "high": 90
+      },
+      {
+        "low": 0,
+        "high": 50
+      },
+      {
+        "low": 30,
+        "high": 44
+      },
+      {
+        "low": 20,
+        "high": 40
+      },
+      {
+        "low": 128,
+        "high": 128
+      },
+      {
+        "low": 36,
+        "high": 38
+      },
+      {
+        "low": 120,
+        "high": 300
+      },
+      {
+        "low": 150,
+        "high": 400
+      },
+      {
+        "low": 150,
+        "high": 300
+      },
+      {
+        "low": 100,
+        "high": 250
+      },
+      {
+        "low": 100,
+        "high": 300
+      },
+      {
+        "low": 50,
+        "high": 150
+      },
+      {
+        "low": 60,
+        "high": 180
+      }
+    ],
+    "seed-surround": [
+      {
+        "low": 250,
+        "high": 400
+      },
+      {
+        "low": 50,
+        "high": 150
+      },
+      {
+        "low": 150,
+        "high": 300
+      },
+      {
+        "low": 150,
+        "high": 300
+      },
+      {
+        "low": 100,
+        "high": 250
+      },
+      {
+        "low": 100,
+        "high": 200
+      },
+      {
+        "low": 200,
+        "high": 300
+      },
+      {
+        "low": 100,
+        "high": 250
+      },
+      {
+        "low": 100,
+        "high": 250
+      }
+    ],
+    "seed-zorb": [
+      {
+        "low": 1200,
+        "high": 1200
+      },
+      {
+        "low": 350,
+        "high": 350
+      },
+      {
+        "low": 100,
+        "high": 100
+      },
+      {
+        "low": 150,
+        "high": 150
+      },
+      {
+        "low": 100,
+        "high": 100
+      },
+      {
+        "low": 100,
+        "high": 100
+      },
+      {
+        "low": 100,
+        "high": 100
+      },
+      {
+        "low": 300,
+        "high": 300
+      }
+    ],
+    "ground-light": [
+      {
+        "low": 300,
+        "high": 1000
+      },
+      {
+        "low": 300,
+        "high": 1200
+      },
+      {
+        "low": 500,
+        "high": 1500
+      },
+      {
+        "low": 500,
+        "high": 1500
+      },
+      {
+        "low": 300,
+        "high": 800
+      },
+      {
+        "low": 500,
+        "high": 1500
+      },
+      {
+        "low": 700,
+        "high": 2000
+      },
+      {
+        "low": 500,
+        "high": 1500
+      }
+    ],
+    "ground-half": [
+      {
+        "low": 300,
+        "high": 1000
+      },
+      {
+        "low": 400,
+        "high": 1500
+      },
+      {
+        "low": 500,
+        "high": 1500
+      },
+      {
+        "low": 400,
+        "high": 1500
+      },
+      {
+        "low": 400,
+        "high": 1200
+      },
+      {
+        "low": 1000,
+        "high": 3000
+      },
+      {
+        "low": 1000,
+        "high": 3000
+      },
+      {
+        "low": 500,
+        "high": 1500
+      }
+    ],
+    "ground-sphere": [
+      {
+        "low": 1500,
+        "high": 4500
+      },
+      {
+        "low": 800,
+        "high": 2500
+      },
+      {
+        "low": 1000,
+        "high": 3000
+      },
+      {
+        "low": 1800,
+        "high": 4000
+      },
+      {
+        "low": 600,
+        "high": 1800
+      },
+      {
+        "low": 1500,
+        "high": 4000
+      },
+      {
+        "low": 1500,
+        "high": 4000
+      },
+      {
+        "low": 800,
+        "high": 2000
+      }
+    ],
+    "fixed-pedestal": [
+      {
+        "low": 1500,
+        "high": 4500
+      },
+      {
+        "low": 2500,
+        "high": 6500
+      },
+      {
+        "low": 1500,
+        "high": 4000
+      },
+      {
+        "low": 1800,
+        "high": 4000
+      },
+      {
+        "low": 600,
+        "high": 1800
+      },
+      {
+        "low": 1500,
+        "high": 4000
+      },
+      {
+        "low": 1800,
+        "high": 4500
+      },
+      {
+        "low": 1000,
+        "high": 2500
+      }
+    ],
+    "existing-hang": [
+      {
+        "low": 2000,
+        "high": 5000
+      },
+      {
+        "low": 1000,
+        "high": 3500
+      },
+      {
+        "low": 1500,
+        "high": 4000
+      },
+      {
+        "low": 1800,
+        "high": 4000
+      },
+      {
+        "low": 600,
+        "high": 1800
+      },
+      {
+        "low": 1500,
+        "high": 4000
+      },
+      {
+        "low": 2000,
+        "high": 5000
+      },
+      {
+        "low": 1000,
+        "high": 2500
+      }
+    ],
+    "own-gantry": [
+      {
+        "low": 2000,
+        "high": 5000
+      },
+      {
+        "low": 4000,
+        "high": 10000
+      },
+      {
+        "low": 2000,
+        "high": 5000
+      },
+      {
+        "low": 2500,
+        "high": 5000
+      },
+      {
+        "low": 1000,
+        "high": 2500
+      },
+      {
+        "low": 2500,
+        "high": 6000
+      },
+      {
+        "low": 2500,
+        "high": 6000
+      },
+      {
+        "low": 1200,
+        "high": 3000
+      }
+    ]
+  },
+  "haze": false,
+  "note": "Synthetic PG18 roundtrip",
+  "funding": {
+    "grantRequest": 3000,
+    "ownerPossible": 250,
+    "fundraiserTarget": 0,
+    "confirmed": 0
+  },
+  "board": {
+    "schema_version": 1,
+    "statuses": {
+      "ZC-W01": "in-progress",
+      "ZC-W02": "todo",
+      "ZC-W03": "todo",
+      "ZC-W04": "todo",
+      "ZC-W05": "todo",
+      "ZC-W06": "todo",
+      "ZC-W07": "todo",
+      "ZC-W08": "todo",
+      "ZC-W09": "todo",
+      "ZC-W10": "todo",
+      "ZC-W11": "todo",
+      "ZC-W12": "todo",
+      "ZC-W13": "todo",
+      "ZC-W14": "todo",
+      "ZC-W15": "todo",
+      "ZC-W16": "todo",
+      "ZC-W17": "todo",
+      "ZC-W18": "todo",
+      "ZC-W19": "todo",
+      "ZC-W20": "todo",
+      "ZC-W21": "todo",
+      "ZC-W22": "todo",
+      "ZC-W23": "todo",
+      "ZC-W24": "todo"
+    }
+  },
+  "parts": {
+    "configuration": "S25",
+    "projectors": 1,
+    "cameras": 2,
+    "mounting": "stands",
+    "choices": {
+      "ring-route": "ZC-F02",
+      "host": "ZC-A01",
+      "projector-class": "ZC-P01"
+    },
+    "extras": []
+  }
+}

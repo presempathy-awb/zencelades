@@ -58,6 +58,16 @@ cockpit-check:
 cockpit-dev:
     (cd cockpit && bun run dev)
 
+# Account boundary tests run without production secrets; PG18 uses an isolated fixture.
+account-check:
+    (cd account-service && go test -race ./...)
+    (cd account-service && go vet ./...)
+    sh account-service/test-postgres.sh
+
+# Prints additive SQL only; execution requires an explicit --apply and credential file.
+account-migration *args:
+    (cd account-service && go run . --migrate {{args}})
+
 # Plan by default; owner is the Telpher checkout with the existing B2 declaration.
 archives-b2 owner *args:
     uv run --no-project python -m scripts.archive_b2 --owner {{quote(owner)}} {{args}}

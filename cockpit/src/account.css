@@ -1,0 +1,29 @@
+.account-controls summary {
+  overflow-wrap: anywhere;
+}
+.account-content {
+  position: fixed;
+  inset-block-start: 6rem;
+  inset-inline-end: 1rem;
+  z-index: 60;
+  width: min(30rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 7rem);
+  overflow-y: auto;
+  background: white;
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0.5rem 2rem #0003;
+}
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+.account-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  text-decoration: underline;
+}

@@ -34,6 +34,7 @@ import DocumentPages from "./DocumentPages";
 import { cockpitHref, documentPages } from "./page-routes";
 import { fitColumns, selectColumn } from "./cockpit-layout";
 import ViewSelector from "./ViewSelector";
+import AccountControls from "./AccountControls";
 import "./columns.css";
 
 const SceneView = lazy(() => import("./SceneView"));
@@ -88,7 +89,7 @@ export default function App(): JSX.Element {
       const checked = parseScenario(JSON.stringify(next));
       if (checked.selected !== scenario.selected) setReferenceModel("scenario");
       setScenario(checked);
-      setMessage("Changed this temporary draft · export a copy before leaving or reloading");
+      setMessage("Draft changed · Save to account or export before leaving or reloading");
       return true;
     } catch (error) {
       setMessage(
@@ -341,16 +342,15 @@ export default function App(): JSX.Element {
             </select>
             {fitted < columns && <small role="status">{fitted} fit here</small>}
           </label>
-          <details className="draft-help">
-            <summary title="Guest changes stay in memory and reset on reload.">
-              Temporary draft ⓘ
-            </summary>
-            <p>
-              Experiment freely. Changes are temporary in this page; they do not update the project
-              or survive a reload. Export a file to keep a personal copy. Account saving is being
-              connected.
-            </p>
-          </details>
+          <AccountControls
+            scenario={scenario}
+            onLoad={(saved) => {
+              setScenario(saved);
+              setNote(saved.note);
+              setReferenceModel("scenario");
+              setMessage("Loaded your account draft · further edits need Save to account");
+            }}
+          />
           <Button
             variant="ghost"
             hint="Load a scenario file into this temporary draft; shared data is unchanged."
