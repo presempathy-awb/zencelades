@@ -13,6 +13,9 @@ test("landed and suspended holders carry three aimed projector heads and rain co
       const scene = new Scene(engine);
       try {
         buildModel(scene, id);
+        expect(scene.getMeshByName("owned-external-hazer-provisional")!.position.z).toBeGreaterThan(
+          0,
+        );
         for (let index = 0; index < 3; index++) {
           const head = scene.getMeshByName(`triangle-projector-head-${index}`);
           expect(head).not.toBeNull();

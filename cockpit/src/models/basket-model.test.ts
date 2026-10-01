@@ -1,6 +1,17 @@
 import { expect, test } from "bun:test";
 import { basketLayout } from "./basket-model";
 
+test("lander leaves the negative-Z entrance between two side legs", () => {
+  const { corners } = basketLayout();
+  const front = corners.filter(([, , z]) => z < 0);
+  const rear = corners.filter(([, , z]) => z > 0);
+  expect(front).toHaveLength(2);
+  expect(rear).toHaveLength(1);
+  expect(front.every(([x]) => Math.abs(x) > 1.5)).toBe(true);
+  expect(rear[0][0]).toBeCloseTo(0, 8);
+  expect(rear[0][2]).toBeCloseTo(1.8, 8);
+});
+
 test("six-foot ring fit exposes overhang and webbing follows the shell surface", () => {
   const layout = basketLayout();
   expect(layout.ringRadius).toBeCloseTo(0.9144, 5);

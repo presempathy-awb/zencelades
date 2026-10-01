@@ -24,7 +24,8 @@ export function basketLayout(): {
   const ringY = centreY - Math.sqrt(sphereRadius ** 2 - ringRadius ** 2);
   const triangleY = ringY - 0.09;
   const corners: Point[] = [0, 1, 2].map((index) => {
-    const angle = (index * Math.PI * 2) / 3 + Math.PI / 6;
+    // Front is -Z: two flanking corners and the third at the +Z rear.
+    const angle = (index * Math.PI * 2) / 3 + Math.PI / 2;
     return [cornerRadius * Math.cos(angle), triangleY, cornerRadius * Math.sin(angle)];
   });
   const collector: Point = [0, centreY + 1.72, 0];
@@ -150,9 +151,9 @@ export function basketGeometry(scene: Scene, g: Geometry, id: string): void {
     }
   }
   if (projected) {
-    g.box("owned-external-hazer-provisional", [0.8, 0.34, 0.6], [0, 0.21, -1.25], "#202e39");
+    g.box("owned-external-hazer-provisional", [0.8, 0.34, 0.6], [0, 0.21, 1.25], "#202e39");
     for (const x of [-0.29, 0.29])
-      g.box(`hazer-ground-skid-${x}`, [0.09, 0.04, 0.64], [x, 0.02, -1.25], "#738797");
+      g.box(`hazer-ground-skid-${x}`, [0.09, 0.04, 0.64], [x, 0.02, 1.25], "#738797");
   }
   if (id === "basket-live-overlay") {
     const camera = g.box(
