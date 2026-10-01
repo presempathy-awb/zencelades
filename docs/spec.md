@@ -1,5 +1,9 @@
 # Observable project specification
 
+Historical P010 specification. The [October 1 current brief](current-brief.md)
+adds current occupied-build scope and signed-in persistence acceptance; old
+publication/scope statements below are dated evidence, not current policy.
+
 Codex, September 30, 2026. These requirements describe acceptance, not a claim
 that every behavior exists. The implementation slice is preservation, governed
 digital access and honest planning. Human trials, physical construction
@@ -199,4 +203,3 @@ Primary project evidence: [asset review](asset-understanding.md),
 [research preservation](research-storage.md), [grant draft](grant-draft.md),
 [pricing alternatives](pricing-alternatives.md) and
 [research batch](../assets/research-upload-plan.json).
-

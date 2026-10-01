@@ -1,5 +1,8 @@
 # Planning review and authoring receipt
 
+Historical P010 authoring receipt, preserved below. Its scope and readiness
+statements are superseded where identified by the [October 1 current brief](current-brief.md).
+
 **Reviewer:** Codex, author self-review, September 30, 2026, maxipaxi.
 This is not an independent review or a receipt satisfying an infrastructure
 merge gate. Scope: P010's eleven-stage authoring pack, nine missing planning

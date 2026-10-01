@@ -50,7 +50,7 @@ check:
 site-build:
     uv run --no-project python -m scripts.build_site
 
-# Vite/React studio; shared scenario checks use Bun, not the paused pytest suite.
+# Vite/React studio; scenario checks, TypeScript build and model verification.
 cockpit-check:
     (cd cockpit && bun test)
     (cd cockpit && bun run build)

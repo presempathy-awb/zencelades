@@ -3,7 +3,7 @@
 Target: `docs/verifiers.md`. Author only this target when the pack selects it.
 Read `preprompts.toml` shared instructions and the listed inputs first.
 
-Define VER-01 through VER-12 against matching requirements, with fixture, procedure, positive result, negative control, prerequisite, side effect, evidence location and claim limit. Define statuses and distinguish prior receipts from fresh checks. Include recovery after interruption and unrelated-repository, wrong-prefix, spoofed-header and unauthorized-person refusals. Use verified existing command names only; explain procedures without pretending missing helpers exist. Do not run paused pytest or operate a browser/provider simply to fill a table.
+Define VER-01 through VER-12 against matching requirements, with fixture, procedure, positive result, negative control, prerequisite, side effect, evidence location and claim limit. Define statuses and distinguish prior receipts from fresh checks. Include recovery after interruption and unrelated-repository, wrong-prefix, spoofed-header and unauthorized-person refusals. Add the current-brief.md acceptance cases for anonymous writes, per-person persistent saves, revision conflicts, expiry/logout and accessible persistence help. Use verified existing command names only; explain procedures without pretending missing helpers exist. Relevant pytest coverage has resumed under the later all-green-tests request; browser/provider operations still require their actual scoped authorization, not this authoring prompt.
 
 ## Required context
 
@@ -29,4 +29,3 @@ Draft outside the project. Recheck the selected ID and pack hash, then publish
 through the installed preprompts helper without replacing an existing file.
 For P010, finish this file before selecting the next; the user requested the
 whole authoring set. Future ordinary invocations retain the skill's one-step default.
-

@@ -1,5 +1,8 @@
 # Intent: Enceladus Within / thatsnozorb
 
+Historical P010 baseline. The [October 1 current brief](current-brief.md)
+supersedes conflicting scope, identity, access and test-pause statements below.
+
 Author: Codex. Prepared September 30, 2026 for P010.
 Status: project planning baseline; no physical design or grant selection implied.
 Source is currently an unversioned project directory, not a verified forge checkout.
@@ -96,4 +99,3 @@ Sources read: [overview](../README.md), [status](../STATUS.md),
 [human prompt ledger](plans/chat-prompts.md), [asset interpretation](asset-understanding.md),
 [engineering research](engineering-research.md) and [unsubmitted grant draft](grant-draft.md).
 CTX01–CTX04, CTX08 and CTX13 resolve through [the context index](../preprompts/context.json).
-

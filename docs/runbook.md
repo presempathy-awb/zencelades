@@ -1,5 +1,9 @@
 # Project operator runbook
 
+Historical P010 runbook. Read the [October 1 current brief](current-brief.md)
+and current release evidence before any operation; do not replay old deployment
+or access assumptions against the public site.
+
 Codex, September 30, 2026. This runbook separates existing local commands from
 pending owner work. Command names and project paths were inspected on maxipaxi;
 showing a command does not mean it was executed. No remote command below is
@@ -163,4 +167,3 @@ At interruption, save a durable checkpoint with changed files, current receipts,
 the next bounded action and unresolved choices. Open gates belong in PLAN.md
 and the ledger, not only chat prose. Recovery preserves all originals, owner
 changes, retained releases and scoped authorization boundaries.
-

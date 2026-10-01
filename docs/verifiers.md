@@ -1,5 +1,8 @@
 # Verification contracts
 
+Historical P010 contracts. Relevant pytest coverage has since resumed; read the
+[October 1 current brief](current-brief.md) for current acceptance and permissions.
+
 Codex, September 30, 2026. VER numbers match [REQ numbers](spec.md).
 These are behavioral acceptance procedures, not a claim that tests ran.
 Andrew paused pytest. Browser control and owner/provider work retain their
@@ -234,4 +237,3 @@ physical readiness. Optional host audit failures remain separately reported.
 Each material interface has both a success observation and a failure path.
 The [roadmap](roadmap.md) schedules required evidence without treating this
 procedure list as completed execution.
-

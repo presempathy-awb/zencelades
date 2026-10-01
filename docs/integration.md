@@ -1,5 +1,8 @@
 # Integration contracts
 
+Historical P010 contracts. Read the [October 1 current brief](current-brief.md)
+for current deployment evidence and the unfinished account-save requirements.
+
 Codex, September 30, 2026. This describes observed interfaces and required seams,
 not a claim that all are deployed. Owners refer to project/service ownership,
 not an invented staffing assignment. Read [decisions](decisions.md) first.

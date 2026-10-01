@@ -3,7 +3,7 @@
 Target: `docs/intent.md`. Author only this target when the pack selects it.
 Read `preprompts.toml` shared instructions and the listed inputs first.
 
-Describe Enceladus Within as an artwork development project and its working web/asset record. Identify Andrew, collaborators, grant reviewers, operators and visitors; distinguish present catalog/naming/pricing from the planned shared application. Give INT-01 through INT-06 to preservation, an unoccupied physical learning slice, governed web access, grant decisions, creative provenance and durable continuation. Compare dry stationary development with the larger occupied/water vision without choosing a final fabricated layout or grant amount. Include explicit non-goals and evidence needed for stronger claims.
+Describe Zencelades / Enceladus Within as an artwork development project and its working web/asset record. Read docs/current-brief.md first. Identify Andrew, collaborators, grant reviewers, operators and visitors; distinguish the deployed studio from unfinished authenticated saving. Give INT-01 through INT-06 to preservation, the occupied artistic objective and its staged engineering acceptance, governed web access, grant decisions, creative provenance and durable continuation. Preserve the $3,000 total DIY target, clear-front lander and conditional aerial options; truck/water imagery is not the active primary build. Include explicit non-goals and evidence needed for stronger claims.
 
 ## Required context
 
@@ -25,4 +25,3 @@ Draft outside the project. Recheck the selected ID and pack hash, then publish
 through the installed preprompts helper without replacing an existing file.
 For P010, finish this file before selecting the next; the user requested the
 whole authoring set. Future ordinary invocations retain the skill's one-step default.
-

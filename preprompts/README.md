@@ -1,4 +1,9 @@
-# Thatsnozorb preprompt pack
+# Zencelades preprompt pack
+
+October 1 maintenance: read the [current brief](../docs/current-brief.md) before
+the September 30 snapshots. The pack now preserves the occupied $3,000 brief,
+confirmed domain/forge and signed-in persistence requirement. Historical CTX
+hashes remain unchanged. Existing target files are preserved; all eleven exist.
 
 P010, September 30, 2026. Start with [preprompts.toml](../preprompts.toml).
 It defines order and dependencies; each numbered file below contains one complete
@@ -47,4 +52,3 @@ No pytest, browser control, provider deployment, grant submission, purchase,
 physical acceptance or infrastructure PR approval is supplied by this packet.
 The [human ledger](../docs/plans/chat-prompts.md) and
 [current plan](../PLAN.md) retain those separate decisions.
-

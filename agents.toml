@@ -1,4 +1,4 @@
-# Repository context only; no generated output ownership or forge is assumed.
+# Repository context only; no generated output ownership is declared.
 [meta]
 schema = "agents.core.v1"
 project = "zencelades"
@@ -6,9 +6,10 @@ generated = false
 
 [project]
 name = "zencelades"
+canonical_forge = "https://git.telpher.stream/telpher/zencelades"
 stack = "python"
 description = "Zencelades: the Enceladus Within artwork, preserved assets, grant research and 3D design studio. Legacy storage/service IDs remain thatsnozorb."
-phase = "Common holder with detachable lander legs or aerial suspension; $3,000 allocation, 27 model studies and local build/readback checked. Browser acceptance, cockpit publication, owned-domain DNS/access transition and scoped lakeFS delivery pending."
+phase = "Occupied $3,000 DIY holder/lander and conditional aerial studies. Public artwork pages and studio deployed on zenceladus.com; 112 Pacinman records imported. Authenticated PG18 saving, live inventory editing, broader browser acceptance and scoped lakeFS delivery remain unfinished."
 tags = ["enceladus", "love-burn", "projection", "asset-preservation"]
 
 [agents]
@@ -17,6 +18,9 @@ context_files = [
   "README.md",
   "STATUS.md",
   "PLAN.md",
+  "docs/current-brief.md",
+  "docs/public-pages-release.md",
+  "docs/plans/p089-persistent-paw-login.md",
   "docs/plans/chat-prompts.md",
   "preprompts.toml",
   "preprompts/context.json",
@@ -43,5 +47,6 @@ context_files = [
 [commands]
 build = ["just site-build"]
 assets = ["just assets-check"]
-deployment_plan = ["just deploy-site"]
+deployment_plan = ["just deploy-site --host presvd1"]
+check = ["just check", "just cockpit-check", "node --test tests/*.test.mjs"]
 agent_source_check = ["coroidinator validate --json .", "coroidinator check --json ."]

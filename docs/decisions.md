@@ -1,5 +1,8 @@
 # Decision register
 
+Historical P010 register. The [October 1 current brief](current-brief.md)
+records later user decisions and evidence; unresolved acceptance stays explicit.
+
 Codex, September 30, 2026. Planning record for P010.
 “Confirmed direction” means an explicit user instruction or documented project
 boundary. It does not mean implementation is complete. “Recommendation” remains

@@ -1,5 +1,8 @@
 # Threat and failure model
 
+Historical P010 model. Read the [October 1 current brief](current-brief.md)
+for current public-viewing, occupied-build and authenticated-edit boundaries.
+
 Codex, September 30, 2026. Planning analysis; not a penetration test,
 a physical safety assessment or an external review receipt.
 Read [intent](intent.md) and [decisions](decisions.md) first.
@@ -62,4 +65,3 @@ Sources read: [asset review](asset-understanding.md), [stack](stack-rollout.md),
 and [Umesemu lessons](umesemu-lessons.md). CTX04–CTX07 and CTX09 are indexed in
 [context.json](../preprompts/context.json). Procedures remain proposals until
 their corresponding evidence record says otherwise.
-

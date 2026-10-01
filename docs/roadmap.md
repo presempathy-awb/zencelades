@@ -1,5 +1,8 @@
 # Delivery roadmap
 
+Historical P010 roadmap. The [October 1 current brief](current-brief.md) and
+[working plan](../PLAN.md) record later selections, deliveries and remaining work.
+
 Codex, September 30, 2026. Milestones describe evidence gates, not calendar
 promises. No staffing estimate, final budget, physical layout, forge identity
 or new authorization is invented. Read [decisions](decisions.md) and
@@ -131,4 +134,3 @@ Evidence links: [research handoff](research-storage.md),
 [stack rollout](stack-rollout.md), [access](site-access-verification.md),
 [grant draft](grant-draft.md), [human ledger](plans/chat-prompts.md),
 [agent source](../agents.toml) and [planning review](planning-review.md).
-
