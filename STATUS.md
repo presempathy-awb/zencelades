@@ -1,5 +1,33 @@
 # Zencelades status
 
+## October 1 checkpoint: published pages and inventory import
+
+The public target is **https://zenceladus.com/**. The homepage, about/OSS pages
+and studio were deployed in release `5b9985c1`; source `015227d2` contains the
+model-control overlap and navigation-contrast fixes. The approved live browser
+check exercised aerial model selection and Side controls. The final release
+readback matched 59 public file hashes. [Release evidence](docs/public-pages-release.md)
+records the earlier test runs and their exact scope; these are not fresh tests
+of the unfinished working-copy build changes.
+
+The approved Pacinman category received 88 part/resource records and 24 build
+tasks. All 112 records were read back and independently checked by paginated
+search. The detailed receipt remains private; importing alternative parts does
+not make their combined price a build budget or mark any task complete.
+
+Guest edits are temporary. Authenticated persistent saves, the live website's
+Pacinman editing integration, selected-option costs and expanded homepage/board
+browser acceptance remain open. The proposed account-save API awaits the Go/pgx
+decision and a fresh human Telpher grant. Source is on the existing feature PR;
+this checkpoint does not claim a merge, new deployment or completed project.
+
+The current physical brief remains an occupied sphere, $3,000 total DIY target,
+clear-front triangle/ring holder, detachable lander legs and conditional aerial
+rig. Truck mounting is deferred. Rendered studies are not construction approval.
+Andrew supplied a grant-submission acknowledgment; no award is evidenced.
+
+## Earlier checkpoints
+
 P056 release work: both source repositories are public and the website's main
 router no longer requires login, at Andrew's explicit request. IP administration
 still returns 403 to an anonymous request. The candidate now has 28 generated
