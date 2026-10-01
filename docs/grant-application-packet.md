@@ -84,9 +84,10 @@ show, and so are you.
 
 The moon is a 2.5 m zorb, a clear TPU sphere with a walk-in tunnel, the
 kind built to carry a person, used here as a seat and a projection surface:
-one person at a time sits inside on the soft inner floor. **[Owned / to be
-bought; exact diameter, weight, tunnel size, and whether the skin is clear
-or frosted.]** Its skin gets a light diffusing treatment (frosted film or a
+one person at a time sits inside on the soft inner floor. It is a commercial
+walk-in zorb: clear TPU, a walk-in tunnel on the side, external rope mounts
+around it; its measured weight goes on the rigging sheet before any hardware
+is bought. Its skin gets a light diffusing treatment (frosted film or a
 translucent liner, chosen at the bench test) so it holds a projected image
 while the person inside stays visible through it. It sits in a padded steel
 loop at the centre of a fabricated steel triangle. The triangle is the
@@ -97,7 +98,9 @@ probe (NASA's Enceladus concept is an Orbilander) with its centre at 1.7 m,
 its floor at knee height for the tunnel, and its top just under 10 ft:
 nothing overhead, nothing to climb, and the configuration in which people go
 inside. Hung: the legs come off and the same triangle hangs from the
-artist's own freestanding aerial rig (**[model, height]**) on a three-line
+artist's own freestanding aerial rig (a four-leg portable aerial rig the
+artist already owns; its model, height and rated load are entered on the
+rigging sheet from its manual) on a three-line
 bridle through a rated swivel, so the moon can turn freely while the
 projected picture stays put; a hand winch with a brake on the rig leg raises
 and lowers it, a separate safety sling backs up the hang, and a padded
@@ -148,8 +151,8 @@ the live compositing, the air and heat inside with the blower running, and
 the lowering drill, and time them, before the November purchases. Full
 schematics are attached: hung elevation, plan, landed state, lowering,
 signal and power, and a tree alternative; plus two pieces of generated
-concept art of the landed and hung states. Photo and video folder:
-**[Google Drive link]**.
+concept art of the landed and hung states. Photos and videos are on the project website,
+https://thatsnozorb.muchadoaboutoneside.com/.
 
 ### ART PROJECT PHOTOS
 *JPG/PNG, under 5 MB each, under 20 MB total.* Upload in this order; the
