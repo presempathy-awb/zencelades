@@ -1,5 +1,9 @@
 # Night projection phase stills
 
+The [full sphere revisions](enceladus-night-wrap.md) enlarge the projected body
+to surround the orbital and ocean spheres like Andrew's original mockup. Those
+two new files are indexed separately; their lakeFS upload is pending vault unlock.
+
 Three 1536 × 1024 night concept edits use Andrew's two installation renders,
 his confirmed person/clothing reference and selected NASA video frames.
 The sphere, entry opening, seams, optical arms, beach setting and support
