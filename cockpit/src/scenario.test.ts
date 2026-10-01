@@ -14,6 +14,11 @@ test("parts choices round trip and invalid imports cannot replace the current dr
   expect(parseScenario(JSON.stringify({ ...initial, parts: undefined })).parts).toEqual(
     createPartsPlan(),
   );
+  const earlierSurround = parseScenario(
+    JSON.stringify({ ...initial, selected: "seed-surround", parts: undefined }),
+  );
+  expect(earlierSurround.parts.configuration).toBe("O30");
+  expect(earlierSurround.parts.projectors).toBe(0);
 });
 
 test("build progress survives explicit export while a fresh guest draft starts unedited", () => {

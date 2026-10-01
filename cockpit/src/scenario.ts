@@ -3,7 +3,7 @@ import source from "../../site/pricing/options.json";
 import seed from "../../assets/seed-options.json";
 import type { FundingPlan } from "./funding";
 import { createBuildBoardState, parseBuildBoardState, type BuildBoardState } from "./build-board";
-import { createPartsPlan, parsePartsPlan, type PartsPlan } from "./parts-plan";
+import { createPartsPlan, parsePartsPlan, partsPlanForModel, type PartsPlan } from "./parts-plan";
 
 export const deferredSupports = new Set(["fixed-bed", "fixed-cantilever"]);
 export const baseline = {
@@ -140,7 +140,10 @@ export function parseScenario(text: string): Scenario {
     note: value.note,
     funding,
     board: value.board === undefined ? createBuildBoardState() : parseBuildBoardState(value.board),
-    parts: value.parts === undefined ? createPartsPlan() : parsePartsPlan(value.parts),
+    parts:
+      value.parts === undefined
+        ? partsPlanForModel(createPartsPlan(), value.selected)
+        : parsePartsPlan(value.parts),
   };
   estimate(result);
   return result;
