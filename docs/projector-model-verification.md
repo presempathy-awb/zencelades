@@ -49,3 +49,28 @@ small-type, color, eyebrow/font and clipping findings remain in the website
 backlog. This change does not claim a complete accessibility or design pass.
 Login, saved account edits, live Pacinman editing and remaining model coupling
 are still unfinished.
+
+## Published release
+
+Both remotes independently returned source `fdf40b6cb4ee4cd2565f53b637825c93de01bce7`.
+Release `d68a3d7b747ca3745a7359619cc9603738be87aebcc468aa7f27e1dc6c1d715f`
+preserved all 747 prior entries, changed 119 allowed studio paths, passed Caddy
+validation and activated successfully. Normal HTTPS readback matched 124 files,
+including retained homepage, gallery, Showtime, pricing and grants; the service
+was active. Previous release directories were retained. The initial restart
+probe failed briefly before bounded readiness succeeded; existing Caddy
+formatting and loopback-HTTP warnings remain.
+
+The production browser selected the aerial rig and one head, then downloaded
+`basket-aerial-rig-1-head.glb` without a page reload. Binary readback verified
+509,472 bytes, exactly one head, all three holder webbings, and SHA-256
+`4cf311f304b7939c904ae3ea2222f64029f78e615744e442755d82a6dbcf5fb8`.
+The live screenshot is retained in the task's projector-count cache.
+
+Fresh full checks passed: 57 Python tests plus 13 subtests, Ruff/format/ledger,
+31 Bun tests, 17 Node tests and `just site-build` with 28 fixed source model
+exports, 132 original plus 84 v4 byte-verified downloads and eight media previews.
+The lazy exporter chunk is approximately 110 kB; existing entry/SceneView size
+warnings remain. An incorrectly positioned formatter CLI argument failed before
+execution; rerunning from the cockpit directory checked all nine files cleanly.
+No repository package or lockfile changed.
