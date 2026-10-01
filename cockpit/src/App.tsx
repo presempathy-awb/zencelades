@@ -1,23 +1,15 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Anchor,
-  Box,
-  Calculator,
   Circle,
   Columns3,
   Download,
   Layers,
-  Library,
   Lightbulb,
-  Network,
   Orbit,
-  PanelRightClose,
-  PanelRightOpen,
   Truck,
   Upload,
   Wind,
-  Images,
-  Play,
 } from "lucide-react";
 import { type JSX, lazy, Suspense, useEffect, useRef, useState } from "react";
 import BudgetView, { NumberField } from "./BudgetView";
@@ -39,42 +31,53 @@ import HomePage from "./HomePage";
 import MediaView, { ShowtimeView } from "./MediaView";
 import DocumentPages from "./DocumentPages";
 import { cockpitHref, documentPages } from "./page-routes";
+import { fitColumns, selectColumn } from "./cockpit-layout";
+import ViewSelector from "./ViewSelector";
+import "./columns.css";
 
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
 const ResearchView = lazy(() => import("./ResearchView"));
 const PartsView = lazy(() => import("./PartsView"));
 const icons = [Circle, Circle, Lightbulb, Layers, Circle, Truck, Columns3, Anchor, Truck, Columns3];
-const tools = [
-  { path: "/", title: "Overview", icon: Orbit },
-  { path: "/media", title: "Media", icon: Images },
-  { path: "/showtime", title: "Showtime", icon: Play },
-  { path: "/model", title: "Model", icon: Box },
-  { path: "/workflow", title: "Workflow", icon: Network },
-  { path: "/tasks", title: "Build board", icon: Columns3 },
-  { path: "/budget", title: "Budget", icon: Calculator },
-  { path: "/parts", title: "Parts", icon: Layers },
-  { path: "/research", title: "Grants & resources", icon: Library },
-] as const;
-
 export default function App(): JSX.Element {
   const [scenario, setScenario] = useState(initialScenario);
   const [message, setMessage] = useState("Temporary draft · changes reset when this page reloads");
   const [note, setNote] = useState(scenario.note);
-  const [inspector, setInspector] = useState(true);
+  const [columns, setColumns] = useState(1);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [pages, setPages] = useState(["/", "/model", "/budget", "/parts"]);
+  const workspaceRef = useRef<HTMLElement>(null);
   const [referenceModel, setReferenceModel] = useState("scenario");
   const fileInput = useRef<HTMLInputElement>(null);
   const path = useRouterState({ select: (state) => state.location.pathname });
   const routeLocation = useRouterState({ select: (state) => state.location.href });
   useEffect(() => {
+    setPages((current) => (current[0] === path ? current : selectColumn(current, 0, path)));
+  }, [path]);
+  useEffect(() => {
     const section = new URLSearchParams(routeLocation.split("?")[1]).get("section");
     if (section) document.getElementById(section)?.scrollIntoView({ behavior: "instant" });
   }, [routeLocation]);
-  const modelVisible =
-    path === "/model" || (path === "/" && window.location.pathname.startsWith("/studio"));
-  const documentPage = documentPages.some(([id]) => path === `/${id}`);
-  const presentation =
-    (path === "/" && !modelVisible) || path === "/media" || path === "/showtime" || documentPage;
+  const fitted = fitColumns(columns, width);
+  const selectedPages = pages[0] === path ? pages : selectColumn(pages, 0, path);
+  const visiblePages = selectedPages.slice(0, fitted);
+  const modelVisible = visiblePages.includes("/model");
+  const presentation = visiblePages.every((page) =>
+    ["/", "/media", "/showtime", ...documentPages.map(([id]) => `/${id}`)].includes(page),
+  );
+  const choosePage = (index: number, next: string): void => {
+    const updated = selectColumn(selectedPages, index, next);
+    setPages(updated);
+    if (updated[0] !== path) window.location.hash = updated[0];
+  };
+  useEffect(() => {
+    const element = workspaceRef.current;
+    if (!element) return;
+    const observer = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   const option = selectedOption(scenario);
   const result = estimate(scenario);
   const update = (next: Scenario): boolean => {
@@ -129,9 +132,154 @@ export default function App(): JSX.Element {
       "Downloaded your temporary draft and applied note. Unapplied note text is not in the file; no account save was made.",
     );
   };
+  const supportPane = (
+    <aside className="support-rail" aria-label="Support options">
+      <div className="rail-heading">
+        <h2>Love Burn design</h2>
+      </div>
+      <div className="support-list">
+        <button
+          type="button"
+          className={scenario.selected === "love-burn" ? "support selected" : "support"}
+          aria-pressed={scenario.selected === "love-burn"}
+          onClick={() => selectModel("love-burn")}
+        >
+          <Orbit size={21} aria-hidden="true" />
+          <span>
+            Main proposal<small>2.5 m moon · 2 purchased projectors</small>
+          </span>
+        </button>
+        <details open={scenario.selected !== "love-burn" ? true : undefined}>
+          <summary>Alternate designs</summary>
+          {baseline.options
+            .filter((item) => item.id !== "love-burn")
+            .map((item, index) => {
+              const Icon = icons[index];
+              return (
+                <button
+                  type="button"
+                  key={item.id}
+                  aria-pressed={scenario.selected === item.id}
+                  className={scenario.selected === item.id ? "support selected" : "support"}
+                  onClick={() => selectModel(item.id)}
+                >
+                  <Icon size={21} aria-hidden="true" />
+                  <span>
+                    {shortNames[item.id]}
+                    <small>
+                      {item.projectors ? `${item.projectors} projectors` : "Internal light"}
+                    </small>
+                  </span>
+                </button>
+              );
+            })}
+        </details>
+      </div>
+      <div className="rail-footer">
+        <span className="eyebrow">CURRENT BASIS</span>
+        <p>
+          {option.id === "love-burn"
+            ? "$3,000 target · Claude's grant purchase budget. Aerial holder with lander mode."
+            : option.id.startsWith("seed-")
+              ? "$3,000 TOTAL · DIY. Person inside. Ground-supported concept."
+              : "Historical empty-shell comparison. Does not yet meet the occupied brief."}
+        </p>
+        <a href="/mounts/">Mount research ↗</a>
+      </div>
+    </aside>
+  );
+  const settingsPane = (
+    <aside className="inspector" aria-label="Scenario inspector">
+      <div className="inspector-heading">
+        <Layers size={24} />
+        <div>
+          <span className="eyebrow">SELECTED SUPPORT</span>
+          <h2>{shortNames[option.id]}</h2>
+        </div>
+      </div>
+      <p>{option.description}</p>
+      <div className="estimate-block">
+        <span>
+          {option.id === "love-burn"
+            ? "Proposal purchase estimate"
+            : option.id.startsWith("seed-")
+              ? "Alternate allocations"
+              : "Alternate rental estimate"}{" "}
+          · {shortNames[option.id]}
+        </span>
+        <strong aria-live="polite">{range(result.total)}</strong>
+        <small>USD · {scenario.settings.contingency}% contingency · allowances, not a quote</small>
+      </div>
+      <section>
+        <h3>Planning inputs</h3>
+        {option.id !== "love-burn" && (
+          <>
+            {field("days", "Rental days", 60, 1)}
+            {field("dayRate", "Daily rate · USD", 10000)}
+          </>
+        )}
+        {field("contingency", "Contingency · %", 100)}
+        <details>
+          <summary>Discount, credit & tax</summary>
+          {option.id !== "love-burn" && field("discount", "Rental discount · %", 100)}
+          {field("credit", "Documented credit · USD", 1000000)}
+          {field("taxAllowance", "Tax allowance · USD", 100000)}
+        </details>
+      </section>
+      <section>
+        <h3>
+          <Wind size={18} />
+          Experience
+        </h3>
+        <label className="check-field">
+          <input
+            type="checkbox"
+            checked={scenario.haze}
+            onChange={(event) => update({ ...scenario, haze: event.target.checked })}
+          />
+          <span>
+            Owned hazer
+            <small>$0 acquisition · external unit below the sphere</small>
+          </span>
+        </label>
+        <p className="muted small">
+          External effect only. Unit dimensions, outlet clearances, power and fluid remain
+          unconfirmed; airflow is not simulated.
+        </p>
+        {option.id === "love-burn" ? (
+          <p className="muted small">
+            Two phone feeds and their mounts are included in the proposal budget. Capture and
+            participant controls remain to be prototyped.
+          </p>
+        ) : (
+          <label className="check-field">
+            <input
+              type="checkbox"
+              disabled={!option.projectors}
+              checked={scenario.settings.capture && option.projectors > 0}
+              onChange={(event) =>
+                update({
+                  ...scenario,
+                  settings: {
+                    ...scenario.settings,
+                    capture: event.target.checked,
+                  },
+                })
+              }
+            />
+            <span>
+              External live capture
+              <small>One outside camera and integration; no internal GoPros</small>
+            </span>
+          </label>
+        )}
+      </section>
+      <a href="/pricing/">Open the full pricing study</a>
+    </aside>
+  );
   return (
     <div
-      className={`studio ${presentation ? "media-cockpit" : ""}`}
+      className={`studio column-cockpit ${presentation ? "media-cockpit" : ""}`}
       onClick={(event) => {
         if (
           event.defaultPrevented ||
@@ -175,6 +323,21 @@ export default function App(): JSX.Element {
           </div>
         </div>
         <div className="header-actions">
+          <label className="column-control">
+            <span>Columns</span>
+            <select
+              aria-label="Workspace columns"
+              value={columns}
+              onChange={(event) => setColumns(Number(event.target.value))}
+            >
+              {[1, 2, 3, 4].map((count) => (
+                <option key={count} value={count}>
+                  {count}
+                </option>
+              ))}
+            </select>
+            {fitted < columns && <small role="status">{fitted} fit here</small>}
+          </label>
           <details className="draft-help">
             <summary title="Guest changes stay in memory and reset on reload.">
               Temporary draft ⓘ
@@ -228,283 +391,107 @@ export default function App(): JSX.Element {
           />
         </div>
       </header>
-      <nav className="toolbar" aria-label="Studio tools">
-        <div>
-          {tools.map(({ path: to, title, icon: Icon }) => (
-            <Link
-              key={to}
-              to={to}
-              activeOptions={{ exact: true }}
-              className={
-                (
-                  to === "/model"
-                    ? modelVisible
-                    : to === "/"
-                      ? path === to && !modelVisible
-                      : path === to
-                )
-                  ? "tool active"
-                  : "tool"
-              }
-              aria-current={
-                (
-                  to === "/model"
-                    ? modelVisible
-                    : to === "/"
-                      ? path === to && !modelVisible
-                      : path === to
-                )
-                  ? "page"
-                  : undefined
-              }
-            >
-              <Icon size={17} aria-hidden="true" />
-              {title}
-            </Link>
-          ))}
-        </div>
-        <label className="page-picker">
-          <span>Explore</span>
-          <select
-            aria-label="More project pages"
-            value={documentPage ? path : ""}
-            onChange={(event) => {
-              if (event.target.value) window.location.hash = event.target.value;
-            }}
-          >
-            <option value="">More project pages…</option>
-            {documentPages.map(([id, title]) => (
-              <option key={id} value={`/${id}`}>
-                {title}
-              </option>
-            ))}
-          </select>
-        </label>
-        {!presentation && (
-          <Button
-            variant="ghost"
-            className="inspector-toggle"
-            aria-pressed={inspector}
-            hint="Show or hide budget and effect settings beside the workspace."
-            onClick={() => setInspector(!inspector)}
-          >
-            {inspector ? <PanelRightClose size={18} /> : <PanelRightOpen size={18} />}
-            <span>Inspector</span>
-          </Button>
-        )}
-      </nav>
-      <div
-        className={`workbench ${presentation ? "presentation-workbench" : inspector ? "" : "inspector-hidden"}`}
+      <nav
+        className="column-selectors"
+        aria-label="Cockpit views"
+        style={{ gridTemplateColumns: `repeat(${fitted}, minmax(0, 1fr))` }}
       >
-        {!presentation && (
-          <aside className="support-rail" aria-label="Support options">
-            <div className="rail-heading">
-              <h2>Love Burn design</h2>
-            </div>
-            <div className="support-list">
-              <button
-                type="button"
-                className={scenario.selected === "love-burn" ? "support selected" : "support"}
-                aria-pressed={scenario.selected === "love-burn"}
-                onClick={() => selectModel("love-burn")}
-              >
-                <Orbit size={21} aria-hidden="true" />
-                <span>
-                  Main proposal<small>2.5 m moon · 2 purchased projectors</small>
-                </span>
-              </button>
-              <details open={scenario.selected !== "love-burn" ? true : undefined}>
-                <summary>Alternate designs</summary>
-                {baseline.options
-                  .filter((item) => item.id !== "love-burn")
-                  .map((item, index) => {
-                    const Icon = icons[index];
-                    return (
-                      <button
-                        type="button"
-                        key={item.id}
-                        aria-pressed={scenario.selected === item.id}
-                        className={scenario.selected === item.id ? "support selected" : "support"}
-                        onClick={() => selectModel(item.id)}
-                      >
-                        <Icon size={21} aria-hidden="true" />
-                        <span>
-                          {shortNames[item.id]}
-                          <small>
-                            {item.projectors ? `${item.projectors} projectors` : "Internal light"}
-                          </small>
-                        </span>
-                      </button>
-                    );
-                  })}
-              </details>
-            </div>
-            <div className="rail-footer">
-              <span className="eyebrow">CURRENT BASIS</span>
-              <p>
-                {option.id === "love-burn"
-                  ? "$3,000 target · Claude's grant purchase budget. Aerial holder with lander mode."
-                  : option.id.startsWith("seed-")
-                    ? "$3,000 TOTAL · DIY. Person inside. Ground-supported concept."
-                    : "Historical empty-shell comparison. Does not yet meet the occupied brief."}
-              </p>
-              <a href="/mounts/">Mount research ↗</a>
-            </div>
-          </aside>
-        )}
-        <main id="workspace" className="workspace" tabIndex={-1}>
-          <DocumentPages path={path} />
-          <div className="scene-container" hidden={!modelVisible}>
-            <Suspense fallback={<p className="loading">Loading the 3D workspace…</p>}>
-              <SceneView
-                option={option}
-                visible={modelVisible}
-                model={referenceModel}
-                onModelSelect={selectModel}
-                projectors={scenario.parts.projectors}
-                cameras={scenario.parts.cameras}
-                diameter={scenario.parts.configuration.endsWith("25") ? 2.5 : 3}
-                onDiameterChange={(diameter) =>
-                  update({
-                    ...scenario,
-                    parts: {
-                      ...scenario.parts,
-                      configuration: scenario.parts.configuration.startsWith("S")
-                        ? diameter === 2.5
-                          ? "S25"
-                          : "S30"
-                        : diameter === 2.5
-                          ? "G25"
-                          : "G30",
-                    },
-                  })
-                }
-                onProjectorCountChange={(projectors) =>
-                  update({ ...scenario, parts: { ...scenario.parts, projectors } })
-                }
-              />
-            </Suspense>
-          </div>
-          <Suspense fallback={<p className="loading">Loading workspace…</p>}>
-            {documentPage ? null : path === "/" && !modelVisible ? (
-              <HomePage />
-            ) : path === "/media" ? (
-              <MediaView />
-            ) : path === "/showtime" ? (
-              <ShowtimeView />
-            ) : path === "/tasks" ? (
-              <BuildBoard
-                state={scenario.board}
-                onChange={(board) => update({ ...scenario, board })}
-              />
-            ) : path === "/workflow" ? (
-              <WorkflowView scenario={scenario} />
-            ) : path === "/budget" ? (
-              <BudgetView scenario={scenario} update={update} onSelectOption={selectModel} />
-            ) : path === "/parts" ? (
-              <PartsView scenario={scenario} update={update} />
-            ) : path === "/research" ? (
-              <ResearchView scenario={scenario} onModelSelect={selectModel} />
-            ) : !modelVisible ? (
-              <div className="reading-panel">
-                <h2>That workspace does not exist.</h2>
-                <Link to="/model">Return to Model</Link>
-              </div>
-            ) : null}
+        {visiblePages.map((page, index) => (
+          <ViewSelector
+            key={index}
+            path={page}
+            column={index + 1}
+            onSelect={(next) => choosePage(index, next)}
+          />
+        ))}
+      </nav>
+      <main
+        ref={workspaceRef}
+        id="workspace"
+        className="column-workspace"
+        tabIndex={-1}
+        style={{ gridTemplateColumns: `repeat(${fitted}, minmax(0, 1fr))` }}
+      >
+        <DocumentPages paths={visiblePages} />
+        <div
+          className="cockpit-pane scene-container"
+          hidden={!modelVisible}
+          style={{ gridColumn: visiblePages.indexOf("/model") + 1 }}
+          aria-label="3D model"
+        >
+          <Suspense fallback={<p className="loading">Loading the 3D workspace…</p>}>
+            <SceneView
+              option={option}
+              visible={modelVisible}
+              model={referenceModel}
+              onModelSelect={selectModel}
+              projectors={scenario.parts.projectors}
+              cameras={scenario.parts.cameras}
+              diameter={scenario.parts.configuration.endsWith("25") ? 2.5 : 3}
+              onDiameterChange={(diameter) =>
+                update({
+                  ...scenario,
+                  parts: {
+                    ...scenario.parts,
+                    configuration: scenario.parts.configuration.startsWith("S")
+                      ? diameter === 2.5
+                        ? "S25"
+                        : "S30"
+                      : diameter === 2.5
+                        ? "G25"
+                        : "G30",
+                  },
+                })
+              }
+              onProjectorCountChange={(projectors) =>
+                update({ ...scenario, parts: { ...scenario.parts, projectors } })
+              }
+            />
           </Suspense>
-        </main>
-        {inspector && !presentation && (
-          <aside className="inspector" aria-label="Scenario inspector">
-            <div className="inspector-heading">
-              <Layers size={24} />
-              <div>
-                <span className="eyebrow">SELECTED SUPPORT</span>
-                <h2>{shortNames[option.id]}</h2>
-              </div>
-            </div>
-            <p>{option.description}</p>
-            <div className="estimate-block">
-              <span>
-                {option.id === "love-burn"
-                  ? "Proposal purchase estimate"
-                  : option.id.startsWith("seed-")
-                    ? "Alternate allocations"
-                    : "Alternate rental estimate"}{" "}
-                · {shortNames[option.id]}
-              </span>
-              <strong aria-live="polite">{range(result.total)}</strong>
-              <small>
-                USD · {scenario.settings.contingency}% contingency · allowances, not a quote
-              </small>
-            </div>
-            <section>
-              <h3>Planning inputs</h3>
-              {option.id !== "love-burn" && (
-                <>
-                  {field("days", "Rental days", 60, 1)}
-                  {field("dayRate", "Daily rate · USD", 10000)}
-                </>
-              )}
-              {field("contingency", "Contingency · %", 100)}
-              <details>
-                <summary>Discount, credit & tax</summary>
-                {option.id !== "love-burn" && field("discount", "Rental discount · %", 100)}
-                {field("credit", "Documented credit · USD", 1000000)}
-                {field("taxAllowance", "Tax allowance · USD", 100000)}
-              </details>
-            </section>
-            <section>
-              <h3>
-                <Wind size={18} />
-                Experience
-              </h3>
-              <label className="check-field">
-                <input
-                  type="checkbox"
-                  checked={scenario.haze}
-                  onChange={(event) => update({ ...scenario, haze: event.target.checked })}
-                />
-                <span>
-                  Owned hazer
-                  <small>$0 acquisition · external unit below the sphere</small>
-                </span>
-              </label>
-              <p className="muted small">
-                External effect only. Unit dimensions, outlet clearances, power and fluid remain
-                unconfirmed; airflow is not simulated.
-              </p>
-              {option.id === "love-burn" ? (
-                <p className="muted small">
-                  Two phone feeds and their mounts are included in the proposal budget. Capture and
-                  participant controls remain to be prototyped.
-                </p>
-              ) : (
-                <label className="check-field">
-                  <input
-                    type="checkbox"
-                    disabled={!option.projectors}
-                    checked={scenario.settings.capture && option.projectors > 0}
-                    onChange={(event) =>
-                      update({
-                        ...scenario,
-                        settings: {
-                          ...scenario.settings,
-                          capture: event.target.checked,
-                        },
-                      })
-                    }
+        </div>
+        {visiblePages
+          .filter((page) => page !== "/model" && !documentPages.some(([id]) => page === `/${id}`))
+          .map((page) => (
+            <section
+              key={page}
+              className={`cockpit-pane ${["/", "/media", "/showtime"].includes(page) ? "presentation-pane" : "tool-pane"}`}
+              style={{ gridColumn: visiblePages.indexOf(page) + 1 }}
+              aria-label={`${page === "/" ? "Overview" : page.slice(1)} view`}
+            >
+              <Suspense fallback={<p className="loading">Loading workspace…</p>}>
+                {page === "/" ? (
+                  <HomePage />
+                ) : page === "/media" ? (
+                  <MediaView />
+                ) : page === "/showtime" ? (
+                  <ShowtimeView />
+                ) : page === "/tasks" ? (
+                  <BuildBoard
+                    state={scenario.board}
+                    onChange={(board) => update({ ...scenario, board })}
                   />
-                  <span>
-                    External live capture
-                    <small>One outside camera and integration; no internal GoPros</small>
-                  </span>
-                </label>
-              )}
+                ) : page === "/workflow" ? (
+                  <WorkflowView scenario={scenario} />
+                ) : page === "/budget" ? (
+                  <BudgetView scenario={scenario} update={update} onSelectOption={selectModel} />
+                ) : page === "/parts" ? (
+                  <PartsView scenario={scenario} update={update} />
+                ) : page === "/research" ? (
+                  <ResearchView scenario={scenario} onModelSelect={selectModel} />
+                ) : page === "/supports" ? (
+                  supportPane
+                ) : page === "/settings" ? (
+                  settingsPane
+                ) : (
+                  <div className="reading-panel">
+                    <h2>That workspace does not exist.</h2>
+                    <Link to="/model">Return to Model</Link>
+                  </div>
+                )}
+              </Suspense>
             </section>
-            <a href="/pricing/">Open the full pricing study</a>
-          </aside>
-        )}
-      </div>
+          ))}
+      </main>
       {!presentation && (
         <footer className="notes-strip">
           <nav aria-label="Project sources and attachments">

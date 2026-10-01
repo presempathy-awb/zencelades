@@ -3,23 +3,27 @@ import { cockpitHref, documentPages } from "./page-routes";
 import "./documents.css";
 
 /** Preserve complete published pages and their controls inside the shared shell. */
-export default function DocumentPages({ path }: { path: string }): JSX.Element {
+export default function DocumentPages({ paths }: { paths: string[] }): JSX.Element {
   const [visited, setVisited] = useState<string[]>([]);
   useEffect(() => {
-    if (documentPages.some(([id]) => path === `/${id}`)) {
-      setVisited((pages) => (pages.includes(path) ? pages : [...pages, path]));
-    }
-  }, [path]);
+    const documents = paths.filter((path) => documentPages.some(([id]) => path === `/${id}`));
+    setVisited((pages) =>
+      documents.every((page) => pages.includes(page))
+        ? pages
+        : [...new Set([...pages, ...documents])],
+    );
+  }, [paths.join("|")]);
   return (
     <>
       {visited.map((page) => (
-        <DocumentPage key={page} page={page.slice(1)} active={path === page} />
+        <DocumentPage key={page} page={page.slice(1)} column={paths.indexOf(page)} />
       ))}
     </>
   );
 }
 
-function DocumentPage({ page, active }: { page: string; active: boolean }): JSX.Element {
+function DocumentPage({ page, column }: { page: string; column: number }): JSX.Element {
+  const active = column !== -1;
   const host = useRef<HTMLDivElement>(null);
   const [failure, setFailure] = useState("");
   const [ready, setReady] = useState(false);
@@ -130,7 +134,8 @@ function DocumentPage({ page, active }: { page: string; active: boolean }): JSX.
   return (
     <section
       hidden={!active}
-      className="document-page"
+      className="cockpit-pane document-page"
+      style={{ gridColumn: Math.max(1, column + 1) }}
       aria-label={documentPages.find(([id]) => id === page)?.[1]}
     >
       {failure ? (

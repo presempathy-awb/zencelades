@@ -2,10 +2,25 @@
 
 P101 gives every existing public page a destination within the same application.
 The Overview keeps its artwork layout, four renders and narrative. Media, the
-model tools and Showtime remain direct tools. The Explore selector adds the
+model tools and Showtime remain selectable views. The section/view selectors reach the
 complete grant application, mount studies, grant workshop, historical pricing
 calculator, asset catalog, naming workbench, 22 name-concept sheets, and open
 source / AI disclosure.
+
+P102 replaces the long navigation strip with section → view selectors for each
+column. The top-bar Columns control requests one to four columns, fitting fewer
+on narrow screens while retaining the other selections. One column is the
+default so the Overview retains its immersive layout. Selecting an already open
+view swaps it into that column instead of duplicating its controls. The first
+column follows the URL and browser history; ordinary page links open there.
+Design → Design options and Build → Scenario settings retain the former sidebars.
+All columns edit the same temporary scenario; this layout does not save it to an
+account. Column preferences last for this visit and reset on reload.
+
+Reference patterns: Walterville's local `WalterWorkspaceShell.tsx` supplies the
+idea of individually selected workspace panes. The recorded Hotgoddesshotpen
+cockpit patch supplies its top-bar column count and width fitting pattern. No
+reference-site account, source dependency or browser state was imported.
 
 The site build retains authored HTML under `/page-content/<page>.html` before
 publishing the cockpit entry at the old page URLs. Downloads and source files
@@ -31,7 +46,14 @@ available; generation intent and limitations accompany the new source image.
 PG18 account-owned saves are separate P098 work and are not delivered by this
 presentation change.
 
-## October 1 release evidence
+## P102 current release
+
+Live release `abf60491f6c65d6ec74504f0d4bcba535ad978d937b0cd2e78bd73ed1e216bb6`
+contains the column controls. The [P102 delivery record](plans/p102-cockpit-selectors-columns.md)
+records 162 verified HTTPS files, the full checks and browser interaction evidence.
+The document-control approval boundary below remains unchanged.
+
+## P101 release evidence (before the P102 selectors)
 
 Live release: `479564312e531bb58d664ddfb64923a8a1186cc514d5fe80d32b8cc897e6e282`.
 The overlay retained the actual prior published HTML in page-content, preserving
