@@ -67,7 +67,7 @@ def build() -> None:
         "love-burn-camp-and-vehicle-rules.md",
     ):
         shutil.copyfile(ROOT / "docs" / name, output / "documents" / name)
-    for name in ("style.css", "catalog.js", "access.js", "access.css"):
+    for name in ("style.css", "catalog.js"):
         shutil.copyfile(ROOT / "site" / name, output / name)
     shutil.copytree(ROOT / "site/naming", output / "naming", dirs_exist_ok=True)
     shutil.copytree(
