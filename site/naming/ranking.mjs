@@ -1,14 +1,14 @@
 import { defaultWeights, weightedScore, rememberNames } from "./ranking-state.mjs";
+import { namingDraftFor } from "./draft-state.mjs";
 import { reviewDimensions, reviewLabels as labels, chatgptWeights, definitions, reviewScores, reviewScore, averageWeights, migrateReviews, applyReviews, rankReviewed as rankNames } from "./review-state.mjs";
 /** @param {Document | ShadowRoot} root */
 export async function initRanking(root = document) {
-const project = document.documentElement.dataset.project ?? "thatsnozorb";
-const storageKey = project === "thatsnozorb" ? "enceladus-naming-shelves-v1" : `${project}-naming-shelves-v1`;
 const host = root.querySelector("#name-studio");
 const status = root.querySelector("#ranking-status");
 let state = { names: {}, current: [], weights: [...defaultWeights] };
 let visible = 40;
 let ready = false;
+let pendingResearch = 0;
 let startingWeights = [...chatgptWeights];
 let reviewData = { candidates: {}, favorites: {} };
 let presets = { chatgpt: [...chatgptWeights] };
@@ -28,8 +28,7 @@ function action(text, run) {
   return result;
 }
 function save() {
-  try { localStorage.setItem(storageKey, JSON.stringify(state)); }
-  catch { status.textContent = "Storage is full or unavailable. Export your shelves before closing this tab."; }
+  status.textContent = "Shelves changed in this temporary draft. Export before reloading.";
 }
 function displayScore(candidate) {
   const score = reviewScore(candidate, state.review_weights);
@@ -55,6 +54,7 @@ function verdict(candidate) {
   return "Research pending · optional";
 }
 async function research(candidate, button) {
+  pendingResearch++;
   button.disabled = true;
   status.textContent = `Researching ${candidate.name} on Brave, GitHub, npm and .com…`;
   try {
@@ -65,7 +65,7 @@ async function research(candidate, button) {
     candidate.report = result.report; save(); render();
     status.textContent = `${candidate.name}: ${verdict(candidate)}. Missing sources never block another roll.`;
   } catch (error) { status.textContent = `Research failed: ${error.message}. Earlier evidence is preserved.`; }
-  finally { button.disabled = false; }
+  finally { pendingResearch--; button.disabled = false; }
 }
 function card(candidate, rank) {
   const article = node("article", undefined, "ranked-name");
@@ -81,7 +81,7 @@ function card(candidate, rank) {
   }
   article.append(node("p", verdict(candidate), "editor-note"));
   const buttons = node("div", undefined, "name-actions");
-  buttons.append(action(candidate.favorite ? "★ Saved favorite" : "☆ Save favorite", () => { candidate.favorite = !candidate.favorite; save(); render(); }));
+  buttons.append(action(candidate.favorite ? "★ Favorite" : "☆ Add favorite", () => { candidate.favorite = !candidate.favorite; save(); render(); }));
   const earlier = candidate.collection === "Live roll" && !state.current.includes(candidate.name);
   buttons.append(action(candidate.forgotten || earlier ? "Restore name" : "Forget for now", () => {
     if (candidate.forgotten || earlier) { candidate.forgotten = false; if (!state.current.includes(candidate.name)) state.current.push(candidate.name); }
@@ -213,7 +213,7 @@ function receiveRoll(candidates) {
   rememberNames(state, candidates.map(c => ({ ...c, collection: "Live roll", source: "Shakesplurian live roll" })), true);
   applyReviews(state, reviewData);
   root.querySelector("#ranking-collection").value = "current"; visible = 40; save(); render();
-  status.textContent = `${candidates.length} new names saved. Earlier rolls and special shelves are preserved. Unreviewed names await scores; original estimates remain in their details.`;
+  status.textContent = `${candidates.length} names added to this temporary draft. Earlier rolls and special shelves stay in this visit. Save Naming to your account or export before reloading. Unreviewed names await scores; original estimates remain in their details.`;
 }
 root.addEventListener("naming:roll", event => { if (ready) receiveRoll(event.detail); else pendingRolls.push(event.detail); });
 
@@ -227,18 +227,10 @@ try {
     presets.chatgpt = [...reviewData.weights.chatgpt]; startingWeights = [...presets.chatgpt];
   }
   if (reviewData.weights?.grok) { presets.grok = reviewData.weights.grok; presets.average = averageWeights(presets.chatgpt, presets.grok); }
-  const saved = localStorage.getItem(storageKey);
-  if (research.weights) { weightedScore(Array(8).fill(5), research.weights); if (!saved) state.weights = [...research.weights]; }
+  if (research.weights) { weightedScore(Array(8).fill(5), research.weights); state.weights = [...research.weights]; }
   const collections = new Set([...research.authored, ...research.groups.flatMap(g => g.candidates)].map(c => c.collection));
   const choices = root.querySelector("#ranking-collection");
   for (const collection of collections) { if (collection && ![...choices.options].some(o => o.value === collection)) choices.add(new Option(collection, collection)); }
-  if (saved) {
-    const parsed = JSON.parse(saved);
-    if (!parsed.names || !Array.isArray(parsed.current) || !Array.isArray(parsed.weights)) throw new Error("Saved shelves have an unreadable shape; storage has been left untouched");
-    weightedScore(Array(8).fill(5), parsed.weights);
-    for (const candidate of Object.values(parsed.names)) weightedScore(candidate.scores, parsed.weights);
-    state = parsed;
-  }
   rememberNames(state, history.groups.flatMap(g => g.candidates).map(c => ({ ...c, collection: "Earlier exploration", ...(c.name === "cryzorcean" ? { favorite: true, scores: [10,8,9,9,10,7,8,10], score_source: "Codex editorial assessment of Andrew’s three-word creation" } : {}) })));
   rememberNames(state, research.authored);
   for (const group of research.groups) rememberNames(state, group.candidates);
@@ -248,14 +240,15 @@ try {
   const baselines = Object.fromEntries([...history.groups.flatMap(g => g.candidates), ...research.authored, ...research.groups.flatMap(g => g.candidates)].filter(c => c.scores).map(c => [c.name, c.scores]));
   baselines.cryzorcean = [10,8,9,9,10,7,8,10];
   migrateReviews(state, baselines); applyReviews(state, reviewData);
-  if (!saved && !research.weights) state.review_weights = [...startingWeights];
+  if (!research.weights) state.review_weights = [...startingWeights];
   const glossary = root.querySelector("#score-definitions");
   labels.forEach((label, index) => glossary.append(node("dt", label), node("dd", definitions[index])));
   root.querySelector("#weight-rationale").textContent = `ChatGPT: ${reviewData.weight_rationale?.chatgpt ?? "Half the weight stays on ChatGPT preference, with Grok adding an independent taste signal. The remaining categories balance a usable spoken name with a coherent artwork story."} Grok: ${reviewData.weight_rationale?.grok ?? "Proposal pending."}`;
   ready = true; host.removeAttribute("aria-busy"); host.querySelectorAll("button, input, select, textarea").forEach(control => { control.disabled = false; }); root.querySelector("#weights-grok").disabled = !presets.grok; root.querySelector("#weights-average").disabled = !presets.average; renderWeights(); render(); save();
-  status.textContent = "Names loaded. Shared scores average both reviewers; preferences are separate. Old water/light scores remain archived, and edits to unchanged categories are preserved. Scores are creative judgments, not availability claims. Shelves and weights are saved in this browser; export a backup to keep a portable copy.";
+  namingDraftFor(root).register("shelves", () => state, next => { state = next; renderWeights(); render(); }, () => pendingResearch > 0);
+  status.textContent = "Names loaded. Shared scores average both reviewers; preferences are separate. Scores are creative judgments, not availability claims. Edits stay in this temporary draft; export before reloading. Old browser drafts remain available through the recovery download.";
   for (const candidates of pendingRolls) receiveRoll(candidates);
-} catch (error) { status.textContent = `${error.message}. Saved storage has not been overwritten.`; }
+} catch (error) { status.textContent = `${error.message}. Existing browser backups have not been changed.`; }
 }
 
 if (typeof document !== "undefined" && document.getElementById("name-studio")) void initRanking();

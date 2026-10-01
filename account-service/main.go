@@ -113,7 +113,7 @@ func run(ctx context.Context) error {
 		fmt.Println("Account migration applied.")
 		return nil
 	}
-	api := accountAPI{auth: outpostAuth{endpoint: *outpost, origin: *origin, client: authClient()}, store: postgresStore{pool: pool}}
+	api := accountAPI{auth: outpostAuth{endpoint: *outpost, origin: *origin, client: authClient()}, store: postgresStore{pool: pool, kind: "scenario"}, naming: postgresStore{pool: pool, kind: "naming"}}
 	server := http.Server{Addr: *listen, Handler: api.handler(), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 10 * time.Second, WriteTimeout: 15 * time.Second, IdleTimeout: 60 * time.Second, MaxHeaderBytes: 16384}
 	finished := make(chan error, 1)
 	go func() { finished <- server.ListenAndServe() }()

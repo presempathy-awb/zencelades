@@ -1,11 +1,10 @@
 import { activeWords, removeWord, removeFamily, refillFamily, addCatalogFamilies } from "./editor-state.mjs";
+import { namingDraftFor } from "./draft-state.mjs";
 /** @param {Document | ShadowRoot} root */
 export async function initEditor(root = document) {
 const host = root.querySelector("#palette-editor");
 const status = root.querySelector("#palette-status");
 const results = root.querySelector("#fresh-names");
-const project = document.documentElement.dataset.project ?? "thatsnozorb";
-const storageKey = project === "thatsnozorb" ? "enceladus-naming-palette-v1" : `${project}-naming-palette-v1`;
 let state;
 let catalog;
 let online = false;
@@ -27,9 +26,7 @@ function button(text, label, action) {
 }
 
 function save(message) {
-  try { localStorage.setItem(storageKey, JSON.stringify(state)); }
-  catch { status.textContent = "Browser storage is unavailable; keep this tab open to retain the draft."; return; }
-  if (message) status.textContent = message;
+  status.textContent = `${message || "Palette changed."} Temporary draft; export before reloading.`;
 }
 
 async function api(action, extra = {}) {
@@ -121,11 +118,11 @@ async function roll(seedWords = []) {
 }
 root.querySelector("#palette-roll").addEventListener("click", () => operation(() => roll()));
 root.addEventListener("naming:submit", event => {
-  if (!online || busy) { status.textContent = "Wait for the current request or API connection, then use Roll 40 relatives from the saved name."; return; }
+  if (!online || busy) { status.textContent = "Wait for the current request or API connection, then use Roll 40 relatives from the name in this draft."; return; }
   const words = event.detail.words.filter(word => !state.excluded.includes(word));
-  if (words.length !== event.detail.words.length) { status.textContent = "A submitted word was removed from the palette. Restore it before using it as a seed; its saved creation is preserved."; return; }
+  if (words.length !== event.detail.words.length) { status.textContent = "A submitted word was removed from the palette. Restore it before using it as a seed; its creation remains in this working draft."; return; }
   const id = `submitted_${crypto.randomUUID().slice(0, 8)}`;
-  if (state.families.length >= 24 || activeWords(state).length + words.length > 256) { status.textContent = "Pause a family or uncheck some words before adding these seeds (24 families, 256 checked words). Your creation is saved."; return; }
+  if (state.families.length >= 24 || activeWords(state).length + words.length > 256) { status.textContent = "Pause a family or uncheck some words before adding these seeds (24 families, 256 checked words). Your creation remains in this working draft."; return; }
   state.families.push({ id, label: "Submitted names for this roll", words, selected: [...words], enabled: true });
   save("Submitted names added to the palette. Each descendant begins with one of those inputs.");
   operation(() => roll(words));
@@ -203,10 +200,7 @@ try {
   if (!fallback.ok) throw new Error("Could not load the authored palette");
   catalog = (await fallback.json()).families;
   state = { families: structuredClone(catalog.slice(0, 12)), excluded: [], removedFamilies: [] };
-  try {
-    const stored = JSON.parse(localStorage.getItem(storageKey));
-    if (stored && Array.isArray(stored.families) && Array.isArray(stored.excluded) && Array.isArray(stored.removedFamilies)) state = stored;
-  } catch { status.textContent = "Saved draft could not be read; the authored palette has been loaded."; }
+  namingDraftFor(root).register("palette", () => state, next => { state = next; render(); }, () => busy);
   render();
   try { catalog = (await api("catalog")).families; online = true; status.textContent = "Connected to Shakesplurian. Your checked palette is ready to roll."; }
   catch { status.textContent = "Palette editing is ready. This static preview has no naming API; open the workbench preview to refill, add catalog families, roll and check names."; }

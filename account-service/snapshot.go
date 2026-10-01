@@ -7,6 +7,29 @@ import (
 	"unicode/utf8"
 )
 
+const maxNamingBytes = 4 * 1024 * 1024
+
+func validNamingSnapshot(raw json.RawMessage) bool {
+	if len(raw) == 0 || len(raw) > maxNamingBytes || !utf8.Valid(raw) {
+		return false
+	}
+	var fields map[string]json.RawMessage
+	if json.Unmarshal(raw, &fields) != nil || fields == nil {
+		return false
+	}
+	var schema int
+	if json.Unmarshal(fields["schema"], &schema) != nil || schema != 1 {
+		return false
+	}
+	for _, key := range []string{"palette", "shelves"} {
+		var object map[string]json.RawMessage
+		if json.Unmarshal(fields[key], &object) != nil || object == nil {
+			return false
+		}
+	}
+	return true
+}
+
 func decodeStrict(body []byte, destination any) error {
 	decoder := json.NewDecoder(bytes.NewReader(body))
 	decoder.DisallowUnknownFields()

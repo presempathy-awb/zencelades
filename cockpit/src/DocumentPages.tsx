@@ -90,10 +90,11 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
       });
       root.append(body);
       if (page === "naming") {
-        const [roll, editor, ranking] = await Promise.all([
+        const [roll, editor, ranking, drafts] = await Promise.all([
           import("../../site/naming/roll.js"),
           import("../../site/naming/editor.mjs"),
           import("../../site/naming/ranking.mjs"),
+          import("../../site/naming/draft-controls.mjs"),
         ]);
         if (disposed) return;
         await Promise.all([
@@ -101,6 +102,7 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
           editor.initEditor(root),
           ranking.initRanking(root),
         ]);
+        drafts.initNamingDraftControls(root);
       } else if (page === "pricing") {
         const { initPricing } = await import("../../site/pricing/pricing.mjs");
         if (disposed) return;

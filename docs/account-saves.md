@@ -22,11 +22,14 @@ export current work, load the newer account draft, and reconcile/import before
 saving again. Errors retain the working scenario. Sign-in and sign-out navigate
 through gimmesomepaw's Authentik entry points, so export unsaved work first.
 
-The legacy Naming page still has its earlier browser-local editor/ranking
-storage. It is not part of this scenario contract and remains an explicit gap
-against the broader requirement that only signed-in edits persist. Do not call
-the full account-persistence goal complete until that path is reconciled without
-destroying existing local drafts.
+Naming has its own Save/Load controls and separate account document for the full
+palette, shelves, weights, favorite selections and research receipts. Its guest
+edits also remain in memory. Neither editor automatically reads or rewrites old
+local-storage drafts. **Recover old browser drafts** exports their exact stored
+bytes without deletion; explicitly import the recovery file to use it. Complete
+Naming import validates both editors before replacement, and refuses replacement
+while an editor request is in progress. Naming and scenario saves never overwrite
+each other. Tooltips explain temporary edits, account saves and replacement.
 
 ## HTTP contract
 
@@ -37,9 +40,11 @@ Every response is private/no-store. Success uses `data`; failures use
 | --- | --- |
 | GET `/account/api/session` | Verified user or null, plus gimmesomepaw sign-in/out paths. |
 | GET `/account/api/scenarios/current` | Current verified account's snapshot or null; authentication required. |
-| PUT `/account/api/scenarios/current` | Save `{expectedRevision, scenario}`; authentication required. |
+| PUT `/account/api/scenarios/current` | Save `{expectedRevision, document}` containing the scenario; authentication required. |
+| GET `/account/api/naming/current` | Current verified account's Naming snapshot or null. |
+| PUT `/account/api/naming/current` | Save `{expectedRevision, document}` containing Naming's palette and shelves. |
 
-Scenario GET/PUT require `X-Account-Subject` matching the user currently verified
+Both document resources require `X-Account-Subject` matching the user currently verified
 by the outpost. It is an account-switch guard, **never an owner selector**. The
 SQL owner comes exclusively from the outpost's unique `X-authentik-uid` response.
 Only the browser Cookie is forwarded to the configured outpost; caller identity
@@ -50,10 +55,15 @@ Cross-site fetch metadata is rejected. The request limit is 50,512 bytes and the
 snapshot limit is 50,000 UTF-8 bytes. The service checks the schema-1 envelope,
 required object sections, note and scalar types. It stores private opaque
 snapshot content; the cockpit's `parseScenario` performs model/price/task-domain
-validation before applying a retrieved snapshot. Stored JSON is never executed.
+validation before applying a retrieved snapshot. Naming documents have a 4 MiB
+UTF-8 limit (plus 512 bytes for the request envelope); the published workbench
+already contains more than 1 MiB of receipts. Naming checks schema and object
+envelopes on the server and full editor data before client application. Stored
+JSON is never executed. Save/read responses contain `{revision, document,
+updatedAt}` under `data`.
 
 Revision zero creates only if absent. Positive revisions update only the same
-owner at exactly that revision. Concurrent/stale updates return 409; expired
+owner and document kind at exactly that revision. Concurrent/stale updates return 409; expired
 sessions return 401; changed accounts return 409; auth/storage outages return
 503. No request accepts an owner field. One parameterized SQL statement handles
 each write atomically.
@@ -73,7 +83,9 @@ committed by this slice.
 requires `--apply` and `--database-url-file`. The service never migrates on
 startup. The paired down SQL drops the account table: use only after exporting
 its data and obtaining explicit destructive-action approval outside fixtures.
-The isolated test exercises down/up, not a live rollback.
+The isolated test exercises down/up, not a live rollback. This initial migration
+has never been deployed; it creates `zencelades_account_drafts` keyed by verified
+owner and document kind. No existing production table is renamed or dropped.
 
 ## Verification
 
@@ -81,7 +93,7 @@ From the project lane:
 
 ```sh
 # maxipaxi
-L=~/code/branch/thatsnozorb/triangle-projection-cockpit/main
+L=~/code/branch/thatsnozorb/account-drafts/main
 (cd "$L" && just account-check)
 (cd "$L/cockpit" && bun test)
 (cd "$L/cockpit" && bun run build)
@@ -98,12 +110,15 @@ and temporary binary.
 Coverage includes forged identity rejection, account isolation, origin/content/
 size validation, expiry, outages, stale revisions, account switching, two
 simultaneous writers, a full cockpit fixture after reconnect, the real HTTP
-handler writing PG18, and migration rollback/reapply. Direct server tests do not
+handler writing PG18 for both document kinds, a 1.2 MB Naming receipt round trip,
+and migration rollback/reapply. Node tests exercise actual Naming controls,
+conflict/expiry preservation, temporary guest edits and legacy recovery. Direct
+server tests and the DOM test harness do not
 prove an actual Authentik browser session.
 
 ## Deployment prerequisites observed October 1
 
-- The live site was active at release `90891ed1` during this check.
+- The live homepage routing fix is release `9b6f2f7c`; account changes remain local.
 - The existing presvd1 outpost listens on loopback port 19001. With the old
   subdomain it returns the expected anonymous 302; with `zenceladus.com` it
   returns 404. The canonical-domain provider binding needs repair using Telpher.

@@ -22,12 +22,12 @@ test("loads the whole account snapshot through domain validation", async () => {
   scenario.parts.cameras = 2;
   scenario.funding.ownerPossible = 250;
   respond(async () =>
-    Response.json({ data: { revision: 3, scenario, updatedAt: "2026-10-01T00:00:00Z" } }),
+    Response.json({ data: { revision: 3, document: scenario, updatedAt: "2026-10-01T00:00:00Z" } }),
   );
   expect((await loadAccountScenario("alice"))?.scenario).toEqual(scenario);
   respond(async () =>
     Response.json({
-      data: { revision: 3, scenario: { schema: 1 }, updatedAt: "2026-10-01T00:00:00Z" },
+      data: { revision: 3, document: { schema: 1 }, updatedAt: "2026-10-01T00:00:00Z" },
     }),
   );
   await expect(loadAccountScenario("alice")).rejects.toThrow();
@@ -38,12 +38,14 @@ test("save is bound to the displayed account and revision", async () => {
   let request: RequestInit | undefined;
   respond(async (_url: string | URL | Request, options?: RequestInit) => {
     request = options;
-    return Response.json({ data: { revision: 2, scenario, updatedAt: "2026-10-01T00:00:00Z" } });
+    return Response.json({
+      data: { revision: 2, document: scenario, updatedAt: "2026-10-01T00:00:00Z" },
+    });
   });
   expect((await saveAccountScenario("alice", 1, scenario)).revision).toBe(2);
   expect(request?.credentials).toBe("same-origin");
   expect(new Headers(request?.headers).get("X-Account-Subject")).toBe("alice");
-  expect(JSON.parse(String(request?.body))).toEqual({ expectedRevision: 1, scenario });
+  expect(JSON.parse(String(request?.body))).toEqual({ expectedRevision: 1, document: scenario });
 });
 
 test("expiry and conflicts remain actionable errors", async () => {

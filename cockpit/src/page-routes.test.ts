@@ -14,3 +14,10 @@ test("project page links stay in the cockpit while files and external links keep
   expect(cockpitHref("#files", "/models/")).toBe("#files");
   expect(cockpitHref("/pricing/", "/")).toBe("/#/pricing");
 });
+
+test("links already targeting a cockpit view survive repeated document routing", () => {
+  for (const href of ["/#/alternates", "/#/showtime", "/#/application?section=budget"]) {
+    expect(cockpitHref(href, "/")).toBe(href);
+    expect(cockpitHref(cockpitHref(href, "/showtime/"), "/")).toBe(href);
+  }
+});

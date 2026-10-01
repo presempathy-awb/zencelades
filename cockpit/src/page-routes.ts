@@ -20,6 +20,7 @@ const pageRoutes: Record<string, string> = {
 
 /** Resolve public page links without changing external or download destinations. */
 export function cockpitHref(href: string, base: string): string {
+  if (href.startsWith("/#/")) return href;
   if (href.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(href) || href.startsWith("//"))
     return href;
   const url = new URL(href, `https://zenceladus.com${base}`);

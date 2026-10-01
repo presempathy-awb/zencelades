@@ -17,20 +17,21 @@ const maxRevision = 9007199254740990 // Keep the next revision exactly represent
 
 var errConflict = errors.New("scenario revision conflict")
 
-type savedScenario struct {
+type savedDraft struct {
 	Revision  int64           `json:"revision"`
-	Scenario  json.RawMessage `json:"scenario"`
+	Document  json.RawMessage `json:"document"`
 	UpdatedAt time.Time       `json:"updatedAt"`
 }
 
-type scenarioStore interface {
-	load(context.Context, string) (*savedScenario, error)
-	save(context.Context, string, int64, json.RawMessage) (*savedScenario, error)
+type draftStore interface {
+	load(context.Context, string) (*savedDraft, error)
+	save(context.Context, string, int64, json.RawMessage) (*savedDraft, error)
 }
 
 type accountAPI struct {
-	auth  outpostAuth
-	store scenarioStore
+	auth   outpostAuth
+	store  draftStore
+	naming draftStore
 }
 
 func writeJSON(w http.ResponseWriter, status int, value any) {
@@ -54,8 +55,12 @@ func apiError(w http.ResponseWriter, status int, code, message string) {
 func (a *accountAPI) handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /account/api/session", a.session)
-	mux.HandleFunc("GET /account/api/scenarios/current", a.load)
-	mux.HandleFunc("PUT /account/api/scenarios/current", a.save)
+	mux.HandleFunc("GET /account/api/scenarios/current", func(w http.ResponseWriter, r *http.Request) { a.load(w, r, a.store) })
+	mux.HandleFunc("PUT /account/api/scenarios/current", func(w http.ResponseWriter, r *http.Request) { a.save(w, r, a.store, maxRequestBytes, validSnapshot) })
+	mux.HandleFunc("GET /account/api/naming/current", func(w http.ResponseWriter, r *http.Request) { a.load(w, r, a.naming) })
+	mux.HandleFunc("PUT /account/api/naming/current", func(w http.ResponseWriter, r *http.Request) {
+		a.save(w, r, a.naming, maxNamingBytes+512, validNamingSnapshot)
+	})
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Cache-Control", "private, no-store")
 		w.Header().Set("X-Content-Type-Options", "nosniff")
@@ -90,14 +95,14 @@ func (a *accountAPI) session(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, 200, map[string]any{"data": map[string]any{"user": who, "signInURL": login.SignInURL("/"), "signOutURL": login.SignOutURL()}})
 }
 
-func (a *accountAPI) load(w http.ResponseWriter, r *http.Request) {
+func (a *accountAPI) load(w http.ResponseWriter, r *http.Request, store draftStore) {
 	who, ok := a.user(w, r, true)
 	if !ok {
 		return
 	}
 	ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
 	defer cancel()
-	saved, err := a.store.load(ctx, who.ID)
+	saved, err := store.load(ctx, who.ID)
 	if err != nil {
 		apiError(w, 503, "storage_unavailable", "The saved draft is unavailable. Keep your current draft and try again.")
 		return
@@ -105,7 +110,7 @@ func (a *accountAPI) load(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, 200, map[string]any{"data": saved})
 }
 
-func (a *accountAPI) save(w http.ResponseWriter, r *http.Request) {
+func (a *accountAPI) save(w http.ResponseWriter, r *http.Request, store draftStore, maxBytes int64, validate func(json.RawMessage) bool) {
 	// Cookie-authenticated mutations must originate on this exact public origin.
 	if len(r.Header.Values("Origin")) != 1 || r.Header.Get("Origin") != a.auth.origin || (r.Header.Get("Sec-Fetch-Site") != "" && r.Header.Get("Sec-Fetch-Site") != "same-origin") {
 		apiError(w, 403, "origin_rejected", "Save from this website's own window.")
@@ -117,14 +122,14 @@ func (a *accountAPI) save(w http.ResponseWriter, r *http.Request) {
 	}
 	mediaType, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil || mediaType != "application/json" {
-		apiError(w, 415, "json_required", "Send a JSON scenario.")
+		apiError(w, 415, "json_required", "Send a JSON document.")
 		return
 	}
-	body, err := io.ReadAll(http.MaxBytesReader(w, r.Body, maxRequestBytes))
+	body, err := io.ReadAll(http.MaxBytesReader(w, r.Body, maxBytes))
 	if err != nil {
 		var tooLarge *http.MaxBytesError
 		if errors.As(err, &tooLarge) {
-			apiError(w, 413, "request_too_large", "Scenario exceeds the save size limit.")
+			apiError(w, 413, "request_too_large", "Document exceeds the save size limit.")
 		} else {
 			apiError(w, 400, "invalid_request", "Cannot read this save request.")
 		}
@@ -132,15 +137,15 @@ func (a *accountAPI) save(w http.ResponseWriter, r *http.Request) {
 	}
 	var request struct {
 		ExpectedRevision *int64          `json:"expectedRevision"`
-		Scenario         json.RawMessage `json:"scenario"`
+		Document         json.RawMessage `json:"document"`
 	}
-	if err := decodeStrict(body, &request); err != nil || request.ExpectedRevision == nil || *request.ExpectedRevision < 0 || *request.ExpectedRevision > maxRevision || !validSnapshot(request.Scenario) {
-		apiError(w, 400, "invalid_request", "Send a schema-1 scenario and a valid expectedRevision.")
+	if err := decodeStrict(body, &request); err != nil || request.ExpectedRevision == nil || *request.ExpectedRevision < 0 || *request.ExpectedRevision > maxRevision || !validate(request.Document) {
+		apiError(w, 400, "invalid_request", "Send a schema-1 document and a valid expectedRevision.")
 		return
 	}
 	ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
 	defer cancel()
-	saved, err := a.store.save(ctx, who.ID, *request.ExpectedRevision, request.Scenario)
+	saved, err := store.save(ctx, who.ID, *request.ExpectedRevision, request.Document)
 	if errors.Is(err, errConflict) {
 		apiError(w, 409, "revision_conflict", "A newer account draft exists. Export this draft before loading the saved version.")
 		return
