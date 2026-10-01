@@ -32,6 +32,7 @@ const routes = [
   "/research",
   "/supports",
   "/settings",
+  "/alternates",
   ...documentPages.map(([path]) => `/${path}`),
 ].map((path) => createRoute({ getParentRoute: () => rootRoute, path }));
 const router = createRouter({

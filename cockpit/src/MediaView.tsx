@@ -37,23 +37,10 @@ export default function MediaView(): JSX.Element {
           Open the projection stage ↗
         </a>
       </header>
+      <p>
+        <a href="#/alternates">Alternate designs · truck concepts & original film ↗</a>
+      </p>
       <section className="media-films" aria-label="Project films">
-        <figure>
-          <video
-            controls
-            preload="metadata"
-            aria-label="Enceladus Within cinematic previsualization"
-          >
-            <source src="/media/previs.mp4" type="video/mp4" />
-          </video>
-          <figcaption>
-            <strong>Within the moon</strong>
-            <span>Original cinematic concept · sound available</span>
-            <a href="/downloads/source/uploads/enceladus_within_cinematic_previs_h264.mp4" download>
-              Download original film
-            </a>
-          </figcaption>
-        </figure>
         <figure>
           <video controls preload="metadata" aria-label="Above the ice Enceladus film">
             <source src="/media/above-the-ice.mp4" type="video/mp4" />

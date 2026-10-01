@@ -17,6 +17,13 @@ Design → Design options and Build → Scenario settings retain the former side
 All columns edit the same temporary scenario; this layout does not save it to an
 account. Column preferences last for this visit and reset on reload.
 
+The Overview includes a small muted, looping **Above the ice** preview without
+player controls; clicking or keyboard-activating it opens Showtime. Reduced
+motion preferences pause the preview. Design → Alternate designs contains the
+two original truck concept boards, the two hitch/chassis drawings and the
+original cinematic previsualization. The default Media and Showtime film areas
+show the moon footage; original assets and download URLs are retained.
+
 Reference patterns: Walterville's local `WalterWorkspaceShell.tsx` supplies the
 idea of individually selected workspace panes. The recorded Hotgoddesshotpen
 cockpit patch supplies its top-bar column count and width fitting pattern. No
@@ -46,7 +53,13 @@ available; generation intent and limitations accompany the new source image.
 PG18 account-owned saves are separate P098 work and are not delivered by this
 presentation change.
 
-## P102 current release
+## P103 current release
+
+Live release `90891ed11a4b898b23ef0e1194d0c98acb909f4a45361fab9f7ed902f68f72a1`
+adds the homepage loop and truck archive. The [P103 delivery record](plans/p103-homepage-loop-alternatives.md)
+records its checks and live playback verification.
+
+## P102 column release
 
 Live release `abf60491f6c65d6ec74504f0d4bcba535ad978d937b0cd2e78bd73ed1e216bb6`
 contains the column controls. The [P102 delivery record](plans/p102-cockpit-selectors-columns.md)

@@ -45,6 +45,7 @@ test("every existing destination and scenario control remains selectable exactly
       "/name-concepts",
       "/open-source",
       "/supports",
+      "/alternates",
       "/settings",
     ].sort(),
   );

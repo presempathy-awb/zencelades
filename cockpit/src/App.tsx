@@ -29,6 +29,7 @@ import { chooseModel } from "./option-context";
 import { BuildBoard } from "./BuildBoard";
 import HomePage from "./HomePage";
 import MediaView, { ShowtimeView } from "./MediaView";
+import AlternateDesigns from "./AlternateDesigns";
 import DocumentPages from "./DocumentPages";
 import { cockpitHref, documentPages } from "./page-routes";
 import { fitColumns, selectColumn } from "./cockpit-layout";
@@ -64,7 +65,9 @@ export default function App(): JSX.Element {
   const visiblePages = selectedPages.slice(0, fitted);
   const modelVisible = visiblePages.includes("/model");
   const presentation = visiblePages.every((page) =>
-    ["/", "/media", "/showtime", ...documentPages.map(([id]) => `/${id}`)].includes(page),
+    ["/", "/media", "/showtime", "/alternates", ...documentPages.map(([id]) => `/${id}`)].includes(
+      page,
+    ),
   );
   const choosePage = (index: number, next: string): void => {
     const updated = selectColumn(selectedPages, index, next);
@@ -454,7 +457,7 @@ export default function App(): JSX.Element {
           .map((page) => (
             <section
               key={page}
-              className={`cockpit-pane ${["/", "/media", "/showtime"].includes(page) ? "presentation-pane" : "tool-pane"}`}
+              className={`cockpit-pane ${["/", "/media", "/showtime", "/alternates"].includes(page) ? "presentation-pane" : "tool-pane"}`}
               style={{ gridColumn: visiblePages.indexOf(page) + 1 }}
               aria-label={`${page === "/" ? "Overview" : page.slice(1)} view`}
             >
@@ -465,6 +468,8 @@ export default function App(): JSX.Element {
                   <MediaView />
                 ) : page === "/showtime" ? (
                   <ShowtimeView />
+                ) : page === "/alternates" ? (
+                  <AlternateDesigns />
                 ) : page === "/tasks" ? (
                   <BuildBoard
                     state={scenario.board}

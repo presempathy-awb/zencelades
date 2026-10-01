@@ -12,6 +12,7 @@ export const viewGroups = [
     views: [
       ["/model", "3D model"],
       ["/supports", "Design options"],
+      ["/alternates", "Alternate designs"],
       ["/mounts", "Mount studies"],
       ["/naming", "Naming workbench"],
       ["/name-concepts", "Name concepts"],

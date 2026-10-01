@@ -1,4 +1,4 @@
-import type { JSX, MouseEvent } from "react";
+import { type JSX, type MouseEvent, useEffect, useRef } from "react";
 import artwork from "../../site/about/index.html?raw";
 import "../../site/about/pages.css";
 import "./home.css";
@@ -18,6 +18,26 @@ const content = `<div class="artwork-content">${body}</div><footer>${footer}</fo
 
 /** Artwork and renders inside the persistent cockpit shell. */
 export default function HomePage(): JSX.Element {
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const video = root.current?.querySelector("video");
+    if (!video) return;
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    const playback = (): void => {
+      video.muted = true;
+      if (motion.matches) video.pause();
+      else
+        void video.play().catch(() => {
+          /* Browser autoplay policy may keep the linked preview still. */
+        });
+    };
+    playback();
+    motion.addEventListener("change", playback);
+    return () => {
+      motion.removeEventListener("change", playback);
+      video.pause();
+    };
+  }, []);
   const scrollToSection = (event: MouseEvent<HTMLDivElement>): void => {
     const link = event.target instanceof Element ? event.target.closest("a") : null;
     const href = link?.getAttribute("href");
@@ -31,6 +51,7 @@ export default function HomePage(): JSX.Element {
   };
   return (
     <div
+      ref={root}
       className="artwork-home project-page"
       onClick={scrollToSection}
       dangerouslySetInnerHTML={{ __html: content }}
