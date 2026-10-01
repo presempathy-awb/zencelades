@@ -12,6 +12,11 @@ revision conflicts. Guest edits remain in memory, with export/recovery controls
 and tooltips. This is local source, not production login.
 [Account behavior and verification](docs/account-saves.md).
 
+The service-only installer now has a plan-first recipe, exact release/state
+guards and rollback tests. Its CLI dry-run on presvd1 changed no installed
+service. Twenty-three local installer tests pass; privileged installation,
+real rollback and required security review remain unverified.
+
 The Linux/amd64 service binary builds. Telpher's existing contract parser accepts
 the canonical-domain provider contract. presvd1 validates the proposed unit
 (with its executable relocated to a temporary validation directory) and the

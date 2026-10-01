@@ -72,6 +72,11 @@ account-migration *args:
 account-build output:
     (cd account-service && GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -o {{quote(output)}} .)
 
+# Plan by default. Apply requires the systemd host, reviewed digest and expected state.
+# Credentials, migration, Authentik and website publication remain separate operations.
+account-install source *args:
+    uv run --no-project python -m scripts.account_install {{quote(source)}} {{args}}
+
 # Plan by default; owner is the Telpher checkout with the existing B2 declaration.
 archives-b2 owner *args:
     uv run --no-project python -m scripts.archive_b2 --owner {{quote(owner)}} {{args}}

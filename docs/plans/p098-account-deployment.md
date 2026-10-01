@@ -33,6 +33,26 @@ cause. Setting only that owned temporary binary to 0700 resolved validation.
 The source unit and live installation remain untouched. Evidence and artifact
 hashes are in the agent cache's `p098-deployment-packet/validation.json`.
 
-Remaining: implement/review the installation operation, obtain required review
+Remaining: review the installation operation, obtain required review
 and credential access, then perform real account acceptance. Configuration
 syntax and migration-plan execution do not establish a running service.
+
+Installation implementation scope: a service-only, plan-first operation taking
+the reviewed binary/unit and exact expected current-release/unit hashes. It
+must refuse stale or linked inputs, pin the candidate release digest, retain
+the previous binary and unit, and restore the prior running/enabled state on
+activation failure. Credentials must already be provisioned privately by the
+owner. The installer never provisions credentials, applies SQL, edits provider
+policy, changes Caddy/Traefik, or publishes the account frontend. Tests first
+cover dry-run, successful replacement, stale/tampered input and rollback.
+
+Implemented in `scripts/account_install.py` with the `account-install` recipe.
+Twenty-three behavior tests pass, including private credentials, versioned artifact
+retention, stopped/enabled state and unit-mode rollback, and refusal to overwrite
+concurrent changes. Removing the credential permission check made its test fail;
+restoring it passed. The real presvd1 plan-only entrypoint exits 0 and leaves the
+account root/unit absent. No privileged application or live rollback was tested.
+The provider, credential, migration, review and account browser gates remain.
+Final whole Python check: 82 tests and 13 subtests pass; Ruff check/format and
+grant-ledger validation pass. Installer type checking for Python 3.12 reports
+zero errors and warnings. The exact final script was planned on presvd1 again.

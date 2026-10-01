@@ -44,7 +44,8 @@ No secret is included in this packet, environment file or compiled binary.
 3. **Codex installs through the reviewed deployment operation.** Provision the
    credential, verify PG18/database identity, run the explicit additive migration,
    install/start the service, and probe it on loopback. Preserve prior unit and
-   release for rollback. This operation still needs implementation/review.
+   release for rollback. The service-only installer below is implemented and
+   tested locally; required review and production execution remain open.
 4. **Codex publishes only after backing paths work.** Overlay the two proxy
    additions and account-enabled frontend onto the actual active release using
    compare-and-swap checks. Preserve Showtime, gallery, media and downloads.
@@ -105,5 +106,57 @@ the isolated PG18 run executed its database and HTTP round trips again.
 | Guest scenario/Naming edits | Local behavior tests and legacy-storage preservation | Browser edit/reload against the account-enabled candidate |
 | Account-owned saves | Real isolated PG18/HTTP round trips, separate document kinds and accounts | Production login, save/reload and database readback |
 | Identity and conflicts | Negative tests for forged identity, expiry, cross-account and stale writes | Actual deployed Authentik session and concurrent browser workflow |
-| Service installation | Built Linux binary, candidate unit/Caddy validation, SQL plan execution | Reviewed installation operation, credential handoff, migration and running service |
+| Service installation | Built Linux binary, candidate unit/Caddy validation, SQL plan execution; installer behavior tests and host dry-run | Required installer review, credential handoff, migration and running service |
 | Older project requests | Original receipts and prompt plans retained | Current scoped storage, Pacinman editing and source landing evidence |
+
+## Service installer
+
+`just account-install SOURCE --expected-current VALUE --expected-unit VALUE`
+is plan-only. SOURCE contains the reviewed `zencelades-account` Linux binary
+and `zencelades-account.service`. Each expected value is the exact prior release
+or unit SHA-256, or `absent` for a verified first installation. The plan returns
+the candidate release digest. Applying additionally requires `--apply --release
+DIGEST`, root on the systemd host and the private owner-provisioned credential
+file. This recipe does not grant root or obtain a secret.
+
+The implementation is `scripts/account_install.py`; it uses the Python standard
+library already present on presvd1. It checks regular files, hashes, private
+credential metadata and current state, and serializes its own installers with
+a file lock. It retains versioned releases and backs up the previous unit,
+mode, release pointer, running state and enabled state before switching. The
+candidate unit is verified with its binary path relocated to staging. A failed
+start or anonymous-session health check restores the prior service state.
+Detected concurrent changes refuse activation or automatic rollback rather
+than overwrite another owner's work. If rollback itself fails, both failures
+are reported together and the backup is retained.
+
+The installer never reads the credential value, applies SQL, changes Authentik
+policy, modifies Caddy/Traefik or publishes frontend files. Complete and verify
+the explicit migration/provider prerequisites first. Its anonymous session
+probe establishes service availability and the signed-out contract only;
+production account saves still need authenticated acceptance.
+
+Twenty-three local tests cover dry-run behavior, digest pinning, stale/linked/FIFO
+inputs, changed active-release bytes, private credential permissions, successful
+replacement, rollback of running/disabled services and unit modes, enable failure,
+concurrent-owner preservation and a healthy HTTP response with an inactive unit.
+Health responses must be private, anonymous JSON with the expected sign-in/out
+paths. The credential-permission guard was removed
+temporarily: the test failed because installation improperly succeeded; restoring
+the guard returned the tests to green. Removing the health probe's no-store
+check likewise made its cacheable-response test fail; restoring it passed.
+The installer type check for the project's Python 3.12 target reports zero
+errors and zero warnings.
+
+After adding the installer, the complete Python suite passes 82 tests plus 13
+subtests, with Ruff check/format and the grant-ledger check also passing.
+The earlier Go, Node, cockpit and build evidence above is separately dated;
+this installer-only change does not claim another frontend/browser test run.
+
+An actual presvd1 CLI dry-run returned `applied: false` and confirmed no account
+service root or unit was created. Candidate release:
+`4ff2c9404a0e0154b3206a217c8180a3f11984f83330191f222450ac01554f50`.
+This digest identifies binary/unit bytes, not security approval or installation.
+The host plan and script hash are retained under the agent cache's
+`p098-install-plan-pqge23_d/` receipt. Privileged installation and real rollback
+on presvd1 remain unexercised; local service-state tests mock systemctl.
