@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "date_local": "2026-09-30",
+  "host": "maxipaxi",
+  "prompt_ids": ["P017", "P019", "P020", "P021", "P022", "P023"],
+  "public_name": "Zencelades",
+  "intended_domain": "zencelades.com",
+  "models": {
+    "count": 20,
+    "manifest_sha256": "8ee987da30c728f44de031613d2c3fb98bc3232c8905ff3d1cca81e50135f67b",
+    "native_bytes": 53529284,
+    "glb_bytes": 15515576,
+    "round_trip": "All 20 GLBs imported; source component names and finite world bounds retained; native/GLB hashes match."
+  },
+  "checks": {
+    "bun_test": {"passed": 6, "failed": 0, "assertions": 78, "exit_code": 0},
+    "site_build": {"exit_code": 0, "warning": "Lazy SceneView chunk 983.00 kB / 239.55 kB gzip"},
+    "preview": {"origin": "http://127.0.0.1:59063", "matching_studio_files": 181, "legacy_routes": 6, "exit_code": 0},
+    "agents": "coroidinator validate and check: valid, no findings; no generated targets configured",
+    "pytest": "Not run at Andrew's request",
+    "browser": "Approval pending; not exercised"
+  },
+  "new_research": {"files": 3, "bytes": 17111525, "pages": 43, "verification": "size, SHA-256 and pdfinfo counts match", "storage": "local; scoped lakeFS pending"},
+  "access": {"old_root_status": 200, "old_login_status": 302, "redirect_origin_path": "https://authentik.telpher.stream/application/o/authorize/", "tls_verified": true, "authenticated_return": "not exercised", "new_domain": "DNS NXDOMAIN on maxipaxi; zone not visible to Telpher bootstrap token; no domain/provider mutation"},
+  "release_plan": {
+    "base_release": "11ee94ec670a48c1893696085a01368d05e3b882b64159d78b94a9b25d158c57",
+    "release_sha256": "e3c1dd0a59533b328ed4d57b51772653e9809b9f7fb8606241a17f0275696758",
+    "base_files": 300,
+    "release_files": 482,
+    "unchanged_files": 298,
+    "preserved_naming_gallery_files": 48,
+    "changed_prior_paths": ["site/dist/index.html", "site/dist/pricing/pricing.mjs"],
+    "activation": "Not performed; browser acceptance pending. Re-plan if live state changes."
+  },
+  "limits": ["Dimensioned layout; body surfaces and installed fitment approximate", "No physical load or occupancy approval", "No cockpit deployment or source PR/merge performed"]
+}

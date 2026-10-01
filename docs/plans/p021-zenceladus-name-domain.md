@@ -4,7 +4,9 @@ Andrew's prompt, captured September 30, 2026:
 
 > zenceladus.com change url project name etc
 
-Status: in progress. Actor: Codex. This steers P019; it does not cancel modeling.
+Status: superseded spelling by P023: Andrew owns **zencelades.com**. Use
+Zencelades for the public name. The original prompt above remains verbatim.
+Actor: Codex. This steers P019; it does not cancel modeling.
 
 1. Inspect live Telpher/domain state and domain availability in the existing
    account through declared APIs/recipes. No registration purchase inferred.

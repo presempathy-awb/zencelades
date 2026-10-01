@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "prompt": "P019/P020",
+  "storage": "Local preservation verified; scoped lakeFS publication pending. No ZIP generated.",
+  "files": [
+    {
+      "path": "source/research/p019-models/ram-2021-specifications.pdf",
+      "source_id": "ram-2021-specifications",
+      "bytes": 167903,
+      "sha256": "f1b43d5549aafb7053b168c18f0cf521c2c5b663dddd1cd397c34817f3a7e4da",
+      "pages": 13,
+      "source": "https://s3.amazonaws.com/chryslermedia.iconicweb.com/mediasite/specs/2021_RAM_2500_3500_HD_SPhm1sepjdo9eoujkapnjtrf1c2c.pdf",
+      "role": "Manufacturer specification; Mega Cab numeric dimensions on p10, cargo bed on p7."
+    },
+    {
+      "path": "source/research/p019-models/andersen-original-2022-manual.pdf",
+      "source_id": "andersen-original-2022-manual",
+      "bytes": 1811409,
+      "sha256": "52e8acb38cf17a293601ef68cafcf02c1138e924a24547f79ff30f4211c21d98",
+      "pages": 14,
+      "source": "https://parleys-diesel.sfo3.digitaloceanspaces.com/media-uploads/ITeIjpwUdmJCubeSwBKxBQRT24pMks4mrWBxKYd9.pdf",
+      "role": "Manufacturer-authored January 2022 manual, retailer mirror; standard pre-Gen-3 #3220 dimensions p5. Exact installed early revision unmeasured."
+    },
+    {
+      "path": "source/research/p019-models/andersen-gen3-manual.pdf",
+      "source_id": "andersen-gen3-manual",
+      "bytes": 15132213,
+      "sha256": "2290946eedb897a723216f2eb237efa2983cc2cacec0c53abb5d2f5d07565edb",
+      "pages": 16,
+      "source": "https://drive.google.com/file/d/1bi2G5-rqyHbEnxOiE7FcmM1HsykjNdrq/view",
+      "role": "January 2024 Gen 3 manual linked by manufacturer; comparison only, not Andrew's original Ultimate."
+    }
+  ]
+}

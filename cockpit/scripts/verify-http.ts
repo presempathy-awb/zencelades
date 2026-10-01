@@ -23,6 +23,21 @@ async function files(directory: string, prefix = ""): Promise<string[]> {
 }
 const entries = await files(root);
 const digest = (data: Uint8Array): string => createHash("sha256").update(data).digest("hex");
+// Reproduce the browser's shader-module burst: the old five-connection preview
+// backlog reset requests here and left a blank WebGL scene.
+const modules = entries.filter((path) => path.startsWith("studio-assets/") && path.endsWith(".js"));
+await Promise.all(
+  modules.map(async (path) => {
+    const response = await fetch(new URL(`/${path}`, origin), {
+      redirect: "error",
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!response.ok) throw new Error(`Concurrent module request failed: ${path}`);
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    if (digest(bytes) !== digest(await readFile(join(root, path))))
+      throw new Error(`Concurrent module bytes differ: ${path}`);
+  }),
+);
 // Read serially: integrity verification does not need to stress the local preview listener.
 for (const path of entries) {
   const response = await fetch(new URL(path === "index.html" ? "/" : `/${path}`, origin), {

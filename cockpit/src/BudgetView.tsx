@@ -1,4 +1,6 @@
 import { type JSX, useEffect, useState } from "react";
+import seed from "../../assets/seed-options.json";
+import { fundingSummary } from "./funding";
 import {
   baseline,
   dollars,
@@ -59,28 +61,70 @@ export function NumberField({
 export default function BudgetView({
   scenario,
   update,
+  onSelectOption,
 }: {
   scenario: Scenario;
   update: (next: Scenario) => boolean;
+  onSelectOption: (id: string) => void;
 }): JSX.Element {
   const option = selectedOption(scenario);
   const result = estimate(scenario);
+  const funding = fundingSummary(scenario);
+  const seedScope = option.id.startsWith("seed-");
   return (
     <section className="reading-panel budget-panel">
       <span className="eyebrow">CASH PLANNING · USD</span>
       <h2>{shortNames[option.id]}</h2>
       <p>
-        Editable allowances, with one set of rental assumptions across every support. Source
-        baseline: {baseline.as_of}; no prices are booked.
+        {seedScope
+          ? "$3,000 TOTAL DIY target. These are spending ceilings to compare with actual quotes; a balanced allocation does not prove procurement feasibility."
+          : "Historical unoccupied comparison; rental assumptions are shared across those options."}{" "}
+        Source register: {baseline.as_of}.
       </p>
       <div className="budget-total">
-        <span>Planning range</span>
+        <span>{seedScope ? "Allocated cash including reserve" : "Planning range"}</span>
         <strong>{range(result.total)}</strong>
         <small>
           Includes {scenario.settings.contingency}% contingency and{" "}
           {dollars(scenario.settings.taxAllowance)} tax allowance
         </small>
       </div>
+      <p aria-live="polite">
+        <strong>
+          {funding.overCap[1] > 0
+            ? `Above the $3,000 target by ${range(funding.overCap)}.`
+            : "Allocations fit the $3,000 target."}
+        </strong>{" "}
+        Unconfirmed product prices, permissions and donated resources remain open.
+      </p>
+      <h3>Who pays · separate from what it costs</h3>
+      <p>
+        Grant target $600–$3,000 (Andrew-supplied tier). Possible owner/fundraiser amounts do not
+        enlarge the total budget or count as confirmed cash. Enter net fundraising proceeds after
+        any fees and fulfillment costs.
+      </p>
+      {(
+        [
+          ["grantRequest", "Draft grant request · 0 or $600–$3,000", 3000],
+          ["ownerPossible", "Possible Andrew contribution · uncommitted", 1000000],
+          ["fundraiserTarget", "Possible net fundraiser proceeds · uncommitted", 1000000],
+          ["confirmed", "Confirmed cash available · total, not additional", 1000000],
+        ] as const
+      ).map(([key, label, max]) => (
+        <NumberField
+          key={key}
+          label={label}
+          value={scenario.funding[key]}
+          max={max}
+          onCommit={(value) =>
+            update({ ...scenario, funding: { ...scenario.funding, [key]: value } })
+          }
+        />
+      ))}
+      <p>
+        Gap if all proposed sources arrive: <strong>{range(funding.plannedGap)}</strong>. Still
+        unsecured against confirmed cash: <strong>{range(funding.unsecured)}</strong>.
+      </p>
       <h3>Line allowances</h3>
       <div className="table-scroll">
         <table>
@@ -149,10 +193,7 @@ export default function BudgetView({
             {baseline.options.map((candidate) => (
               <tr key={candidate.id} data-selected={candidate.id === option.id}>
                 <th scope="row">
-                  <button
-                    type="button"
-                    onClick={() => update({ ...scenario, selected: candidate.id })}
-                  >
+                  <button type="button" onClick={() => onSelectOption(candidate.id)}>
                     {candidate.name}
                   </button>
                 </th>
@@ -165,7 +206,7 @@ export default function BudgetView({
       </div>
       <h3>What the estimate assumes</h3>
       <ul className="assumptions">
-        {baseline.assumptions.map((text) => (
+        {(seedScope ? seed.assumptions : baseline.assumptions).map((text) => (
           <li key={text}>{text}</li>
         ))}
       </ul>

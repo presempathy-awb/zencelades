@@ -1,4 +1,49 @@
-# Enceladus Within status
+# Zencelades status
+
+P056 release work: both source repositories are public and the website's main
+router no longer requires login, at Andrew's explicit request. IP administration
+still returns 403 to an anonymous request. The candidate now has 28 generated
+model pairs, active truck deferral, three projector heads/covers on holder studies,
+an external owned hazer and verified P055 grant attachments. Fresh Bun checks:
+15 pass, 0 fail, 267 assertions; full site build passes. Browser acceptance,
+review, own PR merge and deployment are being recorded separately as they finish.
+Earlier numbered checkpoints below are historical.
+
+P024–P041 local update: the occupied DIY basket now has detachable lander legs,
+over-sphere webbing, aerial-rig, external-tripod and camera-mount views. The wood
+platform is removed. The ring uses Andrew's nominal six-foot
+input; the triangle uses a 1.8 m corner radius and exposes its 14.4 mm centerline
+overhang. Skin compression, seams, entry, deflation support and actual hardware
+are unresolved; this is not construction CAD. The studio contains 27 generated
+studies and defaults to $2,400 allocations plus $600 reserve, labor in-kind.
+[Basket and budget](docs/seed-occupied-options.md) ·
+[Prior engineering](docs/soft-sphere-prior-work.md).
+
+Five additional primary PDFs are preserved locally: 12,045,495 bytes / 128 pages,
+with exact hashes and inspection scope. The combined research batch is 14 PDFs /
+138,490,200 bytes; this update has no new lakeFS receipt. The production cockpit
+build and all 27 GLB reload checks pass. The complete Bun run passes 15 tests /
+5,649 assertions; the combined site build exits 0. Preview readback matches all
+198 studio files and six legacy routes. Earlier film-stub failures and its
+unused-variable build error were resolved by concurrent work; this chat did
+not modify that source. Browser acceptance and publication remain pending. Historical
+counts and results below describe earlier checkpoints, not the current baseline.
+
+P019/P020: 20 model studies are implemented locally, including the 2021 Ram
+2500 Laramie Mega Cab 4x4, factory receiver and original Andersen Ultimate.
+The 8 priced concepts and 9 additional mount studies are selectable; the 3
+original source GLBs remain unchanged. Manufacturer dimensions constrain the
+layout; body surfaces and unmeasured fitment remain approximate. Six Bun tests,
+20 GLB import/readback checks, the production build and all 181 studio file
+hashes pass. Browser acceptance and cockpit publication remain pending.
+[Model register](docs/truck-and-option-models.md).
+
+P023 corrects the public identity to **Zencelades / zencelades.com**. Andrew owns
+the domain; public DNS is not resolving and Telpher's Cloudflare token cannot
+see that zone. The existing site remains live and its forced-login endpoint
+redirects to Authentik. No new-domain route/provider has been activated and
+no full authenticated login-return test is claimed.
+[Domain and access transition](docs/zencelades-domain-transition.md).
 
 P018: v4 Fixed15 is safely extracted, fully catalogued and compared with v3.
 The original ZIP and nested v3 reference are verified in private B2. All 84

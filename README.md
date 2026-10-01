@@ -1,4 +1,19 @@
-# Enceladus Within / thatsnozorb
+# Zencelades
+
+Andrew owns **zencelades.com**, the intended primary address for **Zencelades**.
+Public DNS activation is pending verification; the earlier zenceladus.com
+lookup used the superseded spelling. The existing address below remains live
+during the transition. Historical Enceladus Within assets and thatsnozorb
+service/storage IDs retain their provenance. [Domain correction](docs/plans/p023-owned-zencelades-domain.md).
+
+[Truck and option models](docs/truck-and-option-models.md) covers the 2021 Ram
+2500 Laramie Mega Cab 4x4, factory receiver and original Andersen Ultimate,
+plus the original priced/support-concept set. The local studio now has 28 generated
+models and preserves the three original GLBs. Andrew's current
+[occupied basket and $3,000 DIY allocation](docs/seed-occupied-options.md) adds
+detachable lander legs, over-sphere webbing, aerial-rig and camera-mount studies, with
+[documented prior engineering](docs/soft-sphere-prior-work.md). Browser acceptance
+and cockpit publication remain pending.
 
 New package: [v4 Fixed15 intake and comparison](docs/v4-fixed15-understanding.md).
 The exact ZIP and 83 members are preserved separately; all 82 manifest hashes
@@ -10,15 +25,25 @@ explicitly unpriced; its browser acceptance and publication remain pending.
 
 New research: [truck mounts, aerial rigs and trees](https://thatsnozorb.muchadoaboutoneside.com/mounts/),
 [engineering and experience brief](docs/engineering-research.md), and
-[large-reference storage continuation](docs/research-storage.md). Six research
-PDFs / 109,333,180 bytes are verified locally; their scoped lakeFS upload awaits
+[large-reference storage continuation](docs/research-storage.md). Fourteen research
+PDFs / 138,490,200 bytes are verified locally; their scoped lakeFS upload awaits
 the two owner PRs' required review and deployment. The new site pages and brief
 downloads passed the approved browser check; [delivery evidence](docs/mount-delivery-verification.md)
 separates that live result from unfinished publisher/shared-stack integration.
 
-A project record, source-asset catalog and Much Ado web-module skeleton for Andrew's spherical art installation. Erebe supplies the hosting and preservation conventions. The current v3 design is unoccupied development; artist vision and approvals remain separate.
+A project record, source-asset catalog and Much Ado web-module skeleton for Andrew's spherical art installation. Erebe supplies the hosting and preservation conventions. The historical v3 design remains an unoccupied development reference; Andrew's current brief requires a person inside and a $3,000 total DIY build. Physical and event approvals remain unresolved.
 
-Live at https://thatsnozorb.muchadoaboutoneside.com/ with trusted HTTPS and no port: Tailnet sources and people sharing a freshly verified Tailnet device's public IP bypass login. Exact manual public IP entries also bypass login; other visitors use the restricted Authentik application. Only signed-in `awb` and `akadmin` can see or use IP management. See `docs/ip-access.md` for operation and current verification. The site includes all 132 individual downloads and the naming exploration. The inspected catalog includes verified immutable hesellsheshells lakeFS locators. The initial static service uses the existing Caddy binary while the shared Much Ado PG18/Pawthentik storage integration remains pending. Earlier route evidence is retained in `docs/site-access-verification.md`.
+Live at https://thatsnozorb.muchadoaboutoneside.com/ with trusted HTTPS and no port.
+P056 temporarily opens the site for grant review. The Gitea and GitHub repositories
+are public. Only signed-in `awb` and `akadmin` can use IP management; the application
+still enforces that check. [Public-access record](docs/public-grant-access.md)
+records the restore boundary. The previous Tailnet-or-Authentik policy is described
+in `docs/ip-access.md`. The site includes the individual downloads and naming
+exploration. The inspected catalog retains verified immutable hesellsheshells
+lakeFS locators. Shared Much Ado PG18/Pawthentik integration remains pending.
+
+Source: [Gitea](https://git.telpher.stream/telpher/zencelades) ·
+[GitHub mirror](https://github.com/presempathy-awb/zencelades).
 
 Start with `STATUS.md`, `docs/love-burn-research.md` and `docs/grant-draft.md`. The deep comparison in `docs/umesemu-lessons.md` maps Umesemu's provenance, creative review and release practices to this project's existing stack. The supplied design review and editable workbook are preserved under `source/uploads/`; the complete extracted release is under `deliveries/enceladus_v3/`. Those bytes remain ignored by Git and are inventoried in `assets/inventory.json` for individual lakeFS routing. The private shared conversation is excluded from public content.
 
@@ -59,6 +84,6 @@ records Andrew's instruction to preserve every new prompt in this chat, the prom
 ledger and five resumable plans for the remaining stack, recipe and grant work.
 Update the ledger and affected plan before substantive work on each new prompt.
 
-The current project name is provisional. The naming exploration lives at `site/naming/index.html` and is included by `just site-build` at `/naming/index.html`, linked from the project footer. It includes the archived 144-word roll, the current 264-word palette, 20 invented proposals and three sets of 40 actual generated names (three words, four words and multi-mesh descendants). The form independently chooses word count and blend strength, records every join, supports submitted seeds and water-play roots, and requests 40 names per roll. Eight scores use adjustable normalized weights, initially 50% Codex preference. Favorites, Andrew's creations, forgotten names, earlier rolls and score edits persist in browser storage and can be exported; this is not cross-device sync. Current optional research uses Brave, GitHub, npm and .com. The original eighteen-source receipts remain in the earlier report. It is published at https://thatsnozorb.muchadoaboutoneside.com/naming/index.html. No candidate is selected or locked by this report.
+Andrew has selected Zencelades; this is the historical naming exploration. The naming exploration lives at `site/naming/index.html` and is included by `just site-build` at `/naming/index.html`, linked from the project footer. It includes the archived 144-word roll, the current 264-word palette, 20 invented proposals and three sets of 40 actual generated names (three words, four words and multi-mesh descendants). The form independently chooses word count and blend strength, records every join, supports submitted seeds and water-play roots, and requests 40 names per roll. Eight scores use adjustable normalized weights, initially 50% Codex preference. Favorites, Andrew's creations, forgotten names, earlier rolls and score edits persist in browser storage and can be exported; this is not cross-device sync. Current optional research uses Brave, GitHub, npm and .com. The original eighteen-source receipts remain in the earlier report. It is published at https://thatsnozorb.muchadoaboutoneside.com/naming/index.html. This historical report predates Andrew's Zencelades selection.
 
 `site/rooms.json` and `site/dist/` match the existing Much Ado module contract. Registration and isolated PG18/broker settings are implemented in Much Ado's separate `feat/enceladus-module` lane. The live service observations, proposed scoped policy, PG18 confinement rules and deployment sequence are in `docs/stack-rollout.md`. The static site and owner-managed lakeFS import are live. Scoped application credentials, membership and the shared Much Ado release remain pending. No grant has been submitted. Further pytest work is paused at Andrew's request.

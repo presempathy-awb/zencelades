@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "prompt_ids": [
+    "P019",
+    "P020",
+    "P024",
+    "P028",
+    "P029",
+    "P030",
+    "P031",
+    "P032",
+    "P033",
+    "P034",
+    "P035",
+    "P036",
+    "P037",
+    "P038",
+    "P039",
+    "P040",
+    "P041"
+  ],
+  "status": "prepared_pending_scoped_publisher_and_model_upload_executor",
+  "repository": "thatsnozorb-assets",
+  "prefix": "imports/models/p041/",
+  "source_ref": "main",
+  "branch": null,
+  "commit": null,
+  "merge": false,
+  "principal": "thatsnozorb-publisher",
+  "credential_env": "LAKE_BROKER_THATSNOZORB_PUBLISHER_TOKEN",
+  "files": [
+    {
+      "path": "cockpit/public/studio-models/aerial-rig.babylon",
+      "bytes": 1747901,
+      "content_sha256": "fc8416b3b2c42f92a06cec22b0ae0ed62d11d9a1f9e85018946f9e57036063bd",
+      "lakefs_path": "imports/models/p041/aerial-rig.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/aerial-rig.glb",
+      "bytes": 472348,
+      "content_sha256": "4d2440ce35bba12f78f458eba3035dd5946a196e6e8f405049a9514333dc2dd6",
+      "lakefs_path": "imports/models/p041/aerial-rig.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/andersen-original.babylon",
+      "bytes": 340128,
+      "content_sha256": "e5575f0d93621bd3b27b1a9401fa995a4ab15b1653ff39ec187e8ddfd717404c",
+      "lakefs_path": "imports/models/p041/andersen-original.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/andersen-original.glb",
+      "bytes": 104188,
+      "content_sha256": "103c71a9347e62fcc95b9e4c0e80e02e6d9eb8a61df8aa199e74ff29373d97c1",
+      "lakefs_path": "imports/models/p041/andersen-original.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-aerial-rig.babylon",
+      "bytes": 1836675,
+      "content_sha256": "b7fb2bd31dba5dcba5bca4eac26e0a6b3ddc8eeb78ffe821723d1e66afc59634",
+      "lakefs_path": "imports/models/p041/basket-aerial-rig.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-aerial-rig.glb",
+      "bytes": 494612,
+      "content_sha256": "f48b380bac5fe2b3538a329857dba52874c4746e724a4c0ad365f9e777feec84",
+      "lakefs_path": "imports/models/p041/basket-aerial-rig.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-camera-arms.babylon",
+      "bytes": 1743033,
+      "content_sha256": "21dde3d18a6b11ee9fc62afe0a96b352c5ccca7d82a9d8a122308b208182e084",
+      "lakefs_path": "imports/models/p041/basket-camera-arms.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-camera-arms.glb",
+      "bytes": 470080,
+      "content_sha256": "bcc0174e7f4ac5e69b0274f5a52bd41d1320b2fa08555e57ef1fa548ce5282ed",
+      "lakefs_path": "imports/models/p041/basket-camera-arms.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-tripod.babylon",
+      "bytes": 1810236,
+      "content_sha256": "cc5611eb69c629cf57fe8874d25d7ab234939f23fe8ea92894f18dc54b1d4d8d",
+      "lakefs_path": "imports/models/p041/basket-tripod.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-tripod.glb",
+      "bytes": 481276,
+      "content_sha256": "b1ad7973a6c053cdd11eb528622a2b670e95eff7fc57a027e4a1be5efc8e4f6e",
+      "lakefs_path": "imports/models/p041/basket-tripod.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-webbing.babylon",
+      "bytes": 1781143,
+      "content_sha256": "1907b775b57f56bba38806f48c1975b8838f4d899aebb08995f63a81d86eeb16",
+      "lakefs_path": "imports/models/p041/basket-webbing.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/basket-webbing.glb",
+      "bytes": 468600,
+      "content_sha256": "b868b8ab3464c80237a91659ee6936fad69e61d41c4fa81be66de9d24031dc5d",
+      "lakefs_path": "imports/models/p041/basket-webbing.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/bed-crane.babylon",
+      "bytes": 3794469,
+      "content_sha256": "d07813e4a3025d3f94cf68ba71dd7b14d186f6330d294e4765a70ecf864ee784",
+      "lakefs_path": "imports/models/p041/bed-crane.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/bed-crane.glb",
+      "bytes": 1159052,
+      "content_sha256": "2d1af823c689945eb26e0f0b944037f30834b6ae02440a331514ae8cae762525",
+      "lakefs_path": "imports/models/p041/bed-crane.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/chassis-short.babylon",
+      "bytes": 5597009,
+      "content_sha256": "23d14b0ffd83e5b0a0617184c0ee1e10530357ec45edf14e379a46eb8836ab4e",
+      "lakefs_path": "imports/models/p041/chassis-short.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/chassis-short.glb",
+      "bytes": 1658428,
+      "content_sha256": "f459665824456d39ae01a2a42306e12f41436997d65972e5f491d35a65f62aeb",
+      "lakefs_path": "imports/models/p041/chassis-short.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/existing-hang.babylon",
+      "bytes": 1138813,
+      "content_sha256": "2be46678fd5b36154e48424fae1607daf6cdc00ce95c91f7abe32d8576a11c67",
+      "lakefs_path": "imports/models/p041/existing-hang.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/existing-hang.glb",
+      "bytes": 299828,
+      "content_sha256": "ce371a41d0cbf4bc10b44ffde59d7a76364c18d00bf9a26f3f5aeaf0d61d4d92",
+      "lakefs_path": "imports/models/p041/existing-hang.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/factory-receiver.babylon",
+      "bytes": 58761,
+      "content_sha256": "ca46fce1a592c6324fdf08826a67836d830ec51ef7b4703f4a67497ed8f11148",
+      "lakefs_path": "imports/models/p041/factory-receiver.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/factory-receiver.glb",
+      "bytes": 29808,
+      "content_sha256": "25fd8f432cb54f1e6e7643b897298317aec52ccedf24d3270e0ad3fbe1d93943",
+      "lakefs_path": "imports/models/p041/factory-receiver.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed-bed.babylon",
+      "bytes": 4906519,
+      "content_sha256": "be1ebbe66b8015da625e45d849faaac9742e8615ad6cee3a133a9bf2943ab061",
+      "lakefs_path": "imports/models/p041/fixed-bed.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed-bed.glb",
+      "bytes": 1454128,
+      "content_sha256": "f8b3cbc6e624680de4704aa5cf0c7868a3e430abf73d4a2ed07df921abc4e29a",
+      "lakefs_path": "imports/models/p041/fixed-bed.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed-cantilever.babylon",
+      "bytes": 5596935,
+      "content_sha256": "700376984a9dd05c7ef992b47b9b5509460810d79ad78016c09af94d39a78baf",
+      "lakefs_path": "imports/models/p041/fixed-cantilever.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed-cantilever.glb",
+      "bytes": 1658400,
+      "content_sha256": "f79544cab88cb9f380e6aa41f5942c6080fa4b34012ea7161e9c5709c348e091",
+      "lakefs_path": "imports/models/p041/fixed-cantilever.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed-pedestal.babylon",
+      "bytes": 1131486,
+      "content_sha256": "edfa38bb60b502a22caddf9c0555b7dc3d25f6312a3fb6490f1334881edb2211",
+      "lakefs_path": "imports/models/p041/fixed-pedestal.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed-pedestal.glb",
+      "bytes": 299956,
+      "content_sha256": "fd298a26a2c5d585bcc682630761971732f721a132fa65a5820d1346aeebcd46",
+      "lakefs_path": "imports/models/p041/fixed-pedestal.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed15-study.babylon",
+      "bytes": 5596365,
+      "content_sha256": "ede8b23e93a64243c746f0ba8c46698cdb34714dffcac8d08c65bc0c3790ff5a",
+      "lakefs_path": "imports/models/p041/fixed15-study.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/fixed15-study.glb",
+      "bytes": 1658504,
+      "content_sha256": "dc062979ff66f87e3f8dd8e1d3f323a51d9419968c5eb0ba06b090fe5d631c95",
+      "lakefs_path": "imports/models/p041/fixed15-study.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/ground-half.babylon",
+      "bytes": 1167112,
+      "content_sha256": "e557fc85964c4396a17e7a4342d2c901d175e1fc91787775b62a0c7db1404979",
+      "lakefs_path": "imports/models/p041/ground-half.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/ground-half.glb",
+      "bytes": 292872,
+      "content_sha256": "d3e0136298d793b9dac1a5c9110d70752c2949f96221aff30124b2ce0a533ef0",
+      "lakefs_path": "imports/models/p041/ground-half.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/ground-light.babylon",
+      "bytes": 835105,
+      "content_sha256": "3da2e15f0e262f641434848c203b065f08113bcd6e92bf53a387fbd1d2f98179",
+      "lakefs_path": "imports/models/p041/ground-light.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/ground-light.glb",
+      "bytes": 216028,
+      "content_sha256": "1ce9c0de6728114f1a9a04a8ef98d5bc9e142c318fec61b18c588b8ad8a5d088",
+      "lakefs_path": "imports/models/p041/ground-light.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/ground-sphere.babylon",
+      "bytes": 1133896,
+      "content_sha256": "22fbbe4d479ed36f75823003613e892646244bd4f439366faab4cd9709bd080c",
+      "lakefs_path": "imports/models/p041/ground-sphere.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/ground-sphere.glb",
+      "bytes": 300040,
+      "content_sha256": "649abb46cceca8278c6f89eec31414c9bee3481e6da696b0960fde79a76a22ab",
+      "lakefs_path": "imports/models/p041/ground-sphere.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/manifest.json",
+      "bytes": 18851,
+      "content_sha256": "3e977117d2d9d9d8cfe471161d4be6b64c077ce3841d5ccd939442435f1a856e",
+      "lakefs_path": "imports/models/p041/manifest.json"
+    },
+    {
+      "path": "cockpit/public/studio-models/occupied-cradle.babylon",
+      "bytes": 1359096,
+      "content_sha256": "f15f4cf05beafde354cf3c66a58d6778be15bedfc6200386e797de83df1c9b0c",
+      "lakefs_path": "imports/models/p041/occupied-cradle.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/occupied-cradle.glb",
+      "bytes": 357768,
+      "content_sha256": "9153ab10b5f97dff1778981f9b2b544ab9673928358f2c09c9e957a864f180e4",
+      "lakefs_path": "imports/models/p041/occupied-cradle.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/own-gantry.babylon",
+      "bytes": 1739329,
+      "content_sha256": "500e8f18a25024d912f806e55f88064673ebab675c8c57baccc023cfb951db1a",
+      "lakefs_path": "imports/models/p041/own-gantry.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/own-gantry.glb",
+      "bytes": 468508,
+      "content_sha256": "7cc702bd94900a821224c57c916e79b38431b86eab2d5b4ec4096a5503b95f66",
+      "lakefs_path": "imports/models/p041/own-gantry.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/ram-2021.babylon",
+      "bytes": 3759408,
+      "content_sha256": "4a1b69db7712afe2652b1018beffa2dca698b3c63c77ea702d859693dc1a25d5",
+      "lakefs_path": "imports/models/p041/ram-2021.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/ram-2021.glb",
+      "bytes": 1146196,
+      "content_sha256": "c254336ee787ffacfe92c7cef3f6aae6a8f9d8b0d5f3909554291c322dd1e6d0",
+      "lakefs_path": "imports/models/p041/ram-2021.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/receiver-crane.babylon",
+      "bytes": 3803131,
+      "content_sha256": "fcfb9dacaa29e6375628e4cf038ea53a548a724569c68e48a5e548cff0b0c98c",
+      "lakefs_path": "imports/models/p041/receiver-crane.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/receiver-crane.glb",
+      "bytes": 1162116,
+      "content_sha256": "e295dcbfc88891ddcdccaeec50de90f2f6fbe5123bc0faf976483d727936c484",
+      "lakefs_path": "imports/models/p041/receiver-crane.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/seed-surround.babylon",
+      "bytes": 976884,
+      "content_sha256": "0adc2034d0eb139207188ba30a9a3cc1117dc3e144e6c8a70e6240b5c1f29f96",
+      "lakefs_path": "imports/models/p041/seed-surround.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/seed-surround.glb",
+      "bytes": 261520,
+      "content_sha256": "8b336ced9acf53b124b92294d1ea4ebe097e7d2040b95109f850233dcc86b867",
+      "lakefs_path": "imports/models/p041/seed-surround.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/seed-zorb.babylon",
+      "bytes": 1706629,
+      "content_sha256": "aaf9957c0634e3c25a6337e9e694fd5384632e73bf704994ae46159bef52b1a4",
+      "lakefs_path": "imports/models/p041/seed-zorb.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/seed-zorb.glb",
+      "bytes": 456768,
+      "content_sha256": "54d1c8a70ea568cf80edb8ba4c7a9cb54f296eccccb74f67abc2630beae624f6",
+      "lakefs_path": "imports/models/p041/seed-zorb.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/trailer-portal.babylon",
+      "bytes": 1835962,
+      "content_sha256": "7a85c1fcbc1afb0d2e126a039330ef46c44dd50e23dfb124a436f7f64aa35947",
+      "lakefs_path": "imports/models/p041/trailer-portal.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/trailer-portal.glb",
+      "bytes": 513764,
+      "content_sha256": "7b5df0c9c54d634d7eb25c44d8ae9da615513f9d2ec2c00d5b59035761b2a108",
+      "lakefs_path": "imports/models/p041/trailer-portal.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/tree-highline.babylon",
+      "bytes": 2190944,
+      "content_sha256": "f4ddec06b376d15914ead6c3f6c9af7fe28c39a460a207947541699195958a9c",
+      "lakefs_path": "imports/models/p041/tree-highline.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/tree-highline.glb",
+      "bytes": 571788,
+      "content_sha256": "f25eeffb284dcf24076a5fcee81618e1952bb4e829c85631987ee9f7b4ee541b",
+      "lakefs_path": "imports/models/p041/tree-highline.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/tree-single.babylon",
+      "bytes": 1662254,
+      "content_sha256": "32382483a876bab809785d2a566dbf72e8b2f0956d84b57c2a6b218f79099f55",
+      "lakefs_path": "imports/models/p041/tree-single.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/tree-single.glb",
+      "bytes": 434900,
+      "content_sha256": "b52dd0b56ae4e7458c8bc5c35e878fa290c87d3a03fb88d3bfd8a951cb1fa535",
+      "lakefs_path": "imports/models/p041/tree-single.glb"
+    },
+    {
+      "path": "cockpit/public/studio-models/truck-portal.babylon",
+      "bytes": 5495259,
+      "content_sha256": "67b175ef82d85d5dfa0bd5f264a4550a151e2f9a8ecab16d8df22a845a53f63f",
+      "lakefs_path": "imports/models/p041/truck-portal.babylon"
+    },
+    {
+      "path": "cockpit/public/studio-models/truck-portal.glb",
+      "bytes": 1614724,
+      "content_sha256": "b190d759914071d0a8a4308dd58caee588637ff6c8d6f798eccefb36567d61c4",
+      "lakefs_path": "imports/models/p041/truck-portal.glb"
+    }
+  ],
+  "file_count": 55,
+  "total_bytes": 83269533,
+  "remote_verified": false,
+  "receipt_requirements": [
+    "Revalidate all hashes against the final build before upload.",
+    "Use a fresh ingest branch through the scoped publisher only.",
+    "Read all bytes back at the immutable commit and compare SHA-256.",
+    "Do not merge main, remove originals or place source ZIPs in this batch."
+  ],
+  "executor_note": "Existing research-upload rejects generated model paths by design. A bounded model publisher must preserve that boundary; this is a plan only."
+}

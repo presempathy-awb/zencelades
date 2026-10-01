@@ -5,6 +5,9 @@ const root = resolve(import.meta.dir, "../..");
 const output = resolve(root, "cockpit/public/studio-data");
 await mkdir(output, { recursive: true });
 const files = {
+  "assets/seed-sources.json": "seed.json",
+  "docs/seed-occupied-options.md": "seed-occupied-options.md",
+  "docs/soft-sphere-prior-work.md": "soft-sphere-prior-work.md",
   "assets/catalog.json": "catalog.json",
   "assets/v4-catalog.json": "v4-catalog.json",
   "assets/grant-sources.json": "grants.json",

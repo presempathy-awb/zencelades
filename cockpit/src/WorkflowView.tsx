@@ -8,11 +8,18 @@ import {
 } from "@xyflow/react";
 import { type JSX, useEffect, useMemo, useState } from "react";
 import "@xyflow/react/dist/style.css";
-import { type Scenario, workflow } from "./scenario";
+import { type Scenario, shortNames, workflow } from "./scenario";
 
 export default function WorkflowView({ scenario }: { scenario: Scenario }): JSX.Element {
-  const { selected: support, haze } = scenario;
-  const steps = useMemo(() => workflow({ selected: support, haze }), [support, haze]);
+  const {
+    selected: support,
+    haze,
+    settings: { capture },
+  } = scenario;
+  const steps = useMemo(
+    () => workflow({ selected: support, haze, settings: { capture } }),
+    [support, haze, capture],
+  );
   const initial = useMemo<Node[]>(
     () =>
       steps.map((step, index) => ({
@@ -40,7 +47,7 @@ export default function WorkflowView({ scenario }: { scenario: Scenario }): JSX.
     <section className="flow-panel" aria-label="Project workflow">
       <div className="pane-intro">
         <span className="eyebrow">FROM IDEA TO INSTALLATION</span>
-        <h2>A sequence of decisions</h2>
+        <h2>{shortNames[support]} · setup sequence</h2>
         <p>
           Select a step for its requirements. All steps are planned; this graph records no
           approvals.

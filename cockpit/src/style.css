@@ -325,6 +325,45 @@ small {
   max-width: 220px;
   font-size: 12px;
 }
+.model-evidence {
+  position: absolute;
+  top: 82px;
+  left: 24px;
+  max-width: min(26rem, calc(100% - 48px));
+  max-height: 45%;
+  overflow: auto;
+  background: #f4f8fa;
+  color: #254556;
+  border: 1px solid #9eb5c1;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+.model-evidence summary {
+  cursor: pointer;
+  min-height: 28px;
+}
+.model-evidence p {
+  margin: 8px 0;
+}
+.model-evidence ul {
+  padding-left: 18px;
+  margin: 8px 0;
+}
+.model-evidence a {
+  text-decoration: underline;
+}
+.model-download {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  background: #f4f8fa;
+  color: #254556;
+  border: 1px solid #9eb5c1;
+  border-radius: 4px;
+  font-size: 13px;
+}
 .inspector {
   background: #f7f9fa;
   border-left: 1px solid #beced7;

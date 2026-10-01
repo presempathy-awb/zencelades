@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "as_of": "2026-09-30",
+  "host": "maxipaxi",
+  "prompt_ids": [
+    "P024",
+    "P025",
+    "P026",
+    "P027",
+    "P028",
+    "P029",
+    "P030",
+    "P031",
+    "P032",
+    "P033",
+    "P034",
+    "P035",
+    "P036",
+    "P037",
+    "P038",
+    "P039",
+    "P040",
+    "P041"
+  ],
+  "models": {
+    "count": 27,
+    "manifest_sha256": "3e977117d2d9d9d8cfe471161d4be6b64c077ce3841d5ccd939442435f1a856e",
+    "planned_files": 55,
+    "planned_bytes": 83269533,
+    "native_bytes": 64744482,
+    "glb_bytes": 18506200
+  },
+  "checks": {
+    "targeted_bun": {
+      "passed": 12,
+      "failed": 0,
+      "assertions": 207,
+      "exit_code": 0,
+      "files": [
+        "funding.test.ts",
+        "models.test.ts",
+        "option-context.test.ts",
+        "scenario.test.ts",
+        "models/basket-model.test.ts"
+      ]
+    },
+    "full_bun": {
+      "passed": 15,
+      "failed": 0,
+      "assertions": 5649,
+      "exit_code": 0,
+      "scope": "All six current Bun test files, including concurrent film tests; film owner resolved its earlier failures."
+    },
+    "cockpit_build": {
+      "exit_code": 0,
+      "models_verified": 27,
+      "typescript": "passed",
+      "vite": "passed",
+      "warning": "Lazy SceneView chunk 984.27 kB / 239.23 kB gzip"
+    },
+    "latest_site_build": {
+      "exit_code": 0,
+      "source_downloads": 132,
+      "v4_downloads": 84,
+      "media_previews": 5
+    },
+    "research_local_plan": {
+      "exit_code": 0,
+      "files": 14,
+      "bytes": 138490200,
+      "endpoint": "https://example.invalid",
+      "scope": "Inert plan-only placeholder; apply=false, no request or remote branch"
+    },
+    "documents": "TOML, JSON, links and five new PDF hashes pass",
+    "diff_check": {
+      "exit_code": 0
+    },
+    "preview": {
+      "origin": "http://127.0.0.1:59063",
+      "matching_studio_files": 198,
+      "legacy_routes": 6,
+      "exit_code": 0,
+      "browser": "not exercised"
+    },
+    "browser": "Pending explicit control scope; not exercised",
+    "pytest": "Not run at Andrew's request"
+  },
+  "research_added": {
+    "files": 5,
+    "bytes": 12045495,
+    "pages": 128,
+    "source_register_entries": 24
+  },
+  "limits": [
+    "Concept geometry only; no sphere model, member specification, WLL, contact pressure, seam clearance or host approval",
+    "No new lakeFS upload, source PR/merge, cockpit deployment or domain cutover",
+    "Keep historical P019 verification separate; older release packets are stale for these revisions"
+  ],
+  "earlier_checks": {
+    "full_bun": {
+      "passed": 12,
+      "failed": 2,
+      "exit_code": 1,
+      "reason": "Concurrent untracked film/flight.ts was a placeholder returning zero positions at run time; preserved without edits."
+    },
+    "cockpit_build": {
+      "exit_code": 0,
+      "scope": "Completed before concurrent film changes; 25 GLB round trips, TypeScript and Vite",
+      "warning": "SceneView chunk 982.96 kB / 238.89 kB gzip"
+    },
+    "latest_site_build": {
+      "exit_code": 1,
+      "error": "TS6133 in concurrent src/film/flight.ts:30, unused key parameter; other owner's work preserved"
+    },
+    "preview": "Existing listener returns 200; latest assembled build not updated, so no new model HTTP or browser acceptance claimed"
+  },
+  "selection": "Same holder: landed with detachable legs or suspended from an aerial rig. Wooden platform removed; external triangle camera mount optional."
+}

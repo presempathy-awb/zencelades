@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "prompt_ids": [
+    "P051",
+    "P052",
+    "P053",
+    "P054"
+  ],
+  "prepared_on": "2026-10-01",
+  "status": "local_verified_remote_upload_pending",
+  "repository": "thatsnozorb-assets",
+  "prefix": "imports/grant-attachments/p053/",
+  "source_ref": "main",
+  "branch": null,
+  "commit": null,
+  "files": [
+    {
+      "path": "output/grant-3d/Form-Strategy.md",
+      "bytes": 6453,
+      "content_sha256": "d94cc9f3f276dd8a095fe35b4d7f280c07a7073b5a9b565eb4aee7a9c63592cc",
+      "lakefs_path": "imports/grant-attachments/p053/Form-Strategy.md"
+    },
+    {
+      "path": "output/grant-3d/README.md",
+      "bytes": 5542,
+      "content_sha256": "32d3ca8eb4a0524d5ea7821aee96f7aa1d00c2ebea62c6be1e47e8410c5c680d",
+      "lakefs_path": "imports/grant-attachments/p053/README.md"
+    },
+    {
+      "path": "output/grant-3d/SOURCE/grant_3d_models.py",
+      "bytes": 23388,
+      "content_sha256": "b9d2f827dbf58babf10551d938ba56942526c1bc7a9b2fcd9810a967f0a852bb",
+      "lakefs_path": "imports/grant-attachments/p053/SOURCE/grant_3d_models.py"
+    },
+    {
+      "path": "output/grant-3d/SOURCE/grant_3d_sheets.py",
+      "bytes": 11432,
+      "content_sha256": "7d5be5242787bb6e3ca3352193f8c66d36d5d2105d668c09217148815bfe57e4",
+      "lakefs_path": "imports/grant-attachments/p053/SOURCE/grant_3d_sheets.py"
+    },
+    {
+      "path": "output/grant-3d/SOURCE/verify_grant_3d.py",
+      "bytes": 2812,
+      "content_sha256": "340f87bd6c799c3b0984c5f5708320d945013080d615db5979d7274b17713d5e",
+      "lakefs_path": "imports/grant-attachments/p053/SOURCE/verify_grant_3d.py"
+    },
+    {
+      "path": "output/grant-3d/UPLOAD-PHOTOS/01-Concept.png",
+      "bytes": 2644535,
+      "content_sha256": "e3a967b07fad6666e21b48b8154d7c15eef9091c7aff5717e4c48bdd64cbb1c1",
+      "lakefs_path": "imports/grant-attachments/p053/UPLOAD-PHOTOS/01-Concept.png"
+    },
+    {
+      "path": "output/grant-3d/UPLOAD-PHOTOS/02-Lander-3D.png",
+      "bytes": 520695,
+      "content_sha256": "e9f30467090c75f0fb23383edb3b0c40a377a8dee286c7ced46207c27a72d128",
+      "lakefs_path": "imports/grant-attachments/p053/UPLOAD-PHOTOS/02-Lander-3D.png"
+    },
+    {
+      "path": "output/grant-3d/UPLOAD-PHOTOS/03-Plan-Elevation.png",
+      "bytes": 512359,
+      "content_sha256": "50d29855e0469a623f82820dcd25ce45e0b7b4039395fc6dd896ab7703b82f9a",
+      "lakefs_path": "imports/grant-attachments/p053/UPLOAD-PHOTOS/03-Plan-Elevation.png"
+    },
+    {
+      "path": "output/grant-3d/UPLOAD-PHOTOS/04-Frame-Details.png",
+      "bytes": 363761,
+      "content_sha256": "4ce3a35add38bb7f8ddcd5a572892803d17ae299725b6103c1307f70dbcf3a1d",
+      "lakefs_path": "imports/grant-attachments/p053/UPLOAD-PHOTOS/04-Frame-Details.png"
+    },
+    {
+      "path": "output/grant-3d/UPLOAD-PHOTOS/05-Suspension-3D.png",
+      "bytes": 593178,
+      "content_sha256": "0d85cf25e75c66ab975bba09ddb9339b1b0582063779d4c2cb2bd70548a05d4b",
+      "lakefs_path": "imports/grant-attachments/p053/UPLOAD-PHOTOS/05-Suspension-3D.png"
+    },
+    {
+      "path": "output/grant-3d/UPLOAD-PHOTOS/06-Size-Options.png",
+      "bytes": 416243,
+      "content_sha256": "9465397a517fbfd524e5f48a83a71418e00e18ca8bcea59def79d933d0325dd6",
+      "lakefs_path": "imports/grant-attachments/p053/UPLOAD-PHOTOS/06-Size-Options.png"
+    },
+    {
+      "path": "output/grant-3d/Zencelades-3D-Schematics.pdf",
+      "bytes": 761048,
+      "content_sha256": "24861e5dacc85dd95c67108eecb2d5c878b7d89f5352a05774185ab97efe3e71",
+      "lakefs_path": "imports/grant-attachments/p053/Zencelades-3D-Schematics.pdf"
+    },
+    {
+      "path": "output/grant-3d/Zencelades-Budget-DRAFT.pdf",
+      "bytes": 3458,
+      "content_sha256": "48cce578405263b9582d929f987dcb7620b72070e66c9b5632ee22625287d7fe",
+      "lakefs_path": "imports/grant-attachments/p053/Zencelades-Budget-DRAFT.pdf"
+    },
+    {
+      "path": "output/grant-3d/geometry.json",
+      "bytes": 29939,
+      "content_sha256": "8e5941ca0a35a8589deeeb68de6fc56f21b2131e2303b8b59574b81daaecb27f",
+      "lakefs_path": "imports/grant-attachments/p053/geometry.json"
+    },
+    {
+      "path": "output/grant-3d/verification.json",
+      "bytes": 998,
+      "content_sha256": "7b26d9d249958adc94c3908beec81532c8df60e6fc3ddbf4fd508a1525d0a454",
+      "lakefs_path": "imports/grant-attachments/p053/verification.json"
+    },
+    {
+      "path": "output/grant-3d/zencelades-2p5m-lander-iso.png",
+      "bytes": 2324526,
+      "content_sha256": "43f1c350153891b0563dbefa778b80514f7125d00b08f6080eea80255e387668",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-2p5m-lander-iso.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-2p5m-lander.blend",
+      "bytes": 303600,
+      "content_sha256": "e28fda31a0208c0182408d99ac4be26e6ff7ba29db47b02969be3ec6ff50929d",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-2p5m-lander.blend"
+    },
+    {
+      "path": "output/grant-3d/zencelades-2p5m-lander.glb",
+      "bytes": 651196,
+      "content_sha256": "fa75e5bf179fbb74b84fc3dd8011fb9d38d2df2181836e25755c9f8d583b87c9",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-2p5m-lander.glb"
+    },
+    {
+      "path": "output/grant-3d/zencelades-2p5m-suspended-iso.png",
+      "bytes": 2417459,
+      "content_sha256": "71e3cd1a9477edad06b43c4ae606e5e8af4ea8b0ec74ef180c5383176e01d27d",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-2p5m-suspended-iso.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-2p5m-suspended.blend",
+      "bytes": 316024,
+      "content_sha256": "74031a270a1b827396131e85072bffef76d37d94a41b2dd9d185f7b300dedde9",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-2p5m-suspended.blend"
+    },
+    {
+      "path": "output/grant-3d/zencelades-2p5m-suspended.glb",
+      "bytes": 717012,
+      "content_sha256": "ff9df3eb4eae993fc0ec449e16e890d8b0ed49fe2db12bd4e2dff6e81fca3540",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-2p5m-suspended.glb"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander-frame-iso.png",
+      "bytes": 2220964,
+      "content_sha256": "990e0d180c0795d3753b971aef21a323a354489cd93ea73c6daa2766a6529dde",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander-frame-iso.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander-frame-top.png",
+      "bytes": 2240972,
+      "content_sha256": "767e66deaaef68051672f49f1f385d8cf79fbc2a3f4250285ec006c4c12bf67c",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander-frame-top.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander-front.png",
+      "bytes": 1514107,
+      "content_sha256": "538afbb8a73bb78390155baaab1e91170d4050ac0ab38e2410d0bd56dbb0adb7",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander-front.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander-iso.png",
+      "bytes": 2323231,
+      "content_sha256": "7f41fbc33a1318a3c990d5d0c46909ab54d0922ea833e254ce1732cc374ff520",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander-iso.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander-side.png",
+      "bytes": 1460222,
+      "content_sha256": "975d96b77aaccb09c61f96ddaa59f83bae166afecf2f282ae6c5987d9dc675f1",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander-side.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander-top.png",
+      "bytes": 2249815,
+      "content_sha256": "1a1ff850b8897cf91bcecf09dc057ca09bcbe30f674a3e2f656f24d3f49f540e",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander-top.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander.blend",
+      "bytes": 310584,
+      "content_sha256": "f747981302c31a49195f4d915feede0943708d98b951ba7a615dc52434cd428f",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander.blend"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-lander.glb",
+      "bytes": 665452,
+      "content_sha256": "d4b3331807e806691a69c17175f2fa3a3d114c8dae1ab87b6a5d5f1988cfc972",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-lander.glb"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-suspended-front.png",
+      "bytes": 1555833,
+      "content_sha256": "0458757cf2795d659f71f7b2b3073a346067d84ecf0a1a3fa87b7451196ad47c",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-suspended-front.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-suspended-iso.png",
+      "bytes": 2430329,
+      "content_sha256": "9407512855260324f10bb1d41ff306c68642581308bbec9c0d6cf1fb1dbbf5ca",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-suspended-iso.png"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-suspended.blend",
+      "bytes": 321827,
+      "content_sha256": "4085106261a27d15209fdf7de3f05f0e462816be51a934974cd911c3cfd4491c",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-suspended.blend"
+    },
+    {
+      "path": "output/grant-3d/zencelades-3p0m-suspended.glb",
+      "bytes": 727016,
+      "content_sha256": "cafcdc840606b389235d975feb7c05f8158de96062b7492b066093507946ebe8",
+      "lakefs_path": "imports/grant-attachments/p053/zencelades-3p0m-suspended.glb"
+    }
+  ]
+}

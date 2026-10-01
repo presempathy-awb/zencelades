@@ -1,0 +1,50 @@
+{
+  "as_of": "2026-09-30",
+  "status": "$3,000 TOTAL DIY spending ceilings, not verified procurement prices or approved occupied designs",
+  "assumptions": [
+    "A person inside is essential. Seed surrounds and occupied zorbs are new concepts; earlier eight options remain unoccupied comparisons.",
+    "$3,000 TOTAL is the current DIY cap, with only unspecified slight flexibility. Grant, fundraising and owner money describe who pays; they do not enlarge the baseline. The quoted Seed Grant tier is user-supplied.",
+    "Dry land, stationary use, supervised operation, direct egress and no occupant suspension in either priced seed option. Exact model, ventilation, wind limits and event acceptance remain unresolved.",
+    "Amounts are spending ceilings to test against quotes, not found prices. Andrew has a pipe bender and denhac access; fabrication labor is in-kind. Odd Todd is a potential collaborator. Known stock, donor condition, tool capacity and agreed hours remain unresolved. No salvage discount is booked.",
+    "One common holder: six-foot seating loop and low triangle. Ground mode uses detachable lander legs; suspended mode uses webbing over the sphere and an aerial rig. The wood platform is removed. Camera arms can attach to the triangle. Ground-holder/leg materials share one allocation; optional rigging/rig and cameras remain unpriced.",
+    "LED lighting is included; projector ownership is unconfirmed, so projection and live capture are excluded from the seed core. No water, truck support, internal camera or occupied haze is included.",
+    "The occupied-zorb sphere ceiling includes delivery and tax. Contingency defaults to 25%, producing a $600 reserve on $2,400 of allocations. Extra tax, higher quotes or altered settings can exceed the cap and must be shown. Credits are for identified avoided costs, not hoped-for funding."
+  ],
+  "options": [
+    {
+      "id": "seed-surround",
+      "name": "Open-entry metal sphere surround",
+      "position": "Seed alternative · person stands on the ground",
+      "projectors": 0,
+      "description": "A roughly 3 m scenic spherical surround with an open entry and ventilated fabric panels. The person stands on the ground inside the artwork; the frame carries scenery only. This is an alternative to an inflatable zorb, pending Andrew's choice and site/structural review.",
+      "items": [
+        {"label":"Frame materials, joints and edge protection","low":250,"high":400,"basis":"Unquoted material ceiling; no member sizes or cut list approved."},
+        {"label":"DIY fabrication consumables","low":50,"high":150,"basis":"Existing pipe bender and potential denhac/Todd help; no commercial fabrication labor charge. Materials and time not yet committed."},
+        {"label":"Scenic panels and diffusion trials","low":150,"high":300,"basis":"Ventilated/open-entry surface; material, weather and fire requirements must be resolved."},
+        {"label":"LED light and simple participant control","low":150,"high":300,"basis":"Planning allowance for color/brightness interaction; no projector or computer purchase included."},
+        {"label":"Ground protection and wind restraint","low":100,"high":250,"basis":"Ceiling only; ballast/anchor type, quantity and site acceptance require review."},
+        {"label":"Electrical distribution and cable protection","low":100,"high":200,"basis":"Shared supply is unconfirmed; no generator purchase or rental included."},
+        {"label":"Review, permits and insurance allowance","low":200,"high":300,"basis":"Hard quote gap: donated review or coverage may be needed. This allocation does not guarantee the required approval or coverage."},
+        {"label":"Transport and operation supplies","low":100,"high":250,"basis":"Local/owned transport and volunteer operation assumed; no full paid crew or travel budget."},
+        {"label":"Freight and tax provision","low":100,"high":250,"basis":"Planning provision, not a calculated jurisdictional tax or delivery quote."}
+      ]
+    },
+    {
+      "id": "seed-zorb",
+      "name": "Common holder on detachable lander legs",
+      "position": "Keeps the inflatable · conditional on exact manufacturer",
+      "projectors": 0,
+      "description": "Andrew's low triangle and padded circular seating-loop concept under an occupied double-wall sphere, shown on ground feet. Fabrication at denhac, labor in-kind. The 3 m sphere and six-foot ring are nominal layout inputs; no donor, stationary-use approval, seam clearance or deflation support is verified. Over-sphere lifting webbing and external hosts are separate unpriced reference studies.",
+      "items": [
+        {"label":"Occupied sphere + blower, delivered and taxed","low":1200,"high":1200,"basis":"Procurement CEILING, not a found quote or approved product. Confirm model, occupancy, stationary use and total delivered cost before spending."},
+        {"label":"Common holder, detachable legs and joint materials","low":350,"high":350,"basis":"Ground allocation ceiling shared by triangle, seating loop and lander base; labor in-kind at denhac. Compare known remnants and a measured ring donor. No cut list, joint design, donor quote or promise this material ceiling is sufficient."},
+        {"label":"Padding, mats and contact protection","low":100,"high":100,"basis":"Ceiling pending the sphere's permitted contact geometry; no point loads on skin or entry obstruction."},
+        {"label":"LED light and simple participant control","low":150,"high":150,"basis":"Ceiling; external equipment, no projector purchase/hire and no occupied haze. Borrowed projection can be reconsidered after a real commitment."},
+        {"label":"Electrical and cable protection","low":100,"high":100,"basis":"Ceiling assumes approved shared power; generator hire is not included or reserved."},
+        {"label":"Transport and setup supplies","low":100,"high":100,"basis":"Existing transport and volunteer labor; no long-distance travel or paid crew."},
+        {"label":"Operation supplies and repairs","low":100,"high":100,"basis":"Ceiling; volunteer supervision must be staffed and agreed."},
+        {"label":"Review, permits and insurance provision","low":300,"high":300,"basis":"Unresolved required-cost ceiling. Seek donated review/eligible coverage; if actual requirements exceed this and the reserve, revise scope rather than treating the allowance as approval."}
+      ]
+    }
+  ]
+}

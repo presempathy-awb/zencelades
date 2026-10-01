@@ -1,5 +1,31 @@
 # P009 research storage: prepared publisher and upload evidence
 
+P036 update: **14 PDFs / 138,490,200 bytes** now pass the uploader's local
+path/size/hash validation in plan mode. Five new originals cover Fishpipe,
+TreePod, a six-foot trampoline comparison and a swivel technical notice:
+12,045,495 bytes / 128 pages. The
+[catalog](../assets/soft-sphere-research-catalog.json) records actual reading
+scope; a page count is not a claim of close inspection of every page. The
+validation used `https://example.invalid` and `ingest-basket-plan-only` as
+explicit inert placeholders with apply=false; no broker request or remote
+branch was created. The three earlier hardware rows now carry source IDs
+required by the uploader's progress metadata. No new upload receipt exists.
+
+The model plan must track the final generated model bytes; model and research
+uploads remain distinct, and the research uploader's source-path boundary is
+unchanged. The P019 count below is an earlier checkpoint.
+
+P019 update, September 30: the prepared research batch now contains **nine
+PDFs / 126,444,705 bytes**. Three added manufacturer documents are catalogued
+in [the model research register](../assets/model-research-catalog.json);
+their sizes, hashes and 43 PDF pages pass local verification. The earlier
+six-document evidence below remains historical. Remote publication is still
+unclaimed. Separately, [the model upload plan](../assets/model-upload-plan.json)
+records 41 generated GLB/native/manifest files, 69,058,035 bytes, for immutable
+lakeFS preservation through the scoped publisher. The existing research
+uploader deliberately does not accept those generated paths; its boundary is
+unchanged. Original ZIPs remain a separate B2 archive workflow.
+
 **P011 supersedes the preparation state below.** Andrew authorized delivery;
 hesellsheshells `feat/thatsnozorb-publisher` (#65) and Telpher
 `feat/thatsnozorb-publisher` (#554) are open with green CI and await required

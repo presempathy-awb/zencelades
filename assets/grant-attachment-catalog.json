@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "prompt_ids": [
+    "P047",
+    "P048",
+    "P049",
+    "P050"
+  ],
+  "prepared_on": "2026-10-01",
+  "status": "local_verified_remote_upload_pending",
+  "repository": "thatsnozorb-assets",
+  "prefix": "imports/grant-attachments/p050/",
+  "source_ref": "main",
+  "branch": null,
+  "commit": null,
+  "files": [
+    {
+      "path": "output/grant-attachments/README.md",
+      "bytes": 4612,
+      "content_sha256": "d3e083d4dcd6e4c766367882585203106bd1f462701af5dc5e134b95e81c2cc1",
+      "lakefs_path": "imports/grant-attachments/p050/README.md"
+    },
+    {
+      "path": "output/grant-attachments/schematic-inputs.json",
+      "bytes": 744,
+      "content_sha256": "482bd50ec4020bec894751fc81058683c75c0ceebfe2f8894b1511987f00970b",
+      "lakefs_path": "imports/grant-attachments/p050/schematic-inputs.json"
+    },
+    {
+      "path": "output/grant-attachments/zencelades-01-landed.png",
+      "bytes": 274606,
+      "content_sha256": "f00fc6ce201d78e27755a83f989bc5584222fe4a4965cf30443bd55c6b0f0482",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-01-landed.png",
+      "pixels": [
+        2200,
+        1467
+      ]
+    },
+    {
+      "path": "output/grant-attachments/zencelades-02-suspended.png",
+      "bytes": 310520,
+      "content_sha256": "efa43f49c641b7e8bca901a11a801147e4192bf66f8af99edda1f992355c2fd2",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-02-suspended.png",
+      "pixels": [
+        2200,
+        1467
+      ]
+    },
+    {
+      "path": "output/grant-attachments/zencelades-03-projection-and-overlay.png",
+      "bytes": 256710,
+      "content_sha256": "08815bad96617d01d7ad67718ec69a95ca1c82fbcf67b0e1b05bdeed4d7a595b",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-03-projection-and-overlay.png",
+      "pixels": [
+        2200,
+        1467
+      ]
+    },
+    {
+      "path": "output/grant-attachments/zencelades-04-interface-study.png",
+      "bytes": 269193,
+      "content_sha256": "72ff507d59336aba911d44bffd730b908eb333cf0965e8dd242b547adb5bbbd3",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-04-interface-study.png",
+      "pixels": [
+        2200,
+        1467
+      ]
+    },
+    {
+      "path": "output/grant-attachments/zencelades-05-budget-and-scope.png",
+      "bytes": 309778,
+      "content_sha256": "150ab2ba2ef7730ccf1e0e033dcd83c87290322acec48d1c799013c221136b70",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-05-budget-and-scope.png",
+      "pixels": [
+        2200,
+        1467
+      ]
+    },
+    {
+      "path": "output/grant-attachments/zencelades-concept-landed-v2.png",
+      "bytes": 2644535,
+      "content_sha256": "e3a967b07fad6666e21b48b8154d7c15eef9091c7aff5717e4c48bdd64cbb1c1",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-concept-landed-v2.png",
+      "pixels": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "path": "output/grant-attachments/zencelades-concept-suspended-v2.png",
+      "bytes": 2484979,
+      "content_sha256": "06052f3e0e3c75cf1afe8e52f9d4620bf4c2e856e41306138eac8b1b4d2be8ee",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-concept-suspended-v2.png",
+      "pixels": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "path": "output/grant-attachments/zencelades-grant-schematics.pdf",
+      "bytes": 8630431,
+      "content_sha256": "6ee5d6e2686d38d2da015aecd34bb50c30e61b8dc3324fe919ccb775d948717e",
+      "lakefs_path": "imports/grant-attachments/p050/zencelades-grant-schematics.pdf"
+    }
+  ]
+}

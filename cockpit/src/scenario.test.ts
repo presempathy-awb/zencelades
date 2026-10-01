@@ -1,8 +1,14 @@
 import { expect, test } from "bun:test";
 import { baseline, estimate, initialScenario, parseScenario, workflow } from "./scenario";
 
+test("deferred truck scenarios are refused without mutating the saved data", () => {
+  const saved = { ...initialScenario(), selected: "fixed-bed" };
+  expect(() => parseScenario(JSON.stringify(saved))).toThrow("stretch goal");
+  expect(saved.selected).toBe("fixed-bed");
+});
+
 test("real ground scenario includes two six-day rentals and keeps owned haze free", () => {
-  const plain = initialScenario();
+  const plain = { ...initialScenario(), selected: "ground-sphere" };
   expect(estimate(plain).rent).toBe(5940);
   expect(estimate(plain).total).toEqual([19300, 39675]);
   expect(estimate({ ...plain, haze: true })).toEqual(estimate(plain));
@@ -34,10 +40,21 @@ test("every layout derives its own rent; zero projector option ignores external 
   expect(estimate({ ...light, settings: { ...light.settings, capture: true } }).liveCapture).toBe(
     false,
   );
+  expect(
+    workflow({ ...light, settings: { ...light.settings, capture: true } }).some(
+      (step) => step.id === "capture",
+    ),
+  ).toBe(false);
+  const projection = { ...initialScenario(), selected: "ground-sphere" };
+  expect(
+    workflow({ ...projection, settings: { ...projection.settings, capture: true } }).some(
+      (step) => step.id === "capture",
+    ),
+  ).toBe(true);
 });
 
 test("line allowances survive export and excessive credit cannot create negative cash", () => {
-  const scenario = initialScenario();
+  const scenario = { ...initialScenario(), selected: "ground-sphere" };
   scenario.allowances[scenario.selected][0] = { low: 0, high: 0 };
   expect(estimate(scenario).total).toEqual([17425, 34050]);
   scenario.settings.credit = 1000000;

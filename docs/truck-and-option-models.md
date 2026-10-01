@@ -1,4 +1,4 @@
-# Zenceladus — truck and support model register
+# Zencelades — truck and support model register
 
 P019/P020, September 30, 2026. Andrew identifies a **2021 Ram 2500 Laramie
 Mega Cab 4x4**, **factory rear receiver** and **original Andersen Ultimate**.
@@ -119,6 +119,6 @@ implementation, six Bun tests pass (two geometry/datum and four scenario tests).
 No pytest or physical trial ran. Current build, GLB round-trip and browser
 results are recorded in P019's plan when performed; do not infer them here.
 
-Zenceladus is the requested public identity. Domain registration/TLS transition
-is tracked separately in P021. Historical assets and stable storage/service
+Zencelades is the corrected public identity. Andrew owns zencelades.com; its
+DNS/TLS/access transition is tracked in P023. Historical assets and stable storage/service
 identifiers retain their earlier names for provenance and compatibility.

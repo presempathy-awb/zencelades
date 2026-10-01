@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-09-30",
+  "prompt_ids": [
+    "P029",
+    "P030",
+    "P031",
+    "P032",
+    "P033",
+    "P034",
+    "P035",
+    "P036"
+  ],
+  "status": "local verified originals; lakeFS delivery pending scoped publisher",
+  "files": [
+    {
+      "path": "source/research/p029-soft-spheres/fishpipe-patent-US20110021279A1.pdf",
+      "bytes": 832413,
+      "content_sha256": "6ae506e6d991314c670428918ef52e9c93d30523e20a3925c46209711aba1234",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/fishpipe-patent-US20110021279A1.pdf",
+      "source_id": "S12",
+      "pages": 9,
+      "source_url": "https://patentimages.storage.googleapis.com/62/f5/54/3d739f6c76c6a9/US20110021279A1.pdf",
+      "inspection": "Description and Fig. 3 read; Fig. 3 visually inspected."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/treepod-cabana-lounger-manual.pdf",
+      "bytes": 3689583,
+      "content_sha256": "194302e16b46f5dd99a8ca735a35b86e79605e8424607d117cc6728ad897efb4",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/treepod-cabana-lounger-manual.pdf",
+      "source_id": "S16",
+      "pages": 48,
+      "source_url": "https://cdn.shopify.com/s/files/1/2514/7006/files/TreePod_Lounger_and_Cabana_Instruction_Manual.pdf?1824508597774143298=",
+      "inspection": "English assembly/use text read; not a visual inspection of every language page."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/treepod-adjustable-stand-manual.pdf",
+      "bytes": 2705579,
+      "content_sha256": "c66f0348ba61388f6c2658048d7289c89be4a9e503447d61b4b60c5191665ee9",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/treepod-adjustable-stand-manual.pdf",
+      "source_id": "S17",
+      "pages": 32,
+      "source_url": "https://cdn.shopify.com/s/files/1/2514/7006/files/TP_STAND-2-Instruction-Manual-EN-ES-FR-DE_11-21.pdf?5353764363760248676=",
+      "inspection": "Stand instructions reviewed as product-specific reference; no compatibility for this sphere."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/six-foot-trampoline-manual.pdf",
+      "bytes": 1974746,
+      "content_sha256": "e2068722ea4fd6d1778fa909ffe973b1e5f5f002d986c8a585fad84b399b5196",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/six-foot-trampoline-manual.pdf",
+      "source_id": "S21",
+      "pages": 25,
+      "source_url": "https://images.thdstatic.com/catalog/pdfImages/4b/4bfde4ff-839e-40bb-b52d-e19f43f49c8e.pdf",
+      "inspection": "Frame parts and assembly text read; unidentified comparison model, not Andrew's donor."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/petzl-swivel-open-notice.pdf",
+      "bytes": 2843174,
+      "content_sha256": "d66c2b1ec145c206e26baf4b257860d0d0e81f3e84c292f33449ff8983f60bbc",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/petzl-swivel-open-notice.pdf",
+      "source_id": "S22",
+      "pages": 14,
+      "source_url": "https://www.petzl.com/sfc/servlet.shepherd/version/download/068Tx00000IoRiqIAF",
+      "inspection": "English working-load, breaking-strength and compatibility text read; not a selected component."
+    }
+  ],
+  "file_count": 5,
+  "total_bytes": 12045495,
+  "total_pages": 128,
+  "remote_verified": false
+}

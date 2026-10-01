@@ -7,6 +7,7 @@ import json
 import math
 import shutil
 import subprocess
+from pathlib import Path
 from urllib.parse import quote
 
 from scripts.assets import ROOT, inventory, sha256, verify_release
@@ -30,6 +31,19 @@ def build() -> None:
         raise ValueError("Inventory differs from local assets")
     output = ROOT / "site/dist"
     output.mkdir(parents=True, exist_ok=True)
+    packet = ROOT / "deliveries/grant-3d-p055"
+    manifest = json.loads((packet / "catalog.json").read_text())
+    for entry in manifest["files"]:
+        relative = Path(entry["path"]).relative_to("output/grant-3d")
+        asset = packet / relative
+        if (
+            asset.stat().st_size != entry["bytes"]
+            or sha256(asset) != entry["content_sha256"]
+        ):
+            raise ValueError(f"Grant attachment integrity mismatch: {relative}")
+        target = output / "attachments" / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(asset, target)
     for entry in [*entries, *v4]:
         source = ROOT / entry["path"]
         destination = output / "downloads" / entry["path"]

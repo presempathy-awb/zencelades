@@ -1,14 +1,14 @@
 # Repository context only; no generated output ownership or forge is assumed.
 [meta]
 schema = "agents.core.v1"
-project = "zenceladus"
+project = "zencelades"
 generated = false
 
 [project]
-name = "zenceladus"
+name = "zencelades"
 stack = "python"
-description = "Zenceladus: the Enceladus Within artwork, preserved assets, grant research and 3D design studio. Legacy storage/service IDs remain thatsnozorb."
-phase = "v4 Fixed15 catalogued and archived in B2; React cockpit built locally; browser publication and scoped lakeFS delivery pending."
+description = "Zencelades: the Enceladus Within artwork, preserved assets, grant research and 3D design studio. Legacy storage/service IDs remain thatsnozorb."
+phase = "Common holder with detachable lander legs or aerial suspension; $3,000 allocation, 27 model studies and local build/readback checked. Browser acceptance, cockpit publication, owned-domain DNS/access transition and scoped lakeFS delivery pending."
 tags = ["enceladus", "love-burn", "projection", "asset-preservation"]
 
 [agents]
@@ -34,6 +34,10 @@ context_files = [
   "docs/naming-verification.md",
   "docs/cockpit.md",
   "docs/v4-fixed15-understanding.md",
+  "docs/truck-and-option-models.md",
+  "docs/seed-occupied-options.md",
+  "docs/soft-sphere-prior-work.md",
+  "docs/zencelades-domain-transition.md",
 ]
 
 [commands]

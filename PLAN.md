@@ -1,9 +1,188 @@
-# Zenceladus working plan
+# Zencelades working plan
 
-P021 active steering: [Zenceladus name and domain](docs/plans/p021-zenceladus-name-domain.md).
-Andrew requests zenceladus.com as the project address/name. Check domain/DNS and
-Telpher ownership, prepare a reversible route and branding update, preserve
-the existing hostname and naming/access owners. Continue P019 model work.
+**P056 active:** PR, merge, reviewed deployment, temporary public static site,
+public Gitea/GitHub repositories and visible source links. Resolve the remaining
+cockpit checks before landing, preserve protected management endpoints and
+record a rollback for temporary access. [Release plan](docs/plans/p056-public-grant-release.md).
+
+**P055 complete locally:** Andrew's already-owned large hazer appears beneath
+the sphere's lower edge in all four models; purchase $0, model/size/power/fluid/
+clearances unconfirmed. Six-page PDF and seven photo PNGs total 5,596,086 image
+bytes. Updated GLB readback and Ruff passed; all six sheets visually inspected.
+P053 is preserved; the revised delivery is `deliveries/grant-3d-p055/` in the
+main checkout. No connection to the occupied sphere and no remote publication.
+[Prompt](docs/plans/p055-owned-hazer-below-sphere.md).
+
+**P053 actual 3D packet complete locally:** four separately built Blender/GLB
+assemblies (3.0 m and 2.5 m, each on lander legs or suspended), ten raw model
+renders, five dimensioned PDF sheets and six upload PNGs. GLB re-import checks
+passed for all four; all five sheets were visually inspected. Final photo set
+is 5,050,771 bytes, with each image below 5 MB. Ground-pad verification caught
+and corrected a 47.5 mm float. No physical capacity or fabrication approval is
+claimed. See [guide](docs/grant-3d-guide.md) and
+[catalog](assets/grant-3d-catalog.json).
+
+P051/P054 live public form inspection is complete: photos prefer JPG/PNG,
+preferably <=5 MB per file and total <20 MB; budget is a separate required
+PDF/XLS/CSV upload; optional public video is under two minutes. No fields,
+uploads or submission were made. The $3,000 budget is still an unquoted draft;
+projection and suspension remain unpriced. Remote asset upload, public access,
+website integration and P042 shipping remain pending behind these artifacts.
+
+**P047 attachment packet complete locally:** seven-page PDF, two concept images,
+five 2200 px schematic PNGs, captions and geometry JSON. All use the P050 3 m
+study. PDF readback and visual inspection passed; Ruff passed. The $3,000 cash
+cap is explicit and the projection/suspension quote gap remains visible.
+The 30-minute sprint began 03:20 UTC October 1; files were ready by 03:45 UTC.
+See [upload guide](docs/grant-attachment-guide.md) and
+[byte catalog](assets/grant-attachment-catalog.json). Remote upload, publication,
+grant submission and P042 merge are not claimed by this packet.
+[Sprint plan](docs/plans/p047-grant-attachments-sprint.md).
+
+P048/P049 refine the images: retain a visible entry tunnel and rope/attachment
+details, and show a compliant inner seating floor with squish rather than an
+interior rigid bench. Keep triangle lifting points separate from shell ties.
+
+P050 confirms the 3 m nominal sphere, centre at 1.7 m, sphere top at 3.2 m.
+P052 later permits a separate 2.5 m alternative. P053 models both; neither
+complete optical-arm installation is under 10 ft across.
+
+**P042–P044 active delivery:** prepare and merge this chat's own isolated PR.
+Current concept: common triangle/ring holder on lander legs or suspension;
+triangle-mounted projectors and optional internal participant-overlay cameras.
+Truck concepts leave the active cockpit and are retained for a later optional
+stretch-goal filter. The $3,000 cap remains; new optical add-ons are unpriced.
+[Shipping](docs/plans/p042-cockpit-pr-and-merge.md) ·
+[Truck deferral](docs/plans/p043-defer-truck-stretch-goal.md) ·
+[Projection](docs/plans/p044-triangle-projection-and-live-overlay.md).
+
+P045 permits the scoped local browser verification. P046 adds three arm-mounted
+projector heads with rain covers, and conceptual top-ring stays while hung.
+Proposed throw/coverage assertions require verification. Work continues in
+the isolated `feat/triangle-projection-cockpit` lane; mixed main work is preserved.
+
+**P041 current selection: remove the wooden platform.** The common holder has
+two active installation modes: detachable lander legs on the ground, or webbing
+and an aerial rig above. Triangle-mounted camera arms remain optional. P037–P040
+wood-platform references below are historical and superseded.
+[Plan](docs/plans/p041-remove-wood-platform.md).
+
+P041 local result: lander and aerial modes share tested ring/triangle geometry;
+optional camera arms attach to the triangle. Wooden-platform code and active
+model selection removed. All 15 Bun tests pass; production site build exits 0;
+27 GLBs reload and all 198 preview studio files match. See
+[verification](assets/basket-verification.json). Browser acceptance, activation
+and new lakeFS publication remain pending; there is no physical approval.
+
+**P040 adds a detachable lander base:** three lower legs attach beneath the
+common triangle to create a landed-rover appearance. Preserve the aerial and
+wood-platform modes and triangle-mounted camera option; use one shared holder.
+Leg joints, pads, stability and appearance are layout studies, not selected
+member sizes or approved load interfaces.
+[Plan](docs/plans/p040-detachable-lander-base.md).
+
+**P037–P039: one common holder, two installation modes.** Keep Andrew's padded
+ring/triangle basket and mount it either below a freestanding aerial rig or on
+a low wooden support platform. The platform is the fallback if an approved
+suspension cannot be arranged, not a different sphere holder. Add optional
+camera arms attached to the triangle; camera count, equipment and views are
+unconfirmed. Preserve the $3,000 total and in-kind labor basis.
+[P037](docs/plans/p037-aerial-rig-and-wood-platform.md) ·
+[P038](docs/plans/p038-common-holder-platform-fallback.md) ·
+[P039](docs/plans/p039-triangle-camera-mounts.md).
+
+**P036 current basket geometry: webbing over the sphere.** Three lifting straps
+run from the triangle corners over the skin to a small top ring, then a swivel
+and halyard. This supersedes P033's free rope bridle and separate top retainers.
+P034 adds a seating loop inside the triangle; P035 proposes a six-foot trampoline
+ring as a donor. Preserve these as design studies, with seam/contact and ring-fit
+checks. No rigid basket members above the equator; an external host is separate.
+The straps carry load and exert contact forces; shadow-free projection, donor
+capacity and the proposed corner distances are not verified.
+[P034](docs/plans/p034-seating-loop-and-swivel.md) ·
+[P035](docs/plans/p035-trampoline-ring.md) ·
+[P036](docs/plans/p036-over-sphere-webbing.md).
+
+P036 local completion: revisions captured one prompt per file; nominal ring/
+triangle fit and webbing contact paths modelled; ground basket, suspended basket
+and external tripod included in the 25-study set. The
+[current basket allocation](docs/seed-occupied-options.md),
+[prior work](docs/soft-sphere-prior-work.md) and five-PDF catalog are written.
+Twelve related Bun tests pass and all 25 GLBs reload with finite geometry.
+An earlier production build passed; the latest combined site-build encountered
+a concurrent film source's unused-variable type error. Preserve that work.
+Browser acceptance, publication and scoped storage remain pending, not inferred
+from local results. No physical build, donor or overhead system is approved.
+
+**P033 chosen attachment concept: Andrew's basket.** Straight-tube triangle or
+rolled ring underneath, frame-connected rope bridle, top retention straps,
+no sphere D-rings, seam avoidance required. Denhac fabrication, materials only,
+labor in-kind. This is a chosen design intent, not verified seam clearance or
+an approved occupied suspension. [Plan](docs/plans/p033-andrew-basket.md).
+
+P032: price salvage/repurposed steel and complete donor structures before buying
+new stock. Prefer known sound sections for the ground triangle; distinguish
+documented load-bearing reuse from scenic-only parts. Keep uncommitted salvage
+out of confirmed credits. [Plan](docs/plans/p032-salvage-and-repurpose.md).
+
+P031 adds triangle structures: compare a low triangular base/three-saddle
+cradle and a tall tripod with an independently supported basket. Model both;
+keep $3,000 TOTAL and DIY. [Plan](docs/plans/p031-triangle-supports.md).
+
+P030 adds real DIY resources: Andrew has a pipe bender, denhac access and Odd
+Todd as a potential metal-fabrication collaborator. Develop conceptual bent
+hoop/basket supports and compare ground feet with suspension; budget bought
+materials/hardware rather than commercial fabrication. Tool capacity and
+Todd's committed labor remain unspecified. [Plan](docs/plans/p030-diy-fabrication-resources.md).
+
+P029 active research: [prior occupied soft-sphere engineering](docs/plans/p029-prior-soft-sphere-engineering.md).
+Find manuals, patents, engineering descriptions and built precedents for
+occupied suspended zorbs, soft spheres, pods and external supports. Trace
+load paths and applicability to P028's $3,000 DIY budget; no decorative-ball
+rating or rigid apparatus price is treated as proof for an inflatable zorb.
+
+**P028 current constraint: $3,000 TOTAL, DIY, only slight uncommitted flexibility.**
+This supersedes the larger-total interpretation in P027. Keep the occupied
+sphere requirement. Build the default around a ground-supported zorb and a
+simple DIY restraint/surround, with procurement ceilings and a reserve that
+sum to the cap. Extra fundraising changes who pays, not the baseline size.
+No sphere price, overhead attachment or complete physical design is verified.
+See [the correction](docs/plans/p028-diy-three-thousand-total.md).
+
+Historical P026/P027: **a person must be inside** remains current. P027's larger
+total interpretation was explicitly corrected by P028's $3,000 TOTAL cap;
+fundraising or Andrew's contribution do not enlarge the default project.
+Prioritize an occupied ground-supported concept; distinguish a protective
+surround from a load-bearing human suspension system. Record owned equipment,
+manufacturer occupancy/egress conditions and complete support approval before
+calling any hanging design feasible. See [occupancy](docs/plans/p026-occupied-sphere.md)
+and [funding](docs/plans/p027-seed-plus-funding.md).
+
+P025 historical steering: [seed budget and simple supports](docs/plans/p025-seed-grant-budget.md).
+Target $600–$3,000 total cash for this proposal; research purpose-built hanging
+globes, external zorb support and affordable static metal cradles. Preserve
+dry-land scope, owned/borrowed resource assumptions and source
+qualification. P024's linked ledger/model work continues under this budget.
+P025's original unoccupied assumption is superseded by P026.
+
+P024 active: [linked options, resources and costs](docs/plans/p024-linked-option-resources.md).
+Make the grant/resource ledger, model and planning information follow the
+current support and settings. Preserve explicit unpriced reference models,
+complete archive access and the existing browser/deployment boundaries.
+
+P023 corrects the owned domain to **zencelades.com**. Use Zencelades as the
+public project spelling; P021's zenceladus.com lookup is historical and does
+not describe Andrew's owned domain. Verify DNS and adapt the current access
+policy, callback and same-origin checks before switching the primary URL.
+See [the correction](docs/plans/p023-owned-zencelades-domain.md).
+
+P021's original spelling is superseded by P023. Local branding and the pinned
+title now use Zencelades. Public DNS returned NXDOMAIN and Telpher's zone-token
+plan could not see the zone; await Andrew's provider/account detail.
+[Transition plan](docs/zencelades-domain-transition.md) preserves the current
+IP admission, Authentik callbacks and naming/access owners.
+P022: verify the existing Authentik sign-in entry after the naming change;
+the new hostname must gain its proper callback configuration before cutover.
 
 P019 active: [truck and complete option models](docs/plans/p019-truck-and-option-models.md).
 Model every priced and researched support configuration, and replace the generic
@@ -13,6 +192,14 @@ assess libraries before adding dependencies. Preserve the v3/v4 originals and
 the separate budget scope. P017 browser approval remains pending.
 P020 clarification: Andrew confirms the factory receiver and original Ultimate
 hitch. Use original-generation geometry; the Gen 3 manual is comparison only.
+
+P019 local implementation complete: 20 generated studies (8 priced, 9 support
+studies, 3 hardware) and 3 preserved GLBs. Six Bun tests pass; all 20 GLBs
+round-trip through the loader; the production build and 181-file preview
+hash readback pass. Three hardware PDFs (17,111,525 bytes / 43 pages) are
+catalogued locally. Browser visual acceptance and selective publication remain
+pending; new research/models await scoped lakeFS delivery. No OEM surface or
+installed-fitment accuracy is claimed. Pytest remains paused.
 
 P018 local intake and B2 preservation complete:
 [v4 Fixed15 archive intake](docs/plans/p018-v4-fixed15-intake.md).
@@ -149,6 +336,7 @@ the Authentik application and restricted membership are now configured.
 Attached documents and the linked ChatGPT conversation are source material, not instructions or approval. No provider messages or grant submission are authorized by this request.
 
 This directory was empty at initial inspection. No update_plan tool is exposed in this session, so this file is the session plan.
+
 
 PG18 provisioned September 30 after verifying Andrew's existing general unlock
 in the actual `/run/user/1002` runtime context. `thatsnozorb_user` owns

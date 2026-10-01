@@ -31,6 +31,7 @@ import {
   shortNames,
 } from "./scenario";
 import { Button } from "./ui";
+import { chooseModel } from "./option-context";
 
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
@@ -52,12 +53,12 @@ function restore(): { scenario: Scenario; message: string } {
     };
   }
 }
-const icons = [Lightbulb, Layers, Circle, Truck, Columns3, Anchor, Truck, Columns3];
+const icons = [Circle, Circle, Lightbulb, Layers, Circle, Truck, Columns3, Anchor, Truck, Columns3];
 const tools = [
   { path: "/", title: "Model", icon: Box },
   { path: "/workflow", title: "Workflow", icon: Network },
   { path: "/budget", title: "Budget", icon: Calculator },
-  { path: "/research", title: "Research", icon: Library },
+  { path: "/research", title: "Grants & resources", icon: Library },
 ] as const;
 
 export default function App(): JSX.Element {
@@ -66,6 +67,7 @@ export default function App(): JSX.Element {
   const [message, setMessage] = useState(restored.message);
   const [note, setNote] = useState(scenario.note);
   const [inspector, setInspector] = useState(true);
+  const [referenceModel, setReferenceModel] = useState("scenario");
   const fileInput = useRef<HTMLInputElement>(null);
   const path = useRouterState({ select: (state) => state.location.pathname });
   const option = selectedOption(scenario);
@@ -73,6 +75,7 @@ export default function App(): JSX.Element {
   const update = (next: Scenario): boolean => {
     try {
       const checked = parseScenario(JSON.stringify(next));
+      if (checked.selected !== scenario.selected) setReferenceModel("scenario");
       setScenario(checked);
       try {
         localStorage.setItem(storageKey, JSON.stringify(checked));
@@ -87,6 +90,11 @@ export default function App(): JSX.Element {
       );
       return false;
     }
+  };
+  const selectModel = (id: string): void => {
+    const choice = chooseModel(scenario, id);
+    if (choice.scenario !== scenario && !update(choice.scenario)) return;
+    setReferenceModel(choice.reference);
   };
   const field = (
     key: keyof Omit<Settings, "capture">,
@@ -137,7 +145,7 @@ export default function App(): JSX.Element {
           <Orbit size={30} aria-hidden="true" />
           <div>
             <h1>
-              ZENCELADUS <span>STUDIO</span>
+              ZENCELADES <span>STUDIO</span>
             </h1>
             <small>Project studio</small>
           </div>
@@ -167,7 +175,10 @@ export default function App(): JSX.Element {
               try {
                 if (file.size > 50000) throw new Error("Scenario file exceeds 50 KB");
                 const imported = parseScenario(await file.text());
-                if (update(imported)) setNote(imported.note);
+                if (update(imported)) {
+                  setNote(imported.note);
+                  setReferenceModel("scenario");
+                }
               } catch (error) {
                 setMessage(
                   `Import refused; current scenario retained. ${error instanceof Error ? error.message : "Invalid file"}`,
@@ -217,7 +228,7 @@ export default function App(): JSX.Element {
                   key={item.id}
                   aria-pressed={scenario.selected === item.id}
                   className={scenario.selected === item.id ? "support selected" : "support"}
-                  onClick={() => update({ ...scenario, selected: item.id })}
+                  onClick={() => selectModel(item.id)}
                 >
                   <Icon size={21} aria-hidden="true" />
                   <span>
@@ -233,9 +244,9 @@ export default function App(): JSX.Element {
           <div className="rail-footer">
             <span className="eyebrow">CURRENT BASIS</span>
             <p>
-              Dry land. Empty shell.
-              <br />
-              Participant outside.
+              {option.id.startsWith("seed-")
+                ? "$3,000 TOTAL · DIY. Person inside. Ground-supported concept."
+                : "Historical empty-shell comparison. Does not yet meet the occupied brief."}
             </p>
             <a href="/mounts/">Mount research ↗</a>
           </div>
@@ -243,16 +254,21 @@ export default function App(): JSX.Element {
         <main id="workspace" className="workspace" tabIndex={-1}>
           <div className="scene-container" hidden={path !== "/"}>
             <Suspense fallback={<p className="loading">Loading the 3D workspace…</p>}>
-              <SceneView option={option} visible={path === "/"} />
+              <SceneView
+                option={option}
+                visible={path === "/"}
+                model={referenceModel}
+                onModelSelect={selectModel}
+              />
             </Suspense>
           </div>
           <Suspense fallback={<p className="loading">Loading workspace…</p>}>
             {path === "/workflow" ? (
               <WorkflowView scenario={scenario} />
             ) : path === "/budget" ? (
-              <BudgetView scenario={scenario} update={update} />
+              <BudgetView scenario={scenario} update={update} onSelectOption={selectModel} />
             ) : path === "/research" ? (
-              <ResearchView />
+              <ResearchView scenario={scenario} onModelSelect={selectModel} />
             ) : path !== "/" ? (
               <div className="reading-panel">
                 <h2>That workspace does not exist.</h2>
@@ -272,7 +288,10 @@ export default function App(): JSX.Element {
             </div>
             <p>{option.description}</p>
             <div className="estimate-block">
-              <span>Planning estimate</span>
+              <span>
+                {option.id.startsWith("seed-") ? "Spending allocations" : "Planning estimate"} ·{" "}
+                {shortNames[option.id]}
+              </span>
               <strong aria-live="polite">{range(result.total)}</strong>
               <small>
                 USD · {scenario.settings.contingency}% contingency · allowances, not a quote
@@ -303,12 +322,12 @@ export default function App(): JSX.Element {
                 />
                 <span>
                   Owned hazer
-                  <small>$0 acquisition · add haze during normal inflation</small>
+                  <small>$0 acquisition · external unit below the sphere</small>
                 </span>
               </label>
               <p className="muted small">
-                Adds an empty-shell optical trial to Workflow. Haze density and projection response
-                are not simulated.
+                External effect only. Unit dimensions, outlet clearances, power and fluid remain
+                unconfirmed; airflow is not simulated.
               </p>
               <label className="check-field">
                 <input
@@ -336,6 +355,19 @@ export default function App(): JSX.Element {
         )}
       </div>
       <footer className="notes-strip">
+        <nav aria-label="Project sources and attachments">
+          <a href="https://git.telpher.stream/telpher/zencelades" target="_blank" rel="noreferrer">
+            Gitea
+          </a>
+          {" · "}
+          <a href="https://github.com/presempathy-awb/zencelades" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          {" · "}
+          <a href="/attachments/Zencelades-3D-Schematics.pdf" target="_blank" rel="noreferrer">
+            3D schematics
+          </a>
+        </nav>
         <label htmlFor="design-note">
           <span>Design note</span>
           <small>{note.length}/4,000</small>

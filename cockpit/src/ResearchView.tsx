@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArrowUpRight, Search } from "lucide-react";
-import { type JSX, useState } from "react";
+import { type JSX, useMemo, useState } from "react";
+import { optionContext } from "./option-context";
+import ResourceLedger from "./ResourceLedger";
+import type { Scenario } from "./scenario";
 import { Button } from "./ui";
 
 interface Entry {
+  id: string;
   title: string;
   detail: string;
   href: string;
@@ -30,6 +34,7 @@ async function loadEntries(kind: string, signal: AbortSignal): Promise<Entry[]> 
       )
         throw new Error("Invalid catalog path");
       return {
+        id: item.path,
         title: item.path.split("/").at(-1) ?? item.path,
         detail: String(item.role ?? item.path),
         href: `/downloads/${item.path.split("/").map(encodeURIComponent).join("/")}`,
@@ -38,11 +43,13 @@ async function loadEntries(kind: string, signal: AbortSignal): Promise<Entry[]> 
     }
     if (
       typeof item.url !== "string" ||
+      typeof item.id !== "string" ||
       !/^https?:\/\//.test(item.url) ||
       typeof item.title !== "string"
     )
       throw new Error("Invalid source URL");
     return {
+      id: item.id,
       title: item.title,
       href: item.url,
       detail: String(item.evidence ?? item.note ?? ""),
@@ -50,28 +57,52 @@ async function loadEntries(kind: string, signal: AbortSignal): Promise<Entry[]> 
     };
   });
 }
-export default function ResearchView(): JSX.Element {
-  const [kind, setKind] = useState("grants");
+export default function ResearchView({
+  scenario,
+  onModelSelect,
+}: {
+  scenario: Scenario;
+  onModelSelect: (id: string) => void;
+}): JSX.Element {
+  const [kind, setKind] = useState("seed");
   const [search, setSearch] = useState("");
   const [limit, setLimit] = useState(24);
+  const [relatedOnly, setRelatedOnly] = useState(true);
+  const context = useMemo(() => optionContext(scenario), [scenario]);
+  const isArchive = kind === "catalog" || kind === "v4-catalog";
+  const relevance = useMemo(
+    () =>
+      new Map(
+        (kind === "seed" ? context.seed : kind === "grants" ? context.grants : context.mounts).map(
+          (entry) => [entry.id, entry.why],
+        ),
+      ),
+    [context, kind],
+  );
   const query = useQuery({
     queryKey: ["studio-sources", kind],
     queryFn: ({ signal }) => loadEntries(kind, signal),
     staleTime: Infinity,
     retry: 1,
   });
-  const filtered =
-    query.data?.filter((item) =>
-      `${item.title} ${item.detail} ${item.meta}`.toLowerCase().includes(search.toLowerCase()),
-    ) ?? [];
+  const filtered = useMemo(
+    () =>
+      query.data?.filter(
+        (item) =>
+          (isArchive || !relatedOnly || relevance.has(item.id)) &&
+          `${item.title} ${item.detail} ${item.meta}`.toLowerCase().includes(search.toLowerCase()),
+      ) ?? [],
+    [query.data, isArchive, relatedOnly, relevance, search],
+  );
   return (
     <section className="reading-panel">
-      <span className="eyebrow">PROJECT LIBRARY</span>
-      <h2>Research with a trail back to the source.</h2>
+      <ResourceLedger scenario={scenario} context={context} onModelSelect={onModelSelect} />
+      <h2>Sources for {context.label}</h2>
       <p>
         Grant guides, mount research, 132 original records and 84 v4 Fixed15 records. Each version
-        keeps its source and storage history. Source claims remain separate from physical or event
-        approval.
+        keeps its source and storage history. Grant and mount sources default to this option; the
+        full source collection remains available. Relevance is a project assessment, not a source
+        endorsement or physical/event approval.
       </p>
       <div className="library-controls">
         <label>
@@ -83,10 +114,25 @@ export default function ResearchView(): JSX.Element {
               setLimit(24);
             }}
           >
+            <option value="seed">Occupied seed concepts & support evidence</option>
             <option value="grants">Grant guides & art precedents</option>
             <option value="mounts">Mounts & rigging</option>
             <option value="catalog">Original v3 assets · 132 records</option>
             <option value="v4-catalog">v4 Fixed15 assets · 84 records</option>
+          </select>
+        </label>
+        <label>
+          Source scope
+          <select
+            value={isArchive ? "all" : relatedOnly ? "related" : "all"}
+            disabled={isArchive}
+            onChange={(event) => {
+              setRelatedOnly(event.target.value === "related");
+              setLimit(24);
+            }}
+          >
+            <option value="related">Related to {context.label}</option>
+            <option value="all">All sources in this collection</option>
           </select>
         </label>
         <label className="search">
@@ -102,6 +148,12 @@ export default function ResearchView(): JSX.Element {
           />
         </label>
       </div>
+      {isArchive && (
+        <p>
+          Archive collections retain every original file. They are historical references and do not
+          describe the selected option’s current scope or budget.
+        </p>
+      )}
       {kind === "v4-catalog" && (
         <p>
           Fixed 15 ft receiver-to-suspension reach, with four cameras retained in the supplied
@@ -119,7 +171,13 @@ export default function ResearchView(): JSX.Element {
       )}
       {!query.isPending && !query.isError && (
         <p className="muted">
-          {filtered.length} entries · source register checked September 30, 2026
+          {filtered.length} entries ·{" "}
+          {isArchive
+            ? "complete archive"
+            : relatedOnly
+              ? `related to ${context.label}`
+              : "all sources"}{" "}
+          · source register checked September 30, 2026
         </p>
       )}
       <ul className="source-list">
@@ -131,6 +189,11 @@ export default function ResearchView(): JSX.Element {
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
             <p>{item.detail}</p>
+            {!isArchive && relevance.has(item.id) && (
+              <p>
+                <strong>Why it relates:</strong> {relevance.get(item.id)}
+              </p>
+            )}
           </li>
         ))}
       </ul>

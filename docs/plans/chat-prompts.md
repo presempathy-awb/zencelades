@@ -7,6 +7,28 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+Latest records captured 2026-09-30 (session date):
+
+- P054: Andrew approves read-only inspection of the live Airtable form — [scope](p054-read-only-form-approval.md).
+
+- P053: “get some real 3d schematics done!!” — [actual-model drawings](p053-real-3d-schematics.md).
+- P052: “2.5 is fine too” — [both sphere sizes](p052-two-sphere-sizes.md).
+- P051: successful grant attachments and live Airtable fit — [form research](p051-form-attachment-fit.md).
+
+- P050: “Keep the 3 m study” — [confirmed nominal size and height](p050-three-metre-grant-study.md).
+
+- P048: “keep zorb entrance and rope mounts in the pic too please” — [entry and mounts](p048-visible-entry-and-rope-mounts.md).
+- P049: “also realistic seating area more squish” — [soft seating](p049-soft-seating.md).
+
+- P047: prioritize images and schematics for the grant form for 30 minutes — [prompt and sprint plan](p047-grant-attachments-sprint.md), captured 2026-10-01 03:20 UTC.
+
+- P045: Andrew approves the scoped local cockpit browser check — [approval](p045-browser-verification-approval.md).
+- P046: three heads, rain covers and outward arms with proposed throw geometry — [verbatim prompt and plan](p046-one-unit-projector-arms.md).
+
+- P042: “do your own pr and merge too” — [ship own cockpit PR](p042-cockpit-pr-and-merge.md); supplied other-owner PR status is context, not verified completion.
+- P043: “truck thing a stretch goal at this point lets keep it out for now but optional filter later” — [defer truck](p043-defer-truck-stretch-goal.md).
+- P044: “hangable and legs and triangle and projectors from tringles, maybe cameras inside to project the user overlaid on the moon too” — [projection and overlay](p044-triangle-projection-and-live-overlay.md).
+
 Andrew's request, verbatim:
 
 > save all the upcoming prompts in this chat as durable plans.
@@ -353,7 +375,134 @@ not a background listener or scheduled automation. It applies only to this chat.
 - Status: in progress. Continues P019 models with the new identity; no domain
   purchase or unrelated storage/repository migration is inferred.
 
-Append P022 for the next human prompt received in this chat. Do not pre-fill it.
+### P022 — Confirm Authentik continuity
+
+> the authentik login shoud still work right?
+
+- Plan: [Authen­tik continuity](p022-authentik-continuity.md).
+- Status: existing HTTPS root and Authentik redirect verified; login-return not
+  exercised. Preserve access during P021/P023.
+
+### P023 — Owned domain spelling
+
+- Andrew: “i have zencelades.com”
+- [Plan](p023-owned-zencelades-domain.md).
+- Corrects the target to zencelades.com, public name Zencelades; no purchase.
+- Status: verify DNS and preserve the existing Authentik/IP access policy.
+
+### P024 — Linked options and resources
+
+> grant resouce ledger and 3d models costs etc reat to chosen options
+
+- [Plan](p024-linked-option-resources.md).
+- Status: connect the grant/resource ledger and model to the shared selection
+  and current budget; keep unpriced references explicit.
+
+### P025 — Seed Grant budget and static support
+
+- Andrew requests $600–$3,000 for this round and research into hanging,
+  surrounding the zorb, top-mount strength and affordable static metal work.
+- [Verbatim prompt and plan](p025-seed-grant-budget.md).
+- Status: seed-scale planning supersedes the larger default budget; P024
+  linkage continues. No purchase or occupied lift is authorized.
+
+### P026 — Person inside required
+
+- Andrew: “yes definently someone in it”
+- [Plan](p026-occupied-sphere.md). Supersedes the empty-display assumption;
+  exact sphere and projector ownership remain unknown.
+
+### P027 — Possible additional funding
+
+- Andrew: “we coudl also do a lil fundraiser or something or i could invest myself so”
+- [Plan](p027-seed-plus-funding.md). Grant target $600–$3,000; optional
+  additional funding is not a commitment or an authorization to spend.
+
+### P028 — DIY total cash cap
+
+- Andrew: “no obviously we are gonna have to diy this we have 3000$ TOTTAL maybe some squish”
+- [Plan](p028-diy-three-thousand-total.md). $3,000 TOTAL, DIY, occupied;
+  supersedes the larger-project interpretation of P027.
+
+### P029 — Prior engineering of suspended soft spheres
+
+- [Verbatim prompt and plan](p029-prior-soft-sphere-engineering.md).
+- Status: research real occupied examples, load paths, manuals and drawings
+  under the $3,000 DIY cap, including alternatives to a conventional zorb.
+
+### P030 — Pipe bender, denhac and Odd Todd
+
+- [Verbatim prompt and plan](p030-diy-fabrication-resources.md).
+- Status: use the actual DIY resources in conceptual support design and the
+  $3,000 total materials budget; collaborator time is not yet committed.
+
+### P031 — Triangle support alternative
+
+- Andrew: “or maybe some sort of triangle structure even better”
+- [Plan](p031-triangle-supports.md). Compare low triangular base and tall
+  tripod concepts within the same DIY total-cash constraint.
+
+### P032 — Salvage and repurpose
+
+- [Verbatim prompt and plan](p032-salvage-and-repurpose.md).
+- Status: compare reclaimed known steel, offcuts and complete donor structures;
+  actual material is not yet owned or committed and cannot be credited as cash.
+
+### P033 — Andrew's basket attachment
+
+- [Verbatim prompt and plan](p033-andrew-basket.md).
+- Chosen concept: triangle or rolled-ring underside frame, bridle and top
+  retention straps; seam avoidance; no sphere D-rings; materials only/in-kind labor.
+
+### P034 — Seating loop and lyra swivel
+
+- Captured September 30, 2026; [verbatim prompt and plan](p034-seating-loop-and-swivel.md).
+- Add a circular seat inside the low triangle and collect the suspension above.
+- Status: incorporated into the current basket study; hardware remains schematic.
+
+### P035 — Six-foot trampoline ring
+
+- Captured September 30, 2026; [verbatim prompt and plan](p035-trampoline-ring.md).
+- Evaluate a salvaged ring, actual joints and fit; no free donor or capacity assumed.
+- Status: geometric fit and primary-source comparison in progress.
+
+### P036 — Webbing over the sphere
+
+- Captured September 30, 2026; [verbatim prompt and plan](p036-over-sphere-webbing.md).
+- Supersedes the free rope bridle: three loaded webbing legs contact the sphere,
+  collecting at a small top ring, swivel and halyard. Keep rigid basket below equator.
+- Status: model and documentation in progress; load, seam and optical checks unresolved.
+
+### P037 — Aerial rig and wooden platform arrangements
+
+- Captured September 30, 2026; [prompt and plan](p037-aerial-rig-and-wood-platform.md).
+- Status: adding two installation modes with explicit resource scope.
+
+### P038 — One common holder
+
+- Captured September 30, 2026; [prompt and plan](p038-common-holder-platform-fallback.md).
+- Clarifies P037: the ring/triangle holder stays the same; platform is the fallback.
+
+### P039 — Triangle-mounted cameras
+
+- Captured September 30, 2026; [prompt and plan](p039-triangle-camera-mounts.md).
+- Add an optional external camera-arm study; count, hardware, cost and optics unconfirmed.
+
+### P040 — Detachable landed-rover base
+
+- Captured September 30, 2026; [prompt and plan](p040-detachable-lander-base.md).
+- Add removable lower landing legs to the common holder; retain aerial and platform modes.
+- Status: modelling the shared interfaces and lander appearance; actual connections unengineered.
+
+### P041 — Remove wooden platform
+
+- Captured September 30, 2026; [prompt and plan](p041-remove-wood-platform.md).
+- Supersedes the platform option: ground mode is detachable lander legs only.
+- Status: implemented locally, with 27 model studies, 15 passing Bun tests,
+  successful production build and 198-file preview hash readback. Browser,
+  deployment and new storage publication remain pending.
+
+Append P042 for the next human prompt received in this chat. Do not pre-fill it.
 
 ## Queued continuation plans
 
@@ -473,6 +622,20 @@ engineering evidence, organizer decisions and an actual application.
   register. Submission and an award are separate outcomes requiring evidence.
 - Evidence: [research](../love-burn-research.md), [proposal](../grant-draft.md)
   and [technical asset review](../asset-understanding.md).
+
+### P055 - Owned large hazer below the sphere
+
+Andrew: "hazer below it have a biggun"
+
+Plan: [P055](p055-owned-hazer-below-sphere.md). Add an external ground hazer to
+the current 3D packet; $0 equipment acquisition, remaining inputs provisional.
+
+### P056 - Public grant-review release
+
+Andrew: "do a pr and merge, temporarily set website to public and link to the gitea and github (make public)"
+
+Plan: [P056](p056-public-grant-release.md). PR/merge/deploy, temporary public
+website and public repository visibility, with source links and rollback.
 
 ## Already completed work to preserve
 

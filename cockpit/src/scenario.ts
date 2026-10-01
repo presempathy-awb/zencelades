@@ -1,7 +1,16 @@
 import { calculate } from "../../site/pricing/calculation.mjs";
 import source from "../../site/pricing/options.json";
+import seed from "../../assets/seed-options.json";
+import type { FundingPlan } from "./funding";
 
-export const baseline = source;
+export const deferredSupports = new Set(["fixed-bed", "fixed-cantilever"]);
+export const baseline = {
+  ...source,
+  options: [
+    ...seed.options,
+    ...source.options.filter((option) => !deferredSupports.has(option.id)),
+  ],
+};
 export type Settings = typeof baseline.defaults;
 export type Option = (typeof baseline.options)[number];
 export type Allowance = { low: number; high: number };
@@ -12,8 +21,11 @@ export interface Scenario {
   allowances: Record<string, Allowance[]>;
   haze: boolean;
   note: string;
+  funding: FundingPlan;
 }
 export const shortNames: Record<string, string> = {
+  "seed-surround": "Occupied surround",
+  "seed-zorb": "Landed common holder",
   "ground-light": "Ground light",
   "ground-half": "Curved screen",
   "ground-sphere": "Ground cradle",
@@ -26,7 +38,7 @@ export const shortNames: Record<string, string> = {
 export function initialScenario(): Scenario {
   return {
     schema: 1,
-    selected: "ground-sphere",
+    selected: "seed-zorb",
     settings: { ...baseline.defaults },
     allowances: Object.fromEntries(
       baseline.options.map((option) => [
@@ -36,6 +48,7 @@ export function initialScenario(): Scenario {
     ),
     haze: false,
     note: "",
+    funding: { grantRequest: 3000, ownerPossible: 0, fundraiserTarget: 0, confirmed: 0 },
   };
 }
 export function selectedOption(scenario: Scenario): Option {
@@ -60,6 +73,8 @@ function record(value: unknown): Record<string, unknown> {
 export function parseScenario(text: string): Scenario {
   if (text.length > 50000) throw new Error("Scenario file exceeds 50 KB");
   const value = record(JSON.parse(text));
+  if (typeof value.selected === "string" && deferredSupports.has(value.selected))
+    throw new Error("Truck support is a deferred stretch goal; choose a ground or aerial study");
   if (
     value.schema !== 1 ||
     typeof value.selected !== "string" ||
@@ -75,7 +90,10 @@ export function parseScenario(text: string): Scenario {
   const incoming = record(value.allowances);
   const allowances: Record<string, Allowance[]> = {};
   for (const option of baseline.options) {
-    const items = incoming[option.id];
+    // Preserve older browser exports while adding the newly offered seed choices.
+    const items =
+      incoming[option.id] ??
+      (value.funding === undefined && option.id.startsWith("seed-") ? option.items : undefined);
     if (!Array.isArray(items) || items.length !== option.items.length)
       throw new Error(`Missing allowances for ${option.name}`);
     allowances[option.id] = items.map((item) => {
@@ -96,6 +114,17 @@ export function parseScenario(text: string): Scenario {
   const cleanedSettings = Object.fromEntries(
     Object.keys(baseline.defaults).map((key) => [key, settings[key]]),
   ) as Settings;
+  const fundingInput =
+    value.funding === undefined ? initialScenario().funding : record(value.funding);
+  const funding = {} as FundingPlan;
+  for (const key of ["grantRequest", "ownerPossible", "fundraiserTarget", "confirmed"] as const) {
+    const amount = fundingInput[key];
+    if (typeof amount !== "number" || !Number.isFinite(amount) || amount < 0 || amount > 1000000)
+      throw new Error(`Invalid funding amount: ${key}`);
+    if (key === "grantRequest" && amount !== 0 && (amount < 600 || amount > 3000))
+      throw new Error("Seed request must be $600–$3,000, or $0 for no request");
+    funding[key] = amount;
+  }
   const result: Scenario = {
     schema: 1,
     selected: value.selected,
@@ -103,6 +132,7 @@ export function parseScenario(text: string): Scenario {
     allowances,
     haze: value.haze,
     note: value.note,
+    funding,
   };
   estimate(result);
   return result;
@@ -119,16 +149,20 @@ export interface Step {
   title: string;
   detail: string;
 }
-export function workflow(scenario: Pick<Scenario, "selected" | "haze">): Step[] {
+export function workflow(
+  scenario: Pick<Scenario, "selected" | "haze"> & { settings: Pick<Settings, "capture"> },
+): Step[] {
   const support = baseline.options.find((option) => option.id === scenario.selected);
   if (!support) throw new Error("Unknown support option");
   const suspended = ["existing-hang", "fixed-cantilever", "own-gantry"].includes(support.id);
+  const occupied = support.id.startsWith("seed-");
   return [
     {
       id: "scope",
       title: "Define the experience",
-      detail:
-        "Dry land, empty sphere, night use. Participant stays outside. Record interaction and accessible viewing intent.",
+      detail: occupied
+        ? "A person inside on dry land, stationary and ground-supported. Resolve the exact entry/exit, ventilation, supervision and accessible participation before operation. No suspension or occupied haze."
+        : "Historical unoccupied comparison: dry land, empty sphere, night use. Participant stays outside; this option does not yet meet the current person-inside brief.",
     },
     {
       id: "support",
@@ -142,13 +176,23 @@ export function workflow(scenario: Pick<Scenario, "selected" | "haze">): Step[] 
         ? "Test shell material, throw, ambient light, seams and usable viewing angles. These projector positions are schematic; no coverage or lumen result is inferred."
         : "Test the chosen shell and LED diffusion. Projector hire and external capture are excluded.",
     },
+    ...(support.projectors > 0 && scenario.settings.capture
+      ? [
+          {
+            id: "capture",
+            title: "Set up external live capture",
+            detail:
+              "Test one outside camera, consent, sightlines and integration with the selected projection layout. No internal cameras or full-body reconstruction are included.",
+          },
+        ]
+      : []),
     ...(scenario.haze
       ? [
           {
             id: "haze",
-            title: "Owned hazer · empty-shell trial",
+            title: "Owned hazer · external placement",
             detail:
-              "Add haze partway through normal blower inflation. $0 acquisition; verify machine/fluid, chamber and shell compatibility, deposition and image quality. No occupied test is planned.",
+              "Large owned unit sits below the sphere's lower edge, with no inflation connection. $0 acquisition; confirm actual model, power, fluid, outlet clearances and weather protection before operation.",
           },
         ]
       : []),

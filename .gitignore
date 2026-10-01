@@ -1,5 +1,7 @@
 source/
 deliveries/
+/source
+/deliveries
 site/dist/
 site/asset-manifest.toml
 .venv/
@@ -13,3 +15,8 @@ assets/upload-staging.json
 cockpit/node_modules/
 cockpit/dist/
 cockpit/public/studio-data/
+cockpit/public/studio-models/
+output/grant-attachments/
+output/grant-3d/
+tmp/form-research/
+tmp/pdfs/

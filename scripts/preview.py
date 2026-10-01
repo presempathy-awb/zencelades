@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import socket
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote, urlsplit
@@ -22,11 +23,16 @@ class PreviewHandler(SimpleHTTPRequestHandler):
         super().end_headers()
 
 
+class PreviewServer(ThreadingHTTPServer):
+    # The stdlib's five-connection backlog drops concurrent shader downloads.
+    request_queue_size = socket.SOMAXCONN
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=0)
     args = parser.parse_args()
-    server = ThreadingHTTPServer(
+    server = PreviewServer(
         ("127.0.0.1", args.port),
         partial(PreviewHandler, directory=str(ROOT / "site/dist")),
     )

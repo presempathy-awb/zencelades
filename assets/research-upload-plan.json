@@ -63,10 +63,98 @@
       "source_id": "M04",
       "pages": 1,
       "source_url": "https://spitzlift.com/wp-content/uploads/2019/03/14-RECEIVER-HITCH-SPITZLIFT-CUT-SHEET.pdf"
+    },
+    {
+      "path": "source/research/p019-models/ram-2021-specifications.pdf",
+      "source_id": "ram-2021-specifications",
+      "bytes": 167903,
+      "content_sha256": "f1b43d5549aafb7053b168c18f0cf521c2c5b663dddd1cd397c34817f3a7e4da",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p019-models/ram-2021-specifications.pdf",
+      "pages": 13,
+      "source_url": "https://s3.amazonaws.com/chryslermedia.iconicweb.com/mediasite/specs/2021_RAM_2500_3500_HD_SPhm1sepjdo9eoujkapnjtrf1c2c.pdf",
+      "provenance": "Manufacturer specification; Mega Cab numeric dimensions on p10, cargo bed on p7."
+    },
+    {
+      "path": "source/research/p019-models/andersen-original-2022-manual.pdf",
+      "source_id": "andersen-original-2022-manual",
+      "bytes": 1811409,
+      "content_sha256": "52e8acb38cf17a293601ef68cafcf02c1138e924a24547f79ff30f4211c21d98",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p019-models/andersen-original-2022-manual.pdf",
+      "pages": 14,
+      "source_url": "https://parleys-diesel.sfo3.digitaloceanspaces.com/media-uploads/ITeIjpwUdmJCubeSwBKxBQRT24pMks4mrWBxKYd9.pdf",
+      "provenance": "Manufacturer-authored January 2022 manual, retailer mirror; standard pre-Gen-3 #3220 dimensions p5. Exact installed early revision unmeasured."
+    },
+    {
+      "path": "source/research/p019-models/andersen-gen3-manual.pdf",
+      "source_id": "andersen-gen3-manual",
+      "bytes": 15132213,
+      "content_sha256": "2290946eedb897a723216f2eb237efa2983cc2cacec0c53abb5d2f5d07565edb",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p019-models/andersen-gen3-manual.pdf",
+      "pages": 16,
+      "source_url": "https://drive.google.com/file/d/1bi2G5-rqyHbEnxOiE7FcmM1HsykjNdrq/view",
+      "provenance": "January 2024 Gen 3 manual linked by manufacturer; comparison only, not Andrew's original Ultimate."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/fishpipe-patent-US20110021279A1.pdf",
+      "bytes": 832413,
+      "content_sha256": "6ae506e6d991314c670428918ef52e9c93d30523e20a3925c46209711aba1234",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/fishpipe-patent-US20110021279A1.pdf",
+      "source_id": "S12",
+      "pages": 9,
+      "source_url": "https://patentimages.storage.googleapis.com/62/f5/54/3d739f6c76c6a9/US20110021279A1.pdf",
+      "inspection": "Description and Fig. 3 read; Fig. 3 visually inspected."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/treepod-cabana-lounger-manual.pdf",
+      "bytes": 3689583,
+      "content_sha256": "194302e16b46f5dd99a8ca735a35b86e79605e8424607d117cc6728ad897efb4",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/treepod-cabana-lounger-manual.pdf",
+      "source_id": "S16",
+      "pages": 48,
+      "source_url": "https://cdn.shopify.com/s/files/1/2514/7006/files/TreePod_Lounger_and_Cabana_Instruction_Manual.pdf?1824508597774143298=",
+      "inspection": "English assembly/use text read; not a visual inspection of every language page."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/treepod-adjustable-stand-manual.pdf",
+      "bytes": 2705579,
+      "content_sha256": "c66f0348ba61388f6c2658048d7289c89be4a9e503447d61b4b60c5191665ee9",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/treepod-adjustable-stand-manual.pdf",
+      "source_id": "S17",
+      "pages": 32,
+      "source_url": "https://cdn.shopify.com/s/files/1/2514/7006/files/TP_STAND-2-Instruction-Manual-EN-ES-FR-DE_11-21.pdf?5353764363760248676=",
+      "inspection": "Stand instructions reviewed as product-specific reference; no compatibility for this sphere."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/six-foot-trampoline-manual.pdf",
+      "bytes": 1974746,
+      "content_sha256": "e2068722ea4fd6d1778fa909ffe973b1e5f5f002d986c8a585fad84b399b5196",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/six-foot-trampoline-manual.pdf",
+      "source_id": "S21",
+      "pages": 25,
+      "source_url": "https://images.thdstatic.com/catalog/pdfImages/4b/4bfde4ff-839e-40bb-b52d-e19f43f49c8e.pdf",
+      "inspection": "Frame parts and assembly text read; unidentified comparison model, not Andrew's donor."
+    },
+    {
+      "path": "source/research/p029-soft-spheres/petzl-swivel-open-notice.pdf",
+      "bytes": 2843174,
+      "content_sha256": "d66c2b1ec145c206e26baf4b257860d0d0e81f3e84c292f33449ff8983f60bbc",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/p029-soft-spheres/petzl-swivel-open-notice.pdf",
+      "source_id": "S22",
+      "pages": 14,
+      "source_url": "https://www.petzl.com/sfc/servlet.shepherd/version/download/068Tx00000IoRiqIAF",
+      "inspection": "English working-load, breaking-strength and compatibility text read; not a selected component."
     }
   ],
-  "file_count": 6,
-  "total_bytes": 109333180,
+  "file_count": 14,
+  "total_bytes": 138490200,
   "remote_verified": false,
   "blockers": [
     "Required owner reviews and merges pending: hesellsheshells feat/thatsnozorb-publisher (#65) and Telpher feat/thatsnozorb-publisher (#554).",
@@ -88,7 +176,17 @@
   ],
   "prompt_ids": [
     "P009",
-    "P011"
+    "P011",
+    "P019",
+    "P020",
+    "P029",
+    "P030",
+    "P031",
+    "P032",
+    "P033",
+    "P034",
+    "P035",
+    "P036"
   ],
-  "updated_by_prompt": "P011"
+  "updated_by_prompt": "P036"
 }

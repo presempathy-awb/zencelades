@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "bun run prepare && vite --host 127.0.0.1",
     "prepare": "bun scripts/prepare.ts",
-    "build": "bun run prepare && tsc --noEmit && vite build",
+    "build": "bun run prepare && bun run verify:models && tsc --noEmit && vite build",
     "test": "bun test",
     "verify:http": "bun scripts/verify-http.ts",
+    "verify:models": "bun scripts/verify-models.ts",
     "format": "biome format --write src scripts vite.config.ts"
   },
   "dependencies": {
