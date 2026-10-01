@@ -23,8 +23,12 @@ No source prices or purchases were invented.
 Known occupied model choices update the parts configuration and depicted
 projector/camera counts; unrelated historical studies preserve it. A changed
 parts plan now changes the head count in common-holder views and their
-current-view GLB exports. Size, camera, host and independent-stand selections
-do not yet regenerate the model. Both this distinction and
+current-view GLB exports. Sphere-size parity is also published. Camera-count
+parity is now implemented and source-tested, pending browser acceptance and
+deployment: the selected zero, one or two witnesses follow the configurable
+holder into GLB exports. The fixed Love Burn study remains its two-phone
+baseline. Host and independent-stand selections do not yet regenerate the
+model. Both this distinction and
 temporary-save behavior are explained through keyboard/touch-accessible details.
 The existing scenario export/import retains the parts plan, validates incoming
 choices and preserves a baseline for earlier exports with no parts field.

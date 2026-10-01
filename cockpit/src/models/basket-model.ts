@@ -15,6 +15,7 @@ export const BASKET_MODEL_IDS = [
   "basket-live-overlay",
 ];
 export type ProjectorCount = 0 | 1 | 2 | 3;
+export type CameraCount = 0 | 1 | 2;
 export type SphereDiameter = 2.5 | 3;
 
 /** Nominal P035/P036 geometry; no tube, sling or hardware specification. */
@@ -83,6 +84,7 @@ export function basketGeometry(
   id: string,
   projectors?: ProjectorCount,
   diameter: SphereDiameter = 3,
+  cameras: CameraCount = 0,
 ): void {
   const layout = basketLayout(diameter);
   const suspended = [
@@ -188,30 +190,30 @@ export function basketGeometry(
     for (const x of [-0.29, 0.29])
       g.box(`hazer-ground-skid-${x}`, [0.09, 0.04, 0.64], [x, 0.02, 1.25], "#738797");
   }
-  if (id === "basket-live-overlay") {
+  for (let index = 0; index < cameras && id !== "basket-camera-arms"; index++) {
     const camera = g.box(
-      "inside-camera-witness-0",
+      `inside-camera-witness-${index}`,
       [0.12, 0.09, 0.08],
-      [0.65, 1.85, 0.15],
+      [index === 0 ? 0.65 : -0.65, layout.centreY + 0.15, 0.15],
       "#202e39",
     );
     camera.lookAt(new Vector3(0, layout.centreY, 0));
   }
-  if (id === "basket-camera-arms") {
-    const corner = layout.corners[0];
+  for (let index = 0; index < cameras && id === "basket-camera-arms"; index++) {
+    const corner = layout.corners[index];
     const camera: Point = [corner[0] * 1.13, 1.05, corner[2] * 1.13];
-    g.box("optional-camera-bracket-envelope", [0.16, 0.11, 0.16], corner, "#8a6743");
-    g.beam("optional-camera-arm-envelope", corner, camera, 0.03, "#586977");
-    g.box("optional-external-camera-witness", [0.2, 0.14, 0.14], camera, "#273d49");
+    g.box(`optional-camera-bracket-envelope-${index}`, [0.16, 0.11, 0.16], corner, "#8a6743");
+    g.beam(`optional-camera-arm-envelope-${index}`, corner, camera, 0.03, "#586977");
+    g.box(`optional-external-camera-witness-${index}`, [0.2, 0.14, 0.14], camera, "#273d49");
     g.beam(
-      "camera-view-direction-witness",
+      `camera-view-direction-witness-${index}`,
       camera,
       [camera[0] * 0.91, camera[1], camera[2] * 0.91],
       0.07,
       "#111c25",
     );
     g.tube(
-      "camera-cable-service-slack-study",
+      `camera-cable-service-slack-study-${index}`,
       [camera, [corner[0] + 0.2, 0.55, corner[2]], corner],
       0.005,
       "#20282c",

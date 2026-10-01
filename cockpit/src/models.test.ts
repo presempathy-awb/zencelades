@@ -61,6 +61,42 @@ test("sphere size changes shell, holder height and dimensions without scaling th
   }
 });
 
+test("selected camera counts reach every common holder without removing the ring", () => {
+  const engine = new NullEngine();
+  try {
+    for (const id of [
+      "basket-lander",
+      "basket-aerial-rig",
+      "basket-truck",
+      "basket-live-overlay",
+      "basket-camera-arms",
+    ]) {
+      for (const cameras of [0, 1, 2] as const) {
+        const scene = new Scene(engine);
+        try {
+          const built = buildModel(scene, id, 2, 2.5, cameras);
+          expect(
+            scene.meshes.filter(
+              (mesh) =>
+                mesh.name.startsWith("inside-camera-witness-") ||
+                mesh.name.startsWith("optional-external-camera-witness-"),
+            ),
+          ).toHaveLength(cameras);
+          expect(built.root.metadata.cameraCount).toBe(cameras);
+          expect(scene.getMeshByName("seat-loop-nominal-six-foot-unrated")).not.toBeNull();
+          expect(
+            scene.meshes.filter((mesh) => mesh.name.startsWith("low-triangle-side-")),
+          ).toHaveLength(3);
+        } finally {
+          scene.dispose();
+        }
+      }
+    }
+  } finally {
+    engine.dispose();
+  }
+});
+
 test("selected projector counts change holder heads, covers and stays without changing the frame", () => {
   const engine = new NullEngine();
   try {

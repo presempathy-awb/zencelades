@@ -278,6 +278,7 @@ export default function App(): JSX.Element {
                 model={referenceModel}
                 onModelSelect={selectModel}
                 projectors={scenario.parts.projectors}
+                cameras={scenario.parts.cameras}
                 diameter={scenario.parts.configuration.endsWith("25") ? 2.5 : 3}
                 onDiameterChange={(diameter) =>
                   update({

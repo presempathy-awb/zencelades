@@ -7,6 +7,7 @@ import {
   basketLayout,
   BASKET_MODEL_IDS,
   type ProjectorCount,
+  type CameraCount,
   type SphereDiameter,
 } from "./basket-model";
 
@@ -17,6 +18,7 @@ export function seedGeometry(
   id: string,
   projectors?: ProjectorCount,
   diameter: SphereDiameter = 3,
+  cameras?: CameraCount,
 ): void {
   const surround = id === "seed-surround";
   const hanging = id === "occupied-cradle";
@@ -84,7 +86,7 @@ export function seedGeometry(
       shell.rotation.y = Math.PI / 4;
     }
     g.mat("#a9cedb").alpha = 0.2;
-    if (basket) basketGeometry(scene, g, id, projectors, diameter);
+    if (basket) basketGeometry(scene, g, id, projectors, diameter, cameras);
     else {
       for (const x of [-1.15, 1.15])
         g.box(`external-restraint-envelope-${x}`, [0.22, 0.4, 2.3], [x, base + 0.2, 0]);

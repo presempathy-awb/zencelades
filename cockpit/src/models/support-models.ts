@@ -7,7 +7,12 @@ import { geometry, type Point } from "./geometry";
 import { andersen, receiver, truck } from "./truck-model";
 import { BED_FRONT, BED_REAR, MODEL_STUDIES, RAM, REAR_END } from "./model-spec";
 import { seedGeometry } from "./seed-models";
-import { BASKET_MODEL_IDS, type ProjectorCount, type SphereDiameter } from "./basket-model";
+import {
+  BASKET_MODEL_IDS,
+  type CameraCount,
+  type ProjectorCount,
+  type SphereDiameter,
+} from "./basket-model";
 
 export interface BuiltModel {
   root: TransformNode;
@@ -21,18 +26,21 @@ export function buildModel(
   id: string,
   projectorCount?: ProjectorCount,
   sphereDiameter: SphereDiameter = 3,
+  cameraCount?: CameraCount,
 ): BuiltModel {
   const study = MODEL_STUDIES.find((value) => value.id === id);
   if (!study) throw new Error(`Unknown model: ${id}`);
   const root = new TransformNode(`study-${id}`, scene),
     g = geometry(scene, root);
+  const cameras =
+    cameraCount ?? (["basket-live-overlay", "basket-camera-arms"].includes(id) ? 1 : 0);
   root.metadata = {
     ...study,
     units: "metres",
     axes: "Y up, truck nose -X; rear axle datum X=0",
     status: "layout reference; no capacity or fit approval",
     ...(projectorCount !== undefined && BASKET_MODEL_IDS.includes(id) ? { projectorCount } : {}),
-    ...(BASKET_MODEL_IDS.includes(id) ? { sphereDiameter } : {}),
+    ...(BASKET_MODEL_IDS.includes(id) ? { sphereDiameter, cameraCount: cameras } : {}),
   };
   const result: BuiltModel = { root, target: [0, 1.7, 0], radius: 11, dimensions: [] };
   if (id === "love-burn") {
@@ -42,6 +50,7 @@ export function buildModel(
       sphereDiameter: 2.5,
       projectorCount: 2,
       mounting: "stands",
+      cameraCount: 2,
     };
     for (const side of [-1, 1]) {
       // Proposal's standard-throw study: four metres from shell to lens.
@@ -84,7 +93,7 @@ export function buildModel(
     ].includes(id)
   ) {
     const diameter = BASKET_MODEL_IDS.includes(id) ? sphereDiameter : 3;
-    seedGeometry(scene, g, id, projectorCount, diameter);
+    seedGeometry(scene, g, id, projectorCount, diameter, cameras);
     result.radius = ["basket-tripod", "basket-aerial-rig"].includes(id)
       ? 13
       : ["basket-webbing", "occupied-cradle"].includes(id)

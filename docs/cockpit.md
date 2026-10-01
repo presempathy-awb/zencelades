@@ -40,8 +40,12 @@ which revision has actually reached the live site.
   projector choices, zero/one/two cameras, ring/host/projector alternatives,
   holder arms versus stands and optional equipment are explicit. Selecting a
   known occupied model updates its parts configuration and depicted head count;
-  unrelated historical studies preserve the parts plan. Changing procurement
-  choices does not resize/regenerate the 3D model. Shared parts appear once;
+  unrelated historical studies preserve the parts plan. Common-holder studies
+  follow selected sphere diameter, projector count and capture-camera count in
+  both the viewer and current GLB export. Camera-count wiring is source-tested
+  but not yet deployed; the fixed Love Burn proposal retains its two-phone
+  baseline. Host, stand and other procurement choices do not regenerate the
+  model. Shared parts appear once;
   unselected alternatives are excluded and listed as unresolved decisions.
   Unknown prices remain unquoted and prevent a complete total. Owned hazer/tool
   acquisition does not include operation or inspection. The view uses the public
