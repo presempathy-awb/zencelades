@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/film", "scripts/prepare-film.ts", "film.vite.config.ts"]
+  "include": ["src/film", "src/showtime", "scripts/prepare-film.ts", "film.vite.config.ts"]
 }

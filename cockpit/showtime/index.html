@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#030b14" />
+    <title>Showtime — Zencelades</title>
+  </head>
+  <body>
+    <main>
+      <header><a href="/enceladus-film.html">Zencelades</a><h1>Showtime</h1><span id="chapter">A world within</span></header>
+      <section id="stage" aria-label="Live Enceladus projection">
+        <canvas id="sphere" aria-label="Rotatable sphere showing Enceladus and a live human blend"></canvas>
+        <canvas id="flat" hidden aria-label="Flat projection output"></canvas>
+        <div id="intro"><p>A whole moon. A moving you.</p><button type="button" id="begin">Start the show</button><p>Moon, lander, jets and ocean in a continuous loop.</p></div>
+        <span id="view-hint">Drag to turn the sphere · scroll to zoom</span>
+      </section>
+      <section class="controls" aria-label="Show controls">
+        <div class="transport"><button type="button" id="play">Start the show</button><output id="clock">00:00 / 01:00</output><label class="timeline">Flight position<input id="seek" type="range" min="0" max="60" step="0.1" value="0" /></label><button type="button" id="view" aria-pressed="false">Flat projection</button><button type="button" id="fullscreen">Fullscreen</button></div>
+        <fieldset class="phases"><legend>Jump to a phase</legend><button type="button" data-time="3">Moon</button><button type="button" data-time="18">Ice</button><button type="button" data-time="23">Lander</button><button type="button" data-time="34">Jets</button><button type="button" data-time="42">Ocean</button><button type="button" data-time="53">Saturn</button></fieldset>
+        <div class="live-controls"><button type="button" id="camera">Start camera</button><button type="button" id="stop-camera" disabled>Stop camera</button><label class="file-input">Use a moving video<input id="upload" type="file" accept="video/*" /></label><label>Human blend<input id="blend" type="range" min="0" max="1" step="0.05" value="0.7" /></label><label><input id="fade" type="checkbox" checked /> Fade in & out</label><label><input id="mirror" type="checkbox" checked /> Mirror camera</label></div>
+        <div class="details-row"><label>Effects<input id="effects" type="range" min="0" max="1" step="0.05" value="0.65" /></label><label><input id="reference" type="checkbox" checked /> Reference portrait when camera is off</label><span id="input-state">Camera off · reference portrait</span></div>
+      </section>
+      <p id="status" role="status" aria-live="polite">Loading the moon…</p>
+      <footer><p>Your camera or chosen video stays in this browser. Start camera to put your movement on the moon; Stop camera releases it. No microphone or recording.</p><details><summary>Projection & source notes</summary><p>The sphere is an artistic preview of the wrap, not calibrated projector output or a 3D body scan. Camera backgrounds blend with you; a dark backdrop helps. Moon, lander, surface and ocean scenes mix original Babylon.js art with NASA Goddard visualizations, Cassini observations (NASA/JPL-Caltech/SSI) and Webb artwork (NASA/ESA/CSA, Leah Hustak/STScI). The ocean colors and lander landing are imagined. <a href="/enceladus-film.html">Film controls & full credits</a>.</p></details></footer>
+      <video id="live-video" muted playsinline hidden></video>
+      <canvas id="world" hidden></canvas>
+      <canvas id="composition" hidden></canvas>
+    </main>
+    <script type="module" src="/src/showtime/main.ts"></script>
+  </body>
+</html>

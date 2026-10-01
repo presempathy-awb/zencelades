@@ -5,6 +5,9 @@ seven inserts from the verified public Enceladus media collections. It preserves
 the active cockpit/modeling files and uses installed Babylon.js 9.26.1, Bun and
 Vite. No new package or paid generation service is needed.
 
+For the live sphere with an opt-in camera or a chosen local video, use the
+[Showtime guide](enceladus-showtime.md).
+
 ## The flight
 
 The camera approaches a fractured icy moon, descends to the south pole, follows
@@ -91,8 +94,9 @@ P=~/code/pres/make/thatsnozorb/cockpit
   --config film.vite.config.ts)
 ```
 
-Output is `cockpit/dist/film/enceladus-film.html` with its media and assets. This
-build is separate from the active main cockpit build and deployment.
+Output includes `cockpit/dist/film/enceladus-film.html` and
+`cockpit/dist/film/showtime/index.html` with their media and assets. This build
+is separate from the active main cockpit build and deployment.
 
 ## Export
 

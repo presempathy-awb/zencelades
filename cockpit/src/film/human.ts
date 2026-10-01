@@ -22,7 +22,7 @@ export function sampleHumanBlend(seconds: number): number {
 /** Paint a softly curved, translucent face/body projection over the moon imagery. */
 export function createHumanProjection(): {
   ready: Promise<void>;
-  draw: (ctx: CanvasRenderingContext2D, seconds: number) => void;
+  draw: (ctx: CanvasRenderingContext2D, seconds: number, opacity?: number) => void;
 } {
   const portrait = new Image();
   portrait.src = `/film-media/${HUMAN_PORTRAIT}`;
@@ -42,8 +42,8 @@ export function createHumanProjection(): {
   });
   return {
     ready,
-    draw: (ctx, seconds) => {
-      const alpha = sampleHumanBlend(seconds);
+    draw: (ctx, seconds, opacity = sampleHumanBlend(seconds)) => {
+      const alpha = Math.max(0, Math.min(1, opacity));
       if (!alpha || !portrait.complete || !portrait.naturalWidth) return;
       const size = ctx.canvas.height * 0.94;
       const x = (ctx.canvas.width - size) / 2;

@@ -5,6 +5,33 @@
   "engine": "Babylon.js 9.26.1",
   "entry_point": "cockpit/enceladus-film.html",
   "duration_seconds": 60,
+  "showtime": {
+    "entry_point": "cockpit/showtime/index.html",
+    "route": "/showtime",
+    "guide": "docs/enceladus-showtime.md",
+    "status": "source-built-local-route-verified-browser-pending",
+    "live_input": "Opt-in camera or locally selected moving video, composited in the browser",
+    "microphone": false,
+    "recording": false,
+    "upload": false,
+    "preview": "Babylon.js sphere with the composed moon and human imagery as a changing texture; flat projection view is also available",
+    "verification": {
+      "primary_bun_tests": { "pass": 26, "fail": 0 },
+      "showtime_bun_tests": { "pass": 7, "fail": 0 },
+      "isolated_film_bun_tests": { "pass": 13, "fail": 0 },
+      "clock_and_loop_regressions_observed_failing": true,
+      "typecheck": true,
+      "build": true,
+      "biome": true,
+      "local_http_route": true,
+      "source_review": "approved after clock, loop seam, phase pause and video reselection fixes",
+      "browser": false,
+      "moving_pixels_on_sphere": false,
+      "camera_hardware": false,
+      "frame_rate": false,
+      "public_deployment": false
+    }
+  },
   "requested_export": {
     "width": 1920,
     "height": 1080,
