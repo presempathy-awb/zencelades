@@ -1,0 +1,14 @@
+{
+  "name": "zencelades-cinema",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.4.2",
+  "scripts": {
+    "dev": "bun scripts/prepare-film.ts && vite --config film.vite.config.ts",
+    "build": "bun scripts/prepare-film.ts && tsc --project film.tsconfig.json --noEmit && vite build --config film.vite.config.ts",
+    "test": "bun test"
+  },
+  "dependencies": { "@babylonjs/core": "9.26.1" },
+  "devDependencies": { "@types/bun": "1.4.2", "@biomejs/biome": "2.5.13", "typescript": "7.0.2", "vite": "8.3.0" }
+}

@@ -1,5 +1,30 @@
 # Enceladus video library
 
+## Into the jets — new Babylon.js film source
+
+The `feat/enceladus-cinema` branch adds a dedicated 60-second cinematic player:
+orbital approach, tiger-stripe skim, a flight into the central geyser, plume
+ascent and retreat toward Saturn. Backlit vapor, ice crystals, luminous
+fissures, ring geometry, stars, bloom, grain, lens effects and NASA/Cassini
+crossfades form the mashup. The page has play/pause, seek, a jet shortcut,
+effect controls, captions and a 1080p WebM recording action.
+
+Source: [cinema entry](cockpit/enceladus-film.html), [film guide](docs/enceladus-cinema.md),
+and [provenance/status](assets/enceladus-cinema/catalog.json).
+The source passes tests, TypeScript and a dedicated build. **Browser/GPU
+verification and the actual movie export are pending scoped browser approval.**
+No new Babylon movie is claimed to be in lakeFS yet. The original library below
+retains its independently verified delivery status.
+
+This branch includes a minimal standalone Bun/Vite package using the same pinned
+Babylon.js version as the source checkout. Prepare the E01, E02 and E08 originals
+under `source/research/enceladus-videos/originals/` from their public links below
+or immutable lakeFS locators; the preparation script verifies their hashes.
+Then use the package's `dev`, `test` and `build` scripts in `cockpit`. The film
+opens at `/enceladus-film.html`; it starts paused. No accounts are required for
+local playback. The documentation also gives commands for the main source
+checkout on maxipaxi.
+
 **Delivered September 30, 2026:** 12 public original motion assets, one new surface
 experience film, two compatibility previews, a poster and four reusable caption
 layers. All 20 lakeFS objects / 215,391,322 bytes passed immutable

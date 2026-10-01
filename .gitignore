@@ -1,0 +1,4 @@
+source/
+cockpit/node_modules/
+cockpit/dist/
+.remember/

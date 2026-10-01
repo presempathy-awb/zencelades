@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "title": "Into the jets",
+  "status": "source-built-browser-recording-pending",
+  "engine": "Babylon.js 9.26.1",
+  "entry_point": "cockpit/enceladus-film.html",
+  "duration_seconds": 60,
+  "requested_export": { "width": 1920, "height": 1080, "fps": 30, "audio": false, "format": "WebM" },
+  "source_collection": "assets/enceladus-videos/catalog.json",
+  "source_lakefs_commit": "50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3",
+  "sources": [
+    { "id": "E02", "start": 11, "end": 17, "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab" },
+    { "id": "E01", "start": 29, "end": 34, "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab" },
+    { "id": "E08", "start": 48, "end": 52, "credit": "NASA/JPL-Caltech/Space Science Institute", "notes": "500 by 300 original, enlarged and looped" }
+  ],
+  "interpretation": "An artistic procedural surface flight mixed with public NASA animation and Cassini observations. Standard flat video of a spatially rendered scene; not VR or a measured surface reconstruction.",
+  "paid_generation_used": false,
+  "exports": [],
+  "verification": { "bun_tests": { "pass": 14, "fail": 0 }, "typecheck": true, "build": true, "biome": true, "browser": false, "gpu_render": false, "export": false, "lakefs_readback": false }
+}

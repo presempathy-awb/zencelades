@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071018" />
+    <title>Into the jets — Zencelades</title>
+  </head>
+  <body>
+    <main>
+      <header><a href="/">Zencelades</a><span>A sixty-second voyage · Babylon.js</span></header>
+      <section class="theater" aria-label="Enceladus film">
+        <canvas id="world" aria-hidden="true"></canvas>
+        <canvas id="film" aria-label="3D cinematic flight over Enceladus and through its ice jets"></canvas>
+        <div id="opening"><p>Saturn’s moon. An ocean beneath the ice.</p><h1>Into the jets.</h1><p>A flight through an imagined Enceladus, threaded with NASA imagery.</p><button id="begin">Begin the voyage ↗</button></div>
+      </section>
+      <section class="transport" aria-label="Film controls">
+        <div class="play-row"><button id="play">Play</button><output id="time">00:00 / 01:00</output><label class="timeline">Seek through the flight<input id="seek" type="range" min="0" max="60" step="0.1" value="0" /></label><button id="record">Save 60s film</button><button id="fullscreen">Fullscreen</button></div>
+        <div class="settings"><label>Lens & plume effects<input id="effects" type="range" min="0" max="1" step="0.05" value="0.7" /></label><label><input id="footage" type="checkbox" checked /> NASA / Cassini inserts</label><label><input id="titles" type="checkbox" checked /> Film captions</label><button id="jet">Jump into the jets</button></div>
+      </section>
+      <p id="status" role="status" aria-live="polite">Loading the ice world…</p>
+      <footer><p>Procedural surface flight is an artistic interpretation, with exaggerated plume visibility and compressed distances. Silent by design.</p><details><summary>Film credits & source notes</summary><p>3D scene and edit: Zencelades / Babylon.js. NASA visualizations: NASA’s Goddard Space Flight Center Conceptual Image Lab. Cassini observations: NASA/JPL-Caltech/Space Science Institute. Public NASA media; no included music. <a href="https://svs.gsfc.nasa.gov/20384/">Geyser visualizations</a> · <a href="https://science.nasa.gov/resource/enceladus-plume-movie-2/">Cassini plume</a> · <a href="https://svs.gsfc.nasa.gov/help/">NASA reuse policy</a>.</p></details></footer>
+    </main>
+    <script type="module" src="/src/film/main.ts"></script>
+  </body>
+</html>
