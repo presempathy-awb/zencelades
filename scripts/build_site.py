@@ -31,7 +31,7 @@ def build() -> None:
         raise ValueError("Inventory differs from local assets")
     output = ROOT / "site/dist"
     output.mkdir(parents=True, exist_ok=True)
-    packet = ROOT / "deliveries/grant-3d-p055"
+    packet = ROOT / "deliveries/grant-3d-p059"
     manifest = json.loads((packet / "catalog.json").read_text())
     for entry in manifest["files"]:
         relative = Path(entry["path"]).relative_to("output/grant-3d")
@@ -90,6 +90,7 @@ def build() -> None:
     shutil.copytree(ROOT / "site/pricing", output / "pricing", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/grants", output / "grants", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/mounts", output / "mounts", dirs_exist_ok=True)
+    shutil.copytree(ROOT / "site/models", output / "models", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/showtime", output / "showtime", dirs_exist_ok=True)
     pitch = ROOT / "source/uploads/zencelades-pitch.mp4"
     if pitch.exists():
@@ -199,9 +200,36 @@ def build() -> None:
     (output / "catalog").mkdir(exist_ok=True)
     (output / "catalog/index.html").write_text(template)
     shutil.copytree(ROOT / "cockpit/dist", output, dirs_exist_ok=True)
+    teaser = (ROOT / "site/models/teaser.html").read_text()
+    for page in (output / "index.html", output / "mounts/index.html"):
+        content = page.read_text()
+        if 'id="current-models"' not in content:
+            content = content.replace(
+                "</head>",
+                '<link rel="stylesheet" href="/models/gallery.css"></head>',
+                1,
+            )
+            content = content.replace("<body>", "<body>" + teaser, 1)
+            page.write_text(content)
     shutil.copyfile(ROOT / "assets/inventory.json", output / "asset-inventory.json")
     shutil.copyfile(ROOT / "assets/catalog.json", output / "asset-catalog.json")
     shutil.copyfile(ROOT / "assets/v4-catalog.json", output / "v4-asset-catalog.json")
+    # Match Much Ado's content-versioned downloads to the verified packet bytes.
+    for page in (
+        output / "index.html",
+        output / "mounts/index.html",
+        output / "models/index.html",
+    ):
+        content = page.read_text()
+        versioned = content
+        for entry in manifest["files"]:
+            relative = Path(entry["path"]).relative_to("output/grant-3d")
+            url = "/attachments/" + quote(relative.as_posix())
+            versioned = versioned.replace(
+                f'"{url}"', f'"{url}?v={entry["content_sha256"]}"'
+            )
+        if versioned != content:
+            page.write_text(versioned)
     print(
         f"Built {output}: {len(entries)} original + {len(v4)} v4 byte-verified downloads and {len(previews)} media previews"
     )

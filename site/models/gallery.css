@@ -1,0 +1,12 @@
+.model-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,28rem),1fr));gap:2.5rem 2rem;margin-block:2rem}
+.model-gallery img{width:100%;height:auto;display:block;background:#f7f8fa}
+.model-gallery figcaption a{display:inline-flex;align-items:center;min-height:3rem}
+.model-actions{display:flex;flex-wrap:wrap;gap:1rem;max-width:none}
+.model-teaser{box-sizing:border-box;background:#102536;color:#eef7fa;padding:1.5rem clamp(1.25rem,5vw,5rem);font:1rem/1.5 "Avenir Next",Avenir,Helvetica,sans-serif;border-bottom:1px solid #496578}
+.model-teaser strong{display:block;font-size:1.5rem;margin-bottom:.5rem}
+.model-teaser p{margin:.5rem 0;max-width:75ch}
+.model-teaser a{color:#87e3e9;display:inline-flex;align-items:center;min-height:3rem;text-underline-offset:.2em}
+.model-teaser a:focus-visible{outline:3px solid #87e3e9;outline-offset:4px}
+.model-teaser-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1rem;max-width:72rem}
+.model-teaser-images a{display:block}
+.model-teaser-images img{display:block;width:100%;height:auto;background:#f7f8fa}

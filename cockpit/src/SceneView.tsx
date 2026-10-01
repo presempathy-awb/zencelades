@@ -164,6 +164,18 @@ export default function SceneView({
     camera.alpha = preset === "rear" ? 0 : -Math.PI / 2;
     camera.beta = preset === "top" ? 0.05 : Math.PI / 2;
   };
+  const zoom = (factor: number): void => {
+    const camera = cameraRef.current;
+    if (!camera) return;
+    camera.radius = Math.min(
+      camera.upperRadiusLimit ?? 55,
+      Math.max(camera.lowerRadiusLimit ?? 0.15, camera.radius * factor),
+    );
+  };
+  const rotate = (direction: number): void => {
+    const camera = cameraRef.current;
+    if (camera) camera.alpha += direction * (Math.PI / 6);
+  };
   return (
     <section className="scene" aria-label="3D scene">
       <canvas
@@ -192,8 +204,9 @@ export default function SceneView({
           </ul>
         )}
         <p>
-          Optical arms, three heads and rain canopies are unpriced studies, beyond the $3,000 LED
-          allocation.
+          Choose one, two or three projector heads. The three-head drawings show an expanded option;
+          fewer heads can deliberately cover selected viewing sides. Equipment and rain covers still
+          need quotes within the $3,000 total.
         </p>
         <p>
           Owned hazer purchase is $0. Exact unit dimensions, power, fluid and operating clearances
@@ -202,6 +215,9 @@ export default function SceneView({
         <a href="/attachments/Zencelades-3D-Schematics.pdf" target="_blank" rel="noreferrer">
           Dimensioned submission schematics
         </a>
+        <p>
+          <a href="/models/">Open rendered model images and source files</a>
+        </p>
       </details>
       <div className="scene-status" role={failed ? "alert" : "status"}>
         {status}
@@ -233,6 +249,23 @@ export default function SceneView({
           <RotateCcw size={16} />
           Reset
         </Button>
+        <details className="scene-move">
+          <summary>Move view</summary>
+          <div className="scene-move-actions" role="group" aria-label="Model camera controls">
+            <Button variant="outline" disabled={failed} onClick={() => zoom(0.8)}>
+              Zoom in
+            </Button>
+            <Button variant="outline" disabled={failed} onClick={() => zoom(1.25)}>
+              Zoom out
+            </Button>
+            <Button variant="outline" disabled={failed} onClick={() => rotate(-1)}>
+              Rotate left
+            </Button>
+            <Button variant="outline" disabled={failed} onClick={() => rotate(1)}>
+              Rotate right
+            </Button>
+          </div>
+        </details>
         <Button variant="outline" onClick={() => view("side")}>
           Side
         </Button>

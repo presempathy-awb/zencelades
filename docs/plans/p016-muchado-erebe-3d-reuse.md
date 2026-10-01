@@ -6,6 +6,11 @@ Andrew's prompt, verbatim:
 
 Captured: 2026-10-01T00:17:01Z (September 30 local time).
 
+Follow-up: [P067 reuse audit](../reference-project-reuse.md) records fresh source
+inspection, the implemented camera controls and versioned grant links, local
+verification, and the remaining model/pricing/persistence gaps. The original
+comparison below remains a historical planning record.
+
 ## Intent and scope
 
 Prefer existing Much Ado About One Side and Erebe options, configuration and
