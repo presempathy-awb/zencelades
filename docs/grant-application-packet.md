@@ -149,7 +149,8 @@ October bench test must validate the diffusing skin with a person inside,
 the live compositing, the air and heat inside with the blower running, and
 the lowering drill, and time them, before the November purchases. Full
 schematics are attached: hung elevation, plan, landed state, lowering,
-signal and power, and a tree alternative; plus two 3D model renders of the
+signal and power, a tree alternative, a six-step construction sheet and a
+labeled parts sheet; plus two 3D model renders of the
 landed and hung assemblies and two pieces of generated concept art. Photos and videos are at
 https://zencelades.com/showtime, the schematics at
 https://zencelades.com/application, and the whole open-source build, design
@@ -173,8 +174,12 @@ first image is the thumbnail the committee sees in its list.
 8. `submission/08-plate-4-signal-and-power.png` signal and power
 9. `submission/09-plate-6-lowering.png` lowering the moon
 10. `submission/10-plate-2-tree-alternative.png` tree alternative
+11. `submission/11-build-steps.png` how it is built, six steps, parts
+    numbered
+12. `submission/12-parts-labeled.png` every part labeled, with the price
+    table on the website
 
-About 10.2 MB total, every file under 5 MB. The concept art and the 3D model renders show the
+About 10.8 MB total, every file under 5 MB. The concept art and the 3D model renders show the
 one-unit upgrade (projector heads on arms from the triangle); the plates
 show the 2027 build with the projectors on stands.
 

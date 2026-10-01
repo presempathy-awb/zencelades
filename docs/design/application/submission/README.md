@@ -17,7 +17,7 @@ out, so paste rather than compose in it.
 
 Nothing else uploads: every drawing goes in as an image, every document as a link.
 
-## ART PROJECT PHOTOS, in this order (10.2 MB total, every file under 5 MB)
+## ART PROJECT PHOTOS, in this order (10.8 MB total, every file under 5 MB)
 
 1. `01-concept-landed.png` (2.6 MB) concept art, a person inside the moon with their face on it; this is the thumbnail
 2. `02-lander-3d-model.png` Codex's Blender render of the 2.5 m landed assembly, cut away: seat, tunnel, loop, triangle, lander legs
@@ -29,6 +29,8 @@ Nothing else uploads: every drawing goes in as an image, every document as a lin
 8. `08-plate-4-signal-and-power.png` signal and power
 9. `09-plate-6-lowering.png` lowering the moon
 10. `10-plate-2-tree-alternative.png` tree alternative
+11. `11-build-steps.png` construction in six steps, parts numbered as on the parts sheet
+12. `12-parts-labeled.png` every part labeled; the matching price table is at /build on the site
 
 The two 3D renders come from `output/grant-3d/` in the cockpit lane (editable `.blend` and
 `.glb` beside them) and carry no dimensions. Codex's 3.0 m-labelled sheets and its
