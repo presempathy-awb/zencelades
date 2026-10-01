@@ -1,0 +1,59 @@
+{
+  "weights": {
+    "preference": 50,
+    "grok_preference": 10,
+    "sayability": 8,
+    "memory": 6,
+    "cleverness": 4,
+    "moon": 4,
+    "wordplay": 4,
+    "roots": 2,
+    "character": 3,
+    "inventiveness": 3,
+    "explanation": 2,
+    "holistic": 4
+  },
+  "weight_rationale": "Half the weight stays on ChatGPT preference, preserving the original starting emphasis. Grok adds an independent taste signal; spoken usability and memory lead the remaining artistic criteria.",
+  "favorites": [
+    {
+      "name": "fathomoon",
+      "reason": "Depth, understanding and moon share a seam: the clearest whole-project metaphor."
+    },
+    {
+      "name": "causticuddle",
+      "reason": "Optical caustics meet bodily warmth in a memorable, funny join."
+    },
+    {
+      "name": "apsisoma",
+      "reason": "A body becomes part of an orbit; compact and pleasantly unfamiliar."
+    },
+    {
+      "name": "selenerime",
+      "reason": "A quiet, lyrical moon-and-ice identity with both roots audible."
+    },
+    {
+      "name": "breathalo",
+      "reason": "A living presence makes a halo; intimate and easy to retell."
+    },
+    {
+      "name": "eddyzorb",
+      "reason": "The rotating water and spherical vessel are immediately understandable."
+    },
+    {
+      "name": "cassinice",
+      "reason": "A neat icy Cassini reference, with an extra nice-like sound."
+    },
+    {
+      "name": "frothalo",
+      "reason": "A halo of bubbles: short, luminous and mischievous."
+    },
+    {
+      "name": "rimeverie",
+      "reason": "Frost becomes a waking dream, with a gentle repeated r."
+    },
+    {
+      "name": "causticaper",
+      "reason": "Water-light patterns become a playful leap, with a crisp repeated c."
+    }
+  ]
+}

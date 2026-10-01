@@ -1,0 +1,26 @@
+{
+  "release_sha256": "f46ebe64feee540ced0cddc227137c3a6ba883af9e387534ce0ebf7aa42e65e6",
+  "host": "presvd1",
+  "files": [
+    {
+      "path": "naming-workbench",
+      "sha256": "7c82ac3215ec69b2d2e33300f0b283c17920078e1fc64a2dc82861413c3c8903"
+    },
+    {
+      "path": "data/families/thatsnozorb.toml",
+      "sha256": "a17b00d5d2fa13d1d9d5d8ce67e58ec4c5b9f729508da7eba46b5c36cf65ed07"
+    },
+    {
+      "path": "naming-workbench.service",
+      "sha256": "fdb5605cb0bb0768b308174c2f8c70c8365ddacfd8a8d4d292799d8c51d83aaf"
+    },
+    {
+      "path": "activate-naming.sh",
+      "sha256": "1c4b3ddd934dd56cbf6cdc6c7420570dc579dbdefcad1b6d588ac3a88f906304"
+    },
+    {
+      "path": "expected-catalog.json",
+      "sha256": "e7efd570355c09e620152725e1cb2c642bd538a934e5183dd7308f49e0a8f0ad"
+    }
+  ]
+}

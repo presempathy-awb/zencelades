@@ -1,0 +1,241 @@
+{
+  "host": "presvd1",
+  "base_release": "f3da87689653ea2bfcdfbe2ef0f05e913fe522c5c8a3cc5185d9a9e850dd6b4a",
+  "release_sha256": "722b4a3512787b76d2309588a38878ebf02f2531b5282b2c33ee024ba3fd3edc",
+  "archive_sha256": "6cd8f61fcaf4a40631b66b5f309b5f1bc3f4968611be9cda08049d1cbf14a05b",
+  "overlay_paths": [
+    "site/dist/naming/index.html",
+    "site/dist/naming/ranking-state.mjs",
+    "site/dist/naming/ranking.mjs",
+    "site/dist/naming/review-state.mjs",
+    "site/dist/naming/reviews.json",
+    "site/dist/naming/final-round.json"
+  ],
+  "preserved_entries": 177,
+  "naming_files": [
+    {
+      "bytes": 2090,
+      "path": "site/dist/naming/editor-state.mjs",
+      "sha256": "c5b78d03e054a89f7e205af230d312cb9eadf8e24a1efb6a3af99cafc2f38388"
+    },
+    {
+      "bytes": 1138,
+      "path": "site/dist/naming/editor-state.test.mjs",
+      "sha256": "fd8a6085cfda80134374007955a56ca6dc9cf660680cd7b98d28ca4ec1a45496"
+    },
+    {
+      "bytes": 2274,
+      "path": "site/dist/naming/editor.css",
+      "sha256": "b766ace914dff950337aef50767f110b6a7318900e191d9dfb1bcd9757d924f4"
+    },
+    {
+      "bytes": 12305,
+      "path": "site/dist/naming/editor.mjs",
+      "sha256": "6ac7c144cc630e5e4f38a386b3efefa038dd512956c09d3e9ab59bf13f96d92b"
+    },
+    {
+      "path": "site/dist/naming/index.html",
+      "bytes": 738909,
+      "sha256": "333eab8862535d25b6659e165f4c5d39e25e465c262327d605db0cb9b2faee5a"
+    },
+    {
+      "bytes": 7719,
+      "path": "site/dist/naming/morphemes.csv",
+      "sha256": "63fbf7d42afc241351814257aef76300ed5349920343ca5b0c579f494cee6c73"
+    },
+    {
+      "bytes": 17580,
+      "path": "site/dist/naming/palette.json",
+      "sha256": "f14b202885e5b92cedd1c366d1f28dbc75c2f8b33410ea296343748c6f41d0fa"
+    },
+    {
+      "bytes": 7695,
+      "path": "site/dist/naming/palette.toml",
+      "sha256": "a17b00d5d2fa13d1d9d5d8ce67e58ec4c5b9f729508da7eba46b5c36cf65ed07"
+    },
+    {
+      "path": "site/dist/naming/ranking-state.mjs",
+      "bytes": 3924,
+      "sha256": "c53b97c527522c193ec93851ba9c46812b34de429e5e0de5ae71a75bec604f3e"
+    },
+    {
+      "bytes": 2145,
+      "path": "site/dist/naming/ranking.css",
+      "sha256": "ca032a99e52865a04a7d3127fbdc9d8c1b4109827cfb8bc732684da8b40bd6c6"
+    },
+    {
+      "path": "site/dist/naming/ranking.mjs",
+      "bytes": 20336,
+      "sha256": "e64e06ef5a0b9b1015e996c2d372d888af5c4b520211556b8766f2e138d74842"
+    },
+    {
+      "bytes": 261472,
+      "path": "site/dist/naming/report.json",
+      "sha256": "fc3483d78330a694e2d9132377530bfa65ed7889c9aa05c2924b9d804309b68a"
+    },
+    {
+      "bytes": 101964,
+      "path": "site/dist/naming/report.md",
+      "sha256": "83974fb9f39cf376747d64c2b059a1a6588fce5b91fe4ddec5429215114956d0"
+    },
+    {
+      "bytes": 568903,
+      "path": "site/dist/naming/research-rolls.json",
+      "sha256": "4ad0ec5dbc5489e8bb7e9d990ef43daff4b5e79136577a72f20721c58fb01b01"
+    },
+    {
+      "path": "site/dist/naming/review-state.mjs",
+      "bytes": 6251,
+      "sha256": "6bf61374179ac366ce499d4d05e978cb8388dbd5ec03517cdb76aaa1b774ab64"
+    },
+    {
+      "path": "site/dist/naming/reviews.json",
+      "bytes": 1308139,
+      "sha256": "7b50d662cc5f553f5d2afbd353022ad0430bcc28718cd71c69bd0e3d19820025"
+    },
+    {
+      "bytes": 3086,
+      "path": "site/dist/naming/roll.css",
+      "sha256": "0789a38e8749f5cca410e565fc29d707ae5482dd20ec82f442d23254cd339537"
+    },
+    {
+      "bytes": 1147,
+      "path": "site/dist/naming/roll.js",
+      "sha256": "b6af83b0713520096e67abbd175eb88fa569dfe57fe6f9237fc5da2fad158387"
+    },
+    {
+      "bytes": 1851367,
+      "path": "site/dist/naming/verification.json",
+      "sha256": "f1670e8fb87c1bff7e7b48f9d8ea19d84845ea873f0751d6879631f7377fb741"
+    },
+    {
+      "path": "site/dist/naming/final-round.json",
+      "bytes": 440499,
+      "sha256": "af03f15d011fdb4461c3117e733aeac9a67d9554fd4788f425646043b2acdd60"
+    }
+  ],
+  "verified_at": "2026-10-01T00:38:50.675706+00:00",
+  "verified_files": [
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor-state.mjs",
+      "sha256": "c5b78d03e054a89f7e205af230d312cb9eadf8e24a1efb6a3af99cafc2f38388",
+      "bytes": 2090
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor-state.test.mjs",
+      "sha256": "fd8a6085cfda80134374007955a56ca6dc9cf660680cd7b98d28ca4ec1a45496",
+      "bytes": 1138
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor.css",
+      "sha256": "b766ace914dff950337aef50767f110b6a7318900e191d9dfb1bcd9757d924f4",
+      "bytes": 2274
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor.mjs",
+      "sha256": "6ac7c144cc630e5e4f38a386b3efefa038dd512956c09d3e9ab59bf13f96d92b",
+      "bytes": 12305
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/index.html",
+      "sha256": "333eab8862535d25b6659e165f4c5d39e25e465c262327d605db0cb9b2faee5a",
+      "bytes": 738909
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/morphemes.csv",
+      "sha256": "63fbf7d42afc241351814257aef76300ed5349920343ca5b0c579f494cee6c73",
+      "bytes": 7719
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/palette.json",
+      "sha256": "f14b202885e5b92cedd1c366d1f28dbc75c2f8b33410ea296343748c6f41d0fa",
+      "bytes": 17580
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/palette.toml",
+      "sha256": "a17b00d5d2fa13d1d9d5d8ce67e58ec4c5b9f729508da7eba46b5c36cf65ed07",
+      "bytes": 7695
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/ranking-state.mjs",
+      "sha256": "c53b97c527522c193ec93851ba9c46812b34de429e5e0de5ae71a75bec604f3e",
+      "bytes": 3924
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/ranking.css",
+      "sha256": "ca032a99e52865a04a7d3127fbdc9d8c1b4109827cfb8bc732684da8b40bd6c6",
+      "bytes": 2145
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/ranking.mjs",
+      "sha256": "e64e06ef5a0b9b1015e996c2d372d888af5c4b520211556b8766f2e138d74842",
+      "bytes": 20336
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/report.json",
+      "sha256": "fc3483d78330a694e2d9132377530bfa65ed7889c9aa05c2924b9d804309b68a",
+      "bytes": 261472
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/report.md",
+      "sha256": "83974fb9f39cf376747d64c2b059a1a6588fce5b91fe4ddec5429215114956d0",
+      "bytes": 101964
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/research-rolls.json",
+      "sha256": "4ad0ec5dbc5489e8bb7e9d990ef43daff4b5e79136577a72f20721c58fb01b01",
+      "bytes": 568903
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/review-state.mjs",
+      "sha256": "6bf61374179ac366ce499d4d05e978cb8388dbd5ec03517cdb76aaa1b774ab64",
+      "bytes": 6251
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/reviews.json",
+      "sha256": "7b50d662cc5f553f5d2afbd353022ad0430bcc28718cd71c69bd0e3d19820025",
+      "bytes": 1308139
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/roll.css",
+      "sha256": "0789a38e8749f5cca410e565fc29d707ae5482dd20ec82f442d23254cd339537",
+      "bytes": 3086
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/roll.js",
+      "sha256": "b6af83b0713520096e67abbd175eb88fa569dfe57fe6f9237fc5da2fad158387",
+      "bytes": 1147
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/verification.json",
+      "sha256": "f1670e8fb87c1bff7e7b48f9d8ea19d84845ea873f0751d6879631f7377fb741",
+      "bytes": 1851367
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/final-round.json",
+      "sha256": "af03f15d011fdb4461c3117e733aeac9a67d9554fd4788f425646043b2acdd60",
+      "bytes": 440499
+    }
+  ],
+  "counts": {
+    "clean": 276,
+    "taken": 95,
+    "unverified": 0
+  },
+  "browser_interactions_verified": false,
+  "grok_final_round": {
+    "limit_per_ai": 15,
+    "packet_sha256": "a7238db93bc78b8a982e5a4903741b8090d90d9e3f6dec5bb98ec3d2a97e8de2",
+    "response_sha256": "b9c70c8211e974624d9b61485f7cf939dea279c3027f3a08cb2386872669f21c",
+    "chatgpt_proposal_sha256": "d9a19612d1c51d4db7434864881a0c01ea7ba91010b783bf10a504d68fd61449",
+    "route": "ANCC owned CLI adapter via APIoly",
+    "deployed_queue": false,
+    "model": "grok-4.7",
+    "cli": "grok 1.0.41 (4220f3b224a6) [stable]",
+    "host": "presvd1",
+    "adapter_sha256": {
+      "grok_capacity.py": "60fa7b3e84b8ab126e0df1358bfdf5a72b7e38fbafe8e389d0c25f743ff423f5",
+      "owned_cli.py": "03b4d669c146a6d3193c4c0444bbebd60a71fa6c944f0d9bb3c4355cd170e707"
+    }
+  }
+}

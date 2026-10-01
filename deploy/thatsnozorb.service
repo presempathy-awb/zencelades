@@ -1,0 +1,28 @@
+[Unit]
+Description=Enceladus Within tailnet art catalog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/usr/bin/caddy run --config /srv/thatsnozorb/current/deploy/Caddyfile --adapter caddyfile
+Restart=on-failure
+RestartSec=3
+StateDirectory=thatsnozorb
+Environment=XDG_DATA_HOME=/var/lib/thatsnozorb
+Environment=XDG_CONFIG_HOME=/var/lib/thatsnozorb
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadOnlyPaths=/srv/thatsnozorb
+MemoryMax=128M
+
+[Install]
+WantedBy=multi-user.target

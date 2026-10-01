@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "prompt_id": "P011",
+  "checked_on": "2026-09-30",
+  "status": "Primary-source research; no hardware or site acceptance",
+  "sources": [
+    {
+      "id": "M01",
+      "title": "HAUL-MASTER 61522 product",
+      "url": "https://www.harborfreight.com/1000-lb-capacity-pickup-truck-bed-crane-with-hand-winch-61522.html",
+      "kind": "manufacturer",
+      "note": "Observed USD price; installation excluded."
+    },
+    {
+      "id": "M02",
+      "title": "HAUL-MASTER 61522 manual, 2024",
+      "url": "https://manuals.harborfreight.com/manuals/61000-61999/61522-193175501073.pdf",
+      "kind": "manufacturer manual",
+      "note": "Load chart, intended use, mounting and winch limitations; pages 2-4 and 7.",
+      "local_original": {
+        "bytes": 1656425,
+        "content_sha256": "a0d57e008f97717a464b513d6447e4f688b779898c21635c8f0582a05cb1476b",
+        "pages": 12,
+        "path": "source/research/mounts/2026-09-30/haul-master-61522-manual.pdf"
+      },
+      "remote_preservation": "pending"
+    },
+    {
+      "id": "M03",
+      "title": "SpitzLift receiver hitch kit",
+      "url": "https://spitzlift.com/receiver-hitch-crane/",
+      "kind": "manufacturer",
+      "note": "Material-handling configuration; price not verified."
+    },
+    {
+      "id": "M04",
+      "title": "SpitzLift receiver cut sheet, 2019",
+      "url": "https://spitzlift.com/wp-content/uploads/2019/03/14-RECEIVER-HITCH-SPITZLIFT-CUT-SHEET.pdf",
+      "kind": "manufacturer PDF",
+      "note": "Historical configuration reference; request current revision for procurement.",
+      "local_original": {
+        "bytes": 248362,
+        "content_sha256": "712d4567c794e847d13eedbf3b01ab0e232920e854d9cd28a57e493e3d5bae70",
+        "pages": 1,
+        "path": "source/research/mounts/2026-09-30/spitzlift-receiver-cut-sheet-2019.pdf"
+      },
+      "remote_preservation": "pending"
+    },
+    {
+      "id": "M05",
+      "title": "X-POLE A-Frame UK listing",
+      "url": "https://x-pole.co.uk/pl/shop/aerial/a-frame/xpole-a-frame/",
+      "kind": "manufacturer",
+      "note": "GBP listing; not a US delivered quote."
+    },
+    {
+      "id": "M06",
+      "title": "X-POLE A-Frame 2024 manual",
+      "url": "https://x-pole.co.uk/wp-content/uploads/2023/04/A-Frame-Version-2.0-2024.pdf",
+      "kind": "manufacturer manual",
+      "note": "Search-readable; direct preservation request returned HTTP 403. Professional-performance restriction on page 12."
+    },
+    {
+      "id": "M07",
+      "title": "X-POLE footprint chart, August 2024",
+      "url": "https://x-pole.co.uk/wp-content/uploads/2023/04/A-Frame-Footfall-August-2024.pdf",
+      "kind": "manufacturer drawing",
+      "note": "Dimensions measured to top of bar, not suspension point. Public web read succeeded; direct original-file preservation returned HTTP 403."
+    },
+    {
+      "id": "M08",
+      "title": "JuggleGear MK3",
+      "url": "https://jugglegear.com/aerial-rig-mk3-20ft-16ft-12ft.html",
+      "kind": "manufacturer",
+      "note": "Page JSON-LD confirms CAD. Metric/imperial footprint and weight fields conflict; obtain a dimensioned configuration drawing."
+    },
+    {
+      "id": "M09",
+      "title": "CircusConcepts ACHILLE",
+      "url": "https://circusconcepts.com/shop/Freestanding-Aerial-Rig-Structure-ACHILLE-Tripod-24-ft.html",
+      "kind": "manufacturer",
+      "note": "CAD starting price; chosen height and accessories require a configured quote. Globe wind loading unapproved."
+    },
+    {
+      "id": "M10",
+      "title": "Uplift Active FAQs",
+      "url": "https://upliftactive.com/pages/faqs",
+      "kind": "manufacturer guidance",
+      "note": "Tree assessment and training-rig price reference; not this project's structural criteria."
+    },
+    {
+      "id": "M11",
+      "title": "Love Burn conduct policy",
+      "url": "https://theloveburn.com/consent",
+      "kind": "event organizer",
+      "note": "Flora, fauna and infrastructure damage provisions do not grant attachment permission."
+    },
+    {
+      "id": "M12",
+      "title": "Historic Virginia Key Beach Park information",
+      "url": "https://virginiakeybeachpark.net/park-information/",
+      "kind": "venue",
+      "note": "General visitor rules; event-specific permit conditions require confirmation."
+    },
+    {
+      "id": "M13",
+      "title": "ESTA published standards catalogue",
+      "url": "https://tsp.esta.org/tsp/documents/published_docs.php",
+      "kind": "standards publisher",
+      "note": "Search-visible E1.21-2024 and E1.43-2025. Direct page returned 403; full current standards not downloaded or reviewed."
+    },
+    {
+      "id": "M14",
+      "title": "NASA shape effects on drag",
+      "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/shape-effects-on-drag/",
+      "kind": "government technical explanation",
+      "note": "Drag equation and sphere coefficient variability; numerical scenario assumptions are ours, not a design recommendation."
+    },
+    {
+      "id": "M15",
+      "title": "X-POLE alternate official manual",
+      "url": "https://xpole.com/wp-content/uploads/2025/06/A-Frame-Manual-April-2024-V2.2.pdf",
+      "kind": "manufacturer manual",
+      "note": "Filename says V2.2; printed pages identify 2024 Version 2.0. Public web read succeeded; direct original-file preservation returned HTTP 403, so no local original is claimed."
+    }
+  ],
+  "source_count": 15,
+  "pricing_policy": "Observe listed currency; hardware prices are separate from author-estimated installed-support allowances. No purchase, inventory hold, currency conversion or event approval."
+}

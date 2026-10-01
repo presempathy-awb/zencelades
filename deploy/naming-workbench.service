@@ -1,0 +1,25 @@
+[Unit]
+Description=Enceladus project palette API (Shakesplurian)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+ExecStart=/srv/thatsnozorb-naming/current/naming-workbench --data /srv/thatsnozorb-naming/current/data --site /srv/thatsnozorb/current/site/dist --listen 127.0.0.1:18132 --origin https://thatsnozorb.muchadoaboutoneside.com
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadOnlyPaths=/srv/thatsnozorb /srv/thatsnozorb-naming
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target

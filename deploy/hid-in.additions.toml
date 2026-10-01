@@ -1,0 +1,17 @@
+# Proposed secrets blocks; merge into the respective existing manifests only
+# after provisioning. This is a fragment, not a grant-ready project manifest.
+
+# Much Ado's host service: the database URL itself is secret because Telpher's
+# pg18-app-provision puts its generated password in the URL in hid-in.
+[secrets.THATSNOZORB_DATABASE_URL]
+name = "telpher/thatsnozorb-database-url"
+required = false
+
+[secrets.THATSNOZORB_LAKE_BROKER_TOKEN]
+name = "telpher/lake-broker-thatsnozorb-web-token"
+required = false
+
+# thatsnozorb's project publisher; never hand this capability to the web unit.
+[secrets.LAKE_BROKER_THATSNOZORB_PUBLISHER_TOKEN]
+name = "telpher/lake-broker-thatsnozorb-publisher-token"
+required = true

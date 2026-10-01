@@ -1,0 +1,15 @@
+source/
+deliveries/
+site/dist/
+site/asset-manifest.toml
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.remember/
+.DS_Store
+assets/upload-receipt.json
+assets/upload-staging.json
+cockpit/node_modules/
+cockpit/dist/
+cockpit/public/studio-data/

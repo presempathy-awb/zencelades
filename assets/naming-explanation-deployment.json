@@ -1,0 +1,131 @@
+{
+  "verified_at": "2026-10-01T00:56:03.087652+00:00",
+  "release": "6192ea1b7aeaa2012d76fd9c19e953763e219f274cb654a2aa482c85e30406b1",
+  "base_release": "722b4a3512787b76d2309588a38878ebf02f2531b5282b2c33ee024ba3fd3edc",
+  "changed_paths": [
+    "site/dist/naming/ranking.mjs",
+    "site/dist/naming/review-state.mjs",
+    "site/dist/naming/reviews.json",
+    "site/dist/naming/final-round.json"
+  ],
+  "preserved_manifest_entries": 179,
+  "https_verified": [
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor-state.mjs",
+      "sha256": "c5b78d03e054a89f7e205af230d312cb9eadf8e24a1efb6a3af99cafc2f38388",
+      "bytes": 2090
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor-state.test.mjs",
+      "sha256": "fd8a6085cfda80134374007955a56ca6dc9cf660680cd7b98d28ca4ec1a45496",
+      "bytes": 1138
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor.css",
+      "sha256": "b766ace914dff950337aef50767f110b6a7318900e191d9dfb1bcd9757d924f4",
+      "bytes": 2274
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/editor.mjs",
+      "sha256": "6ac7c144cc630e5e4f38a386b3efefa038dd512956c09d3e9ab59bf13f96d92b",
+      "bytes": 12305
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/final-round.json",
+      "sha256": "5ff4321bf2f85b865719a8c7b0f9edeb57812d9cf15cc0458ae795545dc64095",
+      "bytes": 491187
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/index.html",
+      "sha256": "333eab8862535d25b6659e165f4c5d39e25e465c262327d605db0cb9b2faee5a",
+      "bytes": 738909
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/morphemes.csv",
+      "sha256": "63fbf7d42afc241351814257aef76300ed5349920343ca5b0c579f494cee6c73",
+      "bytes": 7719
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/palette.json",
+      "sha256": "f14b202885e5b92cedd1c366d1f28dbc75c2f8b33410ea296343748c6f41d0fa",
+      "bytes": 17580
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/palette.toml",
+      "sha256": "a17b00d5d2fa13d1d9d5d8ce67e58ec4c5b9f729508da7eba46b5c36cf65ed07",
+      "bytes": 7695
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/ranking-state.mjs",
+      "sha256": "c53b97c527522c193ec93851ba9c46812b34de429e5e0de5ae71a75bec604f3e",
+      "bytes": 3924
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/ranking.css",
+      "sha256": "ca032a99e52865a04a7d3127fbdc9d8c1b4109827cfb8bc732684da8b40bd6c6",
+      "bytes": 2145
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/ranking.mjs",
+      "sha256": "57363be0a0188641f6aab02e32ae11b9029270768a39ad518ef0690b4fd0b098",
+      "bytes": 20827
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/report.json",
+      "sha256": "fc3483d78330a694e2d9132377530bfa65ed7889c9aa05c2924b9d804309b68a",
+      "bytes": 261472
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/report.md",
+      "sha256": "83974fb9f39cf376747d64c2b059a1a6588fce5b91fe4ddec5429215114956d0",
+      "bytes": 101964
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/research-rolls.json",
+      "sha256": "4ad0ec5dbc5489e8bb7e9d990ef43daff4b5e79136577a72f20721c58fb01b01",
+      "bytes": 568903
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/review-state.mjs",
+      "sha256": "7ef6bd95ee6bf8511644e7fa65371dc76ab0fd71f0b8f772fc76638b1e1669c6",
+      "bytes": 6455
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/reviews.json",
+      "sha256": "b6c7c77d403d3c7f7a526ebc566b651e8e2a6cb1767d59ef456a13c93720c6cf",
+      "bytes": 1358827
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/roll.css",
+      "sha256": "0789a38e8749f5cca410e565fc29d707ae5482dd20ec82f442d23254cd339537",
+      "bytes": 3086
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/roll.js",
+      "sha256": "b6af83b0713520096e67abbd175eb88fa569dfe57fe6f9237fc5da2fad158387",
+      "bytes": 1147
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/naming/verification.json",
+      "sha256": "f1670e8fb87c1bff7e7b48f9d8ea19d84845ea873f0751d6879631f7377fb741",
+      "bytes": 1851367
+    }
+  ],
+  "explanations": {
+    "surviving_contenders": 276,
+    "expanded": 135,
+    "retained_detailed": 141
+  },
+  "preserved_assessments": 311,
+  "unchanged_ranking_totals": 933,
+  "tests": {
+    "python": 31,
+    "python_subtests": 11,
+    "node": 13,
+    "ruff": "passed",
+    "build": "passed",
+    "impeccable_findings": 0
+  },
+  "browser_interaction_exercised": false,
+  "score_basis": "Original reviewed prose retained; editorial supplements were not rescored."
+}

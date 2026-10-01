@@ -1,0 +1,146 @@
+purpose = "Explore a new name for the provisional thatsnomoon/thatsnozorb art project: a playful spherical projection that moves between human presence and Saturn's ocean moon Enceladus. Bridge Love Burn, ice fissures and water plumes, hidden oceans, moon phases, Saturn and its rings, transparent zorbs, light projection, refraction and caustics, morphing, bodily movement, water and communal delight. Names describe the artistic vision; they make no claim of built hardware or approved occupancy."
+author = "Codex; authored before generation after reading the project files; project-local categories for this roll"
+
+[[families]]
+name = "enceladus_ice"
+reserve = ["hoarfrost","icebound","snowflake","crystal","sleet","flurry","glacier","cryovolcano","snowmelt","icefall"]
+source = "existing"
+words = ["enceladus", "ice", "cryo", "brine", "fissure", "tigerstripe", "plume", "geyser", "rime", "frost", "fracture", "vent"]
+syllables = [4, 1, 2, 1, 2, 3, 1, 2, 1, 1, 2, 1]
+
+[[families]]
+name = "saturn_orbit"
+reserve = ["epicycle","equinox","solstice","apogee","perigee","revolve","orbital","circlet","torus","arc"]
+source = "existing"
+words = ["saturn", "cassini", "titan", "mimas", "tethys", "dione", "rhea", "orbit", "ringlet", "syzygy", "apsis", "annulus"]
+syllables = [2, 3, 2, 2, 2, 3, 2, 2, 2, 3, 2, 3]
+
+[[families]]
+name = "moon_phases"
+reserve = ["moonbeam","moonrise","moonbow","moonlit","lunation","lunula","penumbra","earthshine","selenic","aftermoon"]
+source = "existing"
+words = ["moon", "luna", "selene", "crescent", "gibbous", "eclipse", "moonlet", "lunar", "wax", "wane", "umbra", "terminator"]
+syllables = [1, 2, 3, 2, 2, 2, 2, 2, 1, 1, 2, 4]
+
+[[families]]
+name = "hidden_ocean"
+reserve = ["bathyal","hadal","submarine","estuary","inlet","cove","seafloor","wellspring","waterline","bluewater"]
+source = "existing"
+words = ["ocean", "abyss", "pelagic", "aquifer", "depth", "deep", "salt", "spring", "subsea", "undertow", "fathom", "tidal"]
+syllables = [2, 2, 3, 3, 1, 1, 1, 1, 2, 3, 2, 2]
+
+[[families]]
+name = "zorb_sphere"
+reserve = ["orbicle","spherule","globule","droplet","bauble","marble","bubblegum","roundel","woblet","orblet"]
+source = "existing"
+words = ["zorb", "sphere", "orb", "globe", "bubble", "membrane", "bounce", "wobble", "bobble", "round", "roll", "tumble"]
+syllables = [1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2]
+
+[[families]]
+name = "projection_light"
+reserve = ["beacon","luminance","lucerna","ray","shine","luminousness","daylight","limelight","sunbeam","lightfall"]
+source = "existing"
+words = ["lumen", "beam", "glow", "gleam", "halo", "photon", "lantern", "radiance", "flicker", "project", "cast", "image"]
+syllables = [2, 1, 1, 1, 2, 2, 2, 3, 2, 2, 1, 2]
+
+[[families]]
+name = "lensing_optics"
+reserve = ["bokeh","focuslet","gliss","diffraction","glintlet","spectral","prismatic","lenticular","convex","aperture"]
+source = "existing"
+words = ["lens", "prism", "refract", "caustic", "fresnel", "lensing", "parallax", "iris", "focus", "mirror", "facet", "diffract"]
+syllables = [1, 1, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2]
+
+[[families]]
+name = "morphing_states"
+reserve = ["unfold","transmute","shimmerflow","alter","mutable","transform","dissolvelet","changeling","metamorphosis","becoming"]
+source = "existing"
+words = ["morph", "dissolve", "crossfade", "fluid", "melt", "phase", "shift", "metamorph", "liminal", "flux", "become", "blend"]
+syllables = [1, 2, 2, 2, 1, 1, 1, 3, 3, 1, 2, 1]
+
+[[families]]
+name = "water_motion"
+reserve = ["brook","rill","rivulet","stream","spray","spindrift","cascade","wake","waterswish","wavelet"]
+source = "existing"
+words = ["ripple", "tide", "wave", "eddy", "wash", "foam", "splash", "lagoon", "current", "drift", "swell", "surf"]
+syllables = [2, 1, 1, 2, 1, 1, 1, 2, 2, 1, 1, 1]
+
+[[families]]
+name = "human_presence"
+reserve = ["heartbeat","sway","footfall","somatic","corporeal","touch","embrace","twirl","duet","pirouette"]
+source = "existing"
+words = ["body", "breath", "pulse", "skin", "gesture", "visage", "silhouette", "presence", "kinetic", "soma", "anima", "dancer"]
+syllables = [2, 1, 1, 1, 2, 2, 3, 2, 3, 2, 3, 2]
+
+[[families]]
+name = "love_burn"
+reserve = ["bonfire","firelight","ardour","ardent","affection","together","warmth","mingle","bliss","beloved"]
+source = "existing"
+words = ["love", "burn", "ember", "kindle", "spark", "flame", "hearth", "campfire", "gift", "gather", "revel", "carnival"]
+syllables = [1, 1, 2, 2, 1, 1, 1, 2, 1, 2, 2, 3]
+
+[[families]]
+name = "play_delight"
+reserve = ["splish","paddling","squish","plash","spray","sprinkle","douse","wadelet","splashlet","waterplay"]
+source = "existing"
+words = ["paddle", "squirt", "squelch", "splosh", "swish", "sploosh", "puddle", "dunk", "wade", "spritz", "slosh", "froth"]
+syllables = [2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1]
+
+[[families]]
+name = "bioluminescence"
+source = "new"
+words = ["lucent","phosphor","glimmer","scintilla","aurora","firefly","lustre","luminesce","shimmer","glint","corona","twinkle"]
+reserve = ["noctiluca","sparkle","luciferin","photophore","aglow","luminous","lanternfish","biolume","gleaming","lightlet"]
+
+[[families]]
+name = "buoyancy_floating"
+source = "new"
+words = ["buoy","float","raft","hover","suspend","levitate","soar","skim","sail","buoyant","waft","airborne"]
+reserve = ["airlift","lift","aloft","balloon","driftwood","skimmer","updraft","buoyage","saillet","flotation"]
+
+[[families]]
+name = "ocean_life"
+source = "new"
+words = ["nautilus","jelly","medusa","anemone","coral","kelp","krill","polyp","diatom","reef","urchin","scallop"]
+reserve = ["cuttle","manta","copepod","mollusc","seahorse","squid","conch","plankton","starfish","seaslug"]
+
+[[families]]
+name = "dream_theatre"
+source = "new"
+words = ["reverie","dream","phantom","masque","mirage","echo","chorus","arietta","reprise","daydream","spell","starlit"]
+reserve = ["lilt","ballet","cabaret","fantasia","pageant","charade","encore","mime","nocturne","sonata"]
+
+[[families]]
+name = "life_growth"
+source = "new"
+words = ["life","bio","vivo","vital","bloom","sprout","thrive","cell","seed","germ","bud","vivify"]
+reserve = ["enliven","living","vitality","flourish","animate","chlorophyll","tendril","verdant","verdure","verdancy"]
+
+[[families]]
+name = "doubling_echo"
+source = "new"
+words = ["double","twin","dyad","duplex","bifold","doppel","gemini","mitosis","fission","budding","clone","replica"]
+reserve = ["twofold","counterpart","duplicate","reflection","echoes","echolalia","recurrence","iteration","multiplication","reproduction"]
+
+[[families]]
+name = "genesis_emergence"
+source = "new"
+words = ["genesis","origin","arise","dawn","nascent","natal","birth","emerge","primordial","abiotic","evolve","inception"]
+reserve = ["emergence","protolife","biogenesis","abiogenesis","beginning","firstlight","awaken","origination","gestate","hatch"]
+
+[[families]]
+name = "protoplasm_early_life"
+source = "new"
+words = ["protoplasm","proto","plasm","cytoplasm","cyto","amoeba","vesicle","coacervate","protocell","ooze","gel","endoplasm"]
+reserve = ["cytosol","organelle","lipid","bilayer","nucleate","cellule","microbe","biome","hydrogel","primordium"]
+
+[[families]]
+name = "space_travel"
+source = "new"
+words = ["astro","cosmo","voyage","stellar","starship","launch","warp","slingshot","transit","odyssey","sailcraft","jump"]
+reserve = ["interstellar","starfarer","wormhole","hyperdrive","starflight","liftoff","spacesail","lightyear","wayfarer","trajectory"]
+
+[[families]]
+name = "astral_projection"
+source = "new"
+words = ["astral","aether","ether","soul","eidolon","bilocate","oneiric","lucid","trance","apparition","numinous","psychonaut"]
+reserve = ["ectoplasm","ethereal","subtle","spirit","phantasm","dreamwalk","starbody","soulflight","etherwalk","lucidity"]

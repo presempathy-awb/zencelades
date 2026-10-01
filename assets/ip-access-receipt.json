@@ -1,0 +1,40 @@
+{
+  "verified_date_utc": "2026-10-01",
+  "host": "presvd1",
+  "site": "https://thatsnozorb.muchadoaboutoneside.com",
+  "site_release": "dda8a476bf7e616fd27ed70638da8b0ea2ab8c6fc6704d027b312de9721be465",
+  "previous_site_release": "6192ea1b7aeaa2012d76fd9c19e953763e219f274cb654a2aa482c85e30406b1",
+  "service_release": "17761666ac987f8f9b7aae4ec2a98d547ac2285acc27794142eb34eca4d06b64",
+  "service_source_sha256": "0a8cdcc6163dd2259d97e7573fc04f7f8bae4c9cc066ee1c2cc90a7b9e1b783a",
+  "preserved_previous_file_entries": 181,
+  "changed_site_files": [
+    "deploy/Caddyfile",
+    "site/dist/index.html",
+    "site/dist/access.js",
+    "site/dist/access.css"
+  ],
+  "http_checks": {
+    "home_public_no_cookie": 200,
+    "home_public_after_refresh": 200,
+    "outside_public_no_cookie": 302,
+    "outside_forged_forwarded_ip_and_identity": 302,
+    "anonymous_tailnet_can_manage": false,
+    "anonymous_list": 403,
+    "forged_admin_write": 403,
+    "persisted_manual_rows_after_refused_write": 0,
+    "forced_login_from_admitted_home": 302
+  },
+  "services_active": ["thatsnozorb-access.service", "thatsnozorb.service"],
+  "tests": {
+    "python_full": {"passed": 54, "subtests_passed": 13, "exit": 0},
+    "access_after_connection_fix": {"passed": 22, "exit": 0},
+    "node_full": {"passed": 17, "exit": 0},
+    "studio_bun": {"passed": 4, "assertions": 23, "exit": 0},
+    "studio_typecheck_build_exit": 0,
+    "telpher_route": {"passed": 83, "exit": 0}
+  },
+  "browser_admin_crud_verified": false,
+  "browser_login_return_verified": false,
+  "browser_verification_blocker": "Awaiting explicit scoped browser-control approval",
+  "contains_secret_values": false
+}

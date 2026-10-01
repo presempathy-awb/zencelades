@@ -1,0 +1,35 @@
+{
+  "verified_at": "2026-10-01T01:06:04.568156+00:00",
+  "bucket_type": "allPrivate",
+  "lifecycle_rules": [],
+  "file_lock_configuration": {
+    "isClientAuthorizedToRead": false,
+    "value": null
+  },
+  "files": [
+    {
+      "path": "source/versions/v4-fixed15/Enceladus_Within_v4_Fixed15_Project.zip",
+      "bytes": 21993213,
+      "content_sha256": "037594468d98332e57982fbd0aed12f58c54743501c6478147f0275d9971d847",
+      "provenance": "Andrew supplied v4 Fixed15 package",
+      "b2_bucket": "glassine",
+      "b2_key": "archives/thatsnozorb/sha256/037594468d98332e57982fbd0aed12f58c54743501c6478147f0275d9971d847/Enceladus_Within_v4_Fixed15_Project.zip",
+      "b2_file_id": "4_z25616d79dddca8999eec0610_f1024f7f06218d3ca_d20261001_m010557_c004_v0402005_t0027_u01790816757087",
+      "readback_sha256": "037594468d98332e57982fbd0aed12f58c54743501c6478147f0275d9971d847",
+      "readback_verified": true
+    },
+    {
+      "path": "deliveries/enceladus_v4_fixed15/legacy/Enceladus_Within_v3_Project.zip",
+      "bytes": 15283642,
+      "content_sha256": "ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a",
+      "provenance": "Andrew supplied v4 Fixed15 package",
+      "b2_bucket": "glassine",
+      "b2_key": "archives/thatsnozorb/sha256/ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a/Enceladus_Within_v3_Project.zip",
+      "b2_file_id": "4_z25616d79dddca8999eec0610_f1000bee0526687b5_d20260930_m204105_c004_v0402029_t0021_u01790800865798",
+      "readback_sha256": "ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a",
+      "readback_verified": true
+    }
+  ],
+  "readback_verified": true,
+  "retention_note": "Version IDs recorded; no Object Lock or lifecycle changes requested."
+}

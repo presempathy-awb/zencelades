@@ -1,0 +1,294 @@
+{
+  "base_release": "ae21eb7b0af9bbce3cbd9798f704c1956e90e26397fdc632d6c68e2385c51ed8",
+  "release_sha256": "f3da87689653ea2bfcdfbe2ef0f05e913fe522c5c8a3cc5185d9a9e850dd6b4a",
+  "overlay_paths": [
+    "site/dist/mounts/index.html",
+    "site/dist/mounts/sources.json",
+    "site/dist/documents/mount-options-research.md",
+    "site/dist/documents/engineering-research.md",
+    "site/dist/pricing/index.html"
+  ],
+  "base_files": 182,
+  "release_files": 182,
+  "preserved_naming_files": [
+    {
+      "bytes": 2090,
+      "path": "site/dist/naming/editor-state.mjs",
+      "sha256": "c5b78d03e054a89f7e205af230d312cb9eadf8e24a1efb6a3af99cafc2f38388"
+    },
+    {
+      "bytes": 1138,
+      "path": "site/dist/naming/editor-state.test.mjs",
+      "sha256": "fd8a6085cfda80134374007955a56ca6dc9cf660680cd7b98d28ca4ec1a45496"
+    },
+    {
+      "bytes": 2274,
+      "path": "site/dist/naming/editor.css",
+      "sha256": "b766ace914dff950337aef50767f110b6a7318900e191d9dfb1bcd9757d924f4"
+    },
+    {
+      "bytes": 12305,
+      "path": "site/dist/naming/editor.mjs",
+      "sha256": "6ac7c144cc630e5e4f38a386b3efefa038dd512956c09d3e9ab59bf13f96d92b"
+    },
+    {
+      "bytes": 738308,
+      "path": "site/dist/naming/index.html",
+      "sha256": "7c8434131541688a6f290f26907ff0416a96fd93e02480159bc4468bfb8d4b15"
+    },
+    {
+      "bytes": 7719,
+      "path": "site/dist/naming/morphemes.csv",
+      "sha256": "63fbf7d42afc241351814257aef76300ed5349920343ca5b0c579f494cee6c73"
+    },
+    {
+      "bytes": 17580,
+      "path": "site/dist/naming/palette.json",
+      "sha256": "f14b202885e5b92cedd1c366d1f28dbc75c2f8b33410ea296343748c6f41d0fa"
+    },
+    {
+      "bytes": 7695,
+      "path": "site/dist/naming/palette.toml",
+      "sha256": "a17b00d5d2fa13d1d9d5d8ce67e58ec4c5b9f729508da7eba46b5c36cf65ed07"
+    },
+    {
+      "bytes": 3551,
+      "path": "site/dist/naming/ranking-state.mjs",
+      "sha256": "3d6951c2bb2d42f775c1eda06dc0e598c087d2438d4009b58991b4169d6bf1e5"
+    },
+    {
+      "bytes": 2145,
+      "path": "site/dist/naming/ranking.css",
+      "sha256": "ca032a99e52865a04a7d3127fbdc9d8c1b4109827cfb8bc732684da8b40bd6c6"
+    },
+    {
+      "bytes": 19742,
+      "path": "site/dist/naming/ranking.mjs",
+      "sha256": "be6a9b9c6b2a60f71313ba9c0e446674c9bc83774fe8a0be0b32ca8697477894"
+    },
+    {
+      "bytes": 261472,
+      "path": "site/dist/naming/report.json",
+      "sha256": "fc3483d78330a694e2d9132377530bfa65ed7889c9aa05c2924b9d804309b68a"
+    },
+    {
+      "bytes": 101964,
+      "path": "site/dist/naming/report.md",
+      "sha256": "83974fb9f39cf376747d64c2b059a1a6588fce5b91fe4ddec5429215114956d0"
+    },
+    {
+      "bytes": 568903,
+      "path": "site/dist/naming/research-rolls.json",
+      "sha256": "4ad0ec5dbc5489e8bb7e9d990ef43daff4b5e79136577a72f20721c58fb01b01"
+    },
+    {
+      "bytes": 6251,
+      "path": "site/dist/naming/review-state.mjs",
+      "sha256": "3280421b992e95de36eaead1abab201ce4f1f8136947ffd634da2a5f8e0b91fc"
+    },
+    {
+      "bytes": 374144,
+      "path": "site/dist/naming/reviews.json",
+      "sha256": "c0bf53c9b42b1fef2b3106c07bedfe227e9a1a96f86a51895ed4a012d440745f"
+    },
+    {
+      "bytes": 3086,
+      "path": "site/dist/naming/roll.css",
+      "sha256": "0789a38e8749f5cca410e565fc29d707ae5482dd20ec82f442d23254cd339537"
+    },
+    {
+      "bytes": 1147,
+      "path": "site/dist/naming/roll.js",
+      "sha256": "b6af83b0713520096e67abbd175eb88fa569dfe57fe6f9237fc5da2fad158387"
+    },
+    {
+      "bytes": 1851367,
+      "path": "site/dist/naming/verification.json",
+      "sha256": "f1670e8fb87c1bff7e7b48f9d8ea19d84845ea873f0751d6879631f7377fb741"
+    }
+  ],
+  "host": "presvd1",
+  "service": "thatsnozorb.service",
+  "publication": "five-path research overlay; existing live naming bytes preserved",
+  "applied": true,
+  "previous_publication": {
+    "base_release": "666ddc700a3cb4687f5ddf9357ea6d3252a29691698895df9cffdea7a5a06267",
+    "release_sha256": "ae21eb7b0af9bbce3cbd9798f704c1956e90e26397fdc632d6c68e2385c51ed8",
+    "overlay_paths": [
+      "site/dist/mounts/index.html",
+      "site/dist/mounts/sources.json",
+      "site/dist/documents/mount-options-research.md",
+      "site/dist/documents/engineering-research.md",
+      "site/dist/pricing/index.html"
+    ],
+    "base_files": 182,
+    "release_files": 182,
+    "preserved_naming_files": [
+      {
+        "bytes": 2090,
+        "path": "site/dist/naming/editor-state.mjs",
+        "sha256": "c5b78d03e054a89f7e205af230d312cb9eadf8e24a1efb6a3af99cafc2f38388"
+      },
+      {
+        "bytes": 1138,
+        "path": "site/dist/naming/editor-state.test.mjs",
+        "sha256": "fd8a6085cfda80134374007955a56ca6dc9cf660680cd7b98d28ca4ec1a45496"
+      },
+      {
+        "bytes": 2274,
+        "path": "site/dist/naming/editor.css",
+        "sha256": "b766ace914dff950337aef50767f110b6a7318900e191d9dfb1bcd9757d924f4"
+      },
+      {
+        "bytes": 12305,
+        "path": "site/dist/naming/editor.mjs",
+        "sha256": "6ac7c144cc630e5e4f38a386b3efefa038dd512956c09d3e9ab59bf13f96d92b"
+      },
+      {
+        "bytes": 738308,
+        "path": "site/dist/naming/index.html",
+        "sha256": "7c8434131541688a6f290f26907ff0416a96fd93e02480159bc4468bfb8d4b15"
+      },
+      {
+        "bytes": 7719,
+        "path": "site/dist/naming/morphemes.csv",
+        "sha256": "63fbf7d42afc241351814257aef76300ed5349920343ca5b0c579f494cee6c73"
+      },
+      {
+        "bytes": 17580,
+        "path": "site/dist/naming/palette.json",
+        "sha256": "f14b202885e5b92cedd1c366d1f28dbc75c2f8b33410ea296343748c6f41d0fa"
+      },
+      {
+        "bytes": 7695,
+        "path": "site/dist/naming/palette.toml",
+        "sha256": "a17b00d5d2fa13d1d9d5d8ce67e58ec4c5b9f729508da7eba46b5c36cf65ed07"
+      },
+      {
+        "bytes": 3551,
+        "path": "site/dist/naming/ranking-state.mjs",
+        "sha256": "3d6951c2bb2d42f775c1eda06dc0e598c087d2438d4009b58991b4169d6bf1e5"
+      },
+      {
+        "bytes": 2145,
+        "path": "site/dist/naming/ranking.css",
+        "sha256": "ca032a99e52865a04a7d3127fbdc9d8c1b4109827cfb8bc732684da8b40bd6c6"
+      },
+      {
+        "bytes": 19742,
+        "path": "site/dist/naming/ranking.mjs",
+        "sha256": "be6a9b9c6b2a60f71313ba9c0e446674c9bc83774fe8a0be0b32ca8697477894"
+      },
+      {
+        "bytes": 261472,
+        "path": "site/dist/naming/report.json",
+        "sha256": "fc3483d78330a694e2d9132377530bfa65ed7889c9aa05c2924b9d804309b68a"
+      },
+      {
+        "bytes": 101964,
+        "path": "site/dist/naming/report.md",
+        "sha256": "83974fb9f39cf376747d64c2b059a1a6588fce5b91fe4ddec5429215114956d0"
+      },
+      {
+        "bytes": 568903,
+        "path": "site/dist/naming/research-rolls.json",
+        "sha256": "4ad0ec5dbc5489e8bb7e9d990ef43daff4b5e79136577a72f20721c58fb01b01"
+      },
+      {
+        "bytes": 6251,
+        "path": "site/dist/naming/review-state.mjs",
+        "sha256": "3280421b992e95de36eaead1abab201ce4f1f8136947ffd634da2a5f8e0b91fc"
+      },
+      {
+        "bytes": 374144,
+        "path": "site/dist/naming/reviews.json",
+        "sha256": "c0bf53c9b42b1fef2b3106c07bedfe227e9a1a96f86a51895ed4a012d440745f"
+      },
+      {
+        "bytes": 3086,
+        "path": "site/dist/naming/roll.css",
+        "sha256": "0789a38e8749f5cca410e565fc29d707ae5482dd20ec82f442d23254cd339537"
+      },
+      {
+        "bytes": 1147,
+        "path": "site/dist/naming/roll.js",
+        "sha256": "b6af83b0713520096e67abbd175eb88fa569dfe57fe6f9237fc5da2fad158387"
+      },
+      {
+        "bytes": 1851367,
+        "path": "site/dist/naming/verification.json",
+        "sha256": "f1670e8fb87c1bff7e7b48f9d8ea19d84845ea873f0751d6879631f7377fb741"
+      }
+    ],
+    "host": "presvd1",
+    "service": "thatsnozorb.service",
+    "publication": "five-path research overlay; existing live naming bytes preserved",
+    "applied": true,
+    "http_readback": [
+      {
+        "url": "https://thatsnozorb.muchadoaboutoneside.com/mounts/index.html",
+        "bytes": 8356,
+        "sha256": "3e0ff063a50c74c3b4c3bbb5a7338d467848b6c286c5f9a5b7f6b42f85237cfd",
+        "verified": true
+      },
+      {
+        "url": "https://thatsnozorb.muchadoaboutoneside.com/mounts/sources.json",
+        "bytes": 4338,
+        "sha256": "30a8dc169afe4b223c3e190cd72d1ad2fe30a591b1cdb54ff820dcde87a3c16f",
+        "verified": true
+      },
+      {
+        "url": "https://thatsnozorb.muchadoaboutoneside.com/documents/mount-options-research.md",
+        "bytes": 19118,
+        "sha256": "5da57396ee1a2fde3ffa9aed8b5d676b26a8de73504df16531835142a54bdb0b",
+        "verified": true
+      },
+      {
+        "url": "https://thatsnozorb.muchadoaboutoneside.com/documents/engineering-research.md",
+        "bytes": 25342,
+        "sha256": "8287f10f05d8d912ceeadcb58d5bbeb3d302704ac11b31ff37e18c25696e4098",
+        "verified": true
+      },
+      {
+        "url": "https://thatsnozorb.muchadoaboutoneside.com/pricing/index.html",
+        "bytes": 9454,
+        "sha256": "4458b370b491facf3da341b6090d1fadf17ebb968c7f12951dd2cbbd238e8c17",
+        "verified": true
+      }
+    ],
+    "naming_http_readback_count": 19
+  },
+  "http_readback": [
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/mounts/index.html",
+      "bytes": 8356,
+      "sha256": "3e0ff063a50c74c3b4c3bbb5a7338d467848b6c286c5f9a5b7f6b42f85237cfd",
+      "verified": true
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/mounts/sources.json",
+      "bytes": 5614,
+      "sha256": "7770f785a08350ce01be2fa56c61379a6dd328cd9d799993fbadf3a360e41a85",
+      "verified": true
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/documents/mount-options-research.md",
+      "bytes": 19118,
+      "sha256": "e16e541cbe5f3abaf01fcc40df514c31fed0a7978068ef81efbd4963d73d3484",
+      "verified": true
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/documents/engineering-research.md",
+      "bytes": 25342,
+      "sha256": "8287f10f05d8d912ceeadcb58d5bbeb3d302704ac11b31ff37e18c25696e4098",
+      "verified": true
+    },
+    {
+      "url": "https://thatsnozorb.muchadoaboutoneside.com/pricing/index.html",
+      "bytes": 9454,
+      "sha256": "4458b370b491facf3da341b6090d1fadf17ebb968c7f12951dd2cbbd238e8c17",
+      "verified": true
+    }
+  ],
+  "naming_http_readback_count": 19
+}

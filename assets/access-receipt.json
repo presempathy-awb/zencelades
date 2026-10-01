@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-09-30T21:56:37Z",
+  "probe_host": "maxipaxi",
+  "service_host": "presvd1",
+  "url": "https://thatsnozorb.muchadoaboutoneside.com/",
+  "policy": "tailnet_socket_source_or_restricted_authentik",
+  "tailnet_source_ranges": ["100.64.0.0/10", "fd7a:115c:a1e0::/48"],
+  "dns": {
+    "public_resolver": "1.1.1.1",
+    "public_a": ["216.128.155.62"],
+    "public_aaaa": [],
+    "mesh_resolver": "100.100.100.100",
+    "mesh_a": ["100.64.0.1"],
+    "mesh_aaaa": ["fd7a:115c:a1e0::1"]
+  },
+  "https": [
+    {"path": "normal_hostname", "status": 200, "peer": "100.64.0.1", "tls_verify_result": 0},
+    {"path": "tailnet_ipv4_with_hostname", "status": 200, "peer": "100.64.0.1", "tls_verify_result": 0},
+    {"path": "tailnet_ipv6_with_hostname", "status": 200, "peer": "fd7a:115c:a1e0::1", "tls_verify_result": 0},
+    {"path": "public_origin_with_hostname", "status": 302, "peer": "216.128.155.62", "tls_verify_result": 0, "redirect_host": "authentik.telpher.stream"},
+    {"path": "public_origin_with_forged_source_and_identity", "status": 302, "peer": "216.128.155.62", "tls_verify_result": 0, "redirect_host": "authentik.telpher.stream"}
+  ],
+  "route_sha256": "0c09aef5602a4b198054b40b9676201659b8416710a4819961170a451f0442f7",
+  "route_remote_matches_render": true,
+  "headscale_active": true,
+  "backend_http_status": 200,
+  "authentik": {
+    "app": "thatsnozorb",
+    "allowed_users_checked_earlier_this_session": ["andrew", "awb"],
+    "refused_user_checked_earlier_this_session": "chipper",
+    "signups_observed": "off",
+    "final_admin_recheck": "project_vault_locked_exit_4",
+    "browser_login_verified": false
+  },
+  "code_landed_in_canonical_telpher": false,
+  "pytest_run": false,
+  "details": "docs/site-access-verification.md"
+}

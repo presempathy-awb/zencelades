@@ -1,0 +1,26 @@
+#palette-editor{margin-block:3rem;padding-block:2rem;border-top:1px solid var(--line)}
+.palette-toolbar,.family-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.palette-toolbar{justify-content:flex-start;margin-block:1.5rem}
+.palette-toolbar label{display:flex;align-items:center;gap:.75rem}
+#palette-editor button,#palette-editor select,#family-dialog button,#family-dialog input,#family-dialog textarea,#family-dialog select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:.65rem .85rem;min-height:44px}
+#palette-editor button,#family-dialog button{cursor:pointer}
+#palette-editor button:disabled{opacity:.5;cursor:wait}
+#palette-editor button:focus-visible,#palette-editor input:focus-visible,#palette-editor select:focus-visible,#family-dialog :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#editable-families{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,25rem),1fr));gap:1.5rem}
+.palette-family{min-width:0;padding:1.2rem;border:1px solid var(--line)}
+.palette-family legend{font:1.3rem var(--serif);padding-inline:.5rem;text-transform:capitalize}
+.family-actions{margin-bottom:1rem}.family-actions label{display:flex;gap:.5rem;align-items:center}
+.word-palette{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.word-chip{display:inline-flex;border:1px solid var(--line);align-items:center}
+.word-chip label{display:flex;gap:.4rem;align-items:center;padding:.4rem .5rem;cursor:pointer}
+.word-chip input,.family-actions input{width:1.1rem;height:1.1rem;accent-color:var(--accent)}
+#palette-editor .word-chip button{padding:.25rem .5rem;border:0;border-left:1px solid var(--line);min-width:40px}
+.fresh-name{padding:1.5rem 0;border-top:1px solid var(--line)}
+.fresh-name h3{font:1.8rem var(--serif);margin:0 0 .5rem}
+.fresh-name .mix{color:var(--accent)}
+#family-dialog{max-width:36rem;width:calc(100% - 2rem);padding:1.5rem;background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+#family-dialog::backdrop{background:#08151bd9}
+#family-dialog label{display:grid;gap:.5rem;margin-block:1rem}
+#family-dialog textarea{min-height:8rem;width:100%}
+#family-error{color:var(--accent)}
+[hidden]{display:none!important}

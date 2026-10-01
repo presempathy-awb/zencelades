@@ -1,0 +1,21 @@
+{
+  "weights": {"preference": 50, "grok_preference": 10, "sayability": 8, "memory": 6, "cleverness": 4, "moon": 4, "wordplay": 4, "roots": 2, "character": 3, "inventiveness": 3, "explanation": 2, "holistic": 4},
+  "weight_rationale": "Keep the established starting emphasis: ChatGPT taste at 50%, Grok taste at 10%, then spoken usability and memory ahead of the remaining artistic criteria. The final fifteen are editorial selections from the entire surviving field, not an automatic copy of the weighted top fifteen; this preserves a few strong life, optical and dream directions alongside the moon names.",
+  "favorites": [
+    {"name": "enceluddle", "reason": "My strongest complete artwork name: Enceladus becomes intimate and puddle-sized. The affectionate sound connects an ocean moon to people; the first syllables may need one spoken introduction."},
+    {"name": "cryzorcean", "reason": "Keep Andrew's strongest creation. Cryo, zorb and ocean are compressed into an icy world with physical scale; it is more distinctive and ambitious than immediately easy to pronounce."},
+    {"name": "fathomoon", "reason": "The best compact double reading: fathom is both depth and understanding, opening into moon. It carries the hidden ocean and the act of discovering an interior without a long explanation."},
+    {"name": "zorbelune", "reason": "A clear, inviting sphere-to-moon identity with a soft ending. It carries the zorb idea more directly than most finalists, though its French-like lunar sound is less surprising than the stranger blends."},
+    {"name": "rimeverie", "reason": "An ice dream with an elegant seam and a name worth saying slowly. It is an excellent astral-projection direction; listeners unfamiliar with rime may initially hear rhyme."},
+    {"name": "bobblune", "reason": "The most immediately friendly spoken name: a little moon bobbing into view. Its limitation is deliberate cuteness, which may undersell the work's cosmic and contemplative side."},
+    {"name": "twindalume", "reason": "My favorite doubling direction: twin, tide and lumen imply a luminous watery double. The middle seam is loose, but the whole word is smoother than a literal three-word stack."},
+    {"name": "causticuddle", "reason": "Optical caustics become a shared embrace. It has memorable wit and a participatory story, with the honest drawback that caustic also means harsh or corrosive."},
+    {"name": "gleamitosis", "reason": "The strongest life-and-genesis idea: a gleam dividing into living copies. Its visible mitosis makes the explanation unusually credible; it sounds more biological than lunar."},
+    {"name": "splorigen", "reason": "Splash, origin and genesis compress into a lively emergence word. It earns a place for the birth-of-life direction, although the surviving roots need explanation and the opening can suggest explore."},
+    {"name": "splunelle", "reason": "A small luminous splash with an easy, finished sound. The invented ending works musically; aurora remains inspiration rather than a literal recoverable fragment."},
+    {"name": "frothalo", "reason": "Froth and halo meet in a compact, visible image: water wearing a ring of light. It is excellent optical wordplay, with a slightly awkward th-to-h transition when spoken quickly."},
+    {"name": "zorbilume", "reason": "An intelligible luminous sphere that is easy to call across a field. It trades some inventiveness for clarity, which makes it a useful practical finalist."},
+    {"name": "plunavera", "reason": "The most lyrical emergence choice: plume and lunar cues open into a freely invented springlike ending. It feels alive, although the dawn ingredient is a story association rather than a surviving root."},
+    {"name": "selenerime", "reason": "A quieter, stately moon-and-ice option for a contemplative artwork. Its roots remain readable, at the cost of being longer and less playful than the leading blends."}
+  ]
+}

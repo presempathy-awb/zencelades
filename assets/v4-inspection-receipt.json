@@ -1,0 +1,73 @@
+{
+  "pdf_pages_read_and_rendered": 6,
+  "workbook_sheets_read": [
+    "Dashboard",
+    "Inputs",
+    "Demands",
+    "PartsBaseline",
+    "Sources"
+  ],
+  "saved_formula_error_cells": [],
+  "independent_demand_cells_matched": {
+    "Demands!B5": 820,
+    "Demands!B6": 8475.0,
+    "Demands!B7": 1.4514285714285715,
+    "Demands!B8": 3.0576445947521873,
+    "Demands!B12": 1435.1,
+    "Demands!B13": 2255.1,
+    "Demands!B17": 63.873748183202146,
+    "Demands!B18": 13.410932210766003,
+    "Demands!B19": 1261.5461468852266,
+    "Demands!B20": 555.5225806451613,
+    "Demands!B21": 1132.6488172043012,
+    "Demands!B22": 1952.6488172043012,
+    "Demands!B23": 555.5225806451613
+  },
+  "json_reactions_crosschecked": 4,
+  "historical_parts_totals_crosschecked": 2,
+  "source_comparison": [
+    {
+      "path": "src/enceladus/__init__.py",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/capture.py",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/cli.py",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/enceladus_surface.frag",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/fixed15.py",
+      "comparison": "added"
+    },
+    {
+      "path": "src/enceladus/geometry.py",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/loads.py",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/media.py",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/osc_bridge.py",
+      "comparison": "identical"
+    },
+    {
+      "path": "src/enceladus/show.py",
+      "comparison": "identical"
+    }
+  ],
+  "bundled_code_executed": false,
+  "workbook_recalculated_in_excel": false,
+  "physical_test_or_capacity_validation": false
+}

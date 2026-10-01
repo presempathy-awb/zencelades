@@ -1,0 +1,24 @@
+#name-studio { margin-block: 3rem; border-block-start: 1px solid var(--line); padding-block: 2rem; }
+#name-studio button, #name-studio input, #name-studio select, #name-studio textarea { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); padding: .65rem .85rem; min-height: 44px; max-width: 100%; }
+#name-studio button { cursor: pointer; }
+#name-studio :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+#name-studio textarea { display: block; width: 100%; min-height: 6rem; margin-block: .5rem; }
+#name-studio summary { cursor: pointer; padding-block: 1rem; font-size: 1.2rem; }
+.name-shelves { display: flex; gap: 2rem; flex-wrap: wrap; border-block: 1px solid var(--line); margin-block: 2rem; }
+.name-shelves > details { flex: 1 1 24rem; min-width: 0; }
+#score-weights { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem 2rem; margin-block: 1.5rem; }
+#score-weights label { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .5rem; }
+#score-weights input { grid-column: 1 / -1; width: 100%; accent-color: var(--accent); padding-inline: 0; }
+#score-weights output { grid-row: 1; grid-column: 2; font-variant-numeric: tabular-nums; }
+.ranked-name { padding-block: 1.6rem; border-block-start: 1px solid var(--line); overflow-wrap: anywhere; }
+.ranked-name h3 { font: 1.9rem var(--serif); margin: 0 0 .4rem; }
+.weighted-score { color: var(--accent); font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.name-actions, .research-links { display: flex; flex-wrap: wrap; gap: .75rem; }
+.ranked-name table { border-collapse: collapse; width: 100%; margin-block: 1rem; }
+.ranked-name th, .ranked-name td { text-align: start; padding: .5rem; border-block-end: 1px solid var(--line); }
+.ranked-name td input { width: 5rem; }
+.score-table-scroll { overflow-x: auto; }
+.score-table-scroll table { min-width: 38rem; }
+#score-definitions dt { font-weight: bold; margin-block-start: 1rem; }
+#score-definitions dd { margin-inline-start: 0; }
+.forgotten-shelf { margin-block: 2rem; border-block: 1px solid var(--line); }

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "prompt_id": "P009",
+  "status": "blocked_pending_scoped_broker",
+  "prepared_on": "2026-09-30",
+  "repository": "thatsnozorb-assets",
+  "prefix": "imports/research/",
+  "source_ref": "main",
+  "branch": null,
+  "commit": null,
+  "merge": false,
+  "principal": "thatsnozorb-publisher",
+  "credential_env": "LAKE_BROKER_THATSNOZORB_PUBLISHER_TOKEN",
+  "files": [
+    {
+      "path": "source/research/2026-09-30/nasa-enceladus-orbilander.pdf",
+      "bytes": 87716471,
+      "content_sha256": "98730c0ed813ef8c8f65e3b452f249aaa89d66a9e8d987e50d8237929d1f239a",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/2026-09-30/nasa-enceladus-orbilander.pdf",
+      "source_id": "E25"
+    },
+    {
+      "path": "source/research/2026-09-30/florida-biscayne-bay-management-plan.pdf",
+      "bytes": 19122090,
+      "content_sha256": "a71c8d8fb694ef2d7fe3b04f8f4c983d97a37b8ba2846378dd481955264d8219",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/2026-09-30/florida-biscayne-bay-management-plan.pdf",
+      "source_id": "E17"
+    },
+    {
+      "path": "source/research/2026-09-30/rosco-projection-screens-guide.pdf",
+      "bytes": 346676,
+      "content_sha256": "8415e273e855fc31f52f93d8459c346e37d93cc2e4afa961f97a0a7138d4ad4b",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/2026-09-30/rosco-projection-screens-guide.pdf",
+      "source_id": "E03"
+    },
+    {
+      "path": "source/research/2026-09-30/nema-enclosure-types.pdf",
+      "bytes": 243156,
+      "content_sha256": "f55041b1ed0f5753d19a93d1208cc3bd42ef75a82b1baaae6f863abebfee90e2",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/2026-09-30/nema-enclosure-types.pdf",
+      "source_id": "E08"
+    },
+    {
+      "path": "source/research/mounts/2026-09-30/haul-master-61522-manual.pdf",
+      "bytes": 1656425,
+      "content_sha256": "a0d57e008f97717a464b513d6447e4f688b779898c21635c8f0582a05cb1476b",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/mounts/2026-09-30/haul-master-61522-manual.pdf",
+      "source_id": "M02",
+      "pages": 12,
+      "source_url": "https://manuals.harborfreight.com/manuals/61000-61999/61522-193175501073.pdf"
+    },
+    {
+      "path": "source/research/mounts/2026-09-30/spitzlift-receiver-cut-sheet-2019.pdf",
+      "bytes": 248362,
+      "content_sha256": "712d4567c794e847d13eedbf3b01ab0e232920e854d9cd28a57e493e3d5bae70",
+      "media_type": "application/pdf",
+      "lakefs_path": "imports/research/mounts/2026-09-30/spitzlift-receiver-cut-sheet-2019.pdf",
+      "source_id": "M04",
+      "pages": 1,
+      "source_url": "https://spitzlift.com/wp-content/uploads/2019/03/14-RECEIVER-HITCH-SPITZLIFT-CUT-SHEET.pdf"
+    }
+  ],
+  "file_count": 6,
+  "total_bytes": 109333180,
+  "remote_verified": false,
+  "blockers": [
+    "Required owner reviews and merges pending: hesellsheshells feat/thatsnozorb-publisher (#65) and Telpher feat/thatsnozorb-publisher (#554).",
+    "Scoped credential and broker deployment, allowed/denied proof, upload and immutable readback remain pending."
+  ],
+  "preserve_existing": [
+    "assets/upload-receipt.json",
+    "assets/upload-staging.json",
+    "assets/catalog.json",
+    "assets/b2-archive-receipt.json"
+  ],
+  "next_receipt_path": "assets/research-upload-receipt.json",
+  "receipt_requirements": [
+    "Fresh ingest-* branch, never overwrite an existing branch.",
+    "Record immutable commit only after successful broker response.",
+    "Verify exact newly added object set and byte sizes.",
+    "Read every object by immutable commit and compare SHA-256.",
+    "No merge to main or deletion of local originals."
+  ],
+  "prompt_ids": [
+    "P009",
+    "P011"
+  ],
+  "updated_by_prompt": "P011"
+}

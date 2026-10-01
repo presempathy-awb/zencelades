@@ -1,0 +1,205 @@
+{
+  "date": "2026-09-30",
+  "count": 22,
+  "tool": "built-in image_gen",
+  "images": [
+    {
+      "name": "cryzorcean",
+      "file": "01-cryzorcean.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1680025,
+      "sha256": "4da268bbf1e1cebcd65dab566c2cae47942617ff0ca4c523dc4c5ea833d737ab",
+      "interpretation": "documented"
+    },
+    {
+      "name": "twindalume",
+      "file": "02-twindalume.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1598973,
+      "sha256": "238b1f24797b574f4d6c69ab752493677f7382784bd676438e1b9be566679f78",
+      "interpretation": "documented"
+    },
+    {
+      "name": "cryosquish",
+      "file": "03-cryosquish.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1498477,
+      "sha256": "50f7bff9419560029cf22790c4a26e2ebfd9c869db8ee6cbc8479467914da70c",
+      "interpretation": "documented"
+    },
+    {
+      "name": "geysergleam",
+      "file": "04-geysergleam.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1772168,
+      "sha256": "d8a95416170cdde7b856b1384997a49705505b903457eb054a40a29770922a75",
+      "interpretation": "documented"
+    },
+    {
+      "name": "gibbourne",
+      "file": "05-gibbourne.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1575471,
+      "sha256": "6bb63f5b926e60d3f2caf9b3a8447ba2c8449a686cd379c87c8de25a82626114",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "cyclicpaddla",
+      "file": "06-cyclicpaddla.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1385422,
+      "sha256": "f66692fb1d83eb5c469bc18610aa3c54542d3e037d71f1fe25971f377c58fe51",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "biolunairis",
+      "file": "07-biolunairis.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1618152,
+      "sha256": "c3ff4903cee20aeb9574bd3b6e8fddb32066ee3cb7966b575ccc36431792becb",
+      "interpretation": "documented"
+    },
+    {
+      "name": "causticuddle",
+      "file": "08-causticuddle.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1678911,
+      "sha256": "7b54294464fe42af1e3e55b2c16681a63d977fa5f49231f82801455147a7a154",
+      "interpretation": "documented"
+    },
+    {
+      "name": "priftalism",
+      "file": "09-priftalism.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1633516,
+      "sha256": "74822553fff978ffe072b2d383c603289639d6f0b70e21db4bbfcf0623669ac8",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "visageyser",
+      "file": "10-visageyser.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1637786,
+      "sha256": "87d0e99a08044f13b8f33eda9aff86b3677118d8b335fcf21ca9ffaae503554b",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "mommamiasma",
+      "file": "11-mommamiasma.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1760001,
+      "sha256": "30ffd185edb5038b50d222f655ef6c040cf276aec25eca7c280d71ead8e813d2",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "apsisoma",
+      "file": "12-apsisoma.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1368271,
+      "sha256": "188478e9c832c2aa5c58d1884f24c130d8c7771915a404d5e74f3316fafdac30",
+      "interpretation": "documented"
+    },
+    {
+      "name": "meltidal",
+      "file": "13-meltidal.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1697869,
+      "sha256": "78472ff266e582a70fe491124294478756d4cc3a38961a29205f7a06824c5741",
+      "interpretation": "documented"
+    },
+    {
+      "name": "irisalt",
+      "file": "14-irisalt.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1791954,
+      "sha256": "1e860bc5bfb23708454eb450930d3890c837dc90ec5520ca14fa1ec31dd77c93",
+      "interpretation": "documented"
+    },
+    {
+      "name": "bobblium",
+      "file": "15-bobblium.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1399389,
+      "sha256": "d06cdfd085b1de0359fb9c42ccc3b915bb520d8ec907fb42505a3a302bb9b867",
+      "interpretation": "documented"
+    },
+    {
+      "name": "fissuresque",
+      "file": "16-fissuresque.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1717777,
+      "sha256": "270edc30de4eafbcee3a0c7002c3943e849f91dccd9e3a65f7f5a53496a46c63",
+      "interpretation": "documented"
+    },
+    {
+      "name": "beamesque",
+      "file": "17-beamesque.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1803749,
+      "sha256": "8f55df53681839fa93beaa34185ff926fb87b052edbed3db49157360c9152503",
+      "interpretation": "documented"
+    },
+    {
+      "name": "zassini",
+      "file": "18-zassini.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1492385,
+      "sha256": "deebece6310998eefc88e13887582dea46840fabb895ac9e42d1ab5f916b08d6",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "zenceladus",
+      "file": "19-zenceladus.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1448653,
+      "sha256": "dafbb95869ac0762f72483c1f42b0a1845edb235b9969cd12d5559a113bfb530",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "zenceladusty",
+      "file": "20-zenceladusty.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1458344,
+      "sha256": "c0a13075b4a235c4acbbb59823c0058e43d3dfbb6e96c14ac5d874eb8ff67399",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "enceladusty",
+      "file": "21-enceladusty.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1912120,
+      "sha256": "2316f21887c3b9130d18bdd46879e7a7d905abfe89cfab2ff7f9451617dde0df",
+      "interpretation": "proposed"
+    },
+    {
+      "name": "thats no zorb",
+      "file": "22-thats-no-zorb.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1573385,
+      "sha256": "2c8278e54a4033f2fc0430466cab30ff66bd28ce58f377cf714e520e1a399a00",
+      "interpretation": "proposed"
+    }
+  ]
+}

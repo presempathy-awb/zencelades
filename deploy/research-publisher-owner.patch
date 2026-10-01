@@ -1,0 +1,16 @@
+diff --git a/lake-broker.toml b/lake-broker.toml
+--- a/lake-broker.toml
++++ b/lake-broker.toml
+@@ -151,4 +151,12 @@
+ description = "Disposable smoke repositories only; may create and delete its own namespace."
+ auth = ["token", "s3"]
+ groups = ["lake-managers"]
+ repos = ["telpher-smoke", "telpher-smoke-*", "features-lance-embeddings-smoke", "lake-broker-smoke-*"]
++
++# P009 research preservation; apply in hesellsheshells only.
++[principals.thatsnozorb-publisher]
++description = "Thatsnozorb research and original-file preservation."
++auth = ["token"]
++groups = ["lake-writers"]
++repos = ["thatsnozorb-assets"]
++prefixes = ["imports/*"]

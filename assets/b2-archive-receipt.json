@@ -1,0 +1,27 @@
+{
+  "verified_at": "2026-09-30T20:48:41.291543+00:00",
+  "bucket_type": "allPrivate",
+  "lifecycle_rules": [],
+  "file_lock_configuration": {
+    "isClientAuthorizedToRead": false,
+    "value": null
+  },
+  "files": [
+    {
+      "path": "source/uploads/Enceladus_Within_v3_Project.zip",
+      "bytes": 15283642,
+      "content_sha256": "ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "",
+      "lakefs_commit": "",
+      "lakefs_path": "",
+      "b2_bucket": "glassine",
+      "b2_key": "archives/thatsnozorb/sha256/ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a/Enceladus_Within_v3_Project.zip",
+      "b2_file_id": "4_z25616d79dddca8999eec0610_f1000bee0526687b5_d20260930_m204105_c004_v0402029_t0021_u01790800865798",
+      "readback_sha256": "ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a",
+      "readback_verified": true
+    }
+  ],
+  "readback_verified": true,
+  "retention_note": "Version IDs recorded; no Object Lock or lifecycle changes requested."
+}

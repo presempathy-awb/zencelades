@@ -1,0 +1,8 @@
+# Same tool versions as the existing Erebe/Much Ado module toolchain.
+# This file pins tools; it does not install them.
+[tools]
+python = "3.14.7"
+uv = "0.12.17"
+just = "1.58.0"
+bun = "1.4.2"
+jj = "0.45.1"

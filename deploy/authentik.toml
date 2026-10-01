@@ -1,0 +1,15 @@
+# Enceladus application contract consumed by Telpher's owner state tool.
+# Access is restricted separately, before exposing a public route.
+[defaults]
+provider_mode_api = "forward_single"
+authorization_flow_slug = "default-provider-authorization-implicit-consent"
+invalidation_flow_slug = "default-provider-invalidation-flow"
+outpost_authentik_host = "https://authentik.telpher.stream"
+
+[applications.thatsnozorb]
+name = "Enceladus Within"
+slug = "thatsnozorb"
+route_host = "thatsnozorb.muchadoaboutoneside.com"
+external_host = "https://thatsnozorb.muchadoaboutoneside.com"
+launch_url = "https://thatsnozorb.muchadoaboutoneside.com/"
+provider_name = "thatsnozorb-forward-auth"

@@ -1,0 +1,16 @@
+main{max-width:78rem}
+h1{font-size:clamp(2.4rem,5vw,4.8rem);overflow-wrap:anywhere}
+h2{font-size:clamp(2rem,4vw,3.3rem)}
+h3{font-size:1.3rem;font-weight:500;margin:0 0 .6rem;line-height:1.4}
+h3 span{display:block;font-size:1rem;color:var(--muted)}
+.reading-pair{display:grid;gap:2rem;margin-block:2rem}
+.reading-list{max-width:70ch;margin:2rem 0 0}
+.reading-list dt{margin-top:1.2rem;font-weight:600}
+.reading-list dd{margin:.25rem 0 1rem;color:var(--muted)}
+article{padding-block:1.8rem;border-bottom:1px solid var(--line)}
+article:last-of-type{margin-bottom:2rem}
+article p:last-child{margin-bottom:0}
+.lesson{color:var(--muted)}
+.intro .action{margin-bottom:.8rem}
+ol{max-width:65ch;padding-left:1.5rem}li{padding-bottom:.8rem}
+@media(min-width:48rem){.reading-pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}

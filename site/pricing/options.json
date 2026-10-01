@@ -1,0 +1,510 @@
+{
+  "as_of": "2026-09-30",
+  "currency": "USD",
+  "status": "Concept planning allowances, not vendor quotations or engineered designs",
+  "defaults": {
+    "days": 6,
+    "dayRate": 495,
+    "discount": 0,
+    "contingency": 25,
+    "taxAllowance": 0,
+    "credit": 0,
+    "capture": false
+  },
+  "projector_basis": {
+    "label": "Miami Sound Rental: IP65-enclosed, truss-mounted Sony 6,000 lumen projector",
+    "day_rate_usd": 495,
+    "url": "https://miamisoundrental.com/projector-rental",
+    "caveat": "Listed 24-hour rate. Six chargeable days is a budgeting assumption, not availability or a rental quote. Listed optics may not suit the sphere/footprint; test and obtain a lens-specific quote. Delivery and setup are separate."
+  },
+  "assumptions": [
+    "Four event days plus two chargeable load-in/out days; night use on dry land; no internal cameras and no occupant.",
+    "Ranges cover stated purchases/hire, fabrication, professional review, content/calibration, transport/crew and a combined insurance/permit allowance. Tax is excluded until a dollar allowance is entered.",
+    "The truck is already owned; land, shared electrical supply and any existing anchor are conditional on organizer approval. Transport/crew are capped allowances, not a full paid multi-week artist salary.",
+    "Projector rates assume weather enclosures in the rental bundle. Separately priced supports cover the ground interface, power and cabling. Brightness, throw and mapping remain unproven.",
+    "Contingency is 25% of the subtotal after credits, with tax allowance added afterward. Existing-equipment/donation credit is zero until documented; it does not change the work required."
+  ],
+  "capture": {
+    "low": 750,
+    "high": 2800,
+    "label": "One external live camera + integration",
+    "note": "Equipment allowance $250–800 plus integration $500–2,000. A visible external participant can drive a 2D live portrait or texture; this does not reconstruct a full 360° body."
+  },
+  "original": {
+    "p0": [
+      1875,
+      5750
+    ],
+    "p1": [
+      39000,
+      105750
+    ],
+    "combined": [
+      40875,
+      111500
+    ],
+    "internalCameras": [
+      500,
+      1600
+    ],
+    "note": "Original v3 BOM at 25% contingency; different scope and an unsourced rental allowance. Occupied operation remains unpriced."
+  },
+  "options": [
+    {
+      "id": "ground-light",
+      "name": "A lit moon on the ground",
+      "position": "Lowest technical burden",
+      "projectors": 0,
+      "description": "A 1.5–2 m opaque or translucent moon on a low cradle, lit internally with LEDs. No projected human imagery; recorded sound and slow light cues carry the story.",
+      "items": [
+        {
+          "label": "Surface / diffuser",
+          "low": 300,
+          "high": 1000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Cradle, restraint and ground protection",
+          "low": 300,
+          "high": 1200,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Structural / site review",
+          "low": 500,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "LEDs, controller and playback",
+          "low": 500,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Power, cables and protection",
+          "low": 300,
+          "high": 800,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and setup",
+          "low": 500,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 700,
+          "high": 2000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 500,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    },
+    {
+      "id": "ground-half",
+      "name": "Ground-supported hemisphere",
+      "position": "Cheapest projection version",
+      "projectors": 1,
+      "description": "A 1.5–2 m half sphere or curved moon screen with a deliberate front viewing area. One projector; no rear image and no 360° illusion.",
+      "items": [
+        {
+          "label": "Curved projection surface",
+          "low": 300,
+          "high": 1000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Low base, restraint and ground protection",
+          "low": 400,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Structural / site review",
+          "low": 500,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Media computer and playback allowance",
+          "low": 400,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Projector support, power and cable protection",
+          "low": 400,
+          "high": 1200,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and calibration",
+          "low": 1000,
+          "high": 3000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 1000,
+          "high": 3000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 500,
+          "high": 1500,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    },
+    {
+      "id": "ground-sphere",
+      "name": "Full sphere on a ground cradle",
+      "position": "Recommended first full-scale direction",
+      "projectors": 2,
+      "description": "A roughly 3 m unoccupied, diffusing sphere supported from below. Two projected viewing sides; gaps, seams and occlusion remain to be tested. No water, vehicle or overhead lift.",
+      "items": [
+        {
+          "label": "Projection sphere",
+          "low": 1500,
+          "high": 4500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Cradle, restraint, mats and ballast",
+          "low": 800,
+          "high": 2500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Structural / site review",
+          "low": 1000,
+          "high": 3000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Media computer and software allowance",
+          "low": 1800,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Projector supports, power and cable protection",
+          "low": 600,
+          "high": 1800,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and calibration",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 800,
+          "high": 2000,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    },
+    {
+      "id": "fixed-bed",
+      "name": "Fixed in the truck bed",
+      "position": "Truck as scenery and transport",
+      "projectors": 2,
+      "description": "A roughly 3 m unoccupied sphere supported over the bed, with no projecting boom. Assumes Andrew already owns the truck. Bed/frame interfaces, sightlines, wind and stability need review; no vehicle movement during the show.",
+      "items": [
+        {
+          "label": "Projection sphere",
+          "low": 1500,
+          "high": 4500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Fixed bed support, approved interfaces and stabilization",
+          "low": 1500,
+          "high": 4500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Vehicle / structural / site review",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Media computer and software allowance",
+          "low": 1800,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Projector supports, power and cable protection",
+          "low": 600,
+          "high": 1800,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and calibration",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 1000,
+          "high": 2500,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    },
+    {
+      "id": "fixed-pedestal",
+      "name": "Freestanding fixed pedestal",
+      "position": "No truck, no overhead suspension",
+      "projectors": 2,
+      "description": "A roughly 3 m unoccupied sphere on a custom short pedestal. Better underside clearance than a cradle, with more visible structure and a larger stability/ballast problem.",
+      "items": [
+        {
+          "label": "Projection sphere",
+          "low": 1500,
+          "high": 4500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Fixed pedestal / frame, ballast and mats",
+          "low": 2500,
+          "high": 6500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Structural / site review",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Media computer and software allowance",
+          "low": 1800,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Projector supports, power and cable protection",
+          "low": 600,
+          "high": 1800,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and calibration",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 1800,
+          "high": 4500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 1000,
+          "high": 2500,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    },
+    {
+      "id": "existing-hang",
+      "name": "Hang from an existing approved point",
+      "position": "Conditional on a real host structure",
+      "projectors": 2,
+      "description": "Suspend an empty roughly 3 m projection globe from a host structure that its owner and the event explicitly approve. Requires a rated load path, wind plan and qualified rigging. No trees, utility fixtures or neighboring art assumed usable.",
+      "items": [
+        {
+          "label": "Projection sphere with designed suspension",
+          "low": 2000,
+          "high": 5000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Rigging package and point-access hire allowance",
+          "low": 1000,
+          "high": 3500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Engineer / rigger / host approval review",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Media computer and software allowance",
+          "low": 1800,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Projector supports, power and cable protection",
+          "low": 600,
+          "high": 1800,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and calibration",
+          "low": 1500,
+          "high": 4000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 2000,
+          "high": 5000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 1000,
+          "high": 2500,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    },
+    {
+      "id": "fixed-cantilever",
+      "name": "Fixed truck cantilever",
+      "position": "No articulation; still a custom structure",
+      "projectors": 4,
+      "description": "A roughly 3 m empty globe offset behind or beside a stationary truck on a fixed frame. Eliminates moving boom hardware, but vehicle attachment, overturning moment and stabilization remain substantial engineering work.",
+      "items": [
+        {
+          "label": "Projection sphere with designed suspension",
+          "low": 2000,
+          "high": 5000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Fixed cantilever fabrication, truck interfaces and stabilization",
+          "low": 7000,
+          "high": 16000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Vehicle / structural review and load test",
+          "low": 3500,
+          "high": 8000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Media computer and software allowance",
+          "low": 2500,
+          "high": 5000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Projector supports, power and cable protection",
+          "low": 1000,
+          "high": 2500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and calibration",
+          "low": 2500,
+          "high": 6000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 2500,
+          "high": 6000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 1500,
+          "high": 3500,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    },
+    {
+      "id": "own-gantry",
+      "name": "Hang from a freestanding gantry",
+      "position": "Independent of the truck and host anchors",
+      "projectors": 4,
+      "description": "A roughly 3 m empty globe suspended from a rented or fabricated event gantry. The support allowance includes ballast and rigging; engineering must specify the complete outdoor assembly. A cheap truss component is not a complete rated structure.",
+      "items": [
+        {
+          "label": "Projection sphere with designed suspension",
+          "low": 2000,
+          "high": 5000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Complete gantry hire / fabrication, ballast and rigging",
+          "low": 4000,
+          "high": 10000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Structural / rigging review and inspection",
+          "low": 2000,
+          "high": 5000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Media computer and software allowance",
+          "low": 2500,
+          "high": 5000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Projector supports, power and cable protection",
+          "low": 1000,
+          "high": 2500,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Content and calibration",
+          "low": 2500,
+          "high": 6000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Transport, install and operating crew",
+          "low": 2500,
+          "high": 6000,
+          "basis": "Planning allowance; replace with quote"
+        },
+        {
+          "label": "Insurance / permits allowance",
+          "low": 1200,
+          "high": 3000,
+          "basis": "Planning allowance; replace with quote"
+        }
+      ]
+    }
+  ]
+}

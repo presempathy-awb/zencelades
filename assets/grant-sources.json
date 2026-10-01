@@ -1,0 +1,263 @@
+{
+  "checked_on": "2026-09-30",
+  "scope": "P004 official guides and related art precedents",
+  "limits": [
+    "No winning full applications, confidential budgets or jury notes obtained.",
+    "Individual award amounts unknown for all selected cases.",
+    "Lessons are Codex inferences; no engineering or placement approval."
+  ],
+  "sources": [
+    {
+      "id": "love-art",
+      "title": "Love Burn art application and Offer Notice",
+      "url": "https://theloveburn.com/artsubmissions",
+      "publisher": "Love Burn",
+      "period": "current program",
+      "evidence": "Application and reviewed official offer boundary.",
+      "source_type": "primary"
+    },
+    {
+      "id": "love-portal",
+      "title": "Love Burn official art portal",
+      "url": "https://theloveburn.com/art",
+      "publisher": "Love Burn",
+      "period": "current application route",
+      "evidence": "Links to the Airtable application; exact form fields not verified.",
+      "source_type": "primary"
+    },
+    {
+      "id": "love-criteria",
+      "title": "Love Burn artist interview",
+      "url": "https://theloveburn.com/artistinterview",
+      "publisher": "Love Burn",
+      "period": "published guidance",
+      "evidence": "Interaction, team and inspiration; not a scoring formula.",
+      "source_type": "primary"
+    },
+    {
+      "id": "love-logistics",
+      "title": "Love Burn ticket questions",
+      "url": "https://theloveburn.com/ticketquestions",
+      "publisher": "Love Burn",
+      "period": "mixed-year guidance",
+      "evidence": "Recheck dated sections against 2027 offer.",
+      "source_type": "primary"
+    },
+    {
+      "id": "love-date",
+      "title": "Love Burn 2027 tickets",
+      "url": "https://tickets.theloveburn.com/2027",
+      "publisher": "Love Burn",
+      "period": "2027 cycle",
+      "evidence": "September 30, 2026 date; clock time not established.",
+      "source_type": "primary"
+    },
+    {
+      "id": "bm-faq",
+      "title": "BRC Honoraria program and FAQ",
+      "url": "https://burningman.org/black-rock-city/bring-your-art/art-grants-programs/brc-honoraria/",
+      "publisher": "Burning Man Project",
+      "period": "2027/current",
+      "evidence": "Criteria, funding tiers and AI disclosure; separate from Love Burn.",
+      "source_type": "primary"
+    },
+    {
+      "id": "bm-loi",
+      "title": "How to submit a 2027 Letter of Intent",
+      "url": "https://burningman.org/black-rock-city/bring-your-art/art-grants-programs/brc-honoraria/submit_grant/",
+      "publisher": "Burning Man Project",
+      "period": "2027 cycle",
+      "evidence": "Published Pacific-time deadlines; linked preview document fetch failed.",
+      "source_type": "primary"
+    },
+    {
+      "id": "bm-delivery",
+      "title": "What to expect after an Honorarium",
+      "url": "https://burningman.org/black-rock-city/bring-your-art/art-grants-programs/brc-honoraria/art-grants-expect/",
+      "publisher": "Burning Man Project",
+      "period": "2027/current",
+      "evidence": "Post-award responsibilities and delivery.",
+      "source_type": "primary"
+    },
+    {
+      "id": "bm-2013",
+      "title": "Art of Burning Man 2013 Honorarium guide",
+      "url": "https://burningman.org/wp-content/uploads/Art-2013-honorarium-guide-final-v2.pdf",
+      "publisher": "Burning Man ARTery",
+      "period": "2013 historical",
+      "evidence": "Funded project descriptions, not winning full applications. Truth is Beauty, printed p128.",
+      "source_type": "primary"
+    },
+    {
+      "id": "lakes",
+      "title": "Lakes of Fire art grants",
+      "url": "https://lakesoffire.org/departments/arthub/art-grants/",
+      "publisher": "Lakes of Fire",
+      "period": "2026 historical cycle",
+      "evidence": "Raw-material grant eligibility; closed January 18, 2026.",
+      "source_type": "primary"
+    },
+    {
+      "id": "afrika",
+      "title": "AfrikaBurn grant preparation notice",
+      "url": "https://www.afrikaburn.org/afrikaburn-events/grant-application-deadline/",
+      "publisher": "AfrikaBurn",
+      "period": "2026 notice",
+      "evidence": "Clear proposal and detailed realistic budget. Full rubric not retrieved.",
+      "source_type": "primary"
+    },
+    {
+      "id": "nyfa-writing",
+      "title": "Grant Writing Basics",
+      "url": "https://www.nyfa.org/knowledge-base/fundraising-applications/grant-writing-basics-how-to-put-your-best-foot-forward-with-funders/",
+      "publisher": "NYFA",
+      "period": "2023 guidance",
+      "evidence": "Fit, artistic clarity and application preparation.",
+      "source_type": "primary"
+    },
+    {
+      "id": "nyfa-budget",
+      "title": "Building a Project Budget",
+      "url": "https://www.nyfa.org/news/archive/building-a-project-budget/",
+      "publisher": "NYFA",
+      "period": "2017 guidance",
+      "evidence": "Cash/in-kind and committed/pending distinctions.",
+      "source_type": "primary"
+    },
+    {
+      "id": "cc-handbook",
+      "title": "Creative Capital Application Handbook 2027",
+      "url": "https://creative-capital.org/applicationhandbook",
+      "publisher": "Creative Capital",
+      "period": "2027 handbook",
+      "evidence": "Sample captions, milestones and program-specific sample rules; not an eligibility finding.",
+      "source_type": "primary"
+    },
+    {
+      "id": "bm-2016",
+      "title": "2016 BRC Honoraria announcement",
+      "url": "https://journal.burningman.org/2016/03/burning-man-arts/brc-art/introducing-the-2016-black-rock-city-honoraria-art-installations/",
+      "publisher": "Burning Man Project",
+      "period": "2016 awards",
+      "evidence": "Award evidence for Shrumen Lumen, Firmament and The Space Whale; individual amounts unknown.",
+      "source_type": "primary"
+    },
+    {
+      "id": "shrumen-artist",
+      "title": "Shrumen Lumen project and exhibitions",
+      "url": "https://www.foldhaus.com/shrumen-lumen",
+      "publisher": "FoldHaus",
+      "period": "2016 work; history through 2024",
+      "evidence": "Artist's dated exhibition record; outdated currently-on-view wording is not a current booking.",
+      "source_type": "primary"
+    },
+    {
+      "id": "shrumen-museum",
+      "title": "Burning Man unfolds at the Renwick",
+      "url": "https://americanart.si.edu/blog/eye-level/2018/19/57577/sneak-peek-burning-man-unfolds-renwick",
+      "publisher": "Smithsonian American Art Museum",
+      "period": "2018 exhibition",
+      "evidence": "Independent museum confirmation of presentation.",
+      "source_type": "primary"
+    },
+    {
+      "id": "nova",
+      "title": "Christopher Schardt's Nova",
+      "url": "https://americanart.si.edu/exhibitions/burning-man/online/christopher-schardt",
+      "publisher": "Smithsonian American Art Museum",
+      "period": "2018–2019 exhibition",
+      "evidence": "Related adaptation of Firmament; no distinct Nova Honoraria claim. Indexed primary text used after direct fetch failed.",
+      "source_type": "primary"
+    },
+    {
+      "id": "whale-civic",
+      "title": "Open Air Galleries",
+      "url": "https://travelnevada.com/nevada-magazine/open-air-galleries/",
+      "publisher": "Travel Nevada / Nevada Magazine",
+      "period": "historical civic-art feature",
+      "evidence": "Space Whale in Reno City Plaza; no current condition or purchase-price claim.",
+      "source_type": "primary"
+    },
+    {
+      "id": "truth-civic",
+      "title": "San Leandro planning report 17-343",
+      "url": "https://sanleandro.legistar.com/LegislationDetail.aspx?FullText=1&GUID=65E929E8-15DF-46E9-8BD7-20FC040679F7&ID=3076860&Options=&Search=",
+      "publisher": "City of San Leandro",
+      "period": "June 15, 2017 report",
+      "evidence": "Records completion of Truth is Beauty at the campus in 2016.",
+      "source_type": "primary"
+    },
+    {
+      "id": "pulse-award",
+      "title": "Boundless Space Artist Stories Part 3",
+      "url": "https://journal.burningman.org/2021/09/burning-man-arts/global-art/boundless-space-artist-stories-part-3/",
+      "publisher": "Burning Man Project",
+      "period": "2021 retrospective of 2014 award",
+      "evidence": "Explicit Pulse and Bloom Honoraria evidence.",
+      "source_type": "primary"
+    },
+    {
+      "id": "pulse-tour",
+      "title": "Saba Ghole speaker biography",
+      "url": "https://techpoetics.com/",
+      "publisher": "Boston Tech Poetics",
+      "period": "historical speaker record",
+      "evidence": "Collaborator biography reports three-continent touring; individual dates not independently verified. Indexed primary text.",
+      "source_type": "primary"
+    },
+    {
+      "id": "bm-2025",
+      "title": "Introducing BRC 2025 Honoraria art",
+      "url": "https://journal.burningman.org/2025/03/burning-man-arts/brc-art/introducing-brc-2025-honoraria-art/",
+      "publisher": "Burning Man Project",
+      "period": "2025 awards",
+      "evidence": "ORBs award evidence; no later touring claim.",
+      "source_type": "primary"
+    },
+    {
+      "id": "bm-2025-descriptions",
+      "title": "2025 art installations",
+      "url": "https://history.burningman.org/brc-history/event-archives/2025-event-archive/2025-art-installations/",
+      "publisher": "Burning Man Project",
+      "period": "2025 archive",
+      "evidence": "Artwork descriptions; listing alone is not funding proof.",
+      "source_type": "primary"
+    },
+    {
+      "id": "moon-form",
+      "title": "About Museum of the Moon",
+      "url": "https://my-moon.org/about/",
+      "publisher": "Luke Jerram project site",
+      "period": "touring project",
+      "evidence": "Seven-metre internally lit NASA-image sphere; not projected occupied enclosure.",
+      "source_type": "primary"
+    },
+    {
+      "id": "moon-funding",
+      "title": "Museum of the Moon partners",
+      "url": "https://my-moon.org/partners/",
+      "publisher": "Luke Jerram project site",
+      "period": "commissioning record",
+      "evidence": "Co-commissioning consortium; no Burning Man award established.",
+      "source_type": "primary"
+    },
+    {
+      "id": "moon-reach",
+      "title": "Beijing Olympic Water Cube",
+      "url": "https://my-moon.org/installations/beijing-olympic-water-cube/",
+      "publisher": "Luke Jerram project site",
+      "period": "2018 exhibition",
+      "evidence": "Artist reports over 200,000 visitors; not independently audited attendance.",
+      "source_type": "primary"
+    },
+    {
+      "id": "sonic",
+      "title": "Sonic Sphere",
+      "url": "https://www.theshed.org/program/304-sonic-sphere?feed_item=403",
+      "publisher": "The Shed",
+      "period": "June–July 2023 presentation",
+      "evidence": "65-foot suspended concert hall. Indexed official program; direct fetch returned queue. No Burning Man grant verified.",
+      "source_type": "primary"
+    }
+  ]
+}

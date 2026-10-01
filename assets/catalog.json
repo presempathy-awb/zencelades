@@ -1,0 +1,2793 @@
+{
+  "file_count": 132,
+  "original_uploads": 7,
+  "zip_files": 125,
+  "total_bytes": 61416414,
+  "categories": {
+    "original-upload": 7,
+    "release-root": 8,
+    "budget": 3,
+    "config": 4,
+    "docs": 14,
+    "drawings": 16,
+    "legacy": 15,
+    "licenses": 1,
+    "media": 1,
+    "models": 10,
+    "previews": 20,
+    "reports": 13,
+    "src": 9,
+    "tests": 2,
+    "tools": 9
+  },
+  "identical_byte_groups": [
+    [
+      "source/uploads/CATALOG.md",
+      "deliveries/enceladus_v3/CATALOG.md"
+    ],
+    [
+      "source/uploads/ChatGPT Image Sep 30, 2026, 11_59_25 AM.png",
+      "deliveries/enceladus_v3/media/historical_concept_NOT_ENGINEERING.png"
+    ],
+    [
+      "source/uploads/Enceladus_v3_Budget_and_Gates.xlsx",
+      "deliveries/enceladus_v3/budget/Enceladus_v3_Budget_and_Gates.xlsx"
+    ],
+    [
+      "source/uploads/Enceladus_v3_Design_Review.pdf",
+      "deliveries/enceladus_v3/docs/Enceladus_v3_Design_Review.pdf"
+    ]
+  ],
+  "preservation": "exact original/ZIP file sets and bytes verified; no deduplication",
+  "inspection_limits": "Format envelopes and source read; saved release checks are historical; PDF/video inspected separately; no physical acceptance or fresh pytest",
+  "files": [
+    {
+      "path": "source/uploads/CATALOG.md",
+      "bytes": 15866,
+      "content_sha256": "8cfb21b2b599666d9ac7aec087aeb6653a0310344de44df74bd424affe518e14",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/source/uploads/CATALOG.md",
+      "category": "original-upload",
+      "role": "Exact supplied original",
+      "inspection": {
+        "format": "md",
+        "text_lines": 131,
+        "headings": [
+          "Complete release file catalog"
+        ]
+      }
+    },
+    {
+      "path": "source/uploads/ChatGPT Image Sep 30, 2026, 11_59_25 AM.png",
+      "bytes": 2936696,
+      "content_sha256": "d9be893dff0fb2a90a0b0856570d5e2608ce7a61ef0d7c38aae1fb2ff5e1a6c8",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/source/uploads/ChatGPT Image Sep 30, 2026, 11_59_25 AM.png",
+      "category": "original-upload",
+      "role": "Exact supplied original",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1536,
+          1024
+        ]
+      }
+    },
+    {
+      "path": "source/uploads/ChatGPT Image Sep 30, 2026, 11_59_59 AM.png",
+      "bytes": 2698075,
+      "content_sha256": "7d53fdc7f969b9883369886ab7c27afdc7cb0ba6290bdff276ae15e72bdd7a14",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/source/uploads/ChatGPT Image Sep 30, 2026, 11_59_59 AM.png",
+      "category": "original-upload",
+      "role": "Exact supplied original",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1448,
+          1086
+        ]
+      }
+    },
+    {
+      "path": "source/uploads/Enceladus_Within_v3_Project.zip",
+      "bytes": 15283642,
+      "content_sha256": "ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/source/uploads/Enceladus_Within_v3_Project.zip",
+      "b2_bucket": "glassine",
+      "b2_key": "archives/thatsnozorb/sha256/ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a/Enceladus_Within_v3_Project.zip",
+      "b2_file_id": "4_z25616d79dddca8999eec0610_f1000bee0526687b5_d20260930_m204105_c004_v0402029_t0021_u01790800865798",
+      "preferred_archive_storage": "B2",
+      "category": "original-upload",
+      "role": "Exact supplied original",
+      "inspection": {
+        "format": "zip",
+        "archive_members": 125
+      }
+    },
+    {
+      "path": "source/uploads/Enceladus_v3_Budget_and_Gates.xlsx",
+      "bytes": 33491,
+      "content_sha256": "fea215a27cf6938e8cbac7aaea973bec27fba0eb049103400e0bed7bc140bc18",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/source/uploads/Enceladus_v3_Budget_and_Gates.xlsx",
+      "category": "original-upload",
+      "role": "Exact supplied original",
+      "inspection": {
+        "format": "xlsx",
+        "archive_members": 20,
+        "sheets": [
+          "Dashboard",
+          "BOM",
+          "Assumptions",
+          "Load Study",
+          "Gates",
+          "Measurements",
+          "Sources"
+        ]
+      }
+    },
+    {
+      "path": "source/uploads/Enceladus_v3_Design_Review.pdf",
+      "bytes": 3878384,
+      "content_sha256": "a14da2e5541034a998baae60f373c6d9fcdf298f2ab60a3d07028a22508e8bfe",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/source/uploads/Enceladus_v3_Design_Review.pdf",
+      "category": "original-upload",
+      "role": "Exact supplied original",
+      "inspection": {
+        "format": "pdf"
+      }
+    },
+    {
+      "path": "source/uploads/enceladus_within_cinematic_previs_h264.mp4",
+      "bytes": 8684776,
+      "content_sha256": "af48e68da8f8ad821bf3dc7cea0915a2766216997c881d80200aafe3abd3d124",
+      "provenance": "Andrew supplied file",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/source/uploads/enceladus_within_cinematic_previs_h264.mp4",
+      "category": "original-upload",
+      "role": "Exact supplied original",
+      "inspection": {
+        "format": "mp4"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/.gitignore",
+      "bytes": 53,
+      "content_sha256": "10e3b7fe8282a8b8ae2db3977916a4b596db552accbc9286cba2d26339172aec",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/.gitignore",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "text",
+        "text_lines": 5
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/CATALOG.md",
+      "bytes": 15866,
+      "content_sha256": "8cfb21b2b599666d9ac7aec087aeb6653a0310344de44df74bd424affe518e14",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/CATALOG.md",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "md",
+        "text_lines": 131,
+        "headings": [
+          "Complete release file catalog"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/CHANGELOG.md",
+      "bytes": 2199,
+      "content_sha256": "fc2e0b59c5fce066adf3e4763ff63ad47ba32db1e2c326b289c4da81ffffcd60",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/CHANGELOG.md",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "md",
+        "text_lines": 18,
+        "headings": [
+          "Revision history",
+          "3.0.0 \u2014 2026-09-26",
+          "CAD / architecture",
+          "Optics",
+          "Show / capture",
+          "Audit / budget / provenance",
+          "Migration provenance"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/LICENSE",
+      "bytes": 1352,
+      "content_sha256": "f578089b4d48bd5c8168a68100286cc0086c930fea70422ca18b5179b35e6226",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/LICENSE",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "text",
+        "text_lines": 11
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/README.md",
+      "bytes": 6497,
+      "content_sha256": "17089db6943d646f6a58c1bcc4534886dd3d96b2b18f021c79f90282c788e1d6",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/README.md",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "md",
+        "text_lines": 80,
+        "headings": [
+          "Enceladus Within \u2014 Revision 3.0",
+          "Release boundary",
+          "The structural simplification",
+          "What changed in code",
+          "Deliverables",
+          "Run",
+          "Activate the environment using your platform's normal command.",
+          "Coordinate conventions",
+          "Safety correction to previous artwork",
+          "Credits and provenance",
+          "Rebuild convenience"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/budget/BOM.csv",
+      "bytes": 3497,
+      "content_sha256": "6df6590ded1d4a100040e3eccff7945a04cd253e8e508f8cf2c15e6f8380f5c7",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/budget/BOM.csv",
+      "category": "budget",
+      "role": "Planning allowances and editable formulas; occupied realization unpriced",
+      "inspection": {
+        "format": "csv",
+        "columns": [
+          "id",
+          "phase",
+          "category",
+          "item",
+          "qty",
+          "unit_low_usd",
+          "unit_high_usd",
+          "credit_low_usd",
+          "credit_high_usd",
+          "basis",
+          "notes"
+        ],
+        "data_rows": 21
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/budget/Enceladus_v3_Budget_and_Gates.xlsx",
+      "bytes": 33491,
+      "content_sha256": "fea215a27cf6938e8cbac7aaea973bec27fba0eb049103400e0bed7bc140bc18",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/budget/Enceladus_v3_Budget_and_Gates.xlsx",
+      "category": "budget",
+      "role": "Planning allowances and editable formulas; occupied realization unpriced",
+      "inspection": {
+        "format": "xlsx",
+        "archive_members": 20,
+        "sheets": [
+          "Dashboard",
+          "BOM",
+          "Assumptions",
+          "Load Study",
+          "Gates",
+          "Measurements",
+          "Sources"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/budget/budget_inputs.json",
+      "bytes": 8810,
+      "content_sha256": "4aa3b9bc5209b48f9e74c2b202e6f6315a789dc57dafa262a4dfa9c4e1fa9125",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/budget/budget_inputs.json",
+      "category": "budget",
+      "role": "Planning allowances and editable formulas; occupied realization unpriced",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "currency",
+          "estimate_date",
+          "scope",
+          "contingency_rate",
+          "sales_tax_assumption",
+          "tax_note",
+          "exclusions",
+          "items"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/config/camera_calibration.template.json",
+      "bytes": 967,
+      "content_sha256": "0fd956d64b1ec1754cfb52e0a8a53cb7edc8daee9f913b918a94ee56f56f05ce",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/config/camera_calibration.template.json",
+      "category": "config",
+      "role": "Illustrative inputs or blank measurement/calibration templates",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "status",
+          "units",
+          "capture_mode",
+          "volumetric_reconstruction_implemented",
+          "cameras",
+          "entrance_camera",
+          "notes"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/config/loads_example.json",
+      "bytes": 1064,
+      "content_sha256": "9d05434945fdb6e3e1b2270e4235c7be1d34635255b7133def2ad163e8b81e6c",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/config/loads_example.json",
+      "category": "config",
+      "role": "Illustrative inputs or blank measurement/calibration templates",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "status",
+          "description",
+          "g_m_s2",
+          "support_spacing_m",
+          "load_origin",
+          "vertical_loads",
+          "rearward_horizontal_force_N",
+          "horizontal_force_height_m",
+          "truck_static_front_axle_N",
+          "truck_static_rear_axle_N",
+          "truck_wheelbase_m",
+          "rear_axle_y_m",
+          "wind_design_m_s",
+          "wave_current_design",
+          "connections_allowable_N",
+          "note"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/config/measurements_required.csv",
+      "bytes": 828,
+      "content_sha256": "6cf9697c49301d12aeef8abb9da572fb64d2e648acf6dd928af9c809cb147605",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/config/measurements_required.csv",
+      "category": "config",
+      "role": "Illustrative inputs or blank measurement/calibration templates",
+      "inspection": {
+        "format": "csv",
+        "columns": [
+          "Measurement",
+          "Units",
+          "Value",
+          "Evidence",
+          "Verified_by"
+        ],
+        "data_rows": 19
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/config/scene.json",
+      "bytes": 3192,
+      "content_sha256": "7f063156bbdfb18502d399dd429979462b7ee6e752c7152431cd7596a21b00fe",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/config/scene.json",
+      "category": "config",
+      "role": "Illustrative inputs or blank measurement/calibration templates",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "revision",
+          "status",
+          "units",
+          "coordinates",
+          "truck",
+          "sphere",
+          "rig",
+          "projectors",
+          "optics",
+          "cameras",
+          "mode",
+          "hoist_control_implemented",
+          "shoreline_y_m",
+          "shoreline_status"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/ASSET_PROVENANCE.md",
+      "bytes": 2174,
+      "content_sha256": "4ec21bafa921f2f5c414f19934b01f9daea4757339f7f53560cfb954b2445a47",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/ASSET_PROVENANCE.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 16,
+        "headings": [
+          "Asset and source provenance",
+          "New revision geometry and images",
+          "Historic artwork",
+          "Scientific media",
+          "Personal images",
+          "External software"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/DESIGN_DECISIONS.md",
+      "bytes": 4585,
+      "content_sha256": "e806db25d371d95e75cf0cb0ade3474b22f2f5470b4db1815e43b11abee06461",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/DESIGN_DECISIONS.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 29,
+        "headings": [
+          "Design decisions and requirement traceability",
+          "What is fixed by the brief",
+          "Simplification, without a fictitious strength claim",
+          "A \u2014 literal receiver + Andersen",
+          "B \u2014 chassis saddle",
+          "Ground support is not silently deleted",
+          "AV simplification",
+          "Changes deliberately NOT made",
+          "Future decision points"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/ENGINEERING_REVIEW.md",
+      "bytes": 10082,
+      "content_sha256": "de393bcd0c8960d1f9483edced9c71cac06172b5a426fa5904bc464ff74e00b3",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/ENGINEERING_REVIEW.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 67,
+        "headings": [
+          "Engineering design-development review",
+          "1. The enclosure is the first gate, not an afterthought",
+          "2. Hitch load path: forces can grow and reverse",
+          "3. Whole-truck stability is separate from hitch strength",
+          "4. Structural audit scope still required",
+          "5. Suspension and common-mode failure",
+          "6. Waves, buoyancy, wind and tide",
+          "7. Electrical, optical and control separation",
+          "8. Site permissions and operator plan",
+          "9. Evidence-based next stage"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/Enceladus_v3_Design_Review.pdf",
+      "bytes": 3878384,
+      "content_sha256": "a14da2e5541034a998baae60f373c6d9fcdf298f2ab60a3d07028a22508e8bfe",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/Enceladus_v3_Design_Review.pdf",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "pdf"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/GRANT_BRIEF.md",
+      "bytes": 2023,
+      "content_sha256": "dcac55b62290dafa112b539518e15854fe5b7c695f08dcfa76244e02668b854f",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/GRANT_BRIEF.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 11,
+        "headings": [
+          "Enceladus Within \u2014 grant narrative draft"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/MEASUREMENTS_AND_RFQ.md",
+      "bytes": 1979,
+      "content_sha256": "7fc2ba52a713cddba959cc8bb3333d567091b0f93e1ee8d2b933a28a7e79c97a",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/MEASUREMENTS_AND_RFQ.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 13,
+        "headings": [
+          "Measurements and request-for-quotation checklist"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/OPTICS_AND_CAPTURE.md",
+      "bytes": 5776,
+      "content_sha256": "117eae98d235b23b0313bdee65eab7c6ab76890e45a183ba020f0f76e614d774",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/OPTICS_AND_CAPTURE.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 41,
+        "headings": [
+          "Projection coverage, capture and transparency",
+          "One sphere, one shared source",
+          "Current result \u2014 not a 100% coverage claim",
+          "Clear PVC is not an opaque sphere",
+          "Live cameras and the missing front view",
+          "Enceladus content",
+          "Calibration acceptance"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/SOFTWARE_SPEC.md",
+      "bytes": 3233,
+      "content_sha256": "5117e3332eabfcb478f9e39b1c9aa10f9269b7141f1def748ce6f025047f43bc",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/SOFTWARE_SPEC.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 27,
+        "headings": [
+          "Software implementation and boundaries",
+          "Modules",
+          "I/O schema",
+          "Production integration not yet implemented",
+          "Reproducibility"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/SOURCES.md",
+      "bytes": 2791,
+      "content_sha256": "f8bdf6fe5870a26e83368941e5732462340fbe075e392c8221f5da8b2ed31f3d",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/SOURCES.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 63,
+        "headings": [
+          "Sources and limits",
+          "S1 \u2014 CPSC: Consumer Alert - Water Walking Balls",
+          "S2 \u2014 Andersen: Ultimate Connection installation documentation",
+          "S3 \u2014 Andersen: Ultimate Connection support FAQs",
+          "S4 \u2014 ANSI E1.43-2025: Performer Flying Systems",
+          "S5 \u2014 Ram official upfit guide",
+          "S6 \u2014 NASA: Cassini at Enceladus",
+          "S7 \u2014 NASA/JPL/Space Science Institute: Map of Enceladus, PIA08417",
+          "S8 \u2014 JPL image use policy",
+          "S9 \u2014 Love Burn art submissions",
+          "S10 \u2014 TechAuthority: 2021 Ram 2500/3500 owner manual listing"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/SOURCING_AND_COSTS.md",
+      "bytes": 2843,
+      "content_sha256": "bdc984f5425f49c11c226e3c09a43751cbdbcb312398134d082d071841556f02",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/SOURCING_AND_COSTS.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 24,
+        "headings": [
+          "Scope-aware costs and Frankenstein sourcing",
+          "Current phased allowances",
+          "How this relates to older budgets",
+          "What can sensibly be reused",
+          "Quotations to request",
+          "Evidence-label definition"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/TEST_AND_ACCEPTANCE.md",
+      "bytes": 2373,
+      "content_sha256": "e6e57c292212a6621bfa8b41e8dfe60e4e9593c2031fa10936d5750079c0d4aa",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/TEST_AND_ACCEPTANCE.md",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "md",
+        "text_lines": 21,
+        "headings": [
+          "Verification and acceptance plan",
+          "Executed in this release",
+          "Not executed",
+          "Physical stage gates, defined by the responsible professionals",
+          "Acceptance evidence register"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/approval_gates.csv",
+      "bytes": 2290,
+      "content_sha256": "85f4df0ac6fca49190e67b6ea6fc3616b0284d0ef77ac1f54d394c075120a554",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/approval_gates.csv",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "csv",
+        "columns": [
+          "ID",
+          "Status",
+          "Gate",
+          "Required_evidence",
+          "Source",
+          "Owner_role"
+        ],
+        "data_rows": 12
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/sources.csv",
+      "bytes": 2511,
+      "content_sha256": "910067afae51e5bf830e23b44aae2b2bf15c135dfc38fbc5991b77207e865aae",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/sources.csv",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "csv",
+        "columns": [
+          "id",
+          "title",
+          "url",
+          "scope",
+          "accessed"
+        ],
+        "data_rows": 10
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/docs/sources.json",
+      "bytes": 3319,
+      "content_sha256": "0db13329b296e50f4b7f753b02b6686fc54bdf52889587bf921c74e40e8bc2cb",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/docs/sources.json",
+      "category": "docs",
+      "role": "Design-development rationale, evidence sources and open approval gates",
+      "inspection": {
+        "format": "json",
+        "top_level": "10 records"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_interfaces.png",
+      "bytes": 156097,
+      "content_sha256": "ece4fb6c1f9b26d6dadc27e08d9521fb21d0846f2b5fee35e6919aa815697822",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_interfaces.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_interfaces.svg",
+      "bytes": 171120,
+      "content_sha256": "ac8a6b593674a8eb7f35fb4a01946266d2567a3fb96caacd36770d87fab7c652",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_interfaces.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.png",
+      "bytes": 268972,
+      "content_sha256": "67ae4914196ed6958acd70dec323a40f60f4b66b85e5f12bfbbabd82adc6ef64",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.svg",
+      "bytes": 1400478,
+      "content_sha256": "d31888182eee17e6ddc711cf783925e5e22c1f346a01f8d872b9a146163e7921",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_side.png",
+      "bytes": 175717,
+      "content_sha256": "b5b1295ccbbc0e58b056b120dbb6cfa6de1e8e578b4263afdc2aab755ed0c732",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_side.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_side.svg",
+      "bytes": 1405321,
+      "content_sha256": "0df47ba98eb5a7b125e2134551cdb237e2b86969ea4648afa4d4e996cab36293",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_side.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_top.png",
+      "bytes": 141285,
+      "content_sha256": "72b4e2273a23ba7716a680851acb50905a980fd0857cce7a5f6748ca4399a348",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_top.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_top.svg",
+      "bytes": 1396471,
+      "content_sha256": "b6286005aab84d18b74a2195d893e29249aaa1ec3754192d0cdb706b928b5b64",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_top.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_interfaces.png",
+      "bytes": 165728,
+      "content_sha256": "7ee6b6da734144d944ca15251e6e49b7199db3879b99ed4bdb1a9c05b4682f62",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_interfaces.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_interfaces.svg",
+      "bytes": 204249,
+      "content_sha256": "4dbba0e1b16237297d51bb1947d21e78b9850a63b2871fd3335bb9412843ee91",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_interfaces.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.png",
+      "bytes": 273341,
+      "content_sha256": "394ecb722d9cf38e31828b3fee899dba2dff0e0ffb061f5c0251ab11f33f622e",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.svg",
+      "bytes": 1433592,
+      "content_sha256": "1b0069ce48923768b0f7539c7c735b5e9cf5dfca895b4ab20e0fe1091680a84c",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_side.png",
+      "bytes": 178345,
+      "content_sha256": "5b51234ce775d61fcef102abe5001ad8f2cb158aef3e46866d09ec39a3083eeb",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_side.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_side.svg",
+      "bytes": 1438435,
+      "content_sha256": "aed158f88951b3ea7a6287d359f451b753ef2d146ecb241557ce0e7d0cd94fbc",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_side.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_top.png",
+      "bytes": 142564,
+      "content_sha256": "36c07960295049a68b2426d711f7a5d9e7d57e0c4f79443274a61732e27ea9df",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_top.png",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1600,
+          1000
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_top.svg",
+      "bytes": 1429585,
+      "content_sha256": "69d0ec7c3545f5601125cd9c63540a6c69bd778ad36b9a3dab94c9bf053f640d",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_top.svg",
+      "category": "drawings",
+      "role": "Model-derived A/B spatial drawings; no fabrication or load rating",
+      "inspection": {
+        "format": "svg",
+        "viewBox": "0 0 1600 1000",
+        "width": "1600",
+        "height": "1000"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/index.html",
+      "bytes": 24627,
+      "content_sha256": "9ef30634ae5b2444717209712975fc91b97458d0b92ec672ef7b8e728b4bdf46",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/index.html",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "html",
+        "text_lines": 9
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/README.md",
+      "bytes": 447,
+      "content_sha256": "514c3391fa702b8abd9803034a47bff6d03b510da6e0754ddf387e6e61cd0894",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/README.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 2,
+        "headings": [
+          "Superseded v1 source archive"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/README.md",
+      "bytes": 5672,
+      "content_sha256": "dca76095ddeab0d0507371fa25de8aae28d2e4af1ba7a977a5a3d6fb27ee84fa",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/README.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 99,
+        "headings": [
+          "Enceladus / Human Sphere \u2014 Love Burn projection-zorb project package",
+          "What this package DOES",
+          "What this package DOES NOT do",
+          "Critical design correction",
+          "Projection-surface reality",
+          "Folder map",
+          "Quick software demo",
+          "Recommended show-control architecture",
+          "Image-generation provenance"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/bom.csv",
+      "bytes": 1851,
+      "content_sha256": "21b9bf3b560a772ad602dd33e7957ecb64d2152b35c4da62e37963e22e3c71ed",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/bom.csv",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "csv",
+        "columns": [
+          "Category",
+          "Item",
+          "Qty",
+          "Notes",
+          "Low_USD",
+          "High_USD"
+        ],
+        "data_rows": 17
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/code/blend_controller.py",
+      "bytes": 3305,
+      "content_sha256": "9a48e8a5258e1d637ef91652b04d0e6eecda2a2b0c699375d5bea3150dd64cab",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/code/blend_controller.py",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "clamp",
+          "smoothstep",
+          "Inputs",
+          "Controller",
+          "main"
+        ],
+        "imports": [
+          "argparse",
+          "dataclasses",
+          "math",
+          "pythonosc.dispatcher",
+          "pythonosc.osc_server",
+          "pythonosc.udp_client",
+          "threading",
+          "time"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/code/enceladus_surface.glsl",
+      "bytes": 2191,
+      "content_sha256": "9db741afa99e980aa7802c3c7efb229370330dfa009ebc8e96bfa71393a237d6",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/code/enceladus_surface.glsl",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "glsl",
+        "text_lines": 68
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/code/motion_energy.py",
+      "bytes": 2156,
+      "content_sha256": "bde6aa19e9edeab70562b610c359a0c3624dfb618c2675ed208cd2222a23d521",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/code/motion_energy.py",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "clamp",
+          "main"
+        ],
+        "imports": [
+          "argparse",
+          "cv2",
+          "numpy",
+          "pythonosc.udp_client",
+          "time"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/code/projector_mapper.py",
+      "bytes": 5522,
+      "content_sha256": "061119187cbf80c21bfe1f96082e1efb6d39c0a8fce1b5cca4240fac8221f32a",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/code/projector_mapper.py",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "normalize",
+          "camera_basis",
+          "ray_sphere",
+          "point_to_uv",
+          "projector_weight",
+          "normalize_points",
+          "render_projector",
+          "main"
+        ],
+        "imports": [
+          "__future__",
+          "argparse",
+          "cv2",
+          "math",
+          "numpy",
+          "pathlib",
+          "yaml"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/config/system_config.yaml",
+      "bytes": 2545,
+      "content_sha256": "b65bc441b34b14ddd5ff2f9acb057590101f3b35db9b2604949085244667e808",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/config/system_config.yaml",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "yaml",
+        "text_lines": 80
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/costs.csv",
+      "bytes": 1593,
+      "content_sha256": "4db1f2219967e470920ca26a368212ebe4f88d65ea1e864f947f25e88c623c0e",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/costs.csv",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "csv",
+        "columns": [
+          "Scenario",
+          "Cost_Block",
+          "Low_USD",
+          "High_USD",
+          "Notes"
+        ],
+        "data_rows": 15
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/docs/BUDGET_SUMMARY.md",
+      "bytes": 342,
+      "content_sha256": "3b9eed7775b9ddea2103854f2f0c926574b94db64ca3b55aa5ad2f86997ca196",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/docs/BUDGET_SUMMARY.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 9,
+        "headings": [
+          "Rough budget scenarios"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/docs/ENGINEERING_AUDIT.md",
+      "bytes": 7851,
+      "content_sha256": "b81b18f2e16e10c1dfc0796f56796743210cd558b0d732dfdf9f724622322040",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/docs/ENGINEERING_AUDIT.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 179,
+        "headings": [
+          "Engineering / Life-Safety Audit \u2014 Enceladus Human Sphere",
+          "A. Non-negotiable engineering gates",
+          "B. Highest-risk failure modes",
+          "1. Suspension attachment tears the inflatable shell",
+          "2. Truck / hitch / boom overturning or local chassis overload",
+          "3. Dynamic water and wave loads",
+          "4. Wind sail area",
+          "5. Entrapment / breathing / heat",
+          "6. Internal hard objects",
+          "7. Electricity + water",
+          "8. Projector optical / thermal safety",
+          "C. Projection engineering audit",
+          "Coverage",
+          "Transparency problem",
+          "Calibration",
+          "D. Operational checklist",
+          "Before opening",
+          "Immediate stop triggers",
+          "E. Engineering deliverables still required"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/docs/MULTICAM_TRACKING.md",
+      "bytes": 1592,
+      "content_sha256": "e60ceb5df94cce82594fab908ee9c04e5731cd9ea03666d25f9384ee495f410e",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/docs/MULTICAM_TRACKING.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 39,
+        "headings": [
+          "Four-Camera Layout and Tracking Notes",
+          "Physical mounting",
+          "Calibration",
+          "Practical modes",
+          "Mode A \u2014 motion-reactive",
+          "Mode B \u2014 360 performer texture",
+          "Important"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/docs/PROJECTION_CALIBRATION.md",
+      "bytes": 1305,
+      "content_sha256": "b38651c1c6fdff057c73b3670bef2f64986ae14379479748d660cca511975616",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/docs/PROJECTION_CALIBRATION.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 29,
+        "headings": [
+          "Four-Projector Calibration Workflow",
+          "Layout",
+          "Calibration stages",
+          "Moving sphere"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/docs/PROVENANCE.md",
+      "bytes": 748,
+      "content_sha256": "65e1b5543a827271b3cf9e7b99f1b83f9a50f0968c59fbe36802adc417cd22b3",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/docs/PROVENANCE.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 12,
+        "headings": [
+          "Model / Asset Provenance"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/legacy/v1/docs/SYSTEM_ARCHITECTURE.md",
+      "bytes": 4221,
+      "content_sha256": "5a6f52db211de5060eb9ac2bf85e46bd4271346a8bf94e261df4ec7f523a614c",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/legacy/v1/docs/SYSTEM_ARCHITECTURE.md",
+      "category": "legacy",
+      "role": "Superseded v1 context; not the governing design",
+      "inspection": {
+        "format": "md",
+        "text_lines": 116,
+        "headings": [
+          "Real-Time System Architecture",
+          "Objective",
+          "Signal flow",
+          "Recommended primary runtime",
+          "Dynamic content logic",
+          "Enceladus visual sequence",
+          "Critical rendering requirement",
+          "Tracking options",
+          "Lean version",
+          "Advanced version",
+          "Latency target"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/licenses/THIRD_PARTY.md",
+      "bytes": 865,
+      "content_sha256": "af2f0c17fe1ad0870e1abe6cc90d5770ed6486203fb07cfc86739a0b79e65958",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/licenses/THIRD_PARTY.md",
+      "category": "licenses",
+      "role": "Third-party and original-source licensing boundaries",
+      "inspection": {
+        "format": "md",
+        "text_lines": 7,
+        "headings": [
+          "Third-party components"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/manifest.json",
+      "bytes": 18711,
+      "content_sha256": "aaab3cef3d10244b821f5ae0f23e1952892ee0c054afb667cc27cc34e49db0b0",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/manifest.json",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "revision",
+          "files"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/media/historical_concept_NOT_ENGINEERING.png",
+      "bytes": 2936696,
+      "content_sha256": "d9be893dff0fb2a90a0b0856570d5e2608ce7a61ef0d7c38aae1fb2ff5e1a6c8",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/media/historical_concept_NOT_ENGINEERING.png",
+      "category": "media",
+      "role": "Historical generated occupied-sphere art; technical captions unapproved",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1536,
+          1024
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.glb",
+      "bytes": 200332,
+      "content_sha256": "97546ab02f4f213bbda84004abe1781ad5ccc435ecfbf3d1aa858f2c86ab5650",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.glb",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "glb",
+        "glTF_version": "2.0",
+        "meshes": 105,
+        "nodes": 106,
+        "axes": "Y-up",
+        "units": "meters"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.json",
+      "bytes": 35031,
+      "content_sha256": "a5525e4c029bc711698440c722c722ceaea0fbbdcfa82aa4736ba07d95debe4a",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.json",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "status",
+          "config",
+          "units",
+          "parts"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.obj",
+      "bytes": 871493,
+      "content_sha256": "04c534fbfbb4d7ecfc3d53a189135578a3e2cbff032bf28f854336afa683bad8",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.obj",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "obj",
+        "text_lines": 25280
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.scad",
+      "bytes": 23841,
+      "content_sha256": "ffcbaaeaff4f46c7335cd3ba526fcfbf02009a5fb0f288028911eecac136a61b",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.scad",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "scad",
+        "text_lines": 214
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.step",
+      "bytes": 835129,
+      "content_sha256": "040abc642f31657a3cea8b628bee20d6d4f89f5f7dbb9d8c38d3b7519da3512a",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.step",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "step",
+        "axes": "Z-up",
+        "units": "millimeters",
+        "solid_records": 105
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_B_chassis_saddle.glb",
+      "bytes": 209888,
+      "content_sha256": "f19280af9ef681bdc551c4cf0f5bca83290f7246383dbdda087dae907b2fb383",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_B_chassis_saddle.glb",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "glb",
+        "glTF_version": "2.0",
+        "meshes": 115,
+        "nodes": 116,
+        "axes": "Y-up",
+        "units": "meters"
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_B_chassis_saddle.json",
+      "bytes": 38227,
+      "content_sha256": "00b85a2a0d6503e270b9aded9cf2ebd7644825a5c98fb812ce9dc5136b97e413",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_B_chassis_saddle.json",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "status",
+          "config",
+          "units",
+          "parts"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_B_chassis_saddle.obj",
+      "bytes": 891981,
+      "content_sha256": "fa6ed216289992a79712966fcff7f0b561ea9d028a70d2a4fd63a7fb766bd1b4",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_B_chassis_saddle.obj",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "obj",
+        "text_lines": 25858
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_B_chassis_saddle.scad",
+      "bytes": 25288,
+      "content_sha256": "b28d4df9e5ee4c426f670b68bb501dfe463c72e1eb361d5ab3c082e7603aad1c",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_B_chassis_saddle.scad",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "scad",
+        "text_lines": 234
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/models/v3_B_chassis_saddle.step",
+      "bytes": 931606,
+      "content_sha256": "e0864321e732043ba14efd46380767f8a318ff35a8a28f90b72e67fb60b41a90",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/models/v3_B_chassis_saddle.step",
+      "category": "models",
+      "role": "A/B geometric envelopes, with explicit export axes and units",
+      "inspection": {
+        "format": "step",
+        "axes": "Z-up",
+        "units": "millimeters",
+        "solid_records": 115
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/budget_dashboard.png",
+      "bytes": 214900,
+      "content_sha256": "f9ef4774677c333b4831c7fd721cf22a7418410ee65bf6a5b5b5ee4178bede98",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/budget_dashboard.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1736,
+          1394
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/coverage_annotated.png",
+      "bytes": 48305,
+      "content_sha256": "5b808902c7cabbae88ece737975c7d12ae43adb648e81e642f5fcaffe092ab73",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/coverage_annotated.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1500,
+          1030
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/procedural_globe_atlas.png",
+      "bytes": 504586,
+      "content_sha256": "1f70054a922cc6d8965038089a7a67bfc74918d113c95b711f723a97ee42739b",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/procedural_globe_atlas.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1024,
+          512
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/procedural_interior_atlas.png",
+      "bytes": 177340,
+      "content_sha256": "61928c5c94d96860e9f4dbc7c0303f636a9405b17459997629c5434c3aa9dfa9",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/procedural_interior_atlas.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1024,
+          512
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/procedural_surface_atlas.png",
+      "bytes": 635347,
+      "content_sha256": "e023e46eeb9488e7146102eeaac85199e93be4b3f2f37ce9224dbdd2063217a4",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/procedural_surface_atlas.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1024,
+          512
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projector_contact.png",
+      "bytes": 419076,
+      "content_sha256": "7a4f28df197302b9c51a568f2c35b8f9c60d69d0581c552fed8ff28d86df1b7f",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projector_contact.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1500,
+          1060
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/README.txt",
+      "bytes": 146,
+      "content_sha256": "0ff7458f045e9a1a3fa9da12b85eb729da7ecfe4da211557c22a60c0a690ff81",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/README.txt",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "txt",
+        "text_lines": 1
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/back.png",
+      "bytes": 107873,
+      "content_sha256": "b56c18a9a1970ea863a427b558ace73064c1032c6b6c0ae6018dca673f24301d",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/back.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/back_weight.png",
+      "bytes": 5823,
+      "content_sha256": "6632235b2726e62e59578262ad1db02026759b465f2016f6f6d9c7a3cca1e4e5",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/back_weight.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/left.png",
+      "bytes": 113482,
+      "content_sha256": "def90c362c31f505117c57ac438560d7ab71e879f05a63ece046dc020e3ec78b",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/left.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/left_weight.png",
+      "bytes": 6338,
+      "content_sha256": "290efcf4ceabed41f6475d8f0733357cd5acf17eb8d0f82a9cea70d2f91dedf4",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/left_weight.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/right.png",
+      "bytes": 114193,
+      "content_sha256": "d26edd294cbf7f835ca90394020390cdf056ccd12582dfcb448aeb96c9072709",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/right.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/right_weight.png",
+      "bytes": 6252,
+      "content_sha256": "2fff2dbe40d2b194d5d55b6945a740f7265cd89febf37154fa51466599fae8b5",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/right_weight.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/shared_atlas.png",
+      "bytes": 504403,
+      "content_sha256": "272687c76d824d2f461474a90a7e81aa612343a080e26f244126001eedb6f738",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/shared_atlas.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1024,
+          512
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/top.png",
+      "bytes": 116024,
+      "content_sha256": "fa9b2a0f8444d9d13d5698e8eba5145b11b7087d9ab9c41cee3a10ce0db48057",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/top.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/projectors/top_weight.png",
+      "bytes": 12971,
+      "content_sha256": "4a8cb1cde9c80ae7927ddbaf660a4cbe654eb86b0f761d11d8f6114fdd126ded",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/projectors/top_weight.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          640,
+          400
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/six_views_same_atlas.png",
+      "bytes": 928646,
+      "content_sha256": "deb5af6772d31b68e120171f8c94ec69ad00c9f51a4af2022c74d583099fca66",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/six_views_same_atlas.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1500,
+          1170
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/workbook_BOM_detail.png",
+      "bytes": 75102,
+      "content_sha256": "f7be636b968e1909f18bd5cf200ba54c153e5e5217bae91e2878f4145f096207",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/workbook_BOM_detail.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1920,
+          482
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/workbook_load_detail.png",
+      "bytes": 84163,
+      "content_sha256": "aa97e2adfaad82eb70d638123bfb0d3c46a011d0ca5ee40a092db4d4f8777580",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/workbook_load_detail.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1536,
+          682
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/previews/workbook_sources_detail.png",
+      "bytes": 83253,
+      "content_sha256": "499d031e1fec6d13765651ca46fa8b6d8787dcb559dd65e25f38129fd8ab10dc",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/previews/workbook_sources_detail.png",
+      "category": "previews",
+      "role": "Procedural art or idealized projection/workbook diagnostics",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          1688,
+          468
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/pyproject.toml",
+      "bytes": 722,
+      "content_sha256": "b12808356979f66f1ba54b5b111dfdf8db65339aa75b70b36ca57b6eef48010e",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/pyproject.toml",
+      "category": "release-root",
+      "role": "Release entry point, catalog, license or packaging metadata",
+      "inspection": {
+        "format": "toml",
+        "text_lines": 25
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/RELEASE_VERIFICATION.md",
+      "bytes": 1913,
+      "content_sha256": "466bd7a7137c1bd243be46dd33cff36e620429b61422f448fca1ced1c9953c30",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/RELEASE_VERIFICATION.md",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "md",
+        "text_lines": 22,
+        "headings": [
+          "Executed verification \u2014 revision 3.0.0"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/budget_summary.json",
+      "bytes": 498,
+      "content_sha256": "7e419e31f26968c809b6280c67f178e65799e6d294047edeea60e5884b8da10d",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/budget_summary.json",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "P0",
+          "P1",
+          "combined",
+          "occupied_installation_total"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/coverage/coverage.json",
+      "bytes": 378,
+      "content_sha256": "defcbdd0e07809d92a20e8f27b23043ca836bcc9dca6123e6d4f93a7475bfe5f",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/coverage/coverage.json",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "model",
+          "samples",
+          "minimum_incidence_cosine",
+          "covered_surface_percent",
+          "uncovered_surface_percent",
+          "two_or_more_projectors_percent",
+          "entire_sphere_covered",
+          "hardware_verified"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/coverage/coverage_atlas.png",
+      "bytes": 3984,
+      "content_sha256": "4fbcf52d5f99885e51839d14e80491483043c54bb25e9678a57630b107421c76",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/coverage/coverage_atlas.png",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "png",
+        "pixels": [
+          720,
+          360
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/coverage/coverage_data.npz",
+      "bytes": 1803389,
+      "content_sha256": "3ccf2a14d93b011278766cf89f87c5abc1bd8e458d53cdcc32a5034f9bfab520",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/coverage/coverage_data.npz",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "npz",
+        "archive_members": 3,
+        "arrays": [
+          "count.npy",
+          "weights.npy",
+          "raw.npy"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/junit.xml",
+      "bytes": 3098,
+      "content_sha256": "3c51db132f3f02ea465cc3e62e45a81d51a6f4efa80058d15c6dfc5ca8594e04",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/junit.xml",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "xml",
+        "text_lines": 1
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/load_screening.json",
+      "bytes": 1480,
+      "content_sha256": "9f56bfdb3bcf314b727c426fe2be1a342b33aa41c572c5929102e3018c43df25",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/load_screening.json",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "status",
+          "items",
+          "total_downward_N",
+          "rearward_overturning_moment_Nm",
+          "front_support_on_rig_N",
+          "rear_support_on_rig_N",
+          "front_anchor_uplift_on_truck_N",
+          "rear_attachment_downward_on_truck_N",
+          "force_residual_N",
+          "moment_residual_Nm",
+          "omitted",
+          "occupied_use_authorized",
+          "axle_demand_changes"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/model_build.log",
+      "bytes": 680,
+      "content_sha256": "14ca95673b916c9bbe25335c6a6b06692809fb50672b3092dbafa4db77b9b134",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/model_build.log",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "log",
+        "text_lines": 2
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/model_validation.json",
+      "bytes": 819,
+      "content_sha256": "bd98f3c28e0a83857cc35bafd74f86c849323b8ddbbd42f14f3b9ba8908cadc3",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/model_validation.json",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "A",
+          "B"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/show_demo.jsonl",
+      "bytes": 289808,
+      "content_sha256": "cab3acb5312bab0492f0283f85e2385c5b044c931e05a9c1d89ec181b147c9b5",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/show_demo.jsonl",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "jsonl",
+        "records": 900
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/tested_environment.json",
+      "bytes": 543,
+      "content_sha256": "d6574a47260cedc07d50e9b9077dde34d567dc4a08c102b77203df99cab91960",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/tested_environment.json",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "python",
+          "platform",
+          "packages",
+          "optional_hardware_adapters",
+          "CAD_environment",
+          "workbook"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/tests.txt",
+      "bytes": 99,
+      "content_sha256": "54f473f8ffbb296a2cb7f61ae0407b2cfa31f6d197e4aceb805308f9d6b8b6a8",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/tests.txt",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "txt",
+        "text_lines": 2
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/reports/workbook_validation.json",
+      "bytes": 1057,
+      "content_sha256": "a25f675b32a6d59ee284b8a569d78ae29aca6cabd597b8c4df2a88920df38f7b",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/reports/workbook_validation.json",
+      "category": "reports",
+      "role": "Saved release-authoring verification; not a fresh physical acceptance",
+      "inspection": {
+        "format": "json",
+        "top_level": [
+          "base",
+          "zero_contingency_test",
+          "quantity_sensitivity_test",
+          "loads",
+          "formula_error_scan",
+          "render_review"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/__init__.py",
+      "bytes": 101,
+      "content_sha256": "4b3124c8f524db5e654446b4a966ea4e1da59eddc501b87b47994fd248e41587",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/__init__.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/capture.py",
+      "bytes": 2093,
+      "content_sha256": "a2bc9dc7c5b24e1b9acc8701f6abba35638d99c9e7f2055bece3ea5f02eac93e",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/capture.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "fuse_motion",
+          "main"
+        ],
+        "imports": [
+          "__future__",
+          "argparse",
+          "cv2",
+          "json",
+          "numpy",
+          "pythonosc.udp_client",
+          "time"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/cli.py",
+      "bytes": 4391,
+      "content_sha256": "dcba1d956bf7c101f2d26e66b25df6adb2b4ed7402be7d14ec3f4d79a4a0e454",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/cli.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "load_scene",
+          "main"
+        ],
+        "imports": [
+          "PIL",
+          "__future__",
+          "argparse",
+          "geometry",
+          "json",
+          "loads",
+          "media",
+          "numpy",
+          "pathlib",
+          "show",
+          "sys"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/enceladus_surface.frag",
+      "bytes": 1231,
+      "content_sha256": "67b6c74b0fd57534f3196dc9333dd52fe441e4882e7f9645d017530fde267eb1",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/enceladus_surface.frag",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "frag",
+        "text_lines": 24
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/geometry.py",
+      "bytes": 8119,
+      "content_sha256": "428396e14adb06eca3fb06d0c29d51de2d0d587828948f734e22ac764bb899b4",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/geometry.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "unit",
+          "rotation_xyz",
+          "Sphere",
+          "Projector",
+          "intersect_sphere",
+          "uv_from_local",
+          "spherical_grid",
+          "blend_weights",
+          "sample_equirectangular",
+          "srgb_to_linear",
+          "linear_to_srgb",
+          "render_projector",
+          "coverage_report"
+        ],
+        "imports": [
+          "__future__",
+          "dataclasses",
+          "math",
+          "numpy"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/loads.py",
+      "bytes": 3201,
+      "content_sha256": "0c7a6807d54f61fa7cdfc5ff6587c605dabc366e2d12b3a3bbc9a10d944dd129",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/loads.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "finite",
+          "reactions",
+          "wind_drag",
+          "axle_demand_changes"
+        ],
+        "imports": [
+          "__future__",
+          "math"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/media.py",
+      "bytes": 2525,
+      "content_sha256": "26ae30a37f1ec72207270fc474fb82a5c1b9663a2ca2a3625b093d69afb8e4f2",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/media.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "sphere_points",
+          "ice_field",
+          "procedural_atlas",
+          "blend_atlases"
+        ],
+        "imports": [
+          "__future__",
+          "geometry",
+          "numpy"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/osc_bridge.py",
+      "bytes": 1728,
+      "content_sha256": "269a24ca71520e29e1e982f1be1053b570891c0c78e5d3109e019e9e5a6f55a4",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/osc_bridge.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "main"
+        ],
+        "imports": [
+          "argparse",
+          "pythonosc.dispatcher",
+          "pythonosc.osc_server",
+          "pythonosc.udp_client",
+          "show",
+          "threading",
+          "time"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/src/enceladus/show.py",
+      "bytes": 2299,
+      "content_sha256": "2e0d13c92270c67047d0ee93b7acc25b73a3c84f3d35630cd47642d5225beb05",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/src/enceladus/show.py",
+      "category": "src",
+      "role": "CPU projection, statics and media-control reference; no machinery control",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "clamp",
+          "ease",
+          "Sample",
+          "ShowController"
+        ],
+        "imports": [
+          "__future__",
+          "dataclasses",
+          "math"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tests/test_geometry.py",
+      "bytes": 2788,
+      "content_sha256": "f175e3323e7b5565de606f2444d216f83f159a09ed56b0ceba0e27fd752baf38",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tests/test_geometry.py",
+      "category": "tests",
+      "role": "Supplied numerical regression source; execution currently paused",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "sphere",
+          "p",
+          "test_ray_hits_near_surface",
+          "test_ray_miss",
+          "test_behind_projector_not_visible",
+          "test_outside_frustum_excluded",
+          "test_weights_sum_to_one_where_lit",
+          "test_back_wall_unlit",
+          "test_single_projector_never_all_sphere",
+          "test_equirectangular_directions",
+          "test_texture_wrap_and_pole_clamp",
+          "test_pose_rotation_changes_uv",
+          "test_srgb_roundtrip",
+          "test_black_outside_projected_sphere",
+          "test_bad_radius_rejected",
+          "test_bad_rotation_rejected"
+        ],
+        "imports": [
+          "enceladus.geometry",
+          "numpy",
+          "pytest"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tests/test_show_loads.py",
+      "bytes": 2796,
+      "content_sha256": "e963ad25e9ee990be806cd884a12acd6eac4a553493cb7cedaa76a498b97d6ae",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tests/test_show_loads.py",
+      "category": "tests",
+      "role": "Supplied numerical regression source; execution currently paused",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "test_stale_telemetry_calm_moon",
+          "test_motion_drives_jet_and_mix_bounds",
+          "test_camera_outage_falls_back",
+          "test_blackout_is_media_only",
+          "test_invalid_and_out_of_order_data",
+          "test_dropouts_excluded_from_fusion",
+          "test_anchor_uplift_not_tongue_capacity",
+          "test_horizontal_force_moment",
+          "test_shorten_reach_lowers_only_weight_moment",
+          "test_front_axle_unloading",
+          "test_bad_spacing",
+          "test_wind_speed_squared",
+          "test_procedural_seam_continuity",
+          "test_linear_blend_endpoints"
+        ],
+        "imports": [
+          "enceladus.capture",
+          "enceladus.loads",
+          "enceladus.media",
+          "enceladus.show",
+          "numpy",
+          "pytest"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/build_all.py",
+      "bytes": 1505,
+      "content_sha256": "5c6b8b17761e3a77ead7dda84bf315b37189f4a5b279bf8cbd4e4c2629f13a25",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/build_all.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "main"
+        ],
+        "imports": [
+          "argparse",
+          "os",
+          "pathlib",
+          "subprocess",
+          "sys"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/build_diagnostics.py",
+      "bytes": 4934,
+      "content_sha256": "67667850521a1b39760fd454f284adb7b913ab644f0bd1a6a94c3af680d2c334",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/build_diagnostics.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "font",
+          "text",
+          "panel",
+          "main"
+        ],
+        "imports": [
+          "PIL",
+          "enceladus.geometry",
+          "enceladus.media",
+          "json",
+          "numpy",
+          "pathlib",
+          "sys"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/build_models.py",
+      "bytes": 10826,
+      "content_sha256": "fe9348397e14df0b4e7b7a8586dead6b4dce220409893d4bef35f9e2db792a18",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/build_models.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "assembly",
+          "mesh_for",
+          "export_step",
+          "write_scad",
+          "main"
+        ],
+        "imports": [
+          "__future__",
+          "argparse",
+          "cadquery",
+          "json",
+          "math",
+          "numpy",
+          "pathlib",
+          "sys",
+          "trimesh"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/build_review_pdf.py",
+      "bytes": 14457,
+      "content_sha256": "7c748266ff88d9b68751d4230fe19bcb7568fd90fb485618b5b2cef881807fe3",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/build_review_pdf.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "money_range",
+          "build"
+        ],
+        "imports": [
+          "PIL",
+          "csv",
+          "html",
+          "json",
+          "pathlib",
+          "reportlab.lib",
+          "reportlab.lib.pagesizes",
+          "reportlab.lib.styles",
+          "reportlab.pdfbase",
+          "reportlab.pdfbase.ttfonts",
+          "reportlab.pdfgen",
+          "reportlab.platypus"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/build_workbook.py",
+      "bytes": 13917,
+      "content_sha256": "57b12b1bf71740a5d45ea29cec9f3f538744ec82f25a243b1fa20a435d4caeb3",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/build_workbook.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "build"
+        ],
+        "imports": [
+          "artifact_tool",
+          "csv",
+          "json",
+          "pathlib"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/package_release.py",
+      "bytes": 7716,
+      "content_sha256": "d2d9b615c1512e9f41a9f8be6361a53820810288e44f00da64ba665dd2c40c28",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/package_release.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "chosen",
+          "allfiles",
+          "main"
+        ],
+        "imports": [
+          "hashlib",
+          "html",
+          "json",
+          "pathlib",
+          "re",
+          "zipfile"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/render_drawings.py",
+      "bytes": 7452,
+      "content_sha256": "0e09bf048f621d899f67b5f5739eabf907bcf3696cb97079195e4d1049a8621c",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/render_drawings.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "SVG",
+          "view_matrix",
+          "render"
+        ],
+        "imports": [
+          "__future__",
+          "build_models",
+          "cairosvg",
+          "html",
+          "json",
+          "math",
+          "numpy",
+          "pathlib",
+          "sys"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/write_docs.py",
+      "bytes": 47021,
+      "content_sha256": "55d6043b77b044493d7e205ee65201067c107884d1f22ca30b0f6ca5b2165962",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/write_docs.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [
+          "save"
+        ],
+        "imports": [
+          "json",
+          "pathlib",
+          "textwrap"
+        ]
+      }
+    },
+    {
+      "path": "deliveries/enceladus_v3/tools/write_project_data.py",
+      "bytes": 11158,
+      "content_sha256": "12f56ff3d7d1f231ba47a5ff551ca138cdd71690bda4db93e82507426d68bac6",
+      "provenance": "Enceladus_Within_v3_Project.zip",
+      "lakefs_repo": "thatsnozorb-assets",
+      "lakefs_commit": "95490407ec74af428a4630816c3dfae1b9cefb6a39c5f2fba19e62cb2d92f29d",
+      "lakefs_path": "imports/2026-09-30/deliveries/enceladus_v3/tools/write_project_data.py",
+      "category": "tools",
+      "role": "Artifact-generation source; some commands overwrite derived outputs",
+      "inspection": {
+        "format": "py",
+        "public_definitions": [],
+        "imports": [
+          "csv",
+          "json",
+          "pathlib"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "project": "thatsnozorb",
+  "prepared_on": "2026-09-30",
+  "purpose": "Local evidence index for preprompt authoring, not a runtime grant.",
+  "sources": [
+    {
+      "id": "CTX01",
+      "path": "README.md",
+      "bytes": 6363,
+      "sha256": "bead7c902f2169b4750a96278c2922cf890eccfb2974055b588cc9a12d2d3a0a",
+      "limits": "Project overview; existing target preserved.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX02",
+      "path": "STATUS.md",
+      "bytes": 7281,
+      "sha256": "586b8c2921b3a26383823c961a01d14f64a7ffb3f7b85ffe5d951681504e8a8e",
+      "limits": "Dated implementation and outstanding-work summary; not a fresh runtime check.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX03",
+      "path": "docs/plans/chat-prompts.md",
+      "bytes": 20503,
+      "sha256": "b47de28d04a38f0ff201ec274fed33799c665d2b2cefccf87e21712d76b51eb4",
+      "limits": "Human request ledger and unresolved approvals; quoted prior research is not new authority.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX04",
+      "path": "docs/asset-understanding.md",
+      "bytes": 8652,
+      "sha256": "2b93f863072f86207283a8b72f3040a59420a4f99bcb700da7f48f2fdadcf5ff",
+      "limits": "Interpretation of original 132-file package and physical gates.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX05",
+      "path": "docs/stack-rollout.md",
+      "bytes": 9086,
+      "sha256": "186a4e6e4966da66c2bd86de327c21222649ce8181b4b81e723fb97ba596be10",
+      "limits": "Shared-app boundaries, PG18/broker/Pawthentik gaps and owner rollout sequence.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX06",
+      "path": "docs/site-access-verification.md",
+      "bytes": 8693,
+      "sha256": "cbf5453280a1facab1470739f62c0dc94d738846bc00233f695bb24d60e66585",
+      "limits": "September 30 network/access observations; browser workflow unexercised.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX07",
+      "path": "docs/research-storage.md",
+      "bytes": 8915,
+      "sha256": "32f2e037b987af1da4d5572d477b0360c06bbedac4641c4419db4d5615b53d70",
+      "limits": "P009 four-file batch, prepared owner changes and remaining upload gate.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX08",
+      "path": "docs/engineering-research.md",
+      "bytes": 25342,
+      "sha256": "8287f10f05d8d912ceeadcb58d5bbeb3d302704ac11b31ff37e18c25696e4098",
+      "limits": "Research interpretation and prototype recommendation, not engineering acceptance.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX09",
+      "path": "docs/umesemu-lessons.md",
+      "bytes": 25041,
+      "sha256": "c8bf023b05166a9a459eedb10b15943b6799ea71b493b13a3c869be79e10d503",
+      "limits": "Pinned-source integration lessons and transfer limits.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX10",
+      "path": "docs/verification.md",
+      "bytes": 8929,
+      "sha256": "cac1187db94f39a93e2585d8b24fe2cd0ff50baf456253d8411c35cee67fecde",
+      "limits": "Historical and superseded proofs are explicitly separated.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX11",
+      "path": "docs/naming-verification.md",
+      "bytes": 8578,
+      "sha256": "171e127b79b24e6cb715e092c0267087da3702e934a49e77f94ceeaeebb085c4",
+      "limits": "Other chat's named evidence; do not claim independently repeated checks.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX12",
+      "path": "docs/b2-archives.md",
+      "bytes": 2985,
+      "sha256": "60422ab8bc1d68ab2a7a89f55aa0b5fd82df18b07c02582360d57d983767b869",
+      "limits": "B2 ZIP immutable-version/readback record and limits.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX13",
+      "path": "docs/grant-draft.md",
+      "bytes": 8784,
+      "sha256": "11a4d87f7caa0b18b9b8db23631f7c086a54caacd50e961a4a6642a2517fad5f",
+      "limits": "Unsubmitted grant draft, unknown request amount and official Offer Notice gate.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX14",
+      "path": "docs/pricing-alternatives.md",
+      "bytes": 8568,
+      "sha256": "24753c0d343b78a492bb9575d35226cffb1a12bd58dfad8a1ae868aad039d31a",
+      "limits": "Planning allowances and alternatives; no chosen final scope or purchase.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX15",
+      "path": "justfile",
+      "bytes": 2133,
+      "sha256": "13991a7a42e237efa29cc1acf9145e42d9b6c75000ec2ee13bab95e5922c5f2d",
+      "limits": "Actual project command definitions; check includes paused pytest.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX16",
+      "path": "pyproject.toml",
+      "bytes": 329,
+      "sha256": "4712557b1173e8dad74c891b38ebe7cae46b3b5f5d55a8ffb38390c2551ed452",
+      "limits": "Python >=3.12 project, no declared production Python packages; build/test tools separate.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX17",
+      "path": "assets/engineering-sources.json",
+      "bytes": 22810,
+      "sha256": "1464a443d305691538194f8917ea0d2ca049e60461fff1af500d4f33cf2a3abc",
+      "limits": "Thirty primary-source entries with four local PDFs and explicit access limitations.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX18",
+      "path": "assets/research-upload-plan.json",
+      "bytes": 2641,
+      "sha256": "f8b14c16827bec8d04154876d7cd7c022519c74b5626bffd4f06ecf399625531",
+      "limits": "Four PDFs totaling 107428393 bytes; remote commit and branch absent.",
+      "observed_on": "2026-09-30"
+    },
+    {
+      "id": "CTX19",
+      "path": "docs/naming-recipes.md",
+      "bytes": 7750,
+      "sha256": "0d37f6b292cb3337599b14353abc0237cb50aa1a0d31394238370dcff7091476",
+      "limits": "Existing naming API/workflow owned by another chat; no name locked.",
+      "observed_on": "2026-09-30"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+diff --git a/hid-in.toml b/hid-in.toml
+--- a/hid-in.toml
++++ b/hid-in.toml
+@@ -237,5 +237,9 @@
+ [secrets.LAKE_BROKER_PNUMBRAVOW_CI_TOKEN]
+ name = "telpher/lake-broker-pnumbravow-ci-token"
+ required = false
+ 
++[secrets.LAKE_BROKER_THATSNOZORB_PUBLISHER_TOKEN]
++name = "telpher/lake-broker-thatsnozorb-publisher-token"
++required = false
++
+ [secrets.LAKE_BROKER_IMAGE_HOSTER_TOKEN]
+diff --git a/docker-compose.yml b/docker-compose.yml
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -1064,3 +1064,4 @@
+       - LAKE_BROKER_PNUMBRAVOW_TOKEN
+       - LAKE_BROKER_PNUMBRAVOW_CI_TOKEN
++      - LAKE_BROKER_THATSNOZORB_PUBLISHER_TOKEN
+       - LAKE_BROKER_SMOKE_TOKEN

@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "attempts": 1,
+  "exit_code": 0,
+  "failure_kind": "",
+  "error": "",
+  "stderr": "",
+  "cleanup_confirmed": true,
+  "reaped": true,
+  "started_at": 1790814649.1363952,
+  "cleanup_at": 1790814898.9927576,
+  "prompt_sha256": "a7238db93bc78b8a982e5a4903741b8090d90d9e3f6dec5bb98ec3d2a97e8de2"
+}

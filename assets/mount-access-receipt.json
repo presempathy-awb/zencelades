@@ -1,0 +1,31 @@
+{
+  "url": "https://thatsnozorb.muchadoaboutoneside.com/mounts/",
+  "probes": [
+    {
+      "probe": "tailnet_ipv4",
+      "status": 200,
+      "tls_verified": true,
+      "redirect_host": null
+    },
+    {
+      "probe": "tailnet_ipv6",
+      "status": 200,
+      "tls_verified": true,
+      "redirect_host": null
+    },
+    {
+      "probe": "public_origin",
+      "status": 302,
+      "tls_verified": true,
+      "redirect_host": "authentik.telpher.stream"
+    },
+    {
+      "probe": "public_forged",
+      "status": 302,
+      "tls_verified": true,
+      "redirect_host": "authentik.telpher.stream"
+    }
+  ],
+  "browser_tailnet": true,
+  "browser_authentik_login": false
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Compare dry-land Enceladus Within installations: ground, fixed truck, pedestal and suspended spheres. Editable planning allowances with current rental anchors.">
+  <title>Ways to build it · Enceladus Within</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/pricing/pricing.css">
+  <script type="module" src="/pricing/pricing.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to comparison</a>
+  <header class="masthead"><a href="/">Enceladus Within</a><nav aria-label="Project"><a href="/#design">Design</a><a href="/#files">Source files</a><a href="/naming/">Names</a></nav></header>
+  <main id="main">
+    <section class="section introduction">
+      <p class="kicker">Ways to build it · September 30, 2026</p>
+      <h1>Keep the moon.<br>Simplify the machinery.</h1>
+      <p class="lead">A sphere on a low ground cradle is the strongest starting point for the full-scale projection idea. A smaller hemisphere costs less; a moon lit from within removes the projector rental entirely.</p>
+      <p>Every baseline below is <strong>dry land, unoccupied, with no internal GoPros</strong>. A person can stand beside the piece and appear through an optional external camera. Supporting a performer inside a sphere needs a separate design, review and budget.</p>
+      <p class="note">These are planning ranges, not quotations. The defaults allow six rental days, paid help and professional review, then 25% contingency. Tax is excluded. No water placement, free anchor, vehicle access or grant approval is assumed.</p>
+      <p><a href="/documents/pricing-alternatives.md">Read assumptions and sources</a> · <a href="/pricing/options.json" download>Download baseline line items · JSON</a> · <a href="/mounts/">Truck mounts, aerial rigs and trees</a></p>
+    </section>
+    <section class="section" aria-labelledby="compare-title">
+      <h2 id="compare-title">Compare the whole installation.</h2>
+      <p>All prices are USD. Counts below are projector counts, not a promise of seamless 360° coverage. Click a layout to inspect and edit its individual allowances.</p>
+      <div class="table-scroll" tabindex="0" aria-label="Installation pricing comparison">
+        <table class="comparison"><caption id="comparison-caption">Baseline · 6 hire days · 25% contingency · tax excluded</caption><thead><tr><th scope="col">Installation</th><th scope="col">Projectors</th><th scope="col">Planning range</th><th scope="col">Tradeoff</th></tr></thead><tbody id="comparison-rows">@@PRICING_ROWS@@</tbody></table>
+      </div>
+      <noscript><p>The baseline comparison above is available without JavaScript. Enable JavaScript for editable costs, or download the JSON and source notes.</p></noscript>
+      <form id="pricing-form" hidden>
+        <fieldset><legend>Change the assumptions</legend>
+          <div class="controls">
+            <label>Chargeable rental days<input id="days" type="number" min="1" max="60" step="1" value="6" required></label>
+            <label>Projector rate / day · USD<input id="dayRate" type="number" min="0" max="10000" step="1" value="495" required></label>
+            <label>Rental discount · %<input id="discount" type="number" min="0" max="100" step="1" value="0" required></label>
+            <label>Contingency · %<input id="contingency" type="number" min="0" max="100" step="1" value="25" required></label>
+            <label>Tax allowance · USD<input id="taxAllowance" type="number" min="0" max="100000" step="1" value="0" required></label>
+            <label>Documented equipment / donation credit · USD<input id="credit" type="number" min="0" max="1000000" step="1" value="0" required></label>
+          </div>
+          <label class="check"><input id="capture" type="checkbox">Add one external live camera and integration · $750–$2,800 before contingency</label>
+          <p class="note">The camera option applies to projected layouts. It produces a live portrait or texture, not a reconstructed 360° body. The lit-moon option has no projected image. Credits reduce cash cost, not the work or equipment required; avoid counting a donation twice.</p>
+        </fieldset>
+        <p id="feedback" role="status" aria-live="polite">Edits stay in this page until downloaded. No prices have been booked.</p>
+        <div class="actions"><button type="button" id="export">Download this estimate · JSON</button><button type="button" id="reset">Reset to baseline</button></div>
+        <section class="line-items" aria-labelledby="selected-title">
+          <h3 id="selected-title" tabindex="-1">Full sphere on a ground cradle</h3>
+          <p id="selected-description"></p>
+          <div class="table-scroll" tabindex="0" aria-label="Editable budget line items"><table><caption>Editable planning allowances · USD</caption><thead><tr><th scope="col">Line item</th><th scope="col">Low</th><th scope="col">High</th></tr></thead><tbody id="line-items"></tbody><tfoot id="totals"></tfoot></table></div>
+          <p class="note">Surface, supports, engineering, media, labor, permits and insurance are allowances. Replace them with supplier and specialist quotes. Projector hire is calculated separately from the observed daily rate. A low-high range is not a confidence interval.</p>
+        </section>
+      </form>
+    </section>
+    <section class="section split" aria-labelledby="changes-title">
+      <div><h2 id="changes-title">Where the money changes.</h2><p><strong>Water → dry land.</strong> Removes marine placement, splash/wave and recovery work from this scope. Outdoor rain, wind, electrical protection and site permissions still matter.</p><p><strong>Four projectors → two or one.</strong> At the current $495/day anchor and six days, each projector accounts for $2,970 before contingency. Fewer projectors means a deliberately narrower viewing experience.</p><p><strong>No internal cameras.</strong> The original four-camera BOM line is $500–$1,600. Removing capture also simplifies synchronization, but that additional labor saving has not been measured.</p></div>
+      <div><h3>Fixed does not automatically mean cheap.</h3><p>A sphere supported over a truck bed avoids a long cantilever. A fixed arm extending beyond the truck still needs custom attachments, stabilization and structural review. Existing hitch ratings do not approve this geometry.</p><h3>Hanging needs an actual approved point.</h3><p>The host-point option carries an access allowance. It is conditional on owner and event approval, the complete load path and a wind plan. If no appropriate structure exists, use the independent gantry price.</p><h3>Start with an optical bench.</h3><p>The original P0 allowance is $1,875–$5,750 including contingency. That is a separate early prototype, not a complete event installation. Use it to choose the material and verify projection before committing to a full sphere.</p></div>
+    </section>
+    <section class="section" aria-labelledby="sources-title">
+      <h2 id="sources-title">Prices with their context.</h2>
+      <p><a href="https://miamisoundrental.com/projector-rental">Miami Sound Rental</a> lists a 6,000-lumen projector in an IP65 truss enclosure at <strong>$495 per 24 hours</strong>, with delivery/setup from $240 per order. Its page advertises 15–30% multi-day savings; the baseline uses no discount until a dated quote confirms it. The listed 18-foot throw and chosen lens need a site-specific check.</p>
+      <p><a href="https://resolume.com/shop/">Resolume Arena</a> is listed at <strong>€799</strong> for one computer. This is a euro price; the USD media/software rows remain allowances, with no exchange rate or tax asserted.</p>
+      <p>The remaining ranges are new concept allowances informed by the <a href="/downloads/deliveries/enceladus_v3/budget/BOM.csv" download>supplied v3 BOM</a>. Its combined P0 + P1 estimate was $40,875–$111,500 including contingency; these alternatives change the experience and cannot be treated as vendor savings against an identical build.</p>
+    </section>
+  </main>
+  <footer><p>Enceladus Within · planning, not construction approval</p><p><a href="/">Return to the project</a></p></footer>
+</body>
+</html>

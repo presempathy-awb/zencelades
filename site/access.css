@@ -1,0 +1,51 @@
+#nozorb-access-button,
+#nozorb-access-dialog {
+  --access-bg: #122b38;
+  --access-ink: #edf4f4;
+  --access-line: #99deed;
+  color: var(--access-ink);
+  background: var(--access-bg);
+  font: inherit;
+}
+#nozorb-access-button,
+#nozorb-access-dialog button,
+#nozorb-access-dialog input {
+  min-height: 2.75rem;
+  border: 1px solid var(--access-line);
+  border-radius: .25rem;
+  padding: .5rem .75rem;
+  font: inherit;
+  color: var(--access-ink);
+  background: var(--access-bg);
+}
+#nozorb-access-button,
+#nozorb-access-dialog button { cursor: pointer; }
+#nozorb-access-dialog {
+  width: min(40rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  border: 1px solid var(--access-line);
+  padding: clamp(1rem, 4vw, 2rem);
+  margin: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+#nozorb-access-dialog::backdrop { background: #0a1922cc; }
+#nozorb-access-dialog .access-heading,
+#nozorb-access-dialog li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+#nozorb-access-dialog h2 { font-size: 1.5rem; margin: 0; }
+#nozorb-access-dialog h3 { font-size: 1.1rem; margin: 1.5rem 0 .5rem; }
+#nozorb-access-dialog p { margin: 1rem 0; }
+#nozorb-access-dialog ul { list-style: none; padding: 0; margin: .5rem 0; }
+#nozorb-access-dialog li { padding: .5rem 0; overflow-wrap: anywhere; }
+#nozorb-access-dialog form { display: grid; gap: .5rem; margin-top: 1.5rem; }
+#nozorb-access-dialog input { width: 100%; box-sizing: border-box; }
+#nozorb-access-dialog input::placeholder { color: #c4d5db; opacity: 1; }
+#nozorb-access-dialog button:disabled { opacity: .65; cursor: wait; }
+#nozorb-access-button:focus-visible,
+#nozorb-access-dialog :focus-visible { outline: 3px solid var(--access-line); outline-offset: 3px; }

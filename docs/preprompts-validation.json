@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "project": "thatsnozorb",
+  "request": "P010",
+  "host": "maxipaxi",
+  "observed_on": "2026-09-30",
+  "scope": "Document pack and agents source validation only",
+  "pack_sha256": "3b874abd4681918d000eadb1fc3cf264c8e3933f082db78a361ff77c77db171f",
+  "helper": {
+    "command": "uv run --no-project python /Users/andrew/.agents/skills/preprompts/scripts/preprompts.py inspect --root /Users/andrew/code/pres/make/thatsnozorb",
+    "exit_code": 0,
+    "result": {
+      "root": "/Users/andrew/code/pres/make/thatsnozorb",
+      "pack_sha256": "3b874abd4681918d000eadb1fc3cf264c8e3933f082db78a361ff77c77db171f",
+      "status": "done",
+      "existing_targets": [
+        "docs/intent.md",
+        "docs/decisions.md",
+        "docs/threat-model.md",
+        "docs/integration.md",
+        "docs/spec.md",
+        "docs/verifiers.md",
+        "docs/runbook.md",
+        "agents.toml",
+        "docs/roadmap.md",
+        "README.md",
+        "docs/planning-review.md"
+      ],
+      "empty_targets": [],
+      "message": "Done — all preprompt target files already exist."
+    }
+  },
+  "structural_audit": {
+    "command": "uv run --no-project python /Users/andrew/.cache/codex/preprompts-thatsnozorb-v6dXJP/audit.py",
+    "exit_code": 0,
+    "phase": "Final pass after completion-ledger maintenance",
+    "result": {
+      "scope": "P010 structural and coverage audit on maxipaxi",
+      "prompts": 11,
+      "targets": 11,
+      "context_records": 19,
+      "agent_contexts": 18,
+      "markdown_files": 21,
+      "relative_links": 131,
+      "defined_ids": {
+        "INT": 6,
+        "DEC": 10,
+        "THR": 10,
+        "IF": 8,
+        "REQ": 12,
+        "VER": 12,
+        "M": 6
+      },
+      "readme_sha256": "bead7c902f2169b4750a96278c2922cf890eccfb2974055b588cc9a12d2d3a0a",
+      "source_snapshot_drift": [
+        {
+          "id": "CTX02",
+          "path": "STATUS.md"
+        },
+        {
+          "id": "CTX03",
+          "path": "docs/plans/chat-prompts.md"
+        }
+      ],
+      "errors": []
+    }
+  },
+  "agent_checks": [
+    {
+      "command": "coroidinator validate --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.validate",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator merge --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.merge",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator project --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.project",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator list --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.list",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator render --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.render",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator check --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.check",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator sync --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.sync",
+      "status": "success"
+    }
+  ],
+  "agent_final_checks": [
+    {
+      "command": "coroidinator validate --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.validate",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator check --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.check",
+      "status": "success"
+    },
+    {
+      "command": "coroidinator sync --json .",
+      "exit_code": 0,
+      "schema": "coroidinator.v1.sync",
+      "status": "success"
+    }
+  ],
+  "strict_ci": {
+    "command": "coroidinator validate --json --strict-ci .",
+    "exit_code": 0,
+    "valid": true,
+    "user_layers": "ignored"
+  },
+  "managed_targets": 0,
+  "executed_generation": false,
+  "readme_preserved": true,
+  "negative_control": {
+    "command": "preprompts publish with existing id intent while review was selected",
+    "exit_code": 1,
+    "expected": true,
+    "message": "pack or selected prompt changed; re-inspect before drafting",
+    "intent_sha256_unchanged": "ac06d5b7546da2847cd1cc2a42d6343b43ba0a3523e3dcd3fb7ce16ade2b3d29"
+  },
+  "initial_audit_failure": {
+    "exit_code": 1,
+    "cause": "Checker recognized intent headings but definitions were table rows",
+    "repair": "Checker reads actual INT table definitions; all six exist",
+    "project_documents_changed_to_fix": false
+  },
+  "optional_host_audit": {
+    "command": "codex-concierge guardrails --repo . --quick",
+    "exit_code": 1,
+    "capability_matrix_ok": 20,
+    "failures": [
+      "computer_use_notify",
+      "computer_use_plugin",
+      "codex_cli"
+    ],
+    "warnings": [
+      "concierge_mode block missing"
+    ],
+    "global_repair_performed": false
+  },
+  "not_executed": [
+    "pytest",
+    "browser control",
+    "application build or deployment",
+    "provider mutation",
+    "physical test",
+    "grant submission"
+  ],
+  "open_gates": [
+    "P009 infrastructure PR choice",
+    "research publisher and immutable readback",
+    "shared runtime and PG18 confinement",
+    "person authorization and browser login",
+    "physical scope and grant amount selection"
+  ]
+}

@@ -1,0 +1,917 @@
+{
+  "release_sha256": "666ddc700a3cb4687f5ddf9357ea6d3252a29691698895df9cffdea7a5a06267",
+  "host": "presvd1",
+  "files": [
+    {
+      "path": "site/dist/asset-catalog.json",
+      "bytes": 109039,
+      "sha256": "4b6f7800dc168b7e386d6dc218d3796058494cf0c836072e83430938c93932fd"
+    },
+    {
+      "path": "site/dist/asset-inventory.json",
+      "bytes": 40884,
+      "sha256": "cb6da57b2d1d575fd1415fb86a741c0f07b02335f5c8de912231b3fac2a353c8"
+    },
+    {
+      "path": "site/dist/b2-archive-receipt.json",
+      "bytes": 1081,
+      "sha256": "49f312fd3db478ce7879653cd30b34927fa8fdf81e3b7c0d4ab1ac0422012f51"
+    },
+    {
+      "path": "site/dist/catalog.js",
+      "bytes": 834,
+      "sha256": "57b5280de0417a2f00196adf895265e094ee512d604b1d907873adbe4971a866"
+    },
+    {
+      "path": "site/dist/documents/asset-understanding.md",
+      "bytes": 8652,
+      "sha256": "2b93f863072f86207283a8b72f3040a59420a4f99bcb700da7f48f2fdadcf5ff"
+    },
+    {
+      "path": "site/dist/documents/engineering-research.md",
+      "bytes": 25342,
+      "sha256": "8287f10f05d8d912ceeadcb58d5bbeb3d302704ac11b31ff37e18c25696e4098"
+    },
+    {
+      "path": "site/dist/documents/grant-draft.md",
+      "bytes": 8784,
+      "sha256": "11a4d87f7caa0b18b9b8db23631f7c086a54caacd50e961a4a6642a2517fad5f"
+    },
+    {
+      "path": "site/dist/documents/grant-research-library.md",
+      "bytes": 14103,
+      "sha256": "eada76cda212f18d42a8b97f76f3529ec2977e8404b1478f986e80f6d0c4b9d3"
+    },
+    {
+      "path": "site/dist/documents/love-burn-research.md",
+      "bytes": 17150,
+      "sha256": "bc28a1cf5402c8c64f2652b39845d92a5ce0760667a9bdc22bacd2b6309240fb"
+    },
+    {
+      "path": "site/dist/documents/mount-options-research.md",
+      "bytes": 19118,
+      "sha256": "5da57396ee1a2fde3ffa9aed8b5d676b26a8de73504df16531835142a54bdb0b"
+    },
+    {
+      "path": "site/dist/documents/pricing-alternatives.md",
+      "bytes": 8568,
+      "sha256": "24753c0d343b78a492bb9575d35226cffb1a12bd58dfad8a1ae868aad039d31a"
+    },
+    {
+      "path": "site/dist/documents/strong-art-grant-guide.md",
+      "bytes": 11247,
+      "sha256": "f65a234017458e56202d96ec5bc9b6cea698721bdce2bcaa720ef64da0be7229"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/.gitignore",
+      "bytes": 53,
+      "sha256": "10e3b7fe8282a8b8ae2db3977916a4b596db552accbc9286cba2d26339172aec"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/CATALOG.md",
+      "bytes": 15866,
+      "sha256": "8cfb21b2b599666d9ac7aec087aeb6653a0310344de44df74bd424affe518e14"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/CHANGELOG.md",
+      "bytes": 2199,
+      "sha256": "fc2e0b59c5fce066adf3e4763ff63ad47ba32db1e2c326b289c4da81ffffcd60"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/LICENSE",
+      "bytes": 1352,
+      "sha256": "f578089b4d48bd5c8168a68100286cc0086c930fea70422ca18b5179b35e6226"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/README.md",
+      "bytes": 6497,
+      "sha256": "17089db6943d646f6a58c1bcc4534886dd3d96b2b18f021c79f90282c788e1d6"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/budget/BOM.csv",
+      "bytes": 3497,
+      "sha256": "6df6590ded1d4a100040e3eccff7945a04cd253e8e508f8cf2c15e6f8380f5c7"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/budget/Enceladus_v3_Budget_and_Gates.xlsx",
+      "bytes": 33491,
+      "sha256": "fea215a27cf6938e8cbac7aaea973bec27fba0eb049103400e0bed7bc140bc18"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/budget/budget_inputs.json",
+      "bytes": 8810,
+      "sha256": "4aa3b9bc5209b48f9e74c2b202e6f6315a789dc57dafa262a4dfa9c4e1fa9125"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/config/camera_calibration.template.json",
+      "bytes": 967,
+      "sha256": "0fd956d64b1ec1754cfb52e0a8a53cb7edc8daee9f913b918a94ee56f56f05ce"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/config/loads_example.json",
+      "bytes": 1064,
+      "sha256": "9d05434945fdb6e3e1b2270e4235c7be1d34635255b7133def2ad163e8b81e6c"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/config/measurements_required.csv",
+      "bytes": 828,
+      "sha256": "6cf9697c49301d12aeef8abb9da572fb64d2e648acf6dd928af9c809cb147605"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/config/scene.json",
+      "bytes": 3192,
+      "sha256": "7f063156bbdfb18502d399dd429979462b7ee6e752c7152431cd7596a21b00fe"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/ASSET_PROVENANCE.md",
+      "bytes": 2174,
+      "sha256": "4ec21bafa921f2f5c414f19934b01f9daea4757339f7f53560cfb954b2445a47"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/DESIGN_DECISIONS.md",
+      "bytes": 4585,
+      "sha256": "e806db25d371d95e75cf0cb0ade3474b22f2f5470b4db1815e43b11abee06461"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/ENGINEERING_REVIEW.md",
+      "bytes": 10082,
+      "sha256": "de393bcd0c8960d1f9483edced9c71cac06172b5a426fa5904bc464ff74e00b3"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/Enceladus_v3_Design_Review.pdf",
+      "bytes": 3878384,
+      "sha256": "a14da2e5541034a998baae60f373c6d9fcdf298f2ab60a3d07028a22508e8bfe"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/GRANT_BRIEF.md",
+      "bytes": 2023,
+      "sha256": "dcac55b62290dafa112b539518e15854fe5b7c695f08dcfa76244e02668b854f"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/MEASUREMENTS_AND_RFQ.md",
+      "bytes": 1979,
+      "sha256": "7fc2ba52a713cddba959cc8bb3333d567091b0f93e1ee8d2b933a28a7e79c97a"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/OPTICS_AND_CAPTURE.md",
+      "bytes": 5776,
+      "sha256": "117eae98d235b23b0313bdee65eab7c6ab76890e45a183ba020f0f76e614d774"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/SOFTWARE_SPEC.md",
+      "bytes": 3233,
+      "sha256": "5117e3332eabfcb478f9e39b1c9aa10f9269b7141f1def748ce6f025047f43bc"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/SOURCES.md",
+      "bytes": 2791,
+      "sha256": "f8bdf6fe5870a26e83368941e5732462340fbe075e392c8221f5da8b2ed31f3d"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/SOURCING_AND_COSTS.md",
+      "bytes": 2843,
+      "sha256": "bdc984f5425f49c11c226e3c09a43751cbdbcb312398134d082d071841556f02"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/TEST_AND_ACCEPTANCE.md",
+      "bytes": 2373,
+      "sha256": "e6e57c292212a6621bfa8b41e8dfe60e4e9593c2031fa10936d5750079c0d4aa"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/approval_gates.csv",
+      "bytes": 2290,
+      "sha256": "85f4df0ac6fca49190e67b6ea6fc3616b0284d0ef77ac1f54d394c075120a554"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/sources.csv",
+      "bytes": 2511,
+      "sha256": "910067afae51e5bf830e23b44aae2b2bf15c135dfc38fbc5991b77207e865aae"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/docs/sources.json",
+      "bytes": 3319,
+      "sha256": "0db13329b296e50f4b7f753b02b6686fc54bdf52889587bf921c74e40e8bc2cb"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_interfaces.png",
+      "bytes": 156097,
+      "sha256": "ece4fb6c1f9b26d6dadc27e08d9521fb21d0846f2b5fee35e6919aa815697822"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_interfaces.svg",
+      "bytes": 171120,
+      "sha256": "ac8a6b593674a8eb7f35fb4a01946266d2567a3fb96caacd36770d87fab7c652"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.png",
+      "bytes": 268972,
+      "sha256": "67ae4914196ed6958acd70dec323a40f60f4b66b85e5f12bfbbabd82adc6ef64"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.svg",
+      "bytes": 1400478,
+      "sha256": "d31888182eee17e6ddc711cf783925e5e22c1f346a01f8d872b9a146163e7921"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_side.png",
+      "bytes": 175717,
+      "sha256": "b5b1295ccbbc0e58b056b120dbb6cfa6de1e8e578b4263afdc2aab755ed0c732"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_side.svg",
+      "bytes": 1405321,
+      "sha256": "0df47ba98eb5a7b125e2134551cdb237e2b86969ea4648afa4d4e996cab36293"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_top.png",
+      "bytes": 141285,
+      "sha256": "72b4e2273a23ba7716a680851acb50905a980fd0857cce7a5f6748ca4399a348"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_top.svg",
+      "bytes": 1396471,
+      "sha256": "b6286005aab84d18b74a2195d893e29249aaa1ec3754192d0cdb706b928b5b64"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_interfaces.png",
+      "bytes": 165728,
+      "sha256": "7ee6b6da734144d944ca15251e6e49b7199db3879b99ed4bdb1a9c05b4682f62"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_interfaces.svg",
+      "bytes": 204249,
+      "sha256": "4dbba0e1b16237297d51bb1947d21e78b9850a63b2871fd3335bb9412843ee91"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.png",
+      "bytes": 273341,
+      "sha256": "394ecb722d9cf38e31828b3fee899dba2dff0e0ffb061f5c0251ab11f33f622e"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.svg",
+      "bytes": 1433592,
+      "sha256": "1b0069ce48923768b0f7539c7c735b5e9cf5dfca895b4ab20e0fe1091680a84c"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_side.png",
+      "bytes": 178345,
+      "sha256": "5b51234ce775d61fcef102abe5001ad8f2cb158aef3e46866d09ec39a3083eeb"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_side.svg",
+      "bytes": 1438435,
+      "sha256": "aed158f88951b3ea7a6287d359f451b753ef2d146ecb241557ce0e7d0cd94fbc"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_top.png",
+      "bytes": 142564,
+      "sha256": "36c07960295049a68b2426d711f7a5d9e7d57e0c4f79443274a61732e27ea9df"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_top.svg",
+      "bytes": 1429585,
+      "sha256": "69d0ec7c3545f5601125cd9c63540a6c69bd778ad36b9a3dab94c9bf053f640d"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/index.html",
+      "bytes": 24627,
+      "sha256": "9ef30634ae5b2444717209712975fc91b97458d0b92ec672ef7b8e728b4bdf46"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/README.md",
+      "bytes": 447,
+      "sha256": "514c3391fa702b8abd9803034a47bff6d03b510da6e0754ddf387e6e61cd0894"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/README.md",
+      "bytes": 5672,
+      "sha256": "dca76095ddeab0d0507371fa25de8aae28d2e4af1ba7a977a5a3d6fb27ee84fa"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/bom.csv",
+      "bytes": 1851,
+      "sha256": "21b9bf3b560a772ad602dd33e7957ecb64d2152b35c4da62e37963e22e3c71ed"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/code/blend_controller.py",
+      "bytes": 3305,
+      "sha256": "9a48e8a5258e1d637ef91652b04d0e6eecda2a2b0c699375d5bea3150dd64cab"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/code/enceladus_surface.glsl",
+      "bytes": 2191,
+      "sha256": "9db741afa99e980aa7802c3c7efb229370330dfa009ebc8e96bfa71393a237d6"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/code/motion_energy.py",
+      "bytes": 2156,
+      "sha256": "bde6aa19e9edeab70562b610c359a0c3624dfb618c2675ed208cd2222a23d521"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/code/projector_mapper.py",
+      "bytes": 5522,
+      "sha256": "061119187cbf80c21bfe1f96082e1efb6d39c0a8fce1b5cca4240fac8221f32a"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/config/system_config.yaml",
+      "bytes": 2545,
+      "sha256": "b65bc441b34b14ddd5ff2f9acb057590101f3b35db9b2604949085244667e808"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/costs.csv",
+      "bytes": 1593,
+      "sha256": "4db1f2219967e470920ca26a368212ebe4f88d65ea1e864f947f25e88c623c0e"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/docs/BUDGET_SUMMARY.md",
+      "bytes": 342,
+      "sha256": "3b9eed7775b9ddea2103854f2f0c926574b94db64ca3b55aa5ad2f86997ca196"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/docs/ENGINEERING_AUDIT.md",
+      "bytes": 7851,
+      "sha256": "b81b18f2e16e10c1dfc0796f56796743210cd558b0d732dfdf9f724622322040"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/docs/MULTICAM_TRACKING.md",
+      "bytes": 1592,
+      "sha256": "e60ceb5df94cce82594fab908ee9c04e5731cd9ea03666d25f9384ee495f410e"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/docs/PROJECTION_CALIBRATION.md",
+      "bytes": 1305,
+      "sha256": "b38651c1c6fdff057c73b3670bef2f64986ae14379479748d660cca511975616"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/docs/PROVENANCE.md",
+      "bytes": 748,
+      "sha256": "65e1b5543a827271b3cf9e7b99f1b83f9a50f0968c59fbe36802adc417cd22b3"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/legacy/v1/docs/SYSTEM_ARCHITECTURE.md",
+      "bytes": 4221,
+      "sha256": "5a6f52db211de5060eb9ac2bf85e46bd4271346a8bf94e261df4ec7f523a614c"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/licenses/THIRD_PARTY.md",
+      "bytes": 865,
+      "sha256": "af2f0c17fe1ad0870e1abe6cc90d5770ed6486203fb07cfc86739a0b79e65958"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/manifest.json",
+      "bytes": 18711,
+      "sha256": "aaab3cef3d10244b821f5ae0f23e1952892ee0c054afb667cc27cc34e49db0b0"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/media/historical_concept_NOT_ENGINEERING.png",
+      "bytes": 2936696,
+      "sha256": "d9be893dff0fb2a90a0b0856570d5e2608ce7a61ef0d7c38aae1fb2ff5e1a6c8"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.glb",
+      "bytes": 200332,
+      "sha256": "97546ab02f4f213bbda84004abe1781ad5ccc435ecfbf3d1aa858f2c86ab5650"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.json",
+      "bytes": 35031,
+      "sha256": "a5525e4c029bc711698440c722c722ceaea0fbbdcfa82aa4736ba07d95debe4a"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.obj",
+      "bytes": 871493,
+      "sha256": "04c534fbfbb4d7ecfc3d53a189135578a3e2cbff032bf28f854336afa683bad8"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.scad",
+      "bytes": 23841,
+      "sha256": "ffcbaaeaff4f46c7335cd3ba526fcfbf02009a5fb0f288028911eecac136a61b"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_A_literal_dual_hitch.step",
+      "bytes": 835129,
+      "sha256": "040abc642f31657a3cea8b628bee20d6d4f89f5f7dbb9d8c38d3b7519da3512a"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_B_chassis_saddle.glb",
+      "bytes": 209888,
+      "sha256": "f19280af9ef681bdc551c4cf0f5bca83290f7246383dbdda087dae907b2fb383"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_B_chassis_saddle.json",
+      "bytes": 38227,
+      "sha256": "00b85a2a0d6503e270b9aded9cf2ebd7644825a5c98fb812ce9dc5136b97e413"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_B_chassis_saddle.obj",
+      "bytes": 891981,
+      "sha256": "fa6ed216289992a79712966fcff7f0b561ea9d028a70d2a4fd63a7fb766bd1b4"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_B_chassis_saddle.scad",
+      "bytes": 25288,
+      "sha256": "b28d4df9e5ee4c426f670b68bb501dfe463c72e1eb361d5ab3c082e7603aad1c"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/models/v3_B_chassis_saddle.step",
+      "bytes": 931606,
+      "sha256": "e0864321e732043ba14efd46380767f8a318ff35a8a28f90b72e67fb60b41a90"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/budget_dashboard.png",
+      "bytes": 214900,
+      "sha256": "f9ef4774677c333b4831c7fd721cf22a7418410ee65bf6a5b5b5ee4178bede98"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/coverage_annotated.png",
+      "bytes": 48305,
+      "sha256": "5b808902c7cabbae88ece737975c7d12ae43adb648e81e642f5fcaffe092ab73"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/procedural_globe_atlas.png",
+      "bytes": 504586,
+      "sha256": "1f70054a922cc6d8965038089a7a67bfc74918d113c95b711f723a97ee42739b"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/procedural_interior_atlas.png",
+      "bytes": 177340,
+      "sha256": "61928c5c94d96860e9f4dbc7c0303f636a9405b17459997629c5434c3aa9dfa9"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/procedural_surface_atlas.png",
+      "bytes": 635347,
+      "sha256": "e023e46eeb9488e7146102eeaac85199e93be4b3f2f37ce9224dbdd2063217a4"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projector_contact.png",
+      "bytes": 419076,
+      "sha256": "7a4f28df197302b9c51a568f2c35b8f9c60d69d0581c552fed8ff28d86df1b7f"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/README.txt",
+      "bytes": 146,
+      "sha256": "0ff7458f045e9a1a3fa9da12b85eb729da7ecfe4da211557c22a60c0a690ff81"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/back.png",
+      "bytes": 107873,
+      "sha256": "b56c18a9a1970ea863a427b558ace73064c1032c6b6c0ae6018dca673f24301d"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/back_weight.png",
+      "bytes": 5823,
+      "sha256": "6632235b2726e62e59578262ad1db02026759b465f2016f6f6d9c7a3cca1e4e5"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/left.png",
+      "bytes": 113482,
+      "sha256": "def90c362c31f505117c57ac438560d7ab71e879f05a63ece046dc020e3ec78b"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/left_weight.png",
+      "bytes": 6338,
+      "sha256": "290efcf4ceabed41f6475d8f0733357cd5acf17eb8d0f82a9cea70d2f91dedf4"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/right.png",
+      "bytes": 114193,
+      "sha256": "d26edd294cbf7f835ca90394020390cdf056ccd12582dfcb448aeb96c9072709"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/right_weight.png",
+      "bytes": 6252,
+      "sha256": "2fff2dbe40d2b194d5d55b6945a740f7265cd89febf37154fa51466599fae8b5"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/shared_atlas.png",
+      "bytes": 504403,
+      "sha256": "272687c76d824d2f461474a90a7e81aa612343a080e26f244126001eedb6f738"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/top.png",
+      "bytes": 116024,
+      "sha256": "fa9b2a0f8444d9d13d5698e8eba5145b11b7087d9ab9c41cee3a10ce0db48057"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/projectors/top_weight.png",
+      "bytes": 12971,
+      "sha256": "4a8cb1cde9c80ae7927ddbaf660a4cbe654eb86b0f761d11d8f6114fdd126ded"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/six_views_same_atlas.png",
+      "bytes": 928646,
+      "sha256": "deb5af6772d31b68e120171f8c94ec69ad00c9f51a4af2022c74d583099fca66"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/workbook_BOM_detail.png",
+      "bytes": 75102,
+      "sha256": "f7be636b968e1909f18bd5cf200ba54c153e5e5217bae91e2878f4145f096207"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/workbook_load_detail.png",
+      "bytes": 84163,
+      "sha256": "aa97e2adfaad82eb70d638123bfb0d3c46a011d0ca5ee40a092db4d4f8777580"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/previews/workbook_sources_detail.png",
+      "bytes": 83253,
+      "sha256": "499d031e1fec6d13765651ca46fa8b6d8787dcb559dd65e25f38129fd8ab10dc"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/pyproject.toml",
+      "bytes": 722,
+      "sha256": "b12808356979f66f1ba54b5b111dfdf8db65339aa75b70b36ca57b6eef48010e"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/RELEASE_VERIFICATION.md",
+      "bytes": 1913,
+      "sha256": "466bd7a7137c1bd243be46dd33cff36e620429b61422f448fca1ced1c9953c30"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/budget_summary.json",
+      "bytes": 498,
+      "sha256": "7e419e31f26968c809b6280c67f178e65799e6d294047edeea60e5884b8da10d"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/coverage/coverage.json",
+      "bytes": 378,
+      "sha256": "defcbdd0e07809d92a20e8f27b23043ca836bcc9dca6123e6d4f93a7475bfe5f"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/coverage/coverage_atlas.png",
+      "bytes": 3984,
+      "sha256": "4fbcf52d5f99885e51839d14e80491483043c54bb25e9678a57630b107421c76"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/coverage/coverage_data.npz",
+      "bytes": 1803389,
+      "sha256": "3ccf2a14d93b011278766cf89f87c5abc1bd8e458d53cdcc32a5034f9bfab520"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/junit.xml",
+      "bytes": 3098,
+      "sha256": "3c51db132f3f02ea465cc3e62e45a81d51a6f4efa80058d15c6dfc5ca8594e04"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/load_screening.json",
+      "bytes": 1480,
+      "sha256": "9f56bfdb3bcf314b727c426fe2be1a342b33aa41c572c5929102e3018c43df25"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/model_build.log",
+      "bytes": 680,
+      "sha256": "14ca95673b916c9bbe25335c6a6b06692809fb50672b3092dbafa4db77b9b134"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/model_validation.json",
+      "bytes": 819,
+      "sha256": "bd98f3c28e0a83857cc35bafd74f86c849323b8ddbbd42f14f3b9ba8908cadc3"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/show_demo.jsonl",
+      "bytes": 289808,
+      "sha256": "cab3acb5312bab0492f0283f85e2385c5b044c931e05a9c1d89ec181b147c9b5"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/tested_environment.json",
+      "bytes": 543,
+      "sha256": "d6574a47260cedc07d50e9b9077dde34d567dc4a08c102b77203df99cab91960"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/tests.txt",
+      "bytes": 99,
+      "sha256": "54f473f8ffbb296a2cb7f61ae0407b2cfa31f6d197e4aceb805308f9d6b8b6a8"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/reports/workbook_validation.json",
+      "bytes": 1057,
+      "sha256": "a25f675b32a6d59ee284b8a569d78ae29aca6cabd597b8c4df2a88920df38f7b"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/__init__.py",
+      "bytes": 101,
+      "sha256": "4b3124c8f524db5e654446b4a966ea4e1da59eddc501b87b47994fd248e41587"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/capture.py",
+      "bytes": 2093,
+      "sha256": "a2bc9dc7c5b24e1b9acc8701f6abba35638d99c9e7f2055bece3ea5f02eac93e"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/cli.py",
+      "bytes": 4391,
+      "sha256": "dcba1d956bf7c101f2d26e66b25df6adb2b4ed7402be7d14ec3f4d79a4a0e454"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/enceladus_surface.frag",
+      "bytes": 1231,
+      "sha256": "67b6c74b0fd57534f3196dc9333dd52fe441e4882e7f9645d017530fde267eb1"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/geometry.py",
+      "bytes": 8119,
+      "sha256": "428396e14adb06eca3fb06d0c29d51de2d0d587828948f734e22ac764bb899b4"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/loads.py",
+      "bytes": 3201,
+      "sha256": "0c7a6807d54f61fa7cdfc5ff6587c605dabc366e2d12b3a3bbc9a10d944dd129"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/media.py",
+      "bytes": 2525,
+      "sha256": "26ae30a37f1ec72207270fc474fb82a5c1b9663a2ca2a3625b093d69afb8e4f2"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/osc_bridge.py",
+      "bytes": 1728,
+      "sha256": "269a24ca71520e29e1e982f1be1053b570891c0c78e5d3109e019e9e5a6f55a4"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/src/enceladus/show.py",
+      "bytes": 2299,
+      "sha256": "2e0d13c92270c67047d0ee93b7acc25b73a3c84f3d35630cd47642d5225beb05"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tests/test_geometry.py",
+      "bytes": 2788,
+      "sha256": "f175e3323e7b5565de606f2444d216f83f159a09ed56b0ceba0e27fd752baf38"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tests/test_show_loads.py",
+      "bytes": 2796,
+      "sha256": "e963ad25e9ee990be806cd884a12acd6eac4a553493cb7cedaa76a498b97d6ae"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/build_all.py",
+      "bytes": 1505,
+      "sha256": "5c6b8b17761e3a77ead7dda84bf315b37189f4a5b279bf8cbd4e4c2629f13a25"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/build_diagnostics.py",
+      "bytes": 4934,
+      "sha256": "67667850521a1b39760fd454f284adb7b913ab644f0bd1a6a94c3af680d2c334"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/build_models.py",
+      "bytes": 10826,
+      "sha256": "fe9348397e14df0b4e7b7a8586dead6b4dce220409893d4bef35f9e2db792a18"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/build_review_pdf.py",
+      "bytes": 14457,
+      "sha256": "7c748266ff88d9b68751d4230fe19bcb7568fd90fb485618b5b2cef881807fe3"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/build_workbook.py",
+      "bytes": 13917,
+      "sha256": "57b12b1bf71740a5d45ea29cec9f3f538744ec82f25a243b1fa20a435d4caeb3"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/package_release.py",
+      "bytes": 7716,
+      "sha256": "d2d9b615c1512e9f41a9f8be6361a53820810288e44f00da64ba665dd2c40c28"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/render_drawings.py",
+      "bytes": 7452,
+      "sha256": "0e09bf048f621d899f67b5f5739eabf907bcf3696cb97079195e4d1049a8621c"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/write_docs.py",
+      "bytes": 47021,
+      "sha256": "55d6043b77b044493d7e205ee65201067c107884d1f22ca30b0f6ca5b2165962"
+    },
+    {
+      "path": "site/dist/downloads/deliveries/enceladus_v3/tools/write_project_data.py",
+      "bytes": 11158,
+      "sha256": "12f56ff3d7d1f231ba47a5ff551ca138cdd71690bda4db93e82507426d68bac6"
+    },
+    {
+      "path": "site/dist/downloads/source/uploads/CATALOG.md",
+      "bytes": 15866,
+      "sha256": "8cfb21b2b599666d9ac7aec087aeb6653a0310344de44df74bd424affe518e14"
+    },
+    {
+      "path": "site/dist/downloads/source/uploads/ChatGPT Image Sep 30, 2026, 11_59_25 AM.png",
+      "bytes": 2936696,
+      "sha256": "d9be893dff0fb2a90a0b0856570d5e2608ce7a61ef0d7c38aae1fb2ff5e1a6c8"
+    },
+    {
+      "path": "site/dist/downloads/source/uploads/ChatGPT Image Sep 30, 2026, 11_59_59 AM.png",
+      "bytes": 2698075,
+      "sha256": "7d53fdc7f969b9883369886ab7c27afdc7cb0ba6290bdff276ae15e72bdd7a14"
+    },
+    {
+      "path": "site/dist/downloads/source/uploads/Enceladus_Within_v3_Project.zip",
+      "bytes": 15283642,
+      "sha256": "ead14bd9a4d3e30b4b55aabd0ebd9a84d20cedd0ad9de47e5d1b80fffa41437a"
+    },
+    {
+      "path": "site/dist/downloads/source/uploads/Enceladus_v3_Budget_and_Gates.xlsx",
+      "bytes": 33491,
+      "sha256": "fea215a27cf6938e8cbac7aaea973bec27fba0eb049103400e0bed7bc140bc18"
+    },
+    {
+      "path": "site/dist/downloads/source/uploads/Enceladus_v3_Design_Review.pdf",
+      "bytes": 3878384,
+      "sha256": "a14da2e5541034a998baae60f373c6d9fcdf298f2ab60a3d07028a22508e8bfe"
+    },
+    {
+      "path": "site/dist/downloads/source/uploads/enceladus_within_cinematic_previs_h264.mp4",
+      "bytes": 8684776,
+      "sha256": "af48e68da8f8ad821bf3dc7cea0915a2766216997c881d80200aafe3abd3d124"
+    },
+    {
+      "path": "site/dist/grants/index.html",
+      "bytes": 10912,
+      "sha256": "73b015f09702b09ba5093ee19e83f593a49ea000d90873e39bcc000b0f720b80"
+    },
+    {
+      "path": "site/dist/grants/reading.css",
+      "bytes": 821,
+      "sha256": "43f49ea7bffb70cbc8554a4ac17f7336a0a97d2349957ccac928f3a5bb5aba1d"
+    },
+    {
+      "path": "site/dist/grants/sources.json",
+      "bytes": 10809,
+      "sha256": "85c6674bffa954980ba3b6e1c36fc4a325302bcfd3cd91ef2e084b5d46460c16"
+    },
+    {
+      "path": "site/dist/index.html",
+      "bytes": 30620,
+      "sha256": "b2ca8c665a6c6db7971cedea809deed53372d49620d32bc847b63c7eba25e278"
+    },
+    {
+      "path": "site/dist/media/concept-board.png",
+      "bytes": 2698075,
+      "sha256": "7d53fdc7f969b9883369886ab7c27afdc7cb0ba6290bdff276ae15e72bdd7a14"
+    },
+    {
+      "path": "site/dist/media/film-poster.png",
+      "bytes": 928646,
+      "sha256": "deb5af6772d31b68e120171f8c94ec69ad00c9f51a4af2022c74d583099fca66"
+    },
+    {
+      "path": "site/dist/media/previs.mp4",
+      "bytes": 8684776,
+      "sha256": "af48e68da8f8ad821bf3dc7cea0915a2766216997c881d80200aafe3abd3d124"
+    },
+    {
+      "path": "site/dist/media/variant-a.png",
+      "bytes": 268972,
+      "sha256": "67ae4914196ed6958acd70dec323a40f60f4b66b85e5f12bfbbabd82adc6ef64"
+    },
+    {
+      "path": "site/dist/media/variant-b.png",
+      "bytes": 273341,
+      "sha256": "394ecb722d9cf38e31828b3fee899dba2dff0e0ffb061f5c0251ab11f33f622e"
+    },
+    {
+      "path": "site/dist/mounts/index.html",
+      "bytes": 8356,
+      "sha256": "3e0ff063a50c74c3b4c3bbb5a7338d467848b6c286c5f9a5b7f6b42f85237cfd"
+    },
+    {
+      "path": "site/dist/mounts/sources.json",
+      "bytes": 4197,
+      "sha256": "608afa98ce31348f5373411b1e42bdd6447f7ea167c45470c2e914eaf8e67f8c"
+    },
+    {
+      "path": "site/dist/naming/editor-state.mjs",
+      "bytes": 2090,
+      "sha256": "c5b78d03e054a89f7e205af230d312cb9eadf8e24a1efb6a3af99cafc2f38388"
+    },
+    {
+      "path": "site/dist/naming/editor-state.test.mjs",
+      "bytes": 1138,
+      "sha256": "fd8a6085cfda80134374007955a56ca6dc9cf660680cd7b98d28ca4ec1a45496"
+    },
+    {
+      "path": "site/dist/naming/editor.css",
+      "bytes": 2274,
+      "sha256": "b766ace914dff950337aef50767f110b6a7318900e191d9dfb1bcd9757d924f4"
+    },
+    {
+      "path": "site/dist/naming/editor.mjs",
+      "bytes": 12305,
+      "sha256": "6ac7c144cc630e5e4f38a386b3efefa038dd512956c09d3e9ab59bf13f96d92b"
+    },
+    {
+      "path": "site/dist/naming/index.html",
+      "bytes": 738308,
+      "sha256": "7c8434131541688a6f290f26907ff0416a96fd93e02480159bc4468bfb8d4b15"
+    },
+    {
+      "path": "site/dist/naming/morphemes.csv",
+      "bytes": 7719,
+      "sha256": "63fbf7d42afc241351814257aef76300ed5349920343ca5b0c579f494cee6c73"
+    },
+    {
+      "path": "site/dist/naming/palette.json",
+      "bytes": 17580,
+      "sha256": "f14b202885e5b92cedd1c366d1f28dbc75c2f8b33410ea296343748c6f41d0fa"
+    },
+    {
+      "path": "site/dist/naming/palette.toml",
+      "bytes": 7695,
+      "sha256": "a17b00d5d2fa13d1d9d5d8ce67e58ec4c5b9f729508da7eba46b5c36cf65ed07"
+    },
+    {
+      "path": "site/dist/naming/ranking-state.mjs",
+      "bytes": 3551,
+      "sha256": "3d6951c2bb2d42f775c1eda06dc0e598c087d2438d4009b58991b4169d6bf1e5"
+    },
+    {
+      "path": "site/dist/naming/ranking.css",
+      "bytes": 2145,
+      "sha256": "ca032a99e52865a04a7d3127fbdc9d8c1b4109827cfb8bc732684da8b40bd6c6"
+    },
+    {
+      "path": "site/dist/naming/ranking.mjs",
+      "bytes": 19742,
+      "sha256": "be6a9b9c6b2a60f71313ba9c0e446674c9bc83774fe8a0be0b32ca8697477894"
+    },
+    {
+      "path": "site/dist/naming/report.json",
+      "bytes": 261472,
+      "sha256": "fc3483d78330a694e2d9132377530bfa65ed7889c9aa05c2924b9d804309b68a"
+    },
+    {
+      "path": "site/dist/naming/report.md",
+      "bytes": 101964,
+      "sha256": "83974fb9f39cf376747d64c2b059a1a6588fce5b91fe4ddec5429215114956d0"
+    },
+    {
+      "path": "site/dist/naming/research-rolls.json",
+      "bytes": 568903,
+      "sha256": "4ad0ec5dbc5489e8bb7e9d990ef43daff4b5e79136577a72f20721c58fb01b01"
+    },
+    {
+      "path": "site/dist/naming/review-state.mjs",
+      "bytes": 6251,
+      "sha256": "3280421b992e95de36eaead1abab201ce4f1f8136947ffd634da2a5f8e0b91fc"
+    },
+    {
+      "path": "site/dist/naming/reviews.json",
+      "bytes": 374144,
+      "sha256": "c0bf53c9b42b1fef2b3106c07bedfe227e9a1a96f86a51895ed4a012d440745f"
+    },
+    {
+      "path": "site/dist/naming/roll.css",
+      "bytes": 3086,
+      "sha256": "0789a38e8749f5cca410e565fc29d707ae5482dd20ec82f442d23254cd339537"
+    },
+    {
+      "path": "site/dist/naming/roll.js",
+      "bytes": 1147,
+      "sha256": "b6af83b0713520096e67abbd175eb88fa569dfe57fe6f9237fc5da2fad158387"
+    },
+    {
+      "path": "site/dist/naming/verification.json",
+      "bytes": 1851367,
+      "sha256": "f1670e8fb87c1bff7e7b48f9d8ea19d84845ea873f0751d6879631f7377fb741"
+    },
+    {
+      "path": "site/dist/pricing/index.html",
+      "bytes": 9392,
+      "sha256": "2c93c8ca37fece85d9b1d18ce947db40792f66d9ebb014d5818ad10bfe896986"
+    },
+    {
+      "path": "site/dist/pricing/options.json",
+      "bytes": 17474,
+      "sha256": "9214e8ebf7efb24a5bdd8e53b20a8ad6c1288b56b4fe53c5f65406b6b4a7451e"
+    },
+    {
+      "path": "site/dist/pricing/pricing.css",
+      "bytes": 2121,
+      "sha256": "446db42ecfc7c6c3107d066ed259827c687de8fa87302ecd16130294e7e5869e"
+    },
+    {
+      "path": "site/dist/pricing/pricing.mjs",
+      "bytes": 8383,
+      "sha256": "bf9473c7f948911aead04d0b6068ba56657f35726d80f226d24d4729c3402f0b"
+    },
+    {
+      "path": "site/dist/style.css",
+      "bytes": 3952,
+      "sha256": "2d42e5d9213dcf6c579b5aa88a1bb1486e3ffaa943d91725161b0d964340ffa2"
+    },
+    {
+      "path": "deploy/Caddyfile",
+      "bytes": 412,
+      "sha256": "aebbaddb89e12ae82891d0d1b089cf838aa95266bd9c170c2a8e72b7639fe35d"
+    },
+    {
+      "path": "deploy/thatsnozorb.service",
+      "bytes": 713,
+      "sha256": "27def2d34c212f9c1d003cd813e8276fc83721413523ff608c2f9ffb148b9f14"
+    },
+    {
+      "path": "deploy/activate.sh",
+      "bytes": 3171,
+      "sha256": "0e125e1b62f5a2a16b8b5d39e64b58102d8d268216c2c453a148eabd78b8111d"
+    }
+  ],
+  "service": "thatsnozorb.service"
+}

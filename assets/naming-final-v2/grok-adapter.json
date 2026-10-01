@@ -1,0 +1,22 @@
+{
+  "route": "ANCC owned CLI adapter via APIoly",
+  "deployed_queue": false,
+  "model": "grok-4.7",
+  "status": "completed",
+  "attempts": [
+    {
+      "packet": "grok-final.json",
+      "ok": true,
+      "exit_code": 0,
+      "cleanup_confirmed": true,
+      "reaped": true,
+      "failure_kind": ""
+    }
+  ],
+  "version": "grok 1.0.41 (4220f3b224a6) [stable]",
+  "adapter_sha256": {
+    "grok_capacity.py": "60fa7b3e84b8ab126e0df1358bfdf5a72b7e38fbafe8e389d0c25f743ff423f5",
+    "owned_cli.py": "03b4d669c146a6d3193c4c0444bbebd60a71fa6c944f0d9bb3c4355cd170e707"
+  },
+  "host": "presvd1"
+}

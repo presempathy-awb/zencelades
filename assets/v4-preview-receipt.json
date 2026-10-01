@@ -1,0 +1,10 @@
+{
+  "verified_at": "2026-10-01T01:13:35.100149+00:00",
+  "origin": "http://127.0.0.1:59063",
+  "files_matched": 84,
+  "bytes_matched": 50534039,
+  "attachment_headers": true,
+  "comparison_document_matched": true,
+  "browser_interactions": false,
+  "production_deployed": false
+}

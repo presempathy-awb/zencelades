@@ -1,0 +1,9 @@
+# P009 proposed broker policy addition. No runtime authorization is granted here.
+# The owner policy-check derives the secret and environment binding from this name.
+[principals.thatsnozorb-publisher]
+description = "Thatsnozorb research and original-file preservation."
+auth = ["token"]
+groups = ["lake-writers"]
+repos = ["thatsnozorb-assets"]
+prefixes = ["imports/*"]
+

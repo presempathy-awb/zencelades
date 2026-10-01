@@ -1,0 +1,17 @@
+# Proposed additions to hesellsheshells/lake-broker.toml; not live policy.
+# Validate with that repository's policy-check before provisioning.
+# Token names below are derived by the broker from the principal names.
+
+[principals.thatsnozorb-publisher]
+description = "Enceladus preservation and explicitly approved public releases."
+auth = ["token"]
+groups = ["lake-writers"]
+repos = ["thatsnozorb-assets"]
+prefixes = ["imports/*", "public/*"]
+
+[principals.thatsnozorb-web]
+description = "Much Ado Enceladus public release reader; no private originals."
+auth = ["token"]
+groups = ["lake-readers"]
+repos = ["thatsnozorb-assets"]
+prefixes = ["public/*"]
