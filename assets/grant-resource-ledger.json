@@ -1,0 +1,627 @@
+{
+  "schema_version": 1,
+  "prepared_on": "2026-09-30",
+  "currency": "USD",
+  "status": "Tier 1 low-cost build for the Love Burn 2027 application. Observed retail prices are dated September 30, 2026 and are not reserved stock or quotes; allowances are labelled and need a quote or a receipt.",
+  "sphere_diameter_m": 2.5,
+  "contingency_percent": 20,
+  "tiers": {
+    "tier1": "Base deliverable: the artist's 2.5 m zorb, projected onto, seated in a padded loop at the centre of a fabricated steel triangle (materials in Tier 1; fabrication labour in-kind) and hung from the artist-owned aerial rig by a three-line bridle, winch and swivel; lander legs on the same triangle for the ground state; two 3,600-lumen projectors on light stands; a mini PC (or the artist's laptop) compositing two live feeds from phones inside the zorb; owned hazer for the haze fill.",
+    "third": "First self-funded upgrade: a third projector at 120 degrees for a continuous wrap, with its stand, cover and a second Pi (a Pi 5 has two HDMI outputs).",
+    "tier2": "Add-on if funded: two more projectors, stands and covers plus a second Pi for four-sided coverage.",
+    "support": "Option B support, only if the owned rig does not fit: a rated 14 ft lighting-truss goalpost (two crank stands and a span) that cranks the moon down in wind. Funded by the artist or Art Sponsor Tickets, outside the Seed ask."
+  },
+  "tier1": {
+    "lines": [
+      {
+        "id": "sphere",
+        "tier": "tier1",
+        "item": "The moon: a 2.5 m zorb (TPU sphere) projected onto; owned, or diffusing liner / skin treatment if bought already",
+        "qty": 1,
+        "unit_low": 0,
+        "unit_high": 700,
+        "kind": "allowance",
+        "basis": "Andrew, September 30, 2026: the moon IS the zorb. If he owns it the line is USD 0 plus a diffusing liner or frosting allowance; if a zorb must be bought it is a different price class (3 m TPU zorbs weigh 80-100 kg; prices not researched here) and Andrew prices it before the build. Earlier event-sphere ranges (EUR 155-520, USD 190-690) are retained only as the light-sphere fallback.",
+        "sources": [
+          "https://electronics.alibaba.com/buyingguides/globe-ball-sphere-projection-screen-guide",
+          "https://m.made-in-china.com/product/Sphere-Inflatable-Projection-Dome-balloon-Ball-816798105.html",
+          "https://lookourway.com/products/custom-inflatable-hanging-balls",
+          "https://www.eventdecordirect.com/catalog/gold-giant-inflatable-disco-ball-sphere-maxorb-reflective-ceiling-event-decor-commercial-installation-sizes-p-33144.html",
+          "https://asia-inflatables.en.made-in-china.com/product/loDEzPWcaMpL/China-3m-TPU-Inflatable-Zorbing-Ball-for-Zorb-Ramp-Race-Track.html"
+        ],
+        "low": 0,
+        "high": 700
+      },
+      {
+        "id": "projector",
+        "tier": "tier1",
+        "item": "Optoma HD146X 1080p DLP projector, 3,600 lumens",
+        "qty": 2,
+        "unit_low": 499,
+        "unit_high": 599,
+        "kind": "observed_price",
+        "basis": "Street price USD 499 (ProjectorCentral; Amazon deal listing); Walmart USD 569; AVI-SPL and CompSource USD 599. Purchase, not the USD 495/day rental used by the earlier pricing study. Standard throw 1.47-1.62 fills a 2.5 m sphere from 4 m. Codex's projector workbook (40 to 20, source/research/2026-09-30) screened short-throw heads for the 3.4 m design; its cheapest, the Optoma ZH350ST laser at USD 1,499, is the upgrade path (1.25 m from the sphere, no lamp), not the Seed choice.",
+        "sources": [
+          "https://www.projectorcentral.com/optoma-hd146x.htm",
+          "https://www.walmart.com/ip/Optoma-HD146X-Full-HD-1080p-resolution-Gaming-and-Home-Entertainment-Projector-3-600-Lumens-for-Lights-On-Viewing/973092097",
+          "https://slickdeals.net/f/16960141-optoma-hd146x-high-performance-projector-amazon-499"
+        ],
+        "low": 998,
+        "high": 1198
+      },
+      {
+        "id": "pi",
+        "tier": "tier1",
+        "item": "Output node at the projectors: Intel N100-class mini PC with two HDMI plus DisplayPort or USB-C (three heads possible) that receives the finished picture from the laptop over the private Wi-Fi and feeds the heads over HDMI; the artist's laptop does the real-time compositing (in-kind) and can drive the heads directly instead",
+        "qty": 1,
+        "unit_low": 0,
+        "unit_high": 200,
+        "kind": "observed_price",
+        "basis": "Andrew's direction, October 1, 2026: the laptop does the heavy real-time processing; a cheap mini PC on the Wi-Fi just does the HDMI. N100 fanless mini PCs supporting three displays listed at USD 149.50-199.50; basic N100 units USD 110-142. Low is USD 0 if the laptop sits at the heads and drives them directly. Projectors are HDMI only: the Optoma HD146X has no wireless input, cheap wireless projectors are too dim, and wireless HDMI kits (USD 65-150, 60-120 ms latency) are no better than a stream to the node, so HDMI cables run from the node to the heads.",
+        "sources": [
+          "https://electronics.alibaba.com/product/mini-pc-n100",
+          "https://www.newegg.com/p/pl?d=intel+n100+mini+pc",
+          "https://mitxpc.com/products/mes-n100dc",
+          "https://gagadget.com/en/68090-best-wireless-hdmi-extender-review/"
+        ],
+        "low": 0,
+        "high": 200
+      },
+      {
+        "id": "pi-kit",
+        "tier": "tier1",
+        "item": "Output-node accessories: weatherproof box and HDMI leads to the heads (the private Wi-Fi comes from the artist's own UniFi router)",
+        "qty": 1,
+        "unit_low": 40,
+        "unit_high": 90,
+        "kind": "allowance",
+        "basis": "Accessory allowance; itemise from the chosen retailer. No access point to buy: the UniFi router Andrew owns runs the private network (October 1, 2026).",
+        "sources": [],
+        "low": 40,
+        "high": 90
+      },
+      {
+        "id": "phone",
+        "tier": "tier1",
+        "item": "Old phones inside the zorb running the project's own app: camera feed and mic feed to the laptop, looking and listening out through the clear skin (owned, or second-hand at Andrew's USD 25 budget)",
+        "qty": 2,
+        "unit_low": 0,
+        "unit_high": 25,
+        "kind": "allowance",
+        "basis": "Andrew's direction, October 1, 2026: USD 25 phones inside the zorb with a custom app that streams camera and mic to the laptop. Spoken trigger: nothing is projected until the person on the spot says 'I am the man on the moon' (or woman, or whatever they are); offline speech recognition on the laptop listens for the phrase through the phone mics, and the switch at the spot is the fallback trigger. Any Android or iPhone with a camera and Wi-Fi works; no service plan is needed for a local camera app, and the stream is composited live on the host and never stored. They go in before inflation on internal mounts with a USB power bank; the clear TPU skin is their window, which is why the projection medium is haze inside the zorb (Codex's P014/P015 research) with a frosted liner as the fallback, settled at the bench test. Fallback if no old phones turn up: a new Straight Talk Moto G Play 2026 at USD 49.88 (Walmart).",
+        "sources": [
+          "https://www.walmart.com/browse/prepaid-phones/1105910_4527935_1072335?facet=facet_product_type%3ACell+Phones&max_price=50&povid=web_ets_navpill_browse_87_phones_prepaid_under50",
+          "https://www.walmart.com/c/kp/tracfone-moto"
+        ],
+        "low": 0,
+        "high": 50
+      },
+      {
+        "id": "phone-mount",
+        "tier": "tier1",
+        "item": "Phone mounts and power inside the zorb: suction or strap mounts on the inner wall and a USB power bank per phone; or an 11 in magic arm per phone if they ride the triangle corners instead",
+        "qty": 2,
+        "unit_low": 15,
+        "unit_high": 22,
+        "kind": "observed_price",
+        "basis": "Priced at the magic-arm figure as the ceiling: TARION 11 in magic arm with super clamp USD 19.99 (Best Buy); Niewalda 11 in with phone clip USD 21.68 (Walmart); unbranded USD 14.99-15.03 (eBay). Inside the zorb a suction or strap mount costs less; a small power bank per phone is in the same allowance. A gooseneck phone clamp (USD 7-13 at Walmart) is the snaky alternative outside but sags in wind.",
+        "sources": [
+          "https://www.bestbuy.com/product/tarion-magic-arm-11-with-super-clamp-adjustable-articulating-camera-mount-for-led-light-monitor-flash-phone/CLXXZL4HR5",
+          "https://www.walmart.com/ip/Camera-Magic-Arm-articulating-arm-11-Inch-Metal-Adjustable-Friction-Articulated-arm-Super-Clamp-Phone-Clip-Various-Action-Camera-DSLR-LCD-Monitor-LED/5941012081",
+          "https://www.walmart.com/c/kp/gooseneck-phone-holder"
+        ],
+        "low": 30,
+        "high": 44
+      },
+      {
+        "id": "switch",
+        "tier": "tier1",
+        "item": "Weatherproof switch at each spot (foot switch or big arcade button) that turns the AV inside the zorb on and off when someone steps in",
+        "qty": 2,
+        "unit_low": 10,
+        "unit_high": 20,
+        "kind": "allowance",
+        "basis": "Andrew's direction, October 1, 2026: a switch going in turns the AV inside on and off, so the cameras and mics are live only while someone has stepped in. Wired to the laptop over USB or read by the phones' app; allowance until a part is chosen.",
+        "sources": [],
+        "low": 20,
+        "high": 40
+      },
+      {
+        "id": "stand",
+        "tier": "tier1",
+        "item": "13 ft heavy-duty light stand for each projector",
+        "qty": 2,
+        "unit_low": 64,
+        "unit_high": 64,
+        "kind": "observed_price",
+        "basis": "Flashpoint Pro 13 ft air-cushioned heavy-duty light stand about USD 64 (Amazon). The USD 39.95 In the Breeze pole seen earlier is a fabric-decor flag pole, not a load-bearing stand, and is dropped. Sandbags are in the rigging kit.",
+        "sources": [
+          "https://www.amazon.com/clp/B00K9Z1EAG"
+        ],
+        "low": 128,
+        "high": 128
+      },
+      {
+        "id": "bracket",
+        "tier": "tier1",
+        "item": "Universal projector bracket per stand",
+        "qty": 2,
+        "unit_low": 18,
+        "unit_high": 19,
+        "kind": "observed_price",
+        "basis": "APPLAYERR heavy-duty stand USD 17.95; TAPDRA universal bracket USD 18.96 (Walmart listings).",
+        "sources": [
+          "https://www.walmart.com/c/kp/projector-stand-outdoor"
+        ],
+        "low": 36,
+        "high": 38
+      },
+      {
+        "id": "cover",
+        "tier": "tier1",
+        "item": "Rain and salt-spray cover per projector (vented box or hood)",
+        "qty": 2,
+        "unit_low": 60,
+        "unit_high": 150,
+        "kind": "allowance",
+        "basis": "No product selected; a sealed enclosure is a different price class. Projectors run only in dry conditions and are boxed when unattended.",
+        "sources": [],
+        "low": 120,
+        "high": 300
+      },
+      {
+        "id": "rigging",
+        "tier": "tier1",
+        "item": "Rigging kit: hand winch with brake, block, rated halyard, three-line bridle, rated lyra-style swivel, optional porch-swing springs, round slings, screw-pin shackles, carabiners, safety sling, two tag lines, ratchet straps, sandbags",
+        "qty": 1,
+        "unit_low": 150,
+        "unit_high": 400,
+        "kind": "allowance",
+        "basis": "Hardware allowance for an unoccupied zorb of tens of kilograms on rated gear; the winch-and-block lowering design and the seat (padded loop in a fabricated triangle) are in docs/grant-prior-art-and-mounts.md. A lyra rigging kit with 360-degree swivel lists at about USD 74; heavy-duty porch swing springs USD 8-18 a pair. The rigger confirms the final list against the rig's own manual.",
+        "sources": [],
+        "low": 150,
+        "high": 400
+      },
+      {
+        "id": "power",
+        "tier": "tier1",
+        "item": "Outdoor-rated cords, inline GFCI, cable ramps, weatherproof power box",
+        "qty": 1,
+        "unit_low": 150,
+        "unit_high": 300,
+        "kind": "allowance",
+        "basis": "Electrical distribution allowance for one supplied circuit; the event electrician confirms the connection.",
+        "sources": [],
+        "low": 150,
+        "high": 300
+      },
+      {
+        "id": "sound",
+        "tier": "tier1",
+        "item": "Weather-resistant powered speaker fed from the Pi",
+        "qty": 1,
+        "unit_low": 100,
+        "unit_high": 250,
+        "kind": "allowance",
+        "basis": "Low-level ambient sound only; no product selected.",
+        "sources": [],
+        "low": 100,
+        "high": 250
+      },
+      {
+        "id": "rest",
+        "tier": "tier1",
+        "item": "Landed configuration: three pinned tube legs with foot pads for the triangle, mats and sandbags",
+        "qty": 1,
+        "unit_low": 100,
+        "unit_high": 300,
+        "kind": "allowance",
+        "basis": "Andrew's lander idea, October 1, 2026: on the ground the moon stands on three legs pinned to the triangle corners like a landed probe, centre at 1.7 m, top under 10 ft, rig-free; used when placement refuses a rig, in wind, and as the nightly landing. Legs are the same tube as the triangle (about 3 x 1.2 m), fabricated with the basket; this line covers tube, pads, pins, mats and sandbags. No wooden platform: legs only.",
+        "sources": [],
+        "low": 100,
+        "high": 300
+      },
+      {
+        "id": "spares",
+        "tier": "tier1",
+        "item": "Repair kit, tape, spare blower fuse, batteries, lens cloths",
+        "qty": 1,
+        "unit_low": 50,
+        "unit_high": 150,
+        "kind": "allowance",
+        "basis": "Consumables.",
+        "sources": [],
+        "low": 50,
+        "high": 150
+      },
+      {
+        "id": "ring-basket",
+        "tier": "tier1",
+        "item": "Basket under the sphere: a 3.1-3.5 m straight-tube triangle (or a 1.8-2.0 m rolled ring) in 1 in EMT or 3/4 in steel tube, three-rope bridle, pads, three straps over the top",
+        "qty": 1,
+        "unit_low": 60,
+        "unit_high": 180,
+        "kind": "allowance",
+        "basis": "Andrew's design, September 30, 2026: nothing attaches to the sphere skin; a bought lyra is too small; rope bridle instead of rigid legs so nothing shadows the projection. Fabricated at Denhac with Odd Todd; labour is in-kind. Materials allowance only; tube price to be confirmed at purchase. Geometry and weight in docs/grant-prior-art-and-mounts.md.",
+        "sources": [],
+        "low": 60,
+        "high": 180
+      }
+    ],
+    "subtotal": [
+      1982,
+      4368
+    ],
+    "contingency": [
+      396.40000000000003,
+      873.6
+    ],
+    "total": [
+      2378.4,
+      5241.599999999999
+    ]
+  },
+  "third": {
+    "lines": [
+      {
+        "id": "projector-3rd",
+        "tier": "third",
+        "item": "Third Optoma HD146X for a continuous 120-degree wrap",
+        "qty": 1,
+        "unit_low": 499,
+        "unit_high": 599,
+        "kind": "observed_price",
+        "basis": "Same sources as the Tier 1 projectors.",
+        "sources": [
+          "https://www.projectorcentral.com/optoma-hd146x.htm"
+        ],
+        "low": 499,
+        "high": 599
+      },
+      {
+        "id": "stand-3rd",
+        "tier": "third",
+        "item": "Third stand, bracket and cover",
+        "qty": 1,
+        "unit_low": 118,
+        "unit_high": 233,
+        "kind": "allowance",
+        "basis": "Sum of the Tier 1 stand, bracket and cover lines per projector.",
+        "sources": [],
+        "low": 118,
+        "high": 233
+      },
+      {
+        "id": "pi-3rd",
+        "tier": "third",
+        "item": "Second Raspberry Pi 5 kit for the third output, synchronised over Wi-Fi",
+        "qty": 1,
+        "unit_low": 135,
+        "unit_high": 289,
+        "kind": "allowance",
+        "basis": "Sum of the Tier 1 Pi and accessory lines; a Pi 5 drives two projectors.",
+        "sources": [],
+        "low": 135,
+        "high": 289
+      }
+    ],
+    "subtotal": [
+      752,
+      1121
+    ],
+    "contingency": [
+      150.4,
+      224.20000000000002
+    ],
+    "total": [
+      902.4,
+      1345.2
+    ]
+  },
+  "tier2": {
+    "lines": [
+      {
+        "id": "projector-t2",
+        "tier": "tier2",
+        "item": "Two more Optoma HD146X projectors for four-sided coverage",
+        "qty": 2,
+        "unit_low": 499,
+        "unit_high": 599,
+        "kind": "observed_price",
+        "basis": "Same sources as the Tier 1 projectors.",
+        "sources": [
+          "https://www.projectorcentral.com/optoma-hd146x.htm"
+        ],
+        "low": 998,
+        "high": 1198
+      },
+      {
+        "id": "stand-t2",
+        "tier": "tier2",
+        "item": "Two more stands, brackets and covers",
+        "qty": 2,
+        "unit_low": 118,
+        "unit_high": 233,
+        "kind": "allowance",
+        "basis": "Sum of the Tier 1 stand, bracket and cover lines per projector.",
+        "sources": [],
+        "low": 236,
+        "high": 466
+      },
+      {
+        "id": "pi-t2",
+        "tier": "tier2",
+        "item": "Second Raspberry Pi 5 with accessories, synchronised over Wi-Fi",
+        "qty": 1,
+        "unit_low": 135,
+        "unit_high": 289,
+        "kind": "allowance",
+        "basis": "Sum of the Tier 1 Pi and accessory lines.",
+        "sources": [],
+        "low": 135,
+        "high": 289
+      }
+    ],
+    "subtotal": [
+      1369,
+      1953
+    ],
+    "contingency": [
+      273.8,
+      390.6
+    ],
+    "total": [
+      1642.8,
+      2343.6
+    ]
+  },
+  "support": {
+    "lines": [
+      {
+        "id": "crank-stand",
+        "tier": "support",
+        "item": "ProX XT-CRANK14FT-220 14 ft crank stand, 220 lb, TUV certified, 63 in base",
+        "qty": 2,
+        "unit_low": 316,
+        "unit_high": 400,
+        "kind": "observed_price",
+        "basis": "Sale prices USD 316-400 across idjnow, B&H, Full Compass and others (list USD 959.99). Two stands form a goalpost; cranking down is the wind plan.",
+        "sources": [
+          "https://www.idjnow.com/prox-xt-crank14ft-220-14ft-crank-stand.html",
+          "https://www.bhphotovideo.com/c/product/1840323-REG/prox_xt_crank14ft_220_14_heavy_duty_lighting_crank.html"
+        ],
+        "low": 632,
+        "high": 800
+      },
+      {
+        "id": "truss-span",
+        "tier": "support",
+        "item": "10 ft aluminium truss span between the stands",
+        "qty": 1,
+        "unit_low": 170,
+        "unit_high": 600,
+        "kind": "observed_price",
+        "basis": "ProX T-LS31M 10 ft DJ lighting truss USD 169.95 (Walmart); ProX XT-BTD1210 10 ft I-beam box truss USD 309.40 (idjnow); Global Truss F34 9 ft USD 600 (B&H). The span's own rating and the clamp to the stand tops decide the choice.",
+        "sources": [
+          "https://www.walmart.com/ip/ProX-T-LS31M-10ft-DJ-Stage-Lighting-Truss/646869261",
+          "https://www.idjnow.com/prox-xt-btd1210-truss.html",
+          "https://www.bhphotovideo.com/c/product/927054-REG/global_truss_sq_4112_275_9_02_straight_square_segment.html"
+        ],
+        "low": 170,
+        "high": 600
+      },
+      {
+        "id": "truss-hardware",
+        "tier": "support",
+        "item": "Two half-couplers, safety steel, sandbags for the stand bases",
+        "qty": 1,
+        "unit_low": 40,
+        "unit_high": 120,
+        "kind": "allowance",
+        "basis": "Hardware allowance; the rigging kit's slings and swivel are reused.",
+        "sources": [],
+        "low": 40,
+        "high": 120
+      }
+    ],
+    "subtotal": [
+      842,
+      1520
+    ],
+    "contingency": [
+      168.4,
+      304.0
+    ],
+    "total": [
+      1010.4,
+      1824.0
+    ]
+  },
+  "in_kind": [
+    {
+      "id": "rig",
+      "item": "Artist-owned aerial rig (model and attachment height to confirm)",
+      "owner": "Andrew",
+      "status": "committed",
+      "note": "The hanger Andrew already owns. Its manual decides the permitted load and the sphere must fit between the legs; see the fit check in the schematics."
+    },
+    {
+      "id": "hazer",
+      "item": "Artist-owned hazer",
+      "owner": "Andrew",
+      "status": "committed",
+      "note": "Zero acquisition cost (P015). Fills the zorb with haze during inflation so the sphere glows as a volume and the cameras inside keep their view; fluid is a consumable."
+    },
+    {
+      "id": "laptop",
+      "item": "Artist-owned laptop as the real-time compositing host",
+      "owner": "Andrew",
+      "status": "committed",
+      "note": "Pre-owned (October 1, 2026). Composites the two phone feeds with the moon film and streams the finished picture to the output node, or drives the heads directly over HDMI."
+    },
+    {
+      "id": "router",
+      "item": "Artist-owned UniFi router for the private Wi-Fi",
+      "owner": "Andrew",
+      "status": "committed",
+      "note": "Owned (October 1, 2026). Carries phones, laptop and output node on one private network with no internet; nothing is stored."
+    },
+    {
+      "id": "truck",
+      "item": "2021 Ram 2500 Mega Cab for transport",
+      "owner": "Andrew",
+      "status": "committed",
+      "note": "Transport only; it carries no load and is not part of the 2027 art. Parking it at the camp as scenery is a stretch goal for later (Andrew, October 1, 2026)."
+    },
+    {
+      "id": "design",
+      "item": "Existing design work: v3 and v4 design packages, projection diagnostics, content studies",
+      "owner": "Andrew",
+      "status": "committed",
+      "note": "Already produced; see the project site."
+    },
+    {
+      "id": "labor",
+      "item": "Artist labor: content authoring, bench tests, build, two-day install, nightly operation, strike",
+      "owner": "Andrew and crew",
+      "status": "pending",
+      "note": "Crew names and hours to be entered by Andrew."
+    },
+    {
+      "id": "transport",
+      "item": "Fuel, tolls and travel to Virginia Key and back",
+      "owner": "Andrew",
+      "status": "pending",
+      "note": "Artist-funded; amount depends on the route and is not estimated here."
+    }
+  ],
+  "requests": [
+    {
+      "id": "cash",
+      "item": "Cash grant toward the Tier 1 cash list",
+      "status": "requested",
+      "note": "Target set in the ledger from Love Burn's published per-project averages."
+    },
+    {
+      "id": "tickets",
+      "item": "Artist tickets for the build and operating crew",
+      "status": "requested",
+      "note": "Count to be entered by Andrew; tickets depend on an approved proposal."
+    },
+    {
+      "id": "power",
+      "item": "One 120 V 20 A outdoor circuit at the placement, dusk to midnight",
+      "status": "requested",
+      "note": "Measured load schedule follows the bench test."
+    },
+    {
+      "id": "placement",
+      "item": "Dry-land placement with a 10 x 10 m footprint, a clear overhead for the rig, and 1.5 m of clear ground around the legs",
+      "status": "requested",
+      "note": "Shoreline or over-water placement is not requested for 2027."
+    }
+  ],
+  "love_burn_averages": {
+    "note": "Cash art-grant totals and granted-project counts from Love Burn's published finance PDFs (fulldisclosure page, read September 30, 2026). The links labelled 2026 and 2025 resolve to the LB2024 and LB2023 files, so those are the latest documented years.",
+    "years": [
+      {
+        "event": "LB2024",
+        "art_grants_usd": 440091.91,
+        "projects_granted": 210,
+        "source": "https://storage.googleapis.com/msgsndr/FTZ1auS7AdgWCswfa3l8/media/66fb11c92087e52ccdd5e2b5.pdf",
+        "average_per_project": 2096
+      },
+      {
+        "event": "LB2023",
+        "art_grants_usd": 387070.92,
+        "projects_granted": 149,
+        "source": "https://storage.googleapis.com/msgsndr/FTZ1auS7AdgWCswfa3l8/media/66fb11c9cce691f3501b314d.pdf",
+        "average_per_project": 2598
+      }
+    ]
+  },
+  "target": {
+    "tier1_cash_low": 2400.0,
+    "tier1_cash_high": 5200.0,
+    "latest_average_per_project": 2096,
+    "ratio_high_to_average": 2.5,
+    "recommended_ask_usd": 3000,
+    "grant_tier": "Seed Grant ($600 to $3,000)",
+    "crew_tickets": 3,
+    "note": "Ask $3,000 cash as a Seed Grant plus 3 crew tickets, itemised against the Tier 1 list; the artist covers the rest and all in-kind lines. Tier 2 is an add-on, not folded into the ask. Tier confirmed by Andrew, 2026-09-30."
+  },
+  "options": [
+    {
+      "id": "tier1-hung",
+      "name": "Tier 1: hung 2.5 m sphere, purchased projectors",
+      "projectors": 2,
+      "basis": "purchase",
+      "cash_low": 2378,
+      "cash_high": 5242
+    },
+    {
+      "id": "ground-light",
+      "name": "A lit moon on the ground",
+      "projectors": 0,
+      "basis": "rental",
+      "cash_low": 4500,
+      "cash_high": 13750
+    },
+    {
+      "id": "ground-half",
+      "name": "Ground-supported hemisphere",
+      "projectors": 1,
+      "basis": "rental",
+      "cash_low": 9338,
+      "cash_high": 21463
+    },
+    {
+      "id": "ground-sphere",
+      "name": "Full sphere on a ground cradle",
+      "projectors": 2,
+      "basis": "rental",
+      "cash_low": 19300,
+      "cash_high": 39675
+    },
+    {
+      "id": "fixed-bed",
+      "name": "Fixed in the truck bed",
+      "projectors": 2,
+      "basis": "rental",
+      "cash_low": 21050,
+      "cash_high": 44050
+    },
+    {
+      "id": "fixed-pedestal",
+      "name": "Freestanding fixed pedestal",
+      "projectors": 2,
+      "basis": "rental",
+      "cash_low": 22675,
+      "cash_high": 47175
+    },
+    {
+      "id": "existing-hang",
+      "name": "Hang from an existing approved point",
+      "projectors": 2,
+      "basis": "rental",
+      "cash_low": 21675,
+      "cash_high": 44675
+    },
+    {
+      "id": "fixed-cantilever",
+      "name": "Fixed truck cantilever",
+      "projectors": 4,
+      "basis": "rental",
+      "cash_low": 42975,
+      "cash_high": 79850
+    },
+    {
+      "id": "own-gantry",
+      "name": "Hang from a freestanding gantry",
+      "projectors": 4,
+      "basis": "rental",
+      "cash_low": 36975,
+      "cash_high": 67975
+    }
+  ]
+}

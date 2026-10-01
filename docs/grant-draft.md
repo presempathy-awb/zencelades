@@ -1,5 +1,10 @@
 # Enceladus Within — Love Burn 2027 working proposal
 
+Superseded for the 2027 form by the [application packet](grant-application-packet.md)
+and its [resource ledger](grant-resource-ledger.md), which size the ask from
+Love Burn's published grant averages and describe the low-cost hung build.
+This earlier draft remains the record of the original scope options.
+
 Draft for Andrew to review. Not submitted. The live form's field list and character limits have not been verified, so these are reusable answers rather than a claim of form completion.
 
 ## Application and offer status

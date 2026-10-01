@@ -45,6 +45,7 @@ check:
     uv run --no-project --with pytest pytest -q
     ruff check scripts tests
     ruff format --check scripts tests
+    uv run --no-project python -m scripts.grant_ledger --check
 
 site-build:
     uv run --no-project python -m scripts.build_site
@@ -83,3 +84,7 @@ deploy-naming *args:
 # Plan by default; overlay the live site and install the IP adapter with --apply.
 deploy-access *args:
     uv run --no-project --with pyyaml python -m scripts.deploy_access {{args}}
+
+# Cash, in-kind and requested support per build option; --check verifies the written ledger.
+grant-ledger *args:
+    uv run --no-project python -m scripts.grant_ledger {{args}}
