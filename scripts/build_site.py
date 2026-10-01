@@ -39,6 +39,8 @@ def build() -> None:
             raise ValueError(f"Build copy hash mismatch: {destination}")
     previews = {
         "concept-board.png": "source/uploads/ChatGPT Image Sep 30, 2026, 11_59_59 AM.png",
+        "concept-landed.png": "docs/design/application/submission/01-concept-landed.png",
+        "concept-suspended.png": "docs/design/application/submission/05-concept-suspended.png",
         "film-poster.png": "deliveries/enceladus_v3/previews/six_views_same_atlas.png",
         "variant-a.png": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.png",
         "variant-b.png": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.png",
@@ -169,7 +171,7 @@ def build() -> None:
     shutil.copyfile(ROOT / "assets/catalog.json", output / "asset-catalog.json")
     shutil.copyfile(ROOT / "assets/v4-catalog.json", output / "v4-asset-catalog.json")
     print(
-        f"Built {output}: {len(entries)} original + {len(v4)} v4 byte-verified downloads and 5 media previews"
+        f"Built {output}: {len(entries)} original + {len(v4)} v4 byte-verified downloads and 7 media previews"
     )
 
 

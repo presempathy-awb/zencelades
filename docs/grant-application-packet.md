@@ -1,4 +1,4 @@
-# Enceladus Within: Love Burn 2027 application, every field
+# Zencelades: Love Burn 2027 application, every field
 
 Final draft, October 1, 2026, against the live Airtable form
 (https://airtable.com/appZEXWPCFtaKm6NA/pag1ytRqyhwaXdZTE/form). The form
@@ -25,12 +25,24 @@ added as its own line before submission. The supporting documents are
 [prior art and mounts](grant-prior-art-and-mounts.md) and
 [what Love Burn allows](love-burn-camp-and-vehicle-rules.md).
 
+**What the form can take.** Three things carry the proposal beyond the
+text: the ART PROJECT PHOTOS field (JPG or PNG, under 5 MB each, under
+20 MB in all; "drawings, photos, whisky-stained napkins"), the BUDGET
+SPREADSHEET field (PDF, XLS or CSV only, printable PDF preferred) and
+links: a video link (Google Drive, iCloud or any public link, under two
+minutes) and a public photo or video drive link inside the committee
+description. Nothing else uploads, so every drawing goes in as an image and
+every document goes in as a link. The upload list is under ART PROJECT
+PHOTOS below; the files are collected in
+`docs/design/application/submission/`.
+
 ---
 
 ## Art Submission Information
 
 ### Art Project Title
-Enceladus Within **[or Zencelades, if that is the public name]**
+Zencelades **[or "Enceladus Within"; the concept art is lettered
+ZENCELADES and the domain zencelades.com is yours, so the packet uses it]**
 
 ### Artist(s)
 **[Andrew's artist or group name, as it should appear on the website]**
@@ -39,105 +51,123 @@ Enceladus Within **[or Zencelades, if that is the public name]**
 *For the website. G-rated. Two paragraphs.*
 
 Enceladus is a small moon of Saturn with a whole ocean hidden under its
-ice. Most of a human body is water too. Enceladus Within hangs a glowing
-moon, eight feet across, at eye level on the beach, and invites you to step
-up to it. Stand on the marked spot and say the words: "I am the man on the
-moon" (or woman, or whatever you are). Only then does your own image, blown
-up to the size of the moon, appear inside it, fading in beneath the ice. The ice cracks
-around your image. The hidden ocean floods through. Plumes rise from where
-you stand, and then, slowly, the moon takes itself back. Step off and it
-returns to a calm, breathing loop of ice and water, waiting for the next
-person. Nobody goes inside the moon; you stay on the sand, and the moon
-takes your picture into itself only when you ask it to. Two people can
-appear in it at once, one from each side, and everyone else gets the best
-part: watching a friend say the words and turn into a world.
+ice. Most of a human body is water too. Zencelades is a glowing moon, eight
+feet across, that you can climb inside. Step through its little tunnel, sit
+down on the soft floor, and say the words: "I am the man on the moon" (or
+woman, or whatever you are). Only then does the moon take you: your own
+face, blown up to the size of the moon, appears across its surface, fading
+in beneath the ice. The ice cracks around you. The hidden ocean floods
+through. Plumes rise from where you sit, and then, slowly, the moon takes
+itself back and you are a small person inside a calm world again. Say the
+words and it happens again. Climb out and the moon returns to a breathing
+loop of ice and water, waiting for the next person. You are not the
+audience; you are the show, and everyone outside gets the best part:
+watching a friend crawl into a moon, say the words, and become the man on
+it.
 
 It is made by **[artist or group]**, **[one line: who you are and what you
 make]**, who wanted to put the ocean around us, the ocean inside us and the
-ocean on Enceladus into one object people can share. Two small cameras watch
-only the two marked spots and record nothing; your picture exists on the
-moon while you stand there and nowhere else. Two bright projectors paint the
-sphere, a little haze makes the beams visible, and a quiet soundscape carries
-the story. By day it is a plain white moon on the sand. After dark it is the
+ocean on Enceladus into one object a person can sit inside. Two small
+cameras inside the moon see only the person sitting in it and record
+nothing; your picture exists on the moon while you are in it and nowhere
+else, and a switch at the door turns the cameras on when you go in and off
+when you leave. Two bright projectors paint the sphere, a little haze in the
+air outside makes the beams visible, and a quiet soundscape carries the
+story. By day it is a plain white moon on the sand. After dark it is the
 show, and so are you.
 
 ### Type of Art
-**[Choose the closest option: projection / light art / interactive sculpture]**
+**[Choose the closest option: interactive sculpture / projection / light art]**
 
 ### Art Description (Not for Website)
 *For the art and placement committees.*
 
-The moon is an unoccupied 2.5 m zorb, a TPU sphere, used purely as a
-projection surface; nobody goes inside it. **[Owned / to be bought; exact
-diameter, weight, and whether the skin is clear or frosted.]** It sits in a
-padded steel loop at the centre of a fabricated steel triangle and hangs
-from the artist's own freestanding aerial rig (**[model, height]**) on a
-three-line bridle through a rated swivel, so it can turn freely; the image
-is projected, so the picture stays put while the moon turns. A hand winch
-with a brake on the rig leg raises and lowers it; a separate safety sling
-backs up the hang; a padded ground cradle sits beneath it all night, so
-lowering is a 25 cm ease that takes one person one minute.
+The moon is a 2.5 m zorb, a clear TPU sphere with a walk-in tunnel, the
+kind built to carry a person, used here as a seat and a projection surface:
+one person at a time sits inside on the soft inner floor. **[Owned / to be
+bought; exact diameter, weight, tunnel size, and whether the skin is clear
+or frosted.]** Its skin gets a light diffusing treatment (frosted film or a
+translucent liner, chosen at the bench test) so it holds a projected image
+while the person inside stays visible through it. It sits in a padded steel
+loop at the centre of a fabricated steel triangle. The triangle is the
+piece's one holder and has two states. Landed: three legs with foot pads
+pinned to the triangle's corner plates (the pins join leg to frame, not
+ground; the pads sit on the sand with sandbags) stand the moon like a landed
+probe (NASA's Enceladus concept is an Orbilander) with its centre at 1.7 m,
+its floor at knee height for the tunnel, and its top just under 10 ft:
+nothing overhead, nothing to climb, and the configuration in which people go
+inside. Hung: the legs come off and the same triangle hangs from the
+artist's own freestanding aerial rig (**[model, height]**) on a three-line
+bridle through a rated swivel, so the moon can turn freely while the
+projected picture stays put; a hand winch with a brake on the rig leg raises
+and lowers it, a separate safety sling backs up the hang, and a padded
+ground cradle sits beneath it all night, so lowering is a 25 cm ease that
+takes one person one minute. The hung state is occupied only if the rig's
+rated load covers the sphere plus a person with margin, confirmed from the
+manual and by a rigger before the event; otherwise it hangs as the
+unoccupied night show and lands for people to go in.
 
 Projection: two Optoma HD146X projectors (3,600 lumens, 325 W each) on 13 ft
 telescoping stands about 4 m either side, matched to the projector's throw
-ratio; a third projector at 120° is the first upgrade if funds allow. Cameras:
-two old phones inside the zorb, looking out through the clear skin, each
-framing one marked spot, streaming over a private Wi‑Fi from the artist's
-own UniFi router, no internet; nothing is stored. The phones run the
-project's own app, which streams camera and mic. A switch at each spot
-turns the AV inside the zorb on and off: until someone steps in and throws
-it, nothing looks or listens. Then nothing is projected until the person on
-the spot says "I am the man on the moon" (or woman, or whatever they are);
+ratio; a third projector at 120° is the first upgrade if funds allow. The
+concept art shows the next step, short-throw heads on outriggers from the
+triangle's own corners, which is the upgrade path, not the 2027 build.
+Cameras: two old phones mounted inside the sphere, each framing the seated
+person from its side, streaming over a private Wi‑Fi from the artist's own
+UniFi router, no internet; nothing is stored. The phones run the project's
+own app, which streams camera and mic. A switch at the tunnel, thrown going
+in, turns the AV inside the sphere on; thrown going out, off: until someone
+is inside, nothing looks or listens. A second switch inside, within reach of
+the seat, blanks the cameras and the live image at once, so the person in
+the moon can always stop it. Then nothing is projected until the person
+inside says "I am the man on the moon" (or woman, or whatever they are);
 offline speech recognition on the laptop listens for the phrase through the
-phone mics, and the switch doubles as the fallback trigger in wind and
-noise. The switch and the words are the opt-in. Processing: the artist's
-laptop composites the two live
-feeds with the moon film in real time; a small mini PC at the projectors
-receives the finished picture over the same private Wi‑Fi and feeds the
-heads over HDMI (the laptop can drive them directly instead). Projection
-medium: the clear zorb filled with a light haze from
-the artist's own hazer (water-based fluid, added during inflation), which
-makes the sphere glow from within and gives the cameras their window; a
-frosted inner liner is the fallback if the bench test wants a denser
-surface. Sound: one small weather-resistant speaker, low.
+phone mics, and the inside switch doubles as the trigger in wind and noise.
+The switch and the words are the opt-in. Processing: the artist's laptop
+composites the two live feeds with the moon film in real time; a small mini
+PC at the projectors receives the finished picture over the same private
+Wi‑Fi and feeds the heads over HDMI (the laptop can drive them directly
+instead). Haze: the artist's own water-based hazer runs outside the sphere
+only, low, for visible beams; never inside it. Sound: one small
+weather-resistant speaker, low. Air: the sphere's blower runs continuously
+whenever anyone is inside and the tunnel is never closed; the sphere is
+never sealed with a person in it.
 
-The rigging will be specified for the zorb's confirmed weight, tens of
-kilograms, not a balloon: a rated swivel, rated rope, and the rig used
+Occupancy rules, written into the crew checklist: one person inside at a
+time; a crew member at the tunnel whenever the piece is open; no going in
+while the moon is hung unless the rig's rating covers it; no entry above the
+wind limit; the inside switch and the crew member can both stop the show;
+the projectors and all electrics stay outside the sphere. The rigging will
+be specified for the sphere's confirmed weight, tens of kilograms, plus the
+design occupant, not a balloon: a rated swivel, rated rope, and the rig used
 within its manual, all subject to confirmation. The rig model, its rated
 load, the measured sphere weight and the final hardware list are entered
 from the rig manual and checked by a rigger before anything is bought; the
-October bench test must validate the diffusing skin, the live compositing
-and the lowering drill, and time it, before the November purchases. The
-triangle also takes three legs with foot pads, pinned to the frame's corner
-plates (the pins join leg to frame, not ground; the pads sit on the sand
-with sandbags), so on the ground the moon stands like a landed probe (NASA's
-Enceladus concept is an Orbilander) with its centre at the same 1.7 m and
-its top just under 10 ft: the planned rig-free configuration of the piece,
-nothing overhead and nothing to climb, used if the rig is not wanted, in
-wind, or as the nightly "landing" at a set hour, with its own wind limits
-and checks set at the bench test and rehearsal.
-The triangle is designed to grow into one unit: its corners already carry
-the cameras, and short-throw projectors on short outriggers from the same
-corners are the upgrade path that makes the piece hang, land and carry its
-own light with no separate stands. Full schematics are attached:
-hung elevation, tree and ground alternatives, lowering, signal and power,
-and plan. The attached concept board is generated concept art of the
-long-term, occupied, over-water ambition; it is not this proposal, but it is
-where the idea is going. Photo and video folder: **[Google Drive link]**.
+October bench test must validate the diffusing skin with a person inside,
+the live compositing, the air and heat inside with the blower running, and
+the lowering drill, and time them, before the November purchases. Full
+schematics are attached: hung elevation, plan, landed state, lowering,
+signal and power, and a tree alternative; plus two pieces of generated
+concept art of the landed and hung states. Photo and video folder:
+**[Google Drive link]**.
 
 ### ART PROJECT PHOTOS
-*JPG/PNG, under 5 MB each, under 20 MB total.* Upload in this order:
+*JPG/PNG, under 5 MB each, under 20 MB total.* Upload in this order; the
+first image is the thumbnail the committee sees in its list.
 
-1. `docs/design/application/plate-1.png` hung version, elevation
-2. `docs/design/application/plate-5.png` plan view and footprint
-3. `docs/design/application/plate-6.png` lowering the moon
-4. `docs/design/application/plate-4.png` signal and power
-5. `docs/design/application/plate-2.png` tree alternative
-6. `docs/design/application/plate-3.png` ground-rest fallback
-7. `source/uploads/ChatGPT Image Sep 30, 2026, 11_59_59 AM.png` concept
-   board, 2.7 MB, the preserved original
+1. `submission/01-concept-landed.png` concept art, landed state, a person
+   inside the moon with their face on it (2.6 MB)
+2. `submission/02-plate-1-hung-elevation.png` hung version, elevation
+3. `submission/03-plate-5-plan.png` plan view and footprint
+4. `submission/04-plate-3-landed.png` landed state on lander legs
+5. `submission/05-concept-suspended.png` concept art, hung state (2.5 MB)
+6. `submission/06-plate-4-signal-and-power.png` signal and power
+7. `submission/07-plate-6-lowering.png` lowering the moon
+8. `submission/08-plate-2-tree-alternative.png` tree alternative
 
-About 3.5 MB total.
+About 5.9 MB total. The concept art shows the one-unit upgrade (projector
+heads on arms from the triangle); the plates show the 2027 build with the
+projectors on stands.
 
 ### Video Proposal
 *Under two minutes. The form says a video moved several grants from Maybe
@@ -145,22 +175,21 @@ to Yes. Phone, no makeup, tonight.* A 90-second script:
 
 1. **WHO** (15 s). "I'm **[name]** from **[city]**. I make **[what you
    make]**."
-2. **WHAT** (30 s). Hold up the plate-1 print. "This is Enceladus Within: a
-   glowing eight-foot moon floating at eye level. Step on the spot and you
-   appear inside it, bigger than life. The ice cracks, the ocean floods in,
-   and the moon takes you back."
+2. **WHAT** (30 s). Hold up the concept print. "This is Zencelades: a
+   glowing eight-foot moon you climb inside. Sit down, say the words, and
+   your own face appears across the moon, bigger than life. The ice cracks,
+   the ocean floods in, and the moon takes you back."
 3. **WHY** (20 s). "Enceladus really does hide an ocean under its ice. We
-   carry oceans inside us. I wanted one object that holds both, that
-   strangers can step into together, and that a small crew can bring
-   anywhere."
-4. **HOW** (25 s). "Stand on the spot and say 'I am the man on the moon'.
-   Two old phones inside the sphere watch the spots, nothing is recorded.
-   My laptop blends you into the moon film. Two projectors paint it, and
-   haze inside the sphere makes it glow.
-   It hangs from a rig I already own, lands on its own legs, fits in my
-   truck, is planned to set up in an afternoon, and nobody goes inside it.
-   The whole build is open source. We're asking for a Seed grant and three
-   crew tickets."
+   carry oceans inside us. I wanted one object that holds both, that a
+   stranger can sit inside while their friends watch, and that a small crew
+   can bring anywhere."
+4. **HOW** (25 s). "It's a real zorb, the kind built to carry a person. Two
+   old phones inside watch the seat, nothing is recorded, and a switch at
+   the door turns them on and off. My laptop blends you into the moon film
+   and two projectors paint it. It stands on its own legs like a lander or
+   hangs from a rig I already own, fits in my truck, and sets up in an
+   afternoon. The whole build is open source. We're asking for a Seed grant
+   and three crew tickets."
 
 Upload to Google Drive, set to anyone-with-link, paste the link.
 
@@ -227,21 +256,22 @@ vehicles park; it is transport, not part of the art.
 0
 
 ### BUDGET SPREADSHEET
-Upload `docs/design/application/budget.pdf`; `budget.csv` is the same data
-as a sheet. Both are generated from the ledger. Prices are retail prices
-observed September 30, 2026; allowances are marked and will become receipts.
+Upload `submission/budget.pdf` (printable PDF, the form's preference);
+`submission/budget.csv` is the same data as a sheet if they want one. Both
+are generated from the ledger. Prices are retail prices observed
+September 30, 2026; allowances are marked and will become receipts.
 
 ### BUDGET OUTLINE
 
 | Line | Low | High |
 | --- | ---: | ---: |
-| The moon: the artist's zorb, plus a diffusing liner or frosting if needed · allowance | $0 | $700 |
+| The moon: the artist's 2.5 m walk-in zorb, plus a diffusing liner or frosting · allowance | $0 | $700 |
 | Two Optoma HD146X projectors, 3,600 lumens, $499 to $599 each · observed price | $998 | $1,198 |
 | Two 13 ft heavy-duty light stands ($64 each) and brackets · observed price; rain covers · allowance | $284 | $466 |
 | Output node: mini PC with two or three video outputs at the projectors ($0 if the laptop drives them directly) · observed price; box and HDMI leads · allowance | $40 | $290 |
-| Two old phones inside the zorb running the project's app, camera and mic (owned, or $25 each second-hand) · allowance | $0 | $50 |
-| Phone mounts and power banks inside the zorb · observed price | $30 | $44 |
-| Two weatherproof switches at the spots that turn the AV inside on and off · allowance | $20 | $40 |
+| Two old phones inside the sphere running the project's app, camera and mic (owned, or $25 each second-hand) · allowance | $0 | $50 |
+| Phone mounts and power banks inside the sphere · observed price | $30 | $44 |
+| Two weatherproof switches: one at the tunnel (AV on going in, off going out), one inside within reach (stops the show) · allowance | $20 | $40 |
 | Rigging: hand winch with brake, block, rated rope, swivel, slings, shackles, safety sling, straps, sandbags · allowance | $150 | $400 |
 | Outdoor cords, inline GFCI, cable ramps, weatherproof box · allowance | $150 | $300 |
 | Weather-resistant powered speaker · allowance | $100 | $250 |
@@ -292,41 +322,44 @@ open]**.
 
 ### Community Involvement of Your Art
 
-The piece only exists when people use it, and only when they ask: you have
-to stand on the spot and say "I am the man on the moon" (or woman, or
-whatever you are) before the moon takes you in, which makes consent the
-ritual rather than a sign. Two marked spots put two people inside the moon
-at once, often strangers, each on their own face of it, and everyone else
-gets the moment people will film and talk about: a friend saying the words
-and turning into a world. It is calm enough to sit with for an hour and quick
-enough to try in thirty seconds. It is designed to work from a wheelchair,
-level ground on mats, a seated sightline and no reach, checked at the
-December rehearsal; it needs no strength, and anyone who only wants to
-look can look; the cameras
-see nothing but the two spots and keep nothing. By day it is a plain white
-moon on the sand that promises something after dark. By night the haze-lit
-beams make it a landmark you can navigate by. We will invite neighbouring
-camps to host a "moon hour" each night where their people take the spots,
-and we will teach anyone who asks how it works, because it is simple enough
-to explain in a sentence: you stand there, and you are in the moon. The
-whole project is open source: the schematics, the parts list with prices,
-the budget generator, the phone app and this application live in a public
-repository (https://git.telpher.stream/telpher/zencelades), so any camp at
-any burn can build its own moon, and we will help them.
+The piece only exists when a person is inside it, and only when they ask:
+you have to climb in, sit, and say "I am the man on the moon" (or woman, or
+whatever you are) before the moon takes you, which makes consent the ritual
+rather than a sign, and a switch at the door and a stop switch at the seat
+make it yours to end. One person is in the moon; everyone else is the
+audience that the theme asks for, and they get the moment people will film
+and talk about: a friend crawling into a moon, saying the words, and turning
+into the man on it. It is calm enough to sit inside for ten minutes and
+quick enough to try in one. The tunnel is at knee height and takes a step
+and a crouch, with a crew member's hand if wanted; anyone who would rather
+not go in watches from the mats outside, where the show is widest, and the
+crew will put a friend in for them. The cameras see nothing but the seat and
+keep nothing. By day it is a plain white moon on the sand that promises
+something after dark. By night the haze-lit beams make it a landmark you can
+navigate by. We will invite neighbouring camps to host a "moon hour" each
+night where their people take the seat, and we will teach anyone who asks
+how it works, because it is simple enough to explain in a sentence: you sit
+in there, and you are the moon. The whole project is open source: the
+schematics, the parts list with prices, the budget generator, the phone app
+and this application live in a public repository
+(https://git.telpher.stream/telpher/zencelades), so any camp at any burn
+can build its own moon, and we will help them.
 
 ### On-Site Setup and Breakdown Timeline
 
 Arrive Wednesday, February 10, by truck with everything aboard. Setup is one
-afternoon with three people: place and level the rig (1 h); seat and hang
-the moon with the winch and safety sling (30 min); set the projector stands,
-cameras, Pi and power with the event electrician (1.5 h); aim and test at
-dusk (1 h). Run dusk to midnight Thursday through Sunday, one crew member
-within sight whenever it is lit, an inspection checklist at every setup and
-shutdown, the moon winched down to its cradle and strapped in rain or wind,
-a drill rehearsed and timed before the event.
-Strike after midnight Sunday or Monday morning: lower, deflate, drop the
-rig, pack the truck (2 h), then a Leave No Trace sweep with a magnet and a
-bag count. Off site Monday, February 15, with a clean square of sand.
+afternoon with three people: place and level the rig, or the triangle on its
+legs (1 h); seat the moon, inflate, and hang it with the winch and safety
+sling if the hung state is approved (30 min); set the projector stands,
+cameras, mini PC and power with the event electrician (1.5 h); aim and test
+at dusk with a crew member inside (1 h). Run dusk to midnight Thursday
+through Sunday, one crew member at the tunnel whenever it is lit and
+anyone is inside, an inspection checklist at every setup and shutdown, the
+moon winched down to its cradle and strapped in rain or wind, a drill
+rehearsed and timed before the event. Strike after midnight Sunday or
+Monday morning: lower, deflate, drop the rig or legs, pack the truck (2 h),
+then a Leave No Trace sweep with a magnet and a bag count. Off site Monday,
+February 15, with a clean square of sand.
 
 ### Previous contacts concerning your art
 **[No; or name and what was discussed.]** No organizer has been contacted
@@ -360,10 +393,11 @@ I understand and agree.
 About 33 ft by 33 ft (10 m by 10 m, roughly 1,100 sq ft) of level sand or
 grass, with clear sky overhead: a 16 ft freestanding rig in the centre with
 a 5 ft clear zone around its legs, two projector stands 13 ft out on either
-side, and viewing areas on the other two sides. Dark surroundings help. One
-20 A circuit is the only service needed. Dry land only, not at the
-waterline. If the rig is not wanted, the landed version on legs needs the
-same footprint and stands under 10 ft.
+side, the tunnel side kept clear for the queue and the crew member, and
+viewing areas on the other sides. Dark surroundings help. One 20 A circuit
+is the only service needed. Dry land only, not at the waterline. If the rig
+is not wanted, the landed version on legs needs the same footprint and
+stands under 10 ft.
 
 ### Where do you want to place this art?
 
@@ -389,15 +423,17 @@ Place the art on its own; the crew camps in open camping.
 
 ### Permit Needs for Love Burn
 
-Unsure. The art is an unoccupied inflatable sphere on a 16 ft freestanding
-aerial rig used within its manual: no stairs, nothing to climb on, no ground
-anchors; the rig feet and projector stands are ballasted with sandbags. If
-a freestanding rig with sandbags counts as a structure requiring temporary
-ballast, we are glad to be on the permit the way Sky Bar and Sonic Sphere
-have been; tell us what you need and we will supply the rig's manual and
-rated-hardware list. If the rig is not wanted at all, the moon stands on
-three pinned legs like a landed probe, under 10 ft, nothing overhead and
-nothing to climb, and we would rather do that than argue.
+Unsure. The art is an inflatable walk-in sphere that one person at a time
+sits inside, on three pinned legs under 10 ft, or on a 16 ft freestanding
+aerial rig used within its manual: no stairs, nothing to climb on, no
+ground anchors; the rig feet and projector stands are ballasted with
+sandbags. If an inflatable people enter, or a freestanding rig with
+sandbags, counts as a structure needing review, we are glad to be on the
+permit the way Sky Bar and Sonic Sphere have been; tell us what you need
+and we will supply the rig's manual, the rated-hardware list and the
+occupancy rules. If the rig is not wanted at all, the moon stands on its
+legs like a landed probe, under 10 ft, nothing overhead and nothing to
+climb, and we would rather do that than argue.
 
 ### Will you need to access the event site before Wednesday, February 10?
 No.
@@ -413,19 +449,21 @@ No.
 
 ### Is your art larger than 10' in height or larger than 10' in diameter?
 Yes: the rig stands about 16 ft; the sphere is 8.2 ft across with its centre
-at 5.6 ft.
+at 5.6 ft, and on its legs its top is just under 10 ft.
 
 ### Flame Effects
-No. A hazer with water-based fluid; no flame, no propane.
+No. A hazer with water-based fluid, outside the sphere; no flame, no
+propane.
 
 ### Are you requesting Love Burn power for your art?
 
 Yes: one 120 V 20 A circuit at the placement, dusk to midnight, Thursday
 through Sunday. Planning load about 1.5 kW: two projectors at 325 W each
 (manufacturer spec), the mini PC, speaker and phone chargers under 100 W,
-the hazer per its label when running, and the zorb's blower. Everything runs through an inline GFCI and outdoor-rated
-cords with cable ramps across walkways. A measured load schedule follows the
-October bench test.
+the hazer per its label when running, and the sphere's blower, which runs
+continuously whenever anyone is inside. Everything runs through an inline
+GFCI and outdoor-rated cords with cable ramps across walkways. A measured
+load schedule follows the October bench test.
 
 ### Are you planning to bring your own generator?
 Not planned. If event power is not available we bring an inverter generator
@@ -443,31 +481,36 @@ Fallbacks, so placement can say yes to any version:
 
 - **No aerial rig or truss allowed:** the moon lands. Three legs pinned to
   the steel triangle's corner plates (pins join leg to frame; nothing enters
-  the ground) stand it like a landed probe with its centre at the same
-  1.7 m and its top just under 10 ft: same projectors, same cameras, same
-  show, nothing overhead, nothing to climb, sandbags on the foot pads.
+  the ground) stand it like a landed probe with its centre at 1.7 m and its
+  top just under 10 ft: same projectors, same cameras, same show, nothing
+  overhead, nothing to climb, sandbags on the foot pads. This is also the
+  state people go inside in.
+- **No one inside:** if the committee would rather nobody enter the sphere,
+  the same cameras can frame a marked spot outside the moon instead, and the
+  person on the spot is projected into it; the rest is unchanged.
 - **No event power:** an inverter generator under 5,000 W at our cost, or a
   battery station if power is only intermittent.
 - **No haze:** the piece runs without it; the beams are a bonus, not the
   work.
 - **No tree, no shoreline:** never assumed; rig or lander legs on dry land.
-- **Wind:** winched onto the cradle and strapped, a drill we rehearse and
-  time before the event; above the second limit, deflated and covered for
-  the night. Wind limits come from the rig manual and the rigger's check.
+- **Wind:** nobody inside above the first limit; winched onto the cradle and
+  strapped above the second, a drill we rehearse and time before the event;
+  above the third, deflated and covered for the night. Wind limits come from
+  the rig manual and the rigger's check.
 
-Three honest notes. The concept board is AI-generated concept art of the
-long-term, occupied, over-water ambition; the 2027 proposal is the
-unoccupied, dry-land version in the attached schematics, which keeps the
-heart of the idea, the real-time fade between a person and Enceladus. The
-build is deliberately a Seed project: purchased projectors instead of
-rentals, a Raspberry Pi instead of a media server, old phones instead of
-broadcast cameras, a rig and a sphere we already own, steel we bend
-ourselves. And the funding plan is honest: the grant covers the low build,
-anything above it is self-funded or raised by a small sponsor drive, and if
-the committee would rather offer part of the support as Art Sponsor Tickets,
-we will use them for exactly that. If this works at Love Burn, the same kit
-grows into the four-projector version. Everything is open source, design
-files, schematics, budget, software and this application, at
+Three honest notes. The concept art is AI-generated and shows the one-unit
+upgrade with projector heads on arms from the triangle; the 2027 build puts
+the projectors on stands, as the schematics show, and keeps the heart of
+the idea, the real-time fade between a person and Enceladus. The build is
+deliberately a Seed project: purchased projectors instead of rentals, a mini
+PC instead of a media server, old phones instead of broadcast cameras, a
+rig and a sphere we already own, steel we bend ourselves. And the funding
+plan is honest: the grant covers the low build, anything above it is
+self-funded or raised by a small sponsor drive, and if the committee would
+rather offer part of the support as Art Sponsor Tickets, we will use them
+for exactly that. If this works at Love Burn, the same kit grows into the
+one-unit, four-projector version. Everything is open source, design files,
+schematics, budget, software and this application, at
 https://git.telpher.stream/telpher/zencelades (mirror:
 https://github.com/presempathy-awb/zencelades), so the committee can read
 the whole build and other artists can reuse it. The video is linked above.
