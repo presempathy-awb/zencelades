@@ -14,6 +14,16 @@ from scripts.assets import ROOT, inventory, sha256, verify_release
 from scripts.catalog_v4 import collect
 
 
+def publish_public_surfaces(output: Path, source: Path, studio: Path) -> None:
+    """Publish the artwork home and studio separately without removing retained files."""
+    shutil.copytree(studio, output, dirs_exist_ok=True)
+    (output / "studio").mkdir(exist_ok=True)
+    shutil.copyfile(studio / "index.html", output / "studio/index.html")
+    for page in ("about", "open-source"):
+        shutil.copytree(source / page, output / page, dirs_exist_ok=True)
+    shutil.copyfile(source / "about/index.html", output / "index.html")
+
+
 def build() -> None:
     v4 = json.loads((ROOT / "assets/v4-inventory.json").read_text())
     actual_v4 = collect()
@@ -199,9 +209,9 @@ def build() -> None:
         raise ValueError("Unresolved site template marker")
     (output / "catalog").mkdir(exist_ok=True)
     (output / "catalog/index.html").write_text(template)
-    shutil.copytree(ROOT / "cockpit/dist", output, dirs_exist_ok=True)
+    publish_public_surfaces(output, ROOT / "site", ROOT / "cockpit/dist")
     teaser = (ROOT / "site/models/teaser.html").read_text()
-    for page in (output / "index.html", output / "mounts/index.html"):
+    for page in (output / "mounts/index.html",):
         content = page.read_text()
         if 'id="current-models"' not in content:
             content = content.replace(
@@ -219,6 +229,7 @@ def build() -> None:
         output / "index.html",
         output / "mounts/index.html",
         output / "models/index.html",
+        output / "about/index.html",
     ):
         content = page.read_text()
         versioned = content

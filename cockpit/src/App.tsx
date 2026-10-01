@@ -32,39 +32,23 @@ import {
 } from "./scenario";
 import { Button } from "./ui";
 import { chooseModel } from "./option-context";
+import { BuildBoard } from "./BuildBoard";
 
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
 const ResearchView = lazy(() => import("./ResearchView"));
-// SHORTCUT: browser-local scenarios; migrate to the project API after the deferred identity contract is verified.
-const storageKey = "enceladus.studio.scenario.v1";
-function restore(): { scenario: Scenario; message: string } {
-  try {
-    const saved = localStorage.getItem(storageKey);
-    return {
-      scenario: saved ? parseScenario(saved) : initialScenario(),
-      message: saved ? "Restored from this browser" : "Local scenario · not saved to a server",
-    };
-  } catch {
-    return {
-      scenario: initialScenario(),
-      message:
-        "Saved scenario could not be read. It has not been overwritten; export current work before replacing it.",
-    };
-  }
-}
 const icons = [Circle, Circle, Lightbulb, Layers, Circle, Truck, Columns3, Anchor, Truck, Columns3];
 const tools = [
   { path: "/", title: "Model", icon: Box },
   { path: "/workflow", title: "Workflow", icon: Network },
+  { path: "/tasks", title: "Build board", icon: Columns3 },
   { path: "/budget", title: "Budget", icon: Calculator },
   { path: "/research", title: "Grants & resources", icon: Library },
 ] as const;
 
 export default function App(): JSX.Element {
-  const [restored] = useState(restore);
-  const [scenario, setScenario] = useState(restored.scenario);
-  const [message, setMessage] = useState(restored.message);
+  const [scenario, setScenario] = useState(initialScenario);
+  const [message, setMessage] = useState("Temporary draft · changes reset when this page reloads");
   const [note, setNote] = useState(scenario.note);
   const [inspector, setInspector] = useState(true);
   const [referenceModel, setReferenceModel] = useState("scenario");
@@ -77,12 +61,7 @@ export default function App(): JSX.Element {
       const checked = parseScenario(JSON.stringify(next));
       if (checked.selected !== scenario.selected) setReferenceModel("scenario");
       setScenario(checked);
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(checked));
-        setMessage("Saved in this browser · export for a portable copy");
-      } catch {
-        setMessage("Browser storage unavailable. Export a copy before leaving this page.");
-      }
+      setMessage("Changed this temporary draft · export a copy before leaving or reloading");
       return true;
     } catch (error) {
       setMessage(
@@ -126,7 +105,7 @@ export default function App(): JSX.Element {
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     setMessage(
-      "Exported the last saved scenario and note. Any unsaved note text remains in the editor.",
+      "Exported the current draft and committed note. Uncommitted note text remains in the editor.",
     );
   };
   return (
@@ -151,13 +130,32 @@ export default function App(): JSX.Element {
           </div>
         </div>
         <div className="header-actions">
-          <a href="/name-concepts/">Name concepts</a>
-          <span className="local-label">Browser-local scenario</span>
-          <Button variant="ghost" onClick={() => fileInput.current?.click()}>
+          <a href="/">Artwork home</a>
+          <a href="/models/">Gallery</a>
+          <a href="/showtime/">Showtime</a>
+          <details className="draft-help">
+            <summary title="Guest changes stay in memory and reset on reload.">
+              Temporary draft ⓘ
+            </summary>
+            <p>
+              Experiment freely. Changes are temporary in this page; they do not update the project
+              or survive a reload. Export a file to keep a personal copy. Account saving is being
+              connected.
+            </p>
+          </details>
+          <Button
+            variant="ghost"
+            title="Load a scenario file into this temporary draft; shared data is unchanged."
+            onClick={() => fileInput.current?.click()}
+          >
             <Upload size={16} />
             Import
           </Button>
-          <Button variant="outline" onClick={exportScenario}>
+          <Button
+            variant="outline"
+            title="Download your current draft and build progress. This does not save to an account."
+            onClick={exportScenario}
+          >
             <Download size={16} />
             Export scenario
           </Button>
@@ -263,7 +261,12 @@ export default function App(): JSX.Element {
             </Suspense>
           </div>
           <Suspense fallback={<p className="loading">Loading workspace…</p>}>
-            {path === "/workflow" ? (
+            {path === "/tasks" ? (
+              <BuildBoard
+                state={scenario.board}
+                onChange={(board) => update({ ...scenario, board })}
+              />
+            ) : path === "/workflow" ? (
               <WorkflowView scenario={scenario} />
             ) : path === "/budget" ? (
               <BudgetView scenario={scenario} update={update} onSelectOption={selectModel} />

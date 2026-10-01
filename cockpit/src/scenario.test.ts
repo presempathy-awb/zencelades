@@ -1,6 +1,21 @@
 import { expect, test } from "bun:test";
 import { baseline, estimate, initialScenario, parseScenario, workflow } from "./scenario";
 
+test("build progress survives explicit export while a fresh guest draft starts unedited", () => {
+  const draft = initialScenario();
+  draft.board.statuses["ZC-W01"] = "in-progress";
+  draft.note = "Synthetic draft";
+  const restored = parseScenario(JSON.stringify(draft));
+  expect(restored.board.statuses["ZC-W01"]).toBe("in-progress");
+  expect(initialScenario().board.statuses["ZC-W01"]).toBe("todo");
+  expect(initialScenario().note).toBe("");
+  expect(() =>
+    parseScenario(
+      JSON.stringify({ ...draft, board: { schema_version: 1, statuses: { injected: "done" } } }),
+    ),
+  ).toThrow();
+});
+
 test("deferred truck scenarios are refused without mutating the saved data", () => {
   const saved = { ...initialScenario(), selected: "fixed-bed" };
   expect(() => parseScenario(JSON.stringify(saved))).toThrow("stretch goal");

@@ -926,3 +926,7 @@ tr[data-selected="true"] {
     scroll-behavior: auto;
   }
 }
+/* Guest editing information remains readable on touch and keyboard focus. */
+.draft-help { position: relative; max-width: 20rem; }
+.draft-help summary { cursor: pointer; padding: .65rem; min-height: 2.75rem; }
+.draft-help p { padding: .75rem; margin: 0; background: #fff; color: #173e48; border: 1px solid #6d8990; line-height: 1.5; }

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    {"id":"ZC-W01","title":"Select sphere size, support mode and visual module","role":"Andrew","depends":[],"done":"One selected option/module set; truck/water/wood excluded"},
+    {"id":"ZC-W02","title":"Inventory owned equipment and actual shop access","role":"Andrew","depends":[],"done":"Models, manuals, condition, measured mass, custody and loan status recorded"},
+    {"id":"ZC-W03","title":"Obtain exact sphere instructions and occupied-use answers","role":"Andrew and sphere supplier","depends":["ZC-W01"],"done":"Static occupancy, ventilation, entry, inflation, contact and repair requirements documented"},
+    {"id":"ZC-W04","title":"Mock up clear-front approach and seated space","role":"Builder","depends":["ZC-W03"],"done":"Two side legs, one rear leg; actual entry and transfer/recovery route checked"},
+    {"id":"ZC-W05","title":"Resolve holder, contact and deflation support design","role":"Fabricator and competent reviewer","depends":["ZC-W03","ZC-W04"],"done":"Accepted load path, material/joints, broad underside support, stability and limits"},
+    {"id":"ZC-W06","title":"Identify and assess actual aerial host if selected","role":"Andrew and rigger","depends":["ZC-W01","ZC-W02"],"done":"Exact rig/manual, usable height, duty, ground and outdoor-use suitability; otherwise not selected"},
+    {"id":"ZC-W07","title":"Complete suspended-system and recovery design if selected","role":"Engineer/rigger","depends":["ZC-W05","ZC-W06"],"done":"Whole occupied system and hardware schedule accepted; otherwise suspension remains blocked"},
+    {"id":"ZC-W08","title":"Test one real light/projector on the empty material","role":"AV lead","depends":["ZC-W01","ZC-W03"],"done":"Measured throw, focus, coverage, material compatibility and realistic output path"},
+    {"id":"ZC-W09","title":"Choose traceable steel or accept a specific donor","role":"Fabricator","depends":["ZC-W05"],"done":"Actual stock/condition identified; donor adaptation accepted or rejected"},
+    {"id":"ZC-W10","title":"Complete selected drawing-specific BOM and quotations","role":"Andrew and fabricator","depends":["ZC-W05","ZC-W08","ZC-W09"],"done":"Exact quantities/grades/hardware, delivery/tax and committed loans; suspended parts also need W07"},
+    {"id":"ZC-W11","title":"Reconcile selected build against $3,000 total","role":"Andrew","depends":["ZC-W10"],"done":"Delivered/taxed subtotal plus reserve within cap; no alternatives double-counted"},
+    {"id":"ZC-W12","title":"Procure only approved selected items and receive them","role":"Andrew","depends":["ZC-W11"],"done":"Actual approval, receipt/loan record, condition and quantities; this task does not order anything"},
+    {"id":"ZC-W13","title":"Fabricate and inspect accepted common holder","role":"Fabricator","depends":["ZC-W12"],"done":"Accepted drawing followed, joints inspected, FRONT marked, completed mass recorded"},
+    {"id":"ZC-W14","title":"Fit detachable side/rear legs and ground support","role":"Fabricator","depends":["ZC-W13"],"done":"Three-point support and clear approach checked with actual ground-bearing design"},
+    {"id":"ZC-W15","title":"Empty sphere inflation, leak and contact fit test","role":"Operator","depends":["ZC-W14"],"done":"Manufacturer procedure and actual contact/deflation recovery demonstrated"},
+    {"id":"ZC-W16","title":"Fit and calibrate chosen light/projection module","role":"AV lead","depends":["ZC-W08","ZC-W15"],"done":"Retained hardware, covers, coverage, load, cooling, rear/side cables and blackout verified"},
+    {"id":"ZC-W17","title":"Test optional participant camera module and consent flow","role":"AV lead","depends":["ZC-W16"],"done":"Selected C1/C2 view, mounting, latency, local no-recording default and stop tested; or omitted"},
+    {"id":"ZC-W18","title":"Identify and test optional external rear hazer","role":"Andrew and operator","depends":["ZC-W02","ZC-W15"],"done":"Exact manual/fluid/power, rear clearances, venue permission and no-haze fallback; or omitted"},
+    {"id":"ZC-W19","title":"Assemble and inspect selected aerial system empty","role":"Rigger","depends":["ZC-W07","ZC-W13","ZC-W16"],"done":"Exact host and full payload assembled to accepted design; suspended option only"},
+    {"id":"ZC-W20","title":"Complete unoccupied acceptance and recovery rehearsal","role":"Reviewer and operator","depends":["ZC-W15","ZC-W16"],"done":"Design-specific tests passed and recorded; suspended route also requires W19; no occupant proof test"},
+    {"id":"ZC-W21","title":"Confirm venue, power, permits and coverage","role":"Andrew","depends":["ZC-W01","ZC-W05"],"done":"Official acceptance for exact footprint/height/system and required power/conditions"},
+    {"id":"ZC-W22","title":"Train crew and release approved occupied rehearsal","role":"Operator/spotter and reviewer","depends":["ZC-W20","ZC-W21"],"done":"Staffed stop/communication/entry/retrieval within accepted operating limits"},
+    {"id":"ZC-W23","title":"Pack, transport and commission the installation","role":"Build crew","depends":["ZC-W22"],"done":"Parts counted, loads secured, FRONT set first, site commissioning recorded"},
+    {"id":"ZC-W24","title":"Operate, strike, inspect and return equipment","role":"Operator and crew","depends":["ZC-W23"],"done":"Daily checks, full LNT, inventory/receipts and loan returns reconciled"}
+  ]
+}

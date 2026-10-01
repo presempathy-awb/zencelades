@@ -1,0 +1,41 @@
+.project-page { --warm: #edc992; }
+.project-page main { max-width: 82rem; }
+.project-page .masthead { align-items: center; }
+.project-page .masthead > a { font-size: 1.65rem; }
+.project-page nav { gap: .25rem 1.15rem; }
+.project-page nav a[aria-current="page"] { color: var(--ink); text-decoration-thickness: .15em; }
+.project-page .lead { padding-block: clamp(3rem, 8vw, 6rem) 3rem; max-width: 64rem; }
+.project-page h1 { max-width: 15ch; font-size: clamp(2.6rem, 6vw, 5.6rem); overflow-wrap: break-word; }
+.project-page .lede { max-width: 48ch; font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.8rem); line-height: 1.5; }
+.project-page .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1.75rem; }
+.project-page .action { min-height: 3rem; justify-content: center; }
+.project-page .action-primary { background: var(--accent); color: var(--ocean); }
+.project-page .status-note { padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--line); }
+.project-page .status-note p:last-child { margin-bottom: 0; }
+.project-page .feature-image { background: var(--surface); padding: clamp(.5rem, 2vw, 1.5rem); }
+.project-page .feature-image figcaption { max-width: 82ch; padding: .25rem; }
+.project-page .section { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.project-page .section h2 { max-width: 23ch; font-size: clamp(2rem, 3.7vw, 3.4rem); }
+.project-page h3 { font-family: var(--serif); font-weight: 400; font-size: 1.7rem; line-height: 1.25; margin: 0 0 1rem; }
+.project-page .split { align-items: start; }
+.project-page .plain-list { padding-left: 1.25rem; max-width: 64ch; }
+.project-page .plain-list li { padding-left: .3rem; margin-bottom: .75rem; }
+.project-page .spec-list { margin: 0; border-top: 1px solid var(--line); }
+.project-page .spec-list > div { display: grid; gap: .3rem 1.25rem; padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.project-page dt { color: var(--warm); font-weight: 600; }
+.project-page dd { margin: 0; max-width: 65ch; }
+.project-page .table-scroll { overflow-x: auto; border: 1px solid var(--line); padding: 1rem; }
+.project-page .table-scroll:focus-visible { outline: .2rem solid var(--accent); outline-offset: .25rem; }
+.project-page .table-scroll table { margin: 0; min-width: 35rem; }
+.project-page thead th { color: var(--warm); }
+.project-page tbody th { overflow-wrap: anywhere; }
+.project-page .note { color: var(--muted); font-size: .95rem; }
+.project-page .after-list { margin-top: 1.5rem; }
+.project-page .dependency-details { margin-top: 2rem; }
+.project-page .sources a { overflow-wrap: anywhere; }
+.project-page .sources li { margin-bottom: .6rem; }
+.project-page .sources a, .project-page footer a { display: inline-block; padding-block: .3rem; }
+@media (min-width: 48rem) {
+  .project-page .spec-list > div { grid-template-columns: 11rem 1fr; }
+  .project-page .split { grid-template-columns: .85fr 1.15fr; }
+}

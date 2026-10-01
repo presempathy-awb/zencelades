@@ -1,0 +1,1682 @@
+{
+  "schema_version": 1,
+  "project": "Zencelades",
+  "event": "Love Burn 2027",
+  "currency": "USD",
+  "total_cash_cap": 3000,
+  "status": "planning parts, not fabrication specification or quote",
+  "parts": [
+    {
+      "id": "ZC-S25",
+      "item": "Occupied sphere — 2.5 m alternative",
+      "module": "SPHERE",
+      "quantity": 1,
+      "unit": "sphere",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "S25"
+      ],
+      "alternative_group": "sphere-size",
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Select exact stationary occupied-use product; nominal size only."
+    },
+    {
+      "id": "ZC-S30",
+      "item": "Occupied sphere — 3 m alternative",
+      "module": "SPHERE",
+      "quantity": 1,
+      "unit": "sphere",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G30",
+        "S30"
+      ],
+      "alternative_group": "sphere-size",
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Alternative to S25; fit, weight and delivered cost unconfirmed."
+    },
+    {
+      "id": "ZC-S02",
+      "item": "Manufacturer-specified inflation blower/pump",
+      "module": "SPHERE",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Match selected sphere instructions; may be included in sphere package."
+    },
+    {
+      "id": "ZC-S03",
+      "item": "Inflation adapters, valve tools and closure parts",
+      "module": "SPHERE",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Kit contents depend on actual valve and blower; no generic sealed-ball assumption."
+    },
+    {
+      "id": "ZC-S04",
+      "item": "Inflation measurement / pressure control",
+      "module": "SPHERE",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Method and range required by manufacturer; not a guessed pressure setting."
+    },
+    {
+      "id": "ZC-S05",
+      "item": "Compatible repair patches, adhesive and valve spares",
+      "module": "SPHERE",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Product-specific materials and curing/repair limits; confirm shelf life."
+    },
+    {
+      "id": "ZC-S06",
+      "item": "Sphere groundsheet and protective transport bag",
+      "module": "SPHERE",
+      "quantity": 1,
+      "unit": "set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Measure packed size; keep metal separate."
+    },
+    {
+      "id": "ZC-F01",
+      "item": "Three straight triangle members",
+      "module": "HOLDER",
+      "quantity": 3,
+      "unit": "members",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Nominal 3.118 m side geometry, not cut length; grade/section/wall pending review."
+    },
+    {
+      "id": "ZC-F02",
+      "item": "Identified rolled support ring",
+      "module": "HOLDER",
+      "quantity": 1,
+      "unit": "assembly",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": "ring-route",
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Nominal 1.8288 m centreline diameter; specification and joints unresolved."
+    },
+    {
+      "id": "ZC-F03",
+      "item": "Measured donor trampoline ring alternative",
+      "module": "HOLDER",
+      "quantity": 1,
+      "unit": "assembly",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": "ring-route",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Alternative to F02 only if actual donor and modified duty accepted; no inherited rating."
+    },
+    {
+      "id": "ZC-F04",
+      "item": "Three loop-to-triangle support interfaces",
+      "module": "HOLDER",
+      "quantity": 3,
+      "unit": "assemblies",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Resolve nominal 14.4 mm centreline overhang and contact distribution."
+    },
+    {
+      "id": "ZC-F05",
+      "item": "Three corner plates / nodes",
+      "module": "HOLDER",
+      "quantity": 3,
+      "unit": "assemblies",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Plate thickness, holes, welds and joint retention not specified by visual CAD."
+    },
+    {
+      "id": "ZC-F06",
+      "item": "Broad underside / deflation support",
+      "module": "HOLDER",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Design required: ring alone must not be assumed to support a deflated occupied sphere."
+    },
+    {
+      "id": "ZC-F07",
+      "item": "Loop padding and permitted contact protection",
+      "module": "HOLDER",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Contact materials/thickness/coverage depend on selected sphere and review."
+    },
+    {
+      "id": "ZC-F08",
+      "item": "Holder fasteners, retainers and replaceable joint parts",
+      "module": "HOLDER",
+      "quantity": 1,
+      "unit": "lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Actual counts, sizes, grades and locking method come from accepted drawing."
+    },
+    {
+      "id": "ZC-F09",
+      "item": "Edge caps, finish and corrosion protection",
+      "module": "HOLDER",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Keep treatment compatible with soft sphere; cover sharp edges."
+    },
+    {
+      "id": "ZC-F10",
+      "item": "Fabrication consumables and shop stock",
+      "module": "HOLDER",
+      "quantity": 1,
+      "unit": "lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Cutting/welding/abrasives/shielding and jig materials; accepted material traceability."
+    },
+    {
+      "id": "ZC-L01",
+      "item": "Detachable splayed leg assemblies",
+      "module": "LANDER",
+      "quantity": 3,
+      "unit": "assemblies",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Two side legs and one rear; length/joints differ for sphere sizes; no front-centre leg."
+    },
+    {
+      "id": "ZC-L02",
+      "item": "Leg braces / restraints",
+      "module": "LANDER",
+      "quantity": 3,
+      "unit": "concept positions",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "CAD shows three; final member count and layout require reviewed design, keep entrance clear."
+    },
+    {
+      "id": "ZC-L03",
+      "item": "Broad footpads and ground protection",
+      "module": "LANDER",
+      "quantity": 3,
+      "unit": "pad assemblies",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Actual area, bearing and surface preparation determined by reviewed ground reactions."
+    },
+    {
+      "id": "ZC-L04",
+      "item": "Leg pins, keepers and attachment hardware",
+      "module": "LANDER",
+      "quantity": 1,
+      "unit": "lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Retained joint system with actual quantities from drawing; no generic quick-release approval."
+    },
+    {
+      "id": "ZC-L05",
+      "item": "Ground ballast / accepted restraint",
+      "module": "LANDER",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Mass, location and quantity unresolved; no guessed sandbag count; never in approach."
+    },
+    {
+      "id": "ZC-R01",
+      "item": "Three over-sphere webbing paths",
+      "module": "SUSPENSION",
+      "quantity": 3,
+      "unit": "assemblies",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Lengths/widths/terminations, skin contact and permitted duty require complete design."
+    },
+    {
+      "id": "ZC-R02",
+      "item": "Webbing contact guards and interface protection",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Map seams and permitted contact; count after path design."
+    },
+    {
+      "id": "ZC-R03",
+      "item": "Top collector / master ring",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Exact hardware compatibility and intended duty required; CAD is envelope only."
+    },
+    {
+      "id": "ZC-R04",
+      "item": "Lyra-style swivel candidate",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Choose only for reviewed complete system and loading; breaking strength is not WLL."
+    },
+    {
+      "id": "ZC-R05",
+      "item": "Controlled lowering / hoisting system",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Exact hoist/halyard/block/brake/locks chosen by rigger; no improvised occupied lift recipe."
+    },
+    {
+      "id": "ZC-R06",
+      "item": "Rated connection hardware schedule",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Shackles/connectors and retention counted from reviewed connections."
+    },
+    {
+      "id": "ZC-R07",
+      "item": "Reviewer-defined backup / recovery provisions",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Do not assume a loose backup line constitutes engineered redundancy."
+    },
+    {
+      "id": "ZC-R08",
+      "item": "Anti-rotation / position-control arrangement",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Must not add uncontrolled side load or obstruct entry; define rotation/cable limits."
+    },
+    {
+      "id": "ZC-R09",
+      "item": "Ground receiving and lowering support",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "May reuse accepted lander components; count reused parts once."
+    },
+    {
+      "id": "ZC-R10",
+      "item": "Inspection tags, protection bags and rigging log",
+      "module": "SUSPENSION",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Record serials, inspections, damage and retirement criteria."
+    },
+    {
+      "id": "ZC-A01",
+      "item": "Actual aerial rig candidate",
+      "module": "HOST",
+      "quantity": 1,
+      "unit": "rig",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": "host",
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Ownership asserted in older ledger, not confirmed in this chat/inventory; identify exact rig/manual."
+    },
+    {
+      "id": "ZC-A02",
+      "item": "Purpose-designed gantry / tripod alternative",
+      "module": "HOST",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": "host",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Unpriced alternative host requiring its own reviewed design and inspection."
+    },
+    {
+      "id": "ZC-A03",
+      "item": "Lighting-truss / crank-stand host investigation",
+      "module": "HOST",
+      "quantity": 1,
+      "unit": "review package",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": "host",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "No occupied use until exact manufacturer and reviewer permit it; do not buy generic stands."
+    },
+    {
+      "id": "ZC-A04",
+      "item": "Existing point / tree host investigation",
+      "module": "HOST",
+      "quantity": 1,
+      "unit": "site assessment",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": "host",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Venue permission, support assessment and site-specific review; no assumed park tree anchor."
+    },
+    {
+      "id": "ZC-A05",
+      "item": "Host footing / spread restraints / ballast",
+      "module": "HOST",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Specify against exact host and ground/wind conditions; separate from lander footpads."
+    },
+    {
+      "id": "ZC-P01",
+      "item": "Standard-throw projector candidates",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "selection lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": "projector-class",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Select P1=1 or P2=2; P4=4 is later scope. Exact SKU/throw/delivered cost unknown; historical HD146X is reference only. Workbook reference candidates are catalogued separately, not owned inventory."
+    },
+    {
+      "id": "ZC-P02",
+      "item": "Short-throw projector candidates",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "selected optical package",
+      "quantity_status": "package contains P1=1, P2=2 or P3=3 heads; choose one",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": "projector-class",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Short throw is valid for P1=1, P2=2 or P3=3; three is not a minimum. See docs/projector-workbook-options.md and assets/projector-workbook-catalog.json. Source prices are dated references, not acquisition quotes or ownership. Single-head focus trial first."
+    },
+    {
+      "id": "ZC-P03",
+      "item": "Triangle-mounted optical arms",
+      "module": "PROJECTION",
+      "quantity": 3,
+      "unit": "positions in modeled P3",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "P1=1, P2=2, P3=3; P4 needs new fourth support design. Model 2 m/30 degrees is not structural sizing."
+    },
+    {
+      "id": "ZC-P04",
+      "item": "Projector mount plates / aiming hardware",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "set per chosen head count",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "One per selected head; approved mount and retention; hardware specification pending."
+    },
+    {
+      "id": "ZC-P05",
+      "item": "Ventilated rain and salt-spray canopies",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "set per chosen head count",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "One per selected head; no sealed hot box or claimed weather rating."
+    },
+    {
+      "id": "ZC-P06",
+      "item": "Canopy brackets and retained fasteners",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Quantity after exact head/hood design; includes open ventilation and service clearance."
+    },
+    {
+      "id": "ZC-P07",
+      "item": "Arm stays / brace / balance provisions",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "reviewed set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Lifted stays and ground-arm load paths differ; reviewer-defined complete payload."
+    },
+    {
+      "id": "ZC-P08",
+      "item": "Equipment secondary retention",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Correct attachment points and exact head/hood count; compatible intended duty."
+    },
+    {
+      "id": "ZC-P09",
+      "item": "Independent projector stands alternative",
+      "module": "PROJECTION",
+      "quantity": 1,
+      "unit": "selected-head set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": "projection-support",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Optional alternative to arms, adds footprint/cables/ballast; not P3 modeled baseline."
+    },
+    {
+      "id": "ZC-P10",
+      "item": "Playback/compositing laptop candidate",
+      "module": "CONTROL",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Older ledger says owned; actual unit/ports/GPU/performance not confirmed here."
+    },
+    {
+      "id": "ZC-P11",
+      "item": "Optional output mini PC / node",
+      "module": "CONTROL",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Omit if verified laptop direct output suffices; check independent outputs before buying."
+    },
+    {
+      "id": "ZC-P12",
+      "item": "HDMI / video adapters and leads",
+      "module": "CONTROL",
+      "quantity": 1,
+      "unit": "loom",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Exact count equals output path; lengths after measured routing; no fixed generic cable length."
+    },
+    {
+      "id": "ZC-P13",
+      "item": "Local network router / AP candidate",
+      "module": "CONTROL",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Older ledger mentions owned UniFi; verify real inventory and capability; no internet required by plan."
+    },
+    {
+      "id": "ZC-P14",
+      "item": "Data cables, node enclosure and strain relief",
+      "module": "CONTROL",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Count after architecture selection; preserve ventilation and weather protection."
+    },
+    {
+      "id": "ZC-P15",
+      "item": "Content, playback/mapping configuration and backup",
+      "module": "CONTROL",
+      "quantity": 1,
+      "unit": "show package",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Use existing project assets; verify software/licence/capture support and offline startup."
+    },
+    {
+      "id": "ZC-P16",
+      "item": "Attendant blackout / stop control",
+      "module": "CONTROL",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Test stop on feed loss, restart and operator input; not a safety-rated control claim."
+    },
+    {
+      "id": "ZC-D01",
+      "item": "LED fixtures / diffusion candidate kit",
+      "module": "LED",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Fixture/strip count and lengths follow optical test; allocation ceiling $150 with control."
+    },
+    {
+      "id": "ZC-D02",
+      "item": "LED supply, controller and participant control",
+      "module": "LED",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Match actual rated equipment; quote with D01 inside shared ceiling, not an extra $150."
+    },
+    {
+      "id": "ZC-C01",
+      "item": "Participant phones / cameras",
+      "module": "CAPTURE",
+      "quantity": 1,
+      "unit": "selection lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "C1=1, C2=2; ownership/model unknown; internal location conditional on sphere approval."
+    },
+    {
+      "id": "ZC-C02",
+      "item": "Camera mounts / external arm / retention",
+      "module": "CAPTURE",
+      "quantity": 1,
+      "unit": "selected-camera set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "One secure mounting arrangement per selected camera; no edge/heat/contact or entry conflict."
+    },
+    {
+      "id": "ZC-C03",
+      "item": "Camera power banks / supplies and restrained leads",
+      "module": "CAPTURE",
+      "quantity": 1,
+      "unit": "selected-camera set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Temperature/runtime and secured location checked; count by actual devices."
+    },
+    {
+      "id": "ZC-C04",
+      "item": "Live-feed software / compositing configuration",
+      "module": "CAPTURE",
+      "quantity": 1,
+      "unit": "configuration",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Consent, local streaming, default no recording, feed-loss fallback and latency test."
+    },
+    {
+      "id": "ZC-H01",
+      "item": "Andrew's owned large external hazer",
+      "module": "HAZE",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "Andrew-confirmed owned",
+      "status": "have",
+      "incremental_purchase_usd": 0,
+      "notes": "User-confirmed owned; model, measured dimensions, fluid, power and condition still unknown."
+    },
+    {
+      "id": "ZC-H02",
+      "item": "Manufacturer-approved haze fluid",
+      "module": "HAZE",
+      "quantity": 1,
+      "unit": "consumables lot",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Fluid type/quantity after exact manual and duty plan; not zero just because hazer is owned."
+    },
+    {
+      "id": "ZC-H03",
+      "item": "Hazer weather/ground protection and stop control",
+      "module": "HAZE",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Rear/below placement; manual clearances and venue approval; no hose into occupied sphere."
+    },
+    {
+      "id": "ZC-E01",
+      "item": "Approved electrical supply / distribution plan",
+      "module": "ELECTRICAL",
+      "quantity": 1,
+      "unit": "supply arrangement",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Venue supply unconfirmed; actual load calculation includes blower, AV and haze."
+    },
+    {
+      "id": "ZC-E02",
+      "item": "Outdoor power cords and distribution",
+      "module": "ELECTRICAL",
+      "quantity": 1,
+      "unit": "loom",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Ratings, circuit count and lengths after load/route survey; no cord through entry."
+    },
+    {
+      "id": "ZC-E03",
+      "item": "Required GFCI / electrical protection",
+      "module": "ELECTRICAL",
+      "quantity": 1,
+      "unit": "system",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Select and test to actual supply/equipment/site requirements; competent electrical review."
+    },
+    {
+      "id": "ZC-E04",
+      "item": "Weatherproof connections / raised distribution enclosure",
+      "module": "ELECTRICAL",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Use equipment with suitable actual ratings, drip routing and ventilation."
+    },
+    {
+      "id": "ZC-E05",
+      "item": "Cable ramps / covers / identification / ties",
+      "module": "ELECTRICAL",
+      "quantity": 1,
+      "unit": "route kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Count and lengths from final layout; central front approach kept free."
+    },
+    {
+      "id": "ZC-E06",
+      "item": "Generator alternative investigation",
+      "module": "ELECTRICAL",
+      "quantity": 1,
+      "unit": "supply option",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": "power-source",
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Only if venue permits and actual load/noise/fuel/placement priced; outside base allowance."
+    },
+    {
+      "id": "ZC-O01",
+      "item": "Open surround scenic frame",
+      "module": "SURROUND",
+      "quantity": 1,
+      "unit": "frame",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "O30 only, scenery loads; material/joints/feet reviewed, no occupant suspension."
+    },
+    {
+      "id": "ZC-O02",
+      "item": "Scenic diffusion panels / mesh",
+      "module": "SURROUND",
+      "quantity": 1,
+      "unit": "measured set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Area/count and material documentation after optical/venue tests."
+    },
+    {
+      "id": "ZC-O03",
+      "item": "Panel fasteners, edge protection and removable joints",
+      "module": "SURROUND",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Specify for actual material/weather, keep entry open."
+    },
+    {
+      "id": "ZC-O04",
+      "item": "Independent supported seat alternative",
+      "module": "SURROUND",
+      "quantity": 1,
+      "unit": "unit",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "maybe",
+      "incremental_purchase_usd": null,
+      "notes": "Optional ground-supported seat; no homemade suspended seat presumed."
+    },
+    {
+      "id": "ZC-T01",
+      "item": "Andrew's pipe bender",
+      "module": "TOOLS",
+      "quantity": 1,
+      "unit": "tool",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "Andrew-confirmed owned",
+      "status": "have",
+      "incremental_purchase_usd": 0,
+      "notes": "User-confirmed owned; die size, material/wall capacity and tooling still to measure."
+    },
+    {
+      "id": "ZC-T02",
+      "item": "Denhac fabrication access / booking",
+      "module": "TOOLS",
+      "quantity": 1,
+      "unit": "booking",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "access confirmed; booking unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Andrew-confirmed access; training, equipment time and consumables not reserved."
+    },
+    {
+      "id": "ZC-T03",
+      "item": "Welding/cutting/drilling/measurement equipment",
+      "module": "TOOLS",
+      "quantity": 1,
+      "unit": "shop checklist",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Use available accepted tools after capability/authorization checks; do not buy a full shop."
+    },
+    {
+      "id": "ZC-T04",
+      "item": "Fabricator help / crew labour commitment",
+      "module": "TOOLS",
+      "quantity": 1,
+      "unit": "agreed work package",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Odd Todd is a possible collaborator; hours/role not yet committed; no assumed free service."
+    },
+    {
+      "id": "ZC-T05",
+      "item": "Shop PPE / fire protection / safe work supplies",
+      "module": "TOOLS",
+      "quantity": 1,
+      "unit": "shop kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Follow actual shop rules and fabrication method; verify available stock."
+    },
+    {
+      "id": "ZC-V01",
+      "item": "Sphere and support engineering / rigging review",
+      "module": "SERVICES",
+      "quantity": 1,
+      "unit": "review package",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Scope includes occupied support, contact, deflation, access, wind and selected lifted mode."
+    },
+    {
+      "id": "ZC-V02",
+      "item": "Venue approval / permits / insurance",
+      "module": "SERVICES",
+      "quantity": 1,
+      "unit": "approval package",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Scope and cost confirmed with actual project; application or conversation is not approval."
+    },
+    {
+      "id": "ZC-V03",
+      "item": "Electrical and optical commissioning",
+      "module": "SERVICES",
+      "quantity": 1,
+      "unit": "commissioning package",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Record power protection, loads, coverage, heat, blackouts and cable layout."
+    },
+    {
+      "id": "ZC-V04",
+      "item": "Qualified operator/spotter/recovery staffing",
+      "module": "SERVICES",
+      "quantity": 1,
+      "unit": "staffing plan",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Names, training, shifts and stop authority agreed before occupied operation."
+    },
+    {
+      "id": "ZC-K01",
+      "item": "Assembly labels / hardware bags / inventory sheets",
+      "module": "LOGISTICS",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Mark FRONT and matching joints; scan/count before load and after strike."
+    },
+    {
+      "id": "ZC-K02",
+      "item": "Transport cases / padding / securement",
+      "module": "LOGISTICS",
+      "quantity": 1,
+      "unit": "measured kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Count by actual equipment; transport vehicle capacity and load security checked."
+    },
+    {
+      "id": "ZC-K03",
+      "item": "Cleaning / lens cloths / approved repair spares",
+      "module": "LOGISTICS",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "No unapproved sphere solvent or adhesive; consumable quantities from rehearsal."
+    },
+    {
+      "id": "ZC-K04",
+      "item": "Site cleanup / LNT supplies",
+      "module": "LOGISTICS",
+      "quantity": 1,
+      "unit": "kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Collect small hardware, tape and waste; preserve site/return condition."
+    },
+    {
+      "id": "ZC-K05",
+      "item": "Weather monitoring / communication / inspection log",
+      "module": "LOGISTICS",
+      "quantity": 1,
+      "unit": "operations kit",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Tools and trigger values from operating plan; weather limits not invented."
+    },
+    {
+      "id": "ZC-K06",
+      "item": "Participant information / camera consent / entry signage",
+      "module": "LOGISTICS",
+      "quantity": 1,
+      "unit": "set",
+      "quantity_status": "package quantity; components pending specification",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Explain participation and stop/exit; signage does not replace direct supervision."
+    },
+    {
+      "id": "ZC-K07",
+      "item": "Freight, transport, tax and return provision",
+      "module": "LOGISTICS",
+      "quantity": 1,
+      "unit": "cost schedule",
+      "quantity_status": "nominal concept count; verify accepted design",
+      "configurations": [
+        "G25",
+        "G30",
+        "S25",
+        "S30",
+        "O30"
+      ],
+      "alternative_group": null,
+      "ownership": "unconfirmed",
+      "status": "blocked",
+      "incremental_purchase_usd": null,
+      "notes": "Quote actual selected kit and travel; avoid counting freight twice in delivered sphere quote."
+    }
+  ]
+}

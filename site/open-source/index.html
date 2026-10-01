@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The open-source software, source records, media provenance and AI assistance behind Zencelades.">
+  <title>Open source &amp; AI disclosure — Zencelades</title>
+  <link rel="canonical" href="https://zenceladus.com/open-source/">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/about/pages.css">
+</head>
+<body class="project-page">
+  <a class="skip" href="#main">Skip to source and disclosure</a>
+  <header class="masthead">
+    <a href="/">Zencelades</a>
+    <nav aria-label="Project">
+      <a href="/about/">The artwork</a>
+      <a href="/models/">Models</a>
+      <a href="/showtime/">Showtime</a>
+      <a href="/studio/">Studio</a>
+      <a href="/open-source/" aria-current="page">Open source &amp; AI</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="lead" aria-labelledby="source-title">
+      <p class="kicker">Tools, authorship &amp; provenance</p>
+      <h1 id="source-title">Show the work behind the wonder.</h1>
+      <p class="lede">Zencelades is developed with open-source software, human design decisions and AI assistance. Those contributions have different responsibilities and different rights.</p>
+      <p>This page separates the software used to make the project, the source code available to inspect, and the images and media shown in it. Public access alone does not grant permission to reuse every file.</p>
+      <div class="actions">
+        <a class="action action-primary" href="https://git.telpher.stream/telpher/zencelades">Read the Gitea source</a>
+        <a class="action" href="https://github.com/presempathy-awb/zencelades">Open the GitHub mirror</a>
+      </div>
+    </section>
+
+    <section class="section split" aria-labelledby="ai-title">
+      <div>
+        <h2 id="ai-title">Where AI contributes.</h2>
+        <p>OpenAI’s Codex assists with implementation, research organization, documentation and verification work in this project. Andrew directs the concept, equipment constraints, configuration choices and public presentation.</p>
+        <p>Some concept boards and naming illustrations were created with image-generation tools. The original supplied boards are catalogued as ChatGPT images, and the naming gallery records its use of the built-in image generation tool. Exact model versions are not established by those records.</p>
+        <p>Generated images are labeled as concepts. Their embedded prices, dimensions, safety statements and historical event captions are not verified specifications.</p>
+      </div>
+      <div>
+        <h3>Models and engineering are different claims</h3>
+        <p>The current schematic model images are rendered from explicit geometry and source scripts, including Blender’s Python API. The interactive studio uses Babylon.js. These are reproducible model studies, distinct from image-generated concept paintings.</p>
+        <p>AI assistance and reproducible geometry do not establish structural capacity, equipment suitability or approval for a person to occupy the installation. Human fabrication decisions, qualified review and physical testing remain necessary.</p>
+        <p>Optional live participant imagery is a proposed feature, not evidence of a deployed camera system or consent to record visitors.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="licenses-title">
+      <h2 id="licenses-title">What the licenses cover.</h2>
+      <dl class="spec-list">
+        <div><dt>Archived project source</dt><dd>The v3 and v4 project packages each include an MIT license expressly limited to original project-side source in that revision. Their license files exclude third-party dependencies, personal likenesses, NASA/JPL media and prior generated artwork.</dd></div>
+        <div><dt>Current website source</dt><dd>The inspected repository has no repository-wide root license file. The archived MIT notices should not be read as automatically licensing every later website file, model or contribution. Consult an explicit file/package license or obtain permission before reuse.</dd></div>
+        <div><dt>Third-party software</dt><dd>Every dependency retains its upstream license and notice requirements. The table below records the direct cockpit dependencies; it is not a complete transitive software bill of materials or a redistribution audit.</dd></div>
+        <div><dt>Scientific media</dt><dd>NASA/JPL imagery and other scientific sources retain their source-specific credits and use conditions. Procedural ice textures are artistic approximations; a generated image caption does not establish NASA provenance or endorsement.</dd></div>
+        <div><dt>People and concept art</dt><dd>Software licenses do not grant rights to someone’s likeness or to every supplied or generated image. Check the individual asset’s provenance and intended use before republishing.</dd></div>
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="stack-title">
+      <h2 id="stack-title">The cockpit’s software.</h2>
+      <p>Versions below come from the pinned cockpit manifest. License identifiers were checked against the installed packages’ metadata. The interface uses React, a Babylon.js 3D view, React Flow and TanStack tools, with Tailwind and Radix components.</p>
+      <div class="table-scroll" role="region" aria-label="Direct runtime dependencies, scroll horizontally on small screens" tabindex="0">
+        <table>
+          <caption>Direct runtime dependencies</caption>
+          <thead><tr><th scope="col">Package</th><th scope="col">Pinned version</th><th scope="col">Declared license</th><th scope="col">Use</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">@babylonjs/core; @babylonjs/loaders</th><td>9.26.1</td><td>Apache-2.0</td><td>3D engine and model loading</td></tr>
+            <tr><th scope="row">react; react-dom</th><td>19.3.0</td><td>MIT</td><td>Interactive interface</td></tr>
+            <tr><th scope="row">@tanstack/react-query</th><td>5.102.8</td><td>MIT</td><td>Data queries</td></tr>
+            <tr><th scope="row">@tanstack/react-router</th><td>1.170.36</td><td>MIT</td><td>Application navigation</td></tr>
+            <tr><th scope="row">@xyflow/react</th><td>12.11.6</td><td>MIT</td><td>Workflow diagrams</td></tr>
+            <tr><th scope="row">radix-ui</th><td>1.6.7</td><td>MIT</td><td>Interface primitives</td></tr>
+            <tr><th scope="row">lucide-react</th><td>1.46.0</td><td>ISC</td><td>Interface icons</td></tr>
+            <tr><th scope="row">class-variance-authority</th><td>0.7.1</td><td>Apache-2.0</td><td>Component style variants</td></tr>
+            <tr><th scope="row">clsx</th><td>2.1.1</td><td>MIT</td><td>Conditional CSS classes</td></tr>
+            <tr><th scope="row">tailwind-merge</th><td>3.7.0</td><td>MIT</td><td>Tailwind class composition</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details class="dependency-details">
+        <summary>Build, export and development dependencies</summary>
+        <div class="table-scroll" role="region" aria-label="Build dependencies, scroll horizontally on small screens" tabindex="0">
+          <table>
+            <caption>Direct development dependencies</caption>
+            <thead><tr><th scope="col">Package</th><th scope="col">Pinned version</th><th scope="col">Declared license</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">@babylonjs/serializers</th><td>9.26.1</td><td>Apache-2.0</td></tr>
+              <tr><th scope="row">@biomejs/biome</th><td>2.5.13</td><td>MIT OR Apache-2.0</td></tr>
+              <tr><th scope="row">@tailwindcss/vite; tailwindcss</th><td>4.3.3</td><td>MIT</td></tr>
+              <tr><th scope="row">@types/bun</th><td>1.4.2</td><td>MIT</td></tr>
+              <tr><th scope="row">@types/react; @types/react-dom</th><td>19.3.0</td><td>MIT</td></tr>
+              <tr><th scope="row">@vitejs/plugin-react</th><td>6.1.1</td><td>MIT</td></tr>
+              <tr><th scope="row">typescript</th><td>7.0.2</td><td>Apache-2.0</td></tr>
+              <tr><th scope="row">vite</th><td>8.3.0</td><td>MIT</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+      <p>The project’s asset and publishing helpers use Python. The archived design packages additionally document NumPy, Pillow, PyYAML and optional CAD, drawing and capture tools. Their accompanying notices describe that separate toolchain; they are not all shipped as website runtime dependencies.</p>
+      <p class="note">The pages use locally available Georgia and Avenir/Helvetica font families through CSS fallbacks. No font files are bundled by these pages, and those fonts are not claimed as open-source project assets.</p>
+    </section>
+
+    <section class="section sources" aria-labelledby="records-title">
+      <h2 id="records-title">Follow the source records.</h2>
+      <ul class="plain-list">
+        <li><a href="https://git.telpher.stream/telpher/zencelades/src/branch/feat/triangle-projection-cockpit/cockpit/package.json">Cockpit manifest and pinned dependencies</a></li>
+        <li><a href="/downloads/deliveries/enceladus_v3/LICENSE">v3 package license</a> and <a href="/downloads/deliveries/enceladus_v4_fixed15/LICENSE">v4 package license</a></li>
+        <li><a href="/downloads/deliveries/enceladus_v3/licenses/THIRD_PARTY.md">Archived third-party notices</a> and <a href="/downloads/deliveries/enceladus_v3/docs/ASSET_PROVENANCE.md">v3 asset provenance</a></li>
+        <li><a href="/models/">Model gallery and editable assemblies</a></li>
+        <li><a href="/showtime/">Showtime media and its presentation</a></li>
+      </ul>
+      <p>Source records preserve what was supplied and how it was made. Historical packages contain earlier design directions; the <a href="/about/">current artwork description</a> identifies today’s occupied lander and conditional aerial concept.</p>
+    </section>
+  </main>
+  <footer>
+    <p>Zencelades · Tools are part of the story.</p>
+    <p><a href="/about/">The artwork</a> · <a href="/pricing/">Budget</a> · <a href="/grants/">Grant research</a></p>
+  </footer>
+</body>
+</html>

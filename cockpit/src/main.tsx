@@ -11,14 +11,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./style.css";
 
-// The same permission-gated controls also serve the static catalog.
-const accessScript = document.createElement("script");
-accessScript.src = "/access.js";
-accessScript.defer = true;
-document.head.append(accessScript);
-
 const rootRoute = createRootRoute({ component: App, notFoundComponent: App });
-const routes = ["/", "/workflow", "/budget", "/research"].map((path) =>
+const routes = ["/", "/workflow", "/tasks", "/budget", "/research"].map((path) =>
   createRoute({ getParentRoute: () => rootRoute, path }),
 );
 const router = createRouter({

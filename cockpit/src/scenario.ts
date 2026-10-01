@@ -2,6 +2,7 @@ import { calculate } from "../../site/pricing/calculation.mjs";
 import source from "../../site/pricing/options.json";
 import seed from "../../assets/seed-options.json";
 import type { FundingPlan } from "./funding";
+import { createBuildBoardState, parseBuildBoardState, type BuildBoardState } from "./build-board";
 
 export const deferredSupports = new Set(["fixed-bed", "fixed-cantilever"]);
 export const baseline = {
@@ -22,6 +23,7 @@ export interface Scenario {
   haze: boolean;
   note: string;
   funding: FundingPlan;
+  board: BuildBoardState;
 }
 export const shortNames: Record<string, string> = {
   "seed-surround": "Occupied surround",
@@ -49,6 +51,7 @@ export function initialScenario(): Scenario {
     haze: false,
     note: "",
     funding: { grantRequest: 3000, ownerPossible: 0, fundraiserTarget: 0, confirmed: 0 },
+    board: createBuildBoardState(),
   };
 }
 export function selectedOption(scenario: Scenario): Option {
@@ -133,6 +136,7 @@ export function parseScenario(text: string): Scenario {
     haze: value.haze,
     note: value.note,
     funding,
+    board: value.board === undefined ? createBuildBoardState() : parseBuildBoardState(value.board),
   };
   estimate(result);
   return result;

@@ -13,4 +13,16 @@ passes TypeScript/Vite and verifies 28 exported models with finite geometry.
 The existing large-chunk warning remains. Fresh browser acceptance and live
 activation remain pending; a source push is not a deployment.
 
-Status: ready for the requested source push.
+The geometry correction was pushed as `14c0e9ee`. Andrew repeated the immediate
+push request. The next bounded source push adds the artwork homepage, separate
+studio route, OSS/AI disclosure, actual 24-task build board and 88-part catalog,
+and temporary guest drafts with explicit import/export. Account saving remains
+unfinished; no login or deployment completion is claimed.
+
+Fresh maxipaxi checks: `just check` exited 0 with 55 tests and 13 subtests,
+Ruff checks and grant ledger verification passing. `just cockpit-check` exited
+0 with 20 Bun tests, TypeScript/Vite build and 28 model checks passing. The
+existing large-chunk warning remains. New-page browser acceptance is pending.
+
+Status: bounded source changes verified locally and ready to push; broader
+backlog, authenticated persistence and release verification remain active.
