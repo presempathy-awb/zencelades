@@ -179,7 +179,7 @@ first image is the thumbnail the committee sees in its list.
 12. `submission/12-parts-labeled.png` every part labeled, with the price
     table on the website
 
-About 10.8 MB total, every file under 5 MB. The concept art and the 3D model renders show the
+About 10.9 MB total, every file under 5 MB. The concept art and the 3D model renders show the
 one-unit upgrade (projector heads on arms from the triangle); the plates
 show the 2027 build with the projectors on stands.
 

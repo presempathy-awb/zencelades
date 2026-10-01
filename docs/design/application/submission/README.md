@@ -17,7 +17,7 @@ out, so paste rather than compose in it.
 
 Nothing else uploads: every drawing goes in as an image, every document as a link.
 
-## ART PROJECT PHOTOS, in this order (10.8 MB total, every file under 5 MB)
+## ART PROJECT PHOTOS, in this order (10.9 MB total, every file under 5 MB)
 
 1. `01-concept-landed.png` (2.6 MB) concept art, a person inside the moon with their face on it; this is the thumbnail
 2. `02-lander-3d-model.png` Codex's Blender render of the 2.5 m landed assembly, cut away: seat, tunnel, loop, triangle, lander legs
