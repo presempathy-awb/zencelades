@@ -11,7 +11,7 @@ import { type JSX, useEffect, useRef, useState } from "react";
 import "@babylonjs/core/Culling/ray";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { RotateCcw } from "lucide-react";
-import { MODEL_STUDIES, ACTIVE_MODEL_STUDIES } from "./models/model-spec";
+import { MODEL_STUDIES, selectableModelStudies } from "./models/model-spec";
 import { buildModel, dimensionGuides } from "./models/support-models";
 import type { Option } from "./scenario";
 import { Button } from "./ui";
@@ -52,6 +52,7 @@ export default function SceneView({
   const [dimensions, setDimensions] = useState<string[]>([]);
   const [exporting, setExporting] = useState(false);
   const [exportStatus, setExportStatus] = useState("");
+  const [showTruck, setShowTruck] = useState(false);
   const selectedId = model === "scenario" ? option.id : model;
   const study = MODEL_STUDIES.find((value) => value.id === selectedId);
   const archive = ["a", "b", "v4"].includes(model);
@@ -278,9 +279,53 @@ export default function SceneView({
         {model !== "scenario" && (
           <strong> · Reference view only; budget remains {option.name}.</strong>
         )}
+        {selectedId === "basket-truck" && (
+          <strong>
+            {" "}
+            Truck support is an unpriced stretch goal, excluded from the Love Burn estimate.
+          </strong>
+        )}
         {exportStatus && <span> · {exportStatus}</span>}
       </div>
       <div className="scene-tools">
+        <div className="holder-modes" role="group" aria-label="Common triangle and ring support">
+          <span>Same triangle + ring</span>
+          <Button
+            variant="outline"
+            aria-pressed={selectedId === "basket-lander"}
+            onClick={() => onModelSelect("basket-lander")}
+          >
+            Lander
+          </Button>
+          <Button
+            variant="outline"
+            aria-pressed={["love-burn", "basket-aerial-rig"].includes(selectedId)}
+            onClick={() => onModelSelect("basket-aerial-rig")}
+          >
+            Aerial rig
+          </Button>
+          {showTruck && (
+            <Button
+              variant="outline"
+              aria-pressed={selectedId === "basket-truck"}
+              onClick={() => onModelSelect("basket-truck")}
+            >
+              Truck
+            </Button>
+          )}
+          <label className="check-field">
+            <input
+              type="checkbox"
+              checked={showTruck}
+              onChange={(event) => {
+                setShowTruck(event.target.checked);
+                if (!event.target.checked && selectedId === "basket-truck")
+                  onModelSelect("basket-aerial-rig");
+              }}
+            />
+            Show truck stretch goal
+          </label>
+        </div>
         {configurable && (
           <label>
             <span className="sr-only">Sphere diameter in model</span>
@@ -319,13 +364,21 @@ export default function SceneView({
             onChange={(event) => onModelSelect(event.target.value)}
           >
             <option value="scenario">Selected budget option</option>
-            {["Seed concepts", "Budget options", "Mount studies"].map((group) => (
+            {[
+              "Common holder",
+              "Seed concepts",
+              "Budget options",
+              "Mount studies",
+              ...(showTruck ? ["Truck stretch goal"] : []),
+            ].map((group) => (
               <optgroup key={group} label={group}>
-                {ACTIVE_MODEL_STUDIES.filter((item) => item.group === group).map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.label}
-                  </option>
-                ))}
+                {selectableModelStudies(showTruck)
+                  .filter((item) => item.group === group)
+                  .map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.label}
+                    </option>
+                  ))}
               </optgroup>
             ))}
           </select>

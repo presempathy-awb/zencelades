@@ -5,6 +5,8 @@ import type { Scene } from "@babylonjs/core/scene";
 import type { Geometry, Point } from "./geometry";
 
 export const BASKET_MODEL_IDS = [
+  "basket-lander",
+  "basket-truck",
   "seed-zorb",
   "basket-webbing",
   "basket-tripod",
@@ -83,8 +85,19 @@ export function basketGeometry(
   diameter: SphereDiameter = 3,
 ): void {
   const layout = basketLayout(diameter);
-  const suspended = ["basket-webbing", "basket-tripod", "basket-aerial-rig"].includes(id);
-  const projected = ["seed-zorb", "basket-aerial-rig", "basket-live-overlay"].includes(id);
+  const suspended = [
+    "basket-webbing",
+    "basket-tripod",
+    "basket-aerial-rig",
+    "basket-truck",
+  ].includes(id);
+  const projected = [
+    "seed-zorb",
+    "basket-lander",
+    "basket-truck",
+    "basket-aerial-rig",
+    "basket-live-overlay",
+  ].includes(id);
   const count = projectors ?? (projected ? 3 : 0);
   // Keep the flanking corners first; no mast is placed in the front entry bay.
   const activeCorners = [1, 2, 0].slice(0, count);

@@ -47,9 +47,23 @@ export interface ModelStudy {
 const research = "Unpriced research study; geometry and reactions require review. ";
 export const MODEL_STUDIES: ModelStudy[] = [
   {
+    id: "basket-lander",
+    label: "Common holder · lander",
+    group: "Common holder",
+    budget: null,
+    note: "The shared triangle and six-foot padded ring on three detachable legs: two beside the entrance and one behind. Same holder as aerial and truck modes. Arm-mounted projection is an alternate upgrade to the stand-based Love Burn budget. Joints, member sizes, restraint, ballast and occupied operation remain unverified.",
+  },
+  {
+    id: "basket-truck",
+    label: "Common holder · truck stretch goal",
+    group: "Truck stretch goal",
+    budget: null,
+    note: "The same triangle, ring and over-sphere webbing hung beside the Ram from a schematic bed-mounted support. Hidden by default and excluded from the Love Burn budget. The visible mast, boom and braces are placement envelopes, not engineered members; no hitch load rating approves this assembly. Attachment, stabilization, wind, complete occupied load path and costs require separate design.",
+  },
+  {
     id: "love-burn",
     label: "Love Burn · main proposal",
-    group: "Seed concepts",
+    group: "Common holder",
     budget: "love-burn",
     note: "Grant budget basis: occupied 2.5 m zorb, common holder under the existing aerial rig, two purchased projectors on independent stands and two phone witnesses. The same holder accepts lander legs. Arm-mounted projection is an alternate upgrade. Product fit, support capacities, optics and operational acceptance remain to be verified.",
   },
@@ -91,9 +105,9 @@ export const MODEL_STUDIES: ModelStudy[] = [
   {
     id: "basket-aerial-rig",
     label: "Common holder · aerial rig",
-    group: "Seed concepts",
+    group: "Common holder",
     budget: null,
-    note: "Same holder under a schematic four-leg aerial rig. No commercial model, rated anchor or loan is selected. Rig height/span, total occupied payload, lowerable suspension, outdoor stability and costs require confirmation; the $3,000 ground allocation does not include this complete system.",
+    note: "Same triangle and padded ring under a schematic four-leg aerial rig, with over-sphere webbing. The Love Burn budget assumes an existing rig and two stand-mounted projectors; this configurable arm-mounted variant requires its own quotes. Rig model, height/span, complete occupied payload, lowerable suspension and outdoor stability remain to be confirmed.",
   },
   {
     id: "basket-camera-arms",
@@ -266,19 +280,24 @@ export const MODEL_STUDIES: ModelStudy[] = [
   },
 ];
 
-/** Current studies; preserved truck/hitch geometry remains in the source archive. */
-export const ACTIVE_MODEL_STUDIES = MODEL_STUDIES.filter(
-  (study) =>
-    ![
-      "fixed-bed",
-      "fixed-cantilever",
-      "truck-portal",
-      "receiver-crane",
-      "bed-crane",
-      "chassis-short",
-      "fixed15-study",
-      "ram-2021",
-      "factory-receiver",
-      "andersen-original",
-    ].includes(study.id) && study.group !== "Hardware",
-);
+/** Show the shared-holder truck only when explicitly requested; old truck studies stay archived. */
+export function selectableModelStudies(showTruck = false): ModelStudy[] {
+  return MODEL_STUDIES.filter(
+    (study) =>
+      ![
+        "fixed-bed",
+        "fixed-cantilever",
+        "truck-portal",
+        "receiver-crane",
+        "bed-crane",
+        "chassis-short",
+        "fixed15-study",
+        "ram-2021",
+        "factory-receiver",
+        "andersen-original",
+      ].includes(study.id) &&
+      study.group !== "Hardware" &&
+      (showTruck || study.id !== "basket-truck"),
+  );
+}
+export const ACTIVE_MODEL_STUDIES = selectableModelStudies();

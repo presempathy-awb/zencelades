@@ -3,7 +3,7 @@ import { NullEngine } from "@babylonjs/core/Engines/nullEngine";
 import { Scene } from "@babylonjs/core/scene";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { buildModel } from "./models/support-models";
-import { MODEL_STUDIES } from "./models/model-spec";
+import { MODEL_STUDIES, selectableModelStudies } from "./models/model-spec";
 import { baseline } from "./scenario";
 
 test("Love Burn proposal model carries the budget's two independent projectors and 2.5 m sphere", () => {
@@ -28,7 +28,7 @@ test("Love Burn proposal model carries the budget's two independent projectors a
 test("sphere size changes shell, holder height and dimensions without scaling the participant", () => {
   const engine = new NullEngine();
   try {
-    for (const id of ["seed-zorb", "basket-aerial-rig"]) {
+    for (const id of ["seed-zorb", "basket-lander", "basket-aerial-rig", "basket-truck"]) {
       for (const diameter of [2.5, 3] as const) {
         const scene = new Scene(engine);
         try {
@@ -64,7 +64,7 @@ test("sphere size changes shell, holder height and dimensions without scaling th
 test("selected projector counts change holder heads, covers and stays without changing the frame", () => {
   const engine = new NullEngine();
   try {
-    for (const id of ["seed-zorb", "basket-aerial-rig"]) {
+    for (const id of ["seed-zorb", "basket-lander", "basket-aerial-rig", "basket-truck"]) {
       for (const projectors of [0, 1, 2, 3] as const) {
         const scene = new Scene(engine);
         try {
@@ -77,7 +77,7 @@ test("selected projector counts change holder heads, covers and stays without ch
           ).toHaveLength(projectors);
           expect(
             scene.meshes.filter((mesh) => mesh.name.startsWith("proposed-arm-stay-")),
-          ).toHaveLength(id === "basket-aerial-rig" ? projectors : 0);
+          ).toHaveLength(["basket-aerial-rig", "basket-truck"].includes(id) ? projectors : 0);
           expect(
             scene.meshes.filter((mesh) => mesh.name.startsWith("low-triangle-side-")),
           ).toHaveLength(3);
@@ -159,7 +159,9 @@ test("all budget concepts have usable finite geometry and preserve their selecti
   }
 });
 
-test("installation modules preserve the same ring and triangle holder", () => {
+test("truck is optional and all three support modes preserve the same ring and triangle holder", () => {
+  expect(selectableModelStudies().some((study) => study.id === "basket-truck")).toBe(false);
+  expect(selectableModelStudies(true).some((study) => study.id === "basket-truck")).toBe(true);
   const engine = new NullEngine();
   const reference = new Scene(engine);
   buildModel(reference, "seed-zorb");
@@ -171,10 +173,23 @@ test("installation modules preserve the same ring and triangle holder", () => {
     "low-triangle-side-2",
   ];
   try {
-    for (const id of ["basket-webbing", "basket-aerial-rig", "basket-camera-arms"]) {
+    for (const id of [
+      "basket-lander",
+      "basket-truck",
+      "basket-webbing",
+      "basket-aerial-rig",
+      "basket-camera-arms",
+    ]) {
       const scene = new Scene(engine);
       try {
         buildModel(scene, id);
+        if (id === "basket-truck") {
+          expect(scene.getMeshByName("ram-rear-axle")).not.toBeNull();
+          expect(scene.getMeshByName("collector-ring-unrated")).not.toBeNull();
+          expect(
+            scene.meshes.filter((mesh) => mesh.name.startsWith("lander-leg-envelope-")),
+          ).toHaveLength(0);
+        }
         for (const name of commonNames) {
           const actual = scene.getMeshByName(name)!;
           const expected = reference.getMeshByName(name)!;

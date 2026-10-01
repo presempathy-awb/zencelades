@@ -171,13 +171,15 @@ export function partsPlanForModel(plan: PartsPlan, id: string): PartsPlan {
       choices: { ...plan.choices, host: "ZC-A01", "projector-class": "ZC-P01" },
     };
   const studies: Record<string, Partial<PartsPlan>> = {
+    "basket-lander": { configuration: "G30" },
+    "basket-truck": { configuration: "S30" },
     "seed-zorb": { configuration: "G30", projectors: 3, cameras: 0 },
     "seed-surround": { configuration: "O30", projectors: 0, cameras: 0 },
     "basket-live-overlay": { configuration: "G30", projectors: 3, cameras: 1 },
     "basket-camera-arms": { configuration: "G30", projectors: 0, cameras: 1 },
     "basket-webbing": { configuration: "S30", projectors: 0, cameras: 0 },
     "basket-tripod": { configuration: "S30", projectors: 0, cameras: 0 },
-    "basket-aerial-rig": { configuration: "S30", projectors: 3, cameras: 0 },
+    "basket-aerial-rig": { configuration: "S30" },
   };
   const study = studies[id];
   if (!study) return plan;

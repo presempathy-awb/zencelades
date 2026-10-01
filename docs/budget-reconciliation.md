@@ -60,4 +60,12 @@ starts collapsed, changing the projector low total from $998 to $1,000 changes
 the displayed low total from $2,378 to $2,381; selecting Ground cradle shows its
 separate rental basis; returning and reloading restores the proposal defaults.
 The 3D view visibly renders its 2.5 m sphere, aerial frame and two stand heads.
-Publication evidence is appended after activation and public readback.
+Published in release `6a28f515caca82d8834e9b4e4eba7c1f1b4d3130cbc1c82f15a1128110417eec`;
+the homepage-render update then produced
+`0c450899db662c84efb40f9120292d6a930127dda75cf4fe9376a59d4aab8039`.
+An October 1 repeat readback confirms that latter release remains active,
+its 907-entry manifest matches its release digest, and all 72 checked public
+files match their manifest sizes and SHA-256 hashes. The checked set includes
+the corrected pricing/studio, homepage renders, gallery and Showtime. The
+`thatsnozorb.service` unit is active. These are delivery checks, not an
+authenticated-save or physical-installation acceptance result.

@@ -1,4 +1,4 @@
-import { ACTIVE_MODEL_STUDIES } from "./models/model-spec";
+import { ACTIVE_MODEL_STUDIES, selectableModelStudies } from "./models/model-spec";
 import seedSources from "../../assets/seed-sources.json";
 import { fundingSummary } from "./funding";
 import { baseline, estimate, range, type Scenario, selectedOption, shortNames } from "./scenario";
@@ -160,7 +160,7 @@ export function chooseModel(
   id: string,
 ): { scenario: Scenario; reference: string } {
   if (id === "scenario") return { scenario, reference: id };
-  const model = ACTIVE_MODEL_STUDIES.find((item) => item.id === id);
+  const model = selectableModelStudies(true).find((item) => item.id === id);
   if (!model) throw new Error("Unknown model selection");
   const parts = partsPlanForModel(scenario.parts, id);
   return model.budget
@@ -301,9 +301,11 @@ export function optionContext(scenario: Scenario): OptionContext {
     requirements: [
       "Confirm the placement/grant scope and obtain the official Art Committee Offer Notice; no authoritative cutoff hour is recorded.",
       profile.requirement,
-      option.projectors
-        ? `Test the selected ${option.projectors}-projector optical layout and obtain a lens-specific rental quote.`
-        : "Test the LED/diffuser effect and accessible viewing arrangement.",
+      option.id === "love-burn"
+        ? "Test the two purchased-projector layout and refresh the purchase quotes; do not substitute rental prices."
+        : option.projectors
+          ? `Test the selected ${option.projectors}-projector optical layout and obtain a lens-specific rental quote.`
+          : "Test the LED/diffuser effect and accessible viewing arrangement.",
       "Confirm power, crew, transport, daily operation, insurance/permits and full removal; no shared resource reservation is recorded.",
       ...(scenario.haze
         ? [

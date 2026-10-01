@@ -73,6 +73,8 @@ export function buildModel(
     [
       "seed-surround",
       "seed-zorb",
+      "basket-lander",
+      "basket-truck",
       "basket-webbing",
       "basket-tripod",
       "occupied-cradle",
@@ -102,6 +104,20 @@ export function buildModel(
         b: [diameter / 2, 0, 1.8],
       },
     ];
+    if (id === "basket-truck") {
+      const vehicle = new TransformNode("truck-host-envelope", scene);
+      vehicle.parent = root;
+      vehicle.position.x = -5;
+      truck(scene, vehicle);
+      // Placement envelopes only. No section sizes, reactions or hitch capacity are established.
+      g.beam("truck-host-mast-unengineered", [-5, 1, 0], [-5, 4.8, 0], 0.15);
+      g.beam("truck-host-boom-unengineered", [-5, 4.8, 0], [0, 4.8, 0], 0.15);
+      g.beam("truck-host-diagonal-unengineered", [-5, 2.8, 0], [-2.5, 4.8, 0], 0.08);
+      g.box("truck-host-attachment-unresolved", [0.8, 0.15, 1.2], [-5, 1.1, 0], "#8a6743");
+      result.target = [-2.5, 2.2, 0];
+      result.radius = 19;
+      result.root.metadata.host = "unpriced truck support; no engineered capacity";
+    }
     return result;
   }
   const ball = (at: Point, diameter = 3): void => {

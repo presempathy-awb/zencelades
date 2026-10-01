@@ -9,3 +9,10 @@ projection/other sizes as alternate studies. Keep the corrected purchase budget,
 existing gallery files and Showtime. Verify all referenced image bytes and
 publish the bounded homepage update. Record browser proof only if the separate
 homepage-control approval is granted.
+
+Completed: source `82417d3d`; release
+`0c450899db662c84efb40f9120292d6a930127dda75cf4fe9376a59d4aab8039`.
+Andrew approved the visible homepage check; all four render images decoded in
+the live browser. A later readback again matches 72 public files, including
+these images, the gallery and Showtime; service active. The aerial concept is
+visible near the top, with the lander concept and both model renders below it.

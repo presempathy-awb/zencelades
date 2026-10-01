@@ -339,6 +339,21 @@ small {
   padding: 10px 12px;
   cursor: pointer;
 }
+.holder-modes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.holder-modes > span {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.holder-modes .check-field {
+  margin: 0 0.5rem;
+  min-height: 2.75rem;
+}
 .scene-move-actions {
   position: absolute;
   bottom: calc(100% + 8px);
@@ -833,7 +848,10 @@ tr[data-selected="true"] {
   }
   .scene-container,
   .scene {
-    height: 520px;
+    height: auto;
+  }
+  .scene {
+    grid-template-rows: minmax(22rem, 55dvh) auto auto;
   }
   .inspector {
     display: grid;

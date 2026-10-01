@@ -19,6 +19,11 @@ test("occupied model selection updates its parts plan while preserving the allow
 
 test("model choices select priced supports and retain budgets for unpriced references", () => {
   const initial = initialScenario();
+  for (const id of ["basket-lander", "basket-aerial-rig", "basket-truck"]) {
+    const variant = chooseModel(initial, id);
+    expect(variant.scenario.selected).toBe("love-burn");
+    expect(variant.reference).toBe(id);
+  }
   const chosen = chooseModel(initial, "ground-sphere");
   expect(chosen.scenario.selected).toBe("ground-sphere");
   expect(chosen.reference).toBe("scenario");
