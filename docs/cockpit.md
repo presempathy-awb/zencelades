@@ -35,7 +35,7 @@ which revision has actually reached the live site.
   sequence. Select a node for its requirements; move nodes and pan/zoom for
   inspection. Node positions are a temporary view, not exported planning data.
   No node indicates that a real approval or physical test has occurred.
-- **Parts:** the local candidate now filters the 88-record catalog by 2.5/3 m
+- **Parts:** the published studio filters the 88-record catalog by 2.5/3 m
   lander or suspended holder and open-surround configurations. LED or one/two/three
   projector choices, zero/one/two cameras, ring/host/projector alternatives,
   holder arms versus stands and optional equipment are explicit. Selecting a
@@ -45,8 +45,9 @@ which revision has actually reached the live site.
   unselected alternatives are excluded and listed as unresolved decisions.
   Unknown prices remain unquoted and prevent a complete total. Owned hazer/tool
   acquisition does not include operation or inspection. The view uses the public
-  planning catalog, not private live Pacinman records. Browser acceptance and
-  deployment of this candidate remain pending.
+  planning catalog, not private live Pacinman records. Release `55a27320` and
+  its public byte readback are recorded in [Parts verification](parts-plan-verification.md).
+  New-view browser acceptance remains pending.
 - **Research:** TanStack Query loads the occupied-basket, grant and mount registers and
   132-file v3 catalog and separate 84-record v4 catalog. Search, collection switching and pagination operate on
   those records. Source links and downloads retain their existing targets.

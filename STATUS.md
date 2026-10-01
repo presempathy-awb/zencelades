@@ -1,5 +1,17 @@
 # Zencelades status
 
+## Parts release — October 1
+
+The configuration-specific Parts view is published at
+https://zenceladus.com/studio/#/parts in release `55a27320`.
+Sources `f7626665` and `190e0c44` add catalog filtering, explicit alternatives,
+quantity/quote gaps and scenario-file round trips, including older surround
+imports. The fresh Bun suite passes 29 tests / 367 assertions; Python, Node and
+site/model builds pass. Final public readback matches 58 files and the service
+is active. [Verification and limitations](docs/parts-plan-verification.md).
+New-view browser acceptance and authenticated saving remain unfinished; this
+is a public planning catalog view, not private live Pacinman editing.
+
 ## October 1 checkpoint: published pages and inventory import
 
 The public target is **https://zenceladus.com/**. The homepage, about/OSS pages
