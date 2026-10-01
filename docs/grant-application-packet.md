@@ -82,33 +82,32 @@ show, and so are you.
 ### Art Description (Not for Website)
 *For the art and placement committees.*
 
-The moon is a 2.5 m zorb, a clear TPU sphere with a walk-in tunnel, the
-kind built to carry a person, used here as a seat and a projection surface:
-one person at a time sits inside on the soft inner floor. It is a commercial
-walk-in zorb: clear TPU, a walk-in tunnel on the side, external rope mounts
-around it; its measured weight goes on the rigging sheet before any hardware
-is bought. Its skin gets a light diffusing treatment (frosted film or a
-translucent liner, chosen at the bench test) so it holds a projected image
-while the person inside stays visible through it. It sits in a padded steel
-loop at the centre of a fabricated steel triangle. The triangle is the
-piece's one holder and has two states. Landed: three legs with foot pads
-pinned to the triangle's corner plates (the pins join leg to frame, not
-ground; the pads sit on the sand with sandbags) stand the moon like a landed
-probe (NASA's Enceladus concept is an Orbilander) with its centre at 1.7 m,
-its floor at knee height for the tunnel, and its top just under 10 ft:
-nothing overhead, nothing to climb, and the configuration in which people go
-inside. Hung: the legs come off and the same triangle hangs from the
-artist's own freestanding aerial rig (a four-leg portable aerial rig the
-artist already owns; its model, height and rated load are entered on the
-rigging sheet from its manual) on a three-line
-bridle through a rated swivel, so the moon can turn freely while the
-projected picture stays put; a hand winch with a brake on the rig leg raises
-and lowers it, a separate safety sling backs up the hang, and a padded
-ground cradle sits beneath it all night, so lowering is a 25 cm ease that
-takes one person one minute. The hung state is occupied only if the rig's
-rated load covers the sphere plus a person with margin, confirmed from the
-manual and by a rigger before the event; otherwise it hangs as the
-unoccupied night show and lands for people to go in.
+The moon is a 2.5 m zorb: a clear TPU sphere with a walk-in tunnel, the
+kind built to carry a person, used here as a seat and a projection surface.
+One person at a time sits inside on the soft inner floor. The sphere is a
+commercial walk-in zorb with external rope mounts; its measured weight goes
+on the rigging sheet before any hardware is bought. Its skin gets a light
+diffusing treatment (frosted film or a translucent liner, chosen at the
+bench test) so it holds a projected image while the person inside stays
+visible through it. It sits in a padded steel loop at the centre of a
+fabricated steel triangle. The triangle is the piece's one holder and has
+two states. Landed: three legs with foot pads pinned to the triangle's
+corner plates (the pins join leg to frame, not ground; the pads sit on the
+sand with sandbags) stand the moon like a landed probe (NASA's Enceladus
+concept is an Orbilander) with its centre at 1.7 m, its floor at knee height
+for the tunnel, and its top just under 10 ft: nothing overhead, nothing to
+climb, and the configuration in which people go inside. Hung: the legs come
+off and the same triangle hangs from a four-leg portable aerial rig the
+artist already owns (its model, height and rated load are entered on the
+rigging sheet from its manual) on a three-line bridle through a rated
+swivel, so the moon can turn freely while the projected picture stays put.
+A hand winch with a brake on the rig leg raises and lowers it, a separate
+safety sling backs up the hang, and a padded ground cradle sits beneath it
+all night, so lowering is a 25 cm ease that takes one person one minute.
+The hung state is occupied only if the rig's rated load covers the sphere
+plus a person with margin, confirmed from the manual and by a rigger before
+the event; otherwise it hangs as the unoccupied night show and lands for
+people to go in.
 
 Projection: two Optoma HD146X projectors (3,600 lumens, 325 W each) on 13 ft
 telescoping stands about 4 m either side, matched to the projector's throw
@@ -151,8 +150,10 @@ the live compositing, the air and heat inside with the blower running, and
 the lowering drill, and time them, before the November purchases. Full
 schematics are attached: hung elevation, plan, landed state, lowering,
 signal and power, and a tree alternative; plus two pieces of generated
-concept art of the landed and hung states. Photos and videos are on the project website,
-https://thatsnozorb.muchadoaboutoneside.com/.
+concept art of the landed and hung states. Photos and videos are on the
+project website, https://thatsnozorb.muchadoaboutoneside.com/, and the
+whole open-source build, design files included, is at
+https://git.telpher.stream/telpher/zencelades.
 
 ### ART PROJECT PHOTOS
 *JPG/PNG, under 5 MB each, under 20 MB total.* Upload in this order; the
