@@ -1,7 +1,9 @@
-const input = document.querySelector("#file-search");
-const rows = [...document.querySelectorAll(".file-list li")];
-const count = document.querySelector("#file-count");
-const groups = [...document.querySelectorAll("#files details")];
+/** @param {Document | ShadowRoot} root */
+export async function initCatalog(root = document) {
+const input = root.querySelector("#file-search");
+const rows = [...root.querySelectorAll(".file-list li")];
+const count = root.querySelector("#file-count");
+const groups = [...root.querySelectorAll("#files details")];
 const initialOpen = groups.map((group) => group.open);
 if (input instanceof HTMLInputElement && count) {
   input.addEventListener("input", () => {
@@ -17,3 +19,7 @@ if (input instanceof HTMLInputElement && count) {
     count.textContent = `${visible} ${visible === 1 ? "file" : "files"}`;
   });
 }
+
+}
+
+if (typeof document !== "undefined" && document.getElementById("file-search")) void initCatalog();

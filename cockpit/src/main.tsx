@@ -11,6 +11,13 @@ import { Tooltip } from "radix-ui";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./style.css";
+import { cockpitHref, documentPages } from "./page-routes";
+
+// Existing public page URLs enter the same app; preserve their section target.
+if (location.pathname !== "/" && !location.hash.startsWith("#/")) {
+  const destination = cockpitHref(location.pathname + location.hash, "/");
+  if (destination.startsWith("/#")) history.replaceState(null, "", destination);
+}
 
 const rootRoute = createRootRoute({ component: App, notFoundComponent: App });
 const routes = [
@@ -23,6 +30,7 @@ const routes = [
   "/budget",
   "/parts",
   "/research",
+  ...documentPages.map(([path]) => `/${path}`),
 ].map((path) => createRoute({ getParentRoute: () => rootRoute, path }));
 const router = createRouter({
   routeTree: rootRoute.addChildren(routes),

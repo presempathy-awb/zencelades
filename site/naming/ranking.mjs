@@ -1,11 +1,11 @@
 import { defaultWeights, weightedScore, rememberNames } from "./ranking-state.mjs";
-
 import { reviewDimensions, reviewLabels as labels, chatgptWeights, definitions, reviewScores, reviewScore, averageWeights, migrateReviews, applyReviews, rankReviewed as rankNames } from "./review-state.mjs";
-
+/** @param {Document | ShadowRoot} root */
+export async function initRanking(root = document) {
 const project = document.documentElement.dataset.project ?? "thatsnozorb";
 const storageKey = project === "thatsnozorb" ? "enceladus-naming-shelves-v1" : `${project}-naming-shelves-v1`;
-const host = document.querySelector("#name-studio");
-const status = document.querySelector("#ranking-status");
+const host = root.querySelector("#name-studio");
+const status = root.querySelector("#ranking-status");
 let state = { names: {}, current: [], weights: [...defaultWeights] };
 let visible = 40;
 let ready = false;
@@ -90,8 +90,8 @@ function card(candidate, rank) {
   }));
   buttons.append(action("Roll 40 relatives", () => {
     if (candidate.name.length > 24) { status.textContent = "For relatives, submit a shorter seed of up to 24 letters."; return; }
-    document.dispatchEvent(new CustomEvent("naming:submit", { detail: { words: [candidate.name] } }));
-    document.querySelector("#palette-editor").scrollIntoView({ behavior: "instant" });
+    root.dispatchEvent(new CustomEvent("naming:submit", { detail: { words: [candidate.name] } }));
+    root.querySelector("#palette-editor").scrollIntoView({ behavior: "instant" });
   }));
   const check = action("Research name", () => research(candidate, check)); buttons.append(check);
   article.append(buttons);
@@ -148,33 +148,33 @@ function card(candidate, rank) {
   article.append(details); return article;
 }
 function renderShelf(id, candidates) {
-  const shelf = document.querySelector(id); shelf.replaceChildren();
+  const shelf = root.querySelector(id); shelf.replaceChildren();
   for (const candidate of rankNames(candidates, state.review_weights)) shelf.append(card(candidate));
   if (!candidates.length) shelf.append(node("p", "Nothing here yet. Saved names stay between rolls."));
 }
 function render() {
   const names = Object.values(state.names);
-  const collection = document.querySelector("#ranking-collection").value;
-  const query = document.querySelector("#ranking-search").value.toLowerCase().trim();
+  const collection = root.querySelector("#ranking-collection").value;
+  const query = root.querySelector("#ranking-search").value.toLowerCase().trim();
   let filtered = names.filter(c => !c.forgotten && (c.report?.verdict ?? c.verdict) !== "taken" && (!query || `${c.name} ${c.mix ?? ""}`.toLowerCase().includes(query)));
   if (collection === "current") filtered = filtered.filter(c => state.current.includes(c.name));
   else if (collection === "revivals") filtered = filtered.filter(c => c.model_favorites?.length);
   else if (collection !== "all") filtered = filtered.filter(c => c.collection === collection);
   const ranked = rankNames(filtered, state.review_weights);
-  const list = document.querySelector("#ranked-names"); list.replaceChildren();
+  const list = root.querySelector("#ranked-names"); list.replaceChildren();
   ranked.slice(0, visible).forEach((candidate, index) => list.append(card(candidate, index + 1)));
-  document.querySelector("#ranking-count").textContent = `${ranked.length} names · showing ${Math.min(visible, ranked.length)} · rankings update with the weights`;
-  document.querySelector("#ranking-more").hidden = ranked.length <= visible;
+  root.querySelector("#ranking-count").textContent = `${ranked.length} names · showing ${Math.min(visible, ranked.length)} · rankings update with the weights`;
+  root.querySelector("#ranking-more").hidden = ranked.length <= visible;
   renderShelf("#codex-favorites", names.filter(c => c.favorite && !c.forgotten));
   for (const reviewer of ["chatgpt", "grok"]) renderShelf(`#${reviewer}-revivals`, names.filter(c => !c.forgotten && (c.report?.verdict ?? c.verdict) !== "taken" && c.model_favorites?.includes(reviewer)));
   renderShelf("#andrew-creations", names.filter(c => c.creation));
   const archived = names.filter(c => c.forgotten || (c.report?.verdict ?? c.verdict) === "taken" || (c.collection === "Live roll" && !state.current.includes(c.name)));
-  const archive = document.querySelector("#forgotten-names"); archive.replaceChildren();
-  document.querySelector("#forgotten-count").textContent = `Forgotten / earlier rolls · ${archived.length}`;
+  const archive = root.querySelector("#forgotten-names"); archive.replaceChildren();
+  root.querySelector("#forgotten-count").textContent = `Forgotten / earlier rolls · ${archived.length}`;
   for (const candidate of rankNames(archived, state.review_weights)) archive.append(card(candidate));
 }
 function renderWeights() {
-  const list = document.querySelector("#score-weights"); list.replaceChildren();
+  const list = root.querySelector("#score-weights"); list.replaceChildren();
   labels.forEach((label, i) => {
     const field = node("label", label); const input = node("input"); input.type = "range"; input.min = "0"; input.max = "100"; input.step = ".1"; input.value = state.review_weights[i]; input.setAttribute("aria-label", `${label} weight`);
     const output = node("output"); output.dataset.weight = i;
@@ -185,37 +185,37 @@ function renderWeights() {
 }
 function updateWeightLabels() {
   const total = state.review_weights.reduce((a, b) => a + b, 0);
-  document.querySelectorAll("[data-weight]").forEach(output => {
+  root.querySelectorAll("[data-weight]").forEach(output => {
     const index = Number(output.dataset.weight); output.textContent = total ? `${(state.review_weights[index] / total * 100).toFixed(1)}%` : "0% · unranked";
   });
 }
-document.querySelector("#weights-reset").addEventListener("click", () => { state.review_weights = [...startingWeights]; save(); renderWeights(); render(); });
-for (const reviewer of ["chatgpt", "grok", "average"]) document.querySelector(`#weights-${reviewer}`).addEventListener("click", () => {
+root.querySelector("#weights-reset").addEventListener("click", () => { state.review_weights = [...startingWeights]; save(); renderWeights(); render(); });
+for (const reviewer of ["chatgpt", "grok", "average"]) root.querySelector(`#weights-${reviewer}`).addEventListener("click", () => {
   if (!presets[reviewer]) { status.textContent = "That weight proposal has not arrived yet."; return; }
   state.review_weights = [...presets[reviewer]]; save(); renderWeights(); render();
   status.textContent = `${reviewer === "average" ? "Mean of the two normalized weight proposals" : reviewer === "grok" ? "Grok’s suggested weights" : "ChatGPT’s suggested weights"} applied. Keep moving the sliders to make it yours.`;
 });
-document.querySelector("#ranking-collection").addEventListener("change", () => { visible = 40; render(); });
-document.querySelector("#ranking-search").addEventListener("input", () => { visible = 40; render(); });
-document.querySelector("#ranking-more").addEventListener("click", () => { visible += 40; render(); });
-document.querySelector("#submit-creations").addEventListener("submit", event => {
+root.querySelector("#ranking-collection").addEventListener("change", () => { visible = 40; render(); });
+root.querySelector("#ranking-search").addEventListener("input", () => { visible = 40; render(); });
+root.querySelector("#ranking-more").addEventListener("click", () => { visible += 40; render(); });
+root.querySelector("#submit-creations").addEventListener("submit", event => {
   event.preventDefault();
-  const words = [...new Set(document.querySelector("#creation-words").value.toLowerCase().split(/[\s,]+/).filter(Boolean))];
+  const words = [...new Set(root.querySelector("#creation-words").value.toLowerCase().split(/[\s,]+/).filter(Boolean))];
   if (!words.length || words.length > 20 || words.some(word => !/^[a-z]{2,24}$/.test(word))) { status.textContent = "Enter 1–20 names, each 2–24 letters, separated by spaces or commas."; return; }
   rememberNames(state, words.map(name => ({ name, creation: true, collection: "Andrew's creations", source: "Andrew's creation" })));
-  save(); render(); document.dispatchEvent(new CustomEvent("naming:submit", { detail: { words } }));
+  save(); render(); root.dispatchEvent(new CustomEvent("naming:submit", { detail: { words } }));
 });
-document.querySelector("#shelves-export").addEventListener("click", () => {
+root.querySelector("#shelves-export").addEventListener("click", () => {
   const url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: "application/json" }));
   const link = node("a"); link.href = url; link.download = "moon-naming-shelves.json"; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 function receiveRoll(candidates) {
   rememberNames(state, candidates.map(c => ({ ...c, collection: "Live roll", source: "Shakesplurian live roll" })), true);
   applyReviews(state, reviewData);
-  document.querySelector("#ranking-collection").value = "current"; visible = 40; save(); render();
+  root.querySelector("#ranking-collection").value = "current"; visible = 40; save(); render();
   status.textContent = `${candidates.length} new names saved. Earlier rolls and special shelves are preserved. Unreviewed names await scores; original estimates remain in their details.`;
 }
-document.addEventListener("naming:roll", event => { if (ready) receiveRoll(event.detail); else pendingRolls.push(event.detail); });
+root.addEventListener("naming:roll", event => { if (ready) receiveRoll(event.detail); else pendingRolls.push(event.detail); });
 
 try {
   const [researchResponse, historyResponse, reviewsResponse] = await Promise.all([fetch("/naming/research-rolls.json"), fetch("/naming/report.json"), fetch("/naming/reviews.json")]);
@@ -230,7 +230,7 @@ try {
   const saved = localStorage.getItem(storageKey);
   if (research.weights) { weightedScore(Array(8).fill(5), research.weights); if (!saved) state.weights = [...research.weights]; }
   const collections = new Set([...research.authored, ...research.groups.flatMap(g => g.candidates)].map(c => c.collection));
-  const choices = document.querySelector("#ranking-collection");
+  const choices = root.querySelector("#ranking-collection");
   for (const collection of collections) { if (collection && ![...choices.options].some(o => o.value === collection)) choices.add(new Option(collection, collection)); }
   if (saved) {
     const parsed = JSON.parse(saved);
@@ -249,10 +249,13 @@ try {
   baselines.cryzorcean = [10,8,9,9,10,7,8,10];
   migrateReviews(state, baselines); applyReviews(state, reviewData);
   if (!saved && !research.weights) state.review_weights = [...startingWeights];
-  const glossary = document.querySelector("#score-definitions");
+  const glossary = root.querySelector("#score-definitions");
   labels.forEach((label, index) => glossary.append(node("dt", label), node("dd", definitions[index])));
-  document.querySelector("#weight-rationale").textContent = `ChatGPT: ${reviewData.weight_rationale?.chatgpt ?? "Half the weight stays on ChatGPT preference, with Grok adding an independent taste signal. The remaining categories balance a usable spoken name with a coherent artwork story."} Grok: ${reviewData.weight_rationale?.grok ?? "Proposal pending."}`;
-  ready = true; host.removeAttribute("aria-busy"); host.querySelectorAll("button, input, select, textarea").forEach(control => { control.disabled = false; }); document.querySelector("#weights-grok").disabled = !presets.grok; document.querySelector("#weights-average").disabled = !presets.average; renderWeights(); render(); save();
+  root.querySelector("#weight-rationale").textContent = `ChatGPT: ${reviewData.weight_rationale?.chatgpt ?? "Half the weight stays on ChatGPT preference, with Grok adding an independent taste signal. The remaining categories balance a usable spoken name with a coherent artwork story."} Grok: ${reviewData.weight_rationale?.grok ?? "Proposal pending."}`;
+  ready = true; host.removeAttribute("aria-busy"); host.querySelectorAll("button, input, select, textarea").forEach(control => { control.disabled = false; }); root.querySelector("#weights-grok").disabled = !presets.grok; root.querySelector("#weights-average").disabled = !presets.average; renderWeights(); render(); save();
   status.textContent = "Names loaded. Shared scores average both reviewers; preferences are separate. Old water/light scores remain archived, and edits to unchanged categories are preserved. Scores are creative judgments, not availability claims. Shelves and weights are saved in this browser; export a backup to keep a portable copy.";
   for (const candidates of pendingRolls) receiveRoll(candidates);
 } catch (error) { status.textContent = `${error.message}. Saved storage has not been overwritten.`; }
+}
+
+if (typeof document !== "undefined" && document.getElementById("name-studio")) void initRanking();

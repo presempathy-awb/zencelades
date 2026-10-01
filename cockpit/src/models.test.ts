@@ -44,10 +44,16 @@ test("sphere size changes shell, holder height and dimensions without scaling th
           const ring = scene.getMeshByName("seat-loop-nominal-six-foot-unrated")!;
           ring.computeWorldMatrix(true);
           expect(ring.getBoundingInfo().boundingBox.centerWorld.y).toBeCloseTo(
-            diameter === 2.5 ? 0.847725021 : 0.510936234,
+            diameter === 2.5 ? 0.768926625 : 0.442307812,
             4,
           );
           const torso = scene.getMeshByName("participant-torso-envelope")!;
+          const padding = scene.getMeshByName("broad-contact-padding-envelope")!;
+          padding.computeWorldMatrix(true);
+          expect(padding.getBoundingInfo().boundingBox.centerWorld.y).toBeCloseTo(
+            ring.getBoundingInfo().boundingBox.centerWorld.y,
+            5,
+          );
           torso.computeWorldMatrix(true);
           const human = torso.getBoundingInfo().boundingBox;
           expect(human.maximumWorld.y - human.minimumWorld.y).toBeCloseTo(0.55, 5);

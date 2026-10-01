@@ -70,7 +70,7 @@ export default function MediaView(): JSX.Element {
         <a href="/attachments/Zencelades-3D-Schematics.pdf">3D schematic packet · PDF</a>
         <a href="/application/">Grant application material</a>
         <a href="/open-source/">Open source & AI disclosure</a>
-        <a href="/models/">Standalone gallery ↗</a>
+        <a href="/models/#files">Editable model downloads</a>
       </footer>
     </div>
   );
@@ -94,7 +94,7 @@ export function ShowtimeView(): JSX.Element {
       <div className="showtime-bar">
         <span>Showtime · the projection stage</span>
         <a href="/showtime/" target="_blank" rel="noreferrer">
-          Open full stage ↗
+          Open Showtime in a new tab ↗
         </a>
       </div>
       <p className="showtime-note">

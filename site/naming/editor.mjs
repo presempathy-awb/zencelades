@@ -1,8 +1,9 @@
 import { activeWords, removeWord, removeFamily, refillFamily, addCatalogFamilies } from "./editor-state.mjs";
-
-const host = document.querySelector("#palette-editor");
-const status = document.querySelector("#palette-status");
-const results = document.querySelector("#fresh-names");
+/** @param {Document | ShadowRoot} root */
+export async function initEditor(root = document) {
+const host = root.querySelector("#palette-editor");
+const status = root.querySelector("#palette-status");
+const results = root.querySelector("#fresh-names");
 const project = document.documentElement.dataset.project ?? "thatsnozorb";
 const storageKey = project === "thatsnozorb" ? "enceladus-naming-palette-v1" : `${project}-naming-palette-v1`;
 let state;
@@ -52,7 +53,7 @@ async function operation(action) {
 }
 
 function render() {
-  const list = document.querySelector("#editable-families");
+  const list = root.querySelector("#editable-families");
   list.replaceChildren();
   for (const family of state.families) {
     const field = element("fieldset", undefined, "palette-family");
@@ -95,31 +96,31 @@ function render() {
     field.append(words, refill);
     list.append(field);
   }
-  for (const node of document.querySelectorAll(".api-action")) node.disabled = busy || !online;
-  document.querySelector("#add-family").disabled = busy || state.families.length >= 24;
-  document.querySelector("#palette-reset").disabled = busy;
-  document.querySelector("#add-cosmic-life").disabled = busy;
+  for (const node of root.querySelectorAll(".api-action")) node.disabled = busy || !online;
+  root.querySelector("#add-family").disabled = busy || state.families.length >= 24;
+  root.querySelector("#palette-reset").disabled = busy;
+  root.querySelector("#add-cosmic-life").disabled = busy;
   updateCount();
 }
 
 function updateCount() {
-  document.querySelector("#palette-count").textContent = `${state.families.filter(family => family.enabled && family.selected.length).length} active families · ${activeWords(state).length} checked words · ${state.excluded.length} words removed`;
+  root.querySelector("#palette-count").textContent = `${state.families.filter(family => family.enabled && family.selected.length).length} active families · ${activeWords(state).length} checked words · ${state.excluded.length} words removed`;
 }
 
 function renderNames(candidates) {
   results.replaceChildren(element("p", `${candidates.length} names added to the ranked studio. Earlier rolls are remembered.`));
   const link = element("a", "See the ranked roll and eight scores"); link.href = "#name-studio"; results.append(link);
-  document.dispatchEvent(new CustomEvent("naming:roll", { detail: candidates }));
+  root.dispatchEvent(new CustomEvent("naming:roll", { detail: candidates }));
 }
 async function roll(seedWords = []) {
   status.textContent = "Shakesplurian is meshing the checked words…";
   const seed = crypto.getRandomValues(new Uint32Array(1))[0];
-  const response = await api("roll", { count: 40, word_count: Number(document.querySelector("#palette-word-count").value), mesh_level: Number(document.querySelector("#palette-mesh").value), seed_words: seedWords, seed });
+  const response = await api("roll", { count: 40, word_count: Number(root.querySelector("#palette-word-count").value), mesh_level: Number(root.querySelector("#palette-mesh").value), seed_words: seedWords, seed });
   renderNames(response.candidates ?? []);
   status.textContent = `${response.candidates?.length ?? 0} names returned. ${response.message}`;
 }
-document.querySelector("#palette-roll").addEventListener("click", () => operation(() => roll()));
-document.addEventListener("naming:submit", event => {
+root.querySelector("#palette-roll").addEventListener("click", () => operation(() => roll()));
+root.addEventListener("naming:submit", event => {
   if (!online || busy) { status.textContent = "Wait for the current request or API connection, then use Roll 40 relatives from the saved name."; return; }
   const words = event.detail.words.filter(word => !state.excluded.includes(word));
   if (words.length !== event.detail.words.length) { status.textContent = "A submitted word was removed from the palette. Restore it before using it as a seed; its saved creation is preserved."; return; }
@@ -130,13 +131,13 @@ document.addEventListener("naming:submit", event => {
   operation(() => roll(words));
 });
 
-document.querySelector("#add-cosmic-life").addEventListener("click", () => {
+root.querySelector("#add-cosmic-life").addEventListener("click", () => {
   const result = addCatalogFamilies(state, catalog, ["protoplasm_early_life", "life_growth", "genesis_emergence", "space_travel", "astral_projection"]);
   save(`Added ${result.added} families. ${result.unchecked ? `${result.unchecked} new words start unchecked to stay within the 256-word limit. ` : ""}Existing choices and × removals are preserved. Families already present or removed stay as they were; the palette holds 24 families.`);
   render();
 });
 
-document.querySelector("#water-play-refresh").addEventListener("click", () => {
+root.querySelector("#water-play-refresh").addEventListener("click", () => {
   const fresh = catalog.find(family => family.id === "play_delight");
   if (!fresh) return;
   const existing = state.families.find(family => family.id === "play_delight");
@@ -153,28 +154,28 @@ document.querySelector("#water-play-refresh").addEventListener("click", () => {
   save("Water-play words added; earlier choices and removals are preserved."); render();
 });
 
-document.querySelector("#palette-reset").addEventListener("click", () => {
+root.querySelector("#palette-reset").addEventListener("click", () => {
   state = { families: structuredClone(catalog.slice(0, 12)), excluded: [], removedFamilies: [] };
   save("Original twelve families restored. Removed words can now return."); render();
 });
 
-const dialog = document.querySelector("#family-dialog");
-document.querySelector("#add-family").addEventListener("click", () => {
-  const choices = document.querySelector("#family-choice"); choices.replaceChildren();
+const dialog = root.querySelector("#family-dialog");
+root.querySelector("#add-family").addEventListener("click", () => {
+  const choices = root.querySelector("#family-choice"); choices.replaceChildren();
   choices.append(new Option("Write a new family", "custom"));
   for (const family of catalog) {
     if (!state.families.some(item => item.id === family.id) && !state.removedFamilies.includes(family.id)) choices.append(new Option(family.label, family.id));
   }
-  document.querySelector("#custom-family-fields").hidden = false;
+  root.querySelector("#custom-family-fields").hidden = false;
   dialog.showModal();
 });
-document.querySelector("#family-choice").addEventListener("change", event => {
-  document.querySelector("#custom-family-fields").hidden = event.target.value !== "custom";
+root.querySelector("#family-choice").addEventListener("change", event => {
+  root.querySelector("#custom-family-fields").hidden = event.target.value !== "custom";
 });
-document.querySelector("#family-cancel").addEventListener("click", () => dialog.close());
-document.querySelector("#family-form").addEventListener("submit", event => {
+root.querySelector("#family-cancel").addEventListener("click", () => dialog.close());
+root.querySelector("#family-form").addEventListener("submit", event => {
   event.preventDefault();
-  const selected = document.querySelector("#family-choice").value;
+  const selected = root.querySelector("#family-choice").value;
   if (selected !== "custom") {
     if (!online) { status.textContent = "Start the naming API to add a catalog family."; dialog.close(); return; }
     operation(async () => {
@@ -186,13 +187,13 @@ document.querySelector("#family-form").addEventListener("submit", event => {
     });
     return;
   }
-  const label = document.querySelector("#family-label").value.trim();
-  const words = [...new Set(document.querySelector("#family-words").value.toLowerCase().split(/[\s,]+/).filter(Boolean))];
+  const label = root.querySelector("#family-label").value.trim();
+  const words = [...new Set(root.querySelector("#family-words").value.toLowerCase().split(/[\s,]+/).filter(Boolean))];
   if (!label || label.length > 80 || !words.length || words.length > 32 || words.some(word => !/^[a-z]{2,24}$/.test(word))) {
-    document.querySelector("#family-error").textContent = "Name the family and enter 1–32 words, each 2–24 letters."; return;
+    root.querySelector("#family-error").textContent = "Name the family and enter 1–32 words, each 2–24 letters."; return;
   }
   const filtered = words.filter(word => !state.excluded.includes(word));
-  if (!filtered.length) { document.querySelector("#family-error").textContent = "These words were removed earlier. Use different words or restore the original palette."; return; }
+  if (!filtered.length) { root.querySelector("#family-error").textContent = "These words were removed earlier. Use different words or restore the original palette."; return; }
   state.families.push({ id: `custom_${crypto.randomUUID().slice(0, 8)}`, label, enabled: true, words: filtered, selected: [...filtered], pool: [] });
   save(`Added ${label}.`); dialog.close(); render();
 });
@@ -211,3 +212,6 @@ try {
   catch { status.textContent = "Palette editing is ready. This static preview has no naming API; open the workbench preview to refill, add catalog families, roll and check names."; }
   render();
 } catch (error) { status.textContent = error.message; }
+}
+
+if (typeof document !== "undefined" && document.getElementById("palette-editor")) void initEditor();

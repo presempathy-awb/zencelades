@@ -1,6 +1,19 @@
 import { expect, test } from "bun:test";
 import { basketLayout } from "./basket-model";
 
+test.each([2.5, 3] as const)(
+  "padding meets the %s m sphere without metal entering the shell",
+  (diameter) => {
+    const layout = basketLayout(diameter);
+    const nearestPadding = Math.hypot(layout.ringRadius, layout.centreY - layout.ringY) - 0.055;
+    expect(nearestPadding).toBeCloseTo(diameter / 2, 6);
+    expect(Math.hypot(layout.ringRadius, layout.centreY - layout.ringY) - 0.025).toBeGreaterThan(
+      diameter / 2,
+    );
+    expect(layout.ringY).toBeGreaterThan(layout.centreY - diameter / 2);
+  },
+);
+
 test("lander leaves the negative-Z entrance between two side legs", () => {
   const { corners } = basketLayout();
   const front = corners.filter(([, , z]) => z < 0);

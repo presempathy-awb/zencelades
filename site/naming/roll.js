@@ -1,7 +1,9 @@
-const search = document.querySelector('#name-search');
-const mesh = document.querySelector('#mesh-level');
-const count = document.querySelector('#name-count');
-const groups = [...document.querySelectorAll('.roll-mesh')].map((element) => ({
+/** @param {Document | ShadowRoot} root */
+export async function initRoll(root = document) {
+const search = root.querySelector('#name-search');
+const mesh = root.querySelector('#mesh-level');
+const count = root.querySelector('#name-count');
+const groups = [...root.querySelectorAll('.roll-mesh')].map((element) => ({
   element,
   candidates: [...element.querySelectorAll('.candidate')].map((candidate) => ({
     element: candidate,
@@ -29,3 +31,7 @@ function filterRoll() {
 search.addEventListener('input', filterRoll);
 mesh.addEventListener('change', filterRoll);
 filterRoll();
+
+}
+
+if (typeof document !== "undefined" && document.getElementById("name-search")) void initRoll();

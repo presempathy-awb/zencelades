@@ -1,0 +1,8 @@
+:host { display:block; color:#edf4f4; background:#0a1922; font:1rem/1.65 "Avenir Next",Avenir,Helvetica,sans-serif; color-scheme:dark; }
+.legacy-main { max-width:90rem; margin:auto; padding:clamp(1.25rem,4vw,3rem); }
+.legacy-main img,.legacy-main video { max-width:100%; height:auto; }
+.legacy-main h1 { overflow-wrap:anywhere; }
+.legacy-main a:focus-visible,.legacy-main button:focus-visible { outline:3px solid #99deed; outline-offset:3px; }
+.legacy-main [hidden] { display:none; }
+.legacy-main .table-scroll { overflow-x:auto; }
+@media(prefers-reduced-motion:reduce) { * { scroll-behavior:auto; } }

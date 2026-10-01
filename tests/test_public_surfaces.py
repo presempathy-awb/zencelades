@@ -1,6 +1,10 @@
 from html.parser import HTMLParser
 
-from scripts.build_site import proposal_budget_html, publish_public_surfaces
+from scripts.build_site import (
+    proposal_budget_html,
+    publish_cockpit_pages,
+    publish_public_surfaces,
+)
 
 
 def test_proposal_budget_displays_purchases_once_and_contingency_separately():
@@ -51,6 +55,26 @@ def test_proposal_budget_displays_purchases_once_and_contingency_separately():
         "$1,654",
     ]
     assert "heads &amp; mounts" in rendered
+
+
+def test_page_entry_uses_cockpit_and_preserves_complete_content_and_assets(tmp_path):
+    (tmp_path / "open-source").mkdir()
+    (tmp_path / "open-source/index.html").write_text(
+        '<main><h1>Credits</h1><a href="LICENSE.txt">License</a></main>'
+    )
+    (tmp_path / "open-source/LICENSE.txt").write_text("existing license bytes")
+    shell = tmp_path / "index.html"
+    shell.write_text(
+        '<div id="root"></div><script src="/studio-assets/app.js"></script>'
+    )
+    publish_cockpit_pages(tmp_path, shell)
+    assert (
+        tmp_path / "page-content/open-source.html"
+    ).read_text() == '<main><h1>Credits</h1><a href="LICENSE.txt">License</a></main>'
+    assert (tmp_path / "open-source/index.html").read_text() == shell.read_text()
+    assert (
+        tmp_path / "open-source/LICENSE.txt"
+    ).read_text() == "existing license bytes"
 
 
 def test_spa_home_keeps_studio_artwork_and_existing_files(tmp_path):

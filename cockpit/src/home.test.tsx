@@ -9,7 +9,7 @@ test("artwork fits within the cockpit landmark while retaining renders and narra
   expect(html).not.toContain('<header class="masthead"');
   expect(html).toContain("Step inside another world.");
   expect(html).toContain("The audience makes the show.");
-  expect(html).toContain("concept-suspended.png");
+  expect(html).toContain("concept-suspended-hoop-v3.png");
   expect(html).toContain("concept-landed.png");
   expect(html).toContain("zencelades-2p5m-suspended-iso.png");
   expect(html).toContain("zencelades-2p5m-lander-iso.png");

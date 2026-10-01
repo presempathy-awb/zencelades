@@ -19,7 +19,7 @@ import {
   Images,
   Play,
 } from "lucide-react";
-import { type JSX, lazy, Suspense, useRef, useState } from "react";
+import { type JSX, lazy, Suspense, useEffect, useRef, useState } from "react";
 import BudgetView, { NumberField } from "./BudgetView";
 import {
   baseline,
@@ -37,6 +37,8 @@ import { chooseModel } from "./option-context";
 import { BuildBoard } from "./BuildBoard";
 import HomePage from "./HomePage";
 import MediaView, { ShowtimeView } from "./MediaView";
+import DocumentPages from "./DocumentPages";
+import { cockpitHref, documentPages } from "./page-routes";
 
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
@@ -63,9 +65,16 @@ export default function App(): JSX.Element {
   const [referenceModel, setReferenceModel] = useState("scenario");
   const fileInput = useRef<HTMLInputElement>(null);
   const path = useRouterState({ select: (state) => state.location.pathname });
+  const routeLocation = useRouterState({ select: (state) => state.location.href });
+  useEffect(() => {
+    const section = new URLSearchParams(routeLocation.split("?")[1]).get("section");
+    if (section) document.getElementById(section)?.scrollIntoView({ behavior: "instant" });
+  }, [routeLocation]);
   const modelVisible =
     path === "/model" || (path === "/" && window.location.pathname.startsWith("/studio"));
-  const presentation = (path === "/" && !modelVisible) || path === "/media" || path === "/showtime";
+  const documentPage = documentPages.some(([id]) => path === `/${id}`);
+  const presentation =
+    (path === "/" && !modelVisible) || path === "/media" || path === "/showtime" || documentPage;
   const option = selectedOption(scenario);
   const result = estimate(scenario);
   const update = (next: Scenario): boolean => {
@@ -121,7 +130,31 @@ export default function App(): JSX.Element {
     );
   };
   return (
-    <div className={`studio ${presentation ? "media-cockpit" : ""}`}>
+    <div
+      className={`studio ${presentation ? "media-cockpit" : ""}`}
+      onClick={(event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        )
+          return;
+        const link = event.nativeEvent
+          .composedPath()
+          .find((node) => node instanceof HTMLAnchorElement) as HTMLAnchorElement | undefined;
+        if (!link || link.hasAttribute("download") || link.target === "_blank") return;
+        const href = link.getAttribute("href");
+        if (!href) return;
+        const destination = cockpitHref(href, "/");
+        if (destination.startsWith("/#")) {
+          event.preventDefault();
+          window.location.hash = destination.slice(1);
+        }
+      }}
+    >
       <button
         type="button"
         className="skip-link"
@@ -230,6 +263,23 @@ export default function App(): JSX.Element {
             </Link>
           ))}
         </div>
+        <label className="page-picker">
+          <span>Explore</span>
+          <select
+            aria-label="More project pages"
+            value={documentPage ? path : ""}
+            onChange={(event) => {
+              if (event.target.value) window.location.hash = event.target.value;
+            }}
+          >
+            <option value="">More project pages…</option>
+            {documentPages.map(([id, title]) => (
+              <option key={id} value={`/${id}`}>
+                {title}
+              </option>
+            ))}
+          </select>
+        </label>
         {!presentation && (
           <Button
             variant="ghost"
@@ -303,6 +353,7 @@ export default function App(): JSX.Element {
           </aside>
         )}
         <main id="workspace" className="workspace" tabIndex={-1}>
+          <DocumentPages path={path} />
           <div className="scene-container" hidden={!modelVisible}>
             <Suspense fallback={<p className="loading">Loading the 3D workspace…</p>}>
               <SceneView
@@ -335,7 +386,7 @@ export default function App(): JSX.Element {
             </Suspense>
           </div>
           <Suspense fallback={<p className="loading">Loading workspace…</p>}>
-            {path === "/" && !modelVisible ? (
+            {documentPage ? null : path === "/" && !modelVisible ? (
               <HomePage />
             ) : path === "/media" ? (
               <MediaView />
@@ -450,7 +501,7 @@ export default function App(): JSX.Element {
                 </label>
               )}
             </section>
-            <a href="/pricing/">Open the standalone estimate ↗</a>
+            <a href="/pricing/">Open the full pricing study</a>
           </aside>
         )}
       </div>

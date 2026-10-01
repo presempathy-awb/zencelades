@@ -35,7 +35,9 @@ export function basketLayout(diameter: SphereDiameter = 3): {
     centreY = 1.7;
   const ringRadius = (6 * 0.3048) / 2,
     cornerRadius = 1.8;
-  const ringY = centreY - Math.sqrt(sphereRadius ** 2 - ringRadius ** 2);
+  // Six feet is the nominal tube centreline. The 55 mm padding envelope
+  // touches the shell; neither the padding nor the steel cuts into it.
+  const ringY = centreY - Math.sqrt((sphereRadius + 0.055) ** 2 - ringRadius ** 2);
   const triangleY = ringY - 0.09;
   const corners: Point[] = [0, 1, 2].map((index) => {
     // Front is -Z: two flanking corners and the third at the +Z rear.
@@ -116,7 +118,7 @@ export function basketGeometry(
   );
   g.tube(
     "broad-contact-padding-envelope",
-    circle(layout.ringRadius, layout.ringY + 0.025),
+    circle(layout.ringRadius, layout.ringY),
     0.055,
     "#659e97",
   );
@@ -148,7 +150,7 @@ export function basketGeometry(
     g.beam(
       `seat-interface-envelope-${index}`,
       mid,
-      [mid[0] * 1.13, layout.ringY, mid[2] * 1.13],
+      [(mid[0] * layout.ringRadius) / 0.9, layout.ringY, (mid[2] * layout.ringRadius) / 0.9],
       0.05,
       "#659e97",
     );

@@ -1,5 +1,9 @@
 # Media cockpit — October 1 verification
 
+Historical P099 receipt. P101 subsequently brings the remaining public pages
+into the cockpit; see [current page behavior](cockpit-pages.md). Original page
+content is retained under page-content, while old URLs now open cockpit views.
+
 Andrew clarified that the cockpit itself should be the main experience, with
 the artwork and all media inside it. P099 refines the previous SPA homepage.
 The existing shell now remains visible across Overview, Media, Showtime, Model,

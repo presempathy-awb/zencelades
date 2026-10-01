@@ -1,0 +1,59 @@
+.document-page {
+  min-height: 100%;
+}
+.studio .toolbar {
+  flex-wrap: wrap;
+}
+.studio .toolbar > div {
+  flex: 1 1 34rem;
+}
+.document-page[hidden] {
+  display: none;
+}
+.document-page > :is(p, div[role="alert"]) {
+  padding: 1.5rem;
+  color: var(--cockpit-ink);
+}
+.document-host {
+  --ink: #edf4f4;
+  --muted: #c4d5db;
+  --ocean: #0a1922;
+  --surface: #122b38;
+  --line: #446473;
+  --accent: #99deed;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Avenir Next", Avenir, Helvetica, sans-serif;
+  display: block;
+  color: var(--ink);
+  background: var(--ocean);
+  font: 1rem / 1.65 var(--sans);
+}
+.page-picker {
+  color: var(--cockpit-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-inline: 0.75rem;
+  flex-shrink: 0;
+}
+.page-picker select {
+  min-height: 2.75rem;
+  max-width: 13rem;
+  background: var(--cockpit-bg);
+  color: var(--cockpit-ink);
+  border: 1px solid var(--cockpit-line);
+  padding: 0.5rem;
+}
+@media (max-width: 48rem) {
+  .studio .header-actions {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  .page-picker {
+    width: 100%;
+  }
+  .page-picker select {
+    flex: 1;
+    max-width: none;
+  }
+}

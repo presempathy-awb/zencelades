@@ -50,6 +50,29 @@ def publish_public_surfaces(output: Path, source: Path, studio: Path) -> None:
         shutil.copytree(source / page, output / page, dirs_exist_ok=True)
 
 
+def publish_cockpit_pages(output: Path, shell: Path) -> None:
+    """Retain authored pages and serve their public URLs through the cockpit."""
+    content = output / "page-content"
+    content.mkdir(exist_ok=True)
+    for name in (
+        "application",
+        "mounts",
+        "grants",
+        "pricing",
+        "catalog",
+        "naming",
+        "name-concepts",
+        "open-source",
+        "about",
+        "models",
+        "showtime",
+    ):
+        page = output / name / "index.html"
+        if page.exists():
+            shutil.copyfile(page, content / f"{name}.html")
+            shutil.copyfile(shell, page)
+
+
 def build() -> None:
     v4 = json.loads((ROOT / "assets/v4-inventory.json").read_text())
     actual_v4 = collect()
@@ -91,6 +114,7 @@ def build() -> None:
         "concept-board.png": "source/uploads/ChatGPT Image Sep 30, 2026, 11_59_59 AM.png",
         "concept-landed.png": "docs/design/application/submission/01-concept-landed.png",
         "concept-suspended.png": "docs/design/application/submission/05-concept-suspended.png",
+        "concept-suspended-hoop-v3.png": "docs/design/application/submission/05-concept-suspended-hoop-v3.png",
         "film-poster.png": "deliveries/enceladus_v3/previews/six_views_same_atlas.png",
         "variant-a.png": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.png",
         "variant-b.png": "deliveries/enceladus_v3/drawings/v3_B_chassis_saddle_isometric.png",
@@ -273,6 +297,8 @@ def build() -> None:
             )
         if versioned != content:
             page.write_text(versioned)
+    publish_cockpit_pages(output, output / "index.html")
+    shutil.copyfile(ROOT / "site/page-shell.css", output / "page-content/shell.css")
     print(
         f"Built {output}: {len(entries)} original + {len(v4)} v4 byte-verified downloads and {len(previews)} media previews"
     )
