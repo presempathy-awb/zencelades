@@ -38,8 +38,8 @@ Guests can freely change their temporary draft, but reload restores the baseline
 and guest changes cannot mutate shared or account records. Help must explain
 whether changes are temporary, unsaved, saving, saved or rejected.
 
-The proposed small Go service and pgx dependency await Andrew's answer. Do not
-present that proposal as an installed service. The current studio has temporary
+Andrew approved the small Go service, gimmesomepaw and pgx on October 1 (P098).
+Implementation and deployment remain to be verified. The current studio has temporary
 in-memory scenarios and file import/export; no account-save endpoint exists.
 Required acceptance evidence remains:
 
