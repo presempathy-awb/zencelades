@@ -14,6 +14,33 @@ from scripts.assets import ROOT, inventory, sha256, verify_release
 from scripts.catalog_v4 import collect
 
 
+def proposal_budget_html(ledger: dict) -> str:
+    """Render the application ledger's line totals without adding rental costs."""
+    rows = []
+    totals = [0, 0]
+    for line in ledger["tier1"]["lines"]:
+        amounts = [line[bound] for bound in ("low", "high")]
+        totals = [total + amount for total, amount in zip(totals, amounts)]
+        rows.append(
+            f'<tr><th scope="row">{html.escape(line["item"])}</th>'
+            f"<td>{line['qty']}</td>"
+            + "".join(f"<td>${math.floor(value + 0.5):,}</td>" for value in amounts)
+            + "</tr>"
+        )
+    reserve = [value * ledger["contingency_percent"] / 100 for value in totals]
+    for label, amounts in (
+        ("Subtotal", totals),
+        (f"Contingency · {ledger['contingency_percent']}%", reserve),
+        ("Total · USD", [value + extra for value, extra in zip(totals, reserve)]),
+    ):
+        rows.append(
+            f'<tr><th scope="row" colspan="2">{html.escape(label)}</th>'
+            + "".join(f"<td>${math.floor(value + 0.5):,}</td>" for value in amounts)
+            + "</tr>"
+        )
+    return "\n".join(rows)
+
+
 def publish_public_surfaces(output: Path, source: Path, studio: Path) -> None:
     """Publish the artwork home and studio separately without removing retained files."""
     shutil.copytree(studio, output, dirs_exist_ok=True)
@@ -161,6 +188,12 @@ def build() -> None:
         (ROOT / "site/pricing/index.html")
         .read_text()
         .replace("@@PRICING_ROWS@@", "\n".join(pricing_rows))
+        .replace(
+            "@@GRANT_BUDGET@@",
+            proposal_budget_html(
+                json.loads((ROOT / "assets/grant-resource-ledger.json").read_text())
+            ),
+        )
     )
     (output / "pricing/index.html").write_text(pricing_html)
     template = (ROOT / "site/index.html").read_text()

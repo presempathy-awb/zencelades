@@ -1,11 +1,12 @@
 import { expect, test } from "bun:test";
-import { estimate, initialScenario, parseScenario } from "./scenario";
+import { baseline, estimate, initialScenario, parseScenario } from "./scenario";
 import { fundingSummary } from "./funding";
 
 test("possible grant and owner money never reduce cost or count as secured cash", () => {
   const scenario = initialScenario();
-  expect(scenario.selected).toBe("seed-zorb");
-  expect(estimate(scenario).total).toEqual([3000, 3000]);
+  expect(scenario.selected).toBe("love-burn");
+  expect(estimate(scenario).total[0]).toBeCloseTo(2378.4, 2);
+  expect(estimate(scenario).total[1]).toBeCloseTo(5241.6, 2);
   scenario.funding = {
     grantRequest: 1500,
     ownerPossible: 500,
@@ -13,14 +14,18 @@ test("possible grant and owner money never reduce cost or count as secured cash"
     confirmed: 0,
   };
   const funding = fundingSummary(scenario);
-  expect(funding.plannedGap).toEqual([500, 500]);
-  expect(funding.unsecured).toEqual([3000, 3000]);
-  expect(funding.overCap).toEqual([0, 0]);
-  expect(estimate(scenario).total).toEqual([3000, 3000]);
+  expect(funding.plannedGap[0]).toBe(0);
+  expect(funding.plannedGap[1]).toBeCloseTo(2741.6, 2);
+  expect(funding.unsecured).toEqual(estimate(scenario).total);
+  expect(funding.overCap[0]).toBe(0);
+  expect(funding.overCap[1]).toBeCloseTo(2241.6, 2);
+  expect(estimate(scenario).total[0]).toBeCloseTo(2378.4, 2);
   scenario.funding.confirmed = 500;
-  expect(fundingSummary(scenario).unsecured).toEqual([2500, 2500]);
+  expect(fundingSummary(scenario).unsecured[0]).toBeCloseTo(1878.4, 2);
+  expect(fundingSummary(scenario).unsecured[1]).toBeCloseTo(4741.6, 2);
   scenario.allowances[scenario.selected][0] = { low: 1300, high: 1400 };
-  expect(fundingSummary(scenario).overCap).toEqual([125, 250]);
+  expect(fundingSummary(scenario).overCap[0]).toBeCloseTo(938.4, 2);
+  expect(fundingSummary(scenario).overCap[1]).toBeCloseTo(3081.6, 2);
   expect(parseScenario(JSON.stringify(scenario))).toEqual(scenario);
 });
 
@@ -41,11 +46,16 @@ test("funding validation preserves zero and rejects negative, malformed and out-
       JSON.stringify({ ...scenario, funding: { ...scenario.funding, grantRequest: 0 } }),
     ).funding.grantRequest,
   ).toBe(0);
-  const legacy = { ...scenario, selected: "ground-sphere" } as Record<string, unknown>;
+  const legacy = {
+    ...scenario,
+    settings: { ...baseline.defaults },
+    selected: "ground-sphere",
+  } as Record<string, unknown>;
   delete legacy.funding;
   const allowances = { ...scenario.allowances };
   delete allowances["seed-surround"];
   delete allowances["seed-zorb"];
+  delete allowances["love-burn"];
   legacy.allowances = allowances;
   const restored = parseScenario(JSON.stringify(legacy));
   expect(restored.selected).toBe("ground-sphere");

@@ -161,6 +161,15 @@ export function partsForPlan(plan: PartsPlan, haze: boolean): PartsResult {
 
 /** Match catalog configuration/counts to the occupied studies that actually exist. */
 export function partsPlanForModel(plan: PartsPlan, id: string): PartsPlan {
+  if (id === "love-burn")
+    return {
+      ...plan,
+      configuration: "S25",
+      projectors: 2,
+      cameras: 2,
+      mounting: "stands",
+      choices: { ...plan.choices, host: "ZC-A01", "projector-class": "ZC-P01" },
+    };
   const studies: Record<string, Partial<PartsPlan>> = {
     "seed-zorb": { configuration: "G30", projectors: 3, cameras: 0 },
     "seed-surround": { configuration: "O30", projectors: 0, cameras: 0 },

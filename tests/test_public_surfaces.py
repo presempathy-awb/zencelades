@@ -1,4 +1,56 @@
-from scripts.build_site import publish_public_surfaces
+from html.parser import HTMLParser
+
+from scripts.build_site import proposal_budget_html, publish_public_surfaces
+
+
+def test_proposal_budget_displays_purchases_once_and_contingency_separately():
+    class Cells(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.text = []
+
+        def handle_data(self, data):
+            if data.strip():
+                self.text.append(data.strip())
+
+    rendered = proposal_budget_html(
+        {
+            "contingency_percent": 20,
+            "tier1": {
+                "lines": [
+                    {
+                        "item": "Two purchased heads & mounts",
+                        "qty": 2,
+                        "low": 998,
+                        "high": 1198,
+                    },
+                    {"item": "Holder", "qty": 1, "low": 60, "high": 180},
+                ]
+            },
+        }
+    )
+    cells = Cells()
+    cells.feed(rendered)
+    assert cells.text == [
+        "Two purchased heads & mounts",
+        "2",
+        "$998",
+        "$1,198",
+        "Holder",
+        "1",
+        "$60",
+        "$180",
+        "Subtotal",
+        "$1,058",
+        "$1,378",
+        "Contingency · 20%",
+        "$212",
+        "$276",
+        "Total · USD",
+        "$1,270",
+        "$1,654",
+    ]
+    assert "heads &amp; mounts" in rendered
 
 
 def test_home_and_studio_keep_distinct_entrypoints_and_existing_files(tmp_path):

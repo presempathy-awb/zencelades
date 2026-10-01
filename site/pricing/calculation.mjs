@@ -5,7 +5,7 @@ export function calculate(option, settings, capture) {
     if (!Number.isFinite(settings[key]) || settings[key] < low || settings[key] > high) throw new RangeError(`Invalid ${key}`);
   }
   if (!Number.isInteger(settings.days) || !Number.isInteger(option.projectors) || option.projectors < 0) throw new RangeError("Invalid count");
-  const rent = option.projectors * settings.days * settings.dayRate * (1 - settings.discount / 100);
+  const rent = option.projectorPricing === "purchase" ? 0 : option.projectors * settings.days * settings.dayRate * (1 - settings.discount / 100);
   let low = rent;
   let high = rent;
   for (const item of option.items) {
@@ -13,7 +13,7 @@ export function calculate(option, settings, capture) {
     low += item.low;
     high += item.high;
   }
-  const liveCapture = settings.capture && option.projectors > 0;
+  const liveCapture = option.projectorPricing !== "purchase" && settings.capture && option.projectors > 0;
   if (liveCapture) { low += capture.low; high += capture.high; }
   const subtotal = [Math.max(0, low - settings.credit), Math.max(0, high - settings.credit)];
   const contingency = subtotal.map(value => value * settings.contingency / 100);

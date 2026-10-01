@@ -35,6 +35,40 @@ export function buildModel(
     ...(BASKET_MODEL_IDS.includes(id) ? { sphereDiameter } : {}),
   };
   const result: BuiltModel = { root, target: [0, 1.7, 0], radius: 11, dimensions: [] };
+  if (id === "love-burn") {
+    seedGeometry(scene, g, "basket-aerial-rig", 0, 2.5);
+    root.metadata = {
+      ...root.metadata,
+      sphereDiameter: 2.5,
+      projectorCount: 2,
+      mounting: "stands",
+    };
+    for (const side of [-1, 1]) {
+      // Proposal's standard-throw study: four metres from shell to lens.
+      const x = side * 5.25;
+      g.box(`grant-projector-foot-${side}`, [0.8, 0.08, 0.8], [x, 0.04, 0]);
+      g.beam(`grant-projector-stand-${side}`, [x, 0.08, 0], [x, 1.7, 0], 0.05);
+      const head = g.box(
+        `grant-projector-head-${side}`,
+        [0.34, 0.16, 0.28],
+        [x, 1.7, 0],
+        "#202e39",
+      );
+      head.lookAt(new Vector3(0, 1.7, 0));
+      g.box(`grant-projector-cover-${side}`, [0.5, 0.022, 0.46], [x, 1.97, 0], "#738797");
+      g.box(`grant-phone-witness-${side}`, [0.07, 0.14, 0.02], [side * 0.5, 1.8, 0.4], "#202e39");
+    }
+    result.target = [0, 2.2, 0];
+    result.radius = 15;
+    result.dimensions = [
+      {
+        label: "2.5 m proposal sphere · stand layout, not fabrication dimensions",
+        a: [-1.25, 0, 1.8],
+        b: [1.25, 0, 1.8],
+      },
+    ];
+    return result;
+  }
   if (
     [
       "seed-surround",

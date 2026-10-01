@@ -47,6 +47,13 @@ export interface ModelStudy {
 const research = "Unpriced research study; geometry and reactions require review. ";
 export const MODEL_STUDIES: ModelStudy[] = [
   {
+    id: "love-burn",
+    label: "Love Burn · main proposal",
+    group: "Seed concepts",
+    budget: "love-burn",
+    note: "Grant budget basis: occupied 2.5 m zorb, common holder under the existing aerial rig, two purchased projectors on independent stands and two phone witnesses. The same holder accepts lander legs. Arm-mounted projection is an alternate upgrade. Product fit, support capacities, optics and operational acceptance remain to be verified.",
+  },
+  {
     id: "basket-live-overlay",
     label: "Common holder · internal portrait camera study",
     group: "Seed concepts",

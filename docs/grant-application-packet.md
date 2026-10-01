@@ -1,5 +1,13 @@
 # Zencelades: Love Burn 2027 application, every field
 
+> **Application source, reconciled October 1.** Andrew directs the website to
+> follow this Love Burn design and Claude's itemized purchase budget. The
+> [budget reconciliation](budget-reconciliation.md) records the basis: two
+> purchased projectors, existing sphere/rig assumptions, and a $3,000 total
+> target. The higher estimate is not funded automatically. Camera/voice features
+> below are proposed behavior, not completed software. Andrew has reported a
+> submission acknowledgment; this retained draft is not an official award.
+
 Final draft, October 1, 2026, against the live Airtable form
 (https://airtable.com/appZEXWPCFtaKm6NA/pag1ytRqyhwaXdZTE/form). The form
 times out, so write here and paste. There are no character limits on the

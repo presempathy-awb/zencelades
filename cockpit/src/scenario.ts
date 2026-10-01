@@ -1,6 +1,7 @@
 import { calculate } from "../../site/pricing/calculation.mjs";
 import source from "../../site/pricing/options.json";
 import seed from "../../assets/seed-options.json";
+import { loveBurnOption, grantContingency } from "./grant-budget";
 import type { FundingPlan } from "./funding";
 import { createBuildBoardState, parseBuildBoardState, type BuildBoardState } from "./build-board";
 import { createPartsPlan, parsePartsPlan, partsPlanForModel, type PartsPlan } from "./parts-plan";
@@ -9,12 +10,13 @@ export const deferredSupports = new Set(["fixed-bed", "fixed-cantilever"]);
 export const baseline = {
   ...source,
   options: [
+    loveBurnOption,
     ...seed.options,
     ...source.options.filter((option) => !deferredSupports.has(option.id)),
   ],
 };
 export type Settings = typeof baseline.defaults;
-export type Option = (typeof baseline.options)[number];
+export type Option = (typeof baseline.options)[number] & { projectorPricing?: "purchase" };
 export type Allowance = { low: number; high: number };
 export interface Scenario {
   schema: 1;
@@ -28,6 +30,7 @@ export interface Scenario {
   parts: PartsPlan;
 }
 export const shortNames: Record<string, string> = {
+  "love-burn": "Love Burn main design",
   "seed-surround": "Occupied surround",
   "seed-zorb": "Landed common holder",
   "ground-light": "Ground light",
@@ -42,8 +45,8 @@ export const shortNames: Record<string, string> = {
 export function initialScenario(): Scenario {
   return {
     schema: 1,
-    selected: "seed-zorb",
-    settings: { ...baseline.defaults },
+    selected: "love-burn",
+    settings: { ...baseline.defaults, contingency: grantContingency },
     allowances: Object.fromEntries(
       baseline.options.map((option) => [
         option.id,
@@ -54,7 +57,7 @@ export function initialScenario(): Scenario {
     note: "",
     funding: { grantRequest: 3000, ownerPossible: 0, fundraiserTarget: 0, confirmed: 0 },
     board: createBuildBoardState(),
-    parts: createPartsPlan(),
+    parts: partsPlanForModel(createPartsPlan(), "love-burn"),
   };
 }
 export function selectedOption(scenario: Scenario): Option {
@@ -99,6 +102,7 @@ export function parseScenario(text: string): Scenario {
     // Preserve older browser exports while adding the newly offered seed choices.
     const items =
       incoming[option.id] ??
+      (option.id === "love-burn" ? option.items : undefined) ??
       (value.funding === undefined && option.id.startsWith("seed-") ? option.items : undefined);
     if (!Array.isArray(items) || items.length !== option.items.length)
       throw new Error(`Missing allowances for ${option.name}`);

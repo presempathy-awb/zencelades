@@ -71,18 +71,27 @@ export default function BudgetView({
   const result = estimate(scenario);
   const funding = fundingSummary(scenario);
   const seedScope = option.id.startsWith("seed-");
+  const mainProposal = option.id === "love-burn";
   return (
     <section className="reading-panel budget-panel">
       <span className="eyebrow">CASH PLANNING · USD</span>
       <h2>{shortNames[option.id]}</h2>
       <p>
-        {seedScope
-          ? "$3,000 TOTAL DIY target. These are spending ceilings to compare with actual quotes; a balanced allocation does not prove procurement feasibility."
-          : "Historical unoccupied comparison; rental assumptions are shared across those options."}{" "}
+        {mainProposal
+          ? "Main Love Burn design. Claude's application ledger uses purchased projectors, existing equipment and in-kind fabrication. The $3,000 target covers its lower estimate; the higher range still needs reductions or explicitly agreed funding."
+          : seedScope
+            ? "$3,000 TOTAL DIY target. These are spending ceilings to compare with actual quotes; a balanced allocation does not prove procurement feasibility."
+            : "Historical unoccupied comparison; rental assumptions are shared across those options."}{" "}
         Source register: {baseline.as_of}.
       </p>
       <div className="budget-total">
-        <span>{seedScope ? "Allocated cash including reserve" : "Planning range"}</span>
+        <span>
+          {mainProposal
+            ? "Proposal purchase estimate including contingency"
+            : seedScope
+              ? "Alternate allocation including reserve"
+              : "Alternate planning range"}
+        </span>
         <strong>{range(result.total)}</strong>
         <small>
           Includes {scenario.settings.contingency}% contingency and{" "}
@@ -90,8 +99,10 @@ export default function BudgetView({
         </small>
       </div>
       <p>
-        <a href="#/parts">View the selected build's parts and quote gaps</a>. These allocations do
-        not include unpriced projection, camera or aerial additions selected in the parts plan.
+        <a href="#/parts">View the selected build's parts and quote gaps</a>.{" "}
+        {mainProposal
+          ? "The proposal includes two purchased HD146X heads, two phones, stand mounts, covers, rigging and the common holder. Model/Parts experiments are alternatives to this fixed proposal, not automatic repricing."
+          : "These alternate allocations do not include unpriced projection, camera or aerial additions selected in the parts plan."}
       </p>
       <p aria-live="polite">
         <strong>
@@ -129,7 +140,7 @@ export default function BudgetView({
         Gap if all proposed sources arrive: <strong>{range(funding.plannedGap)}</strong>. Still
         unsecured against confirmed cash: <strong>{range(funding.unsecured)}</strong>.
       </p>
-      <h3>Line allowances</h3>
+      <h3>{mainProposal ? "Proposal line items · purchase, not rental" : "Line allowances"}</h3>
       <div className="table-scroll">
         <table>
           <thead>
@@ -142,7 +153,13 @@ export default function BudgetView({
           <tbody>
             {option.items.map((item, index) => (
               <tr key={item.label}>
-                <th scope="row">{item.label}</th>
+                <th scope="row">
+                  {item.label}
+                  <details>
+                    <summary>Price basis</summary>
+                    <p>{item.basis}</p>
+                  </details>
+                </th>
                 {(["low", "high"] as const).map((bound) => (
                   <td key={bound}>
                     <NumberField
@@ -159,18 +176,22 @@ export default function BudgetView({
                 ))}
               </tr>
             ))}
-            <tr>
-              <th scope="row">
-                Projector rental · {option.projectors} × {scenario.settings.days} days
-              </th>
-              <td>{dollars(result.rent)}</td>
-              <td>{dollars(result.rent)}</td>
-            </tr>
-            <tr>
-              <th scope="row">External capture</th>
-              <td>{dollars(result.liveCapture ? baseline.capture.low : 0)}</td>
-              <td>{dollars(result.liveCapture ? baseline.capture.high : 0)}</td>
-            </tr>
+            {!mainProposal && (
+              <>
+                <tr>
+                  <th scope="row">
+                    Projector rental · {option.projectors} × {scenario.settings.days} days
+                  </th>
+                  <td>{dollars(result.rent)}</td>
+                  <td>{dollars(result.rent)}</td>
+                </tr>
+                <tr>
+                  <th scope="row">External capture</th>
+                  <td>{dollars(result.liveCapture ? baseline.capture.low : 0)}</td>
+                  <td>{dollars(result.liveCapture ? baseline.capture.high : 0)}</td>
+                </tr>
+              </>
+            )}
             <tr>
               <th scope="row">Owned hazer · acquisition</th>
               <td>$0</td>
@@ -183,43 +204,59 @@ export default function BudgetView({
         Haze fluid, shell compatibility and trial effort remain unresolved; $0 applies to acquiring
         the already-owned machine.
       </p>
-      <h3>Compare all supports</h3>
-      <div className="table-scroll">
-        <table>
-          <thead>
-            <tr>
-              <th>Support</th>
-              <th>Projectors</th>
-              <th>Cash range</th>
-            </tr>
-          </thead>
-          <tbody>
-            {baseline.options.map((candidate) => (
-              <tr key={candidate.id} data-selected={candidate.id === option.id}>
-                <th scope="row">
-                  <button type="button" onClick={() => onSelectOption(candidate.id)}>
-                    {candidate.name}
-                  </button>
-                </th>
-                <td>{candidate.projectors}</td>
-                <td>{range(estimate({ ...scenario, selected: candidate.id }).total)}</td>
+      <details>
+        <summary>Alternate designs · compare separate scopes</summary>
+        <div className="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Support</th>
+                <th>Projectors</th>
+                <th>Cash range</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {baseline.options
+                .filter((candidate) => candidate.id !== "love-burn")
+                .map((candidate) => (
+                  <tr key={candidate.id} data-selected={candidate.id === option.id}>
+                    <th scope="row">
+                      <button type="button" onClick={() => onSelectOption(candidate.id)}>
+                        {candidate.name}
+                      </button>
+                    </th>
+                    <td>{candidate.projectors}</td>
+                    <td>{range(estimate({ ...scenario, selected: candidate.id }).total)}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
       <h3>What the estimate assumes</h3>
       <ul className="assumptions">
-        {(seedScope ? seed.assumptions : baseline.assumptions).map((text) => (
+        {(mainProposal
+          ? [
+              "Source: Claude's grant-resource ledger and application budget, prepared September 30, 2026. Retail observations are dated estimates, not new quotes or reservations.",
+              "The proposal assumes the existing zorb, aerial rig, laptop and network. A replacement sphere or purchased rig would require an added quote. Fabrication labor is in-kind; materials are budgeted.",
+              "Two HD146X purchases total $998–$1,198. No $495/day rental and no separate $750–$2,800 capture package are added: phones and mounts already have their own rows.",
+              "The main projection budget uses independent stands. Short-throw heads, arm-mounted upgrades and extra projectors are alternate designs and need separate pricing.",
+            ]
+          : seedScope
+            ? seed.assumptions
+            : baseline.assumptions
+        ).map((text) => (
           <li key={text}>{text}</li>
         ))}
       </ul>
-      <p>
-        <a href={baseline.projector_basis.url} target="_blank" rel="noreferrer">
-          Rental rate source
-        </a>{" "}
-        · {baseline.projector_basis.caveat}
-      </p>
+      {!mainProposal && (
+        <p>
+          <a href={baseline.projector_basis.url} target="_blank" rel="noreferrer">
+            Rental rate source
+          </a>{" "}
+          · {baseline.projector_basis.caveat}
+        </p>
+      )}
     </section>
   );
 }

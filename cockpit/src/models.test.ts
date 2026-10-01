@@ -6,6 +6,25 @@ import { buildModel } from "./models/support-models";
 import { MODEL_STUDIES } from "./models/model-spec";
 import { baseline } from "./scenario";
 
+test("Love Burn proposal model carries the budget's two independent projectors and 2.5 m sphere", () => {
+  const engine = new NullEngine();
+  const scene = new Scene(engine);
+  try {
+    buildModel(scene, "love-burn");
+    expect(scene.getMeshByName("double-wall-cutaway-2.5")).not.toBeNull();
+    expect(
+      scene.meshes.filter((mesh) => mesh.name.startsWith("grant-projector-head-")),
+    ).toHaveLength(2);
+    expect(
+      scene.meshes.filter((mesh) => mesh.name.startsWith("triangle-projector-arm-")),
+    ).toHaveLength(0);
+    expect(scene.meshes.filter((mesh) => mesh.name.startsWith("aerial-rig-leg-"))).toHaveLength(4);
+  } finally {
+    scene.dispose();
+    engine.dispose();
+  }
+});
+
 test("sphere size changes shell, holder height and dimensions without scaling the participant", () => {
   const engine = new NullEngine();
   try {

@@ -37,6 +37,15 @@ export interface OptionContext {
   funding: ReturnType<typeof fundingSummary>;
 }
 const profiles: Record<string, Profile> = {
+  "love-burn": {
+    requirement:
+      "Deliver the occupied 2.5 m moon proposal within the $3,000 target, reconciling Claude's purchase budget with actual equipment, rig fit and operating requirements. Landed mode uses the same holder. No new sphere or rig purchase is included in the low estimate.",
+    precedents: ["moon-form", "sonic", "nova"],
+    precedentReason:
+      "Moon-scale presence and participant interaction are precedents; their budgets and approvals do not transfer.",
+    mountIds: [],
+    relatedModels: ["basket-aerial-rig", "seed-zorb", "basket-live-overlay"],
+  },
   "seed-surround": {
     requirement:
       "Quote an open-entry scenic frame carrying panels only, with the person on the ground. Resolve wind restraint, accessible entry, panel materials and venue acceptance; this changes the inflatable form and needs Andrew's selection.",
@@ -202,27 +211,28 @@ export function optionContext(scenario: Scenario): OptionContext {
         "One shared holder: detachable lander legs are the ground mode, with no wood platform. The holder/leg materials share the existing allowance; it is not a found quote. Aerial rig/rigging and optional camera arms are unpriced additions. Reallocate within $3,000 after actual material and loan quotes.",
       href: "/studio-data/seed-occupied-options.md",
     });
-  rows.push(
-    {
-      id: "projectors",
-      label: `Projector hire · ${option.projectors} × ${scenario.settings.days} days`,
-      low: result.rent,
-      high: result.rent,
-      basis: option.projectors
-        ? baseline.projector_basis.caveat
-        : "Excluded: this option uses lighting without projection.",
-      ...(option.projectors ? { href: baseline.projector_basis.url } : {}),
-    },
-    {
-      id: "capture",
-      label: baseline.capture.label,
-      low: result.liveCapture ? baseline.capture.low : 0,
-      high: result.liveCapture ? baseline.capture.high : 0,
-      basis: result.liveCapture
-        ? baseline.capture.note
-        : "Excluded from the selected scope; no internal cameras.",
-    },
-  );
+  if (option.id !== "love-burn")
+    rows.push(
+      {
+        id: "projectors",
+        label: `Projector hire · ${option.projectors} × ${scenario.settings.days} days`,
+        low: result.rent,
+        high: result.rent,
+        basis: option.projectors
+          ? baseline.projector_basis.caveat
+          : "Excluded: this option uses lighting without projection.",
+        ...(option.projectors ? { href: baseline.projector_basis.url } : {}),
+      },
+      {
+        id: "capture",
+        label: baseline.capture.label,
+        low: result.liveCapture ? baseline.capture.low : 0,
+        high: result.liveCapture ? baseline.capture.high : 0,
+        basis: result.liveCapture
+          ? baseline.capture.note
+          : "Excluded from the selected scope; no internal cameras.",
+      },
+    );
   if (["fixed-bed", "fixed-cantilever"].includes(option.id))
     rows.push({
       id: "owned-truck",
@@ -280,7 +290,7 @@ export function optionContext(scenario: Scenario): OptionContext {
     label: shortNames[option.id],
     rows,
     total: result.total,
-    proposal: `${option.description} ${result.liveCapture ? "One external camera supplies a live image; no internal cameras." : "No live external camera is included."} Current cash planning range: ${range(result.total)}. Draft grant request: ${range([scenario.funding.grantRequest])}; no application or award recorded. Possible owner/fundraiser money is separate from confirmed cash.`,
+    proposal: `${option.description} ${option.id === "love-burn" ? "Two phone feeds are included in the proposal; software and optics remain to be demonstrated." : result.liveCapture ? "One external camera supplies a live image; no internal cameras." : "No live external camera is included."} Current cash planning range: ${range(result.total)}. Draft grant request: ${range([scenario.funding.grantRequest])}; Andrew reports the proposal submitted, but no award is recorded. Possible owner/fundraiser money is separate from confirmed cash.`,
     funding,
     seed: option.id.startsWith("seed-")
       ? seedSources.sources.map(({ id }) => ({

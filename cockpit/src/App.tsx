@@ -217,37 +217,54 @@ export default function App(): JSX.Element {
       <div className={`workbench ${inspector ? "" : "inspector-hidden"}`}>
         <aside className="support-rail" aria-label="Support options">
           <div className="rail-heading">
-            <span className="eyebrow">01 / STRUCTURE</span>
-            <h2>Support options</h2>
+            <h2>Love Burn design</h2>
           </div>
           <div className="support-list">
-            {baseline.options.map((item, index) => {
-              const Icon = icons[index];
-              return (
-                <button
-                  type="button"
-                  key={item.id}
-                  aria-pressed={scenario.selected === item.id}
-                  className={scenario.selected === item.id ? "support selected" : "support"}
-                  onClick={() => selectModel(item.id)}
-                >
-                  <Icon size={21} aria-hidden="true" />
-                  <span>
-                    {shortNames[item.id]}
-                    <small>
-                      {item.projectors ? `${item.projectors} projectors` : "Internal light"}
-                    </small>
-                  </span>
-                </button>
-              );
-            })}
+            <button
+              type="button"
+              className={scenario.selected === "love-burn" ? "support selected" : "support"}
+              aria-pressed={scenario.selected === "love-burn"}
+              onClick={() => selectModel("love-burn")}
+            >
+              <Orbit size={21} aria-hidden="true" />
+              <span>
+                Main proposal<small>2.5 m moon · 2 purchased projectors</small>
+              </span>
+            </button>
+            <details open={scenario.selected !== "love-burn" ? true : undefined}>
+              <summary>Alternate designs</summary>
+              {baseline.options
+                .filter((item) => item.id !== "love-burn")
+                .map((item, index) => {
+                  const Icon = icons[index];
+                  return (
+                    <button
+                      type="button"
+                      key={item.id}
+                      aria-pressed={scenario.selected === item.id}
+                      className={scenario.selected === item.id ? "support selected" : "support"}
+                      onClick={() => selectModel(item.id)}
+                    >
+                      <Icon size={21} aria-hidden="true" />
+                      <span>
+                        {shortNames[item.id]}
+                        <small>
+                          {item.projectors ? `${item.projectors} projectors` : "Internal light"}
+                        </small>
+                      </span>
+                    </button>
+                  );
+                })}
+            </details>
           </div>
           <div className="rail-footer">
             <span className="eyebrow">CURRENT BASIS</span>
             <p>
-              {option.id.startsWith("seed-")
-                ? "$3,000 TOTAL · DIY. Person inside. Ground-supported concept."
-                : "Historical empty-shell comparison. Does not yet meet the occupied brief."}
+              {option.id === "love-burn"
+                ? "$3,000 target · Claude's grant purchase budget. Aerial holder with lander mode."
+                : option.id.startsWith("seed-")
+                  ? "$3,000 TOTAL · DIY. Person inside. Ground-supported concept."
+                  : "Historical empty-shell comparison. Does not yet meet the occupied brief."}
             </p>
             <a href="/mounts/">Mount research ↗</a>
           </div>
@@ -317,8 +334,12 @@ export default function App(): JSX.Element {
             <p>{option.description}</p>
             <div className="estimate-block">
               <span>
-                {option.id.startsWith("seed-") ? "Spending allocations" : "Planning estimate"} ·{" "}
-                {shortNames[option.id]}
+                {option.id === "love-burn"
+                  ? "Proposal purchase estimate"
+                  : option.id.startsWith("seed-")
+                    ? "Alternate allocations"
+                    : "Alternate rental estimate"}{" "}
+                · {shortNames[option.id]}
               </span>
               <strong aria-live="polite">{range(result.total)}</strong>
               <small>
@@ -327,12 +348,16 @@ export default function App(): JSX.Element {
             </div>
             <section>
               <h3>Planning inputs</h3>
-              {field("days", "Rental days", 60, 1)}
-              {field("dayRate", "Daily rate · USD", 10000)}
+              {option.id !== "love-burn" && (
+                <>
+                  {field("days", "Rental days", 60, 1)}
+                  {field("dayRate", "Daily rate · USD", 10000)}
+                </>
+              )}
               {field("contingency", "Contingency · %", 100)}
               <details>
                 <summary>Discount, credit & tax</summary>
-                {field("discount", "Rental discount · %", 100)}
+                {option.id !== "love-burn" && field("discount", "Rental discount · %", 100)}
                 {field("credit", "Documented credit · USD", 1000000)}
                 {field("taxAllowance", "Tax allowance · USD", 100000)}
               </details>
@@ -357,26 +382,33 @@ export default function App(): JSX.Element {
                 External effect only. Unit dimensions, outlet clearances, power and fluid remain
                 unconfirmed; airflow is not simulated.
               </p>
-              <label className="check-field">
-                <input
-                  type="checkbox"
-                  disabled={!option.projectors}
-                  checked={scenario.settings.capture && option.projectors > 0}
-                  onChange={(event) =>
-                    update({
-                      ...scenario,
-                      settings: {
-                        ...scenario.settings,
-                        capture: event.target.checked,
-                      },
-                    })
-                  }
-                />
-                <span>
-                  External live capture
-                  <small>One outside camera and integration; no internal GoPros</small>
-                </span>
-              </label>
+              {option.id === "love-burn" ? (
+                <p className="muted small">
+                  Two phone feeds and their mounts are included in the proposal budget. Capture and
+                  participant controls remain to be prototyped.
+                </p>
+              ) : (
+                <label className="check-field">
+                  <input
+                    type="checkbox"
+                    disabled={!option.projectors}
+                    checked={scenario.settings.capture && option.projectors > 0}
+                    onChange={(event) =>
+                      update({
+                        ...scenario,
+                        settings: {
+                          ...scenario.settings,
+                          capture: event.target.checked,
+                        },
+                      })
+                    }
+                  />
+                  <span>
+                    External live capture
+                    <small>One outside camera and integration; no internal GoPros</small>
+                  </span>
+                </label>
+              )}
             </section>
             <a href="/pricing/">Open the standalone estimate ↗</a>
           </aside>

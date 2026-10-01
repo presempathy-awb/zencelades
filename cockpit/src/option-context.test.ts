@@ -9,12 +9,12 @@ import { MODEL_STUDIES } from "./models/model-spec";
 test("occupied model selection updates its parts plan while preserving the allowance comparison", () => {
   const initial = initialScenario();
   const aerial = chooseModel(initial, "basket-aerial-rig");
-  expect(aerial.scenario.parts.configuration).toBe("S30");
+  expect(aerial.scenario.parts.configuration).toBe("S25");
   expect(aerial.scenario.parts.choices.host).toBe("ZC-A01");
   expect(aerial.scenario.selected).toBe(initial.selected);
   expect(aerial.scenario.allowances).toBe(initial.allowances);
   expect(aerial.reference).toBe("basket-aerial-rig");
-  expect(chooseModel(aerial.scenario, "seed-zorb").scenario.parts.configuration).toBe("G30");
+  expect(chooseModel(aerial.scenario, "seed-zorb").scenario.parts.configuration).toBe("G25");
 });
 
 test("model choices select priced supports and retain budgets for unpriced references", () => {
@@ -39,7 +39,11 @@ test("model choices select priced supports and retain budgets for unpriced refer
 });
 
 test("resource amounts, grant scope and relevant evidence follow support and settings", () => {
-  const initial = { ...initialScenario(), selected: "ground-sphere" };
+  const initial = {
+    ...initialScenario(),
+    settings: { ...baseline.defaults },
+    selected: "ground-sphere",
+  };
   const light = optionContext({ ...initial, selected: "ground-light", haze: true });
   expect(light.rows.find((row) => row.id === "projectors")?.low).toBe(0);
   expect(light.rows.find((row) => row.id === "capture")?.low).toBe(0);

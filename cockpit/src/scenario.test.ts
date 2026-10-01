@@ -2,17 +2,36 @@ import { expect, test } from "bun:test";
 import { baseline, estimate, initialScenario, parseScenario, workflow } from "./scenario";
 import { createPartsPlan } from "./parts-plan";
 
+test("the main Love Burn design uses Claude's purchased-projector budget without rental or duplicate capture", () => {
+  const scenario = initialScenario();
+  expect(scenario.selected).toBe("love-burn");
+  expect(scenario.settings.contingency).toBe(20);
+  const result = estimate(scenario);
+  expect(result.rent).toBe(0);
+  expect(result.subtotal).toEqual([1982, 4368]);
+  expect(result.total[0]).toBeCloseTo(2378.4, 2);
+  expect(result.total[1]).toBeCloseTo(5241.6, 2);
+  const changed = {
+    ...scenario,
+    settings: { ...scenario.settings, days: 60, dayRate: 9999, capture: true },
+  };
+  expect(estimate(changed).total).toEqual(result.total);
+  expect(scenario.parts.configuration).toBe("S25");
+  expect(scenario.parts.projectors).toBe(2);
+  expect(scenario.parts.mounting).toBe("stands");
+});
+
 test("parts choices round trip and invalid imports cannot replace the current draft", () => {
   const initial = initialScenario();
   const parts = { ...createPartsPlan(), configuration: "S25" as const, projectors: 1 as const };
   const saved = parseScenario(JSON.stringify({ ...initial, parts }));
   expect(saved.parts).toEqual(parts);
-  expect(initial.parts.configuration).toBe("G30");
+  expect(initial.parts.configuration).toBe("S25");
   expect(() =>
     parseScenario(JSON.stringify({ ...saved, parts: { ...parts, projectors: 4 } })),
   ).toThrow();
   expect(parseScenario(JSON.stringify({ ...initial, parts: undefined })).parts).toEqual(
-    createPartsPlan(),
+    initial.parts,
   );
   const earlierSurround = parseScenario(
     JSON.stringify({ ...initial, selected: "seed-surround", parts: undefined }),
@@ -43,7 +62,11 @@ test("deferred truck scenarios are refused without mutating the saved data", () 
 });
 
 test("real ground scenario includes two six-day rentals and keeps owned haze free", () => {
-  const plain = { ...initialScenario(), selected: "ground-sphere" };
+  const plain = {
+    ...initialScenario(),
+    settings: { ...baseline.defaults },
+    selected: "ground-sphere",
+  };
   expect(estimate(plain).rent).toBe(5940);
   expect(estimate(plain).total).toEqual([19300, 39675]);
   expect(estimate({ ...plain, haze: true })).toEqual(estimate(plain));
@@ -69,7 +92,7 @@ test("scenario JSON round trips and rejects unsafe or unknown input without chan
 test("every layout derives its own rent; zero projector option ignores external capture", () => {
   for (const option of baseline.options) {
     const scenario = { ...initialScenario(), selected: option.id };
-    expect(estimate(scenario).rent).toBe(option.projectors * 2970);
+    expect(estimate(scenario).rent).toBe(option.id === "love-burn" ? 0 : option.projectors * 2970);
   }
   const light = { ...initialScenario(), selected: "ground-light" };
   expect(estimate({ ...light, settings: { ...light.settings, capture: true } }).liveCapture).toBe(
@@ -89,7 +112,11 @@ test("every layout derives its own rent; zero projector option ignores external 
 });
 
 test("line allowances survive export and excessive credit cannot create negative cash", () => {
-  const scenario = { ...initialScenario(), selected: "ground-sphere" };
+  const scenario = {
+    ...initialScenario(),
+    settings: { ...baseline.defaults },
+    selected: "ground-sphere",
+  };
   scenario.allowances[scenario.selected][0] = { low: 0, high: 0 };
   expect(estimate(scenario).total).toEqual([17425, 34050]);
   scenario.settings.credit = 1000000;
