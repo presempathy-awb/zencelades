@@ -107,7 +107,7 @@ export default function App(): JSX.Element {
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     setMessage(
-      "Exported the current draft and committed note. Uncommitted note text remains in the editor.",
+      "Downloaded your temporary draft and applied note. Unapplied note text is not in the file; no account save was made.",
     );
   };
   return (
@@ -147,7 +147,7 @@ export default function App(): JSX.Element {
           </details>
           <Button
             variant="ghost"
-            title="Load a scenario file into this temporary draft; shared data is unchanged."
+            hint="Load a scenario file into this temporary draft; shared data is unchanged."
             onClick={() => fileInput.current?.click()}
           >
             <Upload size={16} />
@@ -155,7 +155,7 @@ export default function App(): JSX.Element {
           </Button>
           <Button
             variant="outline"
-            title="Download your current draft and build progress. This does not save to an account."
+            hint="Download your current draft and applied note. This does not save to an account."
             onClick={exportScenario}
           >
             <Download size={16} />
@@ -207,6 +207,7 @@ export default function App(): JSX.Element {
           variant="ghost"
           className="inspector-toggle"
           aria-pressed={inspector}
+          hint="Show or hide budget and effect settings beside the workspace."
           onClick={() => setInspector(!inspector)}
         >
           {inspector ? <PanelRightClose size={18} /> : <PanelRightOpen size={18} />}
@@ -383,12 +384,21 @@ export default function App(): JSX.Element {
           id="design-note"
           value={note}
           maxLength={4000}
+          aria-describedby="design-note-help"
           placeholder="What should the next design pass resolve?"
           onChange={(event) => setNote(event.target.value)}
         />
-        <Button onClick={() => update({ ...scenario, note })} disabled={note === scenario.note}>
-          Save note
+        <Button
+          onClick={() => update({ ...scenario, note })}
+          disabled={note === scenario.note}
+          hint="Include this note in the temporary draft and its next export. Reloading still resets the draft."
+        >
+          Apply note
         </Button>
+        <small id="design-note-help" className="sr-only">
+          Apply the note before exporting. Export a file to keep a copy; reloading clears this
+          draft.
+        </small>
         <p role="status">{message}</p>
       </footer>
     </div>

@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "@tanstack/react-router";
 import { StrictMode } from "react";
+import { Tooltip } from "radix-ui";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./style.css";
@@ -25,7 +26,9 @@ if (!root) throw new Error("Studio root is missing");
 createRoot(root).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <Tooltip.Provider delayDuration={300}>
+        <RouterProvider router={router} />
+      </Tooltip.Provider>
     </QueryClientProvider>
   </StrictMode>,
 );

@@ -245,7 +245,11 @@ export default function SceneView({
             ))}
           </select>
         </label>
-        <Button variant="outline" onClick={reset}>
+        <Button
+          variant="outline"
+          onClick={reset}
+          hint="Return the camera to the entrance view. Your draft choices stay unchanged."
+        >
           <RotateCcw size={16} />
           Reset
         </Button>
@@ -266,20 +270,42 @@ export default function SceneView({
             </Button>
           </div>
         </details>
-        <Button variant="outline" onClick={() => view("side")}>
+        <Button
+          variant="outline"
+          onClick={() => view("side")}
+          hint="Inspect the holder and sphere from the side."
+        >
           Side
         </Button>
-        <Button variant="outline" onClick={() => view("rear")}>
+        <Button
+          variant="outline"
+          onClick={() => view("rear")}
+          hint="Look behind the sphere to inspect the rear support and hazer position."
+        >
           Rear
         </Button>
-        <Button variant="outline" onClick={() => view("top")}>
+        <Button
+          variant="outline"
+          onClick={() => view("top")}
+          hint="Look down on the triangle, entrance clearance and projector layout."
+        >
           Top
         </Button>
-        <Button variant="outline" aria-pressed={wireframe} onClick={() => setWireframe(!wireframe)}>
+        <Button
+          variant="outline"
+          aria-pressed={wireframe}
+          onClick={() => setWireframe(!wireframe)}
+          hint="Show model mesh edges. These are study geometry, not fabrication drawings."
+        >
           Wireframe
         </Button>
         {!archive && (
-          <Button variant="outline" aria-pressed={guides} onClick={() => setGuides(!guides)}>
+          <Button
+            variant="outline"
+            aria-pressed={guides}
+            onClick={() => setGuides(!guides)}
+            hint="Show the model's study dimensions. They do not certify a load rating or an occupied hang."
+          >
             Dimensions
           </Button>
         )}

@@ -2,7 +2,7 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { type ClassValue, clsx } from "clsx";
-import { Slot } from "radix-ui";
+import { Slot, Tooltip } from "radix-ui";
 import type { ComponentProps, JSX } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -26,8 +26,29 @@ export function Button({
   className,
   variant,
   asChild,
+  hint,
   ...props
-}: ComponentProps<"button"> & VariantProps<typeof styles> & { asChild?: boolean }): JSX.Element {
+}: ComponentProps<"button"> &
+  VariantProps<typeof styles> & {
+    asChild?: boolean;
+    hint?: string;
+  }): JSX.Element {
   const Component = asChild ? Slot.Root : "button";
-  return <Component className={cn(styles({ variant }), className)} {...props} />;
+  const button = <Component className={cn(styles({ variant }), className)} {...props} />;
+  if (!hint) return button;
+  return (
+    <Tooltip.Root>
+      <Tooltip.Trigger asChild>{button}</Tooltip.Trigger>
+      <Tooltip.Portal>
+        <Tooltip.Content
+          sideOffset={6}
+          collisionPadding={12}
+          className="z-50 max-w-72 rounded-md border border-border bg-foreground px-3 py-2 text-sm text-primary-foreground shadow-md"
+        >
+          {hint}
+          <Tooltip.Arrow className="fill-foreground" />
+        </Tooltip.Content>
+      </Tooltip.Portal>
+    </Tooltip.Root>
+  );
 }
