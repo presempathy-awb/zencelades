@@ -7,8 +7,6 @@
     bind 127.0.0.1
     root * /srv/thatsnozorb/current/site/dist
   reverse_proxy /naming/api/workbench 127.0.0.1:18132
-  reverse_proxy /access/api/* 127.0.0.1:18133
-  reverse_proxy /access/login 127.0.0.1:18133
     header {
         X-Content-Type-Options nosniff
         Content-Security-Policy "default-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"

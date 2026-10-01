@@ -17,21 +17,25 @@ out, so paste rather than compose in it.
 
 Nothing else uploads: every drawing goes in as an image, every document as a link.
 
-## ART PROJECT PHOTOS, in this order (5.8 MB total)
+## ART PROJECT PHOTOS, in this order (10.9 MB total, every file under 5 MB)
 
 1. `01-concept-landed.png` (2.6 MB) concept art, a person inside the moon with their face on it; this is the thumbnail
-2. `02-plate-1-hung-elevation.png` hung version, elevation, dimensions
-3. `03-plate-5-plan.png` plan view and footprint
-4. `04-plate-3-landed.png` landed state on lander legs
-5. `05-concept-suspended.png` (2.5 MB) concept art, hung state
-6. `06-plate-4-signal-and-power.png` signal and power
-7. `07-plate-6-lowering.png` lowering the moon
-8. `08-plate-2-tree-alternative.png` tree alternative
+2. `02-lander-3d-model.png` Codex's Blender render of the 2.5 m landed assembly, cut away: seat, tunnel, loop, triangle, lander legs
+3. `03-plate-1-hung-elevation.png` hung version, elevation, dimensions
+4. `04-plate-5-plan.png` plan view and footprint
+5. `05-plate-3-landed.png` landed state on lander legs, elevation
+6. `06-suspended-3d-model.png` Codex's Blender render of the 2.5 m assembly hung on a generic rig
+7. `07-concept-suspended.png` (2.5 MB) concept art, hung state
+8. `08-plate-4-signal-and-power.png` signal and power
+9. `09-plate-6-lowering.png` lowering the moon
+10. `10-plate-2-tree-alternative.png` tree alternative
+11. `11-build-steps.png` construction in six steps, parts numbered as on the parts sheet
+12. `12-parts-labeled.png` every part labeled; the matching price table is at /build on the site
 
-Codex's dimensioned sheets in the cockpit lane (`output/grant-attachments/zencelades-01..05`
-and the combined PDF) are drawn at 3.0 m with a different budget sheet; Andrew chose 2.5 m
-on October 1, so they are not in this set. The two concept renders carry no dimensions and
-are used as they are.
+The two 3D renders come from `output/grant-3d/` in the cockpit lane (editable `.blend` and
+`.glb` beside them) and carry no dimensions. Codex's 3.0 m-labelled sheets and its
+`UPLOAD-PHOTOS` set stay out, since the application is the 2.5 m build; the 3D renders show
+the one-unit upgrade with projector heads on arms, which the packet says.
 
 ## BUDGET SPREADSHEET
 
