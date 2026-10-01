@@ -88,3 +88,7 @@ deploy-access *args:
 # Cash, in-kind and requested support per build option; --check verifies the written ledger.
 grant-ledger *args:
     uv run --no-project python -m scripts.grant_ledger {{args}}
+
+# Generate reviewed import data only; never mutates the live Pacinman workspace.
+pacinman-packet:
+    uv run --no-project python -m scripts.pacinman_packet

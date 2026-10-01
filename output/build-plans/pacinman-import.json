@@ -1,0 +1,2803 @@
+{
+  "workspace_id": "burning-man-2026",
+  "category": "Zencelades / Love Burn 2027",
+  "parts": 88,
+  "tasks": 24,
+  "records": [
+    {
+      "key": "ZC-S25",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-S25] Occupied sphere \u2014 2.5 m alternative",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SPHERE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-S25. Configurations: G25, S25. Quantity: 1 sphere; nominal concept count; verify accepted design. Ownership: unconfirmed. Select exact stationary occupied-use product; nominal size only. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: sphere-size. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "sphere",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-S30",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-S30] Occupied sphere \u2014 3 m alternative",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SPHERE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-S30. Configurations: G30, S30. Quantity: 1 sphere; nominal concept count; verify accepted design. Ownership: unconfirmed. Alternative to S25; fit, weight and delivered cost unconfirmed. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: sphere-size. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "sphere",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-S02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-S02] Manufacturer-specified inflation blower/pump",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SPHERE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-S02. Configurations: G25, G30, S25, S30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: unconfirmed. Match selected sphere instructions; may be included in sphere package. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "sphere",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-S03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-S03] Inflation adapters, valve tools and closure parts",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SPHERE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-S03. Configurations: G25, G30, S25, S30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Kit contents depend on actual valve and blower; no generic sealed-ball assumption. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "sphere",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-S04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-S04] Inflation measurement / pressure control",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SPHERE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-S04. Configurations: G25, G30, S25, S30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Method and range required by manufacturer; not a guessed pressure setting. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "sphere",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-S05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-S05] Compatible repair patches, adhesive and valve spares",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SPHERE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-S05. Configurations: G25, G30, S25, S30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Product-specific materials and curing/repair limits; confirm shelf life. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "sphere",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-S06",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-S06] Sphere groundsheet and protective transport bag",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SPHERE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-S06. Configurations: G25, G30, S25, S30. Quantity: 1 set; package quantity; components pending specification. Ownership: unconfirmed. Measure packed size; keep metal separate. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "sphere",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F01] Three straight triangle members",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F01. Configurations: G25, G30, S25, S30. Quantity: 3 members; nominal concept count; verify accepted design. Ownership: unconfirmed. Nominal 3.118 m side geometry, not cut length; grade/section/wall pending review. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F02] Identified rolled support ring",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F02. Configurations: G25, G30, S25, S30. Quantity: 1 assembly; nominal concept count; verify accepted design. Ownership: unconfirmed. Nominal 1.8288 m centreline diameter; specification and joints unresolved. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: ring-route. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F03] Measured donor trampoline ring alternative",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F03. Configurations: G25, G30, S25, S30. Quantity: 1 assembly; nominal concept count; verify accepted design. Ownership: unconfirmed. Alternative to F02 only if actual donor and modified duty accepted; no inherited rating. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: ring-route. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F04] Three loop-to-triangle support interfaces",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F04. Configurations: G25, G30, S25, S30. Quantity: 3 assemblies; nominal concept count; verify accepted design. Ownership: unconfirmed. Resolve nominal 14.4 mm centreline overhang and contact distribution. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F05] Three corner plates / nodes",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F05. Configurations: G25, G30, S25, S30. Quantity: 3 assemblies; nominal concept count; verify accepted design. Ownership: unconfirmed. Plate thickness, holes, welds and joint retention not specified by visual CAD. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F06",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F06] Broad underside / deflation support",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F06. Configurations: G25, G30, S25, S30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Design required: ring alone must not be assumed to support a deflated occupied sphere. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F07",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F07] Loop padding and permitted contact protection",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F07. Configurations: G25, G30, S25, S30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Contact materials/thickness/coverage depend on selected sphere and review. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F08",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F08] Holder fasteners, retainers and replaceable joint parts",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F08. Configurations: G25, G30, S25, S30. Quantity: 1 lot; package quantity; components pending specification. Ownership: unconfirmed. Actual counts, sizes, grades and locking method come from accepted drawing. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F09",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F09] Edge caps, finish and corrosion protection",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F09. Configurations: G25, G30, S25, S30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Keep treatment compatible with soft sphere; cover sharp edges. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-F10",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-F10] Fabrication consumables and shop stock",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOLDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-F10. Configurations: G25, G30, S25, S30, O30. Quantity: 1 lot; package quantity; components pending specification. Ownership: unconfirmed. Cutting/welding/abrasives/shielding and jig materials; accepted material traceability. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "holder",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-L01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-L01] Detachable splayed leg assemblies",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LANDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-L01. Configurations: G25, G30, S25, S30. Quantity: 3 assemblies; nominal concept count; verify accepted design. Ownership: unconfirmed. Two side legs and one rear; length/joints differ for sphere sizes; no front-centre leg. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "lander",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-L02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-L02] Leg braces / restraints",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LANDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-L02. Configurations: G25, G30, S25, S30. Quantity: 3 concept positions; nominal concept count; verify accepted design. Ownership: unconfirmed. CAD shows three; final member count and layout require reviewed design, keep entrance clear. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "lander",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-L03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-L03] Broad footpads and ground protection",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LANDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-L03. Configurations: G25, G30, S25, S30. Quantity: 3 pad assemblies; nominal concept count; verify accepted design. Ownership: unconfirmed. Actual area, bearing and surface preparation determined by reviewed ground reactions. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "lander",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-L04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-L04] Leg pins, keepers and attachment hardware",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LANDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-L04. Configurations: G25, G30, S25, S30. Quantity: 1 lot; package quantity; components pending specification. Ownership: unconfirmed. Retained joint system with actual quantities from drawing; no generic quick-release approval. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "lander",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-L05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-L05] Ground ballast / accepted restraint",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LANDER",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-L05. Configurations: G25, G30, S25, S30, O30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Mass, location and quantity unresolved; no guessed sandbag count; never in approach. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "lander",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R01] Three over-sphere webbing paths",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R01. Configurations: S25, S30. Quantity: 3 assemblies; nominal concept count; verify accepted design. Ownership: unconfirmed. Lengths/widths/terminations, skin contact and permitted duty require complete design. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R02] Webbing contact guards and interface protection",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R02. Configurations: S25, S30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Map seams and permitted contact; count after path design. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R03] Top collector / master ring",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R03. Configurations: S25, S30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: unconfirmed. Exact hardware compatibility and intended duty required; CAD is envelope only. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R04] Lyra-style swivel candidate",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R04. Configurations: S25, S30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: unconfirmed. Choose only for reviewed complete system and loading; breaking strength is not WLL. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R05] Controlled lowering / hoisting system",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R05. Configurations: S25, S30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Exact hoist/halyard/block/brake/locks chosen by rigger; no improvised occupied lift recipe. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R06",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R06] Rated connection hardware schedule",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R06. Configurations: S25, S30. Quantity: 1 lot; package quantity; components pending specification. Ownership: unconfirmed. Shackles/connectors and retention counted from reviewed connections. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R07",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R07] Reviewer-defined backup / recovery provisions",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R07. Configurations: S25, S30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Do not assume a loose backup line constitutes engineered redundancy. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R08",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R08] Anti-rotation / position-control arrangement",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R08. Configurations: S25, S30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Must not add uncontrolled side load or obstruct entry; define rotation/cable limits. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R09",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R09] Ground receiving and lowering support",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R09. Configurations: S25, S30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. May reuse accepted lander components; count reused parts once. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-R10",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-R10] Inspection tags, protection bags and rigging log",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SUSPENSION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-R10. Configurations: S25, S30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Record serials, inspections, damage and retirement criteria. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "suspension",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-A01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-A01] Actual aerial rig candidate",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOST",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-A01. Configurations: S25, S30. Quantity: 1 rig; nominal concept count; verify accepted design. Ownership: unconfirmed. Ownership asserted in older ledger, not confirmed in this chat/inventory; identify exact rig/manual. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: host. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "host",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-A02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-A02] Purpose-designed gantry / tripod alternative",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOST",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-A02. Configurations: S25, S30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Unpriced alternative host requiring its own reviewed design and inspection. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: host. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "host",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-A03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-A03] Lighting-truss / crank-stand host investigation",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOST",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-A03. Configurations: S25, S30. Quantity: 1 review package; package quantity; components pending specification. Ownership: unconfirmed. No occupied use until exact manufacturer and reviewer permit it; do not buy generic stands. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: host. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "host",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-A04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-A04] Existing point / tree host investigation",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOST",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-A04. Configurations: S25, S30. Quantity: 1 site assessment; nominal concept count; verify accepted design. Ownership: unconfirmed. Venue permission, support assessment and site-specific review; no assumed park tree anchor. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: host. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "host",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-A05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-A05] Host footing / spread restraints / ballast",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HOST",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-A05. Configurations: S25, S30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Specify against exact host and ground/wind conditions; separate from lander footpads. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "host",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P01] Standard-throw projector candidates",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P01. Configurations: G25, G30, S25, S30, O30. Quantity: 1 selection lot; package quantity; components pending specification. Ownership: unconfirmed. Select P1=1 or P2=2; P4=4 is later scope. Exact SKU/throw/delivered cost unknown; historical HD146X is reference only. Workbook reference candidates are catalogued separately, not owned inventory. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: projector-class. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P02] Short-throw projector candidates",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 selected optical package; package contains P1=1, P2=2 or P3=3 heads; choose one. Ownership: unconfirmed. Short throw is valid for P1=1, P2=2 or P3=3; three is not a minimum. See docs/projector-workbook-options.md and assets/projector-workbook-catalog.json. Source prices are dated references, not acquisition quotes or ownership. Single-head focus trial first. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: projector-class. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P03] Triangle-mounted optical arms",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 3,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P03. Configurations: G25, G30, S25, S30. Quantity: 3 positions in modeled P3; nominal concept count; verify accepted design. Ownership: unconfirmed. P1=1, P2=2, P3=3; P4 needs new fourth support design. Model 2 m/30 degrees is not structural sizing. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P04] Projector mount plates / aiming hardware",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P04. Configurations: G25, G30, S25, S30, O30. Quantity: 1 set per chosen head count; package quantity; components pending specification. Ownership: unconfirmed. One per selected head; approved mount and retention; hardware specification pending. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P05] Ventilated rain and salt-spray canopies",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P05. Configurations: G25, G30, S25, S30, O30. Quantity: 1 set per chosen head count; package quantity; components pending specification. Ownership: unconfirmed. One per selected head; no sealed hot box or claimed weather rating. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P06",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P06] Canopy brackets and retained fasteners",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P06. Configurations: G25, G30, S25, S30, O30. Quantity: 1 lot; package quantity; components pending specification. Ownership: unconfirmed. Quantity after exact head/hood design; includes open ventilation and service clearance. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P07",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P07] Arm stays / brace / balance provisions",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P07. Configurations: G25, G30, S25, S30. Quantity: 1 reviewed set; package quantity; components pending specification. Ownership: unconfirmed. Lifted stays and ground-arm load paths differ; reviewer-defined complete payload. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P08",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P08] Equipment secondary retention",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P08. Configurations: G25, G30, S25, S30, O30. Quantity: 1 set; package quantity; components pending specification. Ownership: unconfirmed. Correct attachment points and exact head/hood count; compatible intended duty. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P09",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P09] Independent projector stands alternative",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - PROJECTION",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P09. Configurations: G25, G30, S25, S30, O30. Quantity: 1 selected-head set; package quantity; components pending specification. Ownership: unconfirmed. Optional alternative to arms, adds footprint/cables/ballast; not P3 modeled baseline. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: projection-support. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "projection",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P10",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P10] Playback/compositing laptop candidate",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CONTROL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P10. Configurations: G25, G30, S25, S30, O30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: unconfirmed. Older ledger says owned; actual unit/ports/GPU/performance not confirmed here. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "control",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P11",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P11] Optional output mini PC / node",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CONTROL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P11. Configurations: G25, G30, S25, S30, O30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: unconfirmed. Omit if verified laptop direct output suffices; check independent outputs before buying. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "control",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P12",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P12] HDMI / video adapters and leads",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CONTROL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P12. Configurations: G25, G30, S25, S30, O30. Quantity: 1 loom; package quantity; components pending specification. Ownership: unconfirmed. Exact count equals output path; lengths after measured routing; no fixed generic cable length. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "control",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P13",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P13] Local network router / AP candidate",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CONTROL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P13. Configurations: G25, G30, S25, S30, O30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: unconfirmed. Older ledger mentions owned UniFi; verify real inventory and capability; no internet required by plan. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "control",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P14",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P14] Data cables, node enclosure and strain relief",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CONTROL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P14. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Count after architecture selection; preserve ventilation and weather protection. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "control",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P15",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P15] Content, playback/mapping configuration and backup",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CONTROL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P15. Configurations: G25, G30, S25, S30, O30. Quantity: 1 show package; package quantity; components pending specification. Ownership: unconfirmed. Use existing project assets; verify software/licence/capture support and offline startup. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "control",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-P16",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-P16] Attendant blackout / stop control",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CONTROL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-P16. Configurations: G25, G30, S25, S30, O30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Test stop on feed loss, restart and operator input; not a safety-rated control claim. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "control",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-D01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-D01] LED fixtures / diffusion candidate kit",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LED",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-D01. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Fixture/strip count and lengths follow optical test; allocation ceiling $150 with control. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "led",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-D02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-D02] LED supply, controller and participant control",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LED",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-D02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Match actual rated equipment; quote with D01 inside shared ceiling, not an extra $150. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "led",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-C01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-C01] Participant phones / cameras",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CAPTURE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-C01. Configurations: G25, G30, S25, S30, O30. Quantity: 1 selection lot; package quantity; components pending specification. Ownership: unconfirmed. C1=1, C2=2; ownership/model unknown; internal location conditional on sphere approval. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "capture",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-C02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-C02] Camera mounts / external arm / retention",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CAPTURE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-C02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 selected-camera set; package quantity; components pending specification. Ownership: unconfirmed. One secure mounting arrangement per selected camera; no edge/heat/contact or entry conflict. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "capture",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-C03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-C03] Camera power banks / supplies and restrained leads",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CAPTURE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-C03. Configurations: G25, G30, S25, S30, O30. Quantity: 1 selected-camera set; package quantity; components pending specification. Ownership: unconfirmed. Temperature/runtime and secured location checked; count by actual devices. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "capture",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-C04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-C04] Live-feed software / compositing configuration",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - CAPTURE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-C04. Configurations: G25, G30, S25, S30, O30. Quantity: 1 configuration; nominal concept count; verify accepted design. Ownership: unconfirmed. Consent, local streaming, default no recording, feed-loss fallback and latency test. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "capture",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-H01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-H01] Andrew's owned large external hazer",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "have",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Andrew",
+        "place_to_get": "Already owned",
+        "pack_zone": "Zencelades - HAZE",
+        "estimated_price": 0.0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-H01. Configurations: G25, G30, S25, S30, O30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: Andrew-confirmed owned. User-confirmed owned; model, measured dimensions, fluid, power and condition still unknown. Owned acquisition cost $0; operation/inspection not priced. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "haze",
+          "cost-recorded",
+          "owned-confirmed"
+        ]
+      }
+    },
+    {
+      "key": "ZC-H02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-H02] Manufacturer-approved haze fluid",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HAZE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-H02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 consumables lot; package quantity; components pending specification. Ownership: unconfirmed. Fluid type/quantity after exact manual and duty plan; not zero just because hazer is owned. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "haze",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-H03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-H03] Hazer weather/ground protection and stop control",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - HAZE",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-H03. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Rear/below placement; manual clearances and venue approval; no hose into occupied sphere. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "haze",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-E01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-E01] Approved electrical supply / distribution plan",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - ELECTRICAL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-E01. Configurations: G25, G30, S25, S30, O30. Quantity: 1 supply arrangement; nominal concept count; verify accepted design. Ownership: unconfirmed. Venue supply unconfirmed; actual load calculation includes blower, AV and haze. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "electrical",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-E02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-E02] Outdoor power cords and distribution",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - ELECTRICAL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-E02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 loom; package quantity; components pending specification. Ownership: unconfirmed. Ratings, circuit count and lengths after load/route survey; no cord through entry. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "electrical",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-E03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-E03] Required GFCI / electrical protection",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - ELECTRICAL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-E03. Configurations: G25, G30, S25, S30, O30. Quantity: 1 system; package quantity; components pending specification. Ownership: unconfirmed. Select and test to actual supply/equipment/site requirements; competent electrical review. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "electrical",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-E04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-E04] Weatherproof connections / raised distribution enclosure",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - ELECTRICAL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-E04. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Use equipment with suitable actual ratings, drip routing and ventilation. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "electrical",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-E05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-E05] Cable ramps / covers / identification / ties",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - ELECTRICAL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-E05. Configurations: G25, G30, S25, S30, O30. Quantity: 1 route kit; package quantity; components pending specification. Ownership: unconfirmed. Count and lengths from final layout; central front approach kept free. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "electrical",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-E06",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-E06] Generator alternative investigation",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - ELECTRICAL",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-E06. Configurations: G25, G30, S25, S30, O30. Quantity: 1 supply option; nominal concept count; verify accepted design. Ownership: unconfirmed. Only if venue permits and actual load/noise/fuel/placement priced; outside base allowance. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: power-source. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "electrical",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-O01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-O01] Open surround scenic frame",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SURROUND",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-O01. Configurations: O30. Quantity: 1 frame; nominal concept count; verify accepted design. Ownership: unconfirmed. O30 only, scenery loads; material/joints/feet reviewed, no occupant suspension. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "surround",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-O02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-O02] Scenic diffusion panels / mesh",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SURROUND",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-O02. Configurations: O30. Quantity: 1 measured set; package quantity; components pending specification. Ownership: unconfirmed. Area/count and material documentation after optical/venue tests. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "surround",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-O03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-O03] Panel fasteners, edge protection and removable joints",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SURROUND",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-O03. Configurations: O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Specify for actual material/weather, keep entry open. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "surround",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-O04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-O04] Independent supported seat alternative",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SURROUND",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-O04. Configurations: O30. Quantity: 1 unit; nominal concept count; verify accepted design. Ownership: unconfirmed. Optional ground-supported seat; no homemade suspended seat presumed. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "surround",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-T01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-T01] Andrew's pipe bender",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "have",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Andrew",
+        "place_to_get": "Already owned",
+        "pack_zone": "Zencelades - TOOLS",
+        "estimated_price": 0.0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-T01. Configurations: G25, G30, S25, S30, O30. Quantity: 1 tool; nominal concept count; verify accepted design. Ownership: Andrew-confirmed owned. User-confirmed owned; die size, material/wall capacity and tooling still to measure. Owned acquisition cost $0; operation/inspection not priced. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "tools",
+          "cost-recorded",
+          "owned-confirmed"
+        ]
+      }
+    },
+    {
+      "key": "ZC-T02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-T02] Denhac fabrication access / booking",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - TOOLS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-T02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 booking; nominal concept count; verify accepted design. Ownership: access confirmed; booking unconfirmed. Andrew-confirmed access; training, equipment time and consumables not reserved. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "tools",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-T03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-T03] Welding/cutting/drilling/measurement equipment",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - TOOLS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-T03. Configurations: G25, G30, S25, S30, O30. Quantity: 1 shop checklist; nominal concept count; verify accepted design. Ownership: unconfirmed. Use available accepted tools after capability/authorization checks; do not buy a full shop. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "tools",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-T04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-T04] Fabricator help / crew labour commitment",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - TOOLS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-T04. Configurations: G25, G30, S25, S30, O30. Quantity: 1 agreed work package; package quantity; components pending specification. Ownership: unconfirmed. Odd Todd is a possible collaborator; hours/role not yet committed; no assumed free service. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "tools",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-T05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-T05] Shop PPE / fire protection / safe work supplies",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - TOOLS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-T05. Configurations: G25, G30, S25, S30, O30. Quantity: 1 shop kit; package quantity; components pending specification. Ownership: unconfirmed. Follow actual shop rules and fabrication method; verify available stock. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "tools",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-V01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-V01] Sphere and support engineering / rigging review",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SERVICES",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-V01. Configurations: G25, G30, S25, S30. Quantity: 1 review package; package quantity; components pending specification. Ownership: unconfirmed. Scope includes occupied support, contact, deflation, access, wind and selected lifted mode. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "services",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-V02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-V02] Venue approval / permits / insurance",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SERVICES",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-V02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 approval package; package quantity; components pending specification. Ownership: unconfirmed. Scope and cost confirmed with actual project; application or conversation is not approval. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "services",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-V03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-V03] Electrical and optical commissioning",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SERVICES",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-V03. Configurations: G25, G30, S25, S30, O30. Quantity: 1 commissioning package; package quantity; components pending specification. Ownership: unconfirmed. Record power protection, loads, coverage, heat, blackouts and cable layout. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "services",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-V04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-V04] Qualified operator/spotter/recovery staffing",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - SERVICES",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-V04. Configurations: G25, G30, S25, S30, O30. Quantity: 1 staffing plan; nominal concept count; verify accepted design. Ownership: unconfirmed. Names, training, shifts and stop authority agreed before occupied operation. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "services",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-K01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-K01] Assembly labels / hardware bags / inventory sheets",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LOGISTICS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-K01. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Mark FRONT and matching joints; scan/count before load and after strike. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "logistics",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-K02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-K02] Transport cases / padding / securement",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LOGISTICS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-K02. Configurations: G25, G30, S25, S30, O30. Quantity: 1 measured kit; package quantity; components pending specification. Ownership: unconfirmed. Count by actual equipment; transport vehicle capacity and load security checked. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "logistics",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-K03",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-K03] Cleaning / lens cloths / approved repair spares",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LOGISTICS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-K03. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. No unapproved sphere solvent or adhesive; consumable quantities from rehearsal. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "logistics",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-K04",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-K04] Site cleanup / LNT supplies",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LOGISTICS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-K04. Configurations: G25, G30, S25, S30, O30. Quantity: 1 kit; package quantity; components pending specification. Ownership: unconfirmed. Collect small hardware, tape and waste; preserve site/return condition. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "logistics",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-K05",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-K05] Weather monitoring / communication / inspection log",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LOGISTICS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-K05. Configurations: G25, G30, S25, S30, O30. Quantity: 1 operations kit; package quantity; components pending specification. Ownership: unconfirmed. Tools and trigger values from operating plan; weather limits not invented. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "logistics",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-K06",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-K06] Participant information / camera consent / entry signage",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LOGISTICS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-K06. Configurations: G25, G30, S25, S30, O30. Quantity: 1 set; package quantity; components pending specification. Ownership: unconfirmed. Explain participation and stop/exit; signage does not replace direct supervision. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "logistics",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-K07",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-K07] Freight, transport, tax and return provision",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Unspecified",
+        "pack_zone": "Zencelades - LOGISTICS",
+        "estimated_price": 0,
+        "essential": false,
+        "notes": "Love Burn 2027. Stable key ZC-K07. Configurations: G25, G30, S25, S30, O30. Quantity: 1 cost schedule; nominal concept count; verify accepted design. Ownership: unconfirmed. Quote actual selected kit and travel; avoid counting freight twice in delivered sphere quote. COST UNKNOWN: estimated_price=0 is an unset placeholder, not a free item. Alternative group: none. Choose one support/size and one visual module; never sum all alternatives. Plans: https://zenceladus.com/attachments/build/README.md",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "logistics",
+          "cost-unquoted"
+        ]
+      }
+    },
+    {
+      "key": "ZC-W01",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-W01] Select sphere size, support mode and visual module",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew. Exit criterion: One selected option/module set; truck/water/wood excluded"
+      }
+    },
+    {
+      "key": "ZC-W02",
+      "depends": [],
+      "arguments": {
+        "item": "Zencelades [ZC-W02] Inventory owned equipment and actual shop access",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "maybe",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew. Exit criterion: Models, manuals, condition, measured mass, custody and loan status recorded"
+      }
+    },
+    {
+      "key": "ZC-W03",
+      "depends": [
+        "ZC-W01"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W03] Obtain exact sphere instructions and occupied-use answers",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew and sphere supplier. Exit criterion: Static occupancy, ventilation, entry, inflation, contact and repair requirements documented"
+      }
+    },
+    {
+      "key": "ZC-W04",
+      "depends": [
+        "ZC-W03"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W04] Mock up clear-front approach and seated space",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Builder. Exit criterion: Two side legs, one rear leg; actual entry and transfer/recovery route checked"
+      }
+    },
+    {
+      "key": "ZC-W05",
+      "depends": [
+        "ZC-W03",
+        "ZC-W04"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W05] Resolve holder, contact and deflation support design",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Fabricator and competent reviewer. Exit criterion: Accepted load path, material/joints, broad underside support, stability and limits"
+      }
+    },
+    {
+      "key": "ZC-W06",
+      "depends": [
+        "ZC-W01",
+        "ZC-W02"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W06] Identify and assess actual aerial host if selected",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew and rigger. Exit criterion: Exact rig/manual, usable height, duty, ground and outdoor-use suitability; otherwise not selected"
+      }
+    },
+    {
+      "key": "ZC-W07",
+      "depends": [
+        "ZC-W05",
+        "ZC-W06"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W07] Complete suspended-system and recovery design if selected",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Engineer/rigger. Exit criterion: Whole occupied system and hardware schedule accepted; otherwise suspension remains blocked"
+      }
+    },
+    {
+      "key": "ZC-W08",
+      "depends": [
+        "ZC-W01",
+        "ZC-W03"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W08] Test one real light/projector on the empty material",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): AV lead. Exit criterion: Measured throw, focus, coverage, material compatibility and realistic output path"
+      }
+    },
+    {
+      "key": "ZC-W09",
+      "depends": [
+        "ZC-W05"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W09] Choose traceable steel or accept a specific donor",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Fabricator. Exit criterion: Actual stock/condition identified; donor adaptation accepted or rejected"
+      }
+    },
+    {
+      "key": "ZC-W10",
+      "depends": [
+        "ZC-W05",
+        "ZC-W08",
+        "ZC-W09"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W10] Complete selected drawing-specific BOM and quotations",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew and fabricator. Exit criterion: Exact quantities/grades/hardware, delivery/tax and committed loans; suspended parts also need W07"
+      }
+    },
+    {
+      "key": "ZC-W11",
+      "depends": [
+        "ZC-W10"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W11] Reconcile selected build against $3,000 total",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew. Exit criterion: Delivered/taxed subtotal plus reserve within cap; no alternatives double-counted"
+      }
+    },
+    {
+      "key": "ZC-W12",
+      "depends": [
+        "ZC-W11"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W12] Procure only approved selected items and receive them",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew. Exit criterion: Actual approval, receipt/loan record, condition and quantities; this task does not order anything"
+      }
+    },
+    {
+      "key": "ZC-W13",
+      "depends": [
+        "ZC-W12"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W13] Fabricate and inspect accepted common holder",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Fabricator. Exit criterion: Accepted drawing followed, joints inspected, FRONT marked, completed mass recorded"
+      }
+    },
+    {
+      "key": "ZC-W14",
+      "depends": [
+        "ZC-W13"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W14] Fit detachable side/rear legs and ground support",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Fabricator. Exit criterion: Three-point support and clear approach checked with actual ground-bearing design"
+      }
+    },
+    {
+      "key": "ZC-W15",
+      "depends": [
+        "ZC-W14"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W15] Empty sphere inflation, leak and contact fit test",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Operator. Exit criterion: Manufacturer procedure and actual contact/deflation recovery demonstrated"
+      }
+    },
+    {
+      "key": "ZC-W16",
+      "depends": [
+        "ZC-W08",
+        "ZC-W15"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W16] Fit and calibrate chosen light/projection module",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): AV lead. Exit criterion: Retained hardware, covers, coverage, load, cooling, rear/side cables and blackout verified"
+      }
+    },
+    {
+      "key": "ZC-W17",
+      "depends": [
+        "ZC-W16"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W17] Test optional participant camera module and consent flow",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): AV lead. Exit criterion: Selected C1/C2 view, mounting, latency, local no-recording default and stop tested; or omitted"
+      }
+    },
+    {
+      "key": "ZC-W18",
+      "depends": [
+        "ZC-W02",
+        "ZC-W15"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W18] Identify and test optional external rear hazer",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew and operator. Exit criterion: Exact manual/fluid/power, rear clearances, venue permission and no-haze fallback; or omitted"
+      }
+    },
+    {
+      "key": "ZC-W19",
+      "depends": [
+        "ZC-W07",
+        "ZC-W13",
+        "ZC-W16"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W19] Assemble and inspect selected aerial system empty",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Rigger. Exit criterion: Exact host and full payload assembled to accepted design; suspended option only"
+      }
+    },
+    {
+      "key": "ZC-W20",
+      "depends": [
+        "ZC-W15",
+        "ZC-W16"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W20] Complete unoccupied acceptance and recovery rehearsal",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Reviewer and operator. Exit criterion: Design-specific tests passed and recorded; suspended route also requires W19; no occupant proof test"
+      }
+    },
+    {
+      "key": "ZC-W21",
+      "depends": [
+        "ZC-W01",
+        "ZC-W05"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W21] Confirm venue, power, permits and coverage",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Andrew. Exit criterion: Official acceptance for exact footprint/height/system and required power/conditions"
+      }
+    },
+    {
+      "key": "ZC-W22",
+      "depends": [
+        "ZC-W20",
+        "ZC-W21"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W22] Train crew and release approved occupied rehearsal",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Operator/spotter and reviewer. Exit criterion: Staffed stop/communication/entry/retrieval within accepted operating limits"
+      }
+    },
+    {
+      "key": "ZC-W23",
+      "depends": [
+        "ZC-W22"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W23] Pack, transport and commission the installation",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Build crew. Exit criterion: Parts counted, loads secured, FRONT set first, site commissioning recorded"
+      }
+    },
+    {
+      "key": "ZC-W24",
+      "depends": [
+        "ZC-W23"
+      ],
+      "arguments": {
+        "item": "Zencelades [ZC-W24] Operate, strike, inspect and return equipment",
+        "category": "Zencelades / Love Burn 2027",
+        "quantity": 1,
+        "status": "blocked",
+        "scope": "group",
+        "group_id": "burning-man-2026",
+        "owner": "Unassigned",
+        "place_to_get": "Not a purchase",
+        "pack_zone": "Zencelades - WORK PLAN",
+        "estimated_price": 0,
+        "notes": "Planning task, not a physical part or purchase. Love Burn 2027. Some branches apply only to the chosen option; see full build plan.",
+        "task_enabled": true,
+        "task_status": "backlog",
+        "task_priority": "high",
+        "task_tags": [
+          "zencelades",
+          "love-burn-2027",
+          "build-plan"
+        ],
+        "task_notes": "Suggested role (not a commitment): Operator and crew. Exit criterion: Daily checks, full LNT, inventory/receipts and loan returns reconciled"
+      }
+    }
+  ]
+}
