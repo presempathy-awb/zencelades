@@ -144,26 +144,40 @@
         </figure>
         <figure class="plate">
           <svg class="schematic" viewBox="0 0 520 420" role="img" aria-labelledby="p3t p3d">
-            <title id="p3t">Ground-rest fallback</title>
-            <desc id="p3d">The sphere rests on a padded cradle of foam blocks and sandbags with its centre about 1.45 metres above ground. Projectors, Pi, blower and power are unchanged. This is the configuration used in wind or if the rig fit fails.</desc>
+            <title id="p3t">Landed on lander legs</title>
+            <desc id="p3d">The sphere sits in a padded loop at the centre of a steel triangle that stands on three splayed legs with foot pads on sandbags, its centre 1.7 metres above ground and its top at 2.95 metres. One person sits inside; the tunnel is on the side. Projectors, mini PC, blower and power are unchanged. This is the configuration people go inside in, and the one used if no rig is allowed.</desc>
             <rect class="ground" x="0" y="370" width="520" height="50"/>
-            <rect class="solid" x="190" y="340" width="116" height="30"/>
-            <rect class="solid" x="176" y="356" width="24" height="14"/><rect class="solid" x="296" y="356" width="24" height="14"/>
-            <rect class="box" x="150" y="362" width="30" height="8"/><rect class="box" x="316" y="362" width="30" height="8"/>
-            <circle class="sphere" cx="248" cy="272" r="70"/>
-            <polygon class="beam" points="70,272 190,210 190,334"/><polygon class="beam" points="430,272 306,210 306,334"/>
-            <line class="ink" x1="68" y1="370" x2="68" y2="280"/><line class="ink" x1="432" y1="370" x2="432" y2="280"/>
-            <rect class="solid" x="52" y="266" width="32" height="16"/><rect class="solid" x="416" y="266" width="32" height="16"/>
-            <path class="thin" d="M248 342 C248 352 262 356 300 356"/>
-            <rect class="box" x="300" y="350" width="34" height="14"/><rect class="box" x="400" y="352" width="40" height="18"/>
-            <text x="16" y="26">Plate 3 · resting on a cradle</text>
-            <text x="16" y="44" class="muted">worst case: wind above the limit, or the rig does not fit</text>
-            <text x="200" y="334" class="muted">foam cradle + mats</text>
-            <text x="120" y="398" class="muted">sandbags</text><text x="316" y="398" class="muted">sandbags</text>
-            <text x="340" y="346" class="muted">blower</text><text x="400" y="346" class="muted">GFCI box</text>
-            <line class="dash" x1="340" y1="272" x2="340" y2="370"/><text x="346" y="320" class="muted">centre ≈ 1.45 m</text>
+            <!-- legs, pads, triangle bar and loop -->
+            <line class="thin" x1="248" y1="329" x2="248" y2="366"/>
+            <line class="ink" x1="165" y1="329" x2="122" y2="366"/><line class="ink" x1="331" y1="329" x2="374" y2="366"/>
+            <rect class="solid" x="104" y="364" width="36" height="6"/><rect class="solid" x="356" y="364" width="36" height="6"/><rect class="solid" x="232" y="364" width="32" height="6"/>
+            <line class="ink" x1="161" y1="329" x2="335" y2="329" stroke-width="4"/>
+            <circle class="solid" cx="165" cy="329" r="3"/><circle class="solid" cx="331" cy="329" r="3"/>
+            <ellipse class="thin" cx="248" cy="323" rx="51" ry="6"/>
+            <!-- sphere, tunnel, person -->
+            <circle class="sphere" cx="248" cy="275" r="70"/>
+            <ellipse class="thin" cx="313" cy="291" rx="6" ry="18"/>
+            <circle class="solid" cx="248" cy="304" r="6"/><line x1="248" y1="310" x2="248" y2="330" stroke="#0a1922" stroke-width="2.5"/><line x1="248" y1="330" x2="238" y2="338" stroke="#0a1922" stroke-width="2.5"/><line x1="248" y1="330" x2="258" y2="338" stroke="#0a1922" stroke-width="2.5"/>
+            <!-- projectors -->
+            <polygon class="beam" points="70,275 190,213 190,337"/><polygon class="beam" points="430,275 306,213 306,337"/>
+            <line class="ink" x1="68" y1="370" x2="68" y2="283"/><line class="ink" x1="432" y1="370" x2="432" y2="283"/>
+            <rect class="solid" x="52" y="269" width="32" height="16"/><rect class="solid" x="416" y="269" width="32" height="16"/>
+            <!-- blower and power -->
+            <path class="thin" d="M248 345 C250 356 262 360 272 360"/>
+            <rect class="box" x="272" y="353" width="30" height="13"/><rect class="box" x="456" y="352" width="40" height="18"/>
+            <path class="thin" d="M302 360 L456 360"/>
+            <!-- dimensions -->
+            <path class="dash" d="M480 205 L480 370"/><text x="392" y="200" class="muted">top 2.95 m · 9 ft 8 in</text>
+            <path class="dash" d="M318 275 L410 275"/><text x="440" y="302" class="muted">centre 1.7 m</text>
+            <text x="16" y="26">Plate 3 · landed on lander legs</text>
+            <text x="16" y="44" class="muted">where people go inside · the no-rig fallback · nothing overhead or to climb</text>
+            <text x="320" y="296" class="muted">tunnel</text>
+            <text x="16" y="316" class="muted">steel triangle</text><text x="16" y="330" class="muted">· loop seat</text>
+            <text x="276" y="349" class="muted">blower</text><text x="454" y="348" class="muted">GFCI box</text>
+            <text x="16" y="390" class="muted">lander legs pinned to the corner plates · foot pads on sandbags · no stakes</text>
+            <text x="16" y="406" class="muted">sized for the sphere plus one seated person; proof-loaded at the bench test</text>
           </svg>
-          <figcaption><strong>The two-person, five-minute fallback.</strong> Lower the sphere onto the cradle, re-aim the projectors, keep running. The piece still works; it just stops floating.</figcaption>
+          <figcaption><strong>The landed state.</strong> The same triangle on three pinned legs: centre at the same 1.7 m, top just under 10 ft, tunnel at knee height, blower on, a crew member at the door. This is where people go inside, and the whole piece if no rig is allowed.</figcaption>
         </figure>
       </div>
     </section>
@@ -293,10 +307,10 @@
             <rect class="box" x="258" y="318" width="18" height="12"/><text x="280" y="330" class="muted">blower</text>
             <rect class="box" x="470" y="268" width="18" height="12"/><text x="404" y="300" class="muted">mini PC</text>
             <rect class="box" x="470" y="10" width="22" height="16"/><text x="400" y="22" class="muted">GFCI box</text>
-            <path class="dash" d="M481 26 L481 268"/><path class="dash" d="M492 18 L540 18"/><text x="505" y="10" class="muted">to supply, ramped</text>
+            <path class="dash" d="M481 26 L481 268"/><path class="dash" d="M492 18 L518 18"/><text x="300" y="10" class="muted">to supply, ramped</text>
             <text x="20" y="130" class="muted">rig leg</text><text x="140" y="104" class="muted">1.5 m clear zone around legs</text>
             <text x="10" y="236" class="muted">proj. A</text><text x="440" y="236" class="muted">proj. B</text>
-            <text x="200" y="520">10 m × 10 m requested placement · rig footprint 5.5 m square (illustrative)</text>
+            <text x="20" y="520">10 m × 10 m placement · rig footprint 5.5 m square (illustrative)</text>
           </g>
         </svg>
         <figcaption><strong>Where things go.</strong> The tunnel faces north, where the queue and the crew member stand; the south side is the widest view, and nobody walks through a beam. The projectors’ backs face east and west, so spill onto neighbours is minimal.</figcaption>
