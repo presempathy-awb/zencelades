@@ -46,6 +46,24 @@ and rendered the gallery. Fresh HTTP requests did not redirect. This supports
 a cached-navigation issue, not a reproduced live asset outage. The exact symptom
 Andrew saw remains pending; no gallery repair is claimed.
 
-Publication of the size change is pending the scoped release and live readback.
+## Publication
+
+Source `e77e92c093133457e04888c05730063bfd02522b` is verified on both Gitea
+and GitHub feature refs. The studio-only release
+`7fea3988dcb047227a76fbd0e39a5bf0e5c1451651c9b906cd510ddca5376482`
+preserved all 836 preceding manifest entries and changed 82 allowed studio
+paths. The activation verified the complete manifest, passed Caddy validation
+and restarted successfully after the first readiness probe briefly failed.
+Existing formatting/loopback HTTP warnings remain. Normal public HTTPS hash
+readback passed for 97 files, including the ten gallery images and retained
+homepage, gallery, Showtime, pricing and grants pages. Service status is active.
+
+The live browser changed to a 2.5 m aerial holder and two projectors and downloaded
+`basket-aerial-rig-2.5m-2-heads.glb`. File readback verified 519,016 bytes, size 2.5,
+two heads, three webbings and SHA-256
+`82d0da61fd69ea7d7d703c9ed739da76db94335161a6b7ce2051b98c1fb979d5`.
+Impeccable ran against rendered local DOM; its existing typography/contrast
+advisories remain in the design backlog. This is not a whole-site usability pass.
+
 Login, authenticated persistence, live private inventory editing and remaining
 model configuration integration remain unfinished.
