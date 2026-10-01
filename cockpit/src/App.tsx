@@ -16,6 +16,8 @@ import {
   Truck,
   Upload,
   Wind,
+  Images,
+  Play,
 } from "lucide-react";
 import { type JSX, lazy, Suspense, useRef, useState } from "react";
 import BudgetView, { NumberField } from "./BudgetView";
@@ -34,6 +36,7 @@ import { Button } from "./ui";
 import { chooseModel } from "./option-context";
 import { BuildBoard } from "./BuildBoard";
 import HomePage from "./HomePage";
+import MediaView, { ShowtimeView } from "./MediaView";
 
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
@@ -41,6 +44,9 @@ const ResearchView = lazy(() => import("./ResearchView"));
 const PartsView = lazy(() => import("./PartsView"));
 const icons = [Circle, Circle, Lightbulb, Layers, Circle, Truck, Columns3, Anchor, Truck, Columns3];
 const tools = [
+  { path: "/", title: "Overview", icon: Orbit },
+  { path: "/media", title: "Media", icon: Images },
+  { path: "/showtime", title: "Showtime", icon: Play },
   { path: "/model", title: "Model", icon: Box },
   { path: "/workflow", title: "Workflow", icon: Network },
   { path: "/tasks", title: "Build board", icon: Columns3 },
@@ -59,6 +65,7 @@ export default function App(): JSX.Element {
   const path = useRouterState({ select: (state) => state.location.pathname });
   const modelVisible =
     path === "/model" || (path === "/" && window.location.pathname.startsWith("/studio"));
+  const presentation = (path === "/" && !modelVisible) || path === "/media" || path === "/showtime";
   const option = selectedOption(scenario);
   const result = estimate(scenario);
   const update = (next: Scenario): boolean => {
@@ -113,9 +120,8 @@ export default function App(): JSX.Element {
       "Downloaded your temporary draft and applied note. Unapplied note text is not in the file; no account save was made.",
     );
   };
-  if (path === "/" && !modelVisible) return <HomePage />;
   return (
-    <div className="studio">
+    <div className={`studio ${presentation ? "media-cockpit" : ""}`}>
       <button
         type="button"
         className="skip-link"
@@ -129,16 +135,13 @@ export default function App(): JSX.Element {
         <div className="brand">
           <Orbit size={30} aria-hidden="true" />
           <div>
-            <h1>
-              ZENCELADES <span>STUDIO</span>
-            </h1>
-            <small>Project studio</small>
+            <a className="brand-name" href="#/">
+              Zencelades <span>cockpit</span>
+            </a>
+            <small>A human sphere · Love Burn 2027</small>
           </div>
         </div>
         <div className="header-actions">
-          <a href="/#/">Artwork home</a>
-          <a href="/models/">Gallery</a>
-          <a href="/showtime/">Showtime</a>
           <details className="draft-help">
             <summary title="Guest changes stay in memory and reset on reload.">
               Temporary draft ⓘ
@@ -199,80 +202,106 @@ export default function App(): JSX.Element {
               key={to}
               to={to}
               activeOptions={{ exact: true }}
-              className={(to === "/model" ? modelVisible : path === to) ? "tool active" : "tool"}
-              aria-current={(to === "/model" ? modelVisible : path === to) ? "page" : undefined}
+              className={
+                (
+                  to === "/model"
+                    ? modelVisible
+                    : to === "/"
+                      ? path === to && !modelVisible
+                      : path === to
+                )
+                  ? "tool active"
+                  : "tool"
+              }
+              aria-current={
+                (
+                  to === "/model"
+                    ? modelVisible
+                    : to === "/"
+                      ? path === to && !modelVisible
+                      : path === to
+                )
+                  ? "page"
+                  : undefined
+              }
             >
               <Icon size={17} aria-hidden="true" />
               {title}
             </Link>
           ))}
         </div>
-        <Button
-          variant="ghost"
-          className="inspector-toggle"
-          aria-pressed={inspector}
-          hint="Show or hide budget and effect settings beside the workspace."
-          onClick={() => setInspector(!inspector)}
-        >
-          {inspector ? <PanelRightClose size={18} /> : <PanelRightOpen size={18} />}
-          <span>Inspector</span>
-        </Button>
+        {!presentation && (
+          <Button
+            variant="ghost"
+            className="inspector-toggle"
+            aria-pressed={inspector}
+            hint="Show or hide budget and effect settings beside the workspace."
+            onClick={() => setInspector(!inspector)}
+          >
+            {inspector ? <PanelRightClose size={18} /> : <PanelRightOpen size={18} />}
+            <span>Inspector</span>
+          </Button>
+        )}
       </nav>
-      <div className={`workbench ${inspector ? "" : "inspector-hidden"}`}>
-        <aside className="support-rail" aria-label="Support options">
-          <div className="rail-heading">
-            <h2>Love Burn design</h2>
-          </div>
-          <div className="support-list">
-            <button
-              type="button"
-              className={scenario.selected === "love-burn" ? "support selected" : "support"}
-              aria-pressed={scenario.selected === "love-burn"}
-              onClick={() => selectModel("love-burn")}
-            >
-              <Orbit size={21} aria-hidden="true" />
-              <span>
-                Main proposal<small>2.5 m moon · 2 purchased projectors</small>
-              </span>
-            </button>
-            <details open={scenario.selected !== "love-burn" ? true : undefined}>
-              <summary>Alternate designs</summary>
-              {baseline.options
-                .filter((item) => item.id !== "love-burn")
-                .map((item, index) => {
-                  const Icon = icons[index];
-                  return (
-                    <button
-                      type="button"
-                      key={item.id}
-                      aria-pressed={scenario.selected === item.id}
-                      className={scenario.selected === item.id ? "support selected" : "support"}
-                      onClick={() => selectModel(item.id)}
-                    >
-                      <Icon size={21} aria-hidden="true" />
-                      <span>
-                        {shortNames[item.id]}
-                        <small>
-                          {item.projectors ? `${item.projectors} projectors` : "Internal light"}
-                        </small>
-                      </span>
-                    </button>
-                  );
-                })}
-            </details>
-          </div>
-          <div className="rail-footer">
-            <span className="eyebrow">CURRENT BASIS</span>
-            <p>
-              {option.id === "love-burn"
-                ? "$3,000 target · Claude's grant purchase budget. Aerial holder with lander mode."
-                : option.id.startsWith("seed-")
-                  ? "$3,000 TOTAL · DIY. Person inside. Ground-supported concept."
-                  : "Historical empty-shell comparison. Does not yet meet the occupied brief."}
-            </p>
-            <a href="/mounts/">Mount research ↗</a>
-          </div>
-        </aside>
+      <div
+        className={`workbench ${presentation ? "presentation-workbench" : inspector ? "" : "inspector-hidden"}`}
+      >
+        {!presentation && (
+          <aside className="support-rail" aria-label="Support options">
+            <div className="rail-heading">
+              <h2>Love Burn design</h2>
+            </div>
+            <div className="support-list">
+              <button
+                type="button"
+                className={scenario.selected === "love-burn" ? "support selected" : "support"}
+                aria-pressed={scenario.selected === "love-burn"}
+                onClick={() => selectModel("love-burn")}
+              >
+                <Orbit size={21} aria-hidden="true" />
+                <span>
+                  Main proposal<small>2.5 m moon · 2 purchased projectors</small>
+                </span>
+              </button>
+              <details open={scenario.selected !== "love-burn" ? true : undefined}>
+                <summary>Alternate designs</summary>
+                {baseline.options
+                  .filter((item) => item.id !== "love-burn")
+                  .map((item, index) => {
+                    const Icon = icons[index];
+                    return (
+                      <button
+                        type="button"
+                        key={item.id}
+                        aria-pressed={scenario.selected === item.id}
+                        className={scenario.selected === item.id ? "support selected" : "support"}
+                        onClick={() => selectModel(item.id)}
+                      >
+                        <Icon size={21} aria-hidden="true" />
+                        <span>
+                          {shortNames[item.id]}
+                          <small>
+                            {item.projectors ? `${item.projectors} projectors` : "Internal light"}
+                          </small>
+                        </span>
+                      </button>
+                    );
+                  })}
+              </details>
+            </div>
+            <div className="rail-footer">
+              <span className="eyebrow">CURRENT BASIS</span>
+              <p>
+                {option.id === "love-burn"
+                  ? "$3,000 target · Claude's grant purchase budget. Aerial holder with lander mode."
+                  : option.id.startsWith("seed-")
+                    ? "$3,000 TOTAL · DIY. Person inside. Ground-supported concept."
+                    : "Historical empty-shell comparison. Does not yet meet the occupied brief."}
+              </p>
+              <a href="/mounts/">Mount research ↗</a>
+            </div>
+          </aside>
+        )}
         <main id="workspace" className="workspace" tabIndex={-1}>
           <div className="scene-container" hidden={!modelVisible}>
             <Suspense fallback={<p className="loading">Loading the 3D workspace…</p>}>
@@ -306,7 +335,13 @@ export default function App(): JSX.Element {
             </Suspense>
           </div>
           <Suspense fallback={<p className="loading">Loading workspace…</p>}>
-            {path === "/tasks" ? (
+            {path === "/" && !modelVisible ? (
+              <HomePage />
+            ) : path === "/media" ? (
+              <MediaView />
+            ) : path === "/showtime" ? (
+              <ShowtimeView />
+            ) : path === "/tasks" ? (
               <BuildBoard
                 state={scenario.board}
                 onChange={(board) => update({ ...scenario, board })}
@@ -327,7 +362,7 @@ export default function App(): JSX.Element {
             ) : null}
           </Suspense>
         </main>
-        {inspector && (
+        {inspector && !presentation && (
           <aside className="inspector" aria-label="Scenario inspector">
             <div className="inspector-heading">
               <Layers size={24} />
@@ -419,45 +454,55 @@ export default function App(): JSX.Element {
           </aside>
         )}
       </div>
-      <footer className="notes-strip">
-        <nav aria-label="Project sources and attachments">
-          <a href="https://git.telpher.stream/telpher/zencelades" target="_blank" rel="noreferrer">
-            Gitea
-          </a>
-          {" · "}
-          <a href="https://github.com/presempathy-awb/zencelades" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          {" · "}
-          <a href="/attachments/Zencelades-3D-Schematics.pdf" target="_blank" rel="noreferrer">
-            3D schematics
-          </a>
-        </nav>
-        <label htmlFor="design-note">
-          <span>Design note</span>
-          <small>{note.length}/4,000</small>
-        </label>
-        <input
-          id="design-note"
-          value={note}
-          maxLength={4000}
-          aria-describedby="design-note-help"
-          placeholder="What should the next design pass resolve?"
-          onChange={(event) => setNote(event.target.value)}
-        />
-        <Button
-          onClick={() => update({ ...scenario, note })}
-          disabled={note === scenario.note}
-          hint="Include this note in the temporary draft and its next export. Reloading still resets the draft."
-        >
-          Apply note
-        </Button>
-        <small id="design-note-help" className="sr-only">
-          Apply the note before exporting. Export a file to keep a copy; reloading clears this
-          draft.
-        </small>
-        <p role="status">{message}</p>
-      </footer>
+      {!presentation && (
+        <footer className="notes-strip">
+          <nav aria-label="Project sources and attachments">
+            <a
+              href="https://git.telpher.stream/telpher/zencelades"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Gitea
+            </a>
+            {" · "}
+            <a
+              href="https://github.com/presempathy-awb/zencelades"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+            {" · "}
+            <a href="/attachments/Zencelades-3D-Schematics.pdf" target="_blank" rel="noreferrer">
+              3D schematics
+            </a>
+          </nav>
+          <label htmlFor="design-note">
+            <span>Design note</span>
+            <small>{note.length}/4,000</small>
+          </label>
+          <input
+            id="design-note"
+            value={note}
+            maxLength={4000}
+            aria-describedby="design-note-help"
+            placeholder="What should the next design pass resolve?"
+            onChange={(event) => setNote(event.target.value)}
+          />
+          <Button
+            onClick={() => update({ ...scenario, note })}
+            disabled={note === scenario.note}
+            hint="Include this note in the temporary draft and its next export. Reloading still resets the draft."
+          >
+            Apply note
+          </Button>
+          <small id="design-note-help" className="sr-only">
+            Apply the note before exporting. Export a file to keep a copy; reloading clears this
+            draft.
+          </small>
+          <p role="status">{message}</p>
+        </footer>
+      )}
     </div>
   );
 }

@@ -7,7 +7,7 @@
   --line: #446473;
   --accent: #99deed;
   --warm: #f0d2a8;
-  min-height: 100dvh;
+  min-height: 100%;
   background: var(--ocean);
   color: var(--ink);
   font:
@@ -16,10 +16,10 @@
     Helvetica,
     sans-serif;
 }
-.artwork-home :is(.masthead, main, footer) {
+.artwork-home :is(.artwork-content, footer) {
   max-width: 90rem;
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5vw, 5rem);
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
 .artwork-home a {
   color: var(--accent);
@@ -125,4 +125,40 @@
 .artwork-home footer {
   padding-block: 2rem;
   color: var(--muted);
+}
+.artwork-home .lead {
+  max-width: none;
+  padding-top: 2rem;
+}
+.artwork-home .feature-image {
+  padding: 0;
+  background: none;
+}
+.artwork-home .feature-image figcaption {
+  padding-inline: 0;
+}
+@media (min-width: 64rem) {
+  .artwork-home .lead {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    column-gap: 3rem;
+    align-items: start;
+  }
+  .artwork-home .lead > :not(.feature-image) {
+    grid-column: 1;
+  }
+  .artwork-home .lead h1 {
+    font-size: clamp(2.7rem, 4.4vw, 4.6rem);
+  }
+  .artwork-home .lead .lede {
+    font-size: 1.35rem;
+  }
+  .artwork-home .lead .feature-image {
+    grid-column: 2;
+    grid-row: 1 / 7;
+  }
+  .artwork-home .lead .status-note {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem;
+  }
 }

@@ -1,5 +1,9 @@
 # Render-led SPA homepage
 
+P099 subsequently integrated this artwork view into the persistent cockpit shell
+and added Media and Showtime views. See [the current cockpit receipt](media-cockpit-verification.md).
+The details below record the preceding homepage release.
+
 Andrew clarified that the website remains a single-page application, with the
 renders, hero and description as its homepage. The root entry now serves that
 SPA. `/#/` presents the complete existing artwork narrative and all four render

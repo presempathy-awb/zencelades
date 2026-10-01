@@ -1,0 +1,183 @@
+.studio {
+  --cockpit-ink: #edf4f4;
+  --cockpit-muted: #c4d5db;
+  --cockpit-accent: #99deed;
+  --cockpit-line: #446473;
+  --cockpit-bg: #0a1922;
+  background: var(--cockpit-bg);
+  font-family: "Avenir Next", Avenir, Helvetica, sans-serif;
+}
+.studio .brand-name {
+  color: var(--cockpit-ink);
+  font:
+    1.5rem Georgia,
+    serif;
+  text-decoration: none;
+}
+.studio .brand-name span {
+  color: var(--cockpit-accent);
+  font:
+    0.9rem "Avenir Next",
+    Avenir,
+    sans-serif;
+  margin-left: 0.65rem;
+}
+.studio .toolbar {
+  flex-shrink: 0;
+  gap: 0.75rem;
+}
+.studio .toolbar > div {
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  gap: 0.5rem;
+}
+.studio .toolbar .tool {
+  flex-shrink: 0;
+  min-width: max-content;
+  padding-inline: 0.85rem;
+}
+.studio .presentation-workbench {
+  display: block;
+  min-height: 0;
+  overflow: auto;
+}
+.presentation-workbench .workspace {
+  height: 100%;
+  background: var(--cockpit-bg);
+  overflow: auto;
+}
+.media-library {
+  color: var(--cockpit-ink);
+  padding: clamp(1.25rem, 4vw, 3rem);
+  max-width: 100rem;
+  margin: auto;
+}
+.media-library h1 {
+  font:
+    clamp(2.4rem, 4vw, 4.6rem) / 1.1 Georgia,
+    serif;
+  max-width: 18ch;
+  margin: 0.75rem 0 1.5rem;
+}
+.media-library h2 {
+  font:
+    clamp(1.8rem, 3vw, 3rem) / 1.2 Georgia,
+    serif;
+  margin-bottom: 1.25rem;
+}
+.media-library p {
+  max-width: 65ch;
+  margin-bottom: 1rem;
+}
+.media-library a,
+.showtime-bar a {
+  color: var(--cockpit-accent);
+}
+.media-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.media-label {
+  color: var(--cockpit-muted);
+}
+.media-link,
+.media-downloads a,
+.media-library .action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--cockpit-line);
+}
+.media-films,
+.media-library .model-gallery {
+  display: grid;
+  gap: 2rem;
+  margin-block: 2rem 3rem;
+}
+.media-library figure {
+  margin: 0;
+  min-width: 0;
+}
+.media-library :is(img, video) {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #050e15;
+}
+.media-library video {
+  aspect-ratio: 16 / 9;
+}
+.media-library figcaption {
+  padding-top: 0.8rem;
+  line-height: 1.65;
+  color: var(--cockpit-muted);
+}
+.media-films figcaption :is(strong, span) {
+  display: block;
+}
+.media-library figcaption strong {
+  color: var(--cockpit-ink);
+}
+.media-gallery .section {
+  padding-block: 2rem;
+  border-top: 1px solid var(--cockpit-line);
+}
+.media-library .model-actions,
+.media-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: none;
+}
+.showtime-panel {
+  height: auto;
+}
+.showtime-bar {
+  color: var(--cockpit-ink);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  flex-wrap: wrap;
+}
+.showtime-panel .section {
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--cockpit-line);
+}
+.showtime-panel .film {
+  max-width: 64rem;
+  margin-block: 2rem;
+}
+.showtime-panel .pair {
+  display: grid;
+  gap: 2rem;
+  margin-block: 2rem;
+}
+.showtime-panel .steps {
+  padding-left: 1.5rem;
+  max-width: 65ch;
+}
+.showtime-panel .steps li {
+  padding: 0.75rem 0;
+  line-height: 1.65;
+}
+.showtime-note {
+  color: var(--cockpit-muted);
+  border: 1px solid var(--cockpit-line);
+  padding: 1rem;
+}
+@media (min-width: 48rem) {
+  .media-films {
+    grid-template-columns: 1.3fr 1fr;
+  }
+  .media-library .model-gallery,
+  .showtime-panel .pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

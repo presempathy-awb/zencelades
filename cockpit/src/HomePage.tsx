@@ -5,15 +5,18 @@ import "./home.css";
 
 // This is reviewed, repository-owned markup, never uploaded or user-entered HTML.
 // Reuse the complete artwork narrative so the SPA cannot silently drop sections.
-const body = artwork.match(/<body[^>]*>([\s\S]*)<\/body>/)?.[1];
-if (!body) throw new Error("Artwork homepage is missing its body");
-const content = body
+const body = artwork.match(/<main[^>]*>([\s\S]*)<\/main>/)?.[1];
+const footer = artwork.match(/<footer[^>]*>([\s\S]*)<\/footer>/)?.[1];
+if (!body || !footer) throw new Error("Artwork homepage is missing its content");
+const content = `<div class="artwork-content">${body}</div><footer>${footer}</footer>`
   .replaceAll('href="/studio/"', 'href="#/model"')
   .replaceAll('href="/pricing/"', 'href="#/budget"')
   .replaceAll('href="/about/"', 'href="#/"')
+  .replaceAll('href="/models/"', 'href="#/media"')
+  .replaceAll('href="/showtime/"', 'href="#/showtime"')
   .replaceAll('href="/"', 'href="#/"');
 
-/** Artwork landing view inside the same application as the model and budget tools. */
+/** Artwork and renders inside the persistent cockpit shell. */
 export default function HomePage(): JSX.Element {
   const scrollToSection = (event: MouseEvent<HTMLDivElement>): void => {
     const link = event.target instanceof Element ? event.target.closest("a") : null;
