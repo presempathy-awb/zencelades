@@ -4,6 +4,11 @@ P067 follows Andrew's request to get the best of both projects. This is an audit
 of local source plus a bounded implementation, not a claim that either reference
 application was freshly deployed or browser-tested.
 
+Subsequent delivery: P068 deployed these controls and versioned links in release
+`59496114`; current lander/aerial views and model images were browser-verified on
+the existing project hostname. See [repair evidence](plans/p068-black-models-deploy.md)
+for the corrected domain, DNS limitation and original archive-viewer issue.
+
 ## Source boundaries
 
 Erebe was inspected at working commit

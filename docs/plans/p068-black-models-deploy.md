@@ -44,6 +44,12 @@ activated the intervening release, agreed to preserve the exact current base,
 and received the verified repair release ID before its next scoped overlay.
 The historical findings below describe earlier states, not the final domain.
 
+Source repair committed and pushed as `da39d778da0f` to zencelades
+`feat/triangle-projection-cockpit` (#4); no merge is claimed. Eight files (root,
+gallery and all six upload PNGs) also matched exact hashes through trusted
+HTTPS on zenceladus.com using its authoritative Cloudflare address. Summary
+receipt: `assets/rendering-repair-receipt.json`.
+
 ## First repair deployed
 
 The live `1e00037c` release had reverted to the older cockpit shell and omitted

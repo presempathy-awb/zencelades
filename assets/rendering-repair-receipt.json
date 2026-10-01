@@ -1,0 +1,20 @@
+{
+  "release_sha256": "59496114dbdc1205ad555b6ba8969c8103a4156022a004b4a2b01ac7e766aa6e",
+  "base_release_sha256": "4b5d8e1ca7fa29760ec96fb7d2ccf1b171523391e136f5f7b3c81b210dfcd0b9",
+  "confirmed_domain": "zenceladus.com",
+  "changed_paths": 132,
+  "public_files_hash_verified": 131,
+  "new_domain_files_hash_verified": 8,
+  "new_domain_tls_verified": true,
+  "new_domain_transport": "Authoritative Cloudflare address; Mac resolver still negative",
+  "browser_verified_host": "thatsnozorb.muchadoaboutoneside.com",
+  "browser_verified_flows": ["lander rendering", "aerial model selection", "Side and Reset", "gallery", "size-options PNG"],
+  "new_domain_browser": "Navigation rejected with ERR_BLOCKED_BY_CLIENT; not verified",
+  "source_commit": "da39d778da0f",
+  "source_branch": "feat/triangle-projection-cockpit",
+  "source_pr": "https://git.telpher.stream/telpher/zencelades/pulls/4",
+  "source_pushed": true,
+  "source_merge_claimed": false,
+  "pytest": "paused by Andrew",
+  "remaining": ["legacy archived v4 viewer blank scene", "new-domain ordinary DNS and browser verification"]
+}
