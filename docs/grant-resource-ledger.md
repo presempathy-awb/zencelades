@@ -40,7 +40,7 @@ tier on September 30, 2026.
 
 | Tier 1 cash line | Qty | Low | High | Kind |
 | --- | ---: | ---: | ---: | --- |
-| The moon: a 2.5 m zorb (TPU sphere) projected onto; owned, or diffusing liner / skin treatment if bought already | 1 | $0 | $700 | allowance |
+| The moon: the artist's 2.5 m walk-in zorb (TPU sphere), one person inside at a time, projected onto; diffusing liner or skin treatment allowance | 1 | $0 | $700 | allowance |
 | Optoma HD146X 1080p DLP projector, 3,600 lumens | 2 | $998 | $1,198 | observed price |
 | Output node at the projectors: N100-class mini PC with two HDMI plus DisplayPort or USB-C, fed over Wi-Fi by the owned laptop ($0 if the laptop drives the heads directly) | 1 | $0 | $200 | observed price |
 | Output-node accessories: weatherproof box, HDMI leads (the private Wi-Fi is the owned UniFi router) | 1 | $40 | $90 | allowance |
@@ -124,7 +124,7 @@ purchase-based build, so whichever option is chosen, its cash figure is here.
 
 The rental options also carry professional review, fabrication and insurance
 allowances that Tier 1 does not need because nothing is engineered: an
-unoccupied zorb of tens of kilograms on rated rigging within the rig's manual. If
+zorb of tens of kilograms, plus one person when the rating allows it, on rated rigging within the rig's manual. If
 Andrew chooses a rental option for the application, its row above is the cash
 figure and the in-kind and request tables still apply.
 
