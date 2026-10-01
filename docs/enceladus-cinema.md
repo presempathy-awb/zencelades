@@ -9,7 +9,20 @@ Vite. No new package or paid generation service is needed.
 
 The camera approaches a fractured icy moon, descends to the south pole, follows
 luminous tiger stripes, enters a central geyser, rises through drifting crystals
-and pulls out toward Saturn. An original Orbilander-inspired craft descends and
+and pulls out toward Saturn. Andrew's confirmed face/body reference is blended
+across the moon imagery in four passages (4–12, 20–30, 34–45 and 50–59 seconds),
+with 2.4-second smooth entrances/exits and a maximum opacity of 0.72. The cached
+portrait has softly feathered edges, subtle spherical curvature and screen
+blending so ice and plume detail show through. The `Your face & body` checkbox
+controls this layer; it is included in the recorded canvas.
+
+The supplied reference image remains byte-for-byte unchanged. Its main front
+sphere is sampled directly into the video compositor, retaining the large-face /
+seated-body arrangement and the confirmed person's appearance and clothing.
+This is reference-sheet imagery, not live camera footage or a 3D body scan.
+An imagegen cutout attempt was rejected; no cutout image was produced or used.
+
+An original Orbilander-inspired craft descends and
 touches down between 20 and 27 seconds, with articulated-looking landing legs,
 an antenna, thermal blankets, RTG fins, exhaust and a spreading frost ring.
 This is an imagined craft and trajectory, not an official mission model.
@@ -48,7 +61,8 @@ the original publishers and reuse policy; NASA endorsement is not implied.
 Commands are verified against the installed Bun/Vite frontend. Run from the
 existing checkout on maxipaxi. The preparation command hashes every original
 against the corresponding `assets/enceladus-videos/catalog.json` or
-`assets/enceladus-extra/catalog.json` before copying it into ignored
+`assets/enceladus-extra/catalog.json`, with the human reference checked against
+`assets/enceladus-human/catalog.json`, before copying it into ignored
 `source/research/enceladus-cinema/web/film-media/`.
 
 ```bash

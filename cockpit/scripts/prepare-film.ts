@@ -1,11 +1,13 @@
 import { copyFile, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
+import { HUMAN_PORTRAIT } from "../src/film/human";
 import { FILM_INSERTS } from "../src/film/shots";
 
 const root = resolve(import.meta.dirname, "../..");
 const destination = resolve(root, "source/research/enceladus-cinema/web/film-media");
 await mkdir(destination, { recursive: true });
-for (const { src: filename, collection } of FILM_INSERTS) {
+const media = [...FILM_INSERTS, { src: HUMAN_PORTRAIT, collection: "enceladus-human" }];
+for (const { src: filename, collection } of media) {
   const source = resolve(root, `source/research/${collection}`);
   const catalog = await Bun.file(resolve(root, `assets/${collection}/catalog.json`)).json();
   const path = `originals/${filename}`;

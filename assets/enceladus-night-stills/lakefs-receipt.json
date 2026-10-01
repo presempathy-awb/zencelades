@@ -1,0 +1,105 @@
+{
+  "repository": "thatsnozorb-assets",
+  "branch": "ingest-enceladus-videos-night-stills-20261001",
+  "status": "verified",
+  "commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+  "owner_managed": true,
+  "merge": false,
+  "readback_complete": true,
+  "file_set_verified": true,
+  "main_protected": true,
+  "files": [
+    {
+      "relative_path": "originals/ground-reference.png",
+      "bytes": 2598877,
+      "content_sha256": "c1262eb1c8e0826632580752a1f7e58381a68594c85e07058f79a4d4a13c87fe",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/originals/ground-reference.png",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/originals/ground-reference.png"
+    },
+    {
+      "relative_path": "originals/suspended-reference.png",
+      "bytes": 2480007,
+      "content_sha256": "d1d29c62a157f7e852e1c62a76d43abc6791361d914742da3bcfdf07a17dbf6c",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/originals/suspended-reference.png",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/originals/suspended-reference.png"
+    },
+    {
+      "relative_path": "originals/andrew-reference.jpeg",
+      "bytes": 227158,
+      "content_sha256": "816c73cf8dac7d03699ecc746f72c1e3f18bab2f06f908e8f7c819fd1bbed113",
+      "content_type": "image/jpeg",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/originals/andrew-reference.jpeg",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/originals/andrew-reference.jpeg"
+    },
+    {
+      "relative_path": "frames/orbit-4.jpg",
+      "bytes": 99394,
+      "content_sha256": "b3b9bc8b67b4ad9f351625f2ff9efe992922215b2d1cc31518a31711e0ab18d6",
+      "content_type": "image/jpeg",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/frames/orbit-4.jpg",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/frames/orbit-4.jpg"
+    },
+    {
+      "relative_path": "frames/geyser.jpg",
+      "bytes": 70397,
+      "content_sha256": "4f260202aa0100d518cfd4edd7099f63c95bcbbfd608bff3c11b935a6c02bf5f",
+      "content_type": "image/jpeg",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/frames/geyser.jpg",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/frames/geyser.jpg"
+    },
+    {
+      "relative_path": "frames/ocean.jpg",
+      "bytes": 29227,
+      "content_sha256": "720425d2689c23cdc2a7c1f44ea2e60d79d30b5f0b3cb082f4ef31c741adb254",
+      "content_type": "image/jpeg",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/frames/ocean.jpg",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/frames/ocean.jpg"
+    },
+    {
+      "relative_path": "derived/01-ground-orbital-blend.png",
+      "bytes": 2564814,
+      "content_sha256": "ad61cb4c972bf6399c5bf5a532a0ea89c1f53b878a0d64c256612c15897d9c28",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/derived/01-ground-orbital-blend.png",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/derived/01-ground-orbital-blend.png"
+    },
+    {
+      "relative_path": "derived/03-ground-geyser-burst.png",
+      "bytes": 2543142,
+      "content_sha256": "fd428c4e9aecf3b3c287203ca9a0d11ab2615afcf8aac1fb90e36f0cbc8a6d88",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/derived/03-ground-geyser-burst.png",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/derived/03-ground-geyser-burst.png"
+    },
+    {
+      "relative_path": "derived/04-suspended-ocean-glow.png",
+      "bytes": 2386682,
+      "content_sha256": "48aa02b468e36b19984e23dc121fdfa2bb6b330253e2b4523c23b2156dbdc9ba",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/derived/04-suspended-ocean-glow.png",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/derived/04-suspended-ocean-glow.png"
+    },
+    {
+      "relative_path": "derived/andrew-above-the-ice.mp4",
+      "bytes": 33522980,
+      "content_sha256": "2d42b7ce1a0558b997f507e31a7f2d8124d8b3307dda7f86c00cd9be55eefed6",
+      "content_type": "video/mp4",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/derived/andrew-above-the-ice.mp4",
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/derived/andrew-above-the-ice.mp4"
+    }
+  ],
+  "file_count": 10,
+  "total_bytes": 46522678
+}

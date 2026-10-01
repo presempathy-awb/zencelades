@@ -1,4 +1,5 @@
 import { FILM_SECONDS, sampleFlight } from "./flight";
+import { createHumanProjection } from "./human";
 import { createIceWorld } from "./ice-world";
 import { FILM_INSERTS } from "./shots";
 import { drawTransition, revealProgress } from "./transitions";
@@ -20,6 +21,11 @@ const opening = element("opening"),
 const effects = element<HTMLInputElement>("effects"),
   footage = element<HTMLInputElement>("footage"),
   titles = element<HTMLInputElement>("titles");
+const human = element<HTMLInputElement>("human");
+const humanProjection = createHumanProjection();
+void humanProjection.ready.catch((error) => {
+  status.textContent = `Portrait unavailable: ${String(error)}. Prepare the portrait asset before playing.`;
+});
 const context = film.getContext("2d", { alpha: false });
 if (!context) throw new Error("This browser does not support the film canvas.");
 const ctx = context;
@@ -104,6 +110,7 @@ function compose(strength: number): void {
     blend = revealProgress(seconds, clip.start, clip.end);
     drawTransition(ctx, clip.video, blend, clip.transition, strength);
   }
+  if (human.checked) humanProjection.draw(ctx, seconds);
   const vignette = ctx.createRadialGradient(w * 0.5, h * 0.45, h * 0.2, w * 0.5, h * 0.45, w * 0.7);
   vignette.addColorStop(0, "#00000000");
   vignette.addColorStop(1, "#020711aa");
@@ -158,11 +165,12 @@ async function begin(): Promise<void> {
   opening.hidden = true;
   if (seconds >= FILM_SECONDS) seconds = 0;
   try {
+    if (human.checked) await humanProjection.ready;
     if (footage.checked) await startVideos();
     setPlaying(true);
     status.textContent = "Flight playing. Seek to explore, or save the complete movie.";
   } catch (error) {
-    status.textContent = `Could not start NASA inserts: ${String(error)}. Turn inserts off to fly without them.`;
+    status.textContent = `Could not start film media: ${String(error)}. Check the enabled portrait and NASA sources.`;
   }
 }
 play.addEventListener("click", () => {
@@ -210,6 +218,7 @@ async function exportFilm(): Promise<void> {
   const chunks: Blob[] = [];
   let stream: MediaStream | undefined;
   try {
+    if (human.checked) await humanProjection.ready;
     if (footage.checked) await startVideos();
     recording = true;
     record.disabled = true;

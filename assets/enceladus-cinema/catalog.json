@@ -83,7 +83,7 @@
   "exports": [],
   "verification": {
     "bun_tests": {
-      "pass": 18,
+      "pass": 19,
       "fail": 0
     },
     "typecheck": true,
@@ -93,11 +93,16 @@
     "gpu_render": false,
     "export": false,
     "lakefs_readback": false,
-    "static_ui_advisory_findings": 0
+    "static_ui_advisory_findings": 0,
+    "isolated_film_bun_tests": {
+      "pass": 6,
+      "fail": 0
+    }
   },
   "source_collections": [
     "assets/enceladus-videos/catalog.json",
-    "assets/enceladus-extra/catalog.json"
+    "assets/enceladus-extra/catalog.json",
+    "assets/enceladus-human/catalog.json"
   ],
   "effects": [
     "backlit vapor and ice crystals",
@@ -108,5 +113,29 @@
     "orbital and plume irises",
     "ocean-vent plunge zoom",
     "expanding plume echoes"
-  ]
+  ],
+  "human_projection": {
+    "source": "H01",
+    "method": "Exact reference-sheet pixels in a feathered, curved screen-blended video layer",
+    "windows_seconds": [
+      [
+        4,
+        12
+      ],
+      [
+        20,
+        30
+      ],
+      [
+        34,
+        45
+      ],
+      [
+        50,
+        59
+      ]
+    ],
+    "max_opacity": 0.72,
+    "fade_seconds": 2.4
+  }
 }

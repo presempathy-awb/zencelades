@@ -1,0 +1,61 @@
+{
+  "input_film": "/Users/andrew/code/pres/make/thatsnozorb/source/research/enceladus-videos/derived/above-the-ice.mp4",
+  "input_portrait": "/Users/andrew/code/pres/make/thatsnozorb/source/research/enceladus-human/originals/andrew-reference.jpeg",
+  "crop": [
+    400,
+    115,
+    265,
+    265
+  ],
+  "windows": [
+    [
+      4,
+      12
+    ],
+    [
+      20,
+      30
+    ],
+    [
+      34,
+      44.266667
+    ]
+  ],
+  "interpretation": "Existing concept-sheet portrait pixels, softly composited; not live footage or a new Babylon render.",
+  "ffmpeg_arguments": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-xerror",
+    "-filter_complex_threads",
+    "2",
+    "-loop",
+    "1",
+    "-framerate",
+    "30",
+    "-i",
+    "/Users/andrew/code/pres/make/thatsnozorb/source/research/enceladus-human/originals/andrew-reference.jpeg",
+    "-i",
+    "/Users/andrew/code/pres/make/thatsnozorb/source/research/enceladus-videos/derived/above-the-ice.mp4",
+    "-filter_complex",
+    "[0:v]crop=265:265:400:115,scale=840:840,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*0.72*max(0,min(1,(420-sqrt((X-420)*(X-420)+(Y-420)*(Y-420)))/100))*(max((max(0,min(1,min((T-4)/2.4,(12-T)/2.4))))*(max(0,min(1,min((T-4)/2.4,(12-T)/2.4))))*(3-2*(max(0,min(1,min((T-4)/2.4,(12-T)/2.4))))),max((max(0,min(1,min((T-20)/2.4,(30-T)/2.4))))*(max(0,min(1,min((T-20)/2.4,(30-T)/2.4))))*(3-2*(max(0,min(1,min((T-20)/2.4,(30-T)/2.4))))),(max(0,min(1,min((T-34)/2.4,(44.266667-T)/2.4))))*(max(0,min(1,min((T-34)/2.4,(44.266667-T)/2.4))))*(3-2*(max(0,min(1,min((T-34)/2.4,(44.266667-T)/2.4))))))))',setsar=1[p];[1:v][p]overlay=x=540:y=40:shortest=1:format=auto[out]",
+    "-map",
+    "[out]",
+    "-an",
+    "-t",
+    "44.266667",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "medium",
+    "-crf",
+    "19",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "-threads",
+    "4",
+    "/Users/andrew/code/pres/make/thatsnozorb/source/research/enceladus-human/derived/andrew-above-the-ice.mp4"
+  ]
+}

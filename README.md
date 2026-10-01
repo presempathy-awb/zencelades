@@ -33,6 +33,22 @@ experience film, two compatibility previews, a poster and four reusable caption
 layers. All 20 lakeFS objects / 215,391,322 bytes passed immutable
 full-byte SHA-256 readback and exact file-set verification.
 
+## Night phases and your face/body
+
+[Night projection stills](docs/enceladus-night-stills.md) adds three 1536 × 1024
+concept edits: orbital ice, geyser burst and suspended ocean glow, using the
+confirmed person/clothing reference. The separate cracked-ice variant failed
+imagegen output moderation and produced no image. The completed stills, input
+references, selected source frames and a new 44.266-second 1080p portrait-dissolve
+preview passed immutable lakeFS readback: 10 objects / 46,522,678 bytes.
+
+The Babylon player also has a `Your face & body` layer: exact reference-sheet
+pixels softly curved and screen-blended into four passages, with smooth fades.
+The supplied reference stays unchanged. [Human provenance](assets/enceladus-human/catalog.json)
+and [exact still prompts](assets/enceladus-night-stills/prompts.json) record how
+these were made. The playable 44-second preview edits the existing NASA-based
+surface film; the 60-second Babylon recording remains pending.
+
 ## Start here: above the ice
 
 [Orbilander and additional Enceladus material](docs/enceladus-extra.md) adds a
