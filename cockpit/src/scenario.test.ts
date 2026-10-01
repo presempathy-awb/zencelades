@@ -1,5 +1,20 @@
 import { expect, test } from "bun:test";
 import { baseline, estimate, initialScenario, parseScenario, workflow } from "./scenario";
+import { createPartsPlan } from "./parts-plan";
+
+test("parts choices round trip and invalid imports cannot replace the current draft", () => {
+  const initial = initialScenario();
+  const parts = { ...createPartsPlan(), configuration: "S25" as const, projectors: 1 as const };
+  const saved = parseScenario(JSON.stringify({ ...initial, parts }));
+  expect(saved.parts).toEqual(parts);
+  expect(initial.parts.configuration).toBe("G30");
+  expect(() =>
+    parseScenario(JSON.stringify({ ...saved, parts: { ...parts, projectors: 4 } })),
+  ).toThrow();
+  expect(parseScenario(JSON.stringify({ ...initial, parts: undefined })).parts).toEqual(
+    createPartsPlan(),
+  );
+});
 
 test("build progress survives explicit export while a fresh guest draft starts unedited", () => {
   const draft = initialScenario();

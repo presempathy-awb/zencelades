@@ -6,6 +6,17 @@ import { baseline, initialScenario } from "./scenario";
 import { chooseModel, optionContext } from "./option-context";
 import { MODEL_STUDIES } from "./models/model-spec";
 
+test("occupied model selection updates its parts plan while preserving the allowance comparison", () => {
+  const initial = initialScenario();
+  const aerial = chooseModel(initial, "basket-aerial-rig");
+  expect(aerial.scenario.parts.configuration).toBe("S30");
+  expect(aerial.scenario.parts.choices.host).toBe("ZC-A01");
+  expect(aerial.scenario.selected).toBe(initial.selected);
+  expect(aerial.scenario.allowances).toBe(initial.allowances);
+  expect(aerial.reference).toBe("basket-aerial-rig");
+  expect(chooseModel(aerial.scenario, "seed-zorb").scenario.parts.configuration).toBe("G30");
+});
+
 test("model choices select priced supports and retain budgets for unpriced references", () => {
   const initial = initialScenario();
   const chosen = chooseModel(initial, "ground-sphere");

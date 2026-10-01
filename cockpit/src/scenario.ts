@@ -3,6 +3,7 @@ import source from "../../site/pricing/options.json";
 import seed from "../../assets/seed-options.json";
 import type { FundingPlan } from "./funding";
 import { createBuildBoardState, parseBuildBoardState, type BuildBoardState } from "./build-board";
+import { createPartsPlan, parsePartsPlan, type PartsPlan } from "./parts-plan";
 
 export const deferredSupports = new Set(["fixed-bed", "fixed-cantilever"]);
 export const baseline = {
@@ -24,6 +25,7 @@ export interface Scenario {
   note: string;
   funding: FundingPlan;
   board: BuildBoardState;
+  parts: PartsPlan;
 }
 export const shortNames: Record<string, string> = {
   "seed-surround": "Occupied surround",
@@ -52,6 +54,7 @@ export function initialScenario(): Scenario {
     note: "",
     funding: { grantRequest: 3000, ownerPossible: 0, fundraiserTarget: 0, confirmed: 0 },
     board: createBuildBoardState(),
+    parts: createPartsPlan(),
   };
 }
 export function selectedOption(scenario: Scenario): Option {
@@ -137,6 +140,7 @@ export function parseScenario(text: string): Scenario {
     note: value.note,
     funding,
     board: value.board === undefined ? createBuildBoardState() : parseBuildBoardState(value.board),
+    parts: value.parts === undefined ? createPartsPlan() : parsePartsPlan(value.parts),
   };
   estimate(result);
   return result;

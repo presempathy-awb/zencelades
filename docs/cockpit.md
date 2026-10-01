@@ -35,13 +35,25 @@ which revision has actually reached the live site.
   sequence. Select a node for its requirements; move nodes and pan/zoom for
   inspection. Node positions are a temporary view, not exported planning data.
   No node indicates that a real approval or physical test has occurred.
+- **Parts:** the local candidate now filters the 88-record catalog by 2.5/3 m
+  lander or suspended holder and open-surround configurations. LED or one/two/three
+  projector choices, zero/one/two cameras, ring/host/projector alternatives,
+  holder arms versus stands and optional equipment are explicit. Selecting a
+  known occupied model updates its parts configuration and depicted head count;
+  unrelated historical studies preserve the parts plan. Changing procurement
+  choices does not resize/regenerate the 3D model. Shared parts appear once;
+  unselected alternatives are excluded and listed as unresolved decisions.
+  Unknown prices remain unquoted and prevent a complete total. Owned hazer/tool
+  acquisition does not include operation or inspection. The view uses the public
+  planning catalog, not private live Pacinman records. Browser acceptance and
+  deployment of this candidate remain pending.
 - **Research:** TanStack Query loads the occupied-basket, grant and mount registers and
   132-file v3 catalog and separate 84-record v4 catalog. Search, collection switching and pagination operate on
   those records. Source links and downloads retain their existing targets.
 - **Scenario:** validated temporary state, JSON import/export and a committed
   design note persist across studio views while the page stays open. Reloading
   resets guest changes. Export explicitly preserves the scenario and build-board
-  progress in a file; invalid imports retain the current scenario. Account saving
+  progress and parts choices in a file; invalid imports retain the current scenario. Account saving
   and login remain unfinished. The
   large hazer is already owned: $0 acquisition, externally below the sphere,
   with no inflation connection. Consumables remain unpriced. An inside-camera

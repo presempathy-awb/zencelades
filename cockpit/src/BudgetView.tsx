@@ -89,6 +89,10 @@ export default function BudgetView({
           {dollars(scenario.settings.taxAllowance)} tax allowance
         </small>
       </div>
+      <p>
+        <a href="#/parts">View the selected build's parts and quote gaps</a>. These allocations do
+        not include unpriced projection, camera or aerial additions selected in the parts plan.
+      </p>
       <p aria-live="polite">
         <strong>
           {funding.overCap[1] > 0

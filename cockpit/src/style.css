@@ -942,3 +942,25 @@ tr[data-selected="true"] {
   border: 1px solid #6d8990;
   line-height: 1.5;
 }
+.parts-panel .library-controls label {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+.parts-panel select {
+  width: 100%;
+}
+.parts-panel .draft-help {
+  max-width: 46rem;
+}
+.parts-panel :where(p, label, summary, table) {
+  font-size: 1rem;
+}
+.parts-panel summary {
+  cursor: pointer;
+  min-height: 2.75rem;
+  padding-block: 0.65rem;
+}
+.parts-panel caption {
+  text-align: left;
+  padding-block: 1rem;
+}

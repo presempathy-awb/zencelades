@@ -12,7 +12,7 @@ import App from "./App";
 import "./style.css";
 
 const rootRoute = createRootRoute({ component: App, notFoundComponent: App });
-const routes = ["/", "/workflow", "/tasks", "/budget", "/research"].map((path) =>
+const routes = ["/", "/workflow", "/tasks", "/budget", "/parts", "/research"].map((path) =>
   createRoute({ getParentRoute: () => rootRoute, path }),
 );
 const router = createRouter({

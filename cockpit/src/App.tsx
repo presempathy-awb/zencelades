@@ -37,12 +37,14 @@ import { BuildBoard } from "./BuildBoard";
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
 const ResearchView = lazy(() => import("./ResearchView"));
+const PartsView = lazy(() => import("./PartsView"));
 const icons = [Circle, Circle, Lightbulb, Layers, Circle, Truck, Columns3, Anchor, Truck, Columns3];
 const tools = [
   { path: "/", title: "Model", icon: Box },
   { path: "/workflow", title: "Workflow", icon: Network },
   { path: "/tasks", title: "Build board", icon: Columns3 },
   { path: "/budget", title: "Budget", icon: Calculator },
+  { path: "/parts", title: "Parts", icon: Layers },
   { path: "/research", title: "Grants & resources", icon: Library },
 ] as const;
 
@@ -270,6 +272,8 @@ export default function App(): JSX.Element {
               <WorkflowView scenario={scenario} />
             ) : path === "/budget" ? (
               <BudgetView scenario={scenario} update={update} onSelectOption={selectModel} />
+            ) : path === "/parts" ? (
+              <PartsView scenario={scenario} update={update} />
             ) : path === "/research" ? (
               <ResearchView scenario={scenario} onModelSelect={selectModel} />
             ) : path !== "/" ? (

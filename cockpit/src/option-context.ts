@@ -2,6 +2,7 @@ import { ACTIVE_MODEL_STUDIES } from "./models/model-spec";
 import seedSources from "../../assets/seed-sources.json";
 import { fundingSummary } from "./funding";
 import { baseline, estimate, range, type Scenario, selectedOption, shortNames } from "./scenario";
+import { partsPlanForModel } from "./parts-plan";
 
 interface RelevantSource {
   id: string;
@@ -152,9 +153,10 @@ export function chooseModel(
   if (id === "scenario") return { scenario, reference: id };
   const model = ACTIVE_MODEL_STUDIES.find((item) => item.id === id);
   if (!model) throw new Error("Unknown model selection");
+  const parts = partsPlanForModel(scenario.parts, id);
   return model.budget
-    ? { scenario: { ...scenario, selected: model.budget }, reference: "scenario" }
-    : { scenario, reference: id };
+    ? { scenario: { ...scenario, selected: model.budget, parts }, reference: "scenario" }
+    : { scenario: parts === scenario.parts ? scenario : { ...scenario, parts }, reference: id };
 }
 
 /** Derive the selected design's grant/resource ledger from its current cash scenario. */
