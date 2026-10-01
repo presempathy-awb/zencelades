@@ -15,6 +15,7 @@ import { SolidParticleSystem } from "@babylonjs/core/Particles/solidParticleSyst
 import { DefaultRenderingPipeline } from "@babylonjs/core/PostProcesses/RenderPipeline/Pipelines/defaultRenderingPipeline";
 import { Scene } from "@babylonjs/core/scene";
 import { sampleFlight, surfaceHeight } from "./flight";
+import { createLander } from "./lander";
 
 export interface IceWorld {
   engine: Engine;
@@ -214,6 +215,7 @@ export function createIceWorld(canvas: HTMLCanvasElement): IceWorld {
   globeMat.diffuseTexture = iceTexture(scene);
   globe.material = globeMat;
   const ground = terrain(scene);
+  const animateLander = createLander(scene);
   saturn(scene);
   stars(scene);
 
@@ -296,6 +298,7 @@ export function createIceWorld(canvas: HTMLCanvasElement): IceWorld {
     engine,
     render: (time, strength) => {
       seconds = time;
+      animateLander(time);
       const frame = sampleFlight(time),
         effect = Math.max(0, Math.min(1, strength));
       camera.position.set(...frame.position);

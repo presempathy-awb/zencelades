@@ -4,9 +4,11 @@
 
 The `feat/enceladus-cinema` branch adds a dedicated 60-second cinematic player:
 orbital approach, tiger-stripe skim, a flight into the central geyser, plume
-ascent and retreat toward Saturn. Backlit vapor, ice crystals, luminous
-fissures, ring geometry, stars, bloom, grain, lens effects and NASA/Cassini
-crossfades form the mashup. The page has play/pause, seek, a jet shortcut,
+ascent and retreat toward Saturn, plus an original Orbilander-inspired touchdown.
+Backlit vapor, ice crystals, luminous fissures, ring geometry, stars, bloom,
+grain and lens effects accompany seven NASA/Cassini/Webb inserts. Ice shards,
+fracture reveals, orbital/plume irises and an ocean plunge replace simple fades.
+The page has play/pause, seek, lander and jet shortcuts,
 effect controls, captions and a 1080p WebM recording action.
 
 Source: [cinema entry](cockpit/enceladus-film.html), [film guide](docs/enceladus-cinema.md),
@@ -17,8 +19,9 @@ No new Babylon movie is claimed to be in lakeFS yet. The original library below
 retains its independently verified delivery status.
 
 This branch includes a minimal standalone Bun/Vite package using the same pinned
-Babylon.js version as the source checkout. Prepare the E01, E02 and E08 originals
-under `source/research/enceladus-videos/originals/` from their public links below
+Babylon.js version as the source checkout. Prepare E01, E02, E03, E04, E08 and E11
+under `source/research/enceladus-videos/originals/` and E13 under
+`source/research/enceladus-extra/originals/` from their public links
 or immutable lakeFS locators; the preparation script verifies their hashes.
 Then use the package's `dev`, `test` and `build` scripts in `cockpit`. The film
 opens at `/enceladus-film.html`; it starts paused. No accounts are required for
@@ -31,6 +34,13 @@ layers. All 20 lakeFS objects / 215,391,322 bytes passed immutable
 full-byte SHA-256 readback and exact file-set verification.
 
 ## Start here: above the ice
+
+[Orbilander and additional Enceladus material](docs/enceladus-extra.md) adds a
+verified LPI Orbilander presentation link, four more NASA videos and captions.
+The five new lakeFS objects / 280,719,234 bytes passed immutable SHA-256 readback
+and exact file-set verification. The combined library has 16 original motion
+assets and 25 preserved objects / 496,110,556 bytes. Rights-restricted concept
+art and lecture clips remain references only.
 
 **Above the ice: Enceladus** is a 44.267-second silent film at 1920 × 1080 / 30 fps.
 It combines NASA's south-pole overview and geyser fly-through, slows the icy

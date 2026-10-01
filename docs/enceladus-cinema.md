@@ -1,7 +1,7 @@
 # Into the jets — Babylon.js cinema
 
 A separate 60-second film entry point combines an actual Babylon.js world with
-three inserts from the verified public Enceladus media collection. It preserves
+seven inserts from the verified public Enceladus media collections. It preserves
 the active cockpit/modeling files and uses installed Babylon.js 9.26.1, Bun and
 Vite. No new package or paid generation service is needed.
 
@@ -9,25 +9,36 @@ Vite. No new package or paid generation service is needed.
 
 The camera approaches a fractured icy moon, descends to the south pole, follows
 luminous tiger stripes, enters a central geyser, rises through drifting crystals
-and pulls out toward Saturn. Effects include moving backlit vapor, ice grains,
+and pulls out toward Saturn. An original Orbilander-inspired craft descends and
+touches down between 20 and 27 seconds, with articulated-looking landing legs,
+an antenna, thermal blankets, RTG fins, exhaust and a spreading frost ring.
+This is an imagined craft and trajectory, not an official mission model.
+Effects include moving backlit vapor, ice grains,
 procedural ridges and escarpments, stars, ring geometry, bloom, grain, chromatic
-aberration, slight camera roll, vignette, letterboxing and crossfades. Distances,
+aberration, slight camera roll, vignette and letterboxing. Transitions assemble
+40 ice shards, widen a jagged ice fracture, open orbital ring irises, sweep through
+a plume iris and zoom into ocean vents. A subtle expanding image echo reinforces
+the passage through the central jet. Distances,
 plume brightness and the local surface are artistic choices, not measured
 reconstructions. The output is a standard flat film of a spatially rendered
 scene, not stereoscopic or equirectangular VR.
 
 | Film time | Material |
 | --- | --- |
-| 0–11 seconds | Babylon.js orbital approach and descent |
-| 11–17 seconds | NASA surface-to-space visualization, E02 |
-| 17–29 seconds | Babylon.js fissure skim and jet approach |
-| 29–34 seconds | NASA geyser fly-through visualization, E01 |
-| 34–48 seconds | Babylon.js jet interior and ascent |
-| 48–52 seconds | Real Cassini plume sequence, E08, looped |
-| 52–60 seconds | Babylon.js retreat and closing title |
+| 6–9 seconds | NASA Surprising Enceladus, E13; assembling ice shards |
+| 11–17 seconds | NASA surface-to-space, E02; orbital ring iris |
+| 18–21 seconds | NASA ice layers, E03; widening fracture |
+| 21–29 seconds | Babylon.js Orbilander-inspired descent, touchdown and jet approach |
+| 29–34 seconds | NASA geyser fly-through, E01; plume iris |
+| 34–42 seconds | Babylon.js jet interior, drifting crystals and expanding echoes |
+| 42–46 seconds | NASA ocean vents, E04; plunge zoom |
+| 48–51 seconds | Real Cassini plume sequence, E08, looped; ice shards |
+| 52–56 seconds | Webb plume/torus visualization, E11; ring iris |
+| 56–60 seconds | Babylon.js retreat and closing title |
 
-Each insert crossfades for 0.75 seconds at its ends. NASA/Goddard Conceptual Image
-Lab and NASA/JPL-Caltech/SSI credits accompany their material. E08 is originally
+Each insert opens and closes over 1.1 seconds with a smooth mask and fade.
+NASA/Goddard, its Conceptual Image Lab, NASA/JPL-Caltech/SSI and NASA/ESA/CSA/STScI
+credits accompany their material. E08 is originally
 500×300 and is enlarged in the film; its original detail is retained in the
 source collection. All inserts are muted and the edit is silent. The page links
 the original publishers and reuse policy; NASA endorsement is not implied.
@@ -36,7 +47,8 @@ the original publishers and reuse policy; NASA endorsement is not implied.
 
 Commands are verified against the installed Bun/Vite frontend. Run from the
 existing checkout on maxipaxi. The preparation command hashes every original
-against `assets/enceladus-videos/catalog.json` before copying it into ignored
+against the corresponding `assets/enceladus-videos/catalog.json` or
+`assets/enceladus-extra/catalog.json` before copying it into ignored
 `source/research/enceladus-cinema/web/film-media/`.
 
 ```bash
@@ -48,7 +60,8 @@ P=~/code/pres/make/thatsnozorb/cockpit
 ```
 
 Open `/enceladus-film.html` at the local URL Vite prints. The page starts paused.
-Use Begin the voyage, Play/Pause, the seek slider or Jump into the jets. Effects,
+Use Begin the voyage, Play/Pause, the seek slider, Jump into the jets or Jump to
+the lander. Effects,
 NASA inserts and captions can be adjusted. Reduced-motion preference removes
 camera roll, grain and chromatic enhancement; the explicit Play action still
 starts the requested flight.
@@ -82,3 +95,18 @@ there is no claim that a movie has been exported, browser-tested or preserved
 in lakeFS. Existing source-library storage remains verified independently.
 
 Task plan: `docs/plans/enceladus-babylon-mashup.md`.
+
+## Orbilander and more public material
+
+The verified Lunar and Planetary Institute presentation,
+[Flagship Concepts for Astrobiology at Enceladus](https://www.youtube.com/watch?v=NAM8SWw14vs),
+is a viewing reference about the mission concept. No freely reusable official
+landing animation was established. The [NASA NTRS report](https://ntrs.nasa.gov/citations/20205008712)
+provides mission context and notes that some portions may be copyright protected.
+[APL's website terms](https://www.jhuapl.edu/privacy) require written permission
+for redistribution; its artwork/video is not used in this film.
+
+The [additional media index](enceladus-extra.md) preserves four more NASA videos
+and a caption sidecar, with credits, reuse caveats and immutable lakeFS locators.
+Original soundtracks are preserved in those source files; all film inserts are
+muted. The new lander geometry is original procedural art.

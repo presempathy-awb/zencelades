@@ -1,16 +1,13 @@
 import { copyFile, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
+import { FILM_INSERTS } from "../src/film/shots";
 
 const root = resolve(import.meta.dirname, "../..");
-const source = resolve(root, "source/research/enceladus-videos");
 const destination = resolve(root, "source/research/enceladus-cinema/web/film-media");
-const catalog = await Bun.file(resolve(root, "assets/enceladus-videos/catalog.json")).json();
 await mkdir(destination, { recursive: true });
-for (const filename of [
-  "surface-to-space.mp4",
-  "geyser-flythrough.mp4",
-  "cassini-plume-2005.mp4",
-]) {
+for (const { src: filename, collection } of FILM_INSERTS) {
+  const source = resolve(root, `source/research/${collection}`);
+  const catalog = await Bun.file(resolve(root, `assets/${collection}/catalog.json`)).json();
   const path = `originals/${filename}`;
   const entries = catalog.sources as { relative_path: string; content_sha256: string }[];
   const entry = entries.find((e) => e.relative_path === path);

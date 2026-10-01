@@ -1,5 +1,7 @@
 import { FILM_SECONDS, sampleFlight } from "./flight";
 import { createIceWorld } from "./ice-world";
+import { FILM_INSERTS } from "./shots";
+import { drawTransition, revealProgress } from "./transitions";
 import "./film.css";
 
 function element<T extends HTMLElement>(id: string): T {
@@ -29,26 +31,7 @@ let seconds = 0,
 let recorder: MediaRecorder | undefined;
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 let activeVideo: HTMLVideoElement | undefined;
-const clips = [
-  {
-    start: 11,
-    end: 17,
-    src: "surface-to-space.mp4",
-    label: "NASA / Goddard Conceptual Image Lab · artist visualization",
-  },
-  {
-    start: 29,
-    end: 34,
-    src: "geyser-flythrough.mp4",
-    label: "NASA / Goddard Conceptual Image Lab · artist visualization",
-  },
-  {
-    start: 48,
-    end: 52,
-    src: "cassini-plume-2005.mp4",
-    label: "Cassini observations · NASA / JPL-Caltech / SSI",
-  },
-].map((clip) => {
+const clips = FILM_INSERTS.map((clip) => {
   const video = document.createElement("video");
   video.src = `/film-media/${clip.src}`;
   video.preload = "auto";
@@ -74,11 +57,27 @@ function text(value: string, x: number, y: number, size: number, serif = false):
   ctx.fillText(value, x, y);
   ctx.shadowBlur = 0;
 }
-function compose(): void {
+function compose(strength: number): void {
   const w = film.width,
     h = film.height;
   ctx.globalAlpha = 1;
   ctx.drawImage(worldCanvas, 0, 0, w, h);
+  const rush = Math.max(0, 1 - Math.abs(seconds - 37) / 5) * strength;
+  if (rush > 0) {
+    ctx.save();
+    ctx.globalAlpha = rush * 0.045;
+    for (let layer = 1; layer <= 4; layer++) {
+      const spread = layer * rush * 0.007;
+      ctx.drawImage(
+        worldCanvas,
+        (-w * spread) / 2,
+        (-h * spread) / 2,
+        w * (1 + spread),
+        h * (1 + spread),
+      );
+    }
+    ctx.restore();
+  }
   const clip = footage.checked
     ? clips.find((c) => seconds >= c.start && seconds <= c.end)
     : undefined;
@@ -102,13 +101,8 @@ function compose(): void {
   }
   let blend = 0;
   if (clip && clip.video.readyState >= 2) {
-    blend = Math.max(0, Math.min(1, (seconds - clip.start) / 0.75, (clip.end - seconds) / 0.75));
-    const scale = Math.max(w / clip.video.videoWidth, h / clip.video.videoHeight),
-      vw = clip.video.videoWidth * scale,
-      vh = clip.video.videoHeight * scale;
-    ctx.globalAlpha = blend;
-    ctx.drawImage(clip.video, (w - vw) / 2, (h - vh) / 2, vw, vh);
-    ctx.globalAlpha = 1;
+    blend = revealProgress(seconds, clip.start, clip.end);
+    drawTransition(ctx, clip.video, blend, clip.transition, strength);
   }
   const vignette = ctx.createRadialGradient(w * 0.5, h * 0.45, h * 0.2, w * 0.5, h * 0.45, w * 0.7);
   vignette.addColorStop(0, "#00000000");
@@ -195,6 +189,13 @@ element("fullscreen").addEventListener("click", () => {
       status.textContent = `Fullscreen unavailable: ${String(error)}`;
     });
 });
+element("lander").addEventListener("click", () => {
+  seconds = 23;
+  seek.value = "23";
+  opening.hidden = true;
+  setPlaying(false);
+  status.textContent = "Orbilander-inspired touchdown. Press Play to watch the imagined landing.";
+});
 
 async function exportFilm(): Promise<void> {
   if (recording) return;
@@ -215,6 +216,7 @@ async function exportFilm(): Promise<void> {
     play.disabled = true;
     seek.disabled = true;
     element<HTMLButtonElement>("jet").disabled = true;
+    element<HTMLButtonElement>("lander").disabled = true;
     resize(1920, 1080);
     world.engine.setSize(1920, 1080);
     seconds = 0;
@@ -239,6 +241,7 @@ async function exportFilm(): Promise<void> {
       play.disabled = false;
       seek.disabled = false;
       element<HTMLButtonElement>("jet").disabled = false;
+      element<HTMLButtonElement>("lander").disabled = false;
       resize();
       world.engine.setSize(1280, 720);
       if (seconds < 59.5 || chunks.length === 0) {
@@ -266,6 +269,7 @@ async function exportFilm(): Promise<void> {
     play.disabled = false;
     seek.disabled = false;
     element<HTMLButtonElement>("jet").disabled = false;
+    element<HTMLButtonElement>("lander").disabled = false;
     resize();
     world.engine.setSize(1280, 720);
     status.textContent = `Could not record film: ${String(error)}`;
@@ -291,7 +295,7 @@ try {
     lastFrame = now;
     const effectStrength = reducedMotion.matches ? 0 : Number(effects.value);
     world.render(seconds, effectStrength);
-    compose();
+    compose(effectStrength);
     const label = `${seconds >= FILM_SECONDS ? "01:00" : `00:${String(Math.floor(seconds)).padStart(2, "0")}`} / 01:00`;
     if (label !== lastLabel) {
       clock.value = label;

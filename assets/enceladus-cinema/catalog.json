@@ -5,16 +5,108 @@
   "engine": "Babylon.js 9.26.1",
   "entry_point": "cockpit/enceladus-film.html",
   "duration_seconds": 60,
-  "requested_export": { "width": 1920, "height": 1080, "fps": 30, "audio": false, "format": "WebM" },
-  "source_collection": "assets/enceladus-videos/catalog.json",
+  "requested_export": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "audio": false,
+    "format": "WebM"
+  },
   "source_lakefs_commit": "50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3",
   "sources": [
-    { "id": "E02", "start": 11, "end": 17, "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab" },
-    { "id": "E01", "start": 29, "end": 34, "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab" },
-    { "id": "E08", "start": 48, "end": 52, "credit": "NASA/JPL-Caltech/Space Science Institute", "notes": "500 by 300 original, enlarged and looped" }
+    {
+      "start": 6,
+      "end": 9,
+      "src": "surprising-enceladus.mp4",
+      "sourceId": "E13",
+      "collection": "enceladus-extra",
+      "label": "NASA / Goddard Space Flight Center · ocean-world presentation",
+      "transition": "shards"
+    },
+    {
+      "start": 11,
+      "end": 17,
+      "src": "surface-to-space.mp4",
+      "sourceId": "E02",
+      "collection": "enceladus-videos",
+      "label": "NASA / Goddard Conceptual Image Lab · artist visualization",
+      "transition": "ring"
+    },
+    {
+      "start": 18,
+      "end": 21,
+      "src": "ice-layer-pan.mp4",
+      "sourceId": "E03",
+      "collection": "enceladus-videos",
+      "label": "NASA / Goddard Conceptual Image Lab · imagined ice layers",
+      "transition": "fracture"
+    },
+    {
+      "start": 29,
+      "end": 34,
+      "src": "geyser-flythrough.mp4",
+      "sourceId": "E01",
+      "collection": "enceladus-videos",
+      "label": "NASA / Goddard Conceptual Image Lab · artist visualization",
+      "transition": "plume"
+    },
+    {
+      "start": 42,
+      "end": 46,
+      "src": "ocean-vents.mp4",
+      "sourceId": "E04",
+      "collection": "enceladus-videos",
+      "label": "NASA / Goddard Conceptual Image Lab · imagined ocean vents",
+      "transition": "dive"
+    },
+    {
+      "start": 48,
+      "end": 51,
+      "src": "cassini-plume-2005.mp4",
+      "sourceId": "E08",
+      "collection": "enceladus-videos",
+      "label": "Cassini observations · NASA / JPL-Caltech / SSI",
+      "transition": "shards"
+    },
+    {
+      "start": 52,
+      "end": 56,
+      "src": "webb-plume-torus.mp4",
+      "sourceId": "E11",
+      "collection": "enceladus-videos",
+      "label": "NASA / ESA / CSA · Leah Hustak (STScI) · artist visualization",
+      "transition": "ring"
+    }
   ],
-  "interpretation": "An artistic procedural surface flight mixed with public NASA animation and Cassini observations. Standard flat video of a spatially rendered scene; not VR or a measured surface reconstruction.",
+  "interpretation": "An artistic procedural surface flight mixed with public NASA animation and Cassini observations. Standard flat video of a spatially rendered scene; not VR or a measured surface reconstruction. The procedural Orbilander-inspired craft and touchdown are original artistic interpretations, not an official spacecraft model or mission animation.",
   "paid_generation_used": false,
   "exports": [],
-  "verification": { "bun_tests": { "pass": 14, "fail": 0 }, "typecheck": true, "build": true, "biome": true, "browser": false, "gpu_render": false, "export": false, "lakefs_readback": false }
+  "verification": {
+    "bun_tests": {
+      "pass": 18,
+      "fail": 0
+    },
+    "typecheck": true,
+    "build": true,
+    "biome": true,
+    "browser": false,
+    "gpu_render": false,
+    "export": false,
+    "lakefs_readback": false,
+    "static_ui_advisory_findings": 0
+  },
+  "source_collections": [
+    "assets/enceladus-videos/catalog.json",
+    "assets/enceladus-extra/catalog.json"
+  ],
+  "effects": [
+    "backlit vapor and ice crystals",
+    "luminous fissures and Saturn rings",
+    "bloom, grain and chromatic lens effects",
+    "assembling ice shards",
+    "jagged fracture reveal",
+    "orbital and plume irises",
+    "ocean-vent plunge zoom",
+    "expanding plume echoes"
+  ]
 }
