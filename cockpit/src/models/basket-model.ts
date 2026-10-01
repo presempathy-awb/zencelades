@@ -4,6 +4,16 @@ import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import type { Scene } from "@babylonjs/core/scene";
 import type { Geometry, Point } from "./geometry";
 
+export const BASKET_MODEL_IDS = [
+  "seed-zorb",
+  "basket-webbing",
+  "basket-tripod",
+  "basket-aerial-rig",
+  "basket-camera-arms",
+  "basket-live-overlay",
+];
+export type ProjectorCount = 0 | 1 | 2 | 3;
+
 /** Nominal P035/P036 geometry; no tube, sling or hardware specification. */
 export function basketLayout(): {
   ringRadius: number;
@@ -64,10 +74,18 @@ export function basketLayout(): {
 }
 
 /** Draw Andrew's ring/triangle and optional webbing; member widths are display only. */
-export function basketGeometry(scene: Scene, g: Geometry, id: string): void {
+export function basketGeometry(
+  scene: Scene,
+  g: Geometry,
+  id: string,
+  projectors?: ProjectorCount,
+): void {
   const layout = basketLayout();
   const suspended = ["basket-webbing", "basket-tripod", "basket-aerial-rig"].includes(id);
   const projected = ["seed-zorb", "basket-aerial-rig", "basket-live-overlay"].includes(id);
+  const count = projectors ?? (projected ? 3 : 0);
+  // Keep the flanking corners first; no mast is placed in the front entry bay.
+  const activeCorners = [1, 2, 0].slice(0, count);
   const circle = (radius: number, y: number): Point[] =>
     Array.from({ length: 97 }, (_, index) => {
       const angle = (index * Math.PI * 2) / 96;
@@ -88,7 +106,7 @@ export function basketGeometry(scene: Scene, g: Geometry, id: string): void {
   for (const [index, corner] of layout.corners.entries()) {
     const next = layout.corners[(index + 1) % 3];
     g.beam(`low-triangle-side-${index}`, corner, next, 0.045);
-    if (projected) {
+    if (activeCorners.includes(index)) {
       const angle = Math.atan2(corner[2], corner[0]);
       const radial = 1.8 + 2 * Math.cos(Math.PI / 6);
       const headAt: Point = [

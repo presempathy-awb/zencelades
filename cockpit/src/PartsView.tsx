@@ -91,9 +91,10 @@ export default function PartsView({
         <p>
           Choices stay in this temporary draft and in an explicit scenario export; they do not
           update Pacinman. Selecting a known occupied model updates the parts configuration and
-          depicted projector/camera counts. Changing this list does not resize or regenerate the
-          model; 2.5 m and reduced-head selections are procurement studies. Historical models keep
-          this plan unchanged. Zero acquisition cost for owned equipment excludes running costs.
+          depicted projector/camera counts. Common-holder model views follow the selected head count
+          and export it in their current-view GLB, using triangle arms. Size, camera, host and
+          independent-stand changes here do not regenerate the model. Historical models keep this
+          plan unchanged. Zero acquisition cost for owned equipment excludes running costs.
         </p>
       </details>
       <div className="library-controls">

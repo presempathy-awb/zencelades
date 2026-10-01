@@ -260,6 +260,10 @@ export default function App(): JSX.Element {
                 visible={path === "/"}
                 model={referenceModel}
                 onModelSelect={selectModel}
+                projectors={scenario.parts.projectors}
+                onProjectorCountChange={(projectors) =>
+                  update({ ...scenario, parts: { ...scenario.parts, projectors } })
+                }
               />
             </Suspense>
           </div>

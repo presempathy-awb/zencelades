@@ -7,6 +7,7 @@ import { geometry, type Point } from "./geometry";
 import { andersen, receiver, truck } from "./truck-model";
 import { BED_FRONT, BED_REAR, MODEL_STUDIES, RAM, REAR_END } from "./model-spec";
 import { seedGeometry } from "./seed-models";
+import { BASKET_MODEL_IDS, type ProjectorCount } from "./basket-model";
 
 export interface BuiltModel {
   root: TransformNode;
@@ -15,7 +16,7 @@ export interface BuiltModel {
   dimensions: { label: string; a: Point; b: Point }[];
 }
 /** Build the named study without lighting, ground or camera for portable export. */
-export function buildModel(scene: Scene, id: string): BuiltModel {
+export function buildModel(scene: Scene, id: string, projectorCount?: ProjectorCount): BuiltModel {
   const study = MODEL_STUDIES.find((value) => value.id === id);
   if (!study) throw new Error(`Unknown model: ${id}`);
   const root = new TransformNode(`study-${id}`, scene),
@@ -25,6 +26,7 @@ export function buildModel(scene: Scene, id: string): BuiltModel {
     units: "metres",
     axes: "Y up, truck nose -X; rear axle datum X=0",
     status: "layout reference; no capacity or fit approval",
+    ...(projectorCount !== undefined && BASKET_MODEL_IDS.includes(id) ? { projectorCount } : {}),
   };
   const result: BuiltModel = { root, target: [0, 1.7, 0], radius: 11, dimensions: [] };
   if (
@@ -39,7 +41,7 @@ export function buildModel(scene: Scene, id: string): BuiltModel {
       "basket-live-overlay",
     ].includes(id)
   ) {
-    seedGeometry(scene, g, id);
+    seedGeometry(scene, g, id, projectorCount);
     result.radius = ["basket-tripod", "basket-aerial-rig"].includes(id)
       ? 13
       : ["basket-webbing", "occupied-cradle"].includes(id)

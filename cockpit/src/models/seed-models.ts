@@ -2,20 +2,23 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import type { Scene } from "@babylonjs/core/scene";
 import type { Geometry, Point } from "./geometry";
-import { basketGeometry, basketLayout } from "./basket-model";
+import {
+  basketGeometry,
+  basketLayout,
+  BASKET_MODEL_IDS,
+  type ProjectorCount,
+} from "./basket-model";
 
 /** Scenic envelopes only: cross-sections, skin contact and all capacities are unresolved. */
-export function seedGeometry(scene: Scene, g: Geometry, id: string): void {
+export function seedGeometry(
+  scene: Scene,
+  g: Geometry,
+  id: string,
+  projectors?: ProjectorCount,
+): void {
   const surround = id === "seed-surround";
   const hanging = id === "occupied-cradle";
-  const basket = [
-    "seed-zorb",
-    "basket-webbing",
-    "basket-tripod",
-    "basket-aerial-rig",
-    "basket-camera-arms",
-    "basket-live-overlay",
-  ].includes(id);
+  const basket = BASKET_MODEL_IDS.includes(id);
   const base = hanging ? 0.7 : 0;
   const centre = basket ? basketLayout().centreY : base + 1.5;
   const humanBase = surround ? 0.02 : centre - 0.85;
@@ -77,7 +80,7 @@ export function seedGeometry(scene: Scene, g: Geometry, id: string): void {
       shell.rotation.y = Math.PI / 4;
     }
     g.mat("#a9cedb").alpha = 0.2;
-    if (basket) basketGeometry(scene, g, id);
+    if (basket) basketGeometry(scene, g, id, projectors);
     else {
       for (const x of [-1.15, 1.15])
         g.box(`external-restraint-envelope-${x}`, [0.22, 0.4, 2.3], [x, base + 0.2, 0]);

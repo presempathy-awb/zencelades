@@ -15,17 +15,22 @@ import { MODEL_STUDIES, ACTIVE_MODEL_STUDIES } from "./models/model-spec";
 import { buildModel, dimensionGuides } from "./models/support-models";
 import type { Option } from "./scenario";
 import { Button } from "./ui";
+import { BASKET_MODEL_IDS, type ProjectorCount } from "./models/basket-model";
 
 export default function SceneView({
   option,
   visible,
   model,
   onModelSelect,
+  projectors,
+  onProjectorCountChange,
 }: {
   option: Option;
   visible: boolean;
   model: string;
   onModelSelect: (id: string) => void;
+  projectors: ProjectorCount;
+  onProjectorCountChange: (count: ProjectorCount) => void;
 }): JSX.Element {
   const canvas = useRef<HTMLCanvasElement>(null);
   const cameraRef = useRef<ArcRotateCamera | null>(null);
@@ -41,9 +46,13 @@ export default function SceneView({
   const [wireframe, setWireframe] = useState(false);
   const [guides, setGuides] = useState(true);
   const [dimensions, setDimensions] = useState<string[]>([]);
+  const [exporting, setExporting] = useState(false);
+  const [exportStatus, setExportStatus] = useState("");
   const selectedId = model === "scenario" ? option.id : model;
   const study = MODEL_STUDIES.find((value) => value.id === selectedId);
   const archive = ["a", "b", "v4"].includes(model);
+  const configurable = BASKET_MODEL_IDS.includes(selectedId);
+  const count = configurable ? projectors : undefined;
   const reset = (): void => {
     const camera = cameraRef.current;
     if (camera) {
@@ -70,6 +79,7 @@ export default function SceneView({
     setFailed(false);
     setStatus("Loading scene…");
     setDimensions([]);
+    setExportStatus("");
     scene.clearColor = new Color4(0.83, 0.89, 0.92, 1);
     const camera = new ArcRotateCamera(
       "view",
@@ -109,7 +119,7 @@ export default function SceneView({
             : `Original ${model.toUpperCase()} · untouched source GLB · metres / Y-up`,
         );
       } else {
-        const built = buildModel(scene, selectedId);
+        const built = buildModel(scene, selectedId, count);
         guidesRef.current = dimensionGuides(scene, built);
         guidesRef.current.setEnabled(showGuidesRef.current);
         camera.setTarget(new Vector3(...built.target));
@@ -143,7 +153,7 @@ export default function SceneView({
       scene.dispose();
       engine.dispose();
     };
-  }, [selectedId, archive, model]);
+  }, [selectedId, archive, model, count]);
   useEffect(() => {
     visibleRef.current = visible;
     if (visible) engineRef.current?.resize();
@@ -175,6 +185,28 @@ export default function SceneView({
   const rotate = (direction: number): void => {
     const camera = cameraRef.current;
     if (camera) camera.alpha += direction * (Math.PI / 6);
+  };
+  const downloadModel = async (): Promise<void> => {
+    setExporting(true);
+    setExportStatus("");
+    const name = `${selectedId}-${projectors}-head${projectors === 1 ? "" : "s"}`;
+    try {
+      const { exportModel } = await import("./models/model-export");
+      const blob = await exportModel(selectedId, projectors);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${name}.glb`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setExportStatus(`Downloaded ${name}.glb · layout study, no rated capacity.`);
+    } catch (error) {
+      setExportStatus(
+        `Download failed: ${error instanceof Error ? error.message : "unknown error"}`,
+      );
+    } finally {
+      setExporting(false);
+    }
   };
   return (
     <section className="scene" aria-label="3D scene">
@@ -208,6 +240,13 @@ export default function SceneView({
           fewer heads can deliberately cover selected viewing sides. Equipment and rain covers still
           need quotes within the $3,000 total.
         </p>
+        {configurable && (
+          <p>
+            This common-holder study follows the selected head count, using triangle arms. Size,
+            host, camera and independent-stand selections remain separate procurement studies.
+            Current-view GLB exports contain this head count; the gallery keeps its fixed studies.
+          </p>
+        )}
         <p>
           Owned hazer purchase is $0. Exact unit dimensions, power, fluid and operating clearances
           remain unconfirmed.
@@ -221,11 +260,35 @@ export default function SceneView({
       </details>
       <div className="scene-status" role={failed ? "alert" : "status"}>
         {status}
+        {configurable && (
+          <strong>
+            {" "}
+            · {projectors} {projectors === 1 ? "head" : "heads"} on triangle arms · 3 m study.
+          </strong>
+        )}
         {model !== "scenario" && (
           <strong> · Reference view only; budget remains {option.name}.</strong>
         )}
+        {exportStatus && <span> · {exportStatus}</span>}
       </div>
       <div className="scene-tools">
+        {configurable && (
+          <label>
+            <span className="sr-only">Projector heads in model</span>
+            <select
+              aria-label="Projector heads in model"
+              value={projectors}
+              onChange={(event) =>
+                onProjectorCountChange(Number(event.target.value) as ProjectorCount)
+              }
+            >
+              <option value={0}>No projector heads</option>
+              <option value={1}>1 projector head</option>
+              <option value={2}>2 projector heads</option>
+              <option value={3}>3 projector heads</option>
+            </select>
+          </label>
+        )}
         <label>
           <span className="sr-only">Model source</span>
           <select
@@ -309,13 +372,26 @@ export default function SceneView({
             Dimensions
           </Button>
         )}
-        <a
-          className="model-download"
-          href={archive ? `/studio-data/original-${model}.glb` : `/studio-models/${selectedId}.glb`}
-          download
-        >
-          Download GLB
-        </a>
+        {configurable ? (
+          <Button
+            variant="outline"
+            disabled={exporting || failed}
+            onClick={() => void downloadModel()}
+            hint="Download the displayed 3 m arm-mounted study with this head count. This is not an approved fabrication model."
+          >
+            {exporting ? "Exporting GLB…" : "Download current GLB"}
+          </Button>
+        ) : (
+          <a
+            className="model-download"
+            href={
+              archive ? `/studio-data/original-${model}.glb` : `/studio-models/${selectedId}.glb`
+            }
+            download
+          >
+            Download GLB
+          </a>
+        )}
       </div>
     </section>
   );

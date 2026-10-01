@@ -22,7 +22,9 @@ No source prices or purchases were invented.
 
 Known occupied model choices update the parts configuration and depicted
 projector/camera counts; unrelated historical studies preserve it. A changed
-parts plan does not resize or regenerate the model. Both this distinction and
+parts plan now changes the head count in common-holder views and their
+current-view GLB exports. Size, camera, host and independent-stand selections
+do not yet regenerate the model. Both this distinction and
 temporary-save behavior are explained through keyboard/touch-accessible details.
 The existing scenario export/import retains the parts plan, validates incoming
 choices and preserves a baseline for earlier exports with no parts field.

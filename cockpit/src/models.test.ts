@@ -6,6 +6,37 @@ import { buildModel } from "./models/support-models";
 import { MODEL_STUDIES } from "./models/model-spec";
 import { baseline } from "./scenario";
 
+test("selected projector counts change holder heads, covers and stays without changing the frame", () => {
+  const engine = new NullEngine();
+  try {
+    for (const id of ["seed-zorb", "basket-aerial-rig"]) {
+      for (const projectors of [0, 1, 2, 3] as const) {
+        const scene = new Scene(engine);
+        try {
+          buildModel(scene, id, projectors);
+          expect(
+            scene.meshes.filter((mesh) => mesh.name.startsWith("triangle-projector-head-")),
+          ).toHaveLength(projectors);
+          expect(
+            scene.meshes.filter((mesh) => mesh.name.startsWith("arm-rain-cover-")),
+          ).toHaveLength(projectors);
+          expect(
+            scene.meshes.filter((mesh) => mesh.name.startsWith("proposed-arm-stay-")),
+          ).toHaveLength(id === "basket-aerial-rig" ? projectors : 0);
+          expect(
+            scene.meshes.filter((mesh) => mesh.name.startsWith("low-triangle-side-")),
+          ).toHaveLength(3);
+          expect(scene.getMeshByName("seat-loop-nominal-six-foot-unrated")).not.toBeNull();
+        } finally {
+          scene.dispose();
+        }
+      }
+    }
+  } finally {
+    engine.dispose();
+  }
+});
+
 test("landed and suspended holders carry three aimed projector heads and rain covers", () => {
   const engine = new NullEngine();
   try {
