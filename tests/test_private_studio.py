@@ -9,6 +9,14 @@ from scripts.private_studio import guard_config, retired_config, write_private_a
 
 
 class PrivateStudioBoundary(unittest.TestCase):
+    def test_later_releases_keep_previously_retired_prompt_urls_blocked(self):
+        previous = retired_config(["site/dist/studio-assets/index-first.js"])
+        updated = retired_config(["site/dist/studio-assets/index-second.js"], previous)
+        self.assertIn("/studio-assets/index-first.js*", updated)
+        self.assertIn("/studio-assets/index-second.js*", updated)
+        with self.assertRaises(ValueError):
+            retired_config([], previous + "file_server\n")
+
     def test_complete_build_places_private_files_outside_public_root(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -28,8 +28,17 @@ def guard_config(config: str) -> str:
     return config.replace(needle, needle + IMPORT, 1)
 
 
-def retired_config(paths: list[str]) -> str:
+def retired_config(paths: list[str], previous: str = "") -> str:
     """Deny old prompt-bearing artifacts while retaining their immutable bytes."""
+    if previous and previous != "# No retired private prompt bundles.\n":
+        match = re.search(r"^    path (.+)$", previous, re.MULTILINE)
+        if not match:
+            raise ValueError("Unrecognized prior private asset guard")
+        patterns = match[1].split()
+        old_paths = ["site/dist" + pattern.removesuffix("*") for pattern in patterns]
+        if retired_config(old_paths) != previous:
+            raise ValueError("Unrecognized prior private asset guard")
+        paths = [*paths, *old_paths]
     for path in paths:
         if (
             not re.fullmatch(r"site/dist/[A-Za-z0-9_./-]+", path)
@@ -78,7 +87,8 @@ def write_private_artifacts(
             if any(marker in content for marker in markers):
                 retired.append(f"site/dist/{path.relative_to(public).as_posix()}")
     shutil.copytree(private, destination, dirs_exist_ok=True)
-    deny_file.write_text(retired_config(retired))
+    previous = deny_file.read_text() if deny_file.exists() else ""
+    deny_file.write_text(retired_config(retired, previous))
 
 
 def main() -> None:
@@ -103,7 +113,7 @@ def main() -> None:
     paths = [
         name
         for name in old
-        if name == "deploy/Caddyfile"
+        if name in ("deploy/Caddyfile", "deploy/private-studio-retired.caddy")
         or (
             name.startswith("site/dist/")
             and name.endswith((".js", ".html", ".md", ".json"))
@@ -161,7 +171,10 @@ def main() -> None:
     payload["deploy/private-studio.caddy"] = (
         ROOT / "deploy/private-studio.caddy"
     ).read_bytes()
-    payload["deploy/private-studio-retired.caddy"] = retired_config(retired).encode()
+    previous_guard = snapshots.get("deploy/private-studio-retired.caddy", b"").decode()
+    payload["deploy/private-studio-retired.caddy"] = retired_config(
+        retired, previous_guard
+    ).encode()
     payload = {
         name: data
         for name, data in payload.items()

@@ -27,7 +27,8 @@ The private Vite build has no public asset directory. It contains the eight
 Suno songs, sixteen ElevenLabs effects and their source downloads. The public
 bundle retains navigation only. A build-time scan rejects prompt content in
 the public output. Old immutable release files are preserved for rollback;
-their public URLs are denied by the generated Caddy fragment. Private responses
+their public URLs are denied by the generated Caddy fragment. Later releases
+retain prior denied paths even when the current prompt text changes. Private responses
 carry `Cache-Control: private, no-store` and `X-Robots-Tag: noindex`.
 
 These prompt sources were previously published in the public website and public
@@ -62,9 +63,9 @@ grant; a general unlock cannot repair a stale grant.
 public-content scan and the release-boundary unit tests. A real-Caddy fixture
 in `tests/private_studio_http_probe.py` exercises public and private hosts,
 download aliases, encoded paths, retired bundles and forged headers without
-touching the live service. Local proof: 59 Bun tests and three unit tests pass;
+touching the live service. Local proof: 59 Bun tests and four unit tests pass;
 both builds succeed; ten isolated HTTP cases pass. This is not live login proof.
-The full Python check also passes: 64 tests, 13 subtests, lint, formatting and
+The full Python check also passes: 65 tests, 13 subtests, lint, formatting and
 grant-ledger consistency. Removing the Caddy guard makes the HTTP regression
 fail; restoring it passes. The complete proposed live Caddy configuration and
 its relative imports validate on presvd1 without altering the running service.

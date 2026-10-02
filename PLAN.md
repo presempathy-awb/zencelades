@@ -8,7 +8,7 @@ restricted Authentik membership while Pawthentik is inactive. Public artwork,
 models, gallery and Showtime stay open. The isolated `fix/private-studio` lane
 separates the prompt build and downloads from the public root, denies retired
 prompt bundles and preserves the actual live release in an additive overlay.
-Frontend tests (59), the production builds, three release-boundary tests and
+Frontend tests (59), the production builds, four release-boundary tests and
 ten real Caddy HTTP cases pass. Production is not changed yet: the Telpher
 manifest grant is stale, external security review remains required and the
 new private-host browser scope is pending. See
