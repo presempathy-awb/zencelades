@@ -140,3 +140,21 @@ single-attempt Grok runner started with PID 91084. No new verdict is available
 at this checkpoint: `final-out.md` still belongs to the previous held head and
 must not be mistaken for this review. No merge, provisioning or deployment has
 occurred. Account approval and browser-scope decisions remain pending.
+
+## Publisher rereview result — October 2
+
+The full rereview and conclusion finished with PASS for head `cc1367f9` and
+base `a504a17f`. Grok's verbatim report is
+[posted on publisher PR #65](https://git.telpher.stream/awb/hesellsheshells/pulls/65#issuecomment-13969).
+The helper freshly checked head and base before posting and closed the queued
+review request. Two should-fix findings remain for source verification and
+disposition: limiting publisher writes to an ingest ref, and regression coverage
+for omitted-prefix scopes loaded from configuration. PASS is not a merge or
+deployment receipt; neither owner PR has been landed by this continuation.
+
+The current project release is `e0cbad5a`, the lander with inside phones.
+[P108](plans/p108-lander-inside-phones.md) records its scoped publication and
+browser checks; [P109](plans/p109-later-prompts-win.md) records that later Andrew
+prompts take precedence. The application drawing repair is retained in the
+public source lane as well as the account lane. Account installation and
+authenticated browser acceptance remain outstanding.

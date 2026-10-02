@@ -164,11 +164,11 @@ export function partsPlanForModel(plan: PartsPlan, id: string): PartsPlan {
   if (id === "love-burn")
     return {
       ...plan,
-      configuration: "S25",
+      configuration: "G25",
       projectors: 2,
       cameras: 2,
       mounting: "stands",
-      choices: { ...plan.choices, host: "ZC-A01", "projector-class": "ZC-P01" },
+      choices: { ...plan.choices, host: null, "projector-class": "ZC-P01" },
     };
   const studies: Record<string, Partial<PartsPlan>> = {
     "basket-lander": { configuration: "G30" },

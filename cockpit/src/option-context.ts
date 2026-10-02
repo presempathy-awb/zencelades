@@ -39,7 +39,7 @@ export interface OptionContext {
 const profiles: Record<string, Profile> = {
   "love-burn": {
     requirement:
-      "Deliver the occupied 2.5 m moon proposal within the $3,000 target, reconciling Claude's purchase budget with actual equipment, rig fit and operating requirements. Landed mode uses the same holder. No new sphere or rig purchase is included in the low estimate.",
+      "Deliver the occupied 2.5 m lander with two phones inside, the common triangle and padded ring, and two projectors on stands. Reconcile the retained proposal budget with actual equipment, ground stability and operating requirements within the $3,000 target. Aerial suspension is an alternate; no new sphere purchase is included in the low estimate.",
     precedents: ["moon-form", "sonic", "nova"],
     precedentReason:
       "Moon-scale presence and participant interaction are precedents; their budgets and approvals do not transfer.",

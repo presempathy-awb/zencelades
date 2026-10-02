@@ -16,7 +16,9 @@ test("the main Love Burn design uses Claude's purchased-projector budget without
     settings: { ...scenario.settings, days: 60, dayRate: 9999, capture: true },
   };
   expect(estimate(changed).total).toEqual(result.total);
-  expect(scenario.parts.configuration).toBe("S25");
+  expect(scenario.parts.configuration).toBe("G25");
+  expect(scenario.parts.cameras).toBe(2);
+  expect(scenario.parts.choices.host).toBeNull();
   expect(scenario.parts.projectors).toBe(2);
   expect(scenario.parts.mounting).toBe("stands");
 });
@@ -26,7 +28,7 @@ test("parts choices round trip and invalid imports cannot replace the current dr
   const parts = { ...createPartsPlan(), configuration: "S25" as const, projectors: 1 as const };
   const saved = parseScenario(JSON.stringify({ ...initial, parts }));
   expect(saved.parts).toEqual(parts);
-  expect(initial.parts.configuration).toBe("S25");
+  expect(initial.parts.configuration).toBe("G25");
   expect(() =>
     parseScenario(JSON.stringify({ ...saved, parts: { ...parts, projectors: 4 } })),
   ).toThrow();
@@ -38,6 +40,20 @@ test("parts choices round trip and invalid imports cannot replace the current dr
   );
   expect(earlierSurround.parts.configuration).toBe("O30");
   expect(earlierSurround.parts.projectors).toBe(0);
+});
+
+test("the primary proposal gets occupied-moon and internal-phone steps without external capture", () => {
+  const scenario = initialScenario();
+  scenario.settings.capture = false;
+  const steps = workflow(scenario);
+  expect(steps.find((step) => step.id === "scope")?.detail).toContain("participant inside");
+  expect(steps.find((step) => step.id === "scope")?.detail).not.toContain("Historical unoccupied");
+  expect(steps.find((step) => step.id === "scope")?.detail).toContain("lander");
+  expect(steps.find((step) => step.id === "support")?.detail).toContain("ground interface");
+  expect(steps.find((step) => step.id === "capture")?.title).toBe("Test the internal phone overlay");
+  const alternate = workflow({ ...scenario, selected: "ground-sphere" });
+  expect(alternate.find((step) => step.id === "scope")?.detail).toContain("Historical unoccupied");
+  expect(alternate.some((step) => step.id === "capture")).toBe(false);
 });
 
 test("build progress survives explicit export while a fresh guest draft starts unedited", () => {

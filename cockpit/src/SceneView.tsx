@@ -301,14 +301,14 @@ export default function SceneView({
           <span>Same triangle + ring</span>
           <Button
             variant="outline"
-            aria-pressed={selectedId === "basket-lander"}
+            aria-pressed={["love-burn", "basket-lander"].includes(selectedId)}
             onClick={() => onModelSelect("basket-lander")}
           >
             Lander
           </Button>
           <Button
             variant="outline"
-            aria-pressed={["love-burn", "basket-aerial-rig"].includes(selectedId)}
+            aria-pressed={selectedId === "basket-aerial-rig"}
             onClick={() => onModelSelect("basket-aerial-rig")}
           >
             Aerial rig

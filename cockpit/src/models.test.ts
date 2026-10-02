@@ -18,7 +18,9 @@ test("Love Burn proposal model carries the budget's two independent projectors a
     expect(
       scene.meshes.filter((mesh) => mesh.name.startsWith("triangle-projector-arm-")),
     ).toHaveLength(0);
-    expect(scene.meshes.filter((mesh) => mesh.name.startsWith("aerial-rig-leg-"))).toHaveLength(4);
+    expect(scene.meshes.filter((mesh) => mesh.name.startsWith("aerial-rig-leg-"))).toHaveLength(0);
+    expect(scene.meshes.filter((mesh) => mesh.name.startsWith("lander-leg-envelope-"))).toHaveLength(3);
+    expect(scene.meshes.filter((mesh) => mesh.name.startsWith("grant-phone-witness-"))).toHaveLength(2);
   } finally {
     scene.dispose();
     engine.dispose();

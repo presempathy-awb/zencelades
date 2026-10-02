@@ -44,7 +44,7 @@ export function buildModel(
   };
   const result: BuiltModel = { root, target: [0, 1.7, 0], radius: 11, dimensions: [] };
   if (id === "love-burn") {
-    seedGeometry(scene, g, "basket-aerial-rig", 0, 2.5);
+    seedGeometry(scene, g, "basket-lander", 0, 2.5);
     root.metadata = {
       ...root.metadata,
       sphereDiameter: 2.5,
@@ -67,7 +67,7 @@ export function buildModel(
       g.box(`grant-projector-cover-${side}`, [0.5, 0.022, 0.46], [x, 1.97, 0], "#738797");
       g.box(`grant-phone-witness-${side}`, [0.07, 0.14, 0.02], [side * 0.5, 1.8, 0.4], "#202e39");
     }
-    result.target = [0, 2.2, 0];
+    result.target = [0, 1.7, 0];
     result.radius = 15;
     result.dimensions = [
       {

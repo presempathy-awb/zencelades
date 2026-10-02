@@ -46,5 +46,6 @@ used a stale disk-cached application document; refreshed it with cache bypass
 temporarily enabled, then restored normal browser caching. Visually checked
 the aerial, tree and lander plates. No account or login interaction occurred.
 Screenshots and release evidence are under maxipaxi's Codex cache at
-`p106-application/`. Source remains in the account-drafts lane; no claim that
-the pending account PR or account service is deployed.
+`p106-application/`. Source is now preserved in both the account-drafts and
+public cockpit-route-links lanes, so a later public build retains the repair.
+The pending account PR and account service are not deployed.

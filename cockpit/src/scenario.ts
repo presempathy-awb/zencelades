@@ -169,15 +169,18 @@ export function workflow(
 ): Step[] {
   const support = baseline.options.find((option) => option.id === scenario.selected);
   if (!support) throw new Error("Unknown support option");
+  const primary = support.id === "love-burn";
   const suspended = ["existing-hang", "fixed-cantilever", "own-gantry"].includes(support.id);
   const occupied = support.id.startsWith("seed-");
   return [
     {
       id: "scope",
       title: "Define the experience",
-      detail: occupied
-        ? "A person inside on dry land, stationary and ground-supported. Resolve the exact entry/exit, ventilation, supervision and accessible participation before operation. No suspension or occupied haze."
-        : "Historical unoccupied comparison: dry land, empty sphere, night use. Participant stays outside; this option does not yet meet the current person-inside brief.",
+      detail: primary
+        ? "One participant inside the 2.5 m moon on the lander: shared triangle, padded loop and three detachable legs, with two phones inside. Confirm entry/exit, ventilation, supervision, accessible participation and ground stability before operation. Aerial suspension is an alternate; no physical approval is recorded."
+        : occupied
+          ? "A person inside on dry land, stationary and ground-supported. Resolve the exact entry/exit, ventilation, supervision and accessible participation before operation. No suspension or occupied haze."
+          : "Historical unoccupied comparison: dry land, empty sphere, night use. Participant stays outside; this option does not yet meet the current person-inside brief.",
     },
     {
       id: "support",
@@ -191,13 +194,14 @@ export function workflow(
         ? "Test shell material, throw, ambient light, seams and usable viewing angles. These projector positions are schematic; no coverage or lumen result is inferred."
         : "Test the chosen shell and LED diffusion. Projector hire and external capture are excluded.",
     },
-    ...(support.projectors > 0 && scenario.settings.capture
+    ...(support.projectors > 0 && (primary || scenario.settings.capture)
       ? [
           {
             id: "capture",
-            title: "Set up external live capture",
-            detail:
-              "Test one outside camera, consent, sightlines and integration with the selected projection layout. No internal cameras or full-body reconstruction are included.",
+            title: primary ? "Test the internal phone overlay" : "Set up external live capture",
+            detail: primary
+              ? "Test the proposal's two internal phones, mounts and power, participant consent and stop controls, the private network and the laptop's moon overlay. Keep the entrance clear and test the calm-loop fallback when a feed drops. No recording or full-body reconstruction is included."
+              : "Test one outside camera, consent, sightlines and integration with the selected projection layout. No internal cameras or full-body reconstruction are included.",
           },
         ]
       : []),

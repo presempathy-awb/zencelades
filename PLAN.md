@@ -2,6 +2,10 @@
 
 ## Current goal — October 1
 
+Conflict rule: later explicit Andrew prompts supersede earlier conflicting
+prompts. Current primary design (October 2): lander with phones inside the
+sphere. Aerial and truck concepts remain alternatives, not the default build.
+
 Completed user correction: [P106 — application visibility](docs/plans/p106-application-visibility.md).
 All six application schematics are readable in the live cockpit; the two-file
 repair preserves the proposal body and every unrelated live release entry.
@@ -25,11 +29,16 @@ claims.
    [October 2 integration audit](docs/integration-readiness.md) records the
    current owner PRs, inventory authorization boundary and retained source gaps.
 
-October 2 continuation: homepage playback/navigation is reverified. Next bounded
-work is the storage publisher review repair: reproduce ambiguous object paths,
-cover single-object delete and wildcard compatibility, preserve current base
-documentation, run the broker checks, and obtain a full repaired-head review.
-Account publication and authenticated-browser decisions remain pending.
+October 2 continuation: the lander correction is live in release `e0cbad5a`.
+The default model, parts, Steps view and homepage now agree on the lander with
+two inside phones. Guest reload clears an applied synthetic note; export
+reported success but the downloaded bytes were not verified. See
+[P108](docs/plans/p108-lander-inside-phones.md) and
+[P109](docs/plans/p109-later-prompts-win.md).
+The full Grok rereview at `cc1367f9` returned PASS and is posted on publisher
+PR #65. Two should-fix findings still need source verification and disposition
+before landing; no broker deployment is claimed. Account publication and
+authenticated-browser decisions remain pending.
 
 The homepage loop and truck-alternatives separation are live and freshly
 browser-checked in release `9b6f2f7c`;

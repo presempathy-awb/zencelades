@@ -65,7 +65,7 @@ export const MODEL_STUDIES: ModelStudy[] = [
     label: "Love Burn · main proposal",
     group: "Common holder",
     budget: "love-burn",
-    note: "Grant budget basis: occupied 2.5 m zorb, common holder under the existing aerial rig, two purchased projectors on independent stands and two phone witnesses. The same holder accepts lander legs. Arm-mounted projection is an alternate upgrade. Product fit, support capacities, optics and operational acceptance remain to be verified.",
+    note: "Current primary build: occupied 2.5 m zorb on the common triangle and padded ring with three lander legs, two purchased projectors on independent stands and two phones inside. The aerial rig and arm-mounted projection remain alternate designs. Product fit, support capacities, optics and operational acceptance remain to be verified.",
   },
   {
     id: "basket-live-overlay",
