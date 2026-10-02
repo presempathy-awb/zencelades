@@ -46,8 +46,11 @@ a second password store. Signups stay off. Resolve Andrew's existing identity
 from the approved application membership; do not guess usernames or IDs.
 
 Provisioning order is security-sensitive: create the provider/application,
-add the confirmed member, restrict the application, verify member/nonmember
-policy, then publish the hostname. Telpher's default application openness must
+copy the approved existing project crew, restrict the application, verify member/nonmember
+policy, then publish the hostname. The provider TOML has no membership fields:
+Telpher manages access separately through `app-users` and `app-access`.
+Provider configuration alone is never evidence of restricted access.
+Telpher's default application openness must
 never become the deployed studio policy.
 
 Use Telpher's existing `authentik-forward-auth-state`/`apply`, `app-users`,
@@ -65,12 +68,12 @@ for those operations, not completed provider creation or route activation.
 public-content scan and the release-boundary unit tests. A real-Caddy fixture
 in `tests/private_studio_http_probe.py` exercises public and private hosts,
 download aliases, encoded paths, retired bundles and forged headers without
-touching the live service. Local proof: 59 Bun tests and four unit tests pass;
-both builds succeed; ten isolated HTTP cases pass. This is not live login proof.
-The full Python check also passes: 65 tests, 13 subtests, lint, formatting and
-grant-ledger consistency. Removing the Caddy guard makes the HTTP regression
-fail; restoring it passes. The complete proposed live Caddy configuration and
-its relative imports validate on presvd1 without altering the running service.
+touching the live service. `just private-studio-http-check RETIRED_FRAGMENT`
+runs this separate Caddy fixture on a host with Caddy installed, using the actual
+`retired_config` output. It is not an implicit network step in the local recipe.
+Fresh command-by-command evidence and review responses are recorded in
+[private-studio-verification.md](private-studio-verification.md). These checks
+are not live login proof.
 
 `just private-studio-release --host HOST` plans from the actual live manifest.
 Only `--apply` publishes. The overlay preserves every existing entry, media file,
@@ -79,6 +82,15 @@ frontend code and adds the private build plus guard fragments. Activation uses
 the live release's shared lock, expected-base comparison and rollback path.
 Re-plan if another publisher changes the active release. Do not use the older
 complete-site publisher to replace an active release assembled by other lanes.
+
+The planner validates manifest paths before asking remote tar to read them,
+uses the studio's own prompt parsers, and refuses contaminated public builds.
+Upload staging uses a unique mode-0700 directory. The installer hashes and parses
+one immutable archive snapshot, stages under an owned temporary directory and
+publishes the release directory only after verification. Partial copies clean
+themselves up; completed releases remain available after an activation failure.
+Network and activation calls have finite timeouts. A timeout is an uncertain
+activation outcome: inspect `current` before retrying, never delete its target.
 
 Before activation, provision restricted Authentik and the protected route and
 validate the complete staged Caddy configuration. After activation, purge the

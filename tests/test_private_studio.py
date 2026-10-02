@@ -1,14 +1,155 @@
 """Private-studio release boundary tests, without network or credentials."""
 
+import importlib.util
+import io
+import json
+import sys
+import tarfile
 import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts.private_studio import guard_config, retired_config, write_private_artifacts
+from scripts.private_studio import (
+    guard_config,
+    main,
+    retired_config,
+    write_private_artifacts,
+)
 
 
 class PrivateStudioBoundary(unittest.TestCase):
+    def test_overlay_rejects_tampering_cleans_failed_copy_and_preserves_live(self):
+        from scripts.private_studio import digest
+
+        spec = importlib.util.spec_from_file_location(
+            "overlay", Path(__file__).parents[1] / "deploy/private-studio-overlay.py"
+        )
+        overlay = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(overlay)
+
+        def manifest(files):
+            return json.dumps(
+                [
+                    {"path": name, "bytes": len(data), "sha256": digest(data)}
+                    for name, data in files.items()
+                ]
+            ).encode()
+
+        old = {
+            "site/dist/index.html": b"old page",
+            "site/dist/media.jpg": b"preserved art",
+        }
+        raw = manifest(old)
+        base_id = digest(raw)
+        new = {
+            **old,
+            "site/dist/index.html": b"new public page",
+            "site/private-studio/index.html": b"private page",
+        }
+        new_raw = manifest(new)
+        release_id = digest(new_raw)
+        stream = io.BytesIO()
+        with tarfile.open(fileobj=stream, mode="w:gz") as bundle:
+            for name, data in {
+                "release-files.json": new_raw,
+                **{name: data for name, data in new.items() if old.get(name) != data},
+            }.items():
+                info = tarfile.TarInfo(name)
+                info.size = len(data)
+                bundle.addfile(info, io.BytesIO(data))
+        payload = stream.getvalue()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            base = root / "releases" / base_id
+            for name, data in {**old, "release-files.json": raw}.items():
+                path = base / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(data)
+            (root / "current").symlink_to(base)
+            with self.assertRaisesRegex(SystemExit, "archive changed"):
+                overlay.stage_release(
+                    root, base_id, release_id, digest(payload), payload + b"tampered"
+                )
+
+            def partial_copy(source, destination, **kwargs):
+                destination.mkdir()
+                (destination / "partial").write_text("incomplete")
+                raise OSError("copy failed")
+
+            with (
+                patch.object(overlay.shutil, "copytree", side_effect=partial_copy),
+                self.assertRaisesRegex(OSError, "copy failed"),
+            ):
+                overlay.stage_release(
+                    root, base_id, release_id, digest(payload), payload
+                )
+            self.assertEqual(list((root / "releases").iterdir()), [base])
+            target = overlay.stage_release(
+                root, base_id, release_id, digest(payload), payload
+            )
+            self.assertEqual((root / "current").resolve(), base)
+            self.assertEqual(
+                (target / "site/dist/media.jpg").read_bytes(), b"preserved art"
+            )
+            self.assertEqual(
+                (target / "site/dist/index.html").read_bytes(), b"new public page"
+            )
+            self.assertEqual((base / "site/dist/index.html").read_bytes(), b"old page")
+            with self.assertRaisesRegex(SystemExit, "Never overwrite"):
+                overlay.stage_release(
+                    root, base_id, release_id, digest(payload), payload
+                )
+
+    def test_plan_refuses_stale_public_prompt_bytes(self):
+        from scripts.private_studio import public_payload
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "index.html").write_bytes(b"public artwork")
+            self.assertEqual(
+                public_payload(root, [b"private prompt"]),
+                {"site/dist/index.html": b"public artwork"},
+            )
+            (root / "stale.js").write_bytes(b"const prompt = 'private prompt'")
+            with self.assertRaisesRegex(ValueError, "Private prompt in public build"):
+                public_payload(root, [b"private prompt"])
+
+    def test_plan_rejects_unsafe_manifest_before_reading_any_assets(self):
+        from scripts.private_studio import digest
+
+        for name in [
+            "site/dist/../../secret.json",
+            "/secret.json",
+            "site/dist/a\\b.js",
+            "site//dist/a.js",
+            "site/dist/./a.js",
+        ]:
+            raw = json.dumps(
+                [{"path": name, "bytes": 0, "sha256": digest(b"")}]
+            ).encode()
+            base = f"/srv/thatsnozorb/releases/{digest(raw)}".encode()
+            with (
+                self.subTest(name=name),
+                patch.object(sys, "argv", ["release", "--host", "fixture"]),
+                patch(
+                    "scripts.private_studio.subprocess.check_output",
+                    side_effect=[base, raw],
+                ) as remote,
+            ):
+                with self.assertRaisesRegex(ValueError, "Unsafe manifest path"):
+                    main()
+                self.assertEqual(remote.call_count, 2)
+
+    def test_plan_rejects_ssh_option_as_host(self):
+        with (
+            patch.object(sys, "argv", ["release", "--host=-oProxyCommand=bad"]),
+            patch("scripts.private_studio.subprocess.check_output") as remote,
+        ):
+            with self.assertRaisesRegex(ValueError, "hostname or SSH alias"):
+                main()
+            remote.assert_not_called()
+
     def test_later_releases_keep_previously_retired_prompt_urls_blocked(self):
         previous = retired_config(["site/dist/studio-assets/index-first.js"])
         updated = retired_config(["site/dist/studio-assets/index-second.js"], previous)

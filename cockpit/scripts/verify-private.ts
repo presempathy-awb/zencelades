@@ -1,22 +1,9 @@
 import { readdir, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { readEffects, readMusicPrompt } from "../src/audio-prompts";
+import { privateMarkers } from "./private-markers";
 
 const root = resolve(import.meta.dir, "../..");
-const songs = await readdir(resolve(root, "docs/audio/suno"));
-const markers = await Promise.all(
-  songs.map(async (name) =>
-    readMusicPrompt(
-      await readFile(resolve(root, "docs/audio/suno", name), "utf8"),
-      name,
-    ).prompt.slice(0, 45),
-  ),
-);
-markers.push(
-  ...readEffects(await readFile(resolve(root, "docs/audio/elevenlabs-effects.md"), "utf8")).map(
-    (effect) => effect.prompt.slice(0, 45),
-  ),
-);
+const markers = await privateMarkers();
 async function texts(directory: string): Promise<string[]> {
   const result: string[] = [];
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -37,7 +24,7 @@ const privateText = (
   )
 ).join("\n");
 if (!markers.every((marker) => privateText.includes(marker)))
-  throw new Error("Private build is missing music prompts");
+  throw new Error("Private build is missing a music or effect prompt");
 console.log(
   "Public build has no prompt content; private build retains all eight songs and sixteen effects.",
 );

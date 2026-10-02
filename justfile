@@ -67,6 +67,10 @@ private-studio-check:
 private-studio-release *args:
     uv run --no-project python -m scripts.private_studio {{args}}
 
+# On a host with Caddy: pass the actual generated retired fragment.
+private-studio-http-check retired:
+    uv run --no-project python tests/private_studio_http_probe.py --fragment deploy/private-studio.caddy --retired {{quote(retired)}}
+
 # Account boundary tests run without production secrets; PG18 uses an isolated fixture.
 account-check:
     (cd account-service && go test -race ./...)

@@ -62,17 +62,26 @@ def digest(data: bytes) -> str:
 
 def prompt_markers() -> list[bytes]:
     """Use actual source text to locate formerly bundled private prompts."""
-    markers = []
-    for path in (ROOT / "docs/audio/suno").glob("*.md"):
-        markers.append(
-            path.read_text().split("```text\n", 1)[1].split("\n", 1)[0][:45].encode()
-        )
-    for line in (ROOT / "docs/audio/elevenlabs-effects.md").read_text().splitlines():
-        if line.startswith("| sfx-"):
-            markers.append(line.split("|")[5].strip()[:45].encode())
-    if len(markers) != 24 or any(len(marker) < 30 for marker in markers):
-        raise ValueError("Expected eight songs and sixteen effect markers")
-    return markers
+    raw = subprocess.check_output(
+        ["bun", str(ROOT / "cockpit/scripts/private-markers.ts")], timeout=30
+    )
+    return [marker.encode() for marker in json.loads(raw)]
+
+
+def public_payload(directory: Path, markers: list[bytes]) -> dict[str, bytes]:
+    """Refuse stale builds containing prompts before preparing any release."""
+    if not (directory / "index.html").is_file():
+        raise ValueError("Build both frontend artifacts before planning a release")
+    payload = {}
+    for path in directory.rglob("*"):
+        if path.is_symlink():
+            raise ValueError("Linked build artifact")
+        if path.is_file():
+            data = path.read_bytes()
+            if any(marker in data for marker in markers):
+                raise ValueError(f"Private prompt in public build: {path}")
+            payload[f"site/dist/{path.relative_to(directory).as_posix()}"] = data
+    return payload
 
 
 def write_private_artifacts(
@@ -96,6 +105,8 @@ def main() -> None:
     parser.add_argument("--host", required=True)
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", args.host):
+        raise ValueError("Expected a hostname or SSH alias")
 
     def remote(command: str) -> bytes:
         return subprocess.check_output(["ssh", args.host, command], timeout=60)
@@ -107,6 +118,17 @@ def main() -> None:
     if digest(raw) != Path(base).name:
         raise ValueError("Live manifest identity mismatch")
     rows = json.loads(raw)
+    for row in rows:
+        name = row["path"]
+        relative = PurePosixPath(name)
+        if (
+            not name
+            or relative.is_absolute()
+            or ".." in relative.parts
+            or "\\" in name
+            or str(relative) != name
+        ):
+            raise ValueError("Unsafe manifest path")
     old = {row["path"]: row for row in rows}
     if len(old) != len(rows):
         raise ValueError("Duplicate live manifest entry")
@@ -137,11 +159,8 @@ def main() -> None:
         for name, data in snapshots.items()
         if name.startswith("site/dist/") and any(marker in data for marker in markers)
     ]
-    payload = {}
-    for directory, prefix in (
-        (ROOT / "cockpit/dist", "site/dist"),
-        (ROOT / "cockpit/private-dist", "site/private-studio"),
-    ):
+    payload = public_payload(ROOT / "cockpit/dist", markers)
+    for directory, prefix in ((ROOT / "cockpit/private-dist", "site/private-studio"),):
         if not (directory / "index.html").is_file():
             raise ValueError("Build both frontend artifacts before planning a release")
         for path in directory.rglob("*"):
@@ -214,19 +233,25 @@ def main() -> None:
     print(json.dumps(plan, indent=2), flush=True)
     if not args.apply:
         return
+    staging = remote("mktemp -d /tmp/zenc-private-upload.XXXXXXXXXX").decode().strip()
+    if not re.fullmatch(r"/tmp/zenc-private-upload\.[A-Za-z0-9]+", staging):
+        raise ValueError("Unexpected private staging directory")
     subprocess.run(
         [
             "scp",
             str(bundle_path),
-            f"{args.host}:/tmp/zencelades-private-{release}.tar.gz",
+            f"{args.host}:{staging}/release.tar.gz",
         ],
         check=True,
+        timeout=180,
     )
     command = "sudo -n python3 - " + " ".join(
-        [plan["base"], release, plan["archive_sha256"]]
+        [plan["base"], release, plan["archive_sha256"], f"{staging}/release.tar.gz"]
     )
     with (ROOT / "deploy/private-studio-overlay.py").open() as script:
-        subprocess.run(["ssh", args.host, command], stdin=script, check=True)
+        subprocess.run(
+            ["ssh", args.host, command], stdin=script, check=True, timeout=600
+        )
 
 
 if __name__ == "__main__":

@@ -8,9 +8,13 @@ restricted Authentik membership while Pawthentik is inactive. Public artwork,
 models, gallery and Showtime stay open. The isolated `fix/private-studio` lane
 separates the prompt build and downloads from the public root, denies retired
 prompt bundles and preserves the actual live release in an additive overlay.
-Frontend tests (59), the production builds, four release-boundary tests and
-ten real Caddy HTTP cases pass. Production is not changed yet: external security
-review remains queued. Andrew approved the private-host browser scope; the fresh
+Initial frontend tests (59), the production builds, four release-boundary tests
+and ten real Caddy HTTP cases passed. Production is not changed yet. The first
+external review returned HOLD: repair release validation/staging, couple the HTTP
+fixture to the generated deny fragment, and provide runtime evidence answering
+the incorrect Caddy-order and Vite-cleanout findings. Re-review the full repaired
+head before activation. Andrew approved preserving the current project crew.
+Andrew approved the private-host browser scope; the fresh
 Authentik API read now succeeds after the manifest grant. The real domain/route
 dry run passes and reuses the existing zone token. See
 [the access contract and rollout](docs/private-studio-access.md).

@@ -13,6 +13,7 @@ from pathlib import Path
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fragment", type=Path, required=True)
+    parser.add_argument("--retired", type=Path, required=True)
     args = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix="zenc-private-proof-") as temporary:
         root = Path(temporary)
@@ -31,10 +32,7 @@ def main() -> None:
             "/srv/thatsnozorb/current/site/private-studio", str(private)
         )
         (root / "private-studio.caddy").write_text(fragment)
-        (root / "private-studio-retired.caddy").write_text(
-            "@retiredPrivatePrompts {\n not host studio.zenceladus.com\n"
-            " path /studio-assets/index-old.js*\n}\nrespond @retiredPrivatePrompts 404\n"
-        )
+        (root / "private-studio-retired.caddy").write_text(args.retired.read_text())
         with socket.socket() as listener:
             listener.bind(("127.0.0.1", 0))
             port = listener.getsockname()[1]
