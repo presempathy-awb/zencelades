@@ -1,9 +1,10 @@
 # Zencelades — Showtime audio prompt pack
 
 Prepared October 2, 2026. **Suno for music; ElevenLabs for sound effects.**
-Prompt writing and source research are complete. Showtime implementation,
-studio hosting/authentication, audio generation, listening acceptance and
-deployment are deferred at Andrew's request.
+Prompt writing and source research are complete. P118 now authorizes the private
+studio deployment using Authentik while Pawthentik is unavailable; see the
+[access contract](../private-studio-access.md) for its current prerequisites.
+Showtime audio implementation, generation and listening acceptance remain deferred.
 
 The musical direction is an ocean inside a human inside an icy moon: coastal,
 tactile, curious, luminous and occasionally danceable. The eight pieces are

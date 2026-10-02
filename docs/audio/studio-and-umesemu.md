@@ -4,6 +4,12 @@ Prepared October 2, 2026 for P114/P115. This is an implementation-ready design,
 not a deployed feature. Music: **Suno**. Sound effects: **ElevenLabs**.
 No provider generation or deployment occurred in this slice.
 
+P118 supersedes the studio-hosting deferral below. The separate public/private
+build and Authentik fallback are implemented, awaiting reviewed deployment and
+live verification; [current access contract](../private-studio-access.md).
+The first delivered controls select and copy prepared prompts. Persistent
+editing, provider generation and the mixer remain future work.
+
 ## Product boundary and design
 
 The public homepage keeps its media-first cockpit, renders and silent looping

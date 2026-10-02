@@ -1,0 +1,22 @@
+# Imported inside the existing loopback site. Authentik gates this hostname at
+# Traefik; the private root is outside site/dist, never a public static fallback.
+@privateStudio host studio.zenceladus.com
+handle @privateStudio {
+    root * /srv/thatsnozorb/current/site/private-studio
+    header {
+        Cache-Control "private, no-store"
+        X-Robots-Tag "noindex, nofollow, noarchive"
+    }
+    file_server
+}
+@privateStudioEntry {
+    not host studio.zenceladus.com
+    path /studio /studio/* /audio /audio/*
+}
+redir @privateStudioEntry https://studio.zenceladus.com/ 302
+@privateStudioDownloads {
+    not host studio.zenceladus.com
+    path /documents/audio /documents/audio/* /private-assets /private-assets/*
+}
+respond @privateStudioDownloads 404
+import private-studio-retired.caddy

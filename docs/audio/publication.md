@@ -1,5 +1,9 @@
 # Audio prompts and fixed cockpit publication — October 2, 2026
 
+This is the historical public-release receipt. P118 now moves prompt delivery
+into a restricted studio; see [the access contract](../private-studio-access.md)
+for implementation, deployment prerequisites and current verification limits.
+
 Published at https://zenceladus.com/#/audio and https://zenceladus.com/#/.
 Source PR: [zencelades `feat/cockpit-audio-fit` (#9)](https://git.telpher.stream/telpher/zencelades/pulls/9),
 stacked on `feat/account-drafts` (#8). PR #9 remains open; the static release is live.

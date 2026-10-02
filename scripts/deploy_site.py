@@ -22,9 +22,16 @@ def main() -> None:
     args = parser.parse_args()
     build()
     files = sorted((ROOT / "site/dist").rglob("*"))
+    files += sorted((ROOT / "site/private-studio").rglob("*"))
     files += [
         ROOT / "deploy" / name
-        for name in ("Caddyfile", "thatsnozorb.service", "activate.sh")
+        for name in (
+            "Caddyfile",
+            "thatsnozorb.service",
+            "activate.sh",
+            "private-studio.caddy",
+            "private-studio-retired.caddy",
+        )
     ]
     entries = [
         {

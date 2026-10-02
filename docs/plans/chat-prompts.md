@@ -7,6 +7,9 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P118 (October 2): “ok get it fixed please use umesemu like model but with what needed for pawthentik, if thats not ready just have authentik standin with plan” — [protect private studio](p118-private-studio-authentik.md).
+- P117 (October 2): “are the private pages done and confirmed private. without pawthentik login?” — [live privacy verification](p117-private-page-verification.md).
+
 - P116 (October 2): “make sure they are pred and deployed to the website. One moon. The same holder. put the image under this under the one on the top to balance it. lets move every page into being a no scroll experience again. no scrolling on the main view on any!” — [publish audio and fit cockpit](p116-publish-audio-fixed-cockpit.md).
 - P115 (October 2): “suno prompts for music. get the optimizations and such too from umesemu see what other great stuff” — [Suno and Umesemu research](p115-suno-umesemu-optimizations.md).
 - P114 (October 2): Showtime audio later, eight adaptive song prompts, ElevenLabs effects and protected prompt studio — [full prompt and plan](p114-showtime-audio-studio.md).

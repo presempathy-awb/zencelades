@@ -1,5 +1,27 @@
 # Zencelades working plan
 
+## Current continuation — October 2, private studio repair
+
+[P118](docs/plans/p118-private-studio-authentik.md) supersedes the deferred
+private-studio portion of P116. Use the Umesemu private-host pattern with
+restricted Authentik membership while Pawthentik is inactive. Public artwork,
+models, gallery and Showtime stay open. The isolated `fix/private-studio` lane
+separates the prompt build and downloads from the public root, denies retired
+prompt bundles and preserves the actual live release in an additive overlay.
+Frontend tests (59), the production builds, three release-boundary tests and
+ten real Caddy HTTP cases pass. Production is not changed yet: the Telpher
+manifest grant is stale, external security review remains required and the
+new private-host browser scope is pending. See
+[the access contract and rollout](docs/private-studio-access.md).
+
+1. Finish source validation and the exact-head security review.
+2. After Andrew renews the exact manifest grant, provision and restrict the
+   Authentik application before publishing the studio hostname.
+3. Activate the additive release, purge retired public prompt URLs and verify
+   public-host denial, anonymous login enforcement and membership rejection.
+4. Complete authorized browser acceptance without handling Andrew's password
+   or MFA, then record live evidence. Existing PG18 account saves are separate.
+
 ## Current continuation — October 2, audio and fixed viewport publication
 
 [P116](docs/plans/p116-publish-audio-fixed-cockpit.md) requests a PR and deployment

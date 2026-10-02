@@ -58,6 +58,15 @@ cockpit-check:
 cockpit-dev:
     (cd cockpit && bun run dev)
 
+# Build public/private bundles and prove no prompt data is in the public build.
+private-studio-check:
+    (cd cockpit && bun test && bun run build)
+    uv run --no-project python -m unittest tests.test_private_studio
+
+# Additive overlay from the actual live release; no writes unless --apply.
+private-studio-release *args:
+    uv run --no-project python -m scripts.private_studio {{args}}
+
 # Account boundary tests run without production secrets; PG18 uses an isolated fixture.
 account-check:
     (cd account-service && go test -race ./...)

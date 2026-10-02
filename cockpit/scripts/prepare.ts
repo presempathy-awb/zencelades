@@ -1,12 +1,11 @@
-import { copyFile, cp, mkdir } from "node:fs/promises";
+import { copyFile, mkdir, rm } from "node:fs/promises";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dir, "../..");
 const output = resolve(root, "cockpit/public/studio-data");
 await mkdir(output, { recursive: true });
-await cp(resolve(root, "docs/audio"), resolve(root, "cockpit/public/documents/audio"), {
-  recursive: true,
-});
+// Retire the former generated public copy; source documents stay under docs/audio.
+await rm(resolve(root, "cockpit/public/documents/audio"), { recursive: true, force: true });
 const files = {
   "assets/seed-sources.json": "seed.json",
   "docs/seed-occupied-options.md": "seed-occupied-options.md",

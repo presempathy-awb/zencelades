@@ -44,7 +44,7 @@ function CopyField({ label, text }: { label: string; text: string }): JSX.Elemen
   );
 }
 
-/** Public copy-ready prompts; generation and private authoring remain separate. */
+/** Protected copy-ready prompts; generation and persistent editing remain deferred. */
 export default function AudioView(): JSX.Element {
   const [kind, setKind] = useState("music");
   const [music, setMusic] = useState(0);

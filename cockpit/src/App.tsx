@@ -35,7 +35,8 @@ import { cockpitHref, documentPages } from "./page-routes";
 import { fitColumns, selectColumn } from "./cockpit-layout";
 import ViewSelector from "./ViewSelector";
 import AccountControls from "./AccountControls";
-import AudioView from "./AudioView";
+import PrivateStudioLink from "./PrivateStudioLink";
+import "./audio.css";
 import TopicPane from "./TopicPane";
 import "./columns.css";
 import "./viewport.css";
@@ -474,7 +475,7 @@ export default function App(): JSX.Element {
                   {page === "/" ? (
                     <HomePage />
                   ) : page === "/audio" ? (
-                    <AudioView />
+                    <PrivateStudioLink />
                   ) : page === "/media" ? (
                     <MediaView />
                   ) : page === "/showtime" ? (

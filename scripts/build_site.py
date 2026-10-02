@@ -12,6 +12,7 @@ from urllib.parse import quote
 
 from scripts.assets import ROOT, inventory, sha256, verify_release
 from scripts.catalog_v4 import collect
+from scripts.private_studio import write_private_artifacts
 
 
 def proposal_budget_html(ledger: dict) -> str:
@@ -299,6 +300,12 @@ def build() -> None:
         if versioned != content:
             page.write_text(versioned)
     publish_cockpit_pages(output, output / "index.html")
+    write_private_artifacts(
+        output,
+        ROOT / "cockpit/private-dist",
+        ROOT / "site/private-studio",
+        ROOT / "deploy/private-studio-retired.caddy",
+    )
     shutil.copyfile(ROOT / "site/page-shell.css", output / "page-content/shell.css")
     print(
         f"Built {output}: {len(entries)} original + {len(v4)} v4 byte-verified downloads and {len(previews)} media previews"
