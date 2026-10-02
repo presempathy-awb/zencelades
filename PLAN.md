@@ -52,6 +52,18 @@ The latest presvd1 `hid-in gunlock-status` reports locked (gate=vault), and
 `zencelades-account.service` is inactive. Account deployment and real login
 remain unfinished. No plan tool is exposed; this file tracks the work.
 
+Next continuation: finish or diagnose the current single-attempt publisher
+review using its actual process/output; do not restart a still-running job.
+Prepare the account source delivery and exact security-review scope while
+credential and real-login browser gates remain outstanding. Preserve the
+verified public release and the clean local account implementation.
+The current cockpit PR #4 conflicts with main. Reconcile main's already-landed
+submission images and removal of the obsolete IP-management adapter into the
+account lane, preserving the later canonical-domain, lander/inside-phones,
+cockpit, media and private-account intents. Review each conflict separately;
+do not apply PR #7's stale wrong-domain redirect. Run the affected checks and
+full build before proposing source delivery.
+
 The homepage loop and truck-alternatives separation are live and freshly
 browser-checked in release `9b6f2f7c`;
 [P103](docs/plans/p103-homepage-loop-alternatives.md) records the scoped delivery.
