@@ -42,7 +42,7 @@ assets-v4 *args:
     uv run --no-project python -m scripts.catalog_v4 {{args}}
 
 check:
-    uv run --no-project --with pytest pytest -q
+    uv run --no-project --with pytest --with reportlab==5.0.1 --with pypdf==6.19.0 pytest -q
     ruff check scripts tests
     ruff format --check scripts tests
     uv run --no-project python -m scripts.grant_ledger --check
@@ -111,3 +111,7 @@ grant-ledger *args:
 # Generate reviewed import data only; never mutates the live Pacinman workspace.
 pacinman-packet:
     uv run --no-project python -m scripts.pacinman_packet
+
+# Regenerate a local planning PDF and inventory exports; no upload or live import.
+build-plans:
+    uv run --no-project --with reportlab==5.0.1 python -m scripts.build_option_packet

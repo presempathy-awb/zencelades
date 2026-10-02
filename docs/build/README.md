@@ -110,19 +110,11 @@ Private Pacinman IDs and unrelated Burning Man workspace content do not belong
 in this public pack. Live authenticated inventory editing remains unfinished;
 see [integration readiness](../integration-readiness.md).
 
-## Preservation and delivery status
+## Print or export this plan
 
-The eleven original planning documents are retained here, including the
-[P059 overview](p059-overview.md), with historical banners added. Their original
-lane and byte-preserved delivery copies were not changed. This source recovery
-does not regenerate or replace a grant attachment, PDF, model or live website.
-The earlier PDF generator still awaits separate source integration and an
-artifact readback; no newly generated PDF is claimed.
-
-Source recovery checks on October 2 passed: all eleven original document
-bodies match after the new banners; the workbook-intake body and 40-candidate,
-26-sheet catalog match their originals; the preserved workbook's SHA-256
-matches that catalog; and all local document links resolve. The project's
-`just check` exited 0 with 82 tests, 13 subtests, Ruff and ledger validation.
-Gitleaks found no secrets in the recovered build-document directory. These
-checks verify source preservation, not current quotations or physical capacity.
+`just build-plans` generates the local planning PDF, parts CSV and reviewed
+Pacinman import packet under `output/pdf/`. It does not upload, import, order
+equipment or replace an archival grant attachment. The
+[source and artifact verification](../build-packet-verification.md) records
+what was preserved and checked. The [P059 overview](p059-overview.md) retains
+the earlier planning context.

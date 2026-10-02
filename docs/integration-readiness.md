@@ -92,8 +92,25 @@ keeps the later primary Love Burn proposal and common holder first. The old
 overview is retained as `build/p059-overview.md`. Its LED allocation, modeled
 dimensions and delivery claims remain explicitly historical.
 
-The original lane and archival delivery copies remain unchanged. The earlier
-`scripts/build_option_packet.py` still awaits separate source integration and
-PDF verification. No reconstructed PDF or live attachment replacement is
-claimed. Source recovery does not mean the account branch has been pushed,
+The original lane and archival delivery copies remain unchanged. The recovered
+`scripts/build_option_packet.py` now produces a separate local planning PDF and
+inventory exports; [packet verification](build-packet-verification.md) records
+the functional test, layout checks and boundaries. No live attachment was
+replaced. Source recovery does not mean the account branch has been pushed,
 reviewed or landed; preserve the remaining unrelated dirty work.
+
+## Review outcome
+
+Grok's [complete review](https://git.telpher.stream/awb/hesellsheshells/pulls/65#issuecomment-13965)
+is posted verbatim: HOLD, medium, at the exact head/base above. The process has
+finished; do not restart it as though its earlier empty output were a failure.
+The reported documentation blocker comes from comparing the older head tree
+with the advanced base: the fresh PR file list and merge-base diff contain
+only seven feature files and exclude `docs/pnumbravow-papers.md` and
+`docs/roadmap.md`. Those are not deletions in the PR's patch. Preserve the newer
+base documentation when updating the branch for a full rereview.
+
+The review also requests explicit path-normalization defenses, wildcard-scope
+compatibility tests, extension/delete tests and clearer branch-protection
+wording. Verify and resolve those findings in the broker owner's lane before
+a new full-head review; no owner merge or broker deployment has occurred.
