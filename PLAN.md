@@ -40,6 +40,18 @@ PR #65. Two should-fix findings still need source verification and disposition
 before landing; no broker deployment is claimed. Account publication and
 authenticated-browser decisions remain pending.
 
+Current continuation: publisher head `b55ad71d` adds policy version 2 and an
+optional machine-principal write-ref restriction, pins this publisher to
+`ingest-*`, and validates/canonicalizes branch creation before forwarding it.
+Immutable commit reads remain allowed. Shipped-policy compatibility coverage,
+main-write refusal and branch-body HTTP regressions pass. Full pinned-Go
+`just check`, uncached race tests, Trivy, Gitleaks and ast-grep passed before
+push. A new full-head Grok review is running; the older PASS does not cover
+this head. Synchronize the project deployment references before landing.
+The latest presvd1 `hid-in gunlock-status` reports locked (gate=vault), and
+`zencelades-account.service` is inactive. Account deployment and real login
+remain unfinished. No plan tool is exposed; this file tracks the work.
+
 The homepage loop and truck-alternatives separation are live and freshly
 browser-checked in release `9b6f2f7c`;
 [P103](docs/plans/p103-homepage-loop-alternatives.md) records the scoped delivery.

@@ -58,11 +58,14 @@ this project does not rotate platform keys or change the gateway.
 
 `hesellsheshells` is the broker's name, not a repository named
 `hehasseashells`. It owns lakeFS's single credential; consuming applications
-get scoped machine principals. See `deploy/lake-broker.additions.toml` for the
-proposed publisher and public reader. Token names are derived from principal
-names, and their proposed hid-in bindings are in
-`deploy/hid-in.additions.toml`. The new project's private/public forge ownership
-has not been chosen or created.
+get scoped machine principals. The early `deploy/lake-broker.additions.toml`
+is retained as history, not an installation input. The current preservation
+publisher is restricted to `imports/*` and writes on `ingest-*`, requiring the
+complete version-2 broker implementation in
+[hesellsheshells publisher PR #65](https://git.telpher.stream/awb/hesellsheshells/pulls/65).
+See [research storage](research-storage.md) for both owner PRs and the rollout
+sequence. The separate public reader remains proposed; its presence in an
+archived fragment grants no access. Token names are derived from principals.
 
 Preservation writes go under `imports/2026-09-30/`. The public reader reaches
 only `public/`, so uploading originals does not itself publish them. The authorized

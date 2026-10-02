@@ -1,5 +1,31 @@
 # P009 research storage: prepared publisher and upload evidence
 
+## Current delivery requirements — October 2
+
+Use the complete owner changes, not the historical config-only patch:
+[hesellsheshells `feat/thatsnozorb-publisher` (#65)](https://git.telpher.stream/awb/hesellsheshells/pulls/65)
+and [telpher `feat/thatsnozorb-publisher` (#554)](https://git.telpher.stream/awb/telpher/pulls/554).
+The broker's pushed head `b55ad71d` requires policy version 2, confines object
+access to `imports/*`, and confines writes to `ingest-*`. It validates branch
+creation bodies before forwarding them and retains immutable commit reads.
+The prior PASS applies to an older head; the current full-head review is running.
+See [integration readiness](integration-readiness.md) for test and review evidence.
+
+`deploy/research-publisher.toml` mirrors the selected principal for inspection;
+it is not a standalone migration. The broker implementation, version-2 policy,
+Telpher credential wiring and scoped provisioning must all be delivered before
+uploads. Never append `write_refs` to an older broker policy: older binaries do
+not enforce that field. The old owner patch and broader additions file are
+explicitly historical and must not be applied.
+
+Use a fresh, unshared ingest branch. A normal lakeFS commit includes all staged
+changes on that branch; the broker does not establish branch ownership or filter
+commit contents. Preserve upstream main protection and verify broker refusals
+before using the provisioned identity. As of the latest check, presvd1's vault
+is locked; this continuation made no production policy or storage changes.
+
+## Preserved preparation checkpoints
+
 P036 update: **14 PDFs / 138,490,200 bytes** now pass the uploader's local
 path/size/hash validation in plan mode. Five new originals cover Fishpipe,
 TreePod, a six-foot trampoline comparison and a swivel technical notice:
@@ -26,7 +52,7 @@ lakeFS preservation through the scoped publisher. The existing research
 uploader deliberately does not accept those generated paths; its boundary is
 unchanged. Original ZIPs remain a separate B2 archive workflow.
 
-**P011 supersedes the preparation state below.** Andrew authorized delivery;
+**Historical P011 delivery checkpoint.** Andrew authorized delivery;
 hesellsheshells `feat/thatsnozorb-publisher` (#65) and Telpher
 `feat/thatsnozorb-publisher` (#554) are open with green CI and await required
 Grok review. The owner change now also closes prefix-limited authorization
@@ -66,7 +92,7 @@ was added to website inputs. The 518,340,175-byte USGS TIFF is a registered
 candidate only, not downloaded or verified. The Christie manual returned HTTP
 403 and has no local copy.
 
-## Fresh broker observations
+## September 30 broker observations (historical)
 
 The running container's policy was read directly with Docker's copy-to-stdout
 facility, because the distroless image contains no shell or `cat`.
@@ -85,20 +111,21 @@ No other project's credential was used. No lakeFS administrator credential was
 read or copied into this project, and no remote upload was attempted with an
 unauthorized identity. No provider mutation occurred in this research step.
 
-## The concrete proposed change
+## Original P009 proposal (superseded)
 
-The patches are **prepared, not applied to the owner repositories**:
+These were the original prepared artifacts. The config-only broker patch is
+superseded by the full owner PR above; this table is not an installation plan:
 
 | Owner | Prepared artifact | Resulting change |
 | --- | --- | --- |
-| hesellsheshells | [research-publisher-owner.patch](../deploy/research-publisher-owner.patch) | Adds `thatsnozorb-publisher` with read/write only in `thatsnozorb-assets`, object prefix `imports/*` |
+| hesellsheshells | [historical research-publisher-owner.patch](../deploy/research-publisher-owner.patch) | Original config-only proposal; lacks required broker enforcement; do not apply |
 | Telpher | [research-publisher-telpher.patch](../deploy/research-publisher-telpher.patch) | Declares the derived optional broker token in `hid-in.toml` and passes its environment name to the broker container |
-| Project manifest fragments | [policy](../deploy/research-publisher.toml), [broker secret declaration](../deploy/research-publisher-secrets.toml) | Reviewable final values; no credentials |
+| Project manifest fragments | [policy](../deploy/research-publisher.toml), [broker secret declaration](../deploy/research-publisher-secrets.toml) | Inspection aids only; current policy fragment requires the full version-2 broker implementation; no credentials |
 
 P009 deliberately narrows the older proposed publisher fragment from
 `imports/* + public/*` to **`imports/*`**. It does not activate the separate
 web reader or change public publication policy. Treat P009's fragment as the
-proposal for this preservation step; do not apply both duplicate principal
+historical scope decision for this preservation step; do not apply duplicate principal
 definitions. Public-release writing can be reviewed separately if needed.
 
 The broker's existing `lake-writers` role is coarse: it includes branch and
@@ -116,7 +143,7 @@ The shared Telpher manifest uses `required = false`, matching its other
 optional broker consumers. The invoking publisher must require its token and
 fail if unavailable. No token value was generated or displayed.
 
-## Validation already run
+## September 30 validation record (historical)
 
 The saved local audit `source/research/2026-09-30/verify.py` ran on maxipaxi
 using bundled Python/pypdf through `uv run --no-project --python ... python`.
@@ -140,29 +167,21 @@ credential binding. It prints suggested commands, not secrets, and those command
 were not executed. Only the new principal's binding is relevant; never rotate
 all existing credentials from that output.
 
-Both owner patches pass a read-only application check, **exit 0**:
-
-```bash
-# maxipaxi
-P=/Users/andrew/code/pres/make/thatsnozorb/deploy
-H=/Users/andrew/code/pres/web/hesellsheshells
-T=/Users/andrew/code/pres/scaffold/telpher
-git -C "$H" apply --check "$P/research-publisher-owner.patch"
-git -C "$T" apply --check "$P/research-publisher-telpher.patch"
-```
-
-These paths and commands were checked locally. This is config/patch validation,
+Both original owner patches passed `git apply --check`, **exit 0**, against
+their September 30 owner checkouts. The broker patch is now archival; do not
+apply it or use its old check result to establish current deployment readiness.
+This was config/patch validation,
 not a deployed access proof. No pytest, full owner test suite, broker rebuild,
 service restart, PR, merge or remote object write is claimed.
 
 ## Resume in five bounded steps
 
-1. **Codex prepares the owner delivery after Andrew's PR choice.** Refresh both
-   owners and current policies, preserve existing changes, apply the reviewed
-   additions in proper isolated lanes, and follow the current infrastructure
-   review/merge policy. The high-tier PR choice is pending in this chat.
+1. **Codex completes the existing owner PR delivery.** Refresh both PR heads,
+   finish the exact-head reviews, preserve existing changes, and follow the
+   current infrastructure review/merge policy. Use the complete version-2
+   implementation; do not reapply historical patches or create duplicate PRs.
 2. **Codex completes scoped provisioning through hid-in.** Recheck the currently
-   unlocked ticket; request Andrew's interactive unlock only if it has expired
+   ticket; request Andrew's interactive unlock if it is still locked
    when execution is ready. Use the owner-derived
    binding, the publisher's declared grant and the shared Telpher manifest.
    Do not recover a token by reading another service's environment.
@@ -172,7 +191,7 @@ service restart, PR, merge or remote object write is claimed.
    a restart does not load a new policy or token environment. Follow its
    preservation/preflight instructions; do not run the broad local stack helper
    on presvd1.
-4. **Codex verifies confinement and uploads the four planned objects.**
+4. **Codex verifies confinement and uploads the current planned objects.**
    Use the scoped REST broker, a fresh `ingest-*` branch and exactly the keys
    in the upload plan. Reject redirects, keep credentials server-side, verify
    local hashes again, commit, and record the returned immutable commit.

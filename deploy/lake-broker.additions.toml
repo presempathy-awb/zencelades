@@ -1,5 +1,7 @@
-# Proposed additions to hesellsheshells/lake-broker.toml; not live policy.
-# Validate with that repository's policy-check before provisioning.
+# HISTORICAL EARLY PROPOSAL — DO NOT APPLY; not live policy.
+# The publisher below is superseded by research-publisher.toml and the full
+# hesellsheshells PR #65 implementation. Its broader public/* write proposal
+# was not selected. The web reader remains an unapproved, separate proposal.
 # Token names below are derived by the broker from the principal names.
 
 [principals.thatsnozorb-publisher]

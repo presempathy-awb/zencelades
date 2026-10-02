@@ -1,8 +1,8 @@
 # Remaining integration evidence — October 2, 2026
 
-The account implementation is local at `96386f95`; public release
-`9b6f2f7cc269a64aa17a166fde6d8e735fb3b16a8bed0e2af0195dec38b7252b`
-is still active. This audit does not establish live account saving, inventory
+The account implementation is local at `6fbfb43d`; the latest verified public
+release is `e0cbad5afbbe46fc734d07872e1d242e5704ab115d09a3f4de4f9107c527537a`
+(lander with inside phones). This audit does not establish live account saving, inventory
 editing, remote asset preservation or completion of the full prompt backlog.
 
 ## Account deployment
@@ -15,8 +15,9 @@ No credential, provider, database, service or route was changed in this audit.
 
 ## Scoped storage publisher
 
-The canonical repositories use the `awb` owner. Fresh forge reads found both
-PRs open, mergeable and without a review receipt:
+The canonical repositories use the `awb` owner. The table below is the initial
+October 2 review snapshot; later publisher revisions and findings follow it.
+Re-read forge state before landing either PR.
 
 | PR | Head | Current base |
 | --- | --- | --- |
@@ -158,3 +159,47 @@ browser checks; [P109](plans/p109-later-prompts-win.md) records that later Andre
 prompts take precedence. The application drawing repair is retained in the
 public source lane as well as the account lane. Account installation and
 authenticated browser acceptance remain outstanding.
+
+## Publisher write-ref repair — October 2
+
+Publisher head `b55ad71d921d86ef4992fb31806a39226c8c29d9` is pushed to the same
+owner PR. Policy version 2 requires compatible broker code and restricts this
+publisher's writes to `ingest-*`; immutable commit reads remain available.
+Branch creation validates the destination and source, rejects unknown flags,
+and forwards a canonical bounded body. Uploads, deletes and commits to `main`
+are refused independently of upstream branch protection. An existing loader
+already normalizes omitted prefixes to `*`; a new shipped-policy regression
+proves legacy readers and writers retain their permitted operations.
+
+Full pinned-Go `just check`, uncached race tests, Trivy, explicit Gitleaks
+directory scanning (3.48 MB) and ast-grep all passed. The earlier PASS covers
+`cc1367f9`, not this new head. A fresh full-head, single-attempt Grok review is
+running in `awb-hesellsheshells-65-write-refs`; its runner PID 2651 was confirmed
+live during this continuation. No owner merge or production rollout is claimed.
+
+Fresh presvd1 checks report `hid-in gunlock-status` locked (gate=vault) and
+`zencelades-account.service` inactive. A prior attempt used the nonexistent
+`hid-in status` command; that attempt provided no unlock evidence. Andrew's
+interactive unlock and the outstanding account approval/browser decisions
+remain necessary for the deployment and authenticated acceptance steps.
+
+## Project verification after reference synchronization — October 2
+
+On maxipaxi in the account-drafts lane, the following completed with exit 0:
+
+- `just check`: 83 Python tests and 13 subtests; Ruff check and format;
+  grant ledger matches the bill of materials and selected pricing options.
+- `node --test tests/*.test.mjs`: 22 passed, zero failures or skips, including
+  temporary guest editor state, independent editors, expiry and conflicts.
+- `just account-check`: Go race tests (cached), vet, and the full test binary
+  executed against a fresh isolated PostgreSQL 18 container. Persistence,
+  account isolation, stale revisions and anonymous/forged saves passed.
+- `just cockpit-check`: 55 Bun tests, 791 assertions, zero failures;
+  TypeScript and Vite build; 31 native/GLB model exports passed hash and finite
+  geometry/import verification. Vite still warns about chunks above 500 kB.
+
+The project principal fragment parses and matches the owner's version-2
+principal exactly; relative links in the three changed integration documents
+resolve. No browser run or live account save is claimed by these checks.
+An attempted `jj diff --check` was rejected because that option is unsupported;
+it is not counted as a passing verification.

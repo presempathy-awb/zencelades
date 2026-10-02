@@ -1,3 +1,9 @@
+HISTORICAL P009 PATCH — DO NOT APPLY.
+Retained for provenance only. This config-only patch does not implement
+prefix enforcement, write_refs or branch-body validation. Use the complete
+hesellsheshells feat/thatsnozorb-publisher PR #65, including its version-2
+policy and broker code. See docs/research-storage.md for delivery gates.
+
 diff --git a/lake-broker.toml b/lake-broker.toml
 --- a/lake-broker.toml
 +++ b/lake-broker.toml
