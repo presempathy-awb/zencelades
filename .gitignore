@@ -13,9 +13,11 @@ __pycache__/
 assets/upload-receipt.json
 assets/upload-staging.json
 cockpit/node_modules/
+/cockpit/node_modules
 cockpit/dist/
 cockpit/public/studio-data/
 cockpit/public/studio-models/
+cockpit/public/documents/audio/
 output/grant-attachments/
 output/grant-3d/
 tmp/form-research/

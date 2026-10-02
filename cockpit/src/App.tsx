@@ -35,7 +35,10 @@ import { cockpitHref, documentPages } from "./page-routes";
 import { fitColumns, selectColumn } from "./cockpit-layout";
 import ViewSelector from "./ViewSelector";
 import AccountControls from "./AccountControls";
+import AudioView from "./AudioView";
+import TopicPane from "./TopicPane";
 import "./columns.css";
+import "./viewport.css";
 
 const SceneView = lazy(() => import("./SceneView"));
 const WorkflowView = lazy(() => import("./WorkflowView"));
@@ -59,16 +62,21 @@ export default function App(): JSX.Element {
   }, [path]);
   useEffect(() => {
     const section = new URLSearchParams(routeLocation.split("?")[1]).get("section");
-    if (section) document.getElementById(section)?.scrollIntoView({ behavior: "instant" });
+    if (section) document.getElementById(section)?.focus({ preventScroll: true });
   }, [routeLocation]);
   const fitted = fitColumns(columns, width);
   const selectedPages = pages[0] === path ? pages : selectColumn(pages, 0, path);
   const visiblePages = selectedPages.slice(0, fitted);
   const modelVisible = visiblePages.includes("/model");
   const presentation = visiblePages.every((page) =>
-    ["/", "/media", "/showtime", "/alternates", ...documentPages.map(([id]) => `/${id}`)].includes(
-      page,
-    ),
+    [
+      "/",
+      "/media",
+      "/showtime",
+      "/audio",
+      "/alternates",
+      ...documentPages.map(([id]) => `/${id}`),
+    ].includes(page),
   );
   const choosePage = (index: number, next: string): void => {
     const updated = selectColumn(selectedPages, index, next);
@@ -461,39 +469,43 @@ export default function App(): JSX.Element {
               style={{ gridColumn: visiblePages.indexOf(page) + 1 }}
               aria-label={`${page === "/" ? "Overview" : page.slice(1)} view`}
             >
-              <Suspense fallback={<p className="loading">Loading workspace…</p>}>
-                {page === "/" ? (
-                  <HomePage />
-                ) : page === "/media" ? (
-                  <MediaView />
-                ) : page === "/showtime" ? (
-                  <ShowtimeView />
-                ) : page === "/alternates" ? (
-                  <AlternateDesigns />
-                ) : page === "/tasks" ? (
-                  <BuildBoard
-                    state={scenario.board}
-                    onChange={(board) => update({ ...scenario, board })}
-                  />
-                ) : page === "/workflow" ? (
-                  <WorkflowView scenario={scenario} />
-                ) : page === "/budget" ? (
-                  <BudgetView scenario={scenario} update={update} onSelectOption={selectModel} />
-                ) : page === "/parts" ? (
-                  <PartsView scenario={scenario} update={update} />
-                ) : page === "/research" ? (
-                  <ResearchView scenario={scenario} onModelSelect={selectModel} />
-                ) : page === "/supports" ? (
-                  supportPane
-                ) : page === "/settings" ? (
-                  settingsPane
-                ) : (
-                  <div className="reading-panel">
-                    <h2>That workspace does not exist.</h2>
-                    <Link to="/model">Return to Model</Link>
-                  </div>
-                )}
-              </Suspense>
+              <TopicPane sections={!["/audio", "/workflow", "/tasks"].includes(page)}>
+                <Suspense fallback={<p className="loading">Loading workspace…</p>}>
+                  {page === "/" ? (
+                    <HomePage />
+                  ) : page === "/audio" ? (
+                    <AudioView />
+                  ) : page === "/media" ? (
+                    <MediaView />
+                  ) : page === "/showtime" ? (
+                    <ShowtimeView />
+                  ) : page === "/alternates" ? (
+                    <AlternateDesigns />
+                  ) : page === "/tasks" ? (
+                    <BuildBoard
+                      state={scenario.board}
+                      onChange={(board) => update({ ...scenario, board })}
+                    />
+                  ) : page === "/workflow" ? (
+                    <WorkflowView scenario={scenario} />
+                  ) : page === "/budget" ? (
+                    <BudgetView scenario={scenario} update={update} onSelectOption={selectModel} />
+                  ) : page === "/parts" ? (
+                    <PartsView scenario={scenario} update={update} />
+                  ) : page === "/research" ? (
+                    <ResearchView scenario={scenario} onModelSelect={selectModel} />
+                  ) : page === "/supports" ? (
+                    supportPane
+                  ) : page === "/settings" ? (
+                    settingsPane
+                  ) : (
+                    <div className="reading-panel">
+                      <h2>That workspace does not exist.</h2>
+                      <Link to="/model">Return to Model</Link>
+                    </div>
+                  )}
+                </Suspense>
+              </TopicPane>
             </section>
           ))}
       </main>

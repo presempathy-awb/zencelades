@@ -8,7 +8,7 @@ import "./home.css";
 const body = artwork.match(/<main[^>]*>([\s\S]*)<\/main>/)?.[1];
 const footer = artwork.match(/<footer[^>]*>([\s\S]*)<\/footer>/)?.[1];
 if (!body || !footer) throw new Error("Artwork homepage is missing its content");
-const content = `<div class="artwork-content">${body}</div><footer>${footer}</footer>`
+const content = `<div class="artwork-content">${body}<footer>${footer}</footer></div>`
   .replaceAll('href="/studio/"', 'href="#/model"')
   .replaceAll('href="/pricing/"', 'href="#/budget"')
   .replaceAll('href="/about/"', 'href="#/"')
@@ -45,7 +45,6 @@ export default function HomePage(): JSX.Element {
     const section = document.getElementById(href.slice(1));
     if (!section) return;
     event.preventDefault();
-    section.scrollIntoView({ behavior: "instant" });
     section.tabIndex = -1;
     section.focus({ preventScroll: true });
   };

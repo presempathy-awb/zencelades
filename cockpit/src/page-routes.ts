@@ -15,6 +15,7 @@ const pageRoutes: Record<string, string> = {
   "/studio/": "/model",
   "/models/": "/media",
   "/showtime/": "/showtime",
+  "/audio/": "/audio",
   ...Object.fromEntries(documentPages.map(([path]) => [`/${path}/`, `/${path}`])),
 };
 

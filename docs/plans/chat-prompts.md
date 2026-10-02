@@ -7,6 +7,10 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P116 (October 2): “make sure they are pred and deployed to the website. One moon. The same holder. put the image under this under the one on the top to balance it. lets move every page into being a no scroll experience again. no scrolling on the main view on any!” — [publish audio and fit cockpit](p116-publish-audio-fixed-cockpit.md).
+- P115 (October 2): “suno prompts for music. get the optimizations and such too from umesemu see what other great stuff” — [Suno and Umesemu research](p115-suno-umesemu-optimizations.md).
+- P114 (October 2): Showtime audio later, eight adaptive song prompts, ElevenLabs effects and protected prompt studio — [full prompt and plan](p114-showtime-audio-studio.md).
+
 - P112 (October 2): “merge n dep” —
   [review, merge and deploy the account cockpit](p112-merge-and-deploy.md).
 

@@ -1,5 +1,21 @@
 # Zencelades working plan
 
+## Current continuation — October 2, audio and fixed viewport publication
+
+[P116](docs/plans/p116-publish-audio-fixed-cockpit.md) requests a PR and deployment
+of [P114](docs/plans/p114-showtime-audio-studio.md) and
+[P115](docs/plans/p115-suno-umesemu-optimizations.md), a balanced homepage image
+stack, and fixed main views on every cockpit page. The isolated
+`feat/cockpit-audio-fit` lane adds eight Suno prompts, sixteen ElevenLabs effects,
+and section selectors with contained reading panels. Homepage images share one
+column with “One moon. The same holder.” between them. Showtime audio playback,
+generation and protected studio provisioning remain deferred. Frontend tests and
+build pass. [PR #9](https://git.telpher.stream/telpher/zencelades/pulls/9) is open;
+static release `a1d37232` is live, with all 53 changed files verified over HTTPS.
+Homepage browser acceptance passed; expanded route/audio browser approval is
+pending. [Publication evidence](docs/audio/publication.md) records the limits.
+
+
 ## Current continuation — October 2, merge and deployment authorized
 
 [P112](docs/plans/p112-merge-and-deploy.md) authorizes finishing PR #8's review,

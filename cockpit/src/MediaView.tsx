@@ -72,7 +72,6 @@ export function ShowtimeView(): JSX.Element {
     const section = document.getElementById(href.slice(1));
     if (!section) return;
     event.preventDefault();
-    section.scrollIntoView({ behavior: "instant" });
     section.tabIndex = -1;
     section.focus({ preventScroll: true });
   };

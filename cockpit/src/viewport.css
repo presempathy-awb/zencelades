@@ -1,0 +1,197 @@
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+.studio.column-cockpit {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+.column-cockpit .cockpit-pane {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+.column-cockpit .cockpit-pane[hidden],
+.topic-pane [hidden],
+.pane-topic-bar[hidden] {
+  display: none;
+}
+.topic-pane,
+.audio-workbench {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+.pane-topic-bar {
+  flex: none;
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--cockpit-bg, #0a1922);
+  color: var(--cockpit-ink, #edf4f4);
+  border-bottom: 1px solid var(--cockpit-line, #446473);
+}
+.pane-topic-bar label {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  flex: 1;
+  font-size: 0.85rem;
+}
+.pane-topic-bar select {
+  width: 100%;
+  min-width: 0;
+  background: #122b38;
+  color: #edf4f4;
+  border-color: #446473;
+}
+.pane-topic-bar button {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  border: 1px solid #446473;
+  border-radius: 0.25rem;
+  color: #edf4f4;
+  background: #122b38;
+}
+.topic-count {
+  white-space: nowrap;
+  align-self: center;
+}
+.pane-reading-area {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.native-pane > .pane-reading-area {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.native-pane > .pane-reading-area > * {
+  flex: 1;
+  min-height: 0;
+}
+.column-cockpit .notes-strip {
+  max-height: 8rem;
+  overflow: auto;
+}
+.topic-pane .artwork-home,
+.topic-pane .artwork-content {
+  min-height: 0;
+  height: 100%;
+}
+.topic-pane .artwork-content {
+  padding-inline: clamp(0.75rem, 2cqw, 2rem);
+}
+.artwork-home .lead {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(0.75rem, 2cqw, 2rem);
+  height: 100%;
+  min-height: 0;
+  padding-block: 0.75rem;
+}
+.artwork-home .lead > .home-story {
+  grid-column: 1;
+  align-self: stretch;
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.25rem;
+}
+.artwork-home .lead > .home-visuals {
+  grid-column: 2;
+  align-self: stretch;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.35rem;
+}
+.artwork-home .home-visuals .feature-image {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  grid-column: auto;
+  grid-row: auto;
+  min-height: 0;
+}
+.artwork-home .home-visuals .feature-image > a {
+  display: block;
+  min-height: 0;
+}
+.artwork-home .home-visuals img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.artwork-home .home-visuals h2 {
+  font-size: clamp(1.05rem, 2.5cqw, 1.8rem);
+  margin: 0;
+}
+.artwork-home .home-visuals figcaption {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  max-height: 3.5rem;
+  overflow: auto;
+  margin-top: 0.25rem;
+}
+.artwork-home .lead .home-story h1 {
+  font-size: clamp(1.8rem, 3.5cqw, 3rem);
+  margin-block: 0.75rem;
+}
+.artwork-home .lead .home-story .lede {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.artwork-home .home-story p {
+  margin-bottom: 0.85rem;
+}
+.artwork-home .section {
+  padding-block: 1.5rem;
+}
+@container (max-width: 44rem) {
+  .cockpit-pane .artwork-home .lead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .artwork-home .lead .home-story h1 {
+    font-size: 1.8rem;
+  }
+  .topic-count {
+    display: none;
+  }
+}
+@media (max-width: 48rem) {
+  .column-cockpit .app-header {
+    padding: 0.35rem 0.6rem;
+    min-height: 0;
+    gap: 0.25rem;
+  }
+  .column-cockpit .brand small {
+    display: none;
+  }
+  .column-cockpit .brand {
+    gap: 0.5rem;
+  }
+  .column-cockpit .header-actions {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+  }
+  .column-cockpit .header-actions > * {
+    flex-shrink: 0;
+  }
+  .column-cockpit .notes-strip {
+    max-height: 5rem;
+  }
+}
