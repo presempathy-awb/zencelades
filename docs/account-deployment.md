@@ -32,7 +32,10 @@ No secret is included in this packet, environment file or compiled binary.
 
 ## Required installation order
 
-1. **Codex prepares; Andrew supplies required unlock/approval.** Read current
+1. **Codex prepares with operation-specific access.** Use existing supported
+   credentials and project grants; do not require a global `gunlock` as a
+   blanket prerequisite. Ask Andrew only when the actual operation reaches a
+   human authorization gate. Read current
    Telpher app/provider state using the canonical contract; inspect existing
    access bindings and memberships before applying the intended account policy.
    A new Authentik app defaults open: do not silently choose memberships or
@@ -58,13 +61,24 @@ Rollback restores the previous public release and unit and stops the new
 service if necessary. Keep the private draft table and credentials intact;
 dropping data is a separate destructive action, never an automatic rollback.
 
-## Current blockers and evidence
+## Current access and deployment evidence — October 2
+
+Andrew reports the unlock complete and asks that `gunlock` not be generally
+required (P110). The local live Gitea gates now read their credential successfully.
+The actual presvd1 database-secret read still returns `locked (gate=vault,
+scope=general)`. This refusal applies to that remote read; it does not block
+local planning, tests or the now-working forge operations. Do not transfer or
+recreate credentials merely to bypass the refusal. The account service is
+inactive, and its loopback port refuses connections. No production login or
+private-save acceptance is claimed.
+
+## Earlier deployment evidence
 
 The October 1 live read showed systemd 255 on x86_64, no account unit, and no
 listener at 18134. The canonical route is public and forwards to Caddy 18131.
 Direct outpost verification with canonical forwarded-host still returns 404.
-presvd1's global vault ticket is locked. The private database credential has
-not been read, and neither this provider contract nor service is installed.
+The private database credential had not been read, and neither this provider
+contract nor service was installed at that check.
 
 Application tests are documented in [account-saves.md](account-saves.md).
 They establish local behavior and isolated PG18 behavior, not production login.

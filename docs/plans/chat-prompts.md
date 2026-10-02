@@ -7,6 +7,9 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P110 (October 2): “done but dont generally require gunlock” —
+  [resume using operation-specific access](p110-operation-specific-unlock.md).
+
 Latest records captured 2026-09-30 (session date):
 
 - P054: Andrew approves read-only inspection of the live Airtable form — [scope](p054-read-only-form-approval.md).

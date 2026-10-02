@@ -1,5 +1,47 @@
 # Remaining integration evidence — October 2, 2026
 
+## Access resumed; publisher landed — October 2, 18:54 UTC
+
+[P110](plans/p110-operation-specific-unlock.md) governs operation-specific
+access. Both local live CI gates succeeded at the unchanged reviewed heads.
+The publisher safe-ship bundle is ready with no blockers and fresh live CI;
+its CLI initially retained `missing` evidence metadata after fetching statuses.
+Composing the existing fetch, evidence and bundle functions with the actual
+live response preserves every gate and records the source correctly.
+
+hesellsheshells `feat/thatsnozorb-publisher` (#65) is now merged, confirmed by
+the forge and fetched main `7610b6f931a0a628e95bb01abe00d9d95526845a`.
+Telpher `feat/thatsnozorb-publisher` (#554) remains open, reviewed and green;
+the safe-ship policy asks Andrew whether to leave the pre-existing older
+GitHub mirror untouched for this Gitea landing. Neither broker rollout nor new
+uploads have occurred.
+
+On presvd1 the actual database-secret read returns a vault refusal, the account
+service is inactive and port 18134 refuses connections. This is an
+operation-specific remote gate, not a general requirement to run `gunlock`.
+Account publication/review and authenticated-browser decisions remain separate.
+
+## Review complete; external gates remain — October 2, 11:55 UTC
+
+The exact publisher head `96b08eb4` has a posted full
+[Grok PASS](https://git.telpher.stream/awb/hesellsheshells/pulls/65#issuecomment-13994).
+An author follow-up corrects its outdated claim that the wildcard/write-ref
+test is missing: TestWriteRefOnlyRestrictsMutationShapes exists at line 225.
+Full pinned Go 1.26.4 `just check` and uncached race tests were repeated after
+the review and pass, exit 0. Both hosted CI checks remain successful. The lane
+is clean; no source change invalidated the reviewed head.
+
+The validated commit-body/query combination is a permanent-suite coverage gap;
+the separate temporary HTTP probe passes all six denial/zero-forward cases.
+Content-Digest stripping, finer audit reasons and runbook wording are recorded
+as nonblocking follow-up items. They are not silently claimed as repaired.
+
+Both CLI and the supported Dustopo MCP live gate fail to obtain the declared
+hid-in credential. Fresh presvd1 evidence still shows vault locked and account
+service inactive. No merge, credential provision, route/service installation,
+new website release or asset upload occurred. Account PR/review choice and
+real-authenticated-browser scope remain unanswered. No review job remains live.
+
 ## Current continuation — October 2, 11:29 UTC
 
 Publisher `feat/thatsnozorb-publisher` (#65) now carries

@@ -1,6 +1,36 @@
 # Zencelades working plan
 
+## Current continuation — October 2, access restored
+
+[P110](docs/plans/p110-operation-specific-unlock.md) records Andrew's unlock
+confirmation and instruction against a blanket `gunlock` prerequisite.
+Both supported live CI gates now succeed: Telpher `c5106437` has 13 green
+contexts; hesellsheshells `96b08eb4` has two. The earlier local credential block
+below is historical. Refresh PR heads and release evidence, then continue the
+authorized release steps. Test access per operation; preserve real human gates.
+Production account deployment and authenticated acceptance remain unverified.
+
+Publisher PR #65 is now merged and fetched as main `7610b6f9`. Telpher PR #554
+awaits the explicit Gitea-only/mirror choice required by the safe-ship skill.
+The presvd1 database-secret read still encounters its own vault gate; the
+account service is inactive. Do not generalize that refusal to forge work.
+
 ## Current continuation — October 2, publisher review follow-up
+
+Current state at 11:55 UTC: publisher review `96b08eb4` completed PASS and
+was posted verbatim at PR #65 comment 13994. An author follow-up corrects its
+stale wildcard-test claim and separates temporary probe evidence from the
+remaining permanent coverage gap. Full pinned-Go check and uncached race suite
+passed again on the exact unchanged head. No review process remains running.
+
+Release is blocked: the supported live CI gate cannot read its hid-in secret;
+fresh presvd1 checks still report vault locked and account service inactive.
+The same credential condition has recurred across more than three goal turns.
+The existing account PR/review and authenticated-browser decisions are also
+unanswered. Resume the prepared release/account steps after those inputs;
+do not generate more plan churn or rerun unchanged suites to simulate progress.
+Production login, private saves, remaining uploads and full Pacinman editing
+are incomplete; the goal must not be marked complete.
 
 This continuation: the preceding turn made source and browser progress.
 Review PID 43037 is verified live; wait on that job without restarting it.
