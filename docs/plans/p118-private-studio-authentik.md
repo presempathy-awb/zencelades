@@ -20,5 +20,7 @@ Showtime. Tailnet presence alone does not grant studio membership.
    the Pawthentik migration plan without claiming an inactive service works.
 
 Status: implementation and local/isolated HTTP checks pass. Production is
-unchanged. The fresh Telpher grant, security review and live acceptance are
-pending. The account-service/PG18 rollout remains a separate unfinished item.
+unchanged. Andrew approved the private-studio browser scope. The Authentik API
+read and real domain/route dry run now pass after the manifest grant. Required
+security review and live acceptance remain pending. The account-service/PG18
+rollout remains a separate unfinished item.

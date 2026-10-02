@@ -54,8 +54,10 @@ Use Telpher's existing `authentik-forward-auth-state`/`apply`, `app-users`,
 `app-access`, `app-access-check`, `domain-add-subdomain`, `route-auth-probe` and
 `edge-cache-purge` recipes. The domain route targets the existing loopback
 server and uses forward authentication. Credentials remain in hid-in.
-The clean Telpher operations checkout currently needs Andrew's fresh manifest
-grant; a general unlock cannot repair a stale grant.
+The clean Telpher operations checkout initially required Andrew's fresh
+manifest grant. The subsequent Authentik API read succeeds, and the real
+domain/route dry run passes with the existing zone token. This proves readiness
+for those operations, not completed provider creation or route activation.
 
 ## Release and verification
 

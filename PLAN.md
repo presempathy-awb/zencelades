@@ -9,14 +9,15 @@ models, gallery and Showtime stay open. The isolated `fix/private-studio` lane
 separates the prompt build and downloads from the public root, denies retired
 prompt bundles and preserves the actual live release in an additive overlay.
 Frontend tests (59), the production builds, four release-boundary tests and
-ten real Caddy HTTP cases pass. Production is not changed yet: the Telpher
-manifest grant is stale, external security review remains required and the
-new private-host browser scope is pending. See
+ten real Caddy HTTP cases pass. Production is not changed yet: external security
+review remains queued. Andrew approved the private-host browser scope; the fresh
+Authentik API read now succeeds after the manifest grant. The real domain/route
+dry run passes and reuses the existing zone token. See
 [the access contract and rollout](docs/private-studio-access.md).
 
 1. Finish source validation and the exact-head security review.
-2. After Andrew renews the exact manifest grant, provision and restrict the
-   Authentik application before publishing the studio hostname.
+2. Provision and restrict the Authentik application before publishing the studio
+   hostname. Recheck operation-specific access if the ticket expires.
 3. Activate the additive release, purge retired public prompt URLs and verify
    public-host denial, anonymous login enforcement and membership rejection.
 4. Complete authorized browser acceptance without handling Andrew's password
