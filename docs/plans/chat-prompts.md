@@ -7,6 +7,9 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P111 (October 2): “do a pr” —
+  [publish the prepared account and cockpit branch](p111-account-pull-request.md).
+
 - P110 (October 2): “done but dont generally require gunlock” —
   [resume using operation-specific access](p110-operation-specific-unlock.md).
 

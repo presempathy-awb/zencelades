@@ -1,5 +1,13 @@
 # Zencelades working plan
 
+## Current continuation — October 2, account PR authorized
+
+[P111](docs/plans/p111-account-pull-request.md) authorizes publishing the prepared
+account/cockpit branch and opening its Gitea PR. This resolves the earlier
+account-PR creation question. Required review before merge, production
+installation and authenticated browser acceptance remain open; the Telpher
+mirror choice is separate.
+
 ## Current continuation — October 2, access restored
 
 [P110](docs/plans/p110-operation-specific-unlock.md) records Andrew's unlock
