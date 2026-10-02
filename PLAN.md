@@ -2,6 +2,10 @@
 
 ## Current goal — October 1
 
+Completed user correction: [P106 — application visibility](docs/plans/p106-application-visibility.md).
+All six application schematics are readable in the live cockpit; the two-file
+repair preserves the proposal body and every unrelated live release entry.
+
 Complete the outstanding prompts and verify the full project. The immediate
 delivery is gimmesomepaw login with private PG18 saves, temporary guest edits
 and clear tooltips. Historical checkpoints below are not current completion

@@ -1,0 +1,28 @@
+/* Linked styles survive the cockpit document loader and the site's CSP. */
+.schematic {
+  --ink: #0a1922;
+  --muted: #3b5360;
+  --surface: #f5fbfd;
+  --ocean: #e2eef2;
+  --line: #687e88;
+  --accent: #176579;
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color-scheme: light;
+}
+.schematic text { fill: var(--ink); font: 13px var(--sans); }
+.schematic .muted { fill: var(--muted); }
+.schematic .ink { stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.schematic .thin { stroke: var(--muted); fill: none; stroke-width: 1.2; }
+.schematic .dash { stroke: var(--accent); fill: none; stroke-width: 1.2; stroke-dasharray: 6 5; }
+.schematic .beam { fill: var(--accent); fill-opacity: .14; stroke: var(--accent); stroke-width: .8; stroke-opacity: .6; }
+.schematic .solid { fill: var(--surface); stroke: var(--ink); stroke-width: 2; }
+.schematic .sphere { fill: var(--surface); fill-opacity: .92; stroke: var(--ink); stroke-width: 2; }
+.schematic .ground { fill: var(--ocean); stroke: var(--line); stroke-width: 1; }
+.schematic .box { fill: var(--ocean); stroke: var(--accent); stroke-width: 1.5; }
+.schematic .zone { fill: var(--accent); fill-opacity: .07; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 4 4; }
+figure.plate { margin: 0 0 2.5rem; }
+.fit td:first-child, .fit th:first-child { white-space: nowrap; }
