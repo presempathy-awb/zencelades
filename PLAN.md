@@ -18,6 +18,8 @@ claims.
 4. Reconcile remaining storage, Pacinman editing, source landing and historical
    prompt evidence; retain missing measurements, quotes and event decisions as
    explicit gaps. Do not infer these from green website tests.
+   [October 2 integration audit](docs/integration-readiness.md) records the
+   current owner PRs, inventory authorization boundary and retained source gaps.
 
 The homepage loop and truck-alternatives separation are live and freshly
 browser-checked in release `9b6f2f7c`;
