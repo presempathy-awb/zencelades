@@ -63,6 +63,10 @@ account lane, preserving the later canonical-domain, lander/inside-phones,
 cockpit, media and private-account intents. Review each conflict separately;
 do not apply PR #7's stale wrong-domain redirect. Run the affected checks and
 full build before proposing source delivery.
+Completed locally: main `43efa3a5` reconciled with two resolved conflicts,
+current-main adapter retirement preserved, full site build and Python/Node/Bun
+suites green, homepage/model/full-size render browser paths checked. The
+account branch still needs source publication/review and production acceptance.
 
 The homepage loop and truck-alternatives separation are live and freshly
 browser-checked in release `9b6f2f7c`;

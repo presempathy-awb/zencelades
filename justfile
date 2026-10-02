@@ -100,9 +100,6 @@ deploy-site *args:
 deploy-naming *args:
     uv run --no-project python -m scripts.deploy_naming {{args}}
 
-# Plan by default; overlay the live site and install the IP adapter with --apply.
-deploy-access *args:
-    uv run --no-project --with pyyaml python -m scripts.deploy_access {{args}}
 
 # Cash, in-kind and requested support per build option; --check verifies the written ledger.
 grant-ledger *args:

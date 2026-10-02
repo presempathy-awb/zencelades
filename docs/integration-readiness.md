@@ -203,3 +203,29 @@ principal exactly; relative links in the three changed integration documents
 resolve. No browser run or live account save is claimed by these checks.
 An attempted `jj diff --check` was rejected because that option is unsupported;
 it is not counted as a passing verification.
+
+## Current-main source reconciliation — October 2
+
+Fresh forge reads show cockpit PR #4 still open and conflicting with main
+`43efa3a5`. The account lane now merges that main revision locally, retaining
+the already-landed twelve-image grant submission set and retirement of the
+old IP-management adapter. It does not incorporate PR #7's stale redirect to
+the unowned spelling `zencelades.com`; the canonical domain stays
+`zenceladus.com`. No remote branch, PR or live release changed in this step.
+
+The two conflicts were resolved individually: the preview map uses main's
+renamed `07-concept-suspended.png` while retaining the newer hoop-v3 image;
+the legacy catalog retains its module script while removing the retired
+access script. Main's adapter deletion also retires its tests. Fresh results:
+`just check` exits 0 with 61 Python tests and 13 subtests; 18 Node tests pass;
+55 Bun tests / 791 assertions pass. Counts decreased only because upstream
+already removed 22 Python and four Node adapter tests.
+
+`just site-build` exits 0: 31 model pairs verified, TypeScript/Vite successful,
+132 original and 84 v4 downloads byte-verified. In the visible local browser,
+the homepage retains the lander/inside-phone description and Guest draft help;
+its 3D link opens the primary lander, the Side control changes the camera, and
+both lander/aerial render links open complete 1600 × 1400 images. The initial
+below-fold image check preceded lazy loading; clicking both images established
+their actual load success. No sign-in was attempted. The saved rendered homepage
+passes `impeccable detect --json` with `[]`; Vite's large-chunk warning remains.

@@ -113,7 +113,7 @@ def build() -> None:
     previews = {
         "concept-board.png": "source/uploads/ChatGPT Image Sep 30, 2026, 11_59_59 AM.png",
         "concept-landed.png": "docs/design/application/submission/01-concept-landed.png",
-        "concept-suspended.png": "docs/design/application/submission/05-concept-suspended.png",
+        "concept-suspended.png": "docs/design/application/submission/07-concept-suspended.png",
         "concept-suspended-hoop-v3.png": "docs/design/application/submission/05-concept-suspended-hoop-v3.png",
         "film-poster.png": "deliveries/enceladus_v3/previews/six_views_same_atlas.png",
         "variant-a.png": "deliveries/enceladus_v3/drawings/v3_A_literal_dual_hitch_isometric.png",
@@ -141,7 +141,7 @@ def build() -> None:
         "love-burn-camp-and-vehicle-rules.md",
     ):
         shutil.copyfile(ROOT / "docs" / name, output / "documents" / name)
-    for name in ("style.css", "catalog.js", "access.js", "access.css"):
+    for name in ("style.css", "catalog.js"):
         shutil.copyfile(ROOT / "site" / name, output / name)
     shutil.copytree(ROOT / "site/naming", output / "naming", dirs_exist_ok=True)
     shutil.copytree(
@@ -152,6 +152,7 @@ def build() -> None:
     shutil.copytree(ROOT / "site/mounts", output / "mounts", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/models", output / "models", dirs_exist_ok=True)
     shutil.copytree(ROOT / "site/showtime", output / "showtime", dirs_exist_ok=True)
+    shutil.copytree(ROOT / "site/build", output / "build", dirs_exist_ok=True)
     pitch = ROOT / "source/uploads/zencelades-pitch.mp4"
     if pitch.exists():
         shutil.copyfile(pitch, output / "media/pitch.mp4")
