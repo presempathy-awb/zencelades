@@ -7,6 +7,9 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P112 (October 2): “merge n dep” —
+  [review, merge and deploy the account cockpit](p112-merge-and-deploy.md).
+
 - P111 (October 2): “do a pr” —
   [publish the prepared account and cockpit branch](p111-account-pull-request.md).
 

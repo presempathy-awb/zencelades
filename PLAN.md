@@ -1,5 +1,13 @@
 # Zencelades working plan
 
+## Current continuation — October 2, merge and deployment authorized
+
+[P112](docs/plans/p112-merge-and-deploy.md) authorizes finishing PR #8's review,
+merge and deployment. Obtain the required full-head security review; verify
+operation-specific service/database/provider prerequisites; preserve active
+media in the release; then check the deployed public and account boundaries.
+The separate Telpher mirror choice and real-login browser scope remain distinct.
+
 ## Current continuation — October 2, account PR authorized
 
 [P111](docs/plans/p111-account-pull-request.md) authorizes publishing the prepared
