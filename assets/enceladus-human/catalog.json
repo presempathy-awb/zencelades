@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "title": "Andrew face/body moon projection",
+  "sources": [
+    {
+      "id": "H01",
+      "filename": "andrew-reference.jpeg",
+      "relative_path": "originals/andrew-reference.jpeg",
+      "bytes": 227158,
+      "content_sha256": "816c73cf8dac7d03699ecc746f72c1e3f18bab2f06f908e8f7c819fd1bbed113",
+      "content_type": "image/jpeg",
+      "credit": "Andrew — user-supplied Enceladus Within reference sheet",
+      "reuse_notes": "Personal project reference supplied by Andrew; no blanket public reuse license is asserted.",
+      "image": {
+        "width": 1280,
+        "height": 951
+      },
+      "projection_crop": {
+        "x": 400,
+        "y": 115,
+        "width": 265,
+        "height": 265
+      },
+      "interpretation": "The supplied concept-sheet pixels are composited directly into video. This is not live footage or a reconstructed 3D body.",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/originals/andrew-reference.jpeg",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/originals/andrew-reference.jpeg"
+    }
+  ],
+  "imagegen": {
+    "attempted": true,
+    "outcome": "blocked; no image generated; input preserved unchanged"
+  },
+  "verification": {
+    "lakefs_readback": true,
+    "babylon_browser": false,
+    "video_preview": true,
+    "bun_tests": {
+      "source_checkout": {
+        "pass": 19,
+        "fail": 0
+      },
+      "isolated_film": {
+        "pass": 6,
+        "fail": 0
+      }
+    }
+  },
+  "derived": [
+    {
+      "relative_path": "derived/andrew-above-the-ice.mp4",
+      "bytes": 33522980,
+      "content_sha256": "2d42b7ce1a0558b997f507e31a7f2d8124d8b3307dda7f86c00cd9be55eefed6",
+      "content_type": "video/mp4",
+      "lakefs_path": "imports/research/enceladus-night-stills/2026-10-01/derived/andrew-above-the-ice.mp4",
+      "id": "H02",
+      "filename": "andrew-above-the-ice.mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 44.266016,
+        "has_audio": false
+      },
+      "source_film": "D01 / original above-the-ice edit",
+      "verification": {
+        "ffprobe": true,
+        "full_decode": true,
+        "visual_frames_seconds": [
+          8,
+          24,
+          38
+        ]
+      },
+      "lakefs_commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600/imports/research/enceladus-night-stills/2026-10-01/derived/andrew-above-the-ice.mp4"
+    }
+  ],
+  "lakefs": {
+    "repository": "thatsnozorb-assets",
+    "branch": "ingest-enceladus-videos-night-stills-20261001",
+    "commit": "f264962365ba1c5398266b27036e221a9eb90df63ae9a8823a745c65d30e0600",
+    "main_protected": true,
+    "merged": false
+  }
+}

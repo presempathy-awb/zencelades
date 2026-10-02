@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "bun run prepare && vite --host 127.0.0.1",
     "prepare": "bun scripts/prepare.ts",
-    "build": "bun run prepare && bun run verify:models && tsc --noEmit && vite build",
+    "build": "bun run prepare && bun run verify:models && tsc --noEmit && vite build && bun run build:film",
+    "prepare:film": "bun scripts/prepare-film.ts",
+    "build:film": "bun run prepare:film && tsc --noEmit -p film.tsconfig.json && vite build --config film.vite.config.ts",
+    "dev:film": "bun run prepare:film && vite --config film.vite.config.ts --host 127.0.0.1",
     "test": "bun test",
     "verify:http": "bun scripts/verify-http.ts",
     "verify:models": "bun scripts/verify-models.ts",

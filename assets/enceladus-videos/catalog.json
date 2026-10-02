@@ -1,0 +1,455 @@
+{
+  "schema_version": 1,
+  "title": "Enceladus video collection",
+  "requested_date": "2026-09-30",
+  "storage_status": "lakefs-verified",
+  "interpretation": {
+    "three_dimensional": "Spatially rendered animation and measured 3D jet models; standard flat video, not stereoscopic VR or 360-degree equirectangular video.",
+    "surface_experience": "Edit of publicly reusable NASA animation, with source credits and interpretation labels.",
+    "public_first": true,
+    "paid_generation_used": false
+  },
+  "license_sources": {
+    "SVS-public-domain": {
+      "url": "https://svs.gsfc.nasa.gov/help/",
+      "note": "SVS declares public domain unless otherwise noted. Preserve credits. Associated licensed music is excluded from new edits."
+    },
+    "NASA-JPL-media-use": {
+      "url": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+      "additional_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "note": "Use under NASA/JPL media guidelines, retain the full supplied source credit, and avoid implying endorsement. Third-party exceptions remain source-specific; no blanket new license."
+    },
+    "NASA-Webb-media-use": {
+      "url": "https://webbtelescope.org/copyright",
+      "resolves_to": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "note": "Webb copyright link resolves to NASA media guidelines. Preserve the full STScI/NASA/ESA/CSA credit."
+    }
+  },
+  "sources": [
+    {
+      "id": "E01",
+      "filename": "geyser-flythrough.mp4",
+      "title": "Geyser fly-through beside the icy surface",
+      "source_page": "https://svs.gsfc.nasa.gov/20384/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a020000/a020300/a020384/EnceladusGeyser_web.mp4",
+      "kind": "scientific-art-animation",
+      "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab",
+      "reuse_policy": "SVS-public-domain",
+      "notes": "Camera moves along fractured ice and through jets; Saturn and rings fill the sky. Best match for the requested near-surface experience.",
+      "local_path": "source/research/enceladus-videos/originals/geyser-flythrough.mp4",
+      "relative_path": "originals/geyser-flythrough.mp4",
+      "bytes": 26704233,
+      "content_sha256": "347c795b2423b5c7033159cbaa8ac4625f8b4a4ba26a95378ab5b5da391e0e0e",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "24/1",
+        "duration_seconds": 14.166667,
+        "has_audio": true
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/geyser-flythrough.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/geyser-flythrough.mp4"
+    },
+    {
+      "id": "E02",
+      "filename": "surface-to-space.mp4",
+      "title": "South-pole surface to Enceladus and Webb",
+      "source_page": "https://svs.gsfc.nasa.gov/20384/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a020000/a020300/a020384/EnceladusToWebb_web.mp4",
+      "kind": "scientific-art-animation",
+      "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab",
+      "reuse_policy": "SVS-public-domain",
+      "notes": "Pulls away from the tiger stripes to a globe/space view; animation rather than spacecraft footage.",
+      "local_path": "source/research/enceladus-videos/originals/surface-to-space.mp4",
+      "relative_path": "originals/surface-to-space.mp4",
+      "bytes": 59768403,
+      "content_sha256": "79440c4741c331ea115c5c157c95105f62345677e94a04376978d0e28da8a4e4",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 32.065375,
+        "has_audio": true
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/surface-to-space.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/surface-to-space.mp4"
+    },
+    {
+      "id": "E03",
+      "filename": "ice-layer-pan.mp4",
+      "title": "Moving through ice layers",
+      "source_page": "https://svs.gsfc.nasa.gov/20384/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a020000/a020300/a020384/IceLayerPan_web.mp4",
+      "kind": "scientific-art-animation",
+      "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab",
+      "reuse_policy": "SVS-public-domain",
+      "notes": "Short subsurface ice cross-section transition.",
+      "local_path": "source/research/enceladus-videos/originals/ice-layer-pan.mp4",
+      "relative_path": "originals/ice-layer-pan.mp4",
+      "bytes": 4147447,
+      "content_sha256": "e1280323c74bf96e666ffa0ac4e49550efe636d31cc1278f0b0726f5d9ecb7c7",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 3.737067,
+        "has_audio": true
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/ice-layer-pan.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/ice-layer-pan.mp4"
+    },
+    {
+      "id": "E04",
+      "filename": "ocean-vents.mp4",
+      "title": "Under-ice hydrothermal vent fly-through",
+      "source_page": "https://svs.gsfc.nasa.gov/20384/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a020000/a020300/a020384/OceanVents_web.mp4",
+      "kind": "scientific-art-animation",
+      "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab",
+      "reuse_policy": "SVS-public-domain",
+      "notes": "A possible scenario of the ocean and vents that supply the plumes; conceptual, not directly photographed.",
+      "local_path": "source/research/enceladus-videos/originals/ocean-vents.mp4",
+      "relative_path": "originals/ocean-vents.mp4",
+      "bytes": 7300131,
+      "content_sha256": "ff94e6071ac885ed0643679b2062c59efedeea7f5ba0ce57b14f7118244bded5",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "24/1",
+        "duration_seconds": 11.25,
+        "has_audio": true
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/ocean-vents.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/ocean-vents.mp4"
+    },
+    {
+      "id": "E05",
+      "filename": "enceladus-journey-4k.webm",
+      "title": "Complete ice, geyser and ocean journey in 4K",
+      "source_page": "https://svs.gsfc.nasa.gov/20384/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a020000/a020300/a020384/AssemblyCut_ProRes.webm",
+      "kind": "scientific-art-animation",
+      "credit": "NASA's Goddard Space Flight Center Conceptual Image Lab",
+      "reuse_policy": "SVS-public-domain",
+      "notes": "3840x2160 assembled animation; compact WebM distribution, not the 6.2 GB ProRes master.",
+      "local_path": "source/research/enceladus-videos/originals/enceladus-journey-4k.webm",
+      "relative_path": "originals/enceladus-journey-4k.webm",
+      "bytes": 18965112,
+      "content_sha256": "a92bd295e0e34f543516f5755f2670e7ff0181b71eeb39d6689c82022950a8c7",
+      "content_type": "video/webm",
+      "media": {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 3840,
+        "height": 2160,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 61.595,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/enceladus-journey-4k.webm",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/enceladus-journey-4k.webm"
+    },
+    {
+      "id": "E06",
+      "filename": "cassini-jets-timelapse.mp4",
+      "title": "Cassini jets time-lapse with explanatory presentation",
+      "source_page": "https://svs.gsfc.nasa.gov/11688/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a010000/a011600/a011688/EnceladusJets-540-MASTER_high.mp4",
+      "kind": "observation-presentation",
+      "credit": "NASA's Goddard Space Flight Center; video and images courtesy of NASA/JPL/Space Science Institute",
+      "reuse_policy": "SVS-public-domain",
+      "notes": "Cassini image sequence presented as a narrated/explanatory time-lapse; includes text/graphics rather than continuous camera footage.",
+      "local_path": "source/research/enceladus-videos/originals/cassini-jets-timelapse.mp4",
+      "relative_path": "originals/cassini-jets-timelapse.mp4",
+      "bytes": 6083532,
+      "content_sha256": "7160bcec21e72c887ff4e0179c47158a5dc3b2b10e7263543766dce356a59ce1",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 31,
+        "has_audio": true
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/cassini-jets-timelapse.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-jets-timelapse.mp4"
+    },
+    {
+      "id": "E07",
+      "filename": "geyser-directions-3d.mp4",
+      "title": "Surface map and measured 3D geyser directions",
+      "source_page": "https://svs.gsfc.nasa.gov/11688/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a010000/a011600/a011688/EnceladusViz-540-MASTER_high.mp4",
+      "kind": "data-visualization",
+      "credit": "NASA's Goddard Space Flight Center; video and images courtesy of NASA/JPL/Space Science Institute",
+      "reuse_policy": "SVS-public-domain",
+      "notes": "Green vectors locate and orient jets above a mapped south-polar surface.",
+      "local_path": "source/research/enceladus-videos/originals/geyser-directions-3d.mp4",
+      "relative_path": "originals/geyser-directions-3d.mp4",
+      "bytes": 5767228,
+      "content_sha256": "858d045af333f96b5de457860395e51ebc2d5361c92276eeced36b4c2b2ec432",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 29.5,
+        "has_audio": true
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/geyser-directions-3d.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/geyser-directions-3d.mp4"
+    },
+    {
+      "id": "E08",
+      "filename": "cassini-plume-2005.mp4",
+      "title": "Real Cassini plume movie from November 2005",
+      "source_page": "https://science.nasa.gov/resource/enceladus-plume-movie-2/",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/p/i/a/pia07762_full-movie.mp4",
+      "kind": "spacecraft-image-sequence",
+      "credit": "NASA/JPL/Space Science Institute",
+      "reuse_policy": "NASA-JPL-media-use",
+      "notes": "Eleven images played at six frames per second. Short observed plume sequence; not surface camera footage. Original caption contains historical 2006 interpretation.",
+      "local_path": "source/research/enceladus-videos/originals/cassini-plume-2005.mp4",
+      "relative_path": "originals/cassini-plume-2005.mp4",
+      "bytes": 17313,
+      "content_sha256": "995b16713e3c0b4838b2381f58a707f5f6ea60674a75fd39c40386dde1278529",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 500,
+        "height": 300,
+        "r_frame_rate": "6/1",
+        "duration_seconds": 1.833333,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/cassini-plume-2005.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-plume-2005.mp4"
+    },
+    {
+      "id": "E09",
+      "filename": "cassini-final-plume-2017.gif",
+      "title": "Last dedicated Cassini plume observation",
+      "source_page": "https://science.nasa.gov/resource/last-enceladus-plume-observation/",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/p/i/a/2/PIA21887-1.gif",
+      "kind": "spacecraft-image-sequence",
+      "credit": "NASA/JPL-Caltech/Space Science Institute",
+      "reuse_policy": "NASA-JPL-media-use",
+      "notes": "August 28, 2017 imagery spanning about 14 hours; exposure and viewing geometry change. Preserve original animated GIF.",
+      "local_path": "source/research/enceladus-videos/originals/cassini-final-plume-2017.gif",
+      "relative_path": "originals/cassini-final-plume-2017.gif",
+      "bytes": 4279193,
+      "content_sha256": "ea6ecf5428a572c3a9a469bde22d1b0f1496fbfb87777ca78e6bd5fbf3061280",
+      "content_type": "image/gif",
+      "media": {
+        "codec_name": "gif",
+        "codec_type": "video",
+        "width": 441,
+        "height": 372,
+        "r_frame_rate": "10/1",
+        "duration_seconds": 11,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/cassini-final-plume-2017.gif",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-final-plume-2017.gif"
+    },
+    {
+      "id": "E10",
+      "filename": "cassini-approach.mov",
+      "title": "Cassini approach and atmosphere concept animation",
+      "source_page": "https://science.nasa.gov/photojournal/enceladus-animation/",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia03/pia03554/PIA03554.mov",
+      "kind": "mixed-observation-and-animation",
+      "credit": "NASA/JPL",
+      "reuse_policy": "NASA-JPL-media-use",
+      "notes": "Historical 2005 PIA03554 animation combining approach, surface imagery and magnetic-field/atmosphere graphics. Original legacy QuickTime codec retained.",
+      "local_path": "source/research/enceladus-videos/originals/cassini-approach.mov",
+      "relative_path": "originals/cassini-approach.mov",
+      "bytes": 8964040,
+      "content_sha256": "9f9b1b0251818819673a37ac1142f0582d6ca9a2cf0327dea7b2309cebb95baf",
+      "content_type": "video/quicktime",
+      "media": {
+        "codec_name": "svq3",
+        "codec_type": "video",
+        "width": 320,
+        "height": 240,
+        "r_frame_rate": "2997/100",
+        "duration_seconds": 173.563333,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/cassini-approach.mov",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-approach.mov"
+    },
+    {
+      "id": "E11",
+      "filename": "webb-plume-torus.mp4",
+      "title": "Enceladus plume feeds Saturn's torus, 4K",
+      "source_page": "https://science.nasa.gov/asset/webb/enceladus-torus-and-plume/",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/missions/webb/science/2023/05/STScI-01H0R8B1X8R9465B9PRJX36F6Y.mp4",
+      "kind": "scientific-art-animation",
+      "credit": "Video: Leah Hustak (STScI); Science: NASA, ESA, CSA, Gerónimo Villanueva; Image Processing: Alyssa Pagan (STScI)",
+      "reuse_policy": "NASA-Webb-media-use",
+      "notes": "Animated wider context of the plume and Saturn's water torus, based on Webb research; not a direct moving telescope capture.",
+      "local_path": "source/research/enceladus-videos/originals/webb-plume-torus.mp4",
+      "relative_path": "originals/webb-plume-torus.mp4",
+      "bytes": 27364996,
+      "content_sha256": "79609297bb4c2ae4a198f02b611b82d5fc04b6daa8ee55d6b6f625ef636dfac5",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 3840,
+        "height": 2160,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 21.7,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/webb-plume-torus.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/webb-plume-torus.mp4"
+    },
+    {
+      "id": "E12",
+      "filename": "geyser-basin-360.m4v",
+      "title": "360-degree rotation of the 98-geyser model",
+      "source_page": "https://www.jpl.nasa.gov/images/pia17186-geyser-basin-in-3-d/",
+      "download_url": "https://aasnova.org/wp-content/uploads/2015/10/PIA17186_full_movie.m4v",
+      "kind": "data-visualization",
+      "credit": "NASA/JPL-Caltech/Space Science Institute",
+      "reuse_policy": "NASA-JPL-media-use",
+      "notes": "Rotating 3D model derived by triangulation from Cassini imagery. Original NASA page lost its movie link; AAS Nova retains the credited NASA movie. Dotted vectors have uncertain tilt.",
+      "local_path": "source/research/enceladus-videos/originals/geyser-basin-360.m4v",
+      "relative_path": "originals/geyser-basin-360.m4v",
+      "bytes": 9046913,
+      "content_sha256": "c8492edc09f3e28a264e94e8c1ec6ca70295b8ee0d6f297825bec82f4e13e531",
+      "content_type": "video/x-m4v",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 798,
+        "height": 682,
+        "r_frame_rate": "24/1",
+        "duration_seconds": 15,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/originals/geyser-basin-360.m4v",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/geyser-basin-360.m4v"
+    }
+  ],
+  "derived": [
+    {
+      "id": "D01",
+      "filename": "above-the-ice.mp4",
+      "title": "Above the ice: Enceladus",
+      "kind": "public-source-edit",
+      "credit": "Source: NASA's Goddard Space Flight Center Conceptual Image Lab; edit for Zencelades by Codex",
+      "sources": [
+        "E02",
+        "E01"
+      ],
+      "notes": "44.267-second silent 1080p30 edit; scientific animation labeled in frame; includes a slower cropped geyser passage.",
+      "relative_path": "derived/above-the-ice.mp4",
+      "bytes": 28448277,
+      "content_sha256": "180fb205e8a76847ab392ff1a8d15f6398d8163f6f791da522a312581739e058",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 44.266667,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/derived/above-the-ice.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/above-the-ice.mp4"
+    },
+    {
+      "id": "D02",
+      "filename": "cassini-final-plume-2017.mp4",
+      "title": "Cassini final plume: compatible MP4 preview",
+      "kind": "format-conversion",
+      "sources": [
+        "E09"
+      ],
+      "credit": "NASA/JPL-Caltech/Space Science Institute",
+      "notes": "Original animated GIF preserved. Preview padded by one column for H.264.",
+      "relative_path": "derived/cassini-final-plume-2017.mp4",
+      "bytes": 152413,
+      "content_sha256": "9a74187e89a9a8ce5220b0a5868b3a68645ca7731ef7ef7b7bb03e617a322e32",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 442,
+        "height": 372,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 11,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/derived/cassini-final-plume-2017.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/cassini-final-plume-2017.mp4"
+    },
+    {
+      "id": "D03",
+      "filename": "cassini-approach-preview.mp4",
+      "title": "Cassini approach: compatible MP4 preview",
+      "kind": "format-conversion",
+      "sources": [
+        "E10"
+      ],
+      "credit": "NASA/JPL",
+      "notes": "Original QuickTime preserved; low original resolution retained.",
+      "relative_path": "derived/cassini-approach-preview.mp4",
+      "bytes": 8222215,
+      "content_sha256": "cb3e862d5faca9211343e8b3ceaef2da181f4e6e72f07531f385c1d3c8561861",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 320,
+        "height": 240,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 173.5,
+        "has_audio": false
+      },
+      "lakefs_uri": "lakefs://thatsnozorb-assets/50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3/imports/research/enceladus-videos/2026-09-30/derived/cassini-approach-preview.mp4",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/cassini-approach-preview.mp4"
+    }
+  ],
+  "verification": {
+    "media_probe_complete": true,
+    "immutable_readback_complete": true,
+    "full_video_decode": {
+      "files": 15,
+      "exit_codes": [
+        0
+      ],
+      "errors": 0
+    },
+    "exact_file_set_verified": true
+  },
+  "lakefs": {
+    "repository": "thatsnozorb-assets",
+    "branch": "ingest-enceladus-videos-20260930",
+    "commit": "50919d7307904d451d2de4eb62bc0ac0d45351e6dc17b3377851c82e68515ae3",
+    "prefix": "imports/research/enceladus-videos/2026-09-30/",
+    "owner_managed": true,
+    "merge": false
+  }
+}

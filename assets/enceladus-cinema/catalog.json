@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "title": "Into the jets: Enceladus Showtime",
+  "status": "source-pr-candidate-browser-check-pending",
+  "engine": "Babylon.js 9.26.1",
+  "entry_point": "cockpit/enceladus-film.html",
+  "duration_seconds": 60,
+  "showtime": {
+    "entry_point": "cockpit/showtime/index.html",
+    "native_component": "cockpit/src/showtime/live-showtime.tsx",
+    "route": "/showtime",
+    "guide": "docs/enceladus-showtime.md",
+    "supports": [
+      "lander",
+      "aerial"
+    ],
+    "default_content": "both",
+    "default_movement": "automatic routines",
+    "default_view": "Realistic at 22:00",
+    "homepage": "Start-gated lazy preview beside the render group; Enter cockpit and control opens Showtime",
+    "projection": "Spherical zorb surface only; three elevated rear/side heads, clear entrance and reduced upper-cap coverage"
+  },
+  "source_catalogs": [
+    "assets/enceladus-videos/catalog.json",
+    "assets/enceladus-extra/catalog.json",
+    "assets/enceladus-human/catalog.json",
+    "assets/enceladus-surface/catalog.json",
+    "assets/enceladus-projection/catalog.json"
+  ],
+  "media_manifest": "cockpit/src/film/shots.ts",
+  "preparation": "cockpit/scripts/prepare-film.ts",
+  "asset_requirement": "Ignored media/portrait/delivery inputs must be restored at catalogued paths with exact hashes; source checkout does not retrieve them automatically",
+  "verification_boundaries": {
+    "model_tests": "NullEngine geometry/import and pose/capture checks",
+    "browser": "Fresh combined GPU and interaction check pending explicit approval",
+    "public_deployment": "Not performed by this source PR",
+    "lakefs": "Existing catalog receipts retain their recorded scope; pending collections are not claimed uploaded"
+  }
+}

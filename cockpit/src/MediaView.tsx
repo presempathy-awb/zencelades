@@ -1,7 +1,9 @@
-import type { JSX, MouseEvent } from "react";
+import { type JSX, lazy, type MouseEvent, Suspense } from "react";
 import gallery from "../../site/models/index.html?raw";
 import showtime from "../../site/showtime/index.html?raw";
 import "./media.css";
+
+const LiveShowtime = lazy(() => import("./showtime/live-showtime"));
 
 // Trusted build-time project markup; retain every gallery attachment and caption.
 const galleryBody = gallery.match(/<main[^>]*>([\s\S]*)<\/main>/)?.[1];
@@ -63,31 +65,27 @@ export default function MediaView(): JSX.Element {
   );
 }
 
-/** Keep the independently published projection stage intact inside the cockpit. */
+/** Show the live surface projection while retaining the installation films. */
 export function ShowtimeView(): JSX.Element {
-  const scrollToSection = (event: MouseEvent<HTMLDivElement>): void => {
+  const focusSection = (event: MouseEvent<HTMLDivElement>): void => {
     const link = event.target instanceof Element ? event.target.closest("a") : null;
     const href = link?.getAttribute("href");
     if (!href?.startsWith("#") || href.startsWith("#/")) return;
-    const section = document.getElementById(href.slice(1));
+    const section = event.currentTarget.querySelector<HTMLElement>(`#${CSS.escape(href.slice(1))}`);
     if (!section) return;
     event.preventDefault();
     section.tabIndex = -1;
     section.focus({ preventScroll: true });
   };
   return (
-    <section className="media-library showtime-panel" aria-label="Showtime projection workspace">
-      <div className="showtime-bar">
-        <span>Showtime · the projection stage</span>
-        <a href="/showtime/" target="_blank" rel="noreferrer">
-          Open Showtime in a new tab ↗
-        </a>
-      </div>
-      <p className="showtime-note">
-        The sequence below describes the intended artwork experience. Participant capture, mapping,
-        controls and occupied operation still need physical verification.
-      </p>
-      <div onClick={scrollToSection} dangerouslySetInnerHTML={{ __html: showtimeContent }} />
-    </section>
+    <>
+      <Suspense fallback={<p className="loading">Loading the live projection stage…</p>}>
+        <LiveShowtime />
+      </Suspense>
+      <details className="media-library">
+        <summary>Installation context & films</summary>
+        <div onClick={focusSection} dangerouslySetInnerHTML={{ __html: showtimeContent }} />
+      </details>
+    </>
   );
 }
