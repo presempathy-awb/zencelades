@@ -1,0 +1,77 @@
+.choice-control {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0;
+}
+.choice-control legend {
+  padding: 0 0 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.choice-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.choice-buttons button {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  max-width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid #587b8d;
+  border-radius: 0.3rem;
+  background: #122b38;
+  color: #edf4f4;
+  font: inherit;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left;
+  cursor: pointer;
+}
+.choice-buttons button[aria-pressed="true"] {
+  background: #99deed;
+  border-color: #99deed;
+  color: #0a1922;
+  font-weight: 700;
+}
+.choice-buttons button:hover:not(:disabled) {
+  outline: 1px solid #99deed;
+  outline-offset: 1px;
+}
+.choice-buttons button:focus-visible {
+  outline: 3px solid #f5b969;
+  outline-offset: 2px;
+}
+.choice-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.choice-drilldown {
+  min-width: 0;
+  max-width: 100%;
+}
+.choice-drilldown > summary {
+  cursor: pointer;
+  padding: 0.6rem 0.2rem;
+  min-height: 2.75rem;
+  overflow-wrap: anywhere;
+}
+.choice-drilldown[open] > .choice-control,
+.choice-drilldown[open] > .choice-buttons {
+  max-height: 15rem;
+  overflow: auto;
+  padding: 0.3rem;
+}
+.library-controls > .choice-control {
+  flex: 1 1 15rem;
+}
+.pane-topic-bar {
+  flex-wrap: wrap;
+}
+.pane-topic-bar > .choice-drilldown {
+  flex: 1 1 100%;
+}

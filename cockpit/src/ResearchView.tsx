@@ -105,36 +105,34 @@ export default function ResearchView({
         endorsement or physical/event approval.
       </p>
       <div className="library-controls">
-        <label>
-          Collection
-          <select
-            value={kind}
-            onChange={(event) => {
-              setKind(event.target.value);
-              setLimit(24);
-            }}
-          >
-            <option value="seed">Occupied seed concepts & support evidence</option>
-            <option value="grants">Grant guides & art precedents</option>
-            <option value="mounts">Mounts & rigging</option>
-            <option value="catalog">Original v3 assets · 132 records</option>
-            <option value="v4-catalog">v4 Fixed15 assets · 84 records</option>
-          </select>
-        </label>
-        <label>
-          Source scope
-          <select
-            value={isArchive ? "all" : relatedOnly ? "related" : "all"}
-            disabled={isArchive}
-            onChange={(event) => {
-              setRelatedOnly(event.target.value === "related");
-              setLimit(24);
-            }}
-          >
-            <option value="related">Related to {context.label}</option>
-            <option value="all">All sources in this collection</option>
-          </select>
-        </label>
+        <ChoiceButtons
+          label="Collection"
+          value={kind}
+          options={[
+            ["seed", "Occupied seed concepts & support evidence"],
+            ["grants", "Grant guides & art precedents"],
+            ["mounts", "Mounts & rigging"],
+            ["catalog", "Original v3 assets · 132 records"],
+            ["v4-catalog", "v4 Fixed15 assets · 84 records"],
+          ]}
+          onChange={(value) => {
+            setKind(value);
+            setLimit(24);
+          }}
+        />
+        <ChoiceButtons
+          label="Source scope"
+          value={isArchive ? "all" : relatedOnly ? "related" : "all"}
+          disabled={isArchive}
+          options={[
+            ["related", `Related to ${context.label}`],
+            ["all", "All sources in this collection"],
+          ]}
+          onChange={(value) => {
+            setRelatedOnly(value === "related");
+            setLimit(24);
+          }}
+        />
         <label className="search">
           <Search size={16} aria-hidden="true" />
           <span className="sr-only">Search library</span>
@@ -215,3 +213,4 @@ export default function ResearchView({
     </section>
   );
 }
+import ChoiceButtons from "./ChoiceButtons";

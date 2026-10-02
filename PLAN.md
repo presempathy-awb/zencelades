@@ -1,5 +1,25 @@
 # Zencelades working plan
 
+## Current continuation — visible primary controls
+
+[P121](docs/plans/p121-visible-primary-controls.md) makes main choices visible
+as buttons while allowing secondary drill-downs. Preserve every route, model
+option, parts setting, audio prompt, copy/download action, scenario import/export,
+and account action. Use the isolated `fix/visible-controls` child lane so PR11's
+security-review head remains immutable. The private-studio rollout remains open.
+
+1. Complete: cockpit primary selectors use visible buttons; longer prompt,
+   document and model-study lists use expandable groups.
+2. Complete: existing handlers and routes retained; narrow layout corrected so
+   model controls remain reachable inside the fixed outer viewport.
+3. Complete: 60 Bun tests; both production builds; 69 Python tests and 18
+   subtests; Ruff and ledger checks. Browser exercised model/parts/progress,
+   application sections, audio selection/copy, narrow layout and export status.
+   Browser download-event capture timed out; import round-trip remains covered
+   by automated tests, not a completed browser round-trip.
+4. Pending: publish the UI PR and integrate after private-studio review and the
+   locked Telpher project ticket clear; production remains unchanged.
+
 ## Current continuation — October 2, private studio repair
 
 [P118](docs/plans/p118-private-studio-authentik.md) supersedes the deferred

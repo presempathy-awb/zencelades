@@ -7,12 +7,6 @@
   align-items: center;
   gap: 0.5rem;
 }
-.column-control select,
-.view-selector select {
-  background: var(--cockpit-bg);
-  color: var(--cockpit-ink);
-  border-color: var(--cockpit-line);
-}
 .column-selectors {
   display: grid;
   flex-shrink: 0;
@@ -21,23 +15,25 @@
 }
 .view-selector {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  align-items: center;
+  align-items: start;
   padding: 0.5rem;
   min-width: 0;
   border-right: 1px solid var(--cockpit-line);
 }
+.view-selector > .choice-control:last-child {
+  flex: 1 1 25rem;
+}
+.view-selector legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
 .column-number {
-  color: var(--cockpit-muted);
-}
-.view-selector label {
-  min-width: 0;
-}
-.view-selector label:last-child {
-  flex: 1;
-}
-.view-selector select {
-  width: 100%;
+  display: none;
 }
 .column-workspace {
   display: grid;

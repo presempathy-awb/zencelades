@@ -1,5 +1,6 @@
 import { type JSX, useRef, useState } from "react";
 import { readEffects, readMusicPrompt } from "./audio-prompts";
+import ChoiceButtons from "./ChoiceButtons";
 import effectsText from "../../docs/audio/elevenlabs-effects.md?raw";
 import "./audio.css";
 
@@ -55,37 +56,33 @@ export default function AudioView(): JSX.Element {
   return (
     <div className="audio-workbench">
       <nav className="pane-topic-bar" aria-label="Audio prompt selection">
-        <label>
-          Collection
-          <select value={kind} onChange={(e) => setKind(e.target.value)}>
-            <option value="music">Suno · 8 songs</option>
-            <option value="effects">ElevenLabs · 16 effects</option>
-          </select>
-        </label>
-        <label>
-          Prompt
-          <select
+        <ChoiceButtons
+          label="Collection"
+          value={kind}
+          onChange={setKind}
+          options={[
+            ["music", "Suno · 8 songs"],
+            ["effects", "ElevenLabs · 16 effects"],
+          ]}
+        />
+        <ChoiceButtons
+          label="Detail"
+          value={detail}
+          onChange={setDetail}
+          options={[
+            ["prompt", "Copy prompts"],
+            ["settings", "Settings & mixing"],
+          ]}
+        />
+        <details className="choice-drilldown">
+          <summary>Prompt: {kind === "music" ? song.title : cue.title}</summary>
+          <ChoiceButtons
+            label="Choose a prompt"
             value={kind === "music" ? music : effect}
-            onChange={(e) =>
-              kind === "music"
-                ? setMusic(Number(e.target.value))
-                : setEffect(Number(e.target.value))
-            }
-          >
-            {(kind === "music" ? songs : effects).map((item, i) => (
-              <option key={item.id} value={i}>
-                {item.title}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Detail
-          <select value={detail} onChange={(e) => setDetail(e.target.value)}>
-            <option value="prompt">Copy prompts</option>
-            <option value="settings">Settings & mixing</option>
-          </select>
-        </label>
+            onChange={kind === "music" ? setMusic : setEffect}
+            options={(kind === "music" ? songs : effects).map((item, i) => [i, item.title])}
+          />
+        </details>
       </nav>
       <div
         className="pane-reading-area audio-detail"

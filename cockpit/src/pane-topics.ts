@@ -35,12 +35,23 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
   const topics = topicRanges(titles);
   const previous = nodes.map((node) => node.hidden);
   bar.replaceChildren();
-  const label = document.createElement("label");
-  label.textContent = "Section";
-  const select = document.createElement("select");
-  select.setAttribute("aria-label", "Page section");
-  for (const [i, topic] of topics.entries()) select.add(new Option(topic.title, String(i)));
-  label.append(select);
+  const drilldown = document.createElement("details");
+  drilldown.className = "choice-drilldown";
+  const summary = document.createElement("summary");
+  const choices = document.createElement("div");
+  choices.className = "choice-buttons";
+  choices.setAttribute("role", "group");
+  choices.setAttribute("aria-label", "Page section");
+  let selected = 0;
+  const buttons = topics.map((topic, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = topic.title;
+    button.onclick = () => show(index);
+    return button;
+  });
+  choices.append(...buttons);
+  drilldown.append(summary, choices);
   const count = document.createElement("span");
   count.className = "topic-count";
   const show = (index: number): void => {
@@ -49,7 +60,9 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
     nodes.forEach((node, i) => {
       node.hidden = previous[i] || i < topic.start || i >= topic.end;
     });
-    select.value = String(index);
+    selected = index;
+    summary.textContent = `Section: ${topic.title}`;
+    buttons.forEach((button, i) => button.setAttribute("aria-pressed", String(i === index)));
     count.textContent = `${index + 1} / ${topics.length}`;
     content.closest(".pane-reading-area")?.scrollTo(0, 0);
   };
@@ -63,11 +76,10 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
     button.type = "button";
     button.textContent = delta < 0 ? "←" : "→";
     button.setAttribute("aria-label", name);
-    button.onclick = () => show((Number(select.value) + delta + topics.length) % topics.length);
+    button.onclick = () => show((selected + delta + topics.length) % topics.length);
     return button;
   });
-  select.onchange = () => show(Number(select.value));
-  bar.append(label, ...controls, count);
+  bar.append(...controls, count, drilldown);
   const reveal = (event?: Event): void => {
     const link = event?.target instanceof Element ? event.target.closest("a[href]") : null;
     const href = link?.getAttribute("href");

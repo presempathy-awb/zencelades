@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import { viewGroups } from "./cockpit-layout";
+import ChoiceButtons from "./ChoiceButtons";
 
 /** Drill from a subject to its views without a long navigation strip. */
 export default function ViewSelector({
@@ -18,30 +19,21 @@ export default function ViewSelector({
       <span className="column-number" aria-hidden="true">
         {column}
       </span>
-      <label>
-        <span className="sr-only">Column {column} section</span>
-        <select
-          value={group.title}
-          onChange={(event) => {
-            const next = viewGroups.find((item) => item.title === event.target.value);
-            if (next) onSelect(next.views[0][0]);
-          }}
-        >
-          {viewGroups.map((item) => (
-            <option key={item.title}>{item.title}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        <span className="sr-only">Column {column} view</span>
-        <select value={path} onChange={(event) => onSelect(event.target.value)}>
-          {group.views.map(([route, title]) => (
-            <option key={route} value={route}>
-              {title}
-            </option>
-          ))}
-        </select>
-      </label>
+      <ChoiceButtons
+        label={`Column ${column} section`}
+        value={group.title}
+        options={viewGroups.map((item) => [item.title, item.title])}
+        onChange={(value) => {
+          const next = viewGroups.find((item) => item.title === value);
+          if (next) onSelect(next.views[0][0]);
+        }}
+      />
+      <ChoiceButtons
+        label={`Column ${column} view`}
+        value={path}
+        options={group.views.map(([route, title]) => [route, title])}
+        onChange={onSelect}
+      />
     </div>
   );
 }

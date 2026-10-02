@@ -17,6 +17,15 @@ Design → Design options and Build → Scenario settings retain the former side
 All columns edit the same temporary scenario; this layout does not save it to an
 account. Column preferences last for this visit and reset on reload.
 
+P121 exposes the main section, current view and one-to-four-column choices as
+buttons with a visible selected state. Model sizes and projector counts, parts
+options, research collections, task progress and audio collections use the same
+direct controls. Longer prompt, document-section and model-study lists remain
+expandable drill-downs. Copy, downloads, account actions, scenario import/export,
+comparison and model camera controls retain their existing behavior. Navigation
+wraps within a narrow pane; the outer viewport stays fixed while detailed content
+and expanded lists can scroll within their panels.
+
 The Overview includes a small muted, looping **Above the ice** preview without
 player controls; clicking or keyboard-activating it opens Showtime. Reduced
 motion preferences pause the preview. Design → Alternate designs contains the

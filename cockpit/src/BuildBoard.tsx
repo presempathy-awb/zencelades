@@ -10,6 +10,7 @@ import {
   type BuildTaskStatus,
 } from "./build-board";
 import "./build-board.css";
+import ChoiceButtons from "./ChoiceButtons";
 
 export interface BuildBoardProps {
   state: BuildBoardState;
@@ -36,22 +37,19 @@ const TaskCard = memo(function TaskCard({
       <p>
         <strong>Responsible role:</strong> {task.role}
       </p>
-      <label className="build-task-status" htmlFor={`progress-${task.id}`}>
-        Progress
-        <select
-          id={`progress-${task.id}`}
+      <div
+        className="build-task-status"
+        id={`progress-${task.id}`}
+        tabIndex={-1}
+        aria-describedby="build-board-progress-help"
+      >
+        <ChoiceButtons
+          label="Progress"
           value={status}
-          onChange={(event) => onStatusChange(task.id, event.target.value as BuildTaskStatus)}
-          aria-describedby="build-board-progress-help"
-          title="Record progress only. Done does not authorize fabrication, lifting or occupied tests."
-        >
-          {buildTaskStatuses.map((option) => (
-            <option key={option} value={option}>
-              {buildTaskStatusLabels[option]}
-            </option>
-          ))}
-        </select>
-      </label>
+          options={buildTaskStatuses.map((option) => [option, buildTaskStatusLabels[option]])}
+          onChange={(value) => onStatusChange(task.id, value)}
+        />
+      </div>
       <p className="build-task-prerequisites">
         <strong>Prerequisites:</strong> {prerequisites}
       </p>

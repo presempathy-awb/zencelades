@@ -15,6 +15,7 @@ import { MODEL_STUDIES, selectableModelStudies } from "./models/model-spec";
 import { buildModel, dimensionGuides } from "./models/support-models";
 import type { Option } from "./scenario";
 import { Button } from "./ui";
+import ChoiceButtons from "./ChoiceButtons";
 import {
   BASKET_MODEL_IDS,
   type CameraCount,
@@ -336,62 +337,55 @@ export default function SceneView({
           </label>
         </div>
         {configurable && (
-          <label>
-            <span className="sr-only">Sphere diameter in model</span>
-            <select
-              aria-label="Sphere diameter in model"
-              value={diameter}
-              onChange={(event) => onDiameterChange(Number(event.target.value) as SphereDiameter)}
-            >
-              <option value={2.5}>2.5 m sphere</option>
-              <option value={3}>3 m sphere</option>
-            </select>
-          </label>
+          <ChoiceButtons<SphereDiameter>
+            label="Sphere diameter"
+            value={diameter}
+            onChange={onDiameterChange}
+            options={[
+              [2.5, "2.5 m"],
+              [3, "3 m"],
+            ]}
+          />
         )}
         {configurable && (
-          <label>
-            <span className="sr-only">Projector heads in model</span>
-            <select
-              aria-label="Projector heads in model"
-              value={projectors}
-              onChange={(event) =>
-                onProjectorCountChange(Number(event.target.value) as ProjectorCount)
-              }
-            >
-              <option value={0}>No projector heads</option>
-              <option value={1}>1 projector head</option>
-              <option value={2}>2 projector heads</option>
-              <option value={3}>3 projector heads</option>
-            </select>
-          </label>
+          <ChoiceButtons<ProjectorCount>
+            label="Projector heads"
+            value={projectors}
+            onChange={onProjectorCountChange}
+            options={[
+              [0, "None"],
+              [1, "1 head"],
+              [2, "2 heads"],
+              [3, "3 heads"],
+            ]}
+          />
         )}
-        <label>
-          <span className="sr-only">Model source</span>
-          <select
-            aria-label="Model source"
+        <details className="choice-drilldown">
+          <summary>More model studies</summary>
+          <ChoiceButtons
+            label="Budget model"
             value={model}
-            onChange={(event) => onModelSelect(event.target.value)}
-          >
-            <option value="scenario">Selected budget option</option>
-            {[
-              "Common holder",
-              "Seed concepts",
-              "Budget options",
-              "Mount studies",
-              ...(showTruck ? ["Truck stretch goal"] : []),
-            ].map((group) => (
-              <optgroup key={group} label={group}>
-                {selectableModelStudies(showTruck)
-                  .filter((item) => item.group === group)
-                  .map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.label}
-                    </option>
-                  ))}
-              </optgroup>
-            ))}
-          </select>
-        </label>
+            onChange={onModelSelect}
+            options={[["scenario", "Selected budget option"]]}
+          />
+          {[
+            "Common holder",
+            "Seed concepts",
+            "Budget options",
+            "Mount studies",
+            ...(showTruck ? ["Truck stretch goal"] : []),
+          ].map((group) => (
+            <ChoiceButtons
+              key={group}
+              label={group}
+              value={model}
+              onChange={onModelSelect}
+              options={selectableModelStudies(showTruck)
+                .filter((item) => item.group === group)
+                .map((item) => [item.id, item.label])}
+            />
+          ))}
+        </details>
         <Button
           variant="outline"
           onClick={reset}

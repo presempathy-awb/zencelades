@@ -34,6 +34,7 @@ import DocumentPages from "./DocumentPages";
 import { cockpitHref, documentPages } from "./page-routes";
 import { fitColumns, selectColumn } from "./cockpit-layout";
 import ViewSelector from "./ViewSelector";
+import ChoiceButtons from "./ChoiceButtons";
 import AccountControls from "./AccountControls";
 import PrivateStudioLink from "./PrivateStudioLink";
 import "./audio.css";
@@ -336,21 +337,20 @@ export default function App(): JSX.Element {
           </div>
         </div>
         <div className="header-actions">
-          <label className="column-control">
-            <span>Columns</span>
-            <select
-              aria-label="Workspace columns"
+          <div className="column-control">
+            <ChoiceButtons
+              label="Workspace columns"
               value={columns}
-              onChange={(event) => setColumns(Number(event.target.value))}
-            >
-              {[1, 2, 3, 4].map((count) => (
-                <option key={count} value={count}>
-                  {count}
-                </option>
-              ))}
-            </select>
+              options={[
+                [1, "1"],
+                [2, "2"],
+                [3, "3"],
+                [4, "4"],
+              ]}
+              onChange={setColumns}
+            />
             {fitted < columns && <small role="status">{fitted} fit here</small>}
-          </label>
+          </div>
           <AccountControls
             scenario={scenario}
             onLoad={(saved) => {
