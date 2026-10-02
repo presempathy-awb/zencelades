@@ -114,3 +114,29 @@ The review also requests explicit path-normalization defenses, wildcard-scope
 compatibility tests, extension/delete tests and clearer branch-protection
 wording. Verify and resolve those findings in the broker owner's lane before
 a new full-head review; no owner merge or broker deployment has occurred.
+
+## Publisher review repair — October 2, 08:45 UTC
+
+The broker lane now contains and has pushed `cc1367f9d8a9c76523a324f57625f3f05458ab6d`
+to the same PR #65. It incorporates current main without changing the newer
+pnumbravow or roadmap documentation. Prefix-scoped keys reject decoded dot
+segments, backslashes and empty segments; listing prefixes retain one trailing
+slash. Additional cases cover extension scopes, single-object deletion and
+wildcard copy/merge/S3 compatibility without removing repo/ref/operation limits.
+The runbook explicitly states that this principal has no ingest-only ref limit
+and upstream main protection still applies.
+
+The focused policy and HTTP tests failed before the fix and passed after it.
+Full pinned-Go `just check` and fresh `go test -race ./... -count=1` exited 0.
+Trivy and the three ast-grep policy tests passed. The security recipe's Gitleaks
+step reported a missing `.git` directory and scanned zero commits, despite its
+zero exit code; explicit shared-backend and complete-lane scans subsequently
+passed, with 3.47 MB inspected by the directory scan. That recipe limitation is
+recorded on the PR, not treated as a successful default scan.
+
+Review Scout granted the rereview slot. The rebuilt full-head review bundle
+passed Gitleaks; the prior HOLD was retained as `prior-blockers.md`. The new
+single-attempt Grok runner started with PID 91084. No new verdict is available
+at this checkpoint: `final-out.md` still belongs to the previous held head and
+must not be mistaken for this review. No merge, provisioning or deployment has
+occurred. Account approval and browser-scope decisions remain pending.

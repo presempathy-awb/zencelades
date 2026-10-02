@@ -21,6 +21,12 @@ claims.
    [October 2 integration audit](docs/integration-readiness.md) records the
    current owner PRs, inventory authorization boundary and retained source gaps.
 
+October 2 continuation: homepage playback/navigation is reverified. Next bounded
+work is the storage publisher review repair: reproduce ambiguous object paths,
+cover single-object delete and wildcard compatibility, preserve current base
+documentation, run the broker checks, and obtain a full repaired-head review.
+Account publication and authenticated-browser decisions remain pending.
+
 The homepage loop and truck-alternatives separation are live and freshly
 browser-checked in release `9b6f2f7c`;
 [P103](docs/plans/p103-homepage-loop-alternatives.md) records the scoped delivery.

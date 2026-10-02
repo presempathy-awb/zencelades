@@ -32,3 +32,11 @@ images loading and 389 px layout without overflow. Console errors/warnings: none
 Rendered-DOM Impeccable findings: none. Public HTTPS readback: 162 hashes match,
 service active, release unchanged through verification. Existing build/deployment
 notices remain; startup health check retried during restart and passed.
+
+October 2 live recheck: the public homepage still plays
+`/media/above-the-ice.mp4` muted and looping, without controls (observed at
+21.21 seconds, not paused). Clicking the preview opens `/#/showtime`.
+Following its Alternate designs link opens `/#/alternates`; all four truck
+concept/attachment images loaded successfully. Returned to the homepage and
+visually confirmed the aerial hero and cockpit selectors remain. This was
+read-only browser verification of the existing deployment, not a new release.
