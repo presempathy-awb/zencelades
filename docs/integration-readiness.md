@@ -85,11 +85,15 @@ decision; no dependency or owner configuration was changed here.
 
 ## Source preservation gap
 
-The original triangle-projection lane still has eleven authored `docs/build/`
-files and `scripts/build_option_packet.py` outside the committed account lane.
-Their delivery copies are preserved in the existing grant asset packet. A
-passing build using those retained bytes does not prove the authored sources
-have landed. Integrate that bounded source set separately after reconciling
-its older LED/stand budget descriptions with Andrew's later primary Love Burn
-proposal and common-holder direction. Do not bulk-copy or commit the original
-lane's unrelated dirty work, or regenerate an archival packet in place.
+The original triangle-projection lane had eleven authored `docs/build/` files
+outside the committed account lane. They are now recovered in this lane with
+historical banners, under a [current build-plan entry](build/README.md) that
+keeps the later primary Love Burn proposal and common holder first. The old
+overview is retained as `build/p059-overview.md`. Its LED allocation, modeled
+dimensions and delivery claims remain explicitly historical.
+
+The original lane and archival delivery copies remain unchanged. The earlier
+`scripts/build_option_packet.py` still awaits separate source integration and
+PDF verification. No reconstructed PDF or live attachment replacement is
+claimed. Source recovery does not mean the account branch has been pushed,
+reviewed or landed; preserve the remaining unrelated dirty work.
