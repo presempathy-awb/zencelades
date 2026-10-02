@@ -77,7 +77,8 @@ and all original files are preserved.
 - `just assets-catalog` verifies every preserved upload/ZIP byte and writes role, format and receipt-backed lakeFS metadata.
 - `just assets-v4` catalogues the separate flat-manifest package; `--check` verifies it without rewriting. `just archives-b2 <telpher-checkout> --batch v4` plans its ZIP storage with a separate receipt; `--apply` uploads and reads back.
 - `just archives-b2 <telpher-checkout>` plans ZIP preservation in the existing B2 bucket; `--apply` uses hid-in, immutable copy and full readback. It adds no production dependency; rclone is the existing transfer tool.
-- `just deploy-site --host presvd1` plans a verified static release; `--apply` stages and activates it, preserving the prior release.
+- `just deploy-site --host presvd1` builds Showtime and records a fresh 60-second homepage loop before planning a verified static release; `--apply` stages and activates it, preserving the prior release. Recording failure stops publication. See the [recording requirements and preset](docs/homepage-recording.md).
+- `just record-showtime` records an already prepared film build locally without deployment.
 - `just check` runs this project's ingestion tests and Python lint/format checks.
 - `just site-build` builds the Vite/React cockpit at the local root, the original catalog at `/catalog/`, every individual asset download and selected media previews. It invokes the pinned Bun frontend build before assembling the Python-managed distribution.
 - `just cockpit-check` runs the frontend's Bun scenario checks and TypeScript/Vite build; it does not run pytest.

@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import shlex
+import shutil
 import subprocess
 import tarfile
 import tempfile
@@ -13,6 +14,7 @@ from pathlib import Path
 
 from scripts.assets import ROOT, sha256
 from scripts.build_site import build
+from scripts.homepage_loop import homepage, record_loop
 
 
 def main() -> None:
@@ -21,6 +23,29 @@ def main() -> None:
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
     build()
+    cockpit = ROOT / "cockpit"
+    for command in (
+        ["bun", "scripts/prepare-film.ts"],
+        [
+            "bun",
+            "node_modules/typescript/bin/tsc",
+            "--project",
+            "film.tsconfig.json",
+            "--noEmit",
+        ],
+        [
+            "bun",
+            "node_modules/vite/bin/vite.js",
+            "build",
+            "--config",
+            "film.vite.config.ts",
+        ],
+    ):
+        subprocess.run(command, cwd=cockpit, check=True)
+    record_loop(ROOT)
+    shutil.copytree(cockpit / "dist/film", ROOT / "site/dist/film", dirs_exist_ok=True)
+    home = ROOT / "site/dist/index.html"
+    home.write_text(homepage(ROOT, home.read_text()))
     files = sorted((ROOT / "site/dist").rglob("*"))
     files += [
         ROOT / "deploy" / name

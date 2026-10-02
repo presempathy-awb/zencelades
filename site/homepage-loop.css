@@ -1,0 +1,28 @@
+.showtime-home {
+  margin: 0;
+  padding: 1rem;
+  background: #030b14;
+  color: #edf3f5;
+  font:
+    1rem / 1.6 system-ui,
+    sans-serif;
+}
+.showtime-home video {
+  display: block;
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  background: #030b14;
+}
+.showtime-home p {
+  max-width: 80rem;
+  margin: 0.75rem auto 0;
+}
+.showtime-home a {
+  color: #a4dfe9;
+  text-underline-offset: 0.2em;
+}
+.showtime-home a:focus-visible {
+  outline: 2px solid #a4dfe9;
+  outline-offset: 4px;
+}

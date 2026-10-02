@@ -92,9 +92,13 @@ research-upload *args:
 preview *args:
     uv run --no-project python -m scripts.preview {{args}}
 
-# Plan by default; --apply stages and activates the static tailnet catalog.
+# Record a fresh homepage loop and plan; --apply stages and activates the catalog.
 deploy-site *args:
     uv run --no-project python -m scripts.deploy_site {{args}}
+
+# Record the prepared film build locally, without deployment.
+record-showtime:
+    (cd cockpit && node scripts/record-showtime.mjs)
 
 # Plan by default; install the project-local Shakesplurian API with --apply.
 deploy-naming *args:
