@@ -1,5 +1,12 @@
 # P096 — Parts camera count follows the common holder
 
+Current precedence: P095 resolved the layout question and P098 approved the Go
+service and pgx dependency. Those approvals are not still pending. P108 later
+published and browser-verified the two-inside-phone primary lander and Parts
+defaults. The complete interactive 0/1/2 camera-to-export path has local test
+coverage below, but this record does not establish its full browser acceptance.
+Production account deployment and authenticated saves remain unfinished.
+
 Goal-derived work under Andrew's existing requests for cameras, selectable
 parts/models, all prior prompts and green tests. This is not a new user prompt.
 

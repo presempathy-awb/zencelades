@@ -1,5 +1,40 @@
 # Zencelades working plan
 
+## Current continuation — October 2, publisher review follow-up
+
+This continuation: the preceding turn made source and browser progress.
+Review PID 43037 is verified live; wait on that job without restarting it.
+Meanwhile reconcile older pending-plan statements against later prompts and
+the current acceptance evidence, so superseded questions do not block work.
+
+The previous continuation made progress: full publisher and Telpher reviews
+passed and their exact-head receipts were posted. The acknowledgement-only
+turn made no implementation progress. Resume from verified lane state.
+
+1. Finish the six-file publisher follow-up: canonical JSON must discard stale
+   body encoding/digest headers; write-ref-only restrictions must reject copy
+   and S3 writes even with wildcard prefixes. Both regressions were observed
+   failing before the fix or under a deliberate mutation, then restored.
+   Full check and uncached race test run 87399 has now exited 0.
+2. Security checks passed and the bounded repair is pushed at `96b08eb4`.
+   Both hosted CI checks pass. Its full-head review is running; finish its
+   conclusion and exact-head receipt before considering the shipping gate.
+   Posted PASS receipts cover publisher `570e6bc4` and Telpher `c5106437`,
+   not the pending repair.
+3. Keep the actual shipping block explicit: the live CI gate cannot read its
+   hid-in credential. Separate tea evidence showed green CI but does not
+   satisfy that credential-backed gate. Do not bypass it or claim deployment.
+4. Continue account publication and authenticated browser acceptance when the
+   existing pending decisions are answered. Preserve the primary lander with
+   inside phones and later-prompt precedence from P108/P109.
+
+Guest import/export is now verified byte-for-byte (6,209 bytes), and reload
+clears the imported note and $125 funding field. This closes the prior guest
+round-trip evidence gap, not the authenticated persistence acceptance.
+
+The older chronological checkpoints below describe prior heads and tests;
+they do not override this current status or prove production persistence.
+
 ## Current goal — October 1
 
 Conflict rule: later explicit Andrew prompts supersede earlier conflicting
@@ -20,6 +55,10 @@ claims.
    service, provider binding and account frontend are not deployed.
 2. Complete required security review and authorized credential provisioning,
    then install through a reviewed operation that preserves the active release.
+   The publisher review at `3f0d3572` passed. Before rollout, bound restricted
+   commit bodies to message/metadata: lakeFS 1.81.1 accepts a body `force` flag
+   that bypasses repository read-only protection. Prove refusal and ordinary
+   commit compatibility, then obtain review of the repaired full head.
 3. Exercise real sign-in, save/load, reload, account isolation, expiry and
    conflict handling within approved browser scope. Local tests alone do not
    close this requirement.

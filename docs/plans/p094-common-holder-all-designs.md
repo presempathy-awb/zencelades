@@ -1,5 +1,12 @@
 # P094 — One holder across lander, aerial and optional truck
 
+Current status: the layout question was resolved in P095/P099, and P100/P102
+subsequently published and browser-verified the common holder and responsive
+controls. Their evidence supersedes the pending publication/browser statements
+at the end of this historical checkpoint. [P108](p108-lander-inside-phones.md)
+now controls the primary lander/inside-phone selection. Account saving remains
+separate unfinished work; see [integration evidence](../integration-readiness.md).
+
 Andrew: “do common triangle, ring in all designs now” and “lander, aerial rig,
 and truck but hide truck by default”.
 

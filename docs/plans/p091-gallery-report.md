@@ -9,4 +9,7 @@ gallery works, distinguish that evidence from Andrew's unconfirmed symptom.
 All ten live images returned 200 and decoded in the visible browser; the
 size-comparison image opened. A fresh canonical URL avoided an old cached
 redirect. [Evidence](../sphere-size-verification.md#gallery-report).
-Andrew's clarification remains pending. The broader backlog goal remains active.
+Andrew subsequently clarified that the renders belong on the homepage in
+[P093](p093-restore-homepage-renders.md); that restoration was published and
+browser-verified. No answer to the older gallery clarification is still needed.
+The broader backlog goal remains active.

@@ -1,5 +1,9 @@
 # P095 — SPA layout and content preservation
 
+Current precedence: P099/P101/P102 refine the SPA into the media cockpit with
+all pages and selectable columns. P108 makes its main hero and design the
+lander with inside phones. Earlier aerial wording below is release history.
+
 Resolved by Andrew: “so still single page app but homepage like the renders hero
 description basiclaly”. The SPA stays; its home presents the existing aerial
 render, hero and description, with access to the models, budget and other tools.

@@ -1,5 +1,9 @@
 # P093 — Restore renders on the homepage
 
+Current precedence: [P108](p108-lander-inside-phones.md) makes the lander with
+inside phones primary. The aerial-first wording below records this earlier
+request and release; it must not restore aerial as the current default.
+
 Andrew: “get the renders back up!!!” followed by “on the homepage”.
 
 Restore the preserved concept renders and actual model renders directly on the

@@ -1,6 +1,73 @@
 # Remaining integration evidence — October 2, 2026
 
-The account implementation is local at `6fbfb43d`; the latest verified public
+## Current continuation — October 2, 11:29 UTC
+
+Publisher `feat/thatsnozorb-publisher` (#65) now carries
+`96b08eb488b9e1a07cf0906676c720835a26d62c`. Its six-file follow-up drops
+stale Content-Encoding, Content-MD5 and Digest after canonical body rewriting
+and proves that restricted write refs still refuse copy/S3 writes with wildcard
+prefixes. HTTP regressions failed before repair; removing the PrefixSafe guard
+made the new policy regression fail. The guard is restored. Full pinned-Go
+check and uncached race tests pass, as do Trivy, directory Gitleaks (3.49 MB)
+and ast-grep's three tests. The actual policy-check reports version 2 and
+`ingest-*`. Both hosted CI checks are successful at this revision.
+
+The full reviews at publisher `570e6bc4` and companion Telpher `c5106437`
+passed and are posted. A new full-head review of `96b08eb4` is running;
+neither older receipt covers it. The live shipping gate still cannot obtain
+its hid-in credential. A fresh presvd1 probe returns vault locked and account
+service inactive; no production persistence or new asset upload is claimed.
+
+The approved guest browser check now verifies import/export and reload:
+the synthetic scenario imported with its note and $125 confirmed-cash value;
+the downloaded JSON is byte-identical to the 6,209-byte input (SHA-256
+`a8801be0e8732e621d8e12cd70cf6ee81c36db80e6b1e5caea1c2d5faa1bc32f`).
+Reload clears the note and restores confirmed cash to zero. The browser's
+download event timed out, but its actual new Downloads file was verified.
+Earlier interaction failures coincided with a zero-width browser viewport;
+a temporary supported viewport override restored screenshots and interaction.
+The account-unavailable warning remains accurate for this static preview;
+no account, sign-in, private save or live route was exercised.
+
+Older sections below are dated implementation history, not current-head or
+production completion evidence.
+
+Telpher follow-up: companion PR #554 now carries
+`c5106437b56ac8c5c68650aff9bd71ab98935946`, incorporating main `645d97fd`
+without conflicts and retaining only the three intended publisher paths in
+the PR diff. Its rollout note now names version-2 policy, `ingest-*` writes,
+fresh unshared branches, and refusal checks for main/force operations.
+Fresh non-interpolated Compose rendering and an exact TOML/binding isolation
+check pass; only lake-broker receives the optional binding name. The scoped
+Gitleaks patch scan and Dustopo hook probe pass. Its full-head Grok review is
+running alongside the broker review. Neither owner PR is merged or deployed.
+
+Additional local-browser acceptance remains incomplete: the scenario import
+file-chooser event timed out, and disclosure clicks did not reliably change
+the displayed state. The attempt stopped without importing synthetic data or
+signing in. This is not evidence that the import workflow works or is broken.
+The already-recorded guest reload check is separate from this unsuccessful
+import attempt. No UI code changed in this continuation.
+
+Latest continuation: publisher head `570e6bc4d99342350881e06ff80ca480f9a16e95`
+is pushed; its full-head review is running. The previous `3f0d3572` review
+[passed](https://git.telpher.stream/awb/hesellsheshells/pulls/65#issuecomment-13978)
+but does not cover this repair. Source inspection of lakeFS 1.81.1 confirmed
+that commit-body `force` reaches `graveler.WithForce` and bypasses repository
+read-only protection. Restricted commits now accept only bounded, canonical
+message/metadata JSON. The HTTP regression failed before the fix and passes
+after it, including prefix-only, write-ref-only and unrestricted compatibility.
+Pinned Go `just check`, uncached full race tests, the policy-check CLI, Trivy,
+Gitleaks directory scan (3.49 MB) and all three ast-grep policy tests pass.
+The read-scope and wildcard documentation is clarified as well.
+
+The account source remains locally committed at `efc78540`; production account
+deployment is still unverified. A fresh presvd1 check after this repair reports
+the vault locked and `zencelades-account.service` inactive. The pending account
+PR/review choice and authenticated browser scope are unchanged. No live
+credentials, policy, account service or website release changed in this step.
+
+At the initial audit the account implementation was local at `6fbfb43d`; the latest verified public
 release is `e0cbad5afbbe46fc734d07872e1d242e5704ab115d09a3f4de4f9107c527537a`
 (lander with inside phones). This audit does not establish live account saving, inventory
 editing, remote asset preservation or completion of the full prompt backlog.

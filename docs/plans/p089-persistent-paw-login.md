@@ -12,5 +12,9 @@ logout without losing another person's data. No client-only authentication gate.
 The latest all-green-tests request resumes relevant full test coverage, including
 the previously paused Python suite when verifying Python changes and release.
 
-Status: active; login and persistence not yet implemented. Existing public viewing,
-private inventory boundaries and all prior project requirements remain in force.
+Status: active. Account identity verification, PG18 persistence, explicit account
+save/load and guest help are implemented and tested locally under P098. Guest
+import/export and reload clearing are browser-verified. Production account
+publication, deployment and authenticated acceptance remain incomplete; see
+[current integration evidence](../integration-readiness.md). Existing public
+viewing, private inventory boundaries and prior compatible requirements remain.
