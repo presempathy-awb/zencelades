@@ -23,7 +23,19 @@ async function request(path, options) {
     cache: "no-store",
     signal: AbortSignal.timeout(10000),
   });
-  const payload = record(await response.json());
+  let decoded;
+  try {
+    decoded = await response.json();
+  } catch (cause) {
+    const error = new AccountError(
+      response.status,
+      "invalid_response",
+      "Account service returned an unreadable response. Keep this draft and export it before leaving.",
+    );
+    error.cause = cause;
+    throw error;
+  }
+  const payload = record(decoded);
   if (!response.ok) {
     const error = record(payload.error);
     throw new AccountError(

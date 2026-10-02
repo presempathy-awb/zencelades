@@ -68,11 +68,32 @@ current-main adapter retirement preserved, full site build and Python/Node/Bun
 suites green, homepage/model/full-size render browser paths checked. The
 account branch still needs source publication/review and production acceptance.
 
+Publisher review follow-up: b55ad71d's full review and conclusion passed.
+The raw canonical branch-body and source-read refusal tests now catch deliberate
+mutations. Mixed-wildcard diagnostics and unnecessary repository metadata
+access are repaired, with their reproductions passing. October 2 fresh pinned-Go
+full checks and uncached race tests pass; Trivy and ast-grep pass. Gitleaks's
+Git mode scanned zero commits in this non-colocated lane, so a separate directory
+scan verified 3.48 MB with no findings. The six-file repair is pushed at
+`3f0d3572`; both hosted CI checks pass and a fresh full-head Grok review is
+running. Obtain its exact-head receipt before landing. The prepared account PR and authenticated
+browser choices remain pending; do not repeat them.
+
 The homepage loop and truck-alternatives separation are live and freshly
 browser-checked in release `9b6f2f7c`;
 [P103](docs/plans/p103-homepage-loop-alternatives.md) records the scoped delivery.
 
 ## Historical checkpoints
+
+Current browser acceptance found a raw JSON-parser error in the guest account
+panel when the undeployed API falls through to HTML. The shared client now
+retains failure status and cause, preserves edits and shows an export instruction.
+The session/load/save regression failed before the repair and passes afterward.
+Full Python61+13subtests, Node18, Bun56/797 assertions, Go race/vet and isolated
+PG18 checks pass; the full site build verifies216 downloads. Browser proof
+confirms the new message and guest-note reset on reload. Export displays its
+success notice, but downloaded bytes remain unverified after the download-event
+wait timed out. No real sign-in or production publication occurred.
 
 **P056 active:** PR, merge, reviewed deployment, temporary public static site,
 public Gitea/GitHub repositories and visible source links. Resolve the remaining

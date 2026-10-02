@@ -64,6 +64,25 @@ test("expiry and conflicts remain actionable errors", async () => {
   }
 });
 
+test("non-JSON account responses keep draft recovery actionable", async () => {
+  const scenario = initialScenario();
+  for (const status of [200, 502]) {
+    for (const operation of [
+      () => accountSession(),
+      () => loadAccountScenario("alice"),
+      () => saveAccountScenario("alice", 1, scenario),
+    ]) {
+      respond(async () => new Response("<!DOCTYPE html><title>Gateway</title>", { status }));
+      await expect(operation()).rejects.toMatchObject({
+        status,
+        code: "invalid_response",
+        message:
+          "Account service returned an unreadable response. Keep this draft and export it before leaving.",
+      });
+    }
+  }
+});
+
 test("session rejects external login URLs and malformed identities", async () => {
   const data = {
     user: null,

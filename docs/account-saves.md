@@ -30,6 +30,9 @@ bytes without deletion; explicitly import the recovery file to use it. Complete
 Naming import validates both editors before replacement, and refuses replacement
 while an editor request is in progress. Naming and scenario saves never overwrite
 each other. Tooltips explain temporary edits, account saves and replacement.
+If an account endpoint returns HTML or another unreadable response, both editors
+keep the draft and explain that it should be exported before leaving. A malformed
+response never becomes a successful save or a verified guest session.
 
 ## HTTP contract
 
@@ -117,6 +120,25 @@ server tests and the DOM test harness do not
 prove an actual Authentik browser session.
 
 ## Deployment prerequisites observed October 1
+
+October 2 local acceptance: an HTML response from the undeployed account API
+previously leaked a JSON parser error into the guest panel. A regression covers
+session, load and save with HTML responses at HTTP200 and502; it failed before
+the shared-client fix. The revised message is verified in the visible preview,
+and the original failure is retained as the error cause for diagnostics.
+Guest note application and reset after reloading were exercised. The export
+button reports success, but the downloaded bytes remain unverified: the
+browser download-event wait timed out. Reconnecting to the same surviving tab
+allowed the reload check to finish. No account session was entered.
+
+Fresh checks after this repair: 61 Python tests and13 subtests,18 Node tests,
+56 Bun tests/797 assertions, Go race tests(cached), vet, and the complete test
+binary against a new isolated PG18 instance all pass. The full site build
+passes and verifies132 original plus84 v4 downloads. Vite's existing large-chunk
+warning remains. The rendered preview returns no Impeccable findings. A combined
+Biome invocation spanning both the cockpit and site directories refused nested
+configuration; the targeted cockpit formatter ran successfully from its own
+directory. No formatter configuration was changed.
 
 - The live homepage routing fix is release `9b6f2f7c`; account changes remain local.
 - The existing presvd1 outpost listens on loopback port 19001. With the old

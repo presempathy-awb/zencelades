@@ -5,10 +5,13 @@
 Use the complete owner changes, not the historical config-only patch:
 [hesellsheshells `feat/thatsnozorb-publisher` (#65)](https://git.telpher.stream/awb/hesellsheshells/pulls/65)
 and [telpher `feat/thatsnozorb-publisher` (#554)](https://git.telpher.stream/awb/telpher/pulls/554).
-The broker's pushed head `b55ad71d` requires policy version 2, confines object
+The broker's pushed head `3f0d3572` requires policy version 2, confines object
 access to `imports/*`, and confines writes to `ingest-*`. It validates branch
 creation bodies before forwarding them and retains immutable commit reads.
-The prior PASS applies to an older head; the current full-head review is running.
+The b55ad71d PASS predates the follow-up repair. The current full-head review
+is running; both current-head hosted CI checks pass. Repository metadata is
+denied to prefix-limited clients. Tests prove canonical branch-body forwarding
+and refusal when source-read authority is missing.
 See [integration readiness](integration-readiness.md) for test and review evidence.
 
 `deploy/research-publisher.toml` mirrors the selected principal for inspection;

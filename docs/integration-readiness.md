@@ -229,3 +229,25 @@ both lander/aerial render links open complete 1600 × 1400 images. The initial
 below-fold image check preceded lazy loading; clicking both images established
 their actual load success. No sign-in was attempted. The saved rendered homepage
 passes `impeccable detect --json` with `[]`; Vite's large-chunk warning remains.
+
+## Publisher review repair — October 2, 10:28 UTC
+
+Publisher head `3f0d3572123d1e669ebea38b794d782133553598` is pushed to
+[hesellsheshells `feat/thatsnozorb-publisher` (#65)](https://git.telpher.stream/awb/hesellsheshells/pulls/65).
+Both hosted checks report success at this head. The preceding b55ad71d review
+passed, but its receipt does not cover this repair; a new full-head Grok review
+has started, with the previous findings retained for the conclusion.
+
+The repair removes unnecessary repository-metadata reads from the restricted
+REST subset and corrects policy-check output when a write-ref list includes
+both `*` and narrower patterns. Both reproductions failed before the fixes.
+The branch-body test now checks exact upstream bytes; forwarding the original
+ambiguous JSON makes it fail. Removing source-read authorization also makes the
+new HTTP regression fail. Both temporary mutations were restored before checks.
+
+Fresh pinned Go 1.26.4 `just check`, uncached `go test -race ./... -count=1`,
+and the actual policy-check command exit 0. Trivy reports zero HIGH/CRITICAL
+findings; ast-grep scan and all three policy tests pass. Gitleaks Git mode in
+this non-colocated lane scanned no commits and is not secret-scan evidence;
+the separate directory scan covered 3.48 MB with no leaks. No production
+credential, service, policy or project release changed in this continuation.
