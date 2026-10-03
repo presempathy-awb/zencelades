@@ -21,3 +21,9 @@ test("links already targeting a cockpit view survive repeated document routing",
     expect(cockpitHref(cockpitHref(href, "/showtime/"), "/")).toBe(href);
   }
 });
+
+test("homepage fragments become a section query with one level of encoding", () => {
+  expect(cockpitHref("/#renders", "/")).toBe("/#/?section=renders");
+  expect(cockpitHref("/#two%20words", "/")).toBe("/#/?section=two%20words");
+  expect(cockpitHref("/#bad%ZZ", "/")).toBe("/#bad%ZZ");
+});

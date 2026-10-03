@@ -9,13 +9,23 @@ async function texts(directory: string): Promise<string[]> {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     const path = resolve(directory, entry.name);
     if (entry.isDirectory()) result.push(...(await texts(path)));
-    else if (/\.(?:html|js|mjs|json|md|txt|map)$/.test(entry.name)) result.push(path);
+    else if (entry.isFile()) result.push(path);
   }
   return result;
 }
 for (const path of await texts(resolve(root, "cockpit/dist"))) {
   const content = await readFile(path, "utf8");
-  if (markers.some((marker) => content.includes(marker)))
+  const normalized = content.replace(
+    /\\(?:u([0-9a-fA-F]{4})|x([0-9a-fA-F]{2}))/g,
+    (_, unicode: string | undefined, hex: string | undefined) =>
+      String.fromCharCode(Number.parseInt(unicode ?? hex!, 16)),
+  );
+  if (
+    markers.some(
+      (marker) =>
+        normalized.includes(marker) || normalized.includes(JSON.stringify(marker).slice(1, -1)),
+    )
+  )
     throw new Error(`Private prompt content is in the public build: ${path}`);
 }
 const privateText = (
@@ -26,5 +36,5 @@ const privateText = (
 if (!markers.every((marker) => privateText.includes(marker)))
   throw new Error("Private build is missing a music or effect prompt");
 console.log(
-  "Public build has no prompt content; private build retains all eight songs and sixteen effects.",
+  `Checked ${markers.length} current style, exclude, controls and effect excerpts in every public artifact (including common JS escapes); all excerpts occur in the private build. This is marker coverage, not proof against arbitrary encodings or historical text.`,
 );

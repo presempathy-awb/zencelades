@@ -19,8 +19,10 @@ Showtime. Tailnet presence alone does not grant studio membership.
 5. Complete real-login acceptance within Andrew's browser approval and record
    the Pawthentik migration plan without claiming an inactive service works.
 
-Status: implementation and local/isolated HTTP checks pass. Production is
-unchanged. Andrew approved the private-studio browser scope. The Authentik API
+Status: implementation and local/isolated HTTP checks pass. P122 subsequently
+applied the Authentik provider, application, outpost assignment and restricted
+crew membership. DNS, website route and asset-release activation remain pending.
+Andrew approved the private-studio browser scope. The Authentik API
 read and real domain/route dry run now pass after the manifest grant. Required
 security review and live acceptance remain pending. The account-service/PG18
 rollout remains a separate unfinished item.

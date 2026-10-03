@@ -8,19 +8,27 @@ export default function ChoiceButtons<T extends string | number>({
   options,
   onChange,
   disabled = false,
+  describedBy,
 }: {
   label: string;
   value: T;
   options: ReadonlyArray<readonly [T, string]>;
   onChange: (value: T) => void;
   disabled?: boolean;
+  describedBy?: string;
 }): JSX.Element {
   return (
-    <fieldset className="choice-control" disabled={disabled}>
+    <fieldset className="choice-control" disabled={disabled} aria-describedby={describedBy}>
       <legend>{label}</legend>
       <div className="choice-buttons">
         {options.map(([id, title]) => (
-          <button key={id} type="button" aria-pressed={id === value} onClick={() => onChange(id)}>
+          <button
+            key={id}
+            type="button"
+            aria-pressed={id === value}
+            aria-describedby={describedBy}
+            onClick={() => onChange(id)}
+          >
             {title}
           </button>
         ))}

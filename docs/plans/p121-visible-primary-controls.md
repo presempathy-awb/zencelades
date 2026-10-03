@@ -17,7 +17,7 @@ The private-studio access repair remains active. This UI lane is stacked on its
 frozen reviewed source so the changes do not overwrite that review in progress.
 # Verification
 
-On maxipaxi, `bun test` passed 60 tests with 819 assertions (exit 0).
+Historical run at `b8c4402e9454` on maxipaxi: `bun test` passed 60 tests with 819 assertions (exit 0).
 The visible-controls regression test failed on the old select-based rendering
 before implementation and passes with direct buttons. `just site-build` exited
 0, compiling public and private bundles and byte-verifying 132 original plus
@@ -34,6 +34,6 @@ prompts. No live access-control or account-save claim follows from local UI test
 
 The browser download-event capture timed out; the scenario import/export
 round-trip is covered by existing automated tests, not a completed browser
-file round-trip. Production deployment awaits the security parent review and
-Telpher project-ticket unlock. Historical naming-workbench form fields remain
+file round-trip. P125 verifies the later project unlock. Production deployment
+awaits the integrated PR13 review and publication checks. Historical naming-workbench form fields remain
 inside their secondary page; this change replaces the cockpit's primary controls.

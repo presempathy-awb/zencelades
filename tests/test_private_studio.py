@@ -13,12 +13,82 @@ from unittest.mock import patch
 from scripts.private_studio import (
     guard_config,
     main,
+    prompt_markers,
+    public_payload,
     retired_config,
     write_private_artifacts,
 )
 
 
 class PrivateStudioBoundary(unittest.TestCase):
+    def test_complete_publisher_refuses_replacing_an_existing_release(self):
+        from scripts import deploy_site
+
+        with (
+            tempfile.TemporaryDirectory() as directory,
+            patch.object(sys, "argv", ["deploy", "--host", "fixture", "--apply"]),
+            patch.object(deploy_site, "ROOT", Path(directory)),
+            patch.object(deploy_site, "build"),
+            patch.object(
+                deploy_site.subprocess, "check_output", return_value=b"existing"
+            ),
+            patch.object(deploy_site.subprocess, "run"),
+            self.assertRaisesRegex(SystemExit, "Existing release"),
+        ):
+            (Path(directory) / "assets").mkdir()
+            deploy_site.main()
+
+    def test_marker_adapter_rejects_empty_or_malformed_output(self):
+        for raw in (b"[]", b'[""]', b"[1]", b"{}"):
+            with (
+                self.subTest(raw=raw),
+                patch(
+                    "scripts.private_studio.subprocess.check_output", return_value=raw
+                ),
+                self.assertRaises(ValueError),
+            ):
+                prompt_markers()
+
+    def test_build_rejects_linked_directories_and_unsafe_filenames(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            public, private = root / "public", root / "private"
+            public.mkdir()
+            private.mkdir()
+            (public / "index.html").write_text("public")
+            (private / "index.html").write_text("private")
+            bad = public / "bad\nname.js"
+            bad.write_text("bad")
+            with self.assertRaises(ValueError):
+                public_payload(public, [b"marker"])
+            bad.unlink()
+            (private / "linked").symlink_to(public, target_is_directory=True)
+            with (
+                patch(
+                    "scripts.private_studio.prompt_markers", return_value=[b"marker"]
+                ),
+                self.assertRaises(ValueError),
+            ):
+                write_private_artifacts(public, private, root / "out", root / "deny")
+            self.assertFalse((root / "out").exists())
+
+    def test_complete_build_retires_text_suffixes_and_removes_stale_private_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            public, private, out = root / "public", root / "private", root / "out"
+            for path in (public, private, out):
+                path.mkdir()
+            (private / "index.html").write_text("new private")
+            (out / "removed.md").write_text("stale")
+            (public / "old.txt").write_bytes(b"private prompt")
+            with patch(
+                "scripts.private_studio.prompt_markers",
+                return_value=[b"private prompt"],
+            ):
+                write_private_artifacts(public, private, out, root / "deny")
+            self.assertFalse((out / "removed.md").exists())
+            self.assertIn("/old.txt", (root / "deny").read_text())
+
     def test_overlay_rejects_tampering_cleans_failed_copy_and_preserves_live(self):
         from scripts.private_studio import digest
 
@@ -67,18 +137,18 @@ class PrivateStudioBoundary(unittest.TestCase):
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(data)
             (root / "current").symlink_to(base)
+            (base / "unmanifested.txt").write_text("not part of this release")
             with self.assertRaisesRegex(SystemExit, "archive changed"):
                 overlay.stage_release(
                     root, base_id, release_id, digest(payload), payload + b"tampered"
                 )
 
             def partial_copy(source, destination, **kwargs):
-                destination.mkdir()
-                (destination / "partial").write_text("incomplete")
+                destination.write_text("incomplete")
                 raise OSError("copy failed")
 
             with (
-                patch.object(overlay.shutil, "copytree", side_effect=partial_copy),
+                patch.object(overlay.shutil, "copy2", side_effect=partial_copy),
                 self.assertRaisesRegex(OSError, "copy failed"),
             ):
                 overlay.stage_release(
@@ -96,6 +166,7 @@ class PrivateStudioBoundary(unittest.TestCase):
                 (target / "site/dist/index.html").read_bytes(), b"new public page"
             )
             self.assertEqual((base / "site/dist/index.html").read_bytes(), b"old page")
+            self.assertFalse((target / "unmanifested.txt").exists())
             with self.assertRaisesRegex(SystemExit, "Never overwrite"):
                 overlay.stage_release(
                     root, base_id, release_id, digest(payload), payload
@@ -112,6 +183,9 @@ class PrivateStudioBoundary(unittest.TestCase):
                 {"site/dist/index.html": b"public artwork"},
             )
             (root / "stale.js").write_bytes(b"const prompt = 'private prompt'")
+            with self.assertRaisesRegex(ValueError, "Private prompt in public build"):
+                public_payload(root, [b"private prompt"])
+            (root / "stale.js").write_bytes(b"const prompt = '\\u0070rivate prompt'")
             with self.assertRaisesRegex(ValueError, "Private prompt in public build"):
                 public_payload(root, [b"private prompt"])
 

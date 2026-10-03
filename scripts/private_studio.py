@@ -11,11 +11,50 @@ import shlex
 import shutil
 import subprocess
 import tarfile
+import tempfile
 from pathlib import Path, PurePosixPath
 
 from scripts.assets import ROOT
 
 IMPORT = "    import private-studio.caddy\n"
+MEDIA_SUFFIXES = {
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".mp4",
+    ".glb",
+    ".blend",
+    ".npz",
+    ".pdf",
+    ".xlsx",
+    ".zip",
+}
+
+
+def validate_path(name: str) -> None:
+    """Require a canonical relative artifact path without control characters."""
+    relative = PurePosixPath(name)
+    if (
+        not name
+        or relative.is_absolute()
+        or ".." in relative.parts
+        or "\\" in name
+        or str(relative) != name
+        or any(ord(c) < 32 or ord(c) == 127 for c in name)
+    ):
+        raise ValueError("Unsafe manifest path")
+
+
+def artifact_files(directory: Path) -> list[Path]:
+    """Validate a generated tree before reading or copying its regular files."""
+    files = []
+    for path in directory.rglob("*"):
+        validate_path(path.relative_to(directory).as_posix())
+        if path.is_symlink() or not (path.is_file() or path.is_dir()):
+            raise ValueError("Linked or non-regular build artifact")
+        if path.is_file():
+            files.append(path)
+    return files
 
 
 def guard_config(config: str) -> str:
@@ -28,7 +67,9 @@ def guard_config(config: str) -> str:
     return config.replace(needle, needle + IMPORT, 1)
 
 
-def retired_config(paths: list[str], previous: str = "") -> str:
+def retired_config(
+    paths: list[str], previous: str = "", republished: set[str] | None = None
+) -> str:
     """Deny old prompt-bearing artifacts while retaining their immutable bytes."""
     if previous and previous != "# No retired private prompt bundles.\n":
         match = re.search(r"^    path (.+)$", previous, re.MULTILINE)
@@ -39,6 +80,7 @@ def retired_config(paths: list[str], previous: str = "") -> str:
         if retired_config(old_paths) != previous:
             raise ValueError("Unrecognized prior private asset guard")
         paths = [*paths, *old_paths]
+    paths = [path for path in paths if path not in (republished or set())]
     for path in paths:
         if (
             not re.fullmatch(r"site/dist/[A-Za-z0-9_./-]+", path)
@@ -65,7 +107,28 @@ def prompt_markers() -> list[bytes]:
     raw = subprocess.check_output(
         ["bun", str(ROOT / "cockpit/scripts/private-markers.ts")], timeout=30
     )
-    return [marker.encode() for marker in json.loads(raw)]
+    markers = json.loads(raw)
+    if (
+        not isinstance(markers, list)
+        or not markers
+        or any(not isinstance(marker, str) or not marker for marker in markers)
+    ):
+        raise ValueError("Expected non-empty prompt markers")
+    return [marker.encode() for marker in markers]
+
+
+def contains_prompt(data: bytes, markers: list[bytes]) -> bool:
+    """Recognize current excerpts in raw text and common JavaScript escapes."""
+    normalized = re.sub(
+        rb"\\(?:u([0-9a-fA-F]{4})|x([0-9a-fA-F]{2}))",
+        lambda match: chr(int(match[1] or match[2], 16)).encode(errors="surrogatepass"),
+        data,
+    )
+    return any(
+        marker in normalized
+        or json.dumps(marker.decode(), ensure_ascii=False)[1:-1].encode() in normalized
+        for marker in markers
+    )
 
 
 def public_payload(directory: Path, markers: list[bytes]) -> dict[str, bytes]:
@@ -73,14 +136,11 @@ def public_payload(directory: Path, markers: list[bytes]) -> dict[str, bytes]:
     if not (directory / "index.html").is_file():
         raise ValueError("Build both frontend artifacts before planning a release")
     payload = {}
-    for path in directory.rglob("*"):
-        if path.is_symlink():
-            raise ValueError("Linked build artifact")
-        if path.is_file():
-            data = path.read_bytes()
-            if any(marker in data for marker in markers):
-                raise ValueError(f"Private prompt in public build: {path}")
-            payload[f"site/dist/{path.relative_to(directory).as_posix()}"] = data
+    for path in artifact_files(directory):
+        data = path.read_bytes()
+        if contains_prompt(data, markers):
+            raise ValueError(f"Private prompt in public build: {path}")
+        payload[f"site/dist/{path.relative_to(directory).as_posix()}"] = data
     return payload
 
 
@@ -90,14 +150,38 @@ def write_private_artifacts(
     """Keep private content out of the public root in complete site builds too."""
     markers = prompt_markers()
     retired = []
-    for path in public.rglob("*"):
-        if path.is_file() and path.suffix in (".js", ".html", ".md", ".json"):
+    artifact_files(private)
+    if not (private / "index.html").is_file():
+        raise ValueError("Missing private build")
+    for path in artifact_files(public):
+        if path.suffix not in MEDIA_SUFFIXES:
             content = path.read_bytes()
-            if any(marker in content for marker in markers):
+            if contains_prompt(content, markers):
                 retired.append(f"site/dist/{path.relative_to(public).as_posix()}")
-    shutil.copytree(private, destination, dirs_exist_ok=True)
     previous = deny_file.read_text() if deny_file.exists() else ""
-    deny_file.write_text(retired_config(retired, previous))
+    deny = retired_config(retired, previous)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(
+        dir=destination.parent, prefix=".private-build-"
+    ) as temporary:
+        staged = Path(temporary) / "new"
+        backup = Path(temporary) / "previous"
+        shutil.copytree(private, staged)
+        if destination.exists():
+            destination.rename(backup)
+        try:
+            staged.rename(destination)
+        except OSError:
+            if backup.exists():
+                backup.rename(destination)
+            raise
+    with tempfile.NamedTemporaryFile(
+        mode="w", dir=deny_file.parent, delete=False
+    ) as stream:
+        stream.write(deny)
+        staged_deny = Path(stream.name)
+    staged_deny.chmod(0o644)
+    staged_deny.replace(deny_file)
 
 
 def main() -> None:
@@ -120,15 +204,7 @@ def main() -> None:
     rows = json.loads(raw)
     for row in rows:
         name = row["path"]
-        relative = PurePosixPath(name)
-        if (
-            not name
-            or relative.is_absolute()
-            or ".." in relative.parts
-            or "\\" in name
-            or str(relative) != name
-        ):
-            raise ValueError("Unsafe manifest path")
+        validate_path(name)
     old = {row["path"]: row for row in rows}
     if len(old) != len(rows):
         raise ValueError("Duplicate live manifest entry")
@@ -138,7 +214,7 @@ def main() -> None:
         if name in ("deploy/Caddyfile", "deploy/private-studio-retired.caddy")
         or (
             name.startswith("site/dist/")
-            and name.endswith((".js", ".html", ".md", ".json"))
+            and PurePosixPath(name).suffix not in MEDIA_SUFFIXES
         )
     ]
     # These paths come from the verified manifest, not shell or document instructions.
@@ -157,19 +233,16 @@ def main() -> None:
     retired = [
         name
         for name, data in snapshots.items()
-        if name.startswith("site/dist/") and any(marker in data for marker in markers)
+        if name.startswith("site/dist/") and contains_prompt(data, markers)
     ]
     payload = public_payload(ROOT / "cockpit/dist", markers)
     for directory, prefix in ((ROOT / "cockpit/private-dist", "site/private-studio"),):
         if not (directory / "index.html").is_file():
             raise ValueError("Build both frontend artifacts before planning a release")
-        for path in directory.rglob("*"):
-            if path.is_file():
-                if path.is_symlink():
-                    raise ValueError("Linked build artifact")
-                payload[f"{prefix}/{path.relative_to(directory).as_posix()}"] = (
-                    path.read_bytes()
-                )
+        for path in artifact_files(directory):
+            payload[f"{prefix}/{path.relative_to(directory).as_posix()}"] = (
+                path.read_bytes()
+            )
     # Limit the public overlay to entrypoints and generated code, preserving live data/models.
     payload = {
         name: data
@@ -192,7 +265,7 @@ def main() -> None:
     ).read_bytes()
     previous_guard = snapshots.get("deploy/private-studio-retired.caddy", b"").decode()
     payload["deploy/private-studio-retired.caddy"] = retired_config(
-        retired, previous_guard
+        retired, previous_guard, set(payload)
     ).encode()
     payload = {
         name: data
@@ -218,6 +291,7 @@ def main() -> None:
     bundle_path = work / f"{release}.tar.gz"
     with tarfile.open(bundle_path, "w:gz") as archive:
         for name, data in {**payload, "release-files.json": manifest}.items():
+            validate_path(name)
             item = tarfile.TarInfo(name)
             item.size, item.mode = len(data), 0o644
             archive.addfile(item, io.BytesIO(data))

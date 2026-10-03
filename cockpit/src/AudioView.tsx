@@ -122,8 +122,8 @@ export default function AudioView(): JSX.Element {
               ambient bridge between families.
             </p>
             <p>
-              The planned private asset studio will use Pawthentik through gimmesomepaw. Studio
-              hosting, audio generation and automatic mixing are deferred.
+              This studio uses restricted Authentik crew access. Pawthentik through gimmesomepaw is
+              the planned successor. Audio generation and automatic mixing remain deferred.
             </p>
             <a href="/documents/audio/studio-and-umesemu.md" target="_blank" rel="noreferrer">
               Studio, optimization and mixing plan ↗

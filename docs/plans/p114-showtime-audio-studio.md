@@ -23,5 +23,7 @@ authentication and optimization requirements with evidence and acceptance tests.
 
 Status: preparation complete in the [audio prompt pack](../audio/README.md):
 16 ElevenLabs effects, eight separate Suno prompt files, and a source-backed
-studio/auth/mixer plan. Implementation and generation remain deferred. The
-earlier account merge/deploy task remains open.
+studio/auth/mixer plan. P118 subsequently implemented the separate private copy
+studio with restricted Authentik access; its route activation is tracked there.
+Generation, adaptive playback and the mixer remain deferred. The account-service
+runtime deployment remains open.

@@ -1,8 +1,9 @@
 # Zencelades — Showtime audio prompt pack
 
 Prepared October 2, 2026. **Suno for music; ElevenLabs for sound effects.**
-Prompt writing and source research are complete. P118 now authorizes the private
-studio deployment using Authentik while Pawthentik is unavailable; see the
+Prompt writing and source research are complete. The separate copy studio is
+implemented with Authentik forward-auth as the planned website boundary while
+Pawthentik is unavailable. Source implementation does not activate the route; see the
 [access contract](../private-studio-access.md) for its current prerequisites.
 Showtime audio implementation, generation and listening acceptance remain deferred.
 

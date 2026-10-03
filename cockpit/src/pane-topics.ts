@@ -4,6 +4,17 @@ export interface TopicRange {
   end: number;
 }
 
+/** Decode either a cockpit section query or a native fragment. */
+export function sectionId(hash: string): string | null {
+  if (hash.startsWith("#/")) return new URLSearchParams(hash.split("?")[1]).get("section");
+  if (!hash.startsWith("#") || hash.length === 1) return null;
+  try {
+    return decodeURIComponent(hash.slice(1));
+  } catch {
+    return null;
+  }
+}
+
 /** Native scrolling crosses shadow roots and keeps the target in its nearest panel. */
 export function focusSection(target: HTMLElement | null): void {
   if (!target) return;
@@ -95,20 +106,13 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
   const reveal = (event?: Event): void => {
     const link = event?.target instanceof Element ? event.target.closest("a[href]") : null;
     const href = link?.getAttribute("href");
-    const id =
-      href?.startsWith("#") && !href.startsWith("#/")
-        ? href.slice(1)
-        : !event
-          ? new URLSearchParams(location.hash.split("?")[1]).get("section")
-          : null;
+    const id = event
+      ? href?.startsWith("#") && !href.startsWith("#/")
+        ? sectionId(href)
+        : null
+      : sectionId(location.hash);
     if (!id) return;
-    let decoded = id;
-    try {
-      if (href) decoded = decodeURIComponent(id);
-    } catch {
-      return;
-    }
-    const target = content.querySelector<HTMLElement>(`#${CSS.escape(decoded)}`);
+    const target = content.querySelector<HTMLElement>(`#${CSS.escape(id)}`);
     const index = topics.findIndex((topic) =>
       nodes
         .slice(topic.start, topic.end)

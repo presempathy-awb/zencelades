@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tarfile
 import tempfile
+import time
 from pathlib import Path, PurePosixPath
 
 
@@ -92,6 +93,7 @@ def stage_release(
                 or ".." in relative.parts
                 or "\\" in name
                 or str(relative) != name
+                or any(ord(c) < 32 or ord(c) == 127 for c in name)
             ):
                 raise SystemExit("Unsafe manifest path")
             if name in changed:
@@ -116,7 +118,11 @@ def stage_release(
             prefix=".private-studio-", dir=root / "releases"
         ) as temporary:
             staging = Path(temporary) / "release"
-            shutil.copytree(base, staging, copy_function=shutil.copy2)
+            staging.mkdir()
+            for name in old:
+                destination = staging / name
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(base / name, destination, follow_symlinks=False)
             for name in changed | {"release-files.json"}:
                 path = staging / name
                 if not path.resolve().is_relative_to(staging):
@@ -135,9 +141,28 @@ def stage_release(
                 ),
                 "w",
             ) as lock:
-                fcntl.flock(lock, fcntl.LOCK_EX)
+                deadline = time.monotonic() + 30
+                while True:
+                    try:
+                        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                        break
+                    except BlockingIOError:
+                        if time.monotonic() >= deadline:
+                            raise SystemExit("Activation lock busy; re-plan")
+                        time.sleep(0.05)  # Bounded lock contention polling.
                 if target.exists():
                     raise SystemExit("Never overwrite an existing release")
+                if (root / "current").resolve() != base:
+                    raise SystemExit("Live release changed while staging; re-plan")
+                for name, entry in new.items():
+                    path = staging / name
+                    if (
+                        path.is_symlink()
+                        or not path.is_file()
+                        or path.stat().st_size != entry["bytes"]
+                        or file_digest(path) != entry["sha256"]
+                    ):
+                        raise SystemExit(f"Staged file verification failed: {name}")
                 staging.rename(target)
     return target
 
@@ -170,9 +195,14 @@ def main() -> None:
         timeout=300,
     )
     # Keep a completed release on activation failure/timeout for diagnosis.
-    Path(archive_path).unlink()
-    Path(archive_path).parent.rmdir()
     print(f"Activated {release_id}; retained all prior entries and prior release")
+    try:
+        Path(archive_path).unlink()
+        Path(archive_path).parent.rmdir()
+    except OSError as error:
+        print(
+            f"Activation succeeded; upload cleanup incomplete: {error}", file=sys.stderr
+        )
 
 
 if __name__ == "__main__":

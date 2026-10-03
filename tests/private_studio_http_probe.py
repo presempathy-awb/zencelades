@@ -9,18 +9,20 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
+from scripts.private_studio import retired_config
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fragment", type=Path, required=True)
-    parser.add_argument("--retired", type=Path, required=True)
     args = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix="zenc-private-proof-") as temporary:
         root = Path(temporary)
         public, private = root / "public", root / "private"
         for path, content in {
             public / "index.html": "PUBLIC ARTWORK",
-            public / "documents/audio/test.md": "PRIVATE DOWNLOAD",
+            public / "documents/audio/test.md": "PRIVATE PUBLIC-ROOT DECOY",
+            public / "private-assets/app.js": "PRIVATE PUBLIC-ROOT ASSET DECOY",
             public / "studio-assets/index-old.js": "RETIRED PRIVATE BUNDLE",
             private / "index.html": "PRIVATE STUDIO",
             private / "private-assets/app.js": "PRIVATE ASSET",
@@ -32,7 +34,9 @@ def main() -> None:
             "/srv/thatsnozorb/current/site/private-studio", str(private)
         )
         (root / "private-studio.caddy").write_text(fragment)
-        (root / "private-studio-retired.caddy").write_text(args.retired.read_text())
+        (root / "private-studio-retired.caddy").write_text(
+            retired_config(["site/dist/studio-assets/index-old.js"])
+        )
         with socket.socket() as listener:
             listener.bind(("127.0.0.1", 0))
             port = listener.getsockname()[1]
@@ -79,6 +83,13 @@ def main() -> None:
                     ("zenceladus.com", "/studio-assets/index-old.js", 404, ""),
                     ("127.0.0.1", "/documents/audio/test.md", 404, ""),
                     ("studio.zenceladus.com", "/", 200, "PRIVATE STUDIO"),
+                    ("studio.zenceladus.com", "/studio-assets/index-old.js", 404, ""),
+                    (
+                        "studio.zenceladus.com",
+                        "/private-assets/app.js",
+                        200,
+                        "PRIVATE ASSET",
+                    ),
                     (
                         "studio.zenceladus.com",
                         "/documents/audio/test.md",
@@ -120,11 +131,15 @@ def main() -> None:
                                 response.headers["Cache-Control"] == "private, no-store"
                             )
                 print(
-                    f"PASS: {len(cases)} real-Caddy cases; private-host service, public/IP denial, encoded paths and forged headers"
+                    f"PASS: {len(cases)} real-Caddy host/path cases with generated deny rules and distinct root bodies. Edge authentication is not exercised."
                 )
             finally:
                 process.terminate()
-                process.wait(timeout=5)
+                try:
+                    process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    process.kill()
+                    process.wait(timeout=5)
 
 
 if __name__ == "__main__":

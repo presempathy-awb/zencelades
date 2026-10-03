@@ -1,4 +1,4 @@
-# Deferred audio studio, mixer and Umesemu reuse
+# Audio studio, future mixer and Umesemu reuse
 
 Prepared October 2, 2026 for P114/P115. This is an implementation-ready design,
 not a deployed feature. Music: **Suno**. Sound effects: **ElevenLabs**.
@@ -24,8 +24,9 @@ and settings alongside. A compact controls row chooses provider, scene/use,
 revision and candidate. Detailed metadata lives in expandable panels. Preserve
 the full-width preview; do not replace it with a dense administrative table.
 
-First studio implementation is a **prompt workbench**: compose, edit, copy the
-correct provider fields, record an external generation and import its result.
+The implemented studio selects and copies prepared prompts. A later **editable
+prompt workbench** can compose, edit, record an external generation and import
+its result; these capabilities are not in the current copy studio.
 Umesemu itself calls no model. Do not imply it already provides an automated
 generation backend or a Suno integration. A future paid generation button is a
 separate scope with a supported provider interface, scoped credentials and an
@@ -110,20 +111,22 @@ framework. Reuse the current cockpit and catalog, then add the minimum explicit
 metadata needed for this pack. New PG18 draft types and media permissions are
 real implementation work, not something the scenario endpoint already supports.
 
-## Pawthentik login flow
+## Future Pawthentik account-service login flow
 
-The asset-studio link goes to the configured studio origin. A guest is sent
-through the existing **gimmesomepaw-generated sign-in navigation** into Authentik;
-successful authentication returns to that studio's root and its chosen asset.
+The current studio hostname uses Telpher's Authentik forward-auth redirect and
+restricted application membership. The account-service successor described here
+is future work: its guest navigation would use gimmesomepaw and return to the
+studio's chosen asset after login. It is not the active studio login contract.
 
-In this candidate, `account-service/server.go` obtains `SignInURL("/")` and
+The separate scenario account-service source in `account-service/server.go` obtains `SignInURL("/")` and
 `SignOutURL()` from gimmesomepaw. `site/naming/account-client.mjs` accepts only
 the exact same-origin sign-in/out paths. Reuse that verified contract on the
-studio host; do not invent a new “gimmesomepaw login” service domain or place
+future studio account service; do not invent a new “gimmesomepaw login” service domain or place
 tokens/identity in a URL. Keep an intended asset ID in local navigation state
 rather than accepting an arbitrary redirect target.
 
-Provision the studio route/provider through Telpher later. Authorized studio
+The provider and membership are already provisioned; website route activation
+is tracked in the access contract. Authorized studio
 membership is required even on tailnet: public playback access and permission
 to author/publish assets are different. Forwarded identities are trusted only
 through the installed proxy boundary. UI hiding is not authorization.

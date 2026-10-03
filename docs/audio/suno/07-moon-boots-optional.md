@@ -39,4 +39,4 @@ A reference to the shared motif is direction, not a guarantee that independently
 generated songs will share the same melody. If that continuity matters, use an
 approved original audio reference or arrange the motif in post-production.
 
-[Shared workflow and sources](../README.md) · [Deferred studio and mixer](../studio-and-umesemu.md)
+[Shared workflow and sources](../README.md) · [Copy studio and future mixer](../studio-and-umesemu.md)

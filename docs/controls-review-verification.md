@@ -1,7 +1,8 @@
 # Integrated controls and private-studio verification
 
-October 2, 2026, maxipaxi. This records local checks before the integrated PR13
-review. It does not claim production activation or authenticated browser access.
+October 2, 2026, maxipaxi. These historical checks cover PR13 source
+`a4583d881611ebbb8489824bd6a96fb4b011ec30`, before its first integrated review.
+They do not claim production activation or authenticated browser access.
 
 ## Navigation and parsing repairs
 
@@ -16,13 +17,15 @@ Build the fixture with the existing Bun toolchain from `cockpit/`:
 
 ```bash
 # maxipaxi
-bun build tests/navigation-browser.tsx --outdir ../site/dist/checks
-cp tests/navigation-browser.html ../site/dist/checks/
+D="$HOME/.cache/codex/zenc-navigation-check"
+bun build tests/navigation-browser.tsx --outdir "$D"
+cp tests/navigation-browser.html "$D/"
 ```
 
-Serve the assembled site with the repository's `just preview` recipe and open
-`/checks/navigation-browser.html`, then press **Run navigation checks**. The
-fixture is local-only: the additive publisher's allowlist excludes `checks/`.
+Serve that disposable directory on a local loopback preview and open
+`/navigation-browser.html`, then press **Run navigation checks**. It is outside
+all publication outputs. The amended fixture injects its shadow CSS, displays
+errors, and adds initial query/fragment focus cases; rerun it for later revisions.
 
 The audio parser tests first failed for trailing Suno controls and an extra
 pipe that silently discarded effect text. Both now pass. The suite also reads
@@ -56,3 +59,6 @@ findings are resolved by the separate private entry and cleanup in this
 integrated source. `columns.css` already declares inline-size containment.
 No new production dependencies were introduced. The account service is not
 installed by the static publisher; actual PG18 saves remain a separate rollout.
+Browser download-event capture timed out; the scenario file import/export round-trip
+is covered by automated tests, not a completed browser round-trip. Copy feedback
+was observed, but clipboard byte readback was not established.

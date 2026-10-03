@@ -14,7 +14,7 @@ import "./style.css";
 import { cockpitHref, documentPages } from "./page-routes";
 
 // Existing public page URLs enter the same app; preserve their section target.
-if (location.pathname !== "/" && !location.hash.startsWith("#/")) {
+if (!location.hash.startsWith("#/")) {
   const destination = cockpitHref(location.pathname + location.hash, "/");
   if (destination.startsWith("/#")) history.replaceState(null, "", destination);
 }

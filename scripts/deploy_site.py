@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import shlex
 import subprocess
 import tarfile
@@ -20,7 +21,27 @@ def main() -> None:
     parser.add_argument("--host", required=True, help="agents-config peer alias")
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", args.host):
+        raise ValueError("Expected a hostname or SSH alias")
+    if args.apply:
+        existing = subprocess.check_output(
+            [
+                "ssh",
+                args.host,
+                "if test -e /srv/thatsnozorb/current || test -L /srv/thatsnozorb/current; then printf existing; fi",
+            ],
+            timeout=60,
+        )
+        if existing.strip():
+            raise SystemExit(
+                "Existing release: use the additive private-studio-release recipe"
+            )
     build()
+    if (
+        not (ROOT / "site/private-studio/index.html").is_file()
+        or not (ROOT / "deploy/private-studio-retired.caddy").is_file()
+    ):
+        raise SystemExit("Complete build is missing private-studio artifacts")
     files = sorted((ROOT / "site/dist").rglob("*"))
     files += sorted((ROOT / "site/private-studio").rglob("*"))
     files += [

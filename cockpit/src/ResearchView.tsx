@@ -5,6 +5,7 @@ import { optionContext } from "./option-context";
 import ResourceLedger from "./ResourceLedger";
 import type { Scenario } from "./scenario";
 import { Button } from "./ui";
+import ChoiceButtons from "./ChoiceButtons";
 
 interface Entry {
   id: string;
@@ -213,4 +214,3 @@ export default function ResearchView({
     </section>
   );
 }
-import ChoiceButtons from "./ChoiceButtons";

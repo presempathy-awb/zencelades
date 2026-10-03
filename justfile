@@ -58,7 +58,7 @@ cockpit-check:
 cockpit-dev:
     (cd cockpit && bun run dev)
 
-# Build public/private bundles and prove no prompt data is in the public build.
+# Build both bundles; reject private imports and current prompt excerpts publicly.
 private-studio-check:
     (cd cockpit && bun test && bun run build)
     uv run --no-project python -m unittest tests.test_private_studio
@@ -67,9 +67,9 @@ private-studio-check:
 private-studio-release *args:
     uv run --no-project python -m scripts.private_studio {{args}}
 
-# On a host with Caddy: pass the actual generated retired fragment.
-private-studio-http-check retired:
-    uv run --no-project python tests/private_studio_http_probe.py --fragment deploy/private-studio.caddy --retired {{quote(retired)}}
+# On a host with Caddy: generate the deny fragment and exercise both roots.
+private-studio-http-check:
+    uv run --no-project python -m tests.private_studio_http_probe --fragment deploy/private-studio.caddy
 
 # Account boundary tests run without production secrets; PG18 uses an isolated fixture.
 account-check:

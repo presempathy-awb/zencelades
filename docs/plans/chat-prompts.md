@@ -7,9 +7,13 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P125 (October 2): “done” — [verified unlock and delivery](p125-verified-unlock-and-delivery.md).
+- P124 (October 2): “done” — [resume authorized landing](p124-resume-authorized-landing.md).
 - P123 (October 2): “do a pr, rev if needed, then merge and deploy” — [land controls and private studio](p123-land-visible-private-studio.md).
 - P122 (October 2): “done” — [verify unlock and resume the studio rollout](p122-unlock-continuation.md).
 - P121 (October 2): “no dropdowns make all controls visible for main choices, drill downs are ok. make sure can do all the things from before” — [visible primary controls](p121-visible-primary-controls.md).
+- P120 (October 2): preserve existing project crew — [crew access](p120-private-studio-crew.md).
+- P119 (October 2): scoped unlock, grant and private browser approvals — [exact scope](p119-private-studio-access-approvals.md).
 
 - P118 (October 2): “ok get it fixed please use umesemu like model but with what needed for pawthentik, if thats not ready just have authentik standin with plan” — [protect private studio](p118-private-studio-authentik.md).
 - P117 (October 2): “are the private pages done and confirmed private. without pawthentik login?” — [live privacy verification](p117-private-page-verification.md).

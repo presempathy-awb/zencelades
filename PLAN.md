@@ -2,9 +2,16 @@
 
 ## Current continuation — publish, review, merge and deploy
 
+[P125](docs/plans/p125-verified-unlock-and-delivery.md): the latest project
+unlock is verified with the real Authentik consumer. Complete the current
+review, land the integrated source, and deploy with live access and media checks.
+The first integrated review held for documentation and regression-evidence gaps;
+the fixes remain in PR13 for a complete rereview. No intermediate source merge
+or site activation is claimed.
+
 [P124](docs/plans/p124-resume-authorized-landing.md) records the verified
 prerequisite merge and working scoped authentication. PR13 is open; the
-remaining work is the complete repaired PR13 review against main, merge and
+remaining work is the repaired PR13 review against main, merge and
 protected additive deployment. PR9/PR11 remain source history, not intermediate
 releases to activate. Navigation and parser regressions are reproduced before
 their fixes; all publication proof must name the source and asset manifest.
@@ -27,15 +34,15 @@ security-review head remains immutable. The private-studio rollout remains open.
    document and model-study lists use expandable groups.
 2. Complete: existing handlers and routes retained; narrow layout corrected so
    model controls remain reachable inside the fixed outer viewport.
-3. Complete: 60 Bun tests; both production builds; 69 Python tests and 18
+3. Historical checks at `b8c4402e9454`: 60 Bun tests; both production builds; 69 Python tests and 18
    subtests; Ruff and ledger checks. Browser exercised model/parts/progress,
    application sections, audio selection/copy, narrow layout and export status.
    Browser download-event capture timed out; import round-trip remains covered
    by automated tests, not a completed browser round-trip.
-4. Pending: publish the UI PR and integrate after private-studio review and the
-   supported publication gate clears. Andrew's latest unlock is confirmed by a
+4. Published as zencelades `fix/visible-controls` (#13). Merge and deployment
+   await the repaired review and supported publication gate. Andrew's latest unlock is confirmed by a
    successful Authentik application read; no additional unlock is required.
-   Production remains unchanged. [P122](docs/plans/p122-unlock-continuation.md)
+   The website release is unchanged; Authentik policy objects are applied. [P122](docs/plans/p122-unlock-continuation.md)
    records this continuation and the separately reported recording integration.
 
 ## Current continuation — October 2, private studio repair
@@ -46,8 +53,9 @@ restricted Authentik membership while Pawthentik is inactive. Public artwork,
 models, gallery and Showtime stay open. The isolated `fix/private-studio` lane
 separates the prompt build and downloads from the public root, denies retired
 prompt bundles and preserves the actual live release in an additive overlay.
-Initial frontend tests (59), the production builds, four release-boundary tests
-and ten real Caddy HTTP cases passed. Production is not changed yet. The first
+Historical source `bd3cbb6070be` passed 59 frontend tests, the production builds,
+eight release-boundary tests and ten real Caddy HTTP cases. Website activation
+remains pending; P122 records the later Authentik provisioning. The first
 external review returned HOLD: repair release validation/staging, couple the HTTP
 fixture to the generated deny fragment, and provide runtime evidence answering
 the incorrect Caddy-order and Vite-cleanout findings. Re-review the full repaired

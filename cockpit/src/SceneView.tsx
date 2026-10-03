@@ -353,7 +353,7 @@ export default function SceneView({
             value={projectors}
             onChange={onProjectorCountChange}
             options={[
-              [0, "None"],
+              [0, "No projectors"],
               [1, "1 head"],
               [2, "2 heads"],
               [3, "3 heads"],
@@ -361,7 +361,9 @@ export default function SceneView({
           />
         )}
         <details className="choice-drilldown">
-          <summary>More model studies</summary>
+          <summary>
+            Model: {model === "scenario" ? "Selected budget option" : (study?.label ?? model)}
+          </summary>
           <ChoiceButtons
             label="Budget model"
             value={model}

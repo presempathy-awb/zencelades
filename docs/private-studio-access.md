@@ -26,8 +26,8 @@ part of the deployment contract. Tailnet reachability is not studio membership.
 
 The private Vite build has no public asset directory. It contains the eight
 Suno songs, sixteen ElevenLabs effects and their source downloads. The public
-bundle retains navigation only. A build-time scan rejects prompt content in
-the public output. Old immutable release files are preserved for rollback;
+bundle retains navigation only. A build-time scan rejects current prompt excerpts;
+a module-graph guard rejects private prompt imports. Old immutable release files are preserved for rollback;
 their public URLs are denied by the generated Caddy fragment. Later releases
 retain prior denied paths even when the current prompt text changes. Private responses
 carry `Cache-Control: private, no-store` and `X-Robots-Tag: noindex`.
@@ -74,11 +74,11 @@ existing zone token; route activation remains pending the security review.
 public-content scan and the release-boundary unit tests. A real-Caddy fixture
 in `tests/private_studio_http_probe.py` exercises public and private hosts,
 download aliases, encoded paths, retired bundles and forged headers without
-touching the live service. `just private-studio-http-check RETIRED_FRAGMENT`
-runs this separate Caddy fixture on a host with Caddy installed, using the actual
-`retired_config` output. It is not an implicit network step in the local recipe.
+touching the live service. `just private-studio-http-check` runs this separate
+Caddy fixture on a host with Caddy installed, generating actual `retired_config`
+output in the same process. It is not an implicit network step in the local recipe.
 Fresh command-by-command evidence and review responses are recorded in
-[private-studio-verification.md](private-studio-verification.md). These checks
+[the dated operations sequence](private-studio-verification.md#operations-chronology--october-2-2026). These checks
 are not live login proof.
 
 `just private-studio-release --host HOST` plans from the actual live manifest.

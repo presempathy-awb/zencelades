@@ -11,13 +11,13 @@ Do not turn a stale unrelated cache entry into another general unlock request.
 
 The scoped warm exited 0. The aggregate cache diagnostic still names missing
 policy metadata for unrelated sources, but `just app-status thatsnozorb` succeeds
-and confirms akadmin, andrew, awb, brysen, daniel, iani and jill, with restricted
+and confirms the seven approved project crew members, with restricted
 access and signups off. The operation-specific authorization works.
 
 Completed: the supported Authentik provider apply created the studio provider
 and application and attached the outpost. All seven existing crew members were
 added before restricting the application. The live access check allowed all
-seven members and refused nonmember chipper; final status confirms signups off
+seven members and refused the sampled nonmember; final status confirms signups off
 and the standard Telpher superuser binding. The route dry run passed on presvd1,
 with DNS creation and route installation still unapplied.
 

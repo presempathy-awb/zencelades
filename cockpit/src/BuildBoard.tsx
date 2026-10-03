@@ -45,6 +45,7 @@ const TaskCard = memo(function TaskCard({
       >
         <ChoiceButtons
           label="Progress"
+          describedBy="build-board-progress-help"
           value={status}
           options={buildTaskStatuses.map((option) => [option, buildTaskStatusLabels[option]])}
           onChange={(value) => onStatusChange(task.id, value)}

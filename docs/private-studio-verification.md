@@ -4,7 +4,7 @@ October 2, 2026. This is source/build and isolated HTTP evidence, not a claim
 that the private origin has been deployed or that a human login has passed.
 Production remains on `a1d372323fe59d831f617136932e19fffa7737936c1f48351e744cc4ef4414c0`.
 
-## Fresh checks
+## Historical checks at `bd3cbb6070be`
 
 The following ran in the `private-studio` lane on maxipaxi:
 
@@ -29,16 +29,13 @@ just check
 - Removing the new public-content rejection produced one expected assertion
   failure (`ValueError not raised`); restoring it passed all eight boundary tests.
 
-The real-Caddy fixture ran on presvd1 (Caddy 2.6.2). Its retired fragment was
+The historical real-Caddy fixture ran on presvd1 (Caddy 2.6.2). Its retired fragment was
 generated on maxipaxi by production `scripts.private_studio.retired_config`,
 then copied with the probe and production private-host fragment to `/tmp`.
 
-```sh
-# presvd1
-F=/tmp/private-studio.caddy
-R=/tmp/zenc-retired-fixture.caddy
-python3 /tmp/private_studio_http_probe.py --fragment "$F" --retired "$R"
-```
+That earlier invocation passed `--retired` to the isolated fixture. The current
+`just private-studio-http-check` recipe generates the deny fragment itself and
+uses distinct public/private fixture bodies; it no longer accepts that argument.
 
 Exit 0: Caddy validation passed and all ten HTTP cases passed. Public artwork
 returns 200; `/studio/` and `/audio/` redirect; existing private downloads,
@@ -107,16 +104,26 @@ The full Grok HOLD was posted verbatim on zencelades `fix/private-studio` (#11),
 9. **SSH-option host input: fixed.** Only a hostname/SSH alias is accepted;
    leading dashes and option strings fail before any remote command.
 
-## Existing operations contract checked live
+## Operations chronology — October 2, 2026
 
-The clean Telpher `studio-private-ops` lane uses main `645d97fd`. Read-only
+The clean Telpher `studio-private-ops` lane uses source `645d97fd`. Initially, read-only
 `app-status thatsnozorb` confirmed restricted crew membership and signups off.
 The provider-state read via `authentik-forward-auth-state state` succeeded;
 the studio application did not yet exist. The actual
 `domain-add-subdomain zenceladus.com zenceladus studio` dry run with target
 `http://127.0.0.1:18131` and `--forward-auth` passed using the existing zone token.
-No provider or DNS mutation occurred in those checks. The unrelated
+No provider or DNS mutation occurred during those initial reads. The unrelated
 `concierge.yml` read-permission warning did not fail the target route preflight.
+
+Later the same day, P122 applied the supported provider contract, attached the
+outpost, copied the seven approved crew members with `app-users`, and restricted
+the application with `app-access`. `app-status zenceladus-studio` and
+`app-access-check zenceladus-studio` then confirmed restricted membership,
+signups off, all seven members allowed and the checked nonmember refused.
+P125 freshly repeated both reads after Andrew's project unlock. These are live
+identity-provider changes. DNS, the website route and the asset release have
+not yet been activated by this task. The earlier absent-provider observation
+is historical and must not be used as the current application state.
 
 The real live activation script accepts `RELEASE --apply EXPECTED_BASE_PATH`,
 locks `/srv/thatsnozorb/activation.lock`, validates the complete immutable

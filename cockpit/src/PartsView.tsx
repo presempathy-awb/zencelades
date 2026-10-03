@@ -110,7 +110,7 @@ export default function PartsView({
           label="Visual package"
           value={plan.projectors}
           options={[
-            [0, "LED lighting"],
+            [0, "LED lighting · no projectors"],
             [1, "P1 · one projector"],
             [2, "P2 · two projectors"],
             [3, "P3 · three projectors"],

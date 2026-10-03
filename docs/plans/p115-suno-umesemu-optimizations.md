@@ -15,4 +15,6 @@ boundary: research and durable design now, implementation later.
 Status: preparation complete. [Eight Suno prompt files and the effect list](../audio/README.md)
 are written. The [reuse/optimization plan](../audio/studio-and-umesemu.md)
 maps actual Umesemu source to the existing Babylon cockpit and newer Showtime
-source. No runtime change, generation, dependency addition or deployment.
+source. This research slice made no runtime change. P118 subsequently added the
+private copy studio; its reviewed deployment remains tracked separately.
+Generation, adaptive playback and mixing remain deferred; no new dependency.
