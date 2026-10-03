@@ -24,7 +24,7 @@ The same source bookmark was pushed to the GitHub mirror.
   previous release is retained. All 53 changed paths subsequently matched over
   public HTTPS, with zero mismatches.
 
-## Verification
+## Historical verification of release `a1d372323fe5`
 
 On maxipaxi, `bun test` passed: 59 tests, zero failures, 807 assertions across
 14 files. `bun run build` exited 0, including TypeScript and Vite. Existing

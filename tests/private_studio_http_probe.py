@@ -48,6 +48,7 @@ def main() -> None:
         subprocess.run(
             ["caddy", "validate", "--config", str(config), "--adapter", "caddyfile"],
             check=True,
+            timeout=15,
         )
         with (root / "server.log").open("w+") as log:
             process = subprocess.Popen(
@@ -82,6 +83,8 @@ def main() -> None:
                     ("zenceladus.com", "/private-assets/app.js", 404, ""),
                     ("zenceladus.com", "/studio-assets/index-old.js", 404, ""),
                     ("127.0.0.1", "/documents/audio/test.md", 404, ""),
+                    ("127.0.0.1", "/private-assets/app.js", 404, ""),
+                    ("127.0.0.1", "/studio-assets/index-old.js", 404, ""),
                     ("studio.zenceladus.com", "/", 200, "PRIVATE STUDIO"),
                     ("studio.zenceladus.com", "/studio-assets/index-old.js", 404, ""),
                     (
@@ -127,6 +130,11 @@ def main() -> None:
                                 == "https://studio.zenceladus.com/"
                             )
                         if host == "studio.zenceladus.com":
+                            assert response.headers["CDN-Cache-Control"] == "no-store"
+                            assert (
+                                response.headers["X-Robots-Tag"]
+                                == "noindex, nofollow, noarchive"
+                            )
                             assert (
                                 response.headers["Cache-Control"] == "private, no-store"
                             )

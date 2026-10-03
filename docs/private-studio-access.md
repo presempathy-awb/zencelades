@@ -26,8 +26,13 @@ part of the deployment contract. Tailnet reachability is not studio membership.
 
 The private Vite build has no public asset directory. It contains the eight
 Suno songs, sixteen ElevenLabs effects and their source downloads. The public
-bundle retains navigation only. A build-time scan rejects current prompt excerpts;
-a module-graph guard rejects private prompt imports. Old immutable release files are preserved for rollback;
+bundle retains navigation only. The cockpit/dist build scan and additive
+publisher reject current prompt excerpts; a module-graph guard rejects
+AudioView and docs/audio imports. The complete-site builder keeps old files
+and generates denials for non-media matches instead of rejecting the build.
+The live retirement scan excludes known media suffixes (PNG, JPEG, MP4, GLB,
+BLEND, NPZ, PDF, XLSX and ZIP); it is not a universal content inspection.
+Old immutable release files are preserved for rollback;
 their public URLs are denied by the generated Caddy fragment. Later releases
 retain prior denied paths even when the current prompt text changes. Private responses
 carry `Cache-Control: private, no-store` and `X-Robots-Tag: noindex`.
@@ -93,8 +98,11 @@ The planner validates manifest paths before asking remote tar to read them,
 uses the studio's own prompt parsers, and refuses contaminated public builds.
 Upload staging uses a unique mode-0700 directory. The installer hashes and parses
 one immutable archive snapshot, stages under an owned temporary directory and
-publishes the release directory only after verification. Partial copies clean
-themselves up; completed releases remain available after an activation failure.
+publishes the release directory only after verification. Partial release copies
+clean their owned staging directory; failed transfers/activation can retain the
+mode-0700 upload directory for diagnosis. Successful activation removes its
+upload archive; cleanup errors are warnings. Completed releases remain available
+after an activation failure.
 Network and activation calls have finite timeouts. A timeout is an uncertain
 activation outcome: inspect `current` before retrying, never delete its target.
 

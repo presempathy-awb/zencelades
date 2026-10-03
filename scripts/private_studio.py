@@ -120,7 +120,7 @@ def prompt_markers() -> list[bytes]:
 def contains_prompt(data: bytes, markers: list[bytes]) -> bool:
     """Recognize current excerpts in raw text and common JavaScript escapes."""
     normalized = re.sub(
-        rb"\\(?:u([0-9a-fA-F]{4})|x([0-9a-fA-F]{2}))",
+        rb"(?<!\\)\\(?:u([0-9a-fA-F]{4})|x([0-9a-fA-F]{2}))",
         lambda match: chr(int(match[1] or match[2], 16)).encode(errors="surrogatepass"),
         data,
     )

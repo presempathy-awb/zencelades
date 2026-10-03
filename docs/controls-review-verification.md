@@ -10,7 +10,7 @@ They do not claim production activation or authenticated browser access.
 `TopicPane` and viewport CSS in a real browser. Before the fixes, four cases
 failed: an early heading lost its selector title, a deep anchor across a shadow
 root stayed out of view, that target did not take focus, and native reading
-panels disallowed user scrolling. All seven cases passed after the fixes;
+panels disallowed user scrolling. All seven cases passed at `a4583d88` after the fixes;
 both settings controls stayed together and the outer page stayed fixed.
 
 Build the fixture with the existing Bun toolchain from `cockpit/`:
@@ -25,13 +25,15 @@ cp tests/navigation-browser.html "$D/"
 Serve that disposable directory on a local loopback preview and open
 `/navigation-browser.html`, then press **Run navigation checks**. It is outside
 all publication outputs. The amended fixture injects its shadow CSS, displays
-errors, and adds initial query/fragment focus cases; rerun it for later revisions.
+errors, and adds initial query/fragment focus cases. The later ten-case run at
+`14efe517` passed; current repairs and later counts are in
+[the round-two record](private-studio-round-two.md).
 
 The audio parser tests first failed for trailing Suno controls and an extra
-pipe that silently discarded effect text. Both now pass. The suite also reads
+pipe that silently discarded effect text. Both passed at `a4583d88`. The suite also reads
 all eight authored songs and all sixteen authored effect cues.
 
-## Checks run
+## Historical checks at `a4583d88`
 
 - `just private-studio-check`: 61 Bun tests, zero failures; TypeScript and both
   Vite builds succeed; public-bundle privacy check succeeds; eight Python

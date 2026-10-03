@@ -2,12 +2,14 @@
 
 ## Current continuation — publish, review, merge and deploy
 
-[P125](docs/plans/p125-verified-unlock-and-delivery.md): the latest project
-unlock is verified with the real Authentik consumer. Complete the current
-review, land the integrated source, and deploy with live access and media checks.
-The first integrated review held for documentation and regression-evidence gaps;
-the fixes remain in PR13 for a complete rereview. No intermediate source merge
-or site activation is claimed.
+[P125](docs/plans/p125-verified-unlock-and-delivery.md): the project unlock
+worked for the real Authentik consumer, then expired during review. PR13 has
+two complete Grok reviews, both final HOLD medium. Repair or answer every
+finding, run the changed checks, and use the configured two-round merge gate.
+Request a fresh project unlock only when deployment is ready. No source merge
+or website activation is claimed. Current evidence belongs in
+[the round-two disposition](docs/private-studio-round-two.md); the dated
+continuations below are historical records, not current check results.
 
 [P124](docs/plans/p124-resume-authorized-landing.md) records the verified
 prerequisite merge and working scoped authentication. PR13 is open; the
@@ -18,11 +20,11 @@ their fixes; all publication proof must name the source and asset manifest.
 
 [P123](docs/plans/p123-land-visible-private-studio.md) authorizes publication
 using the prepared local-check proof, required review, merge and deployment.
-Create the UI PR, complete the exact-head security review, integrate the stack
+The UI PR is zencelades `fix/visible-controls` (#13). Complete its review, integrate the stack
 without dropping media or privacy guards, deploy through the existing additive
 release path, then verify public controls and private access in the browser.
 
-## Current continuation — visible primary controls
+## Historical continuation — visible primary controls
 
 [P121](docs/plans/p121-visible-primary-controls.md) makes main choices visible
 as buttons while allowing secondary drill-downs. Preserve every route, model
@@ -45,7 +47,7 @@ security-review head remains immutable. The private-studio rollout remains open.
    The website release is unchanged; Authentik policy objects are applied. [P122](docs/plans/p122-unlock-continuation.md)
    records this continuation and the separately reported recording integration.
 
-## Current continuation — October 2, private studio repair
+## Historical continuation — October 2, private studio repair
 
 [P118](docs/plans/p118-private-studio-authentik.md) supersedes the deferred
 private-studio portion of P116. Use the Umesemu private-host pattern with
@@ -74,7 +76,7 @@ dry run passes and reuses the existing zone token. See
 4. Complete authorized browser acceptance without handling Andrew's password
    or MFA, then record live evidence. Existing PG18 account saves are separate.
 
-## Current continuation — October 2, audio and fixed viewport publication
+## Historical continuation — October 2, audio and fixed viewport publication
 
 [P116](docs/plans/p116-publish-audio-fixed-cockpit.md) requests a PR and deployment
 of [P114](docs/plans/p114-showtime-audio-studio.md) and

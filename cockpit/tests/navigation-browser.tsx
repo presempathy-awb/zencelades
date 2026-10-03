@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { mountTopics } from "../src/pane-topics";
+import { focusSection, mountTopics } from "../src/pane-topics";
 import TopicPane from "../src/TopicPane";
 import "../src/viewport.css";
 import "./navigation-browser.css";
@@ -19,7 +19,7 @@ document.getElementById("run")!.onclick = async () => {
     const shadow = host.attachShadow({ mode: "open" });
     const content = document.createElement("main");
     content.innerHTML =
-      '<p><a href="#deep">Jump deep</a></p><h2>Early heading</h2><section><h2>Details</h2><p class="gap">Long content</p><h3 id="deep">Deep target</h3></section>';
+      '<p><a href="#deep">Jump deep</a></p><h2 id="early">Early heading</h2><section><h2>Details</h2><p class="gap">Long content</p><h3 id="deep">Deep target</h3></section>';
     const styles = document.createElement("style");
     styles.textContent = shadowStyles;
     shadow.append(styles, content);
@@ -34,6 +34,14 @@ document.getElementById("run")!.onclick = async () => {
       !content.querySelector("#deep")!.closest("[hidden]"),
     );
     check("initial section query focuses target", shadow.activeElement?.id === "deep");
+    await new Promise<void>((resolve) => {
+      window.addEventListener("hashchange", () => resolve(), { once: true });
+      location.hash = "early";
+    });
+    check(
+      "hashchange reveals and focuses another section",
+      !content.querySelector("#early")!.closest("[hidden]") && shadow.activeElement?.id === "early",
+    );
     history.replaceState(null, "", savedHash || location.pathname);
     check(
       "early heading remains a named section",
@@ -48,6 +56,15 @@ document.getElementById("run")!.onclick = async () => {
       rect.top >= bounds.top && rect.bottom <= bounds.bottom,
     );
     check("deep anchor takes focus", shadow.activeElement === target);
+    const modified = new MouseEvent("click", { bubbles: true, cancelable: true, ctrlKey: true });
+    content.querySelector("a")!.dispatchEvent(modified);
+    check("modified anchor click retains browser behavior", !modified.defaultPrevented);
+    const keyboardButton = document.createElement("button");
+    keyboardButton.textContent = "Focusable target";
+    target.append(keyboardButton);
+    focusSection(keyboardButton);
+    check("interactive anchor retains keyboard tab order", keyboardButton.tabIndex === 0);
+    keyboardButton.remove();
     check("outer page stays fixed", document.documentElement.scrollTop === 0);
     cleanup();
     history.replaceState(null, "", "#deep");
@@ -91,7 +108,9 @@ document.getElementById("run")!.onclick = async () => {
     fields[1].scrollIntoView({ block: "nearest" });
     check(
       "last control reachable without outer scroll",
-      fields[1].getBoundingClientRect().bottom <= pane.getBoundingClientRect().bottom &&
+      pane.clientHeight <= 260 &&
+        fields[1].getBoundingClientRect().top >= fixture.getBoundingClientRect().top &&
+        fields[1].getBoundingClientRect().bottom <= fixture.getBoundingClientRect().bottom &&
         document.documentElement.scrollTop === 0,
     );
     results.textContent = checks.join("\n");

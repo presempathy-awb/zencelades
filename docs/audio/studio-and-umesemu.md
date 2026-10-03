@@ -38,8 +38,8 @@ Inspected local Umesemu at working snapshot
 `ca8a66a08f7407c1dc6f8cee8b41ceb84c3f04c7`, source inspection only.
 Paths below are relative to that repository at
 `/Users/andrew/code/pres/coms/umesemu`.
-Zencelades account/cockpit source is the account-drafts lane whose reviewed
-parent is `c8ba9c04`. The separately active Showtime source in the main checkout
+Zencelades account/cockpit source was inspected at merged main `c8ba9c04`.
+The separately active Showtime source in the main checkout
 was read at working snapshot `037511f9975d3c558f8c64d30e0769adc9718690`.
 These observations do not certify live behavior, clean commits or performance.
 
@@ -113,14 +113,15 @@ real implementation work, not something the scenario endpoint already supports.
 
 ## Future Pawthentik account-service login flow
 
-The current studio hostname uses Telpher's Authentik forward-auth redirect and
-restricted application membership. The account-service successor described here
+The Authentik application and restricted crew membership are provisioned.
+The studio forward-auth route is prepared but unapplied; anonymous website
+denial is not yet established. The account-service successor described here
 is future work: its guest navigation would use gimmesomepaw and return to the
 studio's chosen asset after login. It is not the active studio login contract.
 
 The separate scenario account-service source in `account-service/server.go` obtains `SignInURL("/")` and
 `SignOutURL()` from gimmesomepaw. `site/naming/account-client.mjs` accepts only
-the exact same-origin sign-in/out paths. Reuse that verified contract on the
+the exact same-origin sign-in/out paths. Reuse that inspected source contract on the
 future studio account service; do not invent a new “gimmesomepaw login” service domain or place
 tokens/identity in a URL. Keep an intended asset ID in local navigation state
 rather than accepting an arbitrary redirect target.
@@ -129,7 +130,7 @@ The provider and membership are already provisioned; website route activation
 is tracked in the access contract. Authorized studio
 membership is required even on tailnet: public playback access and permission
 to author/publish assets are different. Forwarded identities are trusted only
-through the installed proxy boundary. UI hiding is not authorization.
+through the gated proxy boundary once installed. UI hiding is not authorization.
 
 Acceptance must exercise guest login, allowed member, non-member, expired
 session, logout, public-host/private-media denial, direct-IP/origin access,
@@ -162,7 +163,7 @@ All use requested D minor / F major, compatible relative tonal centers, but the
 generated recording must be checked. Same-family DJ blend: start with a
 reviewed 8-bar transition, align actual downbeats, and trade bass gradually.
 For different tempo families or uncertain grids, fade the rhythm down through
-Weightless Air, start the new track and restore energy. Do not force a 72→120
+the Weightless Air effect (`sfx-16`), start the new track and restore energy. Do not force a 72→120
 BPM speed jump or stack unrelated strong bass lines.
 
 Use gain automation with reserved headroom; an equal-power curve is a starting
@@ -209,10 +210,10 @@ Phase 1: land the existing account/access work through its own gates. Confirm
 the proposed studio hostname before creating its route. Keep this document pack
 outside the account PR's current reviewed head.
 
-Phase 2: add the private prompt workbench and explicit metadata. Read-only
-source list, field-specific copy and provider settings first; import/review and
-account saves next. Tests cover field fidelity, invalid imports, stale prompt
-warnings, revision conflicts and access denial. Browser proof covers keyboard
+Phase 2: extend the implemented prompt selection, field-specific copy and
+provider-settings view with editing, import/review and account saves.
+Tests must cover field fidelity, invalid imports, stale prompt
+warnings, revision conflicts and access denial. Browser proof must cover keyboard
 use, narrow layout, preserving edited drafts and full-size media.
 
 Phase 3: Andrew auditions the pilot generations; record actual exports,

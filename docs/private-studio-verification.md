@@ -33,17 +33,22 @@ The historical real-Caddy fixture ran on presvd1 (Caddy 2.6.2). Its retired frag
 generated on maxipaxi by production `scripts.private_studio.retired_config`,
 then copied with the probe and production private-host fragment to `/tmp`.
 
-That earlier invocation passed `--retired` to the isolated fixture. The current
-`just private-studio-http-check` recipe generates the deny fragment itself and
-uses distinct public/private fixture bodies; it no longer accepts that argument.
-
-Exit 0: Caddy validation passed and all ten HTTP cases passed. Public artwork
+That earlier invocation at `bd3cbb6070be` passed `--retired` to the isolated
+fixture. Its exit was 0: Caddy validation and all ten historical HTTP cases
+passed. Public artwork
 returns 200; `/studio/` and `/audio/` redirect; existing private downloads,
 encoded paths and an existing retired JavaScript file return 404 on public/IP
 hosts despite forged identity/forwarded-host headers. The private Host serves
 its separate directory with private/no-store. This inner-server test does not
 test edge authentication. Earlier removal of the production guard failed the
 redirect case; restoring it passed. No production Caddy process was changed.
+
+At `14efe517`, the replacement probe generated its deny fragment internally,
+used distinct public/private fixture bodies and passed twelve HTTP cases on
+presvd1. It was run as `uv run --no-project python -m
+tests.private_studio_http_probe --fragment deploy/private-studio.caddy`, the
+command declared by `just private-studio-http-check`; no `--retired` argument
+was used. Later checks are recorded in [round two](private-studio-round-two.md).
 
 Vite cleanout was separately verified by creating an owned sentinel
 `cockpit/private-dist/removed-prompt-sentinel.md`, running the full build and

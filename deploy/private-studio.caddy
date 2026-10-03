@@ -1,10 +1,11 @@
-# Imported inside the existing loopback site. Authentik gates this hostname at
-# Traefik; the private root is outside site/dist, never a public static fallback.
+# Imported inside the loopback site. Install the restricted Authentik edge
+# router before publishing this host. The private root is outside site/dist.
 @privateStudio host studio.zenceladus.com
 handle @privateStudio {
     root * /srv/thatsnozorb/current/site/private-studio
     header {
         Cache-Control "private, no-store"
+        CDN-Cache-Control "no-store"
         X-Robots-Tag "noindex, nofollow, noarchive"
     }
     file_server

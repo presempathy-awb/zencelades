@@ -10,7 +10,7 @@ export default defineConfig({
       name: "reject-private-prompt-imports",
       moduleParsed(module) {
         if (/\/src\/AudioView\.tsx(?:\?|$)|\/docs\/audio\//.test(module.id))
-          this.error("Private prompt module imported into public bundle");
+          this.error("Private AudioView or docs/audio module imported into public bundle");
       },
     },
   ],

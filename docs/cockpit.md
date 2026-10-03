@@ -14,8 +14,8 @@ which revision has actually reached the live site.
   not a claim that every route and screen size has passed browser acceptance;
   release receipts record the exercised routes and sizes.
 - **Music & sound prompts:** the private studio build offers eight Suno music
-  prompts and sixteen ElevenLabs effect prompts with copy controls, settings
-  and downloads. Public `/#/audio` links to the authenticated studio. Route
+  prompts and sixteen ElevenLabs effect prompts with prompt-text copy, settings
+  and source-document downloads. Public `/#/audio` links to the authenticated studio. Route
   activation and login proof are tracked in [the access contract](private-studio-access.md).
   Generation and adaptive Showtime audio playback remain deferred.
 

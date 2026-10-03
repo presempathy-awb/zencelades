@@ -24,8 +24,8 @@ with DNS creation and route installation still unapplied.
 Next: obtain the exact-head security review; clear the supported publication
 gate; activate and verify both anonymous denial and authorized browser access.
 No website deployment is inferred from these application-policy changes. The
-review queue currently has three of three slots occupied. A bounded review
-waiter owns this request; do not launch a duplicate while it is active.
+review queue had three of three slots occupied at this October 2 checkpoint.
+A bounded review waiter owned the request at that time.
 
 The authenticated Gitea commit-status list returns an empty array. The earlier
 combined-status response's synthetic pending state was not an actual running

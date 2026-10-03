@@ -18,7 +18,7 @@ export function sectionId(hash: string): string | null {
 /** Native scrolling crosses shadow roots and keeps the target in its nearest panel. */
 export function focusSection(target: HTMLElement | null): void {
   if (!target) return;
-  target.tabIndex = -1;
+  if (target.tabIndex < 0) target.tabIndex = -1;
   target.scrollIntoView({ block: "nearest", inline: "nearest" });
   target.focus({ preventScroll: true });
 }
@@ -104,6 +104,11 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
   });
   bar.append(...controls, count, drilldown);
   const reveal = (event?: Event): void => {
+    if (
+      event instanceof MouseEvent &&
+      (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey)
+    )
+      return;
     const link = event?.target instanceof Element ? event.target.closest("a[href]") : null;
     const href = link?.getAttribute("href");
     const id = event

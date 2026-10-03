@@ -28,15 +28,27 @@ class PrivateStudioBoundary(unittest.TestCase):
             tempfile.TemporaryDirectory() as directory,
             patch.object(sys, "argv", ["deploy", "--host", "fixture", "--apply"]),
             patch.object(deploy_site, "ROOT", Path(directory)),
-            patch.object(deploy_site, "build"),
+            patch.object(
+                deploy_site,
+                "build",
+                side_effect=lambda: (Path(directory) / "build-started").touch(),
+            ),
             patch.object(
                 deploy_site.subprocess, "check_output", return_value=b"existing"
             ),
-            patch.object(deploy_site.subprocess, "run"),
-            self.assertRaisesRegex(SystemExit, "Existing release"),
+            patch.object(
+                deploy_site.subprocess,
+                "run",
+                side_effect=lambda *args, **kwargs: (
+                    Path(directory) / "upload-started"
+                ).touch(),
+            ),
         ):
             (Path(directory) / "assets").mkdir()
-            deploy_site.main()
+            with self.assertRaisesRegex(SystemExit, "Existing release"):
+                deploy_site.main()
+            self.assertFalse((Path(directory) / "build-started").exists())
+            self.assertFalse((Path(directory) / "upload-started").exists())
 
     def test_marker_adapter_rejects_empty_or_malformed_output(self):
         for raw in (b"[]", b'[""]', b"[1]", b"{}"):
