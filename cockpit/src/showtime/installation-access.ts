@@ -6,12 +6,14 @@ import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh";
 import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { VertexData } from "@babylonjs/core/Meshes/mesh.vertexData";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
+import { TransformNode } from "@babylonjs/core/Meshes/transformNode";
 import type { Scene } from "@babylonjs/core/scene";
 
 export interface InstallationAccess {
   meshes: readonly Mesh[];
   light: PointLight;
   setTimeOfDay: (hours: number) => void;
+  setHeading: (radians: number) => void;
 }
 
 function accessMaterial(scene: Scene, name: string, color: string): StandardMaterial {
@@ -212,5 +214,17 @@ export function createInstallationAccess(
     cue.emissiveColor.set(emission, emission * 0.73, emission * 0.38);
   };
   setTimeOfDay(22);
-  return { meshes, light, setTimeOfDay };
+  const root = new TransformNode("fixed boarding orientation", scene);
+  root.position.set(center.x, 0, center.z);
+  for (const mesh of meshes) mesh.setParent(root, true);
+  light.position.subtractInPlace(root.position);
+  light.parent = root;
+  return {
+    meshes,
+    light,
+    setTimeOfDay,
+    setHeading: (radians) => {
+      root.rotation.y = radians;
+    },
+  };
 }

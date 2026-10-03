@@ -26,7 +26,7 @@ sides, keeping geographic features in place as the movie and body layer move.
 The outer wall receives the movie and human layer. Clear panels restore the
 round silhouette of the drawing-section model and preserve the front entrance.
 The inner chamber, spacer ties and structure remain visible through the shell.
-Three rear, left and right projector heads sit 0.65 m above the sphere center.
+Three rear, left and right projector heads sit 1.25 m above the sphere center.
 Their lenses are 2.5 m from the nearest shell surface along the beam axis; the
 side heads turn 20° toward the rear. Extended arms support the heads in both
 rigs. The upper cap is dimmer because there is no top projector. Transmission,
@@ -34,9 +34,13 @@ soft overlapping light and ground haze illustrate the transparent inflatable's
 appearance; these are artistic approximations rather than measured optics.
 
 **Ground lander** and **Aerial rig** import the two existing P059 GLBs. The
-aerial bowl, optics and occupant sway gently with movement, while the host,
-hazer and steps remain fixed. A round cushion covers the inner floor. Boarding
-steps and soft base lighting indicate the entrance. These elements are visual
+aerial bowl, optics and occupant turn together 50° within the fixed host, placing
+the camera sightlines between its poles. That heading remains when motion and
+effects are off. The assembly sways gently with movement; the host and hazer stay
+fixed. Boarding steps turn to the aerial entrance when switching rigs, then stay
+fixed on the ground during sway. Ground lander restores the original orientation.
+A round cushion covers the inner floor. Boarding steps and soft base lighting
+indicate the entrance. These elements are visual
 concepts and do not certify a physical installation or structural loads.
 
 The default human is a procedural jointed body using Andrew's supplied portrait,

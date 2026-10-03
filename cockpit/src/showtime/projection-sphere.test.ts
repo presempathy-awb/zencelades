@@ -194,15 +194,28 @@ try {
   expect(projection.wireframe).toBe(true);
   sphere.setDisplayMode("realistic");
   expect(projection.wireframe).toBe(false);
+  const step = scene.getMeshByName("access tread 6");
+  const landerStep = step.computeWorldMatrix(true).clone();
+  const topper = scene.meshes.find(mesh => mesh.name.includes("futon topper"));
+  topper.computeWorldMatrix(true);
+  const topperRest = topper.getAbsolutePosition().clone();
+  const unrotatedWall = scene.meshes.find(mesh => mesh.material === projection && !mesh.isEnabled()).computeWorldMatrix(true).clone();
   sphere.setRig("aerial");
   const aerialWall = scene.meshes.find(mesh => mesh.material === projection && mesh.isEnabled());
   const host = scene.getMeshByName("Illustrative host crossbar");
   const hostRest = host.computeWorldMatrix(true).clone();
-  const step = scene.getMeshByName("access tread 6");
   const stepRest = step.computeWorldMatrix(true).clone();
   const restWall = aerialWall.computeWorldMatrix(true).clone();
-  const topper = scene.meshes.find(mesh => mesh.name.includes("futon topper"));
-  const topperRest = topper.getAbsolutePosition().clone();
+  expect(stepRest.equalsWithEpsilon(landerStep, 0.000001)).toBe(false);
+  expect(restWall.equalsWithEpsilon(unrotatedWall, 0.000001)).toBe(false);
+  // Entrance preset and boarding steps follow the fixed heading even with animation disabled.
+  sphere.render({ effects: 0, motion: 0 });
+  sphere.setView("front");
+  const heading = new Vector3(Math.sin(-50 * Math.PI / 180), 0, Math.cos(-50 * Math.PI / 180));
+  const front = orbit.position.subtract(orbit.target); front.y = 0;
+  expect(Vector3.Dot(front.normalize(), heading)).toBeCloseTo(1, 5);
+  const rotatedStep = Matrix.RotationY(-50 * Math.PI / 180);
+  expect(step.getAbsolutePosition().subtract(Vector3.TransformCoordinates(landerStep.getTranslation(), rotatedStep)).length()).toBeLessThan(0.00001);
   for (let frame = 0; frame <= 60; frame++) {
     sphere.render({ seconds: 2 + frame / 60, motion: 1, motionX: 1, effects: 1 });
   }
@@ -224,7 +237,8 @@ try {
   expect(topper.isEnabled()).toBe(true);
   sphere.setRig("lander");
   sphere.render({ motion: 1, effects: 1 });
-  expect(aerialWall.computeWorldMatrix(true).equalsWithEpsilon(restWall, 0.000001)).toBe(true);
+  expect(aerialWall.computeWorldMatrix(true).equalsWithEpsilon(unrotatedWall, 0.000001)).toBe(true);
+  expect(step.computeWorldMatrix(true).equalsWithEpsilon(landerStep, 0.000001)).toBe(true);
   const knee = scene.getTransformNodeByName("squish avatar knee joint 1");
   let chamberPeak = 0;
   const cameraPeaks = [0, 0, 0];

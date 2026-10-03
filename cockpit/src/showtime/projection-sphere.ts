@@ -17,7 +17,7 @@ import { Scene } from "@babylonjs/core/scene";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { HUMAN_PORTRAIT } from "../film/human";
 import { createInstallationAccess } from "./installation-access";
-import { createInstallationSway } from "./installation-sway";
+import { AERIAL_ASSEMBLY_YAW, createInstallationSway } from "./installation-sway";
 import { createInstallationView, type InstallationDisplayMode } from "./installation-view";
 import type { MovementRoutinePose } from "./movement-routines";
 import { createProjectionCaptures, projectionCaptureFragment } from "./projection-capture";
@@ -272,7 +272,8 @@ export function setProjectionView(
   aerialMeshes?: readonly AbstractMesh[],
 ): void {
   const index = view === "left" ? 1 : view === "rear" ? 0 : 2;
-  const direction = view === "front" ? new Vector3(0, 0, 1) : lenses[index].subtract(center);
+  // The clear entrance is opposite the rear head, including the aerial assembly's fixed turn.
+  const direction = view === "front" ? center.subtract(lenses[0]) : lenses[index].subtract(center);
   direction.y = 0;
   camera.setPosition(
     camera.target.add(direction.normalize().scale(8.6)).add(new Vector3(0, 6.5, 0)),
@@ -880,7 +881,8 @@ export async function createProjectionSphere(
         if (disposed) return;
         for (const [name, value] of Object.entries(models)) value.setEnabled(name === rig);
         selectedRig = rig;
-        sway.reset();
+        sway.reset(rig === "aerial");
+        access.setHeading(rig === "aerial" ? AERIAL_ASSEMBLY_YAW : 0);
         updateProjectionPose();
         if (rig === "aerial") fitProjectionRig(camera, aerial.meshes);
       },

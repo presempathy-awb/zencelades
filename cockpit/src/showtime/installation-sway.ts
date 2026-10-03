@@ -3,6 +3,9 @@ import type { AbstractMesh } from "@babylonjs/core/Meshes/abstractMesh";
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode";
 import type { Scene } from "@babylonjs/core/scene";
 
+// P059 four-pole host: turn the common holder so all three optical axes pass between poles.
+export const AERIAL_ASSEMBLY_YAW = (-50 * Math.PI) / 180;
+
 export interface InstallationSway {
   root: TransformNode;
   matrix: Matrix;
@@ -13,7 +16,7 @@ export interface InstallationSway {
     effects: number,
     aerialEnabled: boolean,
   ): void;
-  reset(): void;
+  reset(aerialEnabled?: boolean): void;
 }
 
 export function createInstallationSway(
@@ -46,11 +49,13 @@ export function createInstallationSway(
   }
   const matrix = Matrix.Identity();
   let lastSeconds: number | undefined;
-  const reset = (): void => {
-    root.rotation.set(0, 0, 0);
+  const reset = (aerialEnabled = false): void => {
+    root.rotation.set(0, aerialEnabled ? AERIAL_ASSEMBLY_YAW : 0, 0);
     root.position.set(0, 0, 0);
-    root.computeWorldMatrix(true);
-    matrix.copyFrom(Matrix.IdentityReadOnly);
+    Matrix.RotationYawPitchRollToRef(root.rotation.y, 0, 0, rotation);
+    Vector3.TransformNormalToRef(pivot, rotation, rotatedPivot);
+    pivot.subtractToRef(rotatedPivot, root.position);
+    matrix.copyFrom(root.computeWorldMatrix(true));
     lastSeconds = undefined;
   };
   return {
@@ -59,7 +64,7 @@ export function createInstallationSway(
     update(seconds, motion, motionX, effects, aerialEnabled): void {
       const strength = Number.isFinite(effects) ? Math.max(0, Math.min(1, effects)) : 0;
       if (!aerialEnabled || !strength || !Number.isFinite(seconds)) {
-        reset();
+        reset(aerialEnabled);
         return;
       }
       const amount = Number.isFinite(motion) ? Math.max(0, Math.min(1, motion)) : 0;
@@ -77,7 +82,8 @@ export function createInstallationSway(
         root.rotation.x *= 0.035 / angle;
         root.rotation.z *= 0.035 / angle;
       }
-      Matrix.RotationYawPitchRollToRef(0, root.rotation.x, root.rotation.z, rotation);
+      root.rotation.y = AERIAL_ASSEMBLY_YAW;
+      Matrix.RotationYawPitchRollToRef(root.rotation.y, root.rotation.x, root.rotation.z, rotation);
       Vector3.TransformNormalToRef(pivot, rotation, rotatedPivot);
       pivot.subtractToRef(rotatedPivot, root.position);
       matrix.copyFrom(root.computeWorldMatrix(true));

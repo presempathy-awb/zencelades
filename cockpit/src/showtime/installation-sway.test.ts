@@ -10,6 +10,8 @@ import { TransformNode } from "@babylonjs/core/Meshes/transformNode";
 import { Scene } from "@babylonjs/core/scene";
 import "@babylonjs/loaders/glTF/2.0/glTFLoader";
 import { createInstallationSway } from "./installation-sway";
+import { loadProjectedLander } from "./projection-sphere";
+import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
 
 const aerialPath = new URL(
   "../../../deliveries/grant-3d-p059/zencelades-2p5m-suspended.glb",
@@ -39,6 +41,65 @@ function createFixture(scene: Scene): Mesh[] {
   }
   return fixture;
 }
+
+test("aerial optical axes clear all four fixed poles even with motion and effects disabled", async () => {
+  const engine = new NullEngine();
+  const scene = new Scene(engine);
+  scene.useRightHandedSystem = true;
+  try {
+    const model = await loadProjectedLander(
+      scene,
+      await readFile(aerialPath),
+      new StandardMaterial("projection", scene),
+    );
+    const poles = model.meshes.filter((mesh) => mesh.name.startsWith("Illustrative host leg "));
+    expect(poles).toHaveLength(4);
+    // The imported tube has two rings of vertices: average each ring to recover its axis.
+    const axes = poles.map((pole) => {
+      const positions = pole.getVerticesData("position");
+      if (!positions) throw new Error("Missing host pole geometry");
+      const world = pole.computeWorldMatrix(true);
+      const points = Array.from({ length: positions.length / 3 }, (_, index) =>
+        Vector3.TransformCoordinates(Vector3.FromArray(positions, index * 3), world),
+      );
+      const middleY = pole.getBoundingInfo().boundingBox.centerWorld.y;
+      return [points.filter((p) => p.y < middleY), points.filter((p) => p.y > middleY)].map(
+        (ring) => ring.reduce((sum, p) => sum.add(p), Vector3.Zero()).scale(1 / ring.length),
+      );
+    });
+    const poleRest = poles.map((pole) => pole.computeWorldMatrix(true).clone());
+    const sway = createInstallationSway(scene, model.meshes, model.center);
+    for (const effects of [0, 1]) {
+      for (let frame = 0; frame < 90; frame++) sway.update(frame / 60, 1, 1, effects, true);
+      const center = Vector3.TransformCoordinates(model.center, sway.matrix);
+      for (const lens of model.lenses) {
+        const camera = Vector3.TransformCoordinates(lens, sway.matrix);
+        let closest = Infinity;
+        for (const [a, b] of axes) {
+          const axis = b.subtract(a);
+          for (let index = 0; index <= 200; index++) {
+            const sightline = Vector3.Lerp(center, camera, index / 200);
+            const t = Math.max(
+              0,
+              Math.min(1, Vector3.Dot(sightline.subtract(a), axis) / axis.lengthSquared()),
+            );
+            closest = Math.min(closest, Vector3.Distance(sightline, a.add(axis.scale(t))) - 0.045);
+          }
+        }
+        // Reserve room around the optical axis; this is not a physical beam/load approval.
+        expect(closest).toBeGreaterThan(0.8);
+      }
+      poles.forEach((pole, index) =>
+        expect(pole.computeWorldMatrix(true).equals(poleRest[index])).toBe(true),
+      );
+    }
+    sway.update(2, 1, 1, 1, false);
+    expect(sway.matrix.isIdentity()).toBe(true);
+  } finally {
+    scene.dispose();
+    engine.dispose();
+  }
+});
 
 test("the actual aerial bowl sways rigidly about its halyard attachment while the host and hazer stay fixed", async () => {
   const engine = new NullEngine();
@@ -114,7 +175,7 @@ test("the actual aerial bowl sways rigidly about its halyard attachment while th
   }
 });
 
-test("sway is deterministic, bounded, settles with motion, and resets for Ground or zero Effects", () => {
+test("sway is deterministic and bounded; zero Effects keeps aerial heading, Ground restores it", () => {
   const engine = new NullEngine();
   const scene = new Scene(engine);
   try {
@@ -143,17 +204,18 @@ test("sway is deterministic, bounded, settles with motion, and resets for Ground
     for (let frame = 181; frame <= 540; frame++) {
       first.update(frame / 60, 0, 0, 1, true);
     }
-    expect(first.matrix.equalsWithEpsilon(Matrix.Identity(), 0.000001)).toBe(true);
+    const aerialRest = Matrix.RotationY((-50 * Math.PI) / 180);
+    expect(first.matrix.equalsWithEpsilon(aerialRest, 0.000001)).toBe(true);
     first.update(10, 1, 1, 1, true);
     expect(first.matrix.isIdentity()).toBe(false);
     first.update(10.02, 1, 1, 0, true);
-    expect(first.matrix.isIdentity()).toBe(true);
+    expect(first.matrix.equalsWithEpsilon(aerialRest, 0.000001)).toBe(true);
     expectSamePoint(worldPoint(overlay, Vector3.Zero()), new Vector3(0, 1.7, 0));
     first.update(10.03, 1, 1, 1, true);
     first.update(10.04, 1, 1, 1, false);
     expect(first.matrix.isIdentity()).toBe(true);
     first.update(Number.NaN, Number.NaN, Number.NaN, Number.NaN, true);
-    expect(first.matrix.isIdentity()).toBe(true);
+    expect(first.matrix.equalsWithEpsilon(aerialRest, 0.000001)).toBe(true);
   } finally {
     scene.dispose();
     engine.dispose();
