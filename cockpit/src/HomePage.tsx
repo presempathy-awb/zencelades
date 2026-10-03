@@ -8,7 +8,17 @@ import "./home.css";
 const body = artwork.match(/<main[^>]*>([\s\S]*)<\/main>/)?.[1];
 const footer = artwork.match(/<footer[^>]*>([\s\S]*)<\/footer>/)?.[1];
 if (!body || !footer) throw new Error("Artwork homepage is missing its content");
+const movie = new URL(
+  "../../source/research/enceladus-cinema/web/homepage-loop.mp4",
+  import.meta.url,
+).href;
+const poster = new URL(
+  "../../source/research/enceladus-cinema/web/homepage-poster.jpg",
+  import.meta.url,
+).href;
 const content = `<div class="artwork-content">${body}<footer>${footer}</footer></div>`
+  .replace('src="/media/above-the-ice.mp4"', `src="${movie}"`)
+  .replace("<video autoplay", `<video poster="${poster}" autoplay`)
   .replaceAll('href="/studio/"', 'href="#/model"')
   .replaceAll('href="/pricing/"', 'href="#/budget"')
   .replaceAll('href="/about/"', 'href="#/"')

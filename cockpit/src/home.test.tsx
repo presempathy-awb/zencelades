@@ -1,8 +1,8 @@
 import { expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
+import AlternateDesigns from "./AlternateDesigns";
 import HomePage from "./HomePage";
 import MediaView, { ShowtimeView } from "./MediaView";
-import AlternateDesigns from "./AlternateDesigns";
 
 test("artwork fits within the cockpit landmark while retaining renders and narrative", () => {
   const html = renderToStaticMarkup(<HomePage />);
@@ -20,12 +20,13 @@ test("homepage offers the Showtime moon film as a plain muted looping link", () 
   const html = renderToStaticMarkup(<HomePage />);
   const teaser = html.match(/<a class="showtime-teaser"[\s\S]*?<\/a>/)?.[0] ?? "";
   expect(teaser).toContain('href="#/showtime"');
-  expect(teaser).toContain("/media/above-the-ice.mp4");
+  expect(teaser).toContain("homepage-loop.mp4");
+  expect(teaser).toMatch(/poster="[^"]*homepage-poster.jpg"/);
   expect(teaser).toMatch(/<video[^>]*autoplay/);
   expect(teaser).toMatch(/<video[^>]*muted/);
   expect(teaser).toMatch(/<video[^>]*loop/);
   expect(teaser).toMatch(/<video[^>]*playsinline/);
-  expect(teaser).not.toMatch(/<video[^>]*controls/);
+  expect(teaser).not.toMatch(/<video[^>]*\scontrols(?:\s|=|>)/);
 });
 
 test("media keeps the moon film, current gallery and assemblies while historical film moves to alternatives", () => {
