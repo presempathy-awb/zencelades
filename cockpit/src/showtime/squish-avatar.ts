@@ -178,30 +178,31 @@ export function createSquishAvatar(
 
   const topperSegments = 48;
   const topperRings = 24;
-  const topperShellRadius = innerRadius * 0.98;
+  const topperShellRadius = innerRadius * 0.99;
+  const topperRadius = innerRadius * 0.86;
+  const floorBottom = -innerRadius + 0.09;
   const topperTop = -innerRadius * 0.62;
   const topperPositions = [0, topperTop, 0];
   const topperIndices: number[] = [];
   for (let ring = 0; ring < topperRings; ring++) {
     for (let segment = 0; segment < topperSegments; segment++) {
       const angle = (segment / topperSegments) * Math.PI * 2;
-      // A continuous dished seat rises around the sides/back; +Z stays low for the entrance.
-      const entrance = Math.max(0, Math.sin(angle)) ** 8;
-      const rimY = -innerRadius * (0.22 + entrance * 0.4);
       let y: number;
       let radius: number;
       if (ring < topperRings / 2) {
         const progress = (ring + 1) / (topperRings / 2);
-        const rise = Math.max(0, (progress - 0.3) / 0.7);
-        y = topperTop + (rimY - topperTop) * rise * rise * (3 - 2 * rise);
-        radius = Math.sqrt(topperShellRadius ** 2 - rimY ** 2) * progress * 0.97;
+        // A low floor pad: a broad flat center and only the floor's gentle edge curve.
+        y = topperTop + innerRadius * 0.16 * progress ** 4;
+        radius = topperRadius * progress;
       } else {
-        // Roll over the soft lip, then follow the chamber all the way to its bottom.
+        // Rest on the imported compliant floor (grant_3d_models.py), including its shell clip.
         const progress = (ring - topperRings / 2) / (topperRings / 2);
-        const lipAngle = Math.asin((-rimY + innerRadius * 0.015) / topperShellRadius);
-        const shellAngle = lipAngle + (Math.PI / 2 - lipAngle) * progress;
-        y = -Math.sin(shellAngle) * topperShellRadius;
-        radius = Math.cos(shellAngle) * topperShellRadius;
+        radius = topperRadius * (1 - progress);
+        const floorProgress = radius / 0.72;
+        y = floorBottom + 0.28 * floorProgress ** 2 + 0.018 * Math.sin(6 * angle) * floorProgress;
+        const shellFit = Math.min(1, topperShellRadius / Math.hypot(radius, y));
+        radius *= shellFit;
+        y *= shellFit;
       }
       topperPositions.push(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
     }
@@ -228,7 +229,7 @@ export function createSquishAvatar(
     }
   }
   const topperBottom = topperPositions.length / 3;
-  topperPositions.push(0, -topperShellRadius, 0);
+  topperPositions.push(0, floorBottom, 0);
   const lastRing = 1 + (topperRings - 1) * topperSegments;
   for (let segment = 0; segment < topperSegments; segment++) {
     topperIndices.push(

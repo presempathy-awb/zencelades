@@ -1,5 +1,8 @@
 # P143 — A full-bottom squishy round chair
 
+Superseded by [P144](p144-zorb-floor-cushion.md): Andrew clarified that the
+cushion belongs on the floor, without raised chair sides or a back.
+
 Andrew: "the squish below me needs to be covedring whole bottom like round chair"
 
 Replace the small flat-topped cushion in Showtime with a broad continuous padded
