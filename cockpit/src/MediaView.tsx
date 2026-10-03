@@ -1,4 +1,4 @@
-import { type JSX, lazy, Suspense } from "react";
+import { type JSX, lazy, Suspense, useState } from "react";
 import gallery from "../../site/models/index.html?raw";
 import showtime from "../../site/showtime/index.html?raw";
 import "./media.css";
@@ -65,14 +65,32 @@ export default function MediaView(): JSX.Element {
   );
 }
 
-/** Open the live projection stage and retain the installation films below it. */
+/** Keep the interactive stage fitted, with installation films in a separate view. */
 export function ShowtimeView(): JSX.Element {
+  const [context, setContext] = useState(false);
   return (
-    <section className="media-library showtime-panel" aria-label="Showtime projection workspace">
-      <Suspense fallback={<p role="status">Loading the live projection stage…</p>}>
-        <LiveShowtime />
-      </Suspense>
-      <section aria-label="Installation context & films">
+    <section
+      className="media-library showtime-workspace"
+      aria-label="Showtime projection workspace"
+    >
+      <nav className="showtime-sections" aria-label="Showtime sections">
+        <button type="button" aria-pressed={!context} onClick={() => setContext(false)}>
+          Interactive show
+        </button>
+        <button type="button" aria-pressed={context} onClick={() => setContext(true)}>
+          Films & notes
+        </button>
+      </nav>
+      <div className="showtime-live-pane" hidden={context}>
+        <Suspense fallback={<p role="status">Loading the live projection stage…</p>}>
+          <LiveShowtime />
+        </Suspense>
+      </div>
+      <section
+        className="showtime-context"
+        hidden={!context}
+        aria-label="Installation context & films"
+      >
         <h2>Installation context & films</h2>
         <p className="showtime-note">
           Participant capture, mapping and occupied operation still need physical verification.

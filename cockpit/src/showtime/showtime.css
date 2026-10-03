@@ -256,4 +256,70 @@
       scroll-behavior: auto;
     }
   }
+  :scope.showtime-docked {
+    display: grid;
+    grid-template-rows: minmax(6rem, 1fr) auto;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+  :scope.showtime-docked > header {
+    display: none;
+  }
+  :scope.showtime-docked #stage {
+    min-height: 0;
+    aspect-ratio: auto;
+  }
+  :scope.showtime-docked .controls {
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  :scope.showtime-docked .control-navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+  :scope.showtime-docked button,
+  :scope.showtime-docked .file-input {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+  :scope.showtime-docked .control-navigation button[aria-pressed="true"] {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  :scope.showtime-docked .control-body {
+    min-height: 0;
+    max-height: 11rem;
+    overflow: auto;
+    margin-top: 0.35rem;
+  }
+  :scope.showtime-docked .control-body > * {
+    margin: 0;
+    gap: 0.25rem 0.6rem;
+  }
+  :scope.showtime-docked .control-body > [hidden] {
+    display: none;
+  }
+  :scope.showtime-docked #status {
+    padding: 0.25rem 0;
+    margin: 0;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  :scope.showtime-docked label {
+    min-height: 2.75rem;
+    font-size: 0.85rem;
+  }
+  :scope.showtime-docked legend {
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+  }
 }

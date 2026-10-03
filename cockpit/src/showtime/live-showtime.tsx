@@ -30,6 +30,57 @@ function compactShowtime(content: HTMLElement): void {
   }
 }
 
+/** Keep control navigation beside the scene instead of below a tall document. */
+function dockShowtime(content: HTMLElement): void {
+  content.classList.toggle("showtime-docked", true);
+  const controls = content.querySelector<HTMLElement>(".controls");
+  if (!controls) throw new Error("The projection stage is missing its controls.");
+  const document = content.ownerDocument;
+  const navigation = document.createElement("nav");
+  navigation.classList.toggle("control-navigation", true);
+  navigation.setAttribute("aria-label", "Interactive controls");
+  const body = document.createElement("div");
+  body.classList.toggle("control-body", true);
+  const groups = [
+    ["play", "Play", "#play"],
+    ["image", "Image", "#content-moon"],
+    ["rig", "Rig", "#rig-aerial"],
+    ["view", "View", "#view-left"],
+    ["look", "Look", "#preset-realistic"],
+    ["setting", "Setting", ".environment-controls"],
+    ["motion", "Motion", "#movement-control"],
+    ["camera", "Camera", "#camera"],
+    ["effects", "Effects", ".details-row"],
+    ["notes", "Notes", "footer"],
+  ].map(([id, label, selector]) => {
+    const node = content.querySelector<HTMLElement>(selector);
+    const panel = selector.startsWith("#") ? node?.parentElement : node;
+    if (!panel) throw new Error(`Missing Showtime control group: ${label}`);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = `controls-${id}`;
+    button.textContent = label;
+    panel.id = `control-panel-${id}`;
+    button.setAttribute("aria-controls", panel.id);
+    navigation.append(button);
+    body.append(panel);
+    return { id, button, panel };
+  });
+  const select = (id: string): void => {
+    for (const group of groups) {
+      const active = group.id === id;
+      group.button.setAttribute("aria-pressed", String(active));
+      group.panel.hidden = !active;
+      group.panel.inert = !active;
+    }
+  };
+  for (const group of groups) group.button.addEventListener("click", () => select(group.id));
+  controls.append(navigation, body);
+  const status = content.querySelector<HTMLElement>("#status");
+  if (status) controls.append(status);
+  select("image");
+}
+
 /** Install one prepared Showtime document and return an idempotent lifecycle cleanup. */
 export function installShowtimeContent(
   root: ShadowRoot,
@@ -42,6 +93,7 @@ export function installShowtimeContent(
     script.remove();
   });
   if (isCompact) compactShowtime(content);
+  else dockShowtime(content);
   const style = content.ownerDocument.createElement("link");
   style.rel = "stylesheet";
   style.href = stylesheetHref;
@@ -101,7 +153,7 @@ export default function LiveShowtime({ isCompact = false }: LiveShowtimeProps): 
         )}
       </div>
       {failure && <p role="alert">{failure}</p>}
-      <div ref={host} />
+      <div className="showtime-host" ref={host} />
     </section>
   );
 }

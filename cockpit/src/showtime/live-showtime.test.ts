@@ -36,6 +36,25 @@ class FakeElement {
   rel = "";
   textContent: string | null = "";
   tabIndex = 0;
+  type = "";
+  private readonly attributes = new Map<string, string>();
+  private readonly clicks: Array<() => void> = [];
+
+  get parentElement(): FakeElement | undefined {
+    return this.parent;
+  }
+  setAttribute(name: string, value: string): void {
+    this.attributes.set(name, value);
+  }
+  getAttribute(name: string): string | null {
+    return this.attributes.get(name) ?? null;
+  }
+  addEventListener(_name: string, callback: () => void): void {
+    this.clicks.push(callback);
+  }
+  click(): void {
+    for (const callback of this.clicks) callback();
+  }
 
   constructor(
     readonly tagName: string,
@@ -135,10 +154,15 @@ function fixture(): { content: FakeElement; controls: Record<string, FakeElement
   stage.append(canvas, intro, fullscreen, viewHint);
   const controls = element(document, "section", "", "controls");
   const play = element(document, "button", "play");
+  const transport = element(document, "div", "", "transport");
+  transport.append(play);
   const environmentPhases = element(document, "fieldset", "", "phases");
+  environmentPhases.classList.toggle("environment-controls", true);
   const environment = element(document, "input", "environment");
+  const environmentLabel = element(document, "label");
+  environmentLabel.append(environment);
   const hazerToggle = element(document, "button", "hazer-toggle");
-  environmentPhases.append(environment, hazerToggle);
+  environmentPhases.append(environmentLabel, hazerToggle);
   const contentPhases = element(document, "fieldset", "", "phases");
   const presetPhases = element(document, "fieldset", "", "phases");
   const presetControls = ["realistic", "dusk", "day", "inspect", "wireframe"].map((preset) =>
@@ -168,9 +192,11 @@ function fixture(): { content: FakeElement; controls: Record<string, FakeElement
   live.append(camera);
   const details = element(document, "div", "", "details-row");
   const haze = element(document, "input", "haze");
-  details.append(haze);
+  const hazeLabel = element(document, "label");
+  hazeLabel.append(haze);
+  details.append(hazeLabel);
   controls.append(
-    play,
+    transport,
     environmentPhases,
     presetPhases,
     contentPhases,
@@ -304,7 +330,7 @@ test("homepage showcase offers one cockpit navigation action", () => {
   expect(rendered).not.toContain('target="_blank"');
 });
 
-test("standalone Showtime keeps its h1 and expanded document structure", () => {
+test("interactive cockpit exposes a control dock and retains every original control", () => {
   const { content, controls } = fixture();
   const root = new FakeRoot();
   const cleanup = installShowtimeContent(
@@ -315,13 +341,31 @@ test("standalone Showtime keeps its h1 and expanded document structure", () => {
     () => () => {},
   );
   expect(content.classList.contains("showtime-compact")).toBe(false);
-  expect(content.querySelector("header h1")?.textContent).toBe("Showtime");
+  expect(content.classList.contains("showtime-docked")).toBe(true);
+  expect(content.querySelector("#controls-image")?.hidden).toBe(false);
+  expect(controls.contentPhases.hidden).toBe(false);
+  content.querySelector("#controls-setting")?.click();
+  expect(controls.environmentPhases.hidden).toBe(false);
+  expect(controls.environmentPhases.parent ?? null).toBe(content.querySelector(".control-body"));
+  content.querySelector("#controls-effects")?.click();
+  expect(controls.haze.parent?.parent?.hidden).toBe(false);
+  expect(controls.haze.parent?.parent?.parent ?? null).toBe(content.querySelector(".control-body"));
+  content.querySelector("#controls-notes")?.click();
+  expect(controls.footer.hidden).toBe(false);
+  expect(controls.footer.parent ?? null).toBe(content.querySelector(".control-body"));
+  content.querySelector("#controls-image")?.click();
+  expect(controls.camera.parent?.hidden).toBe(true);
+  content.querySelector("#controls-camera")?.click();
+  expect(controls.camera.parent?.hidden).toBe(false);
+  expect(controls.contentPhases.hidden).toBe(true);
+  expect(content.querySelector("#controls-camera")?.getAttribute("aria-pressed")).toBe("true");
+  content.querySelector("#controls-image")?.click();
+  expect(controls.contentPhases.hidden).toBe(false);
   expect(content.querySelector(".compact-more")).toBeNull();
-  expect(controls.environmentPhases.parent?.classList.contains("controls")).toBe(true);
-  expect(controls.contentPhases.parent?.classList.contains("controls")).toBe(true);
-  expect(controls.movementPhases.parent?.classList.contains("controls")).toBe(true);
-  expect(controls.presetPhases.parent?.classList.contains("controls")).toBe(true);
-  expect(controls.footer.parent).toBe(content);
+  expect(content.querySelector("#environment")).toBe(controls.environment);
+  expect(content.querySelector("#content-moon")).toBe(controls.moon);
+  expect(content.querySelector("#movement-control")).toBe(controls.controlledMovement);
+  expect(content.querySelector("#camera")).toBe(controls.camera);
   expect(content.querySelector(".controls")?.hidden).toBe(false);
   expect(controls.canvas.inert).toBe(false);
   cleanup();

@@ -138,6 +138,50 @@
 .showtime-panel {
   height: auto;
 }
+.showtime-workspace {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.showtime-sections {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.5rem;
+  padding: 0.4rem;
+}
+.showtime-sections button {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--cockpit-line);
+  color: var(--cockpit-ink);
+  background: var(--cockpit-bg);
+}
+.showtime-sections button[aria-pressed="true"] {
+  color: var(--cockpit-bg);
+  background: var(--cockpit-accent);
+}
+.showtime-live-pane,
+.showtime-workspace .showtime-panel,
+.showtime-host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+}
+.showtime-workspace .showtime-bar {
+  display: none;
+}
+.showtime-context {
+  overflow: auto;
+  min-height: 0;
+  padding: 1rem;
+}
 .showtime-bar {
   color: var(--cockpit-ink);
   display: flex;

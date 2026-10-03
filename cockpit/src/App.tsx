@@ -465,7 +465,7 @@ export default function App(): JSX.Element {
               style={{ gridColumn: visiblePages.indexOf(page) + 1 }}
               aria-label={`${page === "/" ? "Overview" : page.slice(1)} view`}
             >
-              <TopicPane sections={["/", "/media", "/showtime"].includes(page)}>
+              <TopicPane sections={["/", "/media"].includes(page)}>
                 <Suspense fallback={<p className="loading">Loading workspace…</p>}>
                   {page === "/" ? (
                     <HomePage />
