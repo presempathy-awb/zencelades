@@ -129,7 +129,7 @@ try {
   expect(passes).toEqual([0, 0, 0]);
   expect(source().personOpacity).toBe(0);
   expect(source().moonVisible).toBe(1);
-  expect(source().filmBlend).toBe(0.35);
+  expect(source().filmBlend).toBe(0.7);
   expect(source().brightness).toBe(1);
   sphere.render({ brightness: 0.3, effects: 0.9 });
   expect(source().brightness).toBeCloseTo(0.3);
@@ -161,7 +161,7 @@ try {
   expect(source().filmBlend).toBe(0.75);
   sphere.render();
   expect(source().moonVisible).toBe(1);
-  expect(source().filmBlend).toBe(0.35);
+  expect(source().filmBlend).toBe(0.7);
   sphere.render({ personOpacity: 0.8, avatarVisible: true, effects: 0 });
   expect(passes).toEqual([1, 1, 1]);
   expect(scene.activeCamera).toBe(orbit);
