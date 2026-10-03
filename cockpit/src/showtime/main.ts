@@ -144,10 +144,9 @@ export function mountShowtime(
     playing = false,
     lastFrame = ownerWindow.performance.now();
   let playbackRequested = options.autoStart !== false,
-    playbackReady = false,
-    playbackStarting = false,
-    playbackAttempt = 0;
+    playbackReady = false;
   playButton.textContent = playbackRequested ? "Pause moon flight" : "Start the show";
+  intro.hidden = playbackRequested;
   let disposed = false,
     uploadedUrl: string | undefined,
     inputGeneration = 0;
@@ -379,11 +378,11 @@ export function mountShowtime(
       "error",
       () => {
         if (!disposed)
-          status.textContent = `Source unavailable: ${clip.src}. Prepare film media before playing.`;
+          status.textContent = `Film insert unavailable: ${clip.src}. The native moon show continues.`;
       },
       { signal: events.signal },
     );
-    return { ...clip, video: media };
+    return { ...clip, video: media, playbackPending: false, playbackFailed: false };
   });
   const reducedMotion = ownerWindow.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -429,57 +428,22 @@ export function mountShowtime(
     playButton.textContent = value ? "Pause moon flight" : "Start the show";
     lastFrame = browserWindow.performance.now();
     if (!value) {
-      playbackAttempt++;
-      playbackStarting = false;
-      beginButton.disabled = false;
       clipPlaybackAttempt++;
       clips.forEach((clip) => {
         clip.video.pause();
       });
     }
   }
-  async function begin(): Promise<void> {
+  function begin(): void {
     if (disposed) return;
     playbackRequested = true;
     playButton.textContent = "Pause moon flight";
-    if (!playbackReady || playing || playbackStarting) return;
-    const attempt = ++playbackAttempt;
-    playbackStarting = true;
-    beginButton.disabled = true;
-    try {
-      const primed = await Promise.allSettled(
-        clips.map(async (clip) => {
-          await clip.video.play();
-          if (
-            disposed ||
-            attempt === playbackAttempt ||
-            (!playbackStarting && (!playing || activeClip !== clip.video))
-          )
-            clip.video.pause();
-        }),
-      );
-      if (disposed || attempt !== playbackAttempt || !playbackRequested) return;
-      clips.forEach((clip) => {
-        clip.video.pause();
-      });
-      const failure = primed.find((result) => result.status === "rejected");
-      if (failure?.status === "rejected") throw failure.reason;
-      activeClip = undefined;
-      intro.hidden = true;
-      setPlaying(true);
-      status.textContent =
-        "Show looping continuously. Random motion is on; Controls lets you direct the movement.";
-    } catch (error) {
-      if (disposed || attempt !== playbackAttempt) return;
-      setPlaying(false);
-      intro.hidden = false;
-      status.textContent = `Could not start the show: ${String(error)}. Check the local film sources.`;
-    } finally {
-      if (!disposed && attempt === playbackAttempt) {
-        playbackStarting = false;
-        beginButton.disabled = false;
-      }
-    }
+    if (!playbackReady || playing) return;
+    for (const clip of clips) clip.playbackFailed = false;
+    intro.hidden = true;
+    setPlaying(true);
+    status.textContent =
+      "Show looping continuously. Random motion is on; Controls lets you direct the movement.";
   }
   beginButton.addEventListener("click", () => void begin(), { signal: events.signal });
   playButton.addEventListener(
@@ -722,20 +686,23 @@ export function mountShowtime(
       if (clip && Number.isFinite(clip.video.duration))
         clip.video.currentTime = (seconds - clip.start) % clip.video.duration;
     }
-    if (clip && clip.video.readyState >= 2) {
-      if (playing && clip.video.paused) {
+    if (clip && !clip.playbackFailed && clip.video.readyState >= 2) {
+      if (playing && clip.video.paused && !clip.playbackPending) {
         const attempt = ++clipPlaybackAttempt;
-        void clip.video.play().catch((error) => {
-          if (
-            disposed ||
-            attempt !== clipPlaybackAttempt ||
-            activeClip !== clip.video ||
-            projectionContent === "body"
-          )
-            return;
-          setPlaying(false);
-          status.textContent = `Source playback failed: ${String(error)}`;
-        });
+        clip.playbackPending = true;
+        void clip.video
+          .play()
+          .then(() => {
+            if (disposed || !playing || activeClip !== clip.video) clip.video.pause();
+          })
+          .catch((error: unknown) => {
+            if (disposed || attempt !== clipPlaybackAttempt || activeClip !== clip.video) return;
+            clip.playbackFailed = true;
+            status.textContent = `Film insert playback failed: ${String(error)}. The native moon show continues. Pause and resume to retry the insert.`;
+          })
+          .finally(() => {
+            clip.playbackPending = false;
+          });
       }
       if (!playing && Number.isFinite(clip.video.duration)) {
         const expected = (seconds - clip.start) % clip.video.duration;

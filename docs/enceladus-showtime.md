@@ -69,7 +69,10 @@ the holder in lander and aerial modes, remain visible when the person is hidden,
 and are excluded from the body-only projection capture. Their floor placement
 follows the illustrated inner chamber size.
 
-The show starts after its media and model are ready and loops indefinitely.
+The show starts automatically as soon as its 3D model is ready and loops
+indefinitely. Film inserts load independently: a slow, missing or blocked video
+does not stop the native moon flight. A failed insert reports its error while
+the show continues; pause and resume to retry it.
 Reduced-motion preferences keep the procedural pose stationary. Pause holds
 the film clock, and rig switching preserves the running scene and selected
 input. Unmounting releases playback, input and rendering resources.

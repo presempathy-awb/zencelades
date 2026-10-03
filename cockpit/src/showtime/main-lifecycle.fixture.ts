@@ -556,11 +556,11 @@ pendingSpheres[0].resolve(firstSphere);
 await settle();
 await settle();
 assert.equal(fixture.root.element("play").textContent, "Pause moon flight");
-assert.equal(fixture.document.createdVideos[0].playCalls, 1);
+assert.equal(fixture.document.createdVideos[0].playCalls, 0);
 assert.equal(liveInputs[0].startCalls, 0);
 fixture.root.element("begin").dispatchEvent(new Event("click"));
 await settle();
-assert.equal(fixture.document.createdVideos[0].playCalls, 1);
+assert.equal(fixture.document.createdVideos[0].playCalls, 0);
 assert.equal(worlds[0].loopCalls, 1);
 assert.deepEqual(firstSphere.timesOfDay, [6.25]);
 assert.deepEqual(firstSphere.environments, [false]);
@@ -790,6 +790,8 @@ const seekBeforeRetiredFailure = Number(seekBeforeStartup.value);
 fixture.document.defaultView.now += 1_000;
 worlds[0].frame?.();
 assert.equal(Number(seekBeforeStartup.value), seekBeforeRetiredFailure + 1);
+await settle();
+await settle();
 
 const activePlayback = deferred<void>();
 firstClip.playDeferred = activePlayback;
@@ -798,7 +800,9 @@ worlds[0].frame?.();
 firstClip.playDeferred = undefined;
 activePlayback.reject(new Error("active source playback"));
 await settle();
-assert.equal(fixture.root.elements.get("play")?.textContent, "Start the show");
+await settle();
+assert.equal(fixture.root.elements.get("play")?.textContent, "Pause moon flight");
+assert.match(fixture.root.element("status").textContent ?? "", /native moon show continues/);
 const rigLander = fixture.root.elements.get("rig-lander");
 const rigAerial = fixture.root.elements.get("rig-aerial");
 const seek = fixture.root.elements.get("seek");
@@ -1116,6 +1120,24 @@ assert.equal(optOut.clip.playCalls, 0);
 assert.equal(optOut.root.element("play").textContent, "Start the show");
 optOut.cleanup();
 
+const stalled = prepareAutomaticMount();
+const stalledPlay = deferred<void>();
+stalled.clip.playDeferred = stalledPlay;
+stalled.pending.resolve(stalled.sphere);
+await settle();
+stalled.document.defaultView.now += 1_000;
+stalled.world.frame?.();
+assert.equal(
+  stalled.root.element("seek").value,
+  "1",
+  "a loading film must not block the native show",
+);
+assert.equal(stalled.root.element("intro").hidden, true);
+assert.equal(stalled.input.startCalls, 0);
+stalled.cleanup();
+stalledPlay.resolve();
+await settle();
+
 const earlyPause = prepareAutomaticMount();
 earlyPause.root.element("play").dispatchEvent(new Event("click"));
 earlyPause.pending.resolve(earlyPause.sphere);
@@ -1127,7 +1149,7 @@ earlyPause.world.frame?.();
 assert.equal(earlyPause.root.element("seek").value, "0");
 earlyPause.root.element("begin").dispatchEvent(new Event("click"));
 await settle();
-assert.equal(earlyPause.clip.playCalls, 1);
+assert.equal(earlyPause.clip.playCalls, 0);
 assert.equal(earlyPause.root.element("intro").hidden, true);
 assert.equal(earlyPause.input.startCalls, 0);
 earlyPause.cleanup();
@@ -1135,41 +1157,55 @@ earlyPause.cleanup();
 const blocked = prepareAutomaticMount();
 const blockedPlay = deferred<void>();
 blocked.clip.playDeferred = blockedPlay;
+blocked.clip.readyState = 4;
 blocked.pending.resolve(blocked.sphere);
 await settle();
+blocked.world.frame?.();
 blockedPlay.reject(new Error("autoplay blocked"));
 await settle();
 await settle();
-assert.equal(blocked.root.element("play").textContent, "Start the show");
-assert.equal(blocked.root.element("intro").hidden, false);
+assert.equal(blocked.root.element("play").textContent, "Pause moon flight");
+assert.equal(blocked.root.element("intro").hidden, true);
 assert.equal(blocked.root.element("begin").disabled, false);
 assert.match(blocked.root.element("status").textContent ?? "", /autoplay blocked/);
 blocked.clip.playDeferred = undefined;
+blocked.clip.paused = true;
+const attemptsBeforeRetry = blocked.clip.playCalls;
+blocked.document.defaultView.now += 1_000;
+blocked.world.frame?.();
+assert.equal(blocked.root.element("seek").value, "1");
+assert.equal(blocked.clip.playCalls, attemptsBeforeRetry);
+blocked.root.element("play").dispatchEvent(new Event("click"));
 blocked.root.element("begin").dispatchEvent(new Event("click"));
+blocked.world.frame?.();
 await settle();
 assert.equal(blocked.root.element("play").textContent, "Pause moon flight");
+assert.equal(blocked.clip.playCalls, attemptsBeforeRetry + 1);
 assert.equal(blocked.input.startCalls, 0);
 blocked.cleanup();
 
 filmInserts.push({ src: "second.mp4", start: 10, end: 20, transition: "dissolve" });
 const mixedFailure = prepareAutomaticMount();
 const failedPlay = deferred<void>();
-const siblingPlay = deferred<void>();
 const sibling = mixedFailure.document.createdVideos[1];
 mixedFailure.clip.playDeferred = failedPlay;
-sibling.playDeferred = siblingPlay;
-sibling.commitPlayOnResolution = true;
+mixedFailure.clip.readyState = 4;
 mixedFailure.pending.resolve(mixedFailure.sphere);
 await settle();
+mixedFailure.world.frame?.();
 failedPlay.reject(new Error("first clip rejected"));
 await settle();
 await settle();
-siblingPlay.resolve();
-await settle();
-await settle();
-assert.equal(mixedFailure.root.element("play").textContent, "Start the show");
+assert.equal(mixedFailure.root.element("play").textContent, "Pause moon flight");
 assert.equal(sibling.paused, true);
 assert.match(mixedFailure.root.element("status").textContent ?? "", /first clip rejected/);
+sibling.readyState = 4;
+mixedFailure.root.element("seek").value = "11";
+mixedFailure.root.element("seek").dispatchEvent(new Event("input"));
+mixedFailure.root.element("begin").dispatchEvent(new Event("click"));
+mixedFailure.world.frame?.();
+await settle();
+assert.equal(sibling.paused, false, "a failed insert must not disable a later healthy insert");
 mixedFailure.cleanup();
 filmInserts.pop();
 
@@ -1178,14 +1214,16 @@ for (const action of ["pause", "dispose"] as const) {
   const delayedPlay = deferred<void>();
   pending.clip.playDeferred = delayedPlay;
   pending.clip.commitPlayOnResolution = true;
+  pending.clip.readyState = 4;
   pending.pending.resolve(pending.sphere);
   await settle();
+  pending.world.frame?.();
   if (action === "pause") pending.root.element("play").dispatchEvent(new Event("click"));
   else pending.cleanup();
   delayedPlay.resolve();
   await settle();
   await settle();
-  assert.equal(pending.root.element("intro").hidden, false);
+  assert.equal(pending.root.element("intro").hidden, true);
   assert.equal(pending.clip.paused, true);
   assert.equal(pending.input.startCalls, 0);
   if (action === "pause") {
@@ -1199,46 +1237,21 @@ for (const action of ["pause", "dispose"] as const) {
   assert.equal(pending.sphere.disposeCalls, 1);
 }
 
-filmInserts.push({ src: "second.mp4", start: 10, end: 20, transition: "dissolve" });
-for (const completion of ["during retry", "after retry"] as const) {
-  const retry = prepareAutomaticMount();
-  const oldPlay = deferred<void>(),
-    oldSiblingPlay = deferred<void>(),
-    newPlay = deferred<void>();
-  const second = retry.document.createdVideos[1];
-  retry.clip.playDeferred = oldPlay;
-  retry.clip.commitPlayOnResolution = true;
-  second.playDeferred = oldSiblingPlay;
-  second.commitPlayOnResolution = true;
-  retry.pending.resolve(retry.sphere);
-  await settle();
-  retry.root.element("play").dispatchEvent(new Event("click"));
-  retry.clip.playDeferred = newPlay;
-  retry.clip.rejectPendingPlayOnPause = true;
-  second.playDeferred = undefined;
-  retry.root.element("begin").dispatchEvent(new Event("click"));
-  await settle();
-  if (completion === "after retry") {
-    newPlay.resolve();
-    await settle();
-    await settle();
-    retry.clip.readyState = 4;
-    retry.clip.duration = 10;
-    retry.world.frame?.();
-    await settle();
-    assert.equal(retry.clip.paused, false);
-  }
-  oldPlay.resolve();
-  oldSiblingPlay.resolve();
-  await settle();
-  await settle();
-  if (completion === "during retry") {
-    newPlay.resolve();
-    await settle();
-    await settle();
-  } else assert.equal(retry.clip.paused, false);
-  assert.equal(retry.root.element("play").textContent, "Pause moon flight");
-  assert.equal(second.paused, true);
-  retry.cleanup();
-}
-filmInserts.pop();
+const retry = prepareAutomaticMount();
+const oldPlay = deferred<void>();
+retry.clip.playDeferred = oldPlay;
+retry.clip.commitPlayOnResolution = true;
+retry.clip.readyState = 4;
+retry.pending.resolve(retry.sphere);
+await settle();
+retry.world.frame?.();
+retry.root.element("play").dispatchEvent(new Event("click"));
+retry.root.element("begin").dispatchEvent(new Event("click"));
+retry.world.frame?.();
+assert.equal(retry.clip.playCalls, 1, "resume must not pile play calls onto a pending insert");
+oldPlay.resolve();
+await settle();
+await settle();
+assert.equal(retry.clip.paused, false);
+assert.equal(retry.root.element("play").textContent, "Pause moon flight");
+retry.cleanup();
