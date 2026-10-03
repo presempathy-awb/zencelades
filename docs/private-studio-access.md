@@ -1,9 +1,10 @@
 # Private asset studio and Pawthentik handoff
 
-The Authentik application is configured and restricted; website protection is
-not yet deployed or claimed. The
-current live release is `a1d372323fe59d831f617136932e19fffa7737936c1f48351e744cc4ef4414c0`.
-The production studio hostname is still awaiting the reviewed route activation.
+The Authentik application and protected studio route are deployed and restricted.
+Release `dfecc13fcfbd` is active. Anonymous and forged-identity requests redirect
+to login; current public prompt URLs are denied. Old-alias cache eviction and
+authorized human-browser access remain unconfirmed; see the
+[deployment receipt](private-studio-deployment.md) for exact proof and limits.
 
 ## Access contract
 
@@ -62,7 +63,8 @@ seven-person project crew was copied into `zenceladus-studio-writers`, and the
 application was restricted. Authentik's live access check allowed all seven
 members and refused a nonmember. The final status confirms signups off and the
 standard Telpher superuser policy retained. This establishes application policy,
-not the still-pending website route, asset isolation or human browser login.
+not by itself website isolation or human browser login. The later route and
+asset deployment has the separate receipt above.
 
 Use Telpher's existing `authentik-forward-auth-state`/`apply`, `app-users`,
 `app-access`, `app-access-check`, `domain-add-subdomain`, `route-auth-probe` and
@@ -71,7 +73,7 @@ server and uses forward authentication. Credentials remain in hid-in.
 The clean Telpher operations checkout initially required Andrew's fresh
 manifest grant and project unlock. Operation-specific reads and the provider
 configuration now succeed. The real domain/route dry run passes with the
-existing zone token; route activation remains pending the security review.
+existing zone token; route activation subsequently passed after review and merge.
 
 ## Release and verification
 

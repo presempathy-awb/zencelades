@@ -7,6 +7,7 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P126 (October 2): “done” — [deploy after refreshed unlock](p126-deploy-unlocked-studio.md).
 - P125 (October 2): “done” — [verified unlock and delivery](p125-verified-unlock-and-delivery.md).
 - P124 (October 2): “done” — [resume authorized landing](p124-resume-authorized-landing.md).
 - P123 (October 2): “do a pr, rev if needed, then merge and deploy” — [land controls and private studio](p123-land-visible-private-studio.md).
