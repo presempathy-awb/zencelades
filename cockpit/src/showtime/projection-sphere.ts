@@ -262,7 +262,7 @@ export function createClearFrontCaps(
   });
 }
 
-/** Move the preview camera to an actual projection side or to the clear front entrance. */
+/** Look slightly down onto the sphere from each projection side or clear entrance. */
 export function setProjectionView(
   camera: ArcRotateCamera,
   view: ProjectionView,
@@ -274,7 +274,7 @@ export function setProjectionView(
   const direction = view === "front" ? new Vector3(0, 0, 1) : lenses[index].subtract(center);
   direction.y = 0;
   camera.setPosition(
-    camera.target.add(direction.normalize().scale(8.6)).add(new Vector3(0, 0.85, 0)),
+    camera.target.add(direction.normalize().scale(8.6)).add(new Vector3(0, 3.1, 0)),
   );
   if (aerialMeshes) fitProjectionRig(camera, aerialMeshes);
 }

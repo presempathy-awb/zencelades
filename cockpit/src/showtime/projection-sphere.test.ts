@@ -794,7 +794,7 @@ test("the restored clear front closes both drawing sections while leaving the en
   }
 });
 
-test("left rear and right views follow the actual lenses while front follows the clear entrance", async () => {
+test("elevated views reveal the sphere top while following the lenses and clear entrance", async () => {
   const engine = new NullEngine();
   const scene = new Scene(engine);
   scene.useRightHandedSystem = true;
@@ -809,15 +809,20 @@ test("left rear and right views follow the actual lenses while front follows the
     ] as const) {
       setProjectionView(camera, view, model.center, model.lenses);
       const cameraDirection = camera.position.subtract(model.center);
+      const elevation =
+        (Math.atan2(cameraDirection.y, Math.hypot(cameraDirection.x, cameraDirection.z)) * 180) /
+        Math.PI;
+      expect(elevation).toBeGreaterThan(15);
+      expect(elevation).toBeLessThan(25);
       cameraDirection.y = 0;
       const lensDirection = model.lenses[lensIndex].subtract(model.center);
       lensDirection.y = 0;
       expect(Vector3.Dot(cameraDirection.normalize(), lensDirection.normalize())).toBeCloseTo(1, 6);
-      expect(camera.position.y - model.center.y).toBeLessThan(1);
     }
     setProjectionView(camera, "front", model.center, model.lenses);
     expect(camera.position.x).toBeCloseTo(0, 6);
     expect(camera.position.z).toBeGreaterThan(8);
+    expect(camera.position.y - model.center.y).toBeGreaterThan(2.3);
   } finally {
     scene.dispose();
     engine.dispose();
