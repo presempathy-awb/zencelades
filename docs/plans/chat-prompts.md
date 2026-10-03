@@ -7,6 +7,7 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P123 (October 2): “do a pr, rev if needed, then merge and deploy” — [land controls and private studio](p123-land-visible-private-studio.md).
 - P122 (October 2): “done” — [verify unlock and resume the studio rollout](p122-unlock-continuation.md).
 - P121 (October 2): “no dropdowns make all controls visible for main choices, drill downs are ok. make sure can do all the things from before” — [visible primary controls](p121-visible-primary-controls.md).
 

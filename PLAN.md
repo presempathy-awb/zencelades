@@ -1,5 +1,13 @@
 # Zencelades working plan
 
+## Current continuation — publish, review, merge and deploy
+
+[P123](docs/plans/p123-land-visible-private-studio.md) authorizes publication
+using the prepared local-check proof, required review, merge and deployment.
+Create the UI PR, complete the exact-head security review, integrate the stack
+without dropping media or privacy guards, deploy through the existing additive
+release path, then verify public controls and private access in the browser.
+
 ## Current continuation — visible primary controls
 
 [P121](docs/plans/p121-visible-primary-controls.md) makes main choices visible
