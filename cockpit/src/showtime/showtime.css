@@ -322,4 +322,33 @@
     font-size: 0.8rem;
     margin-bottom: 0.25rem;
   }
+  @container showtime-workspace (min-width: 48rem) {
+    :scope.showtime-docked {
+      grid-template-columns: 16rem minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
+    }
+    :scope.showtime-docked #stage {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    :scope.showtime-docked .controls {
+      grid-column: 1;
+      grid-row: 1;
+      padding-top: 7rem;
+      border-top: 0;
+      border-right: 1px solid var(--line);
+    }
+    :scope.showtime-docked .control-navigation {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    :scope.showtime-docked .control-body {
+      flex: 1;
+      max-height: none;
+    }
+    :scope.showtime-docked #status {
+      white-space: normal;
+      flex-shrink: 0;
+    }
+  }
 }

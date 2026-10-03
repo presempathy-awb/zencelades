@@ -139,6 +139,8 @@
   height: auto;
 }
 .showtime-workspace {
+  container: showtime-workspace / inline-size;
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -181,6 +183,19 @@
   overflow: auto;
   min-height: 0;
   padding: 1rem;
+}
+@container showtime-workspace (min-width: 48rem) {
+  .showtime-sections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 16rem;
+    flex-direction: column;
+  }
+  .showtime-context {
+    margin-left: 16rem;
+  }
 }
 .showtime-bar {
   color: var(--cockpit-ink);
