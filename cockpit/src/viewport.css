@@ -73,7 +73,7 @@ body,
   scrollbar-gutter: stable;
 }
 .native-pane > .pane-reading-area {
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 }

@@ -5,6 +5,8 @@
 .project-page nav { gap: .25rem 1.15rem; }
 .project-page nav a[aria-current="page"] { color: var(--ink); text-decoration-thickness: .15em; }
 .project-page .lead { padding-block: clamp(3rem, 8vw, 6rem) 3rem; max-width: 64rem; }
+.project-page .home-visuals { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+.project-page .home-visuals > * { margin: 0; }
 .project-page h1 { max-width: 15ch; font-size: clamp(2.6rem, 6vw, 5.6rem); overflow-wrap: break-word; }
 .project-page .lede { max-width: 48ch; font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.8rem); line-height: 1.5; }
 .project-page .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1.75rem; }

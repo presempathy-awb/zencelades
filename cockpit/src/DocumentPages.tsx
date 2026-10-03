@@ -1,6 +1,6 @@
 import { type JSX, useEffect, useRef, useState } from "react";
 import { cockpitHref, documentPages } from "./page-routes";
-import { mountTopics } from "./pane-topics";
+import { focusSection, mountTopics } from "./pane-topics";
 import "./documents.css";
 
 /** Preserve complete published pages and their controls inside the shared shell. */
@@ -80,16 +80,6 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
       }
       // Published project markup only. Script activation is an explicit list below.
       body.querySelectorAll("script").forEach((script) => script.remove());
-      body.addEventListener("click", (event) => {
-        const link = event.target instanceof Element ? event.target.closest("a") : null;
-        const href = link?.getAttribute("href");
-        if (!href?.startsWith("#") || href.startsWith("#/")) return;
-        const target = root.getElementById(decodeURIComponent(href.slice(1)));
-        if (!target) return;
-        event.preventDefault();
-        target.tabIndex = -1;
-        target.focus({ preventScroll: true });
-      });
       root.append(body);
       const visibility = document.createElement("style");
       visibility.textContent =
@@ -135,7 +125,7 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
     const scroll = (): void => {
       const section = new URLSearchParams(location.hash.split("?")[1]).get("section");
       if (section)
-        host.current?.shadowRoot?.getElementById(section)?.focus({ preventScroll: true });
+        focusSection(host.current?.shadowRoot?.getElementById(section) ?? null);
     };
     scroll();
     window.addEventListener("hashchange", scroll);

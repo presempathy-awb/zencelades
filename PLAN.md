@@ -2,6 +2,13 @@
 
 ## Current continuation — publish, review, merge and deploy
 
+[P124](docs/plans/p124-resume-authorized-landing.md) records the verified
+prerequisite merge and working scoped authentication. PR13 is open; the
+remaining work is the complete repaired PR13 review against main, merge and
+protected additive deployment. PR9/PR11 remain source history, not intermediate
+releases to activate. Navigation and parser regressions are reproduced before
+their fixes; all publication proof must name the source and asset manifest.
+
 [P123](docs/plans/p123-land-visible-private-studio.md) authorizes publication
 using the prepared local-check proof, required review, merge and deployment.
 Create the UI PR, complete the exact-head security review, integrate the stack

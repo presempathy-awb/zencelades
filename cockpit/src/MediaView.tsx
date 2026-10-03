@@ -1,4 +1,4 @@
-import type { JSX, MouseEvent } from "react";
+import type { JSX } from "react";
 import gallery from "../../site/models/index.html?raw";
 import showtime from "../../site/showtime/index.html?raw";
 import "./media.css";
@@ -65,16 +65,6 @@ export default function MediaView(): JSX.Element {
 
 /** Keep the independently published projection stage intact inside the cockpit. */
 export function ShowtimeView(): JSX.Element {
-  const scrollToSection = (event: MouseEvent<HTMLDivElement>): void => {
-    const link = event.target instanceof Element ? event.target.closest("a") : null;
-    const href = link?.getAttribute("href");
-    if (!href?.startsWith("#") || href.startsWith("#/")) return;
-    const section = document.getElementById(href.slice(1));
-    if (!section) return;
-    event.preventDefault();
-    section.tabIndex = -1;
-    section.focus({ preventScroll: true });
-  };
   return (
     <section className="media-library showtime-panel" aria-label="Showtime projection workspace">
       <div className="showtime-bar">
@@ -87,7 +77,7 @@ export function ShowtimeView(): JSX.Element {
         The sequence below describes the intended artwork experience. Participant capture, mapping,
         controls and occupied operation still need physical verification.
       </p>
-      <div onClick={scrollToSection} dangerouslySetInnerHTML={{ __html: showtimeContent }} />
+      <div dangerouslySetInnerHTML={{ __html: showtimeContent }} />
     </section>
   );
 }

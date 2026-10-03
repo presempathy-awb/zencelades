@@ -20,13 +20,14 @@ export interface EffectPrompt {
 export function readMusicPrompt(markdown: string, id: string): MusicPrompt {
   const fields = [...markdown.matchAll(/```text\n([\s\S]*?)\n```/g)];
   const title = markdown.match(/^# (.+)/)?.[1];
-  if (!title || fields.length !== 2) throw new Error(`Incomplete music prompt: ${id}`);
+  const controls = markdown.match(/## Suno controls\n([\s\S]*?)(?=\n## |$)/)?.[1].trim();
+  if (!title || fields.length !== 2 || !controls) throw new Error(`Incomplete music prompt: ${id}`);
   return {
     id,
     title,
     use: markdown.match(/^Use: (.+)/m)?.[1].trim() ?? "",
     target: markdown.match(/^Tempo\/key targets: (.+)/m)?.[1].trim() ?? "",
-    controls: markdown.match(/## Suno controls\n([\s\S]*?)\n##/)?.[1].trim() ?? "",
+    controls,
     prompt: fields[0][1],
     exclude: fields[1][1],
   };
@@ -38,7 +39,9 @@ export function readEffects(markdown: string): EffectPrompt[] {
     .split("\n")
     .filter((line) => line.startsWith("| sfx-"))
     .map((line) => {
-      const [, identity, use, duration, loop, prompt] = line.split("|").map((s) => s.trim());
+      const cells = line.split("|").map((s) => s.trim());
+      if (cells.length !== 7 || cells[0] || cells[6]) throw new Error("Invalid effect columns");
+      const [, identity, use, duration, loop, prompt] = cells;
       const [id, title] = identity.split(" · ");
       const seconds = Number(duration);
       if (

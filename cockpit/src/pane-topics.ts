@@ -4,6 +4,14 @@ export interface TopicRange {
   end: number;
 }
 
+/** Native scrolling crosses shadow roots and keeps the target in its nearest panel. */
+export function focusSection(target: HTMLElement | null): void {
+  if (!target) return;
+  target.tabIndex = -1;
+  target.scrollIntoView({ block: "nearest", inline: "nearest" });
+  target.focus({ preventScroll: true });
+}
+
 /** Partition existing content at headings without dropping an introduction or tail. */
 export function topicRanges(titles: string[]): TopicRange[] {
   const ranges: TopicRange[] = [];
@@ -22,8 +30,8 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
     (node): node is HTMLElement =>
       node instanceof HTMLElement && !node.matches("style, script, link"),
   );
-  const titles = nodes.map((node, index) => {
-    if (node.matches("h2,h3")) return index <= 1 ? "" : (node.textContent?.trim() ?? "");
+  const titles = nodes.map((node) => {
+    if (node.matches("h2,h3")) return node.textContent?.trim() ?? "";
     if (node.matches("section,header,footer,.media-gallery,.showtime-bar"))
       return (
         node.querySelector("h1,h2,h3")?.textContent?.trim() ||
@@ -64,7 +72,11 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
     summary.textContent = `Section: ${topic.title}`;
     buttons.forEach((button, i) => button.setAttribute("aria-pressed", String(i === index)));
     count.textContent = `${index + 1} / ${topics.length}`;
-    content.closest(".pane-reading-area")?.scrollTo(0, 0);
+    const root = content.getRootNode();
+    const reader =
+      content.closest(".pane-reading-area") ??
+      (root instanceof ShadowRoot ? root.host.closest(".pane-reading-area") : null);
+    reader?.scrollTo(0, 0);
   };
   const controls = (
     [
@@ -96,7 +108,7 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
     } catch {
       return;
     }
-    const target = content.querySelector(`#${CSS.escape(decoded)}`);
+    const target = content.querySelector<HTMLElement>(`#${CSS.escape(decoded)}`);
     const index = topics.findIndex((topic) =>
       nodes
         .slice(topic.start, topic.end)
@@ -105,6 +117,7 @@ export function mountTopics(content: HTMLElement, bar: HTMLElement): () => void 
     if (index >= 0) {
       event?.preventDefault();
       show(index);
+      focusSection(target);
     }
   };
   content.addEventListener("click", reveal, true);

@@ -21,8 +21,13 @@ publication, home composition and shell fit; run applicable tests and approved
 browser checks; PR, merge under policy, deploy preserving active media and
 verify the live release. Existing account/access prerequisites remain separate.
 
-Status: PR #9 open; deployed static release `a1d37232`. Homepage browser checks
-passed locally and live, and 53 of 53 changed files match public HTTPS.
-See [publication evidence](../audio/publication.md). Expanded route/audio browser
-scope is still pending. Merge waits for the separate account base PR; this
-release leaves that reviewed head untouched.
+Historical publication: release-manifest SHA256
+`a1d372323fe59d831f617136932e19fffa7737936c1f48351e744cc4ef4414c0`
+identifies the deployed asset manifest, not a Git commit. Its 53 changed or added
+built URL paths were compared by content hash over public HTTPS; this is not the
+number of source files changed in PR9. Source implementation was `80c132e0cea0`,
+an ancestor of PR9's `030f6c14`; later documentation commits were not part of
+that byte comparison. See [publication evidence](../audio/publication.md).
+That release's browser proof covers the homepage only. P124 now integrates the
+subsequent private-studio and visible-controls work through PR13, with fresh
+checks before activation. PR8 is merged; PR9 remains open as source history.

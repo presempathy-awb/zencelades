@@ -72,9 +72,13 @@ Suno's current [Get Stems guide](https://help.suno.com/en/articles/13925185)
 documents paid access and different split methods; no extraction or entitlement
 check was performed here.
 
-No music, effects or studio feature has been generated, published or deployed
-by this preparation. No app/runtime code changed, and no new dependency was
-introduced. These docs do not move the existing account PR's reviewed head.
+The cockpit prompt browser and copy controls are implemented. The earlier public
+prompt release is recorded in [publication evidence](publication.md); P118 moves
+delivery to the restricted studio build and replaces the public audio page with
+a sign-in link. Studio route activation is tracked separately in the
+[access contract](../private-studio-access.md). No music or effects have been
+generated or auditioned, and Showtime mixing remains deferred. No new production
+dependency is introduced by this prompt browser.
 
 Requests: [P114](../plans/p114-showtime-audio-studio.md) and
 [P115](../plans/p115-suno-umesemu-optimizations.md).

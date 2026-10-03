@@ -1,4 +1,4 @@
-import { type JSX, type MouseEvent, useEffect, useRef } from "react";
+import { type JSX, useEffect, useRef } from "react";
 import artwork from "../../site/about/index.html?raw";
 import "../../site/about/pages.css";
 import "./home.css";
@@ -38,21 +38,10 @@ export default function HomePage(): JSX.Element {
       video.pause();
     };
   }, []);
-  const scrollToSection = (event: MouseEvent<HTMLDivElement>): void => {
-    const link = event.target instanceof Element ? event.target.closest("a") : null;
-    const href = link?.getAttribute("href");
-    if (!href?.startsWith("#") || href.startsWith("#/")) return;
-    const section = document.getElementById(href.slice(1));
-    if (!section) return;
-    event.preventDefault();
-    section.tabIndex = -1;
-    section.focus({ preventScroll: true });
-  };
   return (
     <div
       ref={root}
       className="artwork-home project-page"
-      onClick={scrollToSection}
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

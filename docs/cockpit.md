@@ -7,14 +7,17 @@ which revision has actually reached the live site.
 
 ## What is implemented
 
-- **Page fit:** the cockpit shell stays within the viewport. The fixed Section
-  selector drills into existing page content; long details scroll only inside
-  their reading panel. The homepage stacks the lander and aerial images in one
-  column, retaining the introduction and Showtime preview beside them.
-- **Music & sound prompts:** `/#/audio` offers eight Suno music prompts and
-  sixteen ElevenLabs effect prompts with copy controls, settings and source
-  downloads. These are preparation assets; generation, account-protected studio
-  provisioning and adaptive Showtime audio playback remain deferred.
+- **Page fit implementation:** the shell uses a fixed viewport. Long-form pages
+  use section selectors; functional forms keep their controls together in a
+  contained reading panel. The homepage stacks lander and aerial images with
+  the introduction and Showtime preview beside them. This is the layout contract,
+  not a claim that every route and screen size has passed browser acceptance;
+  release receipts record the exercised routes and sizes.
+- **Music & sound prompts:** the private studio build offers eight Suno music
+  prompts and sixteen ElevenLabs effect prompts with copy controls, settings
+  and downloads. Public `/#/audio` links to the authenticated studio. Route
+  activation and login proof are tracked in [the access contract](private-studio-access.md).
+  Generation and adaptive Showtime audio playback remain deferred.
 
 - **Model:** 28 generated studies retain the complete source archive, while
   active selectors exclude deferred truck and hitch studies. The occupied studies

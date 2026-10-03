@@ -58,14 +58,9 @@ export default function App(): JSX.Element {
   const [referenceModel, setReferenceModel] = useState("scenario");
   const fileInput = useRef<HTMLInputElement>(null);
   const path = useRouterState({ select: (state) => state.location.pathname });
-  const routeLocation = useRouterState({ select: (state) => state.location.href });
   useEffect(() => {
     setPages((current) => (current[0] === path ? current : selectColumn(current, 0, path)));
   }, [path]);
-  useEffect(() => {
-    const section = new URLSearchParams(routeLocation.split("?")[1]).get("section");
-    if (section) document.getElementById(section)?.focus({ preventScroll: true });
-  }, [routeLocation]);
   const fitted = fitColumns(columns, width);
   const selectedPages = pages[0] === path ? pages : selectColumn(pages, 0, path);
   const visiblePages = selectedPages.slice(0, fitted);
@@ -470,7 +465,7 @@ export default function App(): JSX.Element {
               style={{ gridColumn: visiblePages.indexOf(page) + 1 }}
               aria-label={`${page === "/" ? "Overview" : page.slice(1)} view`}
             >
-              <TopicPane sections={!["/audio", "/workflow", "/tasks"].includes(page)}>
+              <TopicPane sections={["/", "/media", "/showtime"].includes(page)}>
                 <Suspense fallback={<p className="loading">Loading workspace…</p>}>
                   {page === "/" ? (
                     <HomePage />
