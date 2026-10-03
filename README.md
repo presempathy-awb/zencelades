@@ -81,6 +81,7 @@ and all original files are preserved.
 - `just check` runs this project's ingestion tests and Python lint/format checks.
 - `just site-build` builds the Vite/React cockpit at the local root, the original catalog at `/catalog/`, every individual asset download and selected media previews. It invokes the pinned Bun frontend build before assembling the Python-managed distribution.
 - `just cockpit-check` runs the frontend's Bun scenario checks and TypeScript/Vite build; it does not run pytest.
+- `just record-showtime` creates the current 60-second homepage loop using visible Chrome after browser-control approval; see [recording and provenance](docs/homepage-recording.md). The cockpit build rejects missing or stale recording outputs.
 - `just cockpit-dev` starts the local Vite developer server. The complete built-site preview also supplies the legacy pages and downloads.
 - `just preview` serves the local build on an available loopback port and prints its URL. Archival downloads are attachments.
 - `just assets-upload --endpoint <origin> --repo <repository> --branch <fresh-ingest-branch> --prefix <prefix>` prints the upload plan. `--apply` requires the scoped hesellsheshells publisher token and an already provisioned repository.

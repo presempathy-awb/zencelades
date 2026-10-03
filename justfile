@@ -58,6 +58,11 @@ cockpit-check:
 cockpit-dev:
     (cd cockpit && bun run dev)
 
+# Explicit, visible local capture; obtain browser-control approval before running.
+record-showtime:
+    (cd cockpit && bun run build:film)
+    node cockpit/scripts/record-showtime.mjs
+
 # Build both bundles; reject private imports and current prompt excerpts publicly.
 private-studio-check:
     (cd cockpit && bun test && bun run build)
