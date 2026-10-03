@@ -56,6 +56,7 @@ export function mountShowtime(
     effects = element<HTMLInputElement>("effects");
   const haze = element<HTMLInputElement>("haze"),
     reaction = element<HTMLInputElement>("reaction");
+  const internalHaze = element<HTMLInputElement>("internal-haze");
   const filmBlend = element<HTMLInputElement>("film-blend");
   const brightness = element<HTMLInputElement>("brightness");
   const movementEnergy = element<HTMLInputElement>("movement-energy"),
@@ -116,7 +117,8 @@ export function mountShowtime(
   const motionContext = motionSampler.getContext("2d", { willReadFrequently: true });
   const motionAnalyzer = new MotionResponseAnalyzer();
   const movementEpoch = browserWindow.performance.now();
-  const routinePose = routinePoseAt(0, 0);
+  const movementSeed = 1 + Math.floor(Math.random() * 0x7ffffffe);
+  const routinePose = routinePoseAt(0, movementSeed);
   let movementMode: MovementMode =
     movementButtons.control.getAttribute("aria-pressed") === "true" ? "control" : "random";
   let motionEnergy = 0,
@@ -127,7 +129,8 @@ export function mountShowtime(
     seconds: 0,
     motion: 0,
     motionX: 0,
-    haze: 0.55,
+    haze: 0.9,
+    internalHaze: 0.35,
     effects: 0.65,
     filmBlend: 0.7,
     avatarVisible: true,
@@ -465,7 +468,7 @@ export function mountShowtime(
       intro.hidden = true;
       setPlaying(true);
       status.textContent =
-        "Show looping continuously. Movement routines are automatic; Controls lets you direct the movement.";
+        "Show looping continuously. Random motion is on; Controls lets you direct the movement.";
     } catch (error) {
       if (disposed || attempt !== playbackAttempt) return;
       setPlaying(false);
@@ -589,7 +592,7 @@ export function mountShowtime(
 
   function sampleMovement(now: number): void {
     if (movementMode === "random") {
-      routinePoseAt(Math.max(0, (now - movementEpoch) / 1000), 0, routinePose);
+      routinePoseAt(Math.max(0, (now - movementEpoch) / 1000), movementSeed, routinePose);
       motionEnergy = routinePose.motion;
       motionX = routinePose.motionX;
       const label = routineLabels[routinePose.routine];
@@ -794,6 +797,7 @@ export function mountShowtime(
         projectionFrame.routinePose =
           movementMode === "random" && !reducedMotion.matches ? routinePose : undefined;
         projectionFrame.haze = hazerEnabled ? Number(haze.value) : 0;
+        projectionFrame.internalHaze = hazerEnabled ? Number(internalHaze.value) : 0;
         projectionFrame.effects = strength;
         projectionFrame.brightness = Math.max(0, Math.min(1, Number(brightness.value) || 0));
         projectionFrame.projectionEnabled = projectionEnabled;

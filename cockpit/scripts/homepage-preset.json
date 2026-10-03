@@ -7,6 +7,6 @@
   "width": 1280,
   "height": 720,
   "fps": 30,
-  "controls": { "film-blend": 0.7, "blend": 0.7, "effects": 0.65, "haze": 0.55, "reaction": 0.7 },
+  "controls": { "film-blend": 0.7, "blend": 0.7, "effects": 0.65, "haze": 0.9, "internal-haze": 0.35, "reaction": 0.7 },
   "checks": { "fade": true, "mirror": true, "reference": true }
 }

@@ -39,7 +39,9 @@ test("soft haze rises and widens from the actual external outlet below the orb",
       model.center,
       model.radius,
     );
-    const wisps = scene.meshes.filter((mesh) => !originalMeshes.has(mesh));
+    const wisps = scene.meshes.filter(
+      (mesh) => !originalMeshes.has(mesh) && mesh.name.startsWith("external hazer plume"),
+    );
     expect(wisps.length).toBeGreaterThan(1);
     plume.update(0, 1, 0, 1);
     const youngest = wisps.reduce((lowest, mesh) =>
@@ -74,7 +76,7 @@ test("soft haze rises and widens from the actual external outlet below the orb",
     }
     expect(highestVapor).toBeLessThan(model.center.y);
     expect(lowestVapor).toBeGreaterThan(0);
-    expect(strongestAlpha).toBeGreaterThan(0.2);
+    expect(strongestAlpha).toBeGreaterThan(0.5);
     expect(nearestVapor).toBeGreaterThan(model.radius);
     expect(widestVapor).toBeLessThan(2.1);
     expect(tallestVapor).toBeLessThan(0.81);
@@ -106,7 +108,9 @@ test("haze animation is deterministic and reduced effects keep a visible station
       model.center,
       model.radius,
     );
-    const wisps = scene.meshes.filter((mesh) => !before.has(mesh));
+    const wisps = scene.meshes.filter(
+      (mesh) => !before.has(mesh) && mesh.name.startsWith("external hazer plume"),
+    );
     const snapshot = (): unknown[] =>
       wisps.map((mesh) => {
         if (!(mesh.material instanceof StandardMaterial))
@@ -133,6 +137,35 @@ test("haze animation is deterministic and reduced effects keep a visible station
     expect(() => plume.update(101, 1, 1, 1)).not.toThrow();
     expect(scene.meshes).toEqual([]);
     expect(scene.materials).toEqual([]);
+  } finally {
+    scene.dispose();
+    engine.dispose();
+  }
+});
+
+test("internal haze study stays inside the orb, follows its center and turns fully off", () => {
+  const engine = new NullEngine();
+  const scene = new Scene(engine);
+  try {
+    const outlet = new Mesh("outlet", scene);
+    const center = new Vector3(0, 2, 0);
+    const haze = createProjectionHaze(scene, outlet, new Texture(null, scene), [], center, 1.25);
+    haze.update(1, 0, 0, 1, 1, 0.6);
+    const interior = scene.meshes.filter((mesh) =>
+      mesh.name.startsWith("internal haze study wisp"),
+    );
+    expect(interior.length).toBeGreaterThan(0);
+    for (const mesh of interior) {
+      expect(mesh.isEnabled()).toBe(true);
+      expect(mesh.position.subtract(center).length() + mesh.scaling.x * 0.71).toBeLessThan(1.25);
+    }
+    const original = interior[0].position.clone();
+    center.x += 0.3;
+    haze.update(1, 0, 0, 1, 1, 0.6);
+    expect(interior[0].position.x - original.x).toBeCloseTo(0.3, 5);
+    haze.update(1, 0, 0, 1, 1, 0);
+    expect(interior.every((mesh) => !mesh.isEnabled())).toBe(true);
+    expect(scene.getMeshByName("internal haze concept feed")?.isEnabled()).toBe(false);
   } finally {
     scene.dispose();
     engine.dispose();

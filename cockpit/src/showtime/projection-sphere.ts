@@ -30,6 +30,7 @@ export interface ProjectionSphereFrame {
   motion: number;
   motionX: number;
   haze: number;
+  internalHaze?: number;
   effects: number;
   brightness?: number;
   projectionEnabled?: boolean;
@@ -262,7 +263,7 @@ export function createClearFrontCaps(
   });
 }
 
-/** Look slightly down onto the sphere from each projection side or clear entrance. */
+/** Look down onto the sphere from each projection side or clear entrance. */
 export function setProjectionView(
   camera: ArcRotateCamera,
   view: ProjectionView,
@@ -274,7 +275,7 @@ export function setProjectionView(
   const direction = view === "front" ? new Vector3(0, 0, 1) : lenses[index].subtract(center);
   direction.y = 0;
   camera.setPosition(
-    camera.target.add(direction.normalize().scale(8.6)).add(new Vector3(0, 3.1, 0)),
+    camera.target.add(direction.normalize().scale(8.6)).add(new Vector3(0, 6.5, 0)),
   );
   if (aerialMeshes) fitProjectionRig(camera, aerialMeshes);
 }
@@ -436,7 +437,7 @@ export async function loadProjectedLander(
         horizontal.set(Math.sign(horizontal.x) * Math.cos(angle), 0, Math.sin(angle));
       }
       // SHORTCUT: artistic side-camera height; survey the actual optical arms before hardware calibration.
-      const dy = 0.65;
+      const dy = 1.25;
       const horizontalRadius = Math.sqrt((radius + 2.5) ** 2 - dy ** 2);
       const movedLens = center.add(horizontal.normalize().scale(horizontalRadius));
       movedLens.y = center.y + dy;
@@ -838,8 +839,15 @@ export async function createProjectionSphere(
         projectedSkin.setFloat("moonVisible", frame.moonVisible === false ? 0 : 1);
         projectedSkin.setFloat("personOpacity", personOpacity);
         spill.intensity = projectionEnabled ? brightness * 0.42 : 0;
-        beamMaterial.alpha = haze * (0.025 + effects * 0.035);
-        risingHaze.update(seconds, haze, motion, effects, projectionEnabled ? brightness : 0);
+        beamMaterial.alpha = haze * (0.06 + effects * 0.08);
+        risingHaze.update(
+          seconds,
+          haze,
+          motion,
+          effects,
+          projectionEnabled ? brightness : 0,
+          frame.internalHaze ?? 0,
+        );
         avatar.update(
           seconds,
           motion,

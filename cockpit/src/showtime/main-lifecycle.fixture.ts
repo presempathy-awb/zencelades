@@ -352,6 +352,7 @@ const ids = [
   "reference",
   "effects",
   "haze",
+  "internal-haze",
   "reaction",
   "film-blend",
   "motion-state",
@@ -578,8 +579,9 @@ assert.equal(firstSphere.frames.at(-1)?.haze, 0);
 assert.equal(firstSphere.frames.at(-1)?.personOpacity, 1);
 assert.equal(firstSphere.frames.at(-1)?.brightness, 1);
 assert.equal(firstSphere.frames.at(-1)?.projectionEnabled, true);
-assert.equal(firstSphere.frames.at(-1)?.routinePose?.routine, "settle");
-assert.equal(fixture.root.element("motion-state").value, "Routine · Settle");
+assert.ok(firstSphere.frames.at(-1)?.routinePose?.routine);
+const initialRoutineLabel = fixture.root.element("motion-state").value;
+assert.match(initialRoutineLabel, /^Routine · (Settle|Look|Reach|Stretch|Recline|Tucked crouch)$/);
 const reusedRoutine = firstSphere.frames.at(-1)?.routinePose;
 assert.ok((firstSphere.frames.at(-1)?.motion ?? 0) > 0);
 assert.equal(liveInputs[0].startCalls, 0);
@@ -590,14 +592,14 @@ assert.notEqual(firstSphere.frames.at(-1)?.motion, randomMotion);
 assert.equal(firstSphere.frames.at(-1)?.routinePose, reusedRoutine);
 fixture.document.defaultView.now += 4_000;
 worlds[0].frame?.();
-assert.equal(fixture.root.element("motion-state").value, "Routine · Look");
+assert.notEqual(fixture.root.element("motion-state").value, initialRoutineLabel);
 fixture.document.defaultView.now -= 4_000;
 fixture.document.defaultView.now -= 4_000;
 worlds[0].frame?.();
 assert.equal(firstSphere.frames.at(-1)?.motion, randomMotion);
 fixture.document.defaultView.now += 40_000;
 worlds[0].frame?.();
-assert.equal(fixture.root.element("motion-state").value, "Routine · Tucked crouch");
+assert.notEqual(fixture.root.element("motion-state").value, initialRoutineLabel);
 fixture.document.defaultView.now -= 40_000;
 seekBeforeStartup.value = "0";
 seekBeforeStartup.dispatchEvent(new Event("input"));

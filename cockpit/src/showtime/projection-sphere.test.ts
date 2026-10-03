@@ -304,7 +304,7 @@ test("both rigs raise their three side lenses and extend the arms while keeping 
       );
       expect(model.lenses).toHaveLength(3);
       for (const [index, lens] of model.lenses.entries()) {
-        expect(lens.y - model.center.y).toBeCloseTo(0.65, 5);
+        expect(lens.y - model.center.y).toBeCloseTo(1.25, 5);
         expect(lens.subtract(model.center).length() - model.radius).toBeCloseTo(2.5, 5);
         const head = model.meshes.find(
           (mesh) => mesh.name === `Projector head ${index + 1} - device unselected`,
@@ -324,7 +324,7 @@ test("both rigs raise their three side lenses and extend the arms while keeping 
           head.getAbsolutePosition().subtract(corner.getAbsolutePosition()).length(),
         ).toBeGreaterThan(2.45);
       }
-      expect(model.lenses[0].z).toBeLessThan(-3.6);
+      expect(model.lenses[0].z).toBeLessThan(-3.5);
       expect(model.lenses[1].x).toBeLessThan(-3);
       expect(model.lenses[2].x).toBeGreaterThan(3);
       // Rearward side coverage leaves the clear +Z entrance between the lenses.
@@ -518,13 +518,13 @@ test("the actual lander receives imagery only on its cut-away outer wall", async
       );
     }
     expect(leastOutward).toBeGreaterThan(0.99);
-    expect(model.lenses[0].y - model.center.y).toBeCloseTo(0.65, 5);
+    expect(model.lenses[0].y - model.center.y).toBeCloseTo(1.25, 5);
     for (const lens of model.lenses) {
       expect(lens.subtract(model.center).length() - model.radius).toBeCloseTo(2.5, 5);
     }
-    expect(model.lenses[0].z).toBeLessThan(-3.69);
-    expect(model.lenses[1].x).toBeLessThan(-3.19);
-    expect(model.lenses[2].x).toBeGreaterThan(3.19);
+    expect(model.lenses[0].z).toBeLessThan(-3.5);
+    expect(model.lenses[1].x).toBeLessThan(-3);
+    expect(model.lenses[2].x).toBeGreaterThan(3);
     for (const index of [1, 2, 3]) {
       const head = scene.getMeshByName(`Projector head ${index} - device unselected`);
       const lens = scene.getMeshByName(`Projector lens ${index}`);
@@ -812,8 +812,8 @@ test("elevated views reveal the sphere top while following the lenses and clear 
       const elevation =
         (Math.atan2(cameraDirection.y, Math.hypot(cameraDirection.x, cameraDirection.z)) * 180) /
         Math.PI;
-      expect(elevation).toBeGreaterThan(15);
-      expect(elevation).toBeLessThan(25);
+      expect(elevation).toBeGreaterThan(35);
+      expect(elevation).toBeLessThan(40);
       cameraDirection.y = 0;
       const lensDirection = model.lenses[lensIndex].subtract(model.center);
       lensDirection.y = 0;

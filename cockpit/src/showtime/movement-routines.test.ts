@@ -16,6 +16,14 @@ const numericPose = (pose: MovementRoutinePose): number[] => [
   pose.bodyLift,
 ];
 
+test("random seeds shuffle the routine order instead of only rotating the same cycle", () => {
+  const orders = Array.from({ length: 20 }, (_, seed) =>
+    Array.from({ length: 6 }, (_, step) => routinePoseAt(step * 8 + 4, seed + 1).routine),
+  );
+  expect(new Set(orders.map((order) => order.join(","))).size).toBeGreaterThan(6);
+  for (const order of orders) expect(new Set(order).size).toBe(6);
+});
+
 test("seeded routines rotate through every natural pose and reuse a supplied frame", () => {
   const routines = Array.from({ length: 6 }, (_, index) => routinePoseAt(index * 8 + 4, 0).routine);
   expect(new Set(routines).size).toBe(6);

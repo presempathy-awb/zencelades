@@ -55,6 +55,8 @@ test("the document defaults to full body/moon brightness and randomized motion w
   ).toEqual(["realistic"]);
   expect(controls.get("projection-toggle")?.pressed).toBe("true");
   expect(controls.get("time-of-day")?.value).toBe("22");
+  expect(controls.get("haze")?.value).toBe("0.9");
+  expect(controls.get("internal-haze")?.value).toBe("0.35");
 });
 
 test("native mounts release their resources and remount without duplicate listeners", async () => {

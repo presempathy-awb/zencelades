@@ -113,13 +113,22 @@ function writeRoutine(routine: MovementRoutine, phase: number, pose: MovementRou
   }
 }
 
-function seededOffset(seed: number): number {
+let cachedSeed = 0;
+let cachedOrder = [...ROUTINES];
+
+function routineOrder(seed: number): readonly MovementRoutine[] {
   const finite = Number.isFinite(seed) ? Math.trunc(seed) : 0;
-  if (finite === 0) return 0;
+  if (finite === cachedSeed) return cachedOrder;
+  cachedSeed = finite;
+  cachedOrder = [...ROUTINES];
+  if (finite === 0) return cachedOrder;
   let value = (finite ^ 0x9e3779b9) >>> 0;
-  value = Math.imul(value ^ (value >>> 16), 0x21f0aaad);
-  value = Math.imul(value ^ (value >>> 15), 0x735a2d97);
-  return ((value ^ (value >>> 15)) >>> 0) % ROUTINES.length;
+  for (let index = cachedOrder.length - 1; index > 0; index--) {
+    value = (Math.imul(value, 1664525) + 1013904223) >>> 0;
+    const swap = Math.floor((value / 4294967296) * (index + 1));
+    [cachedOrder[index], cachedOrder[swap]] = [cachedOrder[swap], cachedOrder[index]];
+  }
+  return cachedOrder;
 }
 
 /** Sample a deterministic looping action, optionally reusing a caller-owned pose object. */
@@ -132,9 +141,9 @@ export function routinePoseAt(
   const loopTime = ((safeSeconds % LOOP_SECONDS) + LOOP_SECONDS) % LOOP_SECONDS;
   const sequence = Math.floor(loopTime / ROUTINE_SECONDS);
   const localTime = loopTime - sequence * ROUTINE_SECONDS;
-  const offset = seededOffset(seed);
-  const routine = ROUTINES[(offset + sequence) % ROUTINES.length];
-  const nextRoutine = ROUTINES[(offset + sequence + 1) % ROUTINES.length];
+  const order = routineOrder(seed);
+  const routine = order[sequence];
+  const nextRoutine = order[(sequence + 1) % order.length];
   const pose =
     target ??
     ({
