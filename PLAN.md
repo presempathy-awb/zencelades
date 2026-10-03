@@ -2,14 +2,20 @@
 
 ## Current continuation — deployed studio and access verification
 
+[P128](docs/plans/p128-approved-cache-cleanup.md): approved cache cleanup is
+complete. The exact superseded token was revoked after replacement verification;
+the old alias's new token is active and identical on both hosts. Cloudflare
+accepted its ten-URL purge. Forty live URL checks and all four studio route
+checks pass again; the active release is unchanged. Authenticated sign-in is
+separate and remains pending.
+
 [P126](docs/plans/p126-deploy-unlocked-studio.md): Andrew refreshed the exact
 project unlock. PR13 is merged at `c5bf9f468252` and mirrored. The protected
 studio route and additive release `dfecc13fcfbd` are active. Forty live access
 checks pass; 1,715 deployed manifest entries have matching hashes. The public
 homepage renders and looping video work. Authentik sign-in was reached in the
 browser; Andrew's authenticated session remains pending. Canonical-domain cache
-purge succeeded; old-alias purge is blocked by Cloudflare's token quota and is
-awaiting the explicit token-retirement decision. See the
+purge succeeded; the old-alias purge subsequently completed under P128. See the
 [deployment receipt](docs/private-studio-deployment.md).
 
 ## Historical continuation — publish, review, merge and deploy

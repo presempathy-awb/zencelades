@@ -34,15 +34,29 @@ content changed in that entry.
   section. Showtime content opens. The private studio reaches Authentik's
   named application sign-in screen; credentials/MFA are left to Andrew.
 
-## Remaining boundaries
+## Cache cleanup follow-up — P128
 
 Canonical-domain cache eviction succeeded for all ten retired prompt URLs.
-No zone cache rules override the private no-store headers. The old
-zencelades.com token cannot purge; its replacement attempt hit Cloudflare's
-50-token quota. Current probes on that alias return 404, but eviction of every
-edge copy is not established. The proposed removal is limited to the
-superseded zenceladus.com token, after verifying its replacement is identical
-on both hosts; Andrew's explicit approval is pending. No token was revoked.
+No zone cache rules override the private no-store headers. The old alias's
+first replacement attempt hit the 50-token quota. At the authorized cleanup,
+the count had independently fallen to 46. Codex verified the canonical
+replacement active and identical on both hosts, then revoked only Andrew's
+approved superseded token ending `6529d` (count 45 after revocation).
+
+On maxipaxi, Telpher's `cloudflare-zone-token-plan` and
+`cloudflare-zone-token-mint zencelades.com zencelades --with-edge-cache --mirror`
+both exited 0. The alias replacement ending `9ebf9` is active and identical in
+local hid-in and presvd1's encrypted credential. `edge-cache-purge` planned and
+applied the ten retired alias URLs with exit 0; Cloudflare accepted the purge.
+Only the exact approved canonical token was revoked.
+
+Fresh post-purge verification on maxipaxi: the 40-case live URL probe exited 0
+with zero failures; `route-auth-probe studio.zenceladus.com` exited 0 with all
+four checks passing. The remote active release still resolves to `dfecc13fcfbd`.
+This checks current responses and records Cloudflare's accepted purge; it is
+not an independent observation of every edge cache worldwide.
+
+## Remaining boundaries
 
 An authorized human browser session, clipboard byte readback and browser file
 round-trip are not yet verified. Pawthentik/gimmesomepaw integration and the
