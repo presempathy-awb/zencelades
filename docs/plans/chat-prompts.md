@@ -7,6 +7,9 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P122 (October 2): “done” — [verify unlock and resume the studio rollout](p122-unlock-continuation.md).
+- P121 (October 2): “no dropdowns make all controls visible for main choices, drill downs are ok. make sure can do all the things from before” — [visible primary controls](p121-visible-primary-controls.md).
+
 - P118 (October 2): “ok get it fixed please use umesemu like model but with what needed for pawthentik, if thats not ready just have authentik standin with plan” — [protect private studio](p118-private-studio-authentik.md).
 - P117 (October 2): “are the private pages done and confirmed private. without pawthentik login?” — [live privacy verification](p117-private-page-verification.md).
 

@@ -18,7 +18,10 @@ security-review head remains immutable. The private-studio rollout remains open.
    Browser download-event capture timed out; import round-trip remains covered
    by automated tests, not a completed browser round-trip.
 4. Pending: publish the UI PR and integrate after private-studio review and the
-   locked Telpher project ticket clear; production remains unchanged.
+   supported publication gate clears. Andrew's latest unlock is confirmed by a
+   successful Authentik application read; no additional unlock is required.
+   Production remains unchanged. [P122](docs/plans/p122-unlock-continuation.md)
+   records this continuation and the separately reported recording integration.
 
 ## Current continuation — October 2, private studio repair
 
@@ -40,8 +43,9 @@ dry run passes and reuses the existing zone token. See
 [the access contract and rollout](docs/private-studio-access.md).
 
 1. Finish source validation and the exact-head security review.
-2. Provision and restrict the Authentik application before publishing the studio
-   hostname. Recheck operation-specific access if the ticket expires.
+2. Complete: Authentik studio application provisioned; existing seven-person
+   crew added before restriction. Live policy check allows every member and
+   refuses a nonmember; signups are off. Studio DNS/route dry run passes.
 3. Activate the additive release, purge retired public prompt URLs and verify
    public-host denial, anonymous login enforcement and membership rejection.
 4. Complete authorized browser acceptance without handling Andrew's password

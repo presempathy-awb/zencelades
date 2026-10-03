@@ -1,8 +1,9 @@
 # Private asset studio and Pawthentik handoff
 
-Implementation is prepared; production protection is not yet claimed. The
+The Authentik application is configured and restricted; website protection is
+not yet deployed or claimed. The
 current live release is `a1d372323fe59d831f617136932e19fffa7737936c1f48351e744cc4ef4414c0`.
-The production studio hostname was absent at the October 2 verification.
+The production studio hostname is still awaiting the reviewed route activation.
 
 ## Access contract
 
@@ -50,17 +51,22 @@ copy the approved existing project crew, restrict the application, verify member
 policy, then publish the hostname. The provider TOML has no membership fields:
 Telpher manages access separately through `app-users` and `app-access`.
 Provider configuration alone is never evidence of restricted access.
-Telpher's default application openness must
-never become the deployed studio policy.
+Telpher's default application openness must never become the deployed studio
+policy. On October 2, the supported provider apply succeeded, the existing
+seven-person project crew was copied into `zenceladus-studio-writers`, and the
+application was restricted. Authentik's live access check allowed all seven
+members and refused a nonmember. The final status confirms signups off and the
+standard Telpher superuser policy retained. This establishes application policy,
+not the still-pending website route, asset isolation or human browser login.
 
 Use Telpher's existing `authentik-forward-auth-state`/`apply`, `app-users`,
 `app-access`, `app-access-check`, `domain-add-subdomain`, `route-auth-probe` and
 `edge-cache-purge` recipes. The domain route targets the existing loopback
 server and uses forward authentication. Credentials remain in hid-in.
 The clean Telpher operations checkout initially required Andrew's fresh
-manifest grant. The subsequent Authentik API read succeeds, and the real
-domain/route dry run passes with the existing zone token. This proves readiness
-for those operations, not completed provider creation or route activation.
+manifest grant and project unlock. Operation-specific reads and the provider
+configuration now succeed. The real domain/route dry run passes with the
+existing zone token; route activation remains pending the security review.
 
 ## Release and verification
 
