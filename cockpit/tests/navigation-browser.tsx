@@ -1,0 +1,121 @@
+import { createRoot } from "react-dom/client";
+import { focusSection, mountTopics } from "../src/pane-topics";
+import TopicPane from "../src/TopicPane";
+import "../src/viewport.css";
+import "./navigation-browser.css";
+import shadowStyles from "./navigation-browser.css" with { type: "text" };
+
+const fixture = document.getElementById("fixture")!;
+const results = document.getElementById("results")!;
+document.getElementById("run")!.onclick = async () => {
+  results.textContent = "Running";
+  try {
+    const checks: string[] = [];
+    const check = (name: string, ok: boolean) => checks.push(`${ok ? "PASS" : "FAIL"}: ${name}`);
+    fixture.replaceChildren();
+    const reader = document.createElement("div");
+    reader.className = "pane-reading-area test-reader";
+    const host = document.createElement("div");
+    const shadow = host.attachShadow({ mode: "open" });
+    const content = document.createElement("main");
+    content.innerHTML =
+      '<p><a href="#deep">Jump deep</a></p><h2 id="early">Early heading</h2><section><h2>Details</h2><p class="gap">Long content</p><h3 id="deep">Deep target</h3></section>';
+    const styles = document.createElement("style");
+    styles.textContent = shadowStyles;
+    shadow.append(styles, content);
+    reader.append(host);
+    const bar = document.createElement("nav");
+    fixture.append(bar, reader);
+    const savedHash = location.hash;
+    history.replaceState(null, "", "#/?section=deep");
+    const cleanup = mountTopics(content, bar);
+    check(
+      "initial section query reveals target",
+      !content.querySelector("#deep")!.closest("[hidden]"),
+    );
+    check("initial section query focuses target", shadow.activeElement?.id === "deep");
+    await new Promise<void>((resolve) => {
+      window.addEventListener("hashchange", () => resolve(), { once: true });
+      location.hash = "early";
+    });
+    check(
+      "hashchange reveals and focuses another section",
+      !content.querySelector("#early")!.closest("[hidden]") && shadow.activeElement?.id === "early",
+    );
+    history.replaceState(null, "", savedHash || location.pathname);
+    check(
+      "early heading remains a named section",
+      [...bar.querySelectorAll("button")].some((b) => b.textContent === "Early heading"),
+    );
+    content.querySelector<HTMLAnchorElement>("a")!.click();
+    const target = content.querySelector<HTMLElement>("#deep")!;
+    const rect = target.getBoundingClientRect(),
+      bounds = reader.getBoundingClientRect();
+    check(
+      "deep anchor is visible across shadow boundary",
+      rect.top >= bounds.top && rect.bottom <= bounds.bottom,
+    );
+    check("deep anchor takes focus", shadow.activeElement === target);
+    const modified = new MouseEvent("click", { bubbles: true, cancelable: true, ctrlKey: true });
+    content.querySelector("a")!.dispatchEvent(modified);
+    check("modified anchor click retains browser behavior", !modified.defaultPrevented);
+    const keyboardButton = document.createElement("button");
+    keyboardButton.textContent = "Focusable target";
+    target.append(keyboardButton);
+    focusSection(keyboardButton);
+    check("interactive anchor retains keyboard tab order", keyboardButton.tabIndex === 0);
+    keyboardButton.remove();
+    check("outer page stays fixed", document.documentElement.scrollTop === 0);
+    cleanup();
+    history.replaceState(null, "", "#deep");
+    const native = document.createElement("main");
+    native.innerHTML =
+      '<section><h2>First</h2></section><section><h2 id="deep">Second</h2></section>';
+    fixture.append(native);
+    const cleanNative = mountTopics(native, bar);
+    check(
+      "native fragment reveals and focuses target",
+      document.activeElement?.id === "deep" && !native.querySelector("#deep")!.closest("[hidden]"),
+    );
+    cleanNative();
+    history.replaceState(null, "", savedHash || location.pathname);
+    fixture.replaceChildren();
+    const root = createRoot(fixture);
+    root.render(
+      <TopicPane sections={false}>
+        <form>
+          <h2>First</h2>
+          <input required aria-label="First field" />
+          <div className="test-gap" />
+          <h2>Second</h2>
+          <input required aria-label="Second field" />
+        </form>
+      </TopicPane>,
+    );
+    await new Promise<void>((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+    );
+    const pane = fixture.querySelector<HTMLElement>(".pane-reading-area")!;
+    const fields = [...fixture.querySelectorAll("input")];
+    check(
+      "both settings controls remain in the same form",
+      fields.length === 2 && fields.every((field) => !field.closest("[hidden]")),
+    );
+    check(
+      "native reader allows scrolling to controls",
+      getComputedStyle(pane).overflowY === "auto",
+    );
+    fields[1].scrollIntoView({ block: "nearest" });
+    check(
+      "last control reachable without outer scroll",
+      pane.clientHeight <= 260 &&
+        fields[1].getBoundingClientRect().top >= fixture.getBoundingClientRect().top &&
+        fields[1].getBoundingClientRect().bottom <= fixture.getBoundingClientRect().bottom &&
+        document.documentElement.scrollTop === 0,
+    );
+    results.textContent = checks.join("\n");
+    root.unmount();
+  } catch (error) {
+    results.textContent = `FAIL: ${error instanceof Error ? error.message : String(error)}`;
+  }
+};

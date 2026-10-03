@@ -1,5 +1,6 @@
 import { type JSX, useEffect, useRef, useState } from "react";
 import { cockpitHref, documentPages } from "./page-routes";
+import { focusSection, mountTopics } from "./pane-topics";
 import "./documents.css";
 
 /** Preserve complete published pages and their controls inside the shared shell. */
@@ -25,6 +26,7 @@ export default function DocumentPages({ paths }: { paths: string[] }): JSX.Eleme
 function DocumentPage({ page, column }: { page: string; column: number }): JSX.Element {
   const active = column !== -1;
   const host = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLElement>(null);
   const [failure, setFailure] = useState("");
   const [ready, setReady] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -32,6 +34,7 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
     const element = host.current;
     if (!element) return;
     let disposed = false;
+    let clearTopics: (() => void) | undefined;
     const abort = new AbortController();
     const root = element.shadowRoot ?? element.attachShadow({ mode: "open" });
     root.replaceChildren();
@@ -77,18 +80,12 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
       }
       // Published project markup only. Script activation is an explicit list below.
       body.querySelectorAll("script").forEach((script) => script.remove());
-      body.addEventListener("click", (event) => {
-        const link = event.target instanceof Element ? event.target.closest("a") : null;
-        const href = link?.getAttribute("href");
-        if (!href?.startsWith("#") || href.startsWith("#/")) return;
-        const target = root.getElementById(decodeURIComponent(href.slice(1)));
-        if (!target) return;
-        event.preventDefault();
-        target.scrollIntoView({ behavior: "instant" });
-        target.tabIndex = -1;
-        target.focus({ preventScroll: true });
-      });
       root.append(body);
+      const visibility = document.createElement("style");
+      visibility.textContent =
+        ".legacy-main > [hidden] { display: none; } .legacy-main { min-height: 0; }";
+      root.append(visibility);
+      if (bar.current) clearTopics = mountTopics(body, bar.current);
       if (page === "naming") {
         const [roll, editor, ranking, drafts] = await Promise.all([
           import("../../site/naming/roll.js"),
@@ -119,6 +116,7 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
     });
     return () => {
       disposed = true;
+      clearTopics?.();
       abort.abort();
     };
   }, [page, attempt]);
@@ -127,7 +125,7 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
     const scroll = (): void => {
       const section = new URLSearchParams(location.hash.split("?")[1]).get("section");
       if (section)
-        host.current?.shadowRoot?.getElementById(section)?.scrollIntoView({ behavior: "instant" });
+        focusSection(host.current?.shadowRoot?.getElementById(section) ?? null);
     };
     scroll();
     window.addEventListener("hashchange", scroll);
@@ -150,7 +148,10 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
       ) : (
         !ready && <p role="status">Loading the complete page…</p>
       )}
-      <div className="document-host" ref={host} />
+      <nav ref={bar} className="pane-topic-bar" aria-label="Page sections" />
+      <div className="pane-reading-area" tabIndex={0} aria-label="Document section">
+        <div className="document-host" ref={host} />
+      </div>
     </section>
   );
 }

@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "bun run prepare && vite --host 127.0.0.1",
     "prepare": "bun scripts/prepare.ts",
-    "build": "bun run prepare && bun run verify:models && tsc --noEmit && vite build",
+    "build": "bun run prepare && bun run verify:models && tsc --noEmit && vite build && bun run build:private && bun run verify:privacy",
+    "build:private": "bun scripts/build-private.ts",
+    "verify:privacy": "bun scripts/verify-private.ts",
     "test": "bun test",
     "verify:http": "bun scripts/verify-http.ts",
     "verify:models": "bun scripts/verify-models.ts",

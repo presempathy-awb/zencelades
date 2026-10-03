@@ -9,6 +9,7 @@ import {
   type PartsPlan,
 } from "./parts-plan";
 import { dollars, type Scenario } from "./scenario";
+import ChoiceButtons from "./ChoiceButtons";
 
 function PartsTable({ parts }: { parts: Part[] }): JSX.Element {
   return (
@@ -99,61 +100,43 @@ export default function PartsView({
         </p>
       </details>
       <div className="library-controls">
-        <label>
-          Build configuration
-          <select
-            value={plan.configuration}
-            onChange={(event) =>
-              change({ configuration: event.target.value as PartsPlan["configuration"] })
-            }
-          >
-            {Object.entries(configurations).map(([id, label]) => (
-              <option key={id} value={id}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Visual package
-          <select
-            value={plan.projectors}
-            onChange={(event) =>
-              change({ projectors: Number(event.target.value) as PartsPlan["projectors"] })
-            }
-          >
-            <option value={0}>LED lighting · no projectors</option>
-            <option value={1}>P1 · one projector</option>
-            <option value={2}>P2 · two projectors</option>
-            <option value={3}>P3 · three projectors</option>
-          </select>
-        </label>
-        <label>
-          Optional cameras
-          <select
-            value={plan.cameras}
-            onChange={(event) =>
-              change({ cameras: Number(event.target.value) as PartsPlan["cameras"] })
-            }
-          >
-            <option value={0}>No cameras</option>
-            <option value={1}>One camera</option>
-            <option value={2}>Two cameras</option>
-          </select>
-        </label>
+        <ChoiceButtons
+          label="Build configuration"
+          value={plan.configuration}
+          options={Object.entries(configurations)}
+          onChange={(value) => change({ configuration: value as PartsPlan["configuration"] })}
+        />
+        <ChoiceButtons<PartsPlan["projectors"]>
+          label="Visual package"
+          value={plan.projectors}
+          options={[
+            [0, "LED lighting · no projectors"],
+            [1, "P1 · one projector"],
+            [2, "P2 · two projectors"],
+            [3, "P3 · three projectors"],
+          ]}
+          onChange={(value) => change({ projectors: value })}
+        />
+        <ChoiceButtons<PartsPlan["cameras"]>
+          label="Optional cameras"
+          value={plan.cameras}
+          options={[
+            [0, "No cameras"],
+            [1, "One camera"],
+            [2, "Two cameras"],
+          ]}
+          onChange={(value) => change({ cameras: value })}
+        />
         {plan.projectors > 0 && plan.configuration !== "O30" && (
-          <label>
-            Projector supports
-            <select
-              value={plan.mounting}
-              onChange={(event) =>
-                change({ mounting: event.target.value as PartsPlan["mounting"] })
-              }
-            >
-              <option value="arms">Triangle-mounted arms</option>
-              <option value="stands">Independent stands</option>
-            </select>
-          </label>
+          <ChoiceButtons<PartsPlan["mounting"]>
+            label="Projector supports"
+            value={plan.mounting}
+            options={[
+              ["arms", "Triangle-mounted arms"],
+              ["stands", "Independent stands"],
+            ]}
+            onChange={(value) => change({ mounting: value })}
+          />
         )}
       </div>
       <label className="check-field">
@@ -168,22 +151,16 @@ export default function PartsView({
       <p>Unselected alternatives stay out of the subtotal and remain explicit missing decisions.</p>
       <div className="library-controls">
         {activeGroups.map((group) => (
-          <label key={group}>
-            {alternativeGroups[group].label}
-            <select
-              value={plan.choices[group] ?? ""}
-              onChange={(event) =>
-                change({ choices: { ...plan.choices, [group]: event.target.value || null } })
-              }
-            >
-              <option value="">Not selected</option>
-              {alternativeGroups[group].ids.map((id) => (
-                <option key={id} value={id}>
-                  {partLabel(id)}
-                </option>
-              ))}
-            </select>
-          </label>
+          <ChoiceButtons
+            key={group}
+            label={alternativeGroups[group].label}
+            value={plan.choices[group] ?? ""}
+            options={[
+              ["", "Not selected"],
+              ...alternativeGroups[group].ids.map((id): [string, string] => [id, partLabel(id)]),
+            ]}
+            onChange={(value) => change({ choices: { ...plan.choices, [group]: value || null } })}
+          />
         ))}
       </div>
       {result.optional.length > 0 && (

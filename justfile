@@ -58,6 +58,19 @@ cockpit-check:
 cockpit-dev:
     (cd cockpit && bun run dev)
 
+# Build both bundles; reject private imports and current prompt excerpts publicly.
+private-studio-check:
+    (cd cockpit && bun test && bun run build)
+    uv run --no-project python -m unittest tests.test_private_studio
+
+# Additive overlay from the actual live release; no writes unless --apply.
+private-studio-release *args:
+    uv run --no-project python -m scripts.private_studio {{args}}
+
+# On a host with Caddy: generate the deny fragment and exercise both roots.
+private-studio-http-check:
+    uv run --no-project python -m tests.private_studio_http_probe --fragment deploy/private-studio.caddy
+
 # Account boundary tests run without production secrets; PG18 uses an isolated fixture.
 account-check:
     (cd account-service && go test -race ./...)

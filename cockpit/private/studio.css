@@ -1,0 +1,23 @@
+.private-studio {
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  color: #edf4f4;
+  background: #0a1922;
+}
+.private-studio-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1rem;
+  flex: none;
+}
+.private-studio-header a {
+  color: #99deed;
+}
+.private-studio > .audio-workbench {
+  flex: 1;
+  min-height: 0;
+}

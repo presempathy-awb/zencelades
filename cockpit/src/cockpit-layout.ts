@@ -5,6 +5,7 @@ export const viewGroups = [
       ["/", "Overview"],
       ["/media", "Media & renders"],
       ["/showtime", "Showtime"],
+      ["/audio", "Music & sound prompts"],
     ],
   },
   {

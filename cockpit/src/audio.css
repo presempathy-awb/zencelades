@@ -1,0 +1,62 @@
+.audio-workbench {
+  color: #edf4f4;
+  background: #0a1922;
+}
+.audio-detail {
+  padding: 1.25rem;
+}
+.audio-detail header,
+.audio-notes {
+  display: grid;
+  gap: 0.5rem;
+}
+.audio-detail h1 {
+  font:
+    2.1rem / 1.2 Georgia,
+    serif;
+}
+.audio-detail > p {
+  margin-block: 0.75rem;
+  color: #c4d5db;
+}
+.audio-detail a {
+  color: #99deed;
+}
+.audio-detail footer {
+  padding-top: 1rem;
+}
+.prompt-fields {
+  display: grid;
+  gap: 1rem;
+}
+.prompt-field label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+.prompt-field textarea {
+  width: 100%;
+  min-height: 9rem;
+  resize: vertical;
+  padding: 0.75rem;
+  border: 1px solid #446473;
+  background: #122b38;
+  color: #edf4f4;
+  font:
+    1rem / 1.6 "Avenir Next",
+    sans-serif;
+}
+.prompt-field button {
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  margin-top: 0.4rem;
+  background: #99deed;
+  color: #0a1922;
+  border: 0;
+}
+.prompt-field [role="status"] {
+  padding-left: 0.6rem;
+}
+.audio-notes h2 {
+  margin-top: 0.75rem;
+}

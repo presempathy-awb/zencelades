@@ -1,5 +1,97 @@
 # Zencelades working plan
 
+## Current continuation — publish, review, merge and deploy
+
+[P125](docs/plans/p125-verified-unlock-and-delivery.md): the project unlock
+worked for the real Authentik consumer, then expired during review. PR13 has
+two complete Grok reviews, both final HOLD medium. Repair or answer every
+finding, run the changed checks, and use the configured two-round merge gate.
+Request a fresh project unlock only when deployment is ready. No source merge
+or website activation is claimed. Current evidence belongs in
+[the round-two disposition](docs/private-studio-round-two.md); the dated
+continuations below are historical records, not current check results.
+
+[P124](docs/plans/p124-resume-authorized-landing.md) records the verified
+prerequisite merge and working scoped authentication. PR13 is open; the
+remaining work is the repaired PR13 review against main, merge and
+protected additive deployment. PR9/PR11 remain source history, not intermediate
+releases to activate. Navigation and parser regressions are reproduced before
+their fixes; all publication proof must name the source and asset manifest.
+
+[P123](docs/plans/p123-land-visible-private-studio.md) authorizes publication
+using the prepared local-check proof, required review, merge and deployment.
+The UI PR is zencelades `fix/visible-controls` (#13). Complete its review, integrate the stack
+without dropping media or privacy guards, deploy through the existing additive
+release path, then verify public controls and private access in the browser.
+
+## Historical continuation — visible primary controls
+
+[P121](docs/plans/p121-visible-primary-controls.md) makes main choices visible
+as buttons while allowing secondary drill-downs. Preserve every route, model
+option, parts setting, audio prompt, copy/download action, scenario import/export,
+and account action. Use the isolated `fix/visible-controls` child lane so PR11's
+security-review head remains immutable. The private-studio rollout remains open.
+
+1. Complete: cockpit primary selectors use visible buttons; longer prompt,
+   document and model-study lists use expandable groups.
+2. Complete: existing handlers and routes retained; narrow layout corrected so
+   model controls remain reachable inside the fixed outer viewport.
+3. Historical checks at `b8c4402e9454`: 60 Bun tests; both production builds; 69 Python tests and 18
+   subtests; Ruff and ledger checks. Browser exercised model/parts/progress,
+   application sections, audio selection/copy, narrow layout and export status.
+   Browser download-event capture timed out; import round-trip remains covered
+   by automated tests, not a completed browser round-trip.
+4. Published as zencelades `fix/visible-controls` (#13). Merge and deployment
+   await the repaired review and supported publication gate. Andrew's latest unlock is confirmed by a
+   successful Authentik application read; no additional unlock is required.
+   The website release is unchanged; Authentik policy objects are applied. [P122](docs/plans/p122-unlock-continuation.md)
+   records this continuation and the separately reported recording integration.
+
+## Historical continuation — October 2, private studio repair
+
+[P118](docs/plans/p118-private-studio-authentik.md) supersedes the deferred
+private-studio portion of P116. Use the Umesemu private-host pattern with
+restricted Authentik membership while Pawthentik is inactive. Public artwork,
+models, gallery and Showtime stay open. The isolated `fix/private-studio` lane
+separates the prompt build and downloads from the public root, denies retired
+prompt bundles and preserves the actual live release in an additive overlay.
+Historical source `bd3cbb6070be` passed 59 frontend tests, the production builds,
+eight release-boundary tests and ten real Caddy HTTP cases. Website activation
+remains pending; P122 records the later Authentik provisioning. The first
+external review returned HOLD: repair release validation/staging, couple the HTTP
+fixture to the generated deny fragment, and provide runtime evidence answering
+the incorrect Caddy-order and Vite-cleanout findings. Re-review the full repaired
+head before activation. Andrew approved preserving the current project crew.
+Andrew approved the private-host browser scope; the fresh
+Authentik API read now succeeds after the manifest grant. The real domain/route
+dry run passes and reuses the existing zone token. See
+[the access contract and rollout](docs/private-studio-access.md).
+
+1. Finish source validation and the exact-head security review.
+2. Complete: Authentik studio application provisioned; existing seven-person
+   crew added before restriction. Live policy check allows every member and
+   refuses a nonmember; signups are off. Studio DNS/route dry run passes.
+3. Activate the additive release, purge retired public prompt URLs and verify
+   public-host denial, anonymous login enforcement and membership rejection.
+4. Complete authorized browser acceptance without handling Andrew's password
+   or MFA, then record live evidence. Existing PG18 account saves are separate.
+
+## Historical continuation — October 2, audio and fixed viewport publication
+
+[P116](docs/plans/p116-publish-audio-fixed-cockpit.md) requests a PR and deployment
+of [P114](docs/plans/p114-showtime-audio-studio.md) and
+[P115](docs/plans/p115-suno-umesemu-optimizations.md), a balanced homepage image
+stack, and fixed main views on every cockpit page. The isolated
+`feat/cockpit-audio-fit` lane adds eight Suno prompts, sixteen ElevenLabs effects,
+and section selectors with contained reading panels. Homepage images share one
+column with “One moon. The same holder.” between them. Showtime audio playback,
+generation and protected studio provisioning remain deferred. Frontend tests and
+build pass. [PR #9](https://git.telpher.stream/telpher/zencelades/pulls/9) is open;
+static release `a1d37232` is live, with all 53 changed files verified over HTTPS.
+Homepage browser acceptance passed; expanded route/audio browser approval is
+pending. [Publication evidence](docs/audio/publication.md) records the limits.
+
+
 ## Current continuation — October 2, merge and deployment authorized
 
 [P112](docs/plans/p112-merge-and-deploy.md) authorizes finishing PR #8's review,

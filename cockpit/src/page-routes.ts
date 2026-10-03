@@ -15,6 +15,7 @@ const pageRoutes: Record<string, string> = {
   "/studio/": "/model",
   "/models/": "/media",
   "/showtime/": "/showtime",
+  "/audio/": "/audio",
   ...Object.fromEntries(documentPages.map(([path]) => [`/${path}/`, `/${path}`])),
 };
 
@@ -25,7 +26,12 @@ export function cockpitHref(href: string, base: string): string {
     return href;
   const url = new URL(href, `https://zenceladus.com${base}`);
   const route = pageRoutes[url.pathname.replace(/index\.html$/, "").replace(/\/?$/, "/")];
-  if (route !== undefined)
-    return `/#${route}${url.hash ? `?section=${encodeURIComponent(url.hash.slice(1))}` : ""}`;
+  if (route !== undefined) {
+    try {
+      return `/#${route}${url.hash ? `?section=${encodeURIComponent(decodeURIComponent(url.hash.slice(1)))}` : ""}`;
+    } catch {
+      return href;
+    }
+  }
   return `${url.pathname}${url.search}${url.hash}`;
 }
