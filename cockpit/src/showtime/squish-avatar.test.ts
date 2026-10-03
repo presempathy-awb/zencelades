@@ -63,15 +63,29 @@ test("the seated squish avatar stays completely inside the spherical chamber", (
     }
     const topperTop = Math.max(...topperVertices.map((vertex) => vertex.y - center.y));
     const topperBottom = Math.min(...topperVertices.map((vertex) => vertex.y - center.y));
-    const topRing = topperVertices.filter(
-      (vertex) => Math.abs(vertex.y - center.y - topperTop) < 1e-5,
+    const local = topperVertices.map((vertex) => vertex.subtract(center));
+    // The whole floor is padded, with broad raised sides/back and a lowered entrance edge.
+    for (const direction of [new Vector3(1, 0, 0), new Vector3(-1, 0, 0), new Vector3(0, 0, -1)]) {
+      expect(Math.max(...local.map((vertex) => Vector3.Dot(vertex, direction)))).toBeGreaterThan(
+        innerRadius * 0.9,
+      );
+    }
+    expect(topperTop).toBeGreaterThan(-innerRadius * 0.3);
+    const middle = local.filter((vertex) => Math.hypot(vertex.x, vertex.z) < innerRadius * 0.2);
+    expect(Math.max(...middle.map((vertex) => vertex.y))).toBeCloseTo(-innerRadius * 0.62, 3);
+    const entrance = local.filter(
+      (vertex) => vertex.z > innerRadius * 0.7 && Math.abs(vertex.x) < innerRadius * 0.1,
     );
-    const topRadius = Math.max(
-      ...topRing.map((vertex) => Math.hypot(vertex.x - center.x, vertex.z - center.z)),
-    );
-    expect(topperTop).toBeCloseTo(-innerRadius * 0.62, 5);
-    expect(topRadius).toBeGreaterThan(innerRadius * 0.72);
+    expect(entrance.length).toBeGreaterThan(0);
+    expect(Math.max(...entrance.map((vertex) => vertex.y))).toBeLessThan(-innerRadius * 0.55);
     expect(topperBottom).toBeLessThan(-innerRadius * 0.94);
+    const normals = topper.getVerticesData(VertexBuffer.NormalKind);
+    if (!normals) throw new Error("Expected padded seat surface normals.");
+    for (const [index, vertex] of local.entries()) {
+      if (Math.hypot(vertex.x, vertex.z) < innerRadius * 0.2 && vertex.y > -innerRadius * 0.7)
+        expect(normals[index * 3 + 1]).toBeGreaterThan(0.95);
+      if (vertex.y < -innerRadius * 0.95) expect(normals[index * 3 + 1]).toBeLessThan(-0.9);
+    }
     expect(
       topperVertices.every((vertex) => vertex.subtract(center).length() <= innerRadius + 1e-6),
     ).toBe(true);

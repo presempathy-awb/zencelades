@@ -111,7 +111,8 @@ export function createSquishAvatar(
   const hair = material(scene, "squish avatar hair", "#1b1214");
   const shorts = material(scene, "squish avatar dark navy shorts", "#101b35");
   const glasses = material(scene, "squish avatar glasses", "#111318");
-  const topperMaterial = material(scene, "squish avatar futon topper material", "#263d59");
+  const topperMaterial = material(scene, "squish avatar futon topper material", "#7896a5");
+  topperMaterial.specularColor.set(0.025, 0.025, 0.025);
 
   const finish = (
     mesh: Mesh,
@@ -176,24 +177,40 @@ export function createSquishAvatar(
   };
 
   const topperSegments = 48;
-  const topperRings = 6;
+  const topperRings = 24;
   const topperShellRadius = innerRadius * 0.98;
   const topperTop = -innerRadius * 0.62;
   const topperPositions = [0, topperTop, 0];
   const topperIndices: number[] = [];
   for (let ring = 0; ring < topperRings; ring++) {
-    const progress = ring / topperRings;
-    const y = topperTop + (-topperShellRadius - topperTop) * progress;
-    const radius = Math.sqrt(Math.max(0, topperShellRadius ** 2 - y ** 2));
     for (let segment = 0; segment < topperSegments; segment++) {
       const angle = (segment / topperSegments) * Math.PI * 2;
+      // A continuous dished seat rises around the sides/back; +Z stays low for the entrance.
+      const entrance = Math.max(0, Math.sin(angle)) ** 8;
+      const rimY = -innerRadius * (0.22 + entrance * 0.4);
+      let y: number;
+      let radius: number;
+      if (ring < topperRings / 2) {
+        const progress = (ring + 1) / (topperRings / 2);
+        const rise = Math.max(0, (progress - 0.3) / 0.7);
+        y = topperTop + (rimY - topperTop) * rise * rise * (3 - 2 * rise);
+        radius = Math.sqrt(topperShellRadius ** 2 - rimY ** 2) * progress * 0.97;
+      } else {
+        // Roll over the soft lip, then follow the chamber all the way to its bottom.
+        const progress = (ring - topperRings / 2) / (topperRings / 2);
+        const lipAngle = Math.asin((-rimY + innerRadius * 0.015) / topperShellRadius);
+        const shellAngle = lipAngle + (Math.PI / 2 - lipAngle) * progress;
+        y = -Math.sin(shellAngle) * topperShellRadius;
+        radius = Math.cos(shellAngle) * topperShellRadius;
+      }
       topperPositions.push(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
     }
   }
   for (let segment = 0; segment < topperSegments; segment++) {
     const current = 1 + segment;
     const next = 1 + ((segment + 1) % topperSegments);
-    topperIndices.push(0, next, current);
+    // Seating faces up; the continuous outer shell faces away from the padding.
+    topperIndices.push(0, current, next);
   }
   for (let ring = 0; ring < topperRings - 1; ring++) {
     const upper = 1 + ring * topperSegments;
@@ -202,11 +219,11 @@ export function createSquishAvatar(
       const next = (segment + 1) % topperSegments;
       topperIndices.push(
         upper + segment,
-        upper + next,
         lower + segment,
         upper + next,
+        upper + next,
+        lower + segment,
         lower + next,
-        lower + segment,
       );
     }
   }
@@ -216,8 +233,8 @@ export function createSquishAvatar(
   for (let segment = 0; segment < topperSegments; segment++) {
     topperIndices.push(
       lastRing + segment,
-      lastRing + ((segment + 1) % topperSegments),
       topperBottom,
+      lastRing + ((segment + 1) % topperSegments),
     );
   }
   const topperNormals: number[] = [];

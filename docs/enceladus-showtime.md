@@ -39,7 +39,9 @@ the camera sightlines between its poles. That heading remains when motion and
 effects are off. The assembly sways gently with movement; the host and hazer stay
 fixed. Boarding steps turn to the aerial entrance when switching rigs, then stay
 fixed on the ground during sway. Ground lander restores the original orientation.
-A round cushion covers the inner floor. Boarding steps and soft base lighting
+A continuous padded bowl fills the inner bottom, with a depressed seat, raised
+rounded sides and back, and a lowered front edge at the entrance. The same cushion
+follows the holder in both rig modes. Boarding steps and soft base lighting
 indicate the entrance. These elements are visual
 concepts and do not certify a physical installation or structural loads.
 
