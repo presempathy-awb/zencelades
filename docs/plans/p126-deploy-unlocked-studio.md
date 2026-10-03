@@ -21,5 +21,9 @@ ticket. It continues P123's authorized review, merge and deployment.
    Wait for Andrew's explicit decision on retiring the superseded canonical
    token; never infer permission from this earlier unlock confirmation.
 
+Subsequent resolution: [P128](p128-approved-cache-cleanup.md) records Andrew's
+explicit approval, the exact revocation, successful alias purge and fresh
+40-case access verification. The cache blocker is resolved.
+
 The [deployment receipt](../private-studio-deployment.md) separates completed
 checks from the remaining cache and human-login evidence.

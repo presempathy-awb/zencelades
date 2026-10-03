@@ -7,6 +7,8 @@ Owner: Codex, following Andrew's prompts in this chat.
 
 ## Standing capture instruction
 
+- P128 (October 2): “approve” — [approved cache cleanup](p128-approved-cache-cleanup.md).
+- P127 (October 2): “done” — [verify the completed step](p127-clarify-completed-step.md).
 - P126 (October 2): “done” — [deploy after refreshed unlock](p126-deploy-unlocked-studio.md).
 - P125 (October 2): “done” — [verified unlock and delivery](p125-verified-unlock-and-delivery.md).
 - P124 (October 2): “done” — [resume authorized landing](p124-resume-authorized-landing.md).
