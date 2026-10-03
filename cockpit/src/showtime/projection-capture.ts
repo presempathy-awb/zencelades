@@ -91,7 +91,8 @@ export function createProjectionCaptures(
     texture.renderSprites = false;
     texture.useCameraPostProcesses = false;
     texture.ignoreCameraViewport = true;
-    const wallFov = 2 * Math.asin(radius / lens.subtract(center).length());
+    const wallFov =
+      2 * Math.atan(Math.tan(Math.asin(radius / lens.subtract(center).length())) * 1.35);
     const restProjection = Matrix.LookAtRH(lens, center, Vector3.Up()).multiply(
       Matrix.PerspectiveFovRH(wallFov, 1, camera.minZ, camera.maxZ),
     );

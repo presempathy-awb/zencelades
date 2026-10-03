@@ -124,7 +124,12 @@ for (const [index, capture] of captures.entries()) {
 }
 expect(new Set(captures.map((capture) => capture.activeCamera)).size).toBe(3);
 expect(scene.customRenderTargets).toHaveLength(0);
+const projectedFront = scene.getMeshByName("Projected outer front cap");
 try {
+  expect(projectedFront?.material === projection).toBe(true);
+  expect(projectedFront.getVerticesData("uv")).not.toBeNull();
+  expect(projectedFront.getVerticesData("projectionFade")).not.toBeNull();
+  expect(scene.getMeshByName("Unprojected clear inner front cap").material === projection).toBe(false);
   sphere.render();
   expect(passes).toEqual([0, 0, 0]);
   expect(source().personOpacity).toBe(0);
@@ -146,13 +151,14 @@ try {
   }
   for (const rig of ["aerial", "lander"]) {
     sphere.setRig(rig);
-    for (const view of ["left", "rear", "right"]) {
+    for (const view of ["left", "rear", "right", "front"]) {
       sphere.setView(view);
       expect(source().moonVisible).toBe(0);
       sphere.render({ moonVisible: false, filmBlend: 0 });
       expect(source().moonVisible).toBe(0);
       const walls = scene.meshes.filter((mesh) => mesh.material === projection && mesh.isEnabled());
-      expect(walls).toHaveLength(1);
+      expect(walls).toHaveLength(2);
+      expect(walls).toContain(projectedFront);
       expect(scene.textures.filter((texture) => texture.name.startsWith("avatar capture feed "))).toEqual(captures);
     }
   }
@@ -192,6 +198,8 @@ try {
   expect(scene.getLightByName("projection spill").intensity).toBeGreaterThan(0);
   sphere.setDisplayMode("wireframe");
   expect(projection.wireframe).toBe(true);
+  sphere.setDisplayMode("inspect");
+  expect(projectedFront.visibility).toBe(1);
   sphere.setDisplayMode("realistic");
   expect(projection.wireframe).toBe(false);
   const step = scene.getMeshByName("access tread 6");
@@ -285,7 +293,7 @@ try {
     }
     expect(poses.size).toBe(6);
   }
-  expect(chamberPeak).toBeLessThanOrEqual(5 / 6 + 0.00001);
+  expect(chamberPeak).toBeLessThanOrEqual(1 + 0.00001);
   for (const peak of cameraPeaks) expect(peak).toBeLessThan(1);
 } finally {
   sphere.dispose();
@@ -318,7 +326,7 @@ test("both rigs raise their three side lenses and extend the arms while keeping 
       );
       expect(model.lenses).toHaveLength(3);
       for (const [index, lens] of model.lenses.entries()) {
-        expect(lens.y - model.center.y).toBeCloseTo(1.25, 5);
+        expect(lens.y - model.center.y).toBeCloseTo(1.65, 5);
         expect(lens.subtract(model.center).length() - model.radius).toBeCloseTo(2.5, 5);
         const head = model.meshes.find(
           (mesh) => mesh.name === `Projector head ${index + 1} - device unselected`,
@@ -338,12 +346,56 @@ test("both rigs raise their three side lenses and extend the arms while keeping 
           head.getAbsolutePosition().subtract(corner.getAbsolutePosition()).length(),
         ).toBeGreaterThan(2.45);
       }
-      expect(model.lenses[0].z).toBeLessThan(-3.5);
+      expect(model.lenses[0].z).toBeLessThan(-3);
       expect(model.lenses[1].x).toBeLessThan(-3);
       expect(model.lenses[2].x).toBeGreaterThan(3);
       // Rearward side coverage leaves the clear +Z entrance between the lenses.
       expect(model.lenses[1].z).toBeLessThan(0.8);
       expect(model.lenses[2].z).toBeLessThan(0.8);
+      expect(model.radius * 2).toBeCloseTo(2.5, 5);
+      expect(model.innerRadius * 2).toBeCloseTo(2, 5);
+      for (const tie of model.meshes.filter((mesh) => mesh.name.startsWith("Shell spacer tie "))) {
+        const positions = tie.getVerticesData("position");
+        if (!positions) throw new Error("Expected spacer tie geometry.");
+        const world = tie.computeWorldMatrix(true);
+        let nearest = Infinity;
+        let farthest = 0;
+        for (let offset = 0; offset < positions.length; offset += 3) {
+          const distance = Vector3.TransformCoordinates(Vector3.FromArray(positions, offset), world)
+            .subtract(model.center)
+            .length();
+          nearest = Math.min(nearest, distance);
+          farthest = Math.max(farthest, distance);
+        }
+        expect(nearest).toBeCloseTo(1, 3);
+        expect(farthest).toBeCloseTo(1.25, 3);
+      }
+      const entryLip = model.meshes.find((mesh) => mesh.name.startsWith("Inner entry lip "));
+      const tunnel = model.meshes.find((mesh) => mesh.name.startsWith("Open entry tunnel "));
+      if (!entryLip || !tunnel) throw new Error("Expected the shortened entrance tunnel.");
+      entryLip.computeWorldMatrix(true);
+      const entryCenter = entryLip.getBoundingInfo().boundingBox.centerWorld;
+      expect(entryCenter.subtract(model.center).length()).toBeCloseTo(Math.sqrt(1 - 0.34 ** 2), 3);
+      tunnel.computeWorldMatrix(true);
+      const entryAxis = tunnel
+        .getBoundingInfo()
+        .boundingBox.centerWorld.subtract(model.center)
+        .normalize();
+      const tunnelPositions = tunnel.getVerticesData("position");
+      if (!tunnelPositions) throw new Error("Expected open entry tunnel geometry.");
+      const tunnelWorld = tunnel.computeWorldMatrix(true);
+      let nearestEntry = Infinity;
+      for (let offset = 0; offset < tunnelPositions.length; offset += 3) {
+        const radial = Vector3.TransformCoordinates(
+          Vector3.FromArray(tunnelPositions, offset),
+          tunnelWorld,
+        ).subtract(model.center);
+        nearestEntry = Math.min(nearestEntry, Vector3.Dot(radial, entryAxis));
+        expect(
+          radial.subtract(entryAxis.scale(Vector3.Dot(radial, entryAxis))).length(),
+        ).toBeCloseTo(0.34, 4);
+      }
+      expect(nearestEntry).toBeCloseTo(Math.sqrt(1 - 0.34 ** 2), 4);
     }
   } finally {
     scene.dispose();
@@ -396,7 +448,7 @@ test("switching the actual rigs preserves sphere geography and below-orb haze wi
     const aerial = await loadProjectedLander(scene, await readFile(aerialPath), projection);
     expect(aerial.center.subtract(lander.center).length()).toBeLessThan(0.00001);
     expect(aerial.radius).toBeCloseTo(1.25, 5);
-    expect(aerial.innerRadius).toBeCloseTo(5 / 6, 5);
+    expect(aerial.innerRadius).toBeCloseTo(1, 5);
     for (const [index, lens] of aerial.lenses.entries()) {
       expect(lens.subtract(lander.lenses[index]).length()).toBeLessThan(0.00001);
       expect(lens.subtract(aerial.center).length() - aerial.radius).toBeCloseTo(2.5, 5);
@@ -491,7 +543,7 @@ test("the actual lander receives imagery only on its cut-away outer wall", async
     expect(model.center.y).toBeCloseTo(1.7, 5);
     expect(model.center.z).toBe(0);
     expect(model.radius).toBeCloseTo(1.25, 5);
-    expect(model.innerRadius).toBeCloseTo(5 / 6, 5);
+    expect(model.innerRadius).toBeCloseTo(1, 5);
     for (const [name, radius] of [
       ["Outer wall - front panel removed for drawing", model.radius],
       ["Inner wall - front panel removed for drawing", model.innerRadius],
@@ -532,11 +584,11 @@ test("the actual lander receives imagery only on its cut-away outer wall", async
       );
     }
     expect(leastOutward).toBeGreaterThan(0.99);
-    expect(model.lenses[0].y - model.center.y).toBeCloseTo(1.25, 5);
+    expect(model.lenses[0].y - model.center.y).toBeCloseTo(1.65, 5);
     for (const lens of model.lenses) {
       expect(lens.subtract(model.center).length() - model.radius).toBeCloseTo(2.5, 5);
     }
-    expect(model.lenses[0].z).toBeLessThan(-3.5);
+    expect(model.lenses[0].z).toBeLessThan(-3);
     expect(model.lenses[1].x).toBeLessThan(-3);
     expect(model.lenses[2].x).toBeGreaterThan(3);
     for (const index of [1, 2, 3]) {
@@ -581,7 +633,7 @@ test("the actual lander receives imagery only on its cut-away outer wall", async
   }
 });
 
-test("both rigs keep the shared seated avatar and floor inside an unchanged spherical chamber", async () => {
+test("both rigs keep the shared seated avatar and floor inside the expanded spherical chamber", async () => {
   const engine = new NullEngine();
   const scene = new Scene(engine);
   scene.useRightHandedSystem = true;
@@ -756,7 +808,7 @@ test("the restored clear front closes both drawing sections while leaving the en
     for (const [index, cap] of caps.entries()) {
       expect(cap.material).toBe(clear);
       expect(cap.material).not.toBe(projection);
-      const radius = index === 0 ? 1.25 : 5 / 6;
+      const radius = index === 0 ? 1.25 : 1;
       const positions = cap.getVerticesData("position");
       const indices = cap.getIndices();
       if (!positions || !indices) throw new Error("Expected clear spherical cap geometry.");

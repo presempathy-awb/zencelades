@@ -415,7 +415,66 @@ export async function loadProjectedLander(
     }
     innerWall.computeWorldMatrix(true);
     const innerBounds = innerWall.getBoundingInfo().boundingBox;
-    const innerRadius = (innerBounds.maximumWorld.x - innerBounds.minimumWorld.x) / 2;
+    const originalInnerRadius = (innerBounds.maximumWorld.x - innerBounds.minimumWorld.x) / 2;
+    // SHORTCUT: 250 mm visual air gap; use the selected zorb's measured inner diameter before fabrication.
+    const innerRadius = radius - 0.25;
+    const chamberExpansion = innerRadius - originalInnerRadius;
+    const innerLip = required("Inner entry lip - nominal 680 mm opening");
+    const entryTunnel = required("Open entry tunnel - nominal, product unselected");
+    entryTunnel.computeWorldMatrix(true);
+    // The straight tunnel is symmetric; the faceted torus lip has a biased bounding-box center.
+    const entryAxis = entryTunnel
+      .getBoundingInfo()
+      .boundingBox.centerWorld.subtract(center)
+      .normalize();
+    const originalEntryDepth = Math.sqrt(originalInnerRadius ** 2 - 0.34 ** 2);
+    const entryDepth = Math.sqrt(innerRadius ** 2 - 0.34 ** 2);
+    const outerEntryDepth = Math.sqrt((radius + 0.055) ** 2 - 0.34 ** 2);
+    for (const mesh of container.meshes) {
+      const isTie = mesh.name.startsWith("Shell spacer tie ");
+      const isTunnel = mesh.name.startsWith("Open entry tunnel ");
+      const isFloor = mesh.name.startsWith("Compliant floor");
+      if (mesh !== innerWall && mesh !== innerLip && !isTie && !isTunnel && !isFloor) continue;
+      const positions = mesh.getVerticesData("position");
+      const indices = mesh.getIndices();
+      if (!positions || !indices) throw new Error("The inner chamber has no usable geometry.");
+      const world = mesh.computeWorldMatrix(true);
+      const inverse = world.clone().invert();
+      for (let offset = 0; offset < positions.length; offset += 3) {
+        const radial = Vector3.TransformCoordinates(
+          Vector3.FromArray(positions, offset),
+          world,
+        ).subtract(center);
+        if (mesh === innerWall) radial.scaleInPlace(innerRadius / originalInnerRadius);
+        else if (isTie) {
+          const distance = radial.length();
+          const weight = Math.max(
+            0,
+            Math.min(1, (radius - distance) / (radius - originalInnerRadius)),
+          );
+          radial.scaleInPlace((distance + chamberExpansion * weight) / distance);
+        } else if (isFloor) radial.y -= chamberExpansion;
+        else {
+          const weight = isTunnel
+            ? Math.max(
+                0,
+                Math.min(
+                  1,
+                  (outerEntryDepth - Vector3.Dot(radial, entryAxis)) /
+                    (outerEntryDepth - originalEntryDepth),
+                ),
+              )
+            : 1;
+          radial.addInPlace(entryAxis.scale((entryDepth - originalEntryDepth) * weight));
+        }
+        Vector3.TransformCoordinates(radial.add(center), inverse).toArray(positions, offset);
+      }
+      const normals: number[] = [];
+      VertexData.ComputeNormals(positions, indices, normals);
+      mesh.setVerticesData("position", positions);
+      mesh.setVerticesData("normal", normals);
+      mesh.refreshBoundingInfo({});
+    }
     mapMoonSurface(wall, center);
     const heads = [1, 2, 3].map((index) => ({
       head: required(`Projector head ${index} - device unselected`),
@@ -438,7 +497,7 @@ export async function loadProjectedLander(
         horizontal.set(Math.sign(horizontal.x) * Math.cos(angle), 0, Math.sin(angle));
       }
       // SHORTCUT: artistic side-camera height; survey the actual optical arms before hardware calibration.
-      const dy = 1.25;
+      const dy = 1.65;
       const horizontalRadius = Math.sqrt((radius + 2.5) ** 2 - dy ** 2);
       const movedLens = center.add(horizontal.normalize().scale(horizontalRadius));
       movedLens.y = center.y + dy;
@@ -698,7 +757,7 @@ export async function createProjectionSphere(
     camera.panningSensibility = 0;
     camera.attachControl(canvas, true);
     setProjectionView(camera, "right", center, lenses);
-    const bodyMeshes = avatar.meshes.filter((mesh) => !mesh.name.includes("futon topper"));
+    const bodyMeshes = avatar.meshes.filter((mesh) => !avatar.furnishings.includes(mesh));
     const captures = createProjectionCaptures(scene, bodyMeshes, lenses, center, radius);
     captures.forEach((capture, index) => {
       projectedSkin.setTexture(`capture${index}`, capture.texture);
@@ -732,6 +791,10 @@ export async function createProjectionSphere(
     for (const mesh of scene.meshes)
       if (mesh.name.startsWith("Shell spacer tie ")) mesh.material = tieSkin;
     const frontCaps = createClearFrontCaps(scene, center, radius, innerRadius, clearSkin);
+    const outerFront = frontCaps[0];
+    outerFront.name = "Projected outer front cap";
+    mapMoonSurface(outerFront, center);
+    outerFront.material = projectedSkin;
     const access = createInstallationAccess(scene, center, [
       ...model.meshes,
       ...aerial.meshes,
@@ -742,6 +805,7 @@ export async function createProjectionSphere(
       [...model.meshes, ...aerial.meshes, ...avatar.meshes, ...frontCaps, ...access.meshes],
       [
         ...avatar.meshes,
+        outerFront,
         ...model.meshes.filter((mesh) => mesh.material === projectedSkin),
         ...aerial.meshes.filter((mesh) => mesh.material === projectedSkin),
       ],
@@ -787,7 +851,7 @@ export async function createProjectionSphere(
     const sway = createInstallationSway(scene, aerial.meshes, center);
     for (const node of [
       avatar.root,
-      ...avatar.meshes.filter((mesh) => mesh.name.includes("futon topper")),
+      ...avatar.furnishings.filter((mesh) => !mesh.parent),
       ...frontCaps,
       ...beamVolumes,
     ])

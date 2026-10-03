@@ -89,7 +89,7 @@ test("the seated squish avatar stays completely inside the spherical chamber", (
     if (!normals) throw new Error("Expected padded seat surface normals.");
     for (const [index, vertex] of local.entries()) {
       if (Math.hypot(vertex.x, vertex.z) < innerRadius * 0.2 && vertex.y > -innerRadius * 0.7)
-        expect(normals[index * 3 + 1]).toBeGreaterThan(0.95);
+        expect(normals[index * 3 + 1]).toBeGreaterThan(0);
       if (vertex.y < -innerRadius * 0.87) expect(normals[index * 3 + 1]).toBeLessThan(-0.9);
     }
     expect(
@@ -111,6 +111,48 @@ test("the seated squish avatar stays completely inside the spherical chamber", (
       );
       expect(furthestVertex).toBeLessThanOrEqual(innerRadius + 1e-6);
     }
+  } finally {
+    scene.dispose();
+    engine.dispose();
+  }
+});
+
+test("a soft 1.5-foot cactus rests beside the brown floor futon independently of the body", () => {
+  const engine = new NullEngine();
+  const scene = new Scene(engine);
+  try {
+    const avatar = createSquishAvatar(scene, center, innerRadius);
+    const cactus = scene.meshes.filter((mesh) => mesh.name.startsWith("cozy cactus "));
+    expect(cactus.length).toBeGreaterThan(3);
+    const vertices = cactus.flatMap((mesh) => {
+      const positions = mesh.getVerticesData(VertexBuffer.PositionKind)!;
+      const world = mesh.computeWorldMatrix(true);
+      return Array.from({ length: positions.length / 3 }, (_, i) =>
+        Vector3.TransformCoordinates(Vector3.FromArray(positions, i * 3), world),
+      );
+    });
+    const width = Math.max(...vertices.map((p) => p.x)) - Math.min(...vertices.map((p) => p.x));
+    expect(width).toBeGreaterThan(0.43);
+    expect(width).toBeLessThan(0.49);
+    expect(vertices.every((p) => p.subtract(center).length() < innerRadius)).toBe(true);
+    expect(Math.max(...vertices.map((p) => p.z - center.z))).toBeLessThan(0.05);
+    const cushion = scene.getMeshByName("squish avatar circular futon topper")!;
+    const fabric = cushion.material as StandardMaterial;
+    expect(fabric.diffuseColor.r).toBeGreaterThan(fabric.diffuseColor.g * 1.3);
+    expect(fabric.diffuseColor.g).toBeGreaterThan(fabric.diffuseColor.b * 1.2);
+    const rest = vertices.map((p) => p.asArray());
+    avatar.update(5, 1, 1, 1, false);
+    expect(cactus.every((mesh) => mesh.isEnabled())).toBe(true);
+    expect(cushion.isEnabled()).toBe(true);
+    expect(
+      cactus.flatMap((mesh) => {
+        const positions = mesh.getVerticesData(VertexBuffer.PositionKind)!;
+        const world = mesh.computeWorldMatrix(true);
+        return Array.from({ length: positions.length / 3 }, (_, i) =>
+          Vector3.TransformCoordinates(Vector3.FromArray(positions, i * 3), world).asArray(),
+        );
+      }),
+    ).toEqual(rest);
   } finally {
     scene.dispose();
     engine.dispose();
@@ -139,9 +181,12 @@ test("motion gently deforms the body while reduced effects remain stationary", (
     const topper = avatar.meshes.find((mesh) => mesh.name.includes("futon topper"));
     if (!topper) throw new Error("Expected the physical futon topper.");
     expect(topper.isEnabled()).toBe(true);
-    expect(avatar.meshes.filter((mesh) => mesh !== topper).every((mesh) => !mesh.isEnabled())).toBe(
-      true,
-    );
+    expect(avatar.furnishings.every((mesh) => mesh.isEnabled())).toBe(true);
+    expect(
+      avatar.meshes
+        .filter((mesh) => !avatar.furnishings.includes(mesh))
+        .every((mesh) => !mesh.isEnabled()),
+    ).toBe(true);
     scene.dispose();
     expect(scene.meshes).toEqual([]);
     expect(scene.materials).toEqual([]);

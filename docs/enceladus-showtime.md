@@ -23,10 +23,16 @@ and positive-east longitude from 0° to 360°. One map spans all three projectio
 sides, keeping geographic features in place as the movie and body layer move.
 **Movie blend** starts at 35%; zero displays only the fixed map.
 
-The outer wall receives the movie and human layer. Clear panels restore the
-round silhouette of the drawing-section model and preserve the front entrance.
+The outer wall, including the restored front section, receives the movie and
+human layer with the same curved mapping and translucent projector lighting.
+The physical front entrance stays open, and the inner front shell stays clear.
 The inner chamber, spacer ties and structure remain visible through the shell.
-Three rear, left and right projector heads sit 1.25 m above the sphere center.
+The outer sphere stays 2.5 m across; the runtime expands the inner chamber to
+2.0 m, leaving a 25 cm radial air gap. Spacer ties shorten and the inner entry
+lip moves outward with its open tunnel while retaining the nominal 68 cm mouth.
+This is a visual proportion adjustment; the selected product's measured inner
+diameter must replace it before fabrication. The original GLB bytes are retained.
+Three rear, left and right projector heads sit 1.65 m above the sphere center.
 Their lenses are 2.5 m from the nearest shell surface along the beam axis; the
 side heads turn 20° toward the rear. Extended arms support the heads in both
 rigs. The upper cap is dimmer because there is no top projector. Transmission,
@@ -49,9 +55,19 @@ The default human is a procedural jointed body using Andrew's supplied portrait,
 with curly hair, glasses, a beard, a shirtless torso and dark navy shorts. Six
 bounded routines switch automatically: Settle, Look, Reach, Stretch, Recline
 and Tucked crouch. The capture cameras follow the animated body and blend it
-with the moon on the shell. This is a concept likeness, not a scanned rigged
+with the moon on the shell. Their complete body feeds are mapped 35% larger
+over the sphere, independently of capture framing, so the moving face and body
+occupy more of the shell. The clear entrance and fixed moon geography remain.
+This is a concept likeness, not a scanned rigged
 human or inferred unseen anatomy. Optional camera/video input requires an
 explicit user action; no camera is requested automatically.
+
+The inner floor has a warm brown, softly lumpy futon with shallow tufts and a
+stitched edge. A rounded sage-green stuffed cactus, approximately 1.5 ft wide
+across its arms, sits beside the occupant for leaning. Both furnishings follow
+the holder in lander and aerial modes, remain visible when the person is hidden,
+and are excluded from the body-only projection capture. Their floor placement
+follows the illustrated inner chamber size.
 
 The show starts after its media and model are ready and loops indefinitely.
 Reduced-motion preferences keep the procedural pose stationary. Pause holds

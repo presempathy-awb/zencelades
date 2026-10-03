@@ -10,15 +10,15 @@ test("side captures frame Andrew to fill the wall while retaining the spherical 
   const scene = new Scene(engine);
   scene.useRightHandedSystem = true;
   const center = new Vector3(0, 1.7, 0);
-  const avatar = createSquishAvatar(scene, center, 5 / 6);
-  const radial = Math.sqrt(3.75 ** 2 - 0.65 ** 2);
+  const avatar = createSquishAvatar(scene, center, 1);
+  const radial = Math.sqrt(3.75 ** 2 - 1.65 ** 2);
   const lenses = [
-    new Vector3(0, 2.35, -radial),
-    new Vector3((-radial * Math.sqrt(3)) / 2, 2.35, radial / 2),
-    new Vector3((radial * Math.sqrt(3)) / 2, 2.35, radial / 2),
+    new Vector3(0, 3.35, -radial),
+    new Vector3((-radial * Math.sqrt(3)) / 2, 3.35, radial / 2),
+    new Vector3((radial * Math.sqrt(3)) / 2, 3.35, radial / 2),
   ];
   try {
-    const body = avatar.meshes.filter((mesh) => !mesh.name.includes("futon topper"));
+    const body = avatar.meshes.filter((mesh) => !avatar.furnishings.includes(mesh));
     const captures = createProjectionCaptures(scene, body, lenses, center, 1.25);
     expect(captures).toHaveLength(3);
     for (const capture of captures) {
@@ -49,7 +49,18 @@ test("side captures frame Andrew to fill the wall while retaining the spherical 
       const mappedCenter = Vector3.TransformCoordinates(center, capture.viewProjection);
       expect(mappedCenter.x).toBeCloseTo(0, 5);
       expect(mappedCenter.y).toBeCloseTo(0, 5);
+      // A 1.25 m sphere seen from 3.75 m has this tangent point in camera space.
+      // Its mapped rim should use 20/27 of the feed, enlarging the body by 35%.
+      const wallView = Matrix.LookAtRH(capture.camera.position, center, Vector3.Up());
+      const rim = Vector3.TransformCoordinates(
+        new Vector3(1.178511302, 0, -10 / 3),
+        wallView.invert(),
+      );
+      expect(Vector3.TransformCoordinates(rim, capture.viewProjection).x).toBeCloseTo(20 / 27, 5);
       expect(capture.texture.renderList).toEqual(body);
+      expect(avatar.furnishings.every((mesh) => !capture.texture.renderList!.includes(mesh))).toBe(
+        true,
+      );
       const restLens = capture.camera.position.clone();
       const landmark = center.add(new Vector3(0.6, 0.3, -0.9));
       const restMapping = Vector3.TransformCoordinates(landmark, capture.viewProjection);

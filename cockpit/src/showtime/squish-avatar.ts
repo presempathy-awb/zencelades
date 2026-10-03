@@ -15,6 +15,7 @@ const PORTRAIT_SIZE = { width: 1280, height: 951 } as const;
 export interface SquishAvatar {
   root: TransformNode;
   meshes: readonly Mesh[];
+  furnishings: readonly Mesh[];
   update: (
     seconds: number,
     motion: number,
@@ -97,7 +98,8 @@ export function createSquishAvatar(
   root.position.copyFrom(center);
   const poseRoot = new TransformNode("squish avatar seated pose", scene);
   poseRoot.parent = root;
-  poseRoot.position.y = -0.14;
+  const seatHeight = -0.14 - (innerRadius - 5 / 6) * 0.62;
+  poseRoot.position.y = seatHeight;
   const torsoRoot = new TransformNode("squish avatar breathing root", scene);
   torsoRoot.parent = poseRoot;
   const headRoot = new TransformNode("squish avatar head joint", scene);
@@ -111,7 +113,7 @@ export function createSquishAvatar(
   const hair = material(scene, "squish avatar hair", "#1b1214");
   const shorts = material(scene, "squish avatar dark navy shorts", "#101b35");
   const glasses = material(scene, "squish avatar glasses", "#111318");
-  const topperMaterial = material(scene, "squish avatar futon topper material", "#7896a5");
+  const topperMaterial = material(scene, "squish avatar futon topper material", "#916346");
   topperMaterial.specularColor.set(0.025, 0.025, 0.025);
 
   const finish = (
@@ -182,7 +184,28 @@ export function createSquishAvatar(
   const topperRadius = innerRadius * 0.86;
   const floorBottom = -innerRadius + 0.09;
   const topperTop = -innerRadius * 0.62;
-  const topperPositions = [0, topperTop, 0];
+  const tufts = [
+    [0, 0],
+    [-0.33, -0.2],
+    [0.33, -0.2],
+    [-0.33, 0.23],
+    [0.33, 0.23],
+  ] as const;
+  const padHeight = (x: number, z: number): number => {
+    const progress = Math.hypot(x, z) / topperRadius;
+    const angle = Math.atan2(z, x);
+    const lumps =
+      0.06 *
+      Math.sin(Math.PI * progress) ** 2 *
+      (Math.sin(angle * 3 + 0.4) + Math.cos(angle * 5 - progress * 4)) *
+      0.5;
+    const dimples = tufts.reduce(
+      (depth, [tx, tz]) => depth + 0.018 * Math.exp(-((x - tx) ** 2 + (z - tz) ** 2) / 0.008),
+      0,
+    );
+    return topperTop + innerRadius * 0.16 * progress ** 4 + lumps - dimples;
+  };
+  const topperPositions = [0, padHeight(0, 0), 0];
   const topperIndices: number[] = [];
   for (let ring = 0; ring < topperRings; ring++) {
     for (let segment = 0; segment < topperSegments; segment++) {
@@ -191,9 +214,9 @@ export function createSquishAvatar(
       let radius: number;
       if (ring < topperRings / 2) {
         const progress = (ring + 1) / (topperRings / 2);
-        // A low floor pad: a broad flat center and only the floor's gentle edge curve.
-        y = topperTop + innerRadius * 0.16 * progress ** 4;
         radius = topperRadius * progress;
+        // Softly uneven stuffing and shallow tufts, still a low continuous floor pad.
+        y = padHeight(Math.cos(angle) * radius, Math.sin(angle) * radius);
       } else {
         // Rest on the imported compliant floor (grant_3d_models.py), including its shell clip.
         const progress = (ring - topperRings / 2) / (topperRings / 2);
@@ -250,6 +273,99 @@ export function createSquishAvatar(
   topper.material = topperMaterial;
   topper.isPickable = false;
   meshes.push(topper);
+  const furnishings: Mesh[] = [topper];
+  const seamMaterial = material(scene, "brown futon stitching", "#593e2d");
+  for (const [index, [x, z]] of tufts.entries()) {
+    furnishings.push(
+      sphere(
+        `brown futon tuft ${index + 1}`,
+        [0.025, 0.009, 0.025],
+        [x, padHeight(x, z) + 0.004, z],
+        seamMaterial,
+        topper,
+      ),
+    );
+  }
+  furnishings.push(
+    finish(
+      MeshBuilder.CreateTube(
+        "brown futon soft edge seam",
+        {
+          path: Array.from({ length: topperSegments + 1 }, (_, index) => {
+            const angle = (index / topperSegments) * Math.PI * 2;
+            const x = Math.cos(angle) * topperRadius;
+            const z = Math.sin(angle) * topperRadius;
+            return new Vector3(x, padHeight(x, z) - 0.006, z);
+          }),
+          radius: 0.006,
+          tessellation: 6,
+        },
+        scene,
+      ),
+      topper,
+      [0, 0, 0],
+      seamMaterial,
+    ),
+  );
+
+  const cactusRoot = new TransformNode("cozy cactus pillow", scene);
+  cactusRoot.parent = topper;
+  cactusRoot.position.set(-0.37, padHeight(-0.37, -0.15) + 0.32, -0.15);
+  cactusRoot.rotation.z = -0.08;
+  const cactusFabric = material(scene, "cozy cactus sage fabric", "#789663");
+  cactusFabric.specularColor.set(0.02, 0.02, 0.02);
+  const cactusStitch = material(scene, "cozy cactus stitched ribs", "#a6b786");
+  const cactusFace = material(scene, "cozy cactus embroidered face", "#283b27");
+  for (const [name, size, position] of [
+    ["body", [0.24, 0.64, 0.22], [0, 0, 0]],
+    ["left elbow", [0.18, 0.115, 0.15], [-0.12, -0.02, 0]],
+    ["left arm", [0.11, 0.27, 0.14], [-0.1736, 0.065, 0]],
+    ["right elbow", [0.18, 0.115, 0.15], [0.12, -0.11, 0]],
+    ["right arm", [0.11, 0.24, 0.14], [0.1736, -0.005, 0]],
+  ] as const) {
+    furnishings.push(sphere(`cozy cactus ${name}`, size, position, cactusFabric, cactusRoot));
+  }
+  for (const x of [-0.055, 0, 0.055]) {
+    furnishings.push(
+      sphere(
+        `cozy cactus fabric rib ${x}`,
+        [0.009, 0.46, 0.009],
+        [x, 0.005, 0.102],
+        cactusStitch,
+        cactusRoot,
+      ),
+    );
+  }
+  for (const side of [-1, 1]) {
+    furnishings.push(
+      sphere(
+        `cozy cactus embroidered eye ${side}`,
+        [0.013, 0.017, 0.007],
+        [side * 0.036, 0.16, 0.096],
+        cactusFace,
+        cactusRoot,
+      ),
+    );
+  }
+  furnishings.push(
+    finish(
+      MeshBuilder.CreateTube(
+        "cozy cactus embroidered smile",
+        {
+          path: Array.from({ length: 9 }, (_, index) => {
+            const angle = Math.PI + (index / 8) * Math.PI;
+            return new Vector3(Math.cos(angle) * 0.025, 0.12 + Math.sin(angle) * 0.019, 0.104);
+          }),
+          radius: 0.003,
+          tessellation: 6,
+        },
+        scene,
+      ),
+      cactusRoot,
+      [0, 0, 0],
+      cactusFace,
+    ),
+  );
 
   sphere("squish avatar shorts", [0.47, 0.27, 0.31], [0, -0.22, 0.02], shorts);
   sphere("squish avatar soft belly", [0.43, 0.27, 0.31], [0, -0.1, 0.015], skin, torsoRoot);
@@ -401,6 +517,7 @@ export function createSquishAvatar(
   return {
     root,
     meshes,
+    furnishings,
     update: (seconds, motionValue, motionXValue, effectsValue, visible = true, pose) => {
       if (scene.isDisposed) return;
       root.setEnabled(visible);
@@ -419,7 +536,7 @@ export function createSquishAvatar(
         headRoot.rotation.set(0, 0, 0);
         armRoots[0].rotation.set(0, 0, 0);
         armRoots[1].rotation.set(0, 0, 0);
-        poseRoot.position.set(0, -0.14, 0);
+        poseRoot.position.set(0, seatHeight, 0);
         poseRoot.rotation.set(0, 0, 0);
         legRoots[0].rotation.set(0, 0, 0);
         legRoots[1].rotation.set(0, 0, 0);
@@ -457,7 +574,7 @@ export function createSquishAvatar(
       const bodyLift = bounded(pose?.bodyLift ?? 0, -0.1, 0.06) * effects;
       const breath = Math.sin(secondsSafe * 1.45) * 0.018 * effects;
       const response = Math.sin(secondsSafe * 2.1) * motion * 0.012 * effects;
-      poseRoot.position.set(0, -0.14 + bodyLift, 0);
+      poseRoot.position.set(0, seatHeight + bodyLift, 0);
       poseRoot.rotation.set(0, 0, 0);
       torsoRoot.scaling.set(1 - breath * 0.45, 1 + breath, 1 - breath * 0.25);
       torsoRoot.position.set(0, -Math.abs(response) * 0.25, response * 0.35);
