@@ -1,7 +1,9 @@
-import type { JSX } from "react";
+import { type JSX, lazy, Suspense } from "react";
 import gallery from "../../site/models/index.html?raw";
 import showtime from "../../site/showtime/index.html?raw";
 import "./media.css";
+
+const LiveShowtime = lazy(() => import("./showtime/live-showtime"));
 
 // Trusted build-time project markup; retain every gallery attachment and caption.
 const galleryBody = gallery.match(/<main[^>]*>([\s\S]*)<\/main>/)?.[1];
@@ -63,21 +65,20 @@ export default function MediaView(): JSX.Element {
   );
 }
 
-/** Keep the independently published projection stage intact inside the cockpit. */
+/** Open the live projection stage and retain the installation films below it. */
 export function ShowtimeView(): JSX.Element {
   return (
     <section className="media-library showtime-panel" aria-label="Showtime projection workspace">
-      <div className="showtime-bar">
-        <span>Showtime · the projection stage</span>
-        <a href="/showtime/" target="_blank" rel="noreferrer">
-          Open Showtime in a new tab ↗
-        </a>
-      </div>
-      <p className="showtime-note">
-        The sequence below describes the intended artwork experience. Participant capture, mapping,
-        controls and occupied operation still need physical verification.
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: showtimeContent }} />
+      <Suspense fallback={<p role="status">Loading the live projection stage…</p>}>
+        <LiveShowtime />
+      </Suspense>
+      <section aria-label="Installation context & films">
+        <h2>Installation context & films</h2>
+        <p className="showtime-note">
+          Participant capture, mapping and occupied operation still need physical verification.
+        </p>
+        <div dangerouslySetInnerHTML={{ __html: showtimeContent }} />
+      </section>
     </section>
   );
 }

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "title": "Enceladus extra material and Orbilander references",
+  "sources": [
+    {
+      "filename": "cold-faithful.m4v",
+      "relative_path": "originals/cold-faithful.m4v",
+      "bytes": 32763657,
+      "content_sha256": "66a762a354abfcf358c9859adbc29431563cde401728616f8c215a83a5a6724f",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 320,
+        "height": 240,
+        "r_frame_rate": "2997/100",
+        "duration_seconds": 191.06,
+        "has_audio": true
+      },
+      "id": "E16",
+      "title": "Enceladus: Cold Faithful",
+      "source_page": "https://www.jpl.nasa.gov/videos/enceladus-cold-faithful/",
+      "download_url": "https://d2pn8kiwq2w21t.cloudfront.net/media/videoscassinienceladus-20060310EnceladusWebVideo02.m4v",
+      "credit": "NASA/JPL-Caltech",
+      "kind": "NASA video with animation and explanatory material",
+      "reuse_policy": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "reuse_notes": "NASA material is generally reusable with credit, subject to third-party rights and no implied endorsement. Original soundtracks may contain separately licensed music; the Babylon edit uses muted excerpts.",
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/cold-faithful.m4v",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/5c9f43ace44f6ce785108212f81941261d5e990ffe44113ad65a8acf5d9688dc/imports/research/enceladus-extra/2026-10-01/originals/cold-faithful.m4v"
+    },
+    {
+      "filename": "deep-dive-2015.m4v",
+      "relative_path": "originals/deep-dive-2015.m4v",
+      "bytes": 93603400,
+      "content_sha256": "74ffbae236fac5bf377013e9dd3461c5a8096c955340c7efa95da06219b5530b",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 111.466667,
+        "has_audio": true
+      },
+      "id": "E14",
+      "title": "Deep Dive into Enceladus' Plume",
+      "source_page": "https://www.jpl.nasa.gov/videos/deep-dive-into-enceladus-plume/",
+      "download_url": "https://d2pn8kiwq2w21t.cloudfront.net/media/videoscassini20151026JPL-20151026-mCassin1-0001-Enceladus_Flyby_Web_Video-A-1080.m4v",
+      "credit": "NASA/JPL-Caltech",
+      "kind": "NASA video with animation and explanatory material",
+      "reuse_policy": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "reuse_notes": "NASA material is generally reusable with credit, subject to third-party rights and no implied endorsement. Original soundtracks may contain separately licensed music; the Babylon edit uses muted excerpts.",
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/deep-dive-2015.m4v",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/5c9f43ace44f6ce785108212f81941261d5e990ffe44113ad65a8acf5d9688dc/imports/research/enceladus-extra/2026-10-01/originals/deep-dive-2015.m4v"
+    },
+    {
+      "filename": "mystery-of-the-icy-moon.m4v",
+      "relative_path": "originals/mystery-of-the-icy-moon.m4v",
+      "bytes": 117639308,
+      "content_sha256": "989a2e0ca801f92364fc9a273e789d7a4ec0efb4977a7f1bb4016c7cbcc8132e",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 154.7,
+        "has_audio": true
+      },
+      "id": "E15",
+      "title": "Enceladus: Mystery of the Icy Moon",
+      "source_page": "https://www.jpl.nasa.gov/videos/enceladus-mystery-of-the-icy-moon/",
+      "download_url": "https://d2pn8kiwq2w21t.cloudfront.net/media/videoscassini20170216JPL-20170216-CASSINf-0001-cc-720.m4v",
+      "credit": "NASA/JPL-Caltech",
+      "kind": "NASA video with animation and explanatory material",
+      "reuse_policy": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "reuse_notes": "NASA material is generally reusable with credit, subject to third-party rights and no implied endorsement. Original soundtracks may contain separately licensed music; the Babylon edit uses muted excerpts.",
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/mystery-of-the-icy-moon.m4v",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/5c9f43ace44f6ce785108212f81941261d5e990ffe44113ad65a8acf5d9688dc/imports/research/enceladus-extra/2026-10-01/originals/mystery-of-the-icy-moon.m4v"
+    },
+    {
+      "filename": "surprising-enceladus.en_US.srt",
+      "relative_path": "originals/surprising-enceladus.en_US.srt",
+      "bytes": 677,
+      "content_sha256": "c4d4f6b2c5edce186b0ab99de71f72350f5ecd1120adc00656163816e56ff36d",
+      "content_type": "application/x-subrip",
+      "id": "E13-C",
+      "title": "Surprising Enceladus English captions",
+      "source_page": "https://svs.gsfc.nasa.gov/13692/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a010000/a013600/a013692/Enceladus_captioned.en_US.srt",
+      "credit": "NASA's Goddard Space Flight Center",
+      "kind": "caption sidecar",
+      "reuse_policy": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "reuse_notes": "NASA material is generally reusable with credit, subject to third-party rights and no implied endorsement. Original soundtracks may contain separately licensed music; the Babylon edit uses muted excerpts.",
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/surprising-enceladus.en_US.srt",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/5c9f43ace44f6ce785108212f81941261d5e990ffe44113ad65a8acf5d9688dc/imports/research/enceladus-extra/2026-10-01/originals/surprising-enceladus.en_US.srt"
+    },
+    {
+      "filename": "surprising-enceladus.mp4",
+      "relative_path": "originals/surprising-enceladus.mp4",
+      "bytes": 36712192,
+      "content_sha256": "7089fe4a095dda40fe43abe7cc4af076c2f524c48fc35c4a2de139124f6328f9",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 28.728708,
+        "has_audio": true
+      },
+      "id": "E13",
+      "title": "Surprising Enceladus",
+      "source_page": "https://svs.gsfc.nasa.gov/13692/",
+      "download_url": "https://svs.gsfc.nasa.gov/vis/a010000/a013600/a013692/Enceladus_13692.mp4",
+      "credit": "NASA's Goddard Space Flight Center",
+      "kind": "NASA video with animation and explanatory material",
+      "reuse_policy": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "reuse_notes": "NASA material is generally reusable with credit, subject to third-party rights and no implied endorsement. Original soundtracks may contain separately licensed music; the Babylon edit uses muted excerpts.",
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/surprising-enceladus.mp4",
+      "lakefs_uri": "lakefs://thatsnozorb-assets/5c9f43ace44f6ce785108212f81941261d5e990ffe44113ad65a8acf5d9688dc/imports/research/enceladus-extra/2026-10-01/originals/surprising-enceladus.mp4"
+    }
+  ],
+  "references": [
+    {
+      "id": "O01",
+      "title": "Flagship Concepts for Astrobiology at Enceladus",
+      "source_page": "https://www.youtube.com/watch?v=NAM8SWw14vs",
+      "publisher": "Lunar and Planetary Institute",
+      "verification": "Publisher/title verified through public YouTube oEmbed and the LPI OPAG presentation link.",
+      "availability": "watch-online",
+      "reuse": "Reference only; clip reuse permission not established."
+    },
+    {
+      "id": "O02",
+      "title": "Enceladus Orbilander: A Flagship Mission Concept",
+      "source_page": "https://ntrs.nasa.gov/citations/20205008712",
+      "publisher": "NASA NTRS / Johns Hopkins Applied Physics Laboratory",
+      "availability": "public-report",
+      "reuse": "Some portions may be copyright protected. Reference only; no illustrations used."
+    },
+    {
+      "id": "O03",
+      "title": "New Technology to Find Surer Signs of Life",
+      "source_page": "https://www.jhuapl.edu/news/news-releases/201208-new-technology-to-find-surer-signs-of-life",
+      "publisher": "Johns Hopkins Applied Physics Laboratory",
+      "reuse_policy": "https://www.jhuapl.edu/privacy",
+      "reuse": "APL website terms require written permission for redistribution; reference only."
+    },
+    {
+      "id": "O04",
+      "title": "SmallSat constellation design around Enceladus",
+      "source_page": "https://nas.nasa.gov/SC23/research/project42.html",
+      "video_url": "https://vimeo.com/875032632",
+      "publisher": "NASA",
+      "credit": "Wayne Yu and Grant Hecht, NASA/Goddard",
+      "availability": "Video downloader returned HTTP 404; no video archived.",
+      "reuse": "Reference only."
+    }
+  ],
+  "verification": {
+    "download": true,
+    "ffprobe": true,
+    "full_decode": true,
+    "lakefs_readback": true
+  },
+  "lakefs": {
+    "repository": "thatsnozorb-assets",
+    "branch": "ingest-enceladus-videos-extra-20261001",
+    "commit": "5c9f43ace44f6ce785108212f81941261d5e990ffe44113ad65a8acf5d9688dc",
+    "file_count": 5,
+    "total_bytes": 280719234,
+    "main_protected": true,
+    "merged": false
+  }
+}

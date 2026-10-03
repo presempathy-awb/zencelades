@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "live_model": {
+    "default_mode": "lander",
+    "path": "deliveries/grant-3d-p059/zencelades-2p5m-lander.glb",
+    "sphere_diameter_m": 2.5,
+    "projector_surface_distance_m": 2.5,
+    "distance_interpretation": "lens to nearest spherical surface along the beam axis",
+    "projection": "live movie mapped only on the imported outer wall; clear front retained",
+    "still_previews": "the Blender stills below remain earlier 3 m concepts"
+  },
+  "supported_models": [
+    {
+      "mode": "lander",
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-lander.glb",
+      "support": "ground-supported lander"
+    },
+    {
+      "mode": "aerial",
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-suspended.glb",
+      "support": "suspended aerial rig"
+    }
+  ],
+  "live_avatar": {
+    "source": "cockpit/src/showtime/squish-avatar.ts",
+    "modes": [
+      "lander",
+      "aerial"
+    ],
+    "reference": "source/research/enceladus-human/originals/andrew-reference.jpeg",
+    "reference_sha256": "816c73cf8dac7d03699ecc746f72c1e3f18bab2f06f908e8f7c819fd1bbed113",
+    "face_crop_pixels": [
+      467,
+      124,
+      108,
+      78
+    ],
+    "appearance": "broad shirtless seated body, dark navy shorts, curly dark hair, beard and glasses",
+    "pose_yaw_degrees": 15,
+    "leg_orientation": "toward clear entrance, away from side aerial host legs",
+    "interpretation": "procedural concept body with supplied portrait pixels; no scan, inferred unseen likeness or pose tracking",
+    "deformation": "bounded breathing and motion-driven upper-body squash and lean; stationary at zero effects",
+    "sphere_deformation": false,
+    "chamber_radius_m": 0.833333313,
+    "floor": "imported rim fitted to 99 percent of chamber radius without changing either shell",
+    "browser_verification": "pending fresh scoped approval",
+    "public_deployment": false
+  },
+  "title": "Showtime: spherical 2.5 m zorb with ground and aerial support",
+  "inputs": [
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-lander.glb",
+      "bytes": 703068,
+      "content_sha256": "8a27a76783bb32bb981cbba388001157bf9f52353b09351c86ec3493d45fc0dd"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-suspended.glb",
+      "bytes": 773384,
+      "content_sha256": "d742ff5fb1e1ac2abcdabdfead91368c0b6d3aaabc4a3a2b77b3c74e73415b14"
+    }
+  ],
+  "interpretation": "Surface-only artistic projection on imported P059 models, three elevated rear/side heads, transparent entrance and ground haze; not measured optics or an engineering certification.",
+  "source_catalogs": [
+    "assets/enceladus-videos/catalog.json",
+    "assets/enceladus-extra/catalog.json",
+    "assets/enceladus-human/catalog.json",
+    "assets/enceladus-surface/catalog.json"
+  ],
+  "verification": {
+    "preparation": "prepare-film.ts checks exact model/media provenance before copying",
+    "browser": "Combined candidate awaiting explicit scoped approval",
+    "physical_installation": "Unverified concept"
+  },
+  "storage": {
+    "models": "Retained ignored project delivery originals; restore exact catalogued bytes before building",
+    "lakefs": "No new archive upload or readback is claimed by this source PR"
+  }
+}
