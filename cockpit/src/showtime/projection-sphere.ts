@@ -821,7 +821,7 @@ export async function createProjectionSphere(
         const haze = Math.max(0, Math.min(1, frame.haze ?? 0.8));
         sway.update(seconds, motion, motionX, effects, selectedRig === "aerial");
         updateProjectionPose();
-        const filmBlend = Math.max(0, Math.min(1, frame.filmBlend ?? 0.35));
+        const filmBlend = Math.max(0, Math.min(1, frame.filmBlend ?? 0.7));
         const opacity = frame.personOpacity ?? 0;
         const personOpacity =
           projectionEnabled && frame.avatarVisible !== false && Number.isFinite(opacity)

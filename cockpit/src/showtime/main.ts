@@ -129,7 +129,7 @@ export function mountShowtime(
     motionX: 0,
     haze: 0.55,
     effects: 0.65,
-    filmBlend: 0.35,
+    filmBlend: 0.7,
     avatarVisible: true,
     personOpacity: 0,
     moonVisible: true,

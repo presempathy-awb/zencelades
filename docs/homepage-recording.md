@@ -12,6 +12,10 @@ The recorder sets the aerial rig, dusk lighting and elevated right view using
 `cockpit/scripts/homepage-preset.json`. The interactive stage retains its
 lander default and all other viewing choices.
 
+Movie blend defaults to 70% in both the interactive scene and this recording
+preset, making the moving moon flight more prominent than the static lunar map.
+The interactive slider still spans 0–100%, independently of Human blend.
+
 The publishing host needs the existing Bun dependencies, Node, Playwright
 (local or global), Chrome, FFmpeg and ffprobe. The recorder installs nothing.
 Its fresh browser context has no camera or microphone permission; network
