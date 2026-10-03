@@ -1,6 +1,18 @@
 # Zencelades working plan
 
-## Current continuation — publish, review, merge and deploy
+## Current continuation — deployed studio and access verification
+
+[P126](docs/plans/p126-deploy-unlocked-studio.md): Andrew refreshed the exact
+project unlock. PR13 is merged at `c5bf9f468252` and mirrored. The protected
+studio route and additive release `dfecc13fcfbd` are active. Forty live access
+checks pass; 1,715 deployed manifest entries have matching hashes. The public
+homepage renders and looping video work. Authentik sign-in was reached in the
+browser; Andrew's authenticated session remains pending. Canonical-domain cache
+purge succeeded; old-alias purge is blocked by Cloudflare's token quota and is
+awaiting the explicit token-retirement decision. See the
+[deployment receipt](docs/private-studio-deployment.md).
+
+## Historical continuation — publish, review, merge and deploy
 
 [P125](docs/plans/p125-verified-unlock-and-delivery.md): the project unlock
 worked for the real Authentik consumer, then expired during review. PR13 has
