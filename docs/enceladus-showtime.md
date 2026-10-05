@@ -90,7 +90,9 @@ realistic material detail while exposing the interior; **Full wireframe** shows
 the meshes. Inspection modes retain the chosen time of day. The coastal Love
 Burn environment can be toggled independently of the film clock.
 
-Automatic routines are the default. Select **Controls** to use the optional
+**Random motion** and **Fade in & out** are enabled by default. The human
+projection fades through the moon imagery automatically; turn **Fade in & out**
+off for a continuous human blend. Select **Controls** to use the optional
 movement and direction controls shown beside the stage. **Left projection**,
 **Rear projection**, **Right projection** and **Clear front** move the viewing
 camera. Fullscreen is available as an explicit stage action.

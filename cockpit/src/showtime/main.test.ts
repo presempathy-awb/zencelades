@@ -15,7 +15,7 @@ test("importing Showtime is inert and mounting resolves elements only inside its
   expect(selectors).toEqual(["#stage"]);
 });
 
-test("the document defaults to full body/moon brightness and randomized motion without camera access", async () => {
+test("the document defaults to full brightness, randomized motion and fading without camera access", async () => {
   const markup = await readFile(new URL("../../showtime/index.html", import.meta.url), "utf8");
   const controls = new Map<
     string,
@@ -47,7 +47,7 @@ test("the document defaults to full body/moon brightness and randomized motion w
   expect(manualLabel).toBe("Controls");
   expect(controls.get("blend")?.value).toBe("1");
   expect(controls.get("brightness")?.value).toBe("1");
-  expect(controls.get("fade")?.checked).toBe(false);
+  expect(controls.get("fade")?.checked).toBe(true);
   expect(
     ["realistic", "dusk", "day", "inspect", "wireframe"].filter(
       (id) => controls.get(`preset-${id}`)?.pressed === "true",
