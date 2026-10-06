@@ -15,30 +15,37 @@ from scripts.assets import ROOT, safe_path, sha256
 from scripts.lake_upload import TOKEN_ENV, NoRedirect, endpoint_origin
 
 
-def run(args: argparse.Namespace) -> None:
+def run(args: argparse.Namespace, *, batch: str = "research") -> None:
+    scopes = {
+        "research": ("imports/research/", "source/research"),
+        "model": ("imports/models/p041/", "cockpit/public/studio-models"),
+        "v4": ("imports/v4-fixed15/", "deliveries/enceladus_v4_fixed15"),
+    }
+    if batch not in scopes:
+        raise ValueError("Unknown preservation batch")
+    prefix, source_folder = scopes[batch]
     endpoint = endpoint_origin(args.endpoint)
     if not re.fullmatch(r"ingest-[a-z0-9-]{1,80}", args.branch):
         raise ValueError("Use a fresh ingest-* branch")
-    plan = json.loads((ROOT / "assets/research-upload-plan.json").read_text())
-    if (
-        plan["repository"] != "thatsnozorb-assets"
-        or plan["prefix"] != "imports/research/"
-    ):
+    plan = json.loads((ROOT / f"assets/{batch}-upload-plan.json").read_text())
+    if plan["repository"] != "thatsnozorb-assets" or plan["prefix"] != prefix:
         raise ValueError(
             "Research destination differs from the scoped preservation plan"
         )
     entries = plan["files"]
-    if not entries or len(entries) != plan["file_count"]:
+    if not entries or len(entries) != plan.get("file_count", len(entries)):
         raise ValueError("Research file count differs from the plan")
     expected = {}
     for entry in entries:
         source = ROOT / safe_path(entry["path"])
         key = entry["lakefs_path"]
         if (
-            not source.resolve().is_relative_to(ROOT.resolve() / "source/research")
+            not source.resolve().is_relative_to(ROOT.resolve() / source_folder)
             or source.is_symlink()
+            or (batch == "model" and source.suffix not in {".glb", ".babylon", ".json"})
+            or (batch == "v4" and source.suffix.lower() == ".zip")
             or str(safe_path(key)) != key
-            or not key.startswith("imports/research/")
+            or not key.startswith(prefix)
             or key in expected
             or source.stat().st_size != entry["bytes"]
             or sha256(source) != entry["content_sha256"]
@@ -47,7 +54,8 @@ def run(args: argparse.Namespace) -> None:
                 "Research path, key, length or digest differs from the plan"
             )
         expected[key] = entry
-    if sum(e["bytes"] for e in entries) != plan["total_bytes"]:
+    total_bytes = sum(e["bytes"] for e in entries)
+    if total_bytes != plan.get("total_bytes", total_bytes):
         raise ValueError("Research byte count differs from the plan")
     print(
         json.dumps(
@@ -57,7 +65,7 @@ def run(args: argparse.Namespace) -> None:
                 "repository": plan["repository"],
                 "branch": args.branch,
                 "files": len(entries),
-                "bytes": plan["total_bytes"],
+                "bytes": total_bytes,
                 "merge": False,
             },
             indent=2,
@@ -69,8 +77,8 @@ def run(args: argparse.Namespace) -> None:
     token = os.environ.get(TOKEN_ENV, "").strip()
     if not token:
         raise ValueError(f"Missing scoped {TOKEN_ENV}; run through hid-in")
-    receipt_path = ROOT / "assets/research-upload-receipt.json"
-    staging_path = ROOT / "assets/research-upload-staging.json"
+    receipt_path = ROOT / f"assets/{batch}-upload-receipt.json"
+    staging_path = ROOT / f"assets/{batch}-upload-staging.json"
     if receipt_path.exists() or staging_path.exists():
         raise ValueError(
             "Research execution record already exists; inspect it before recovery"
@@ -102,8 +110,8 @@ def run(args: argparse.Namespace) -> None:
         return content
 
     base = "/api/v1/repositories/thatsnozorb-assets"
-    request(base)
     for path in (
+        base,
         "/api/v1/repositories/erebe-assets",
         "/api/v1/auth/users",
         base + "/refs/main/objects?path=public%2Fpublisher-denial-probe",
@@ -116,7 +124,7 @@ def run(args: argparse.Namespace) -> None:
         "commit": None,
         "status": "creating_branch",
         "files": entries,
-        "scope_refusals": 3,
+        "scope_refusals": 4,
         "readback_complete": False,
     }
     with staging_path.open("x") as handle:
@@ -142,15 +150,16 @@ def run(args: argparse.Namespace) -> None:
             content,
             "application/octet-stream",
         )
-        print(f"Staged {number}/{len(entries)}: {entry['source_id']}", flush=True)
+        print(
+            f"Staged {number}/{len(entries)}: {entry.get('source_id', entry['lakefs_path'])}",
+            flush=True,
+        )
     committed = json.loads(
         request(
             branch + "/commits",
             "POST",
             json.dumps(
-                {
-                    "message": "Preserve primary Enceladus engineering and mount references"
-                }
+                {"message": f"Preserve the verified Enceladus {batch} batch"}
             ).encode(),
         )
     )
@@ -186,14 +195,14 @@ def run(args: argparse.Namespace) -> None:
         status="verified",
         readback_complete=True,
         files_verified=len(entries),
-        bytes_verified=plan["total_bytes"],
+        bytes_verified=total_bytes,
         merge=False,
     )
     with receipt_path.open("x") as handle:
         json.dump(record, handle, indent=2)
         handle.write("\n")
     staging_path.write_text(json.dumps(record, indent=2) + "\n")
-    print(f"Verified {len(entries)} research objects at immutable commit {commit}")
+    print(f"Verified {len(entries)} {batch} objects at immutable commit {commit}")
 
 
 def main() -> None:

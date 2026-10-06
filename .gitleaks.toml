@@ -1,0 +1,18 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "The published native API release SHA-256 digest is not a credential."
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "secret"
+paths = ['''docs/naming-verification\.md$''']
+regexes = ['''^867bbc4cf698c11b662e98d419b58bfb72db99cc3236f0eb75ac3590afd85954$''']
+
+[[allowlists]]
+description = "Two verified renderer source SHA-256 values in the generated recording receipt."
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "secret"
+paths = ['''(^|/)source/research/enceladus-cinema/web/homepage-recording\.json$''']
+regexes = ['''^(93539b991021846d8295dcf4c15b18e808d3973d60b750363ef5fb59907ff03f|d94fcc97c0b272619406aadda9a1c58bd5c72d6a157707b307fe9b8d61998fff)$''']

@@ -1,0 +1,88 @@
+name: checks
+
+on:
+  push:
+    branches: [main, "draft/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: https://github.com/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install pinned project and source-check tools
+        uses: https://github.com/jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3.6.3
+        with:
+          version: "2026.7.18"
+          github_token: ""
+          install_args: "just uv python bun ruff@0.16.3"
+          cache: true
+      - name: Run Python source checks
+        run: mise exec -- just check
+      - name: Test cockpit source
+        working-directory: cockpit
+        run: |
+          bun install --frozen-lockfile --ignore-scripts
+          bun test \
+            --path-ignore-patterns=src/showtime/projection-sphere.test.ts \
+            --path-ignore-patterns=src/showtime/projection-haze.test.ts \
+            --path-ignore-patterns=src/showtime/installation-sway.test.ts \
+            --path-ignore-patterns=src/showtime/installation-access.test.ts
+
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: https://github.com/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install pinned security tools
+        uses: https://github.com/jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3.6.3
+        with:
+          version: "2026.7.18"
+          github_token: ""
+          install_args: "gitleaks@8.30.1 trivy@0.74.0 uv python"
+          cache: true
+      - name: Verify narrow secret-scanner exceptions
+        run: |
+          command -v gitleaks
+          uv run --no-project --with pytest pytest -q tests/test_secret_scan.py
+      - name: Scan repository for secrets
+        run: gitleaks dir . --config .gitleaks.toml --no-banner --no-color --redact --timeout 90 --max-target-megabytes 5
+      - name: Scan dependencies for high and critical vulnerabilities
+        run: trivy fs --scanners vuln --severity HIGH,CRITICAL --exit-code 1 --quiet .
+      - name: Scan deployment configuration
+        run: trivy config --severity HIGH,CRITICAL --exit-code 1 --quiet .
+
+  account:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: https://github.com/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install the pinned account-service toolchain
+        uses: https://github.com/jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3.6.3
+        with:
+          version: "2026.7.18"
+          github_token: ""
+          install_args: "just go@1.26.5"
+          cache: true
+      - name: Prepare the PostgreSQL 18 fixture image
+        run: |
+          docker info
+          if ! docker image inspect postgres:18-bookworm >/dev/null 2>&1; then
+            docker pull postgres:18-bookworm
+          fi
+      - name: Run account-service race, vet and isolated PostgreSQL checks
+        run: mise exec -- just account-check

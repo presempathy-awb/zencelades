@@ -19,7 +19,7 @@
     "P040",
     "P041"
   ],
-  "status": "prepared_pending_scoped_publisher_and_model_upload_executor",
+  "status": "prepared_pending_scoped_publisher",
   "repository": "thatsnozorb-assets",
   "prefix": "imports/models/p041/",
   "source_ref": "main",
@@ -369,5 +369,5 @@
     "Read all bytes back at the immutable commit and compare SHA-256.",
     "Do not merge main, remove originals or place source ZIPs in this batch."
   ],
-  "executor_note": "Existing research-upload rejects generated model paths by design. A bounded model publisher must preserve that boundary; this is a plan only."
+  "executor_note": "The bounded just batch-upload model executor accepts only this fixed model scope and writes a separate receipt. The research source boundary remains intact. Scoped provisioning and broker rollout are pending; no upload is claimed."
 }

@@ -37,6 +37,10 @@ assets-check:
 assets-catalog:
     uv run --no-project python -m scripts.catalog_assets
 
+# Plan local hydration from catalog-verified retained originals; never overwrite.
+assets-restore retained *args:
+    uv run --no-project python -m scripts.restore_assets --retained {{quote(retained)}} {{args}}
+
 # Separate v4 manifest and inventory; never rewrites the original v3 receipts.
 assets-v4 *args:
     uv run --no-project python -m scripts.catalog_v4 {{args}}
@@ -106,6 +110,10 @@ assets-upload *args:
 # Separate plan and receipts; no original catalog or B2 receipt is overwritten.
 research-upload *args:
     uv run --no-project python -m scripts.research_upload {{args}}
+
+# Fixed model/v4 plans and separate receipts; research source boundaries stay intact.
+batch-upload batch *args:
+    uv run --no-project python -m scripts.batch_upload {{quote(batch)}} {{args}}
 
 preview *args:
     uv run --no-project python -m scripts.preview {{args}}

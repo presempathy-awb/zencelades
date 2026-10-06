@@ -1,0 +1,246 @@
+{
+  "prepared_on": "2026-10-05",
+  "provenance": "Retained P059 grant packet verified against its original catalog, plus retained derived moon film required by site-build. Historical artifacts, not new physical acceptance or remote preservation.",
+  "files": [
+    {
+      "path": "deliveries/grant-3d-p059/SOURCE/grant_3d_models.py",
+      "bytes": 24904,
+      "content_sha256": "27812e341920abeb966043be377c1a3f28c6047261b67316a958f4afae7b94fb"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/SOURCE/grant_3d_sheets.py",
+      "bytes": 12753,
+      "content_sha256": "438a0516e9c9d07739eac617e4717b8bf688bd162297a0b500e6b5f602806224"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/SOURCE/verify_grant_3d.py",
+      "bytes": 4748,
+      "content_sha256": "7a5b46c354c31f1ed30825aab669ecd54aa7b37f4f3fdfc2502c9ea2701caeb5"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/UPLOAD-PHOTOS/02-Lander-3D.png",
+      "bytes": 459090,
+      "content_sha256": "f97ed0d92fd6a5d720cd3881a399d2e2d4e1c0de5aa35e0581f334c02907c36a"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/UPLOAD-PHOTOS/03-Plan-Elevation.png",
+      "bytes": 453753,
+      "content_sha256": "ba086d625cace9e1e9f87b88b8064ddecdab62800ebd937c64f77c8732ec4d56"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/UPLOAD-PHOTOS/04-Frame-Details.png",
+      "bytes": 334432,
+      "content_sha256": "2e9f6ffd070d11cbd8ee65d2742fd5b7259e1809692f11c86a95bbd4f7d83cda"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/UPLOAD-PHOTOS/05-Suspension-3D.png",
+      "bytes": 514907,
+      "content_sha256": "1c2eeeee43f214e7d5852fd92564ff6254310798d446bd387454cd852d3a28c2"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/UPLOAD-PHOTOS/06-Size-Options.png",
+      "bytes": 385724,
+      "content_sha256": "cb4f6162a22f30e2134dc7756c9c8caa9ef704188c3f140358243e7dcd5dcc6b"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/UPLOAD-PHOTOS/07-Owned-Hazer.png",
+      "bytes": 424390,
+      "content_sha256": "4b92424e4eb9ffec30fc42cc85a44c5920c835d7ed331798887300a4ea220574"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/Zencelades-3D-Schematics.pdf",
+      "bytes": 756929,
+      "content_sha256": "d3c4d6ba1ef23fd675973a83b0e1f6d6ccb67c49cb5306685e9ebb67cde0ede8"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/Zencelades-Build-Plans.pdf",
+      "bytes": 43533,
+      "content_sha256": "092d90bba743fc120c2c2709e115326aa55bd1fedd09611353c86ff87f953d85"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/Zencelades-Parts.csv",
+      "bytes": 21573,
+      "content_sha256": "8fe6c8759754f38e119a8e33c4504c7427a632279195169796a5b78eec1eb4c0"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/README.md",
+      "bytes": 6622,
+      "content_sha256": "8cd4cf5f0cda8b21068b301e15828f343062e1c2cf8faac272ca3d9bea1bf506"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/budget-and-inventory.md",
+      "bytes": 3274,
+      "content_sha256": "5b36162ea1df2ad2f0427e2fc230da2aee962b7a26578c2f4f9c242d452c6e6c"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/field-operations.md",
+      "bytes": 3266,
+      "content_sha256": "c6113e3dd99b3dfba62c608bcd05658427cee86afc5fca8bcf70e1f0cc176d64"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/g25-lander.md",
+      "bytes": 3890,
+      "content_sha256": "a2c2f3fe98678391637e1d23ac5c67b3e12bb5e0e2e0f4da7e14165bd2d477ea"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/g30-lander.md",
+      "bytes": 3163,
+      "content_sha256": "92d793c2c4068d5dedacc25b69c1bdc14e8f20dfc5874d3e1a6e3bb6ace4c7ba"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/materials-and-hosts.md",
+      "bytes": 5023,
+      "content_sha256": "812f2d6a1fa5ab103ec17c62a5c97f91a96d9ab1fd8ee214c586b65160efb49b"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/o30-open-surround.md",
+      "bytes": 2026,
+      "content_sha256": "68912883ece15da751789134d94817303042c3da0d3d717db1c3975e5dffaebe"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/optics-camera-hazer.md",
+      "bytes": 7917,
+      "content_sha256": "2b4ae46d822945a463857dae4fc48882a334457bbc5bccf342609ce861c52695"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/pacinman.md",
+      "bytes": 2497,
+      "content_sha256": "6fa4d0b560e3fac07fe4de50c7457b9efe206bab30619e0678c4ba5523d7de10"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/s25-suspended.md",
+      "bytes": 3519,
+      "content_sha256": "c683d46409208f0254254dffffdceafbf1ffc0846c3fad4db8adce1b0fd00db7"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build/s30-suspended.md",
+      "bytes": 2475,
+      "content_sha256": "20567cfc51c73022b1924203b60ccbd4591b10f1e9a63440ff2cd36b906dcdc3"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build-parts.json",
+      "bytes": 50508,
+      "content_sha256": "d7cc3e655e1911a9eca085df3d2c3a0d23d232d2bfd5a8ff48a885ce10f1dcc5"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/build-tasks.json",
+      "bytes": 5381,
+      "content_sha256": "a84695aefb79c45554b0752cecef20eb09b0ef3a6fd9fe380b6d1072034f5ddf"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/geometry.json",
+      "bytes": 33524,
+      "content_sha256": "b07014250e4b40e522ecb961fa23283a366d4e5da6bd1b9f2f1731288c5c8365"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/pacinman-import.json",
+      "bytes": 123371,
+      "content_sha256": "b75fb5f5f3ee0c0138e229e8c4f4efde88419ed9701249c1ed2c023aa3911689"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/verification.json",
+      "bytes": 1136,
+      "content_sha256": "906daa615f716d6be3b5a1d72e6af3a3dcdf86695b34844efcb0f78a5dd6ae40"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-lander-iso.png",
+      "bytes": 2298461,
+      "content_sha256": "bac17ce3dc4ff7c439d2dfcc50696d683269e9bae890d42d52897b8cfe69c5dc"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-lander.blend",
+      "bytes": 294633,
+      "content_sha256": "b591b804d268ba14214bae3a2b76fc783f5c58905f845dbc8156afba50c5ab19"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-lander.glb",
+      "bytes": 703068,
+      "content_sha256": "8a27a76783bb32bb981cbba388001157bf9f52353b09351c86ec3493d45fc0dd"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-suspended-iso.png",
+      "bytes": 2414922,
+      "content_sha256": "4de1a53a4e6cfdf780eb69b206d0cf0f651cd893ba6d6bd5166ed14ee2a02c77"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-suspended.blend",
+      "bytes": 307996,
+      "content_sha256": "572e1d1f300e2843feb19c85e35cc72e1f19cb155d6f29781a203e09fbfa7ec1"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-2p5m-suspended.glb",
+      "bytes": 773384,
+      "content_sha256": "d742ff5fb1e1ac2abcdabdfead91368c0b6d3aaabc4a3a2b77b3c74e73415b14"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander-frame-iso.png",
+      "bytes": 2221941,
+      "content_sha256": "3bf22877456f0a5e46292b674c8bbe63409f83095627c68810f4d540cae7d746"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander-frame-top.png",
+      "bytes": 2248017,
+      "content_sha256": "440a462cf6e8bbce55d4a54fe67426dd8e0b1c34f363144e6029ab976424d00f"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander-front.png",
+      "bytes": 1503062,
+      "content_sha256": "93e8a3f4b8f43aa10226aababc666ba42b35164681d920131c73b2ff119f65d8"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander-iso.png",
+      "bytes": 2308605,
+      "content_sha256": "da5e7806678d6ec92b70a172ca600036bb562de31ae4688e46a53956bc0b6b55"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander-side.png",
+      "bytes": 1466142,
+      "content_sha256": "5bba57c7f74ac748cf8ab95cde7dd62a090352d44e182c35513297a07caaf09c"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander-top.png",
+      "bytes": 2243695,
+      "content_sha256": "47d519c91892b7b03545ffd1fb65e9c052b4602012f213986453bd67efe61f4a"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander.blend",
+      "bytes": 297987,
+      "content_sha256": "554a7bf71cfbe828fc217b622231b3945274eeb4ff82089a819485c18b9ffc21"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-lander.glb",
+      "bytes": 707144,
+      "content_sha256": "5cafa1e36da290dbf9caf52b58a5ea2ca28660e20a584734fd97776c3a2af635"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-suspended-front.png",
+      "bytes": 1563313,
+      "content_sha256": "48791e14e3adad5f68b38d89283a805fc1ec2ceec4234eec922c6c2450584cf7"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-suspended-iso.png",
+      "bytes": 2423595,
+      "content_sha256": "708b3d0199b042af63a8a0b53e4acdf96b1b8bb08a1226ba80bab94baef1317f"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-suspended.blend",
+      "bytes": 304508,
+      "content_sha256": "31c8af45ac9f9389667b8cba6c9d73d548d90a17ccaa404a20377bbe6de08316"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/zencelades-3p0m-suspended.glb",
+      "bytes": 764304,
+      "content_sha256": "8040b773089ecefb4aaad6670b6dca77977e88d747bdae6961027b7271ea3396"
+    },
+    {
+      "path": "deliveries/grant-3d-p059/catalog.json",
+      "bytes": 8728,
+      "content_sha256": "07ff2ff5dc22b633badd719285cb1946edd76a5e133cf4b36793af4d4ab3bcdc"
+    },
+    {
+      "path": "source/research/enceladus-videos/derived/above-the-ice.mp4",
+      "bytes": 28448277,
+      "content_sha256": "180fb205e8a76847ab392ff1a8d15f6398d8163f6f791da522a312581739e058"
+    }
+  ]
+}

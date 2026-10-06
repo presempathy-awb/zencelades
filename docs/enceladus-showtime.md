@@ -101,10 +101,14 @@ camera. Fullscreen is available as an explicit stage action.
 
 Media, portrait bytes, delivery models and generated output are ignored by
 version control. A clean source checkout must hydrate those inputs before
-building or running the model integration tests. No downloader or authenticated
-asset fetch is added by this change. Retrieve the archived public media using
-the existing archive records, and restore the supplied portrait and delivery
-models from their retained project originals. The catalog records are the
+building or running the model integration tests. `just assets-restore RETAINED`
+validates catalogued originals in a retained checkout and plans local hydration;
+adding `--apply` copies missing files. It verifies source and destination hashes,
+rejects linked paths or differing existing files, verifies staged copies and
+publishes without overwriting. It does not fetch credentials or remote assets.
+The homepage recording remains separate: restore its receipt, movie and poster,
+then run the existing stale-recording gate before building. Retrieve any remote
+originals using their existing archive records. The catalog records are the
 authority for paths, source attribution and exact SHA-256 bytes:
 
 - [NASA/Cassini/Webb video sources](../assets/enceladus-videos/catalog.json)
