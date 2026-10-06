@@ -16,7 +16,8 @@ fixture_id=$(docker run --detach --rm --pull never --network none \
     --env POSTGRES_HOST_AUTH_METHOD=trust \
     --env POSTGRES_DB=zencelades_account_test postgres:18-bookworm)
 attempt=0
-until docker exec "$fixture_id" pg_isready -U postgres -d zencelades_account_test >/dev/null 2>&1; do
+# Initialization uses a socket-only server that shuts down before normal startup.
+until docker exec "$fixture_id" pg_isready -h 127.0.0.1 -U postgres -d zencelades_account_test >/dev/null 2>&1; do
     attempt=$((attempt + 1))
     if [ "$attempt" -ge 30 ]; then echo 'PG18 fixture did not become ready' >&2; exit 1; fi
     sleep 1 # Condition polling for the newly created database, bounded to 30 seconds.

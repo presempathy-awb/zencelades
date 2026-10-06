@@ -6,6 +6,13 @@ A separate job runs Gitleaks over repository files up to 5 MB and Trivy scans th
 
 The cockpit production build and tests that load ignored GLB files are not part of this clean-checkout workflow. `bun run build` runs `cockpit/scripts/prepare.ts`, which copies original GLB files from ignored `deliveries/` directories; those files are not available in a fresh checkout. Package installation skips lifecycle scripts so it does not invoke that asset-dependent preparation. The test command skips `src/showtime/projection-sphere.test.ts`, `src/showtime/projection-haze.test.ts`, `src/showtime/installation-sway.test.ts`, and `src/showtime/installation-access.test.ts`, which read those same files. CI therefore reports the remaining cockpit source-test coverage only and does not claim a production build or model verification.
 
+The PostgreSQL fixture waits for loopback TCP readiness before running Unix-socket
+persistence tests. The official image starts a temporary socket-only server during
+initialization and then stops it before the final server starts; socket readiness
+alone can release the test into that shutdown. The fixture retains its bounded
+polling and isolated container. See the official
+[image entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh).
+
 ## Verified generated-receipt hashes
 
 The integrated local scan also encountered two renderer source SHA-256 values
