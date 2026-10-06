@@ -117,6 +117,10 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
         base + "/refs/main/objects?path=public%2Fpublisher-denial-probe",
     ):
         request(path, denied=True)
+    # A revoked token can receive the same denials; prove scoped read access first.
+    request(
+        base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})
+    )
     record = {
         "repository": plan["repository"],
         "branch": args.branch,

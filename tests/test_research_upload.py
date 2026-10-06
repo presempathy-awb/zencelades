@@ -61,11 +61,13 @@ class ResearchUploadIntegration(unittest.TestCase):
                 case.calls.append(("GET", self.path))
                 parsed = urlsplit(self.path)
                 query = parse_qs(parsed.query)
-                if parsed.path == "/redirect-destination":
+                if case.mode == "revoked":
+                    self.answer(403, {})
+                elif parsed.path == "/redirect-destination":
                     self.answer(200, b"unexpected redirect")
                 elif parsed.path == "/api/v1/repositories/thatsnozorb-assets":
                     # The deployed prefix-restricted publisher denies repository metadata.
-                    self.answer(403, {})
+                    self.answer(200 if case.mode == "metadata-readable" else 403, {})
                 elif parsed.path.endswith("/objects/ls"):
                     rows = [{"path": case.key, "size_bytes": len(case.payload)}]
                     if case.mode == "size":
@@ -93,7 +95,9 @@ class ResearchUploadIntegration(unittest.TestCase):
                 case.calls.append(("POST", self.path))
                 data = self.rfile.read(int(self.headers.get("Content-Length", 0)))
                 parsed = urlsplit(self.path)
-                if parsed.path.endswith("/branches"):
+                if case.mode == "revoked":
+                    self.answer(403, {})
+                elif parsed.path.endswith("/branches"):
                     if case.mode == "redirect":
                         self.send_response(302)
                         self.send_header("Location", "/redirect-destination")
@@ -162,6 +166,7 @@ class ResearchUploadIntegration(unittest.TestCase):
             "pagination",
             "redirect",
             "missing-refusal",
+            "metadata-readable",
         ):
             with self.subTest(mode=mode):
                 self.mode = mode
@@ -175,8 +180,19 @@ class ResearchUploadIntegration(unittest.TestCase):
                     (self.root / "assets/research-upload-receipt.json").exists()
                 )
                 self.assertNotIn(("GET", "/redirect-destination"), self.calls)
-                if mode == "missing-refusal":
+                if mode in {"missing-refusal", "metadata-readable"}:
                     self.assertFalse(any(method == "POST" for method, _ in self.calls))
+
+    def test_revoked_token_leaves_no_record_and_allows_corrected_retry(self):
+        self.mode = "revoked"
+        with self.assertRaisesRegex(RuntimeError, "HTTP 403"):
+            self.execute()
+        self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
+        self.assertFalse((self.root / "assets/research-upload-receipt.json").exists())
+        self.assertFalse(any(method == "POST" for method, _ in self.calls))
+        self.mode = "ok"
+        self.execute()
+        self.assertEqual(self.objects, {self.key: self.payload})
 
     def test_local_tampering_and_wrong_destination_refuse_before_network(self):
         for kind in ("hash", "destination", "duplicate", "symlink", "root-link"):
@@ -258,6 +274,11 @@ class ResearchUploadIntegration(unittest.TestCase):
         for batch, path, prefix in (
             ("model", "source/research/sample.pdf", "imports/models/p041/"),
             ("model", "source/research/sample.pdf", "imports/research/"),
+            (
+                "model",
+                "cockpit/public/studio-models/sample.pdf",
+                "imports/models/p041/",
+            ),
             (
                 "v4",
                 "deliveries/enceladus_v4_fixed15/archive.zip",

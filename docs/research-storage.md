@@ -4,8 +4,11 @@
 
 October 5 client correction: the prefix-restricted publisher refuses repository
 metadata. The research uploader now verifies that refusal instead of requiring
-a successful metadata read before ingestion. Its four scope probes precede
-branch creation; immutable object length and SHA-256 readback remain required.
+a successful metadata read before ingestion. Its four scope probes and a
+successful, prefix-limited object listing on `main` precede every execution
+record and branch creation. The positive read distinguishes an authorized
+publisher from a revoked token returning only refusals. Immutable object length
+and SHA-256 readback remain required.
 The loopback integration fixture follows the owner's denied-metadata contract.
 This correction does not deploy the broker or complete an upload.
 
@@ -26,7 +29,7 @@ generated model bytes must not silently substitute for that preservation batch.
 No remote upload or completion receipt exists for these three batches.
 
 The verified execution packet on maxipaxi is
-`~/.cache/codex/zencelades/p148-publisher-candidate`: 158 files / 235,090,761
+`~/.cache/codex/zencelades/p148-publisher-candidate`: 158 files / 235,090,949
 bytes including the 151 objects, three plans and four Python modules.
 `packet.json` records every included file's size and SHA-256. All three clients
 pass plan-only validation within that packet. It preserves the frozen P041
@@ -34,6 +37,8 @@ model inputs separately; the current site's rebuilt model directory contains
 newer bytes and is not a valid substitute for this immutable batch. Transfer
 and credential-backed execution have not occurred. Revalidate the packet
 against its receipt and plans before any owner-host execution.
+The client module and its receipt entry were refreshed after Sonnet's
+positive-permission-control finding; all 158 records were reverified.
 
 Use the complete owner changes, not the historical config-only patch:
 [hesellsheshells `feat/thatsnozorb-publisher` (#65)](https://git.telpher.stream/awb/hesellsheshells/pulls/65)

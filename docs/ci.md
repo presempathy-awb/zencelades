@@ -1,6 +1,6 @@
 # Continuous integration
 
-Gitea Actions runs the repository's declared `just check` recipe, the cockpit's Bun source tests, and `just account-check` on pushes to `main` or `draft/**`, pull requests, and manual dispatches. Cockpit dependencies are installed from `cockpit/bun.lock` with `bun install --frozen-lockfile`; the account job uses Go 1.26.5 and requires a Docker-capable runner for its isolated PostgreSQL 18 fixture.
+Gitea Actions runs the repository's declared `just check` recipe, the cockpit's Bun source tests, and `just account-check` on pushes to `main`, pull requests, and manual dispatches. Branch pushes rely on the pull-request event to avoid duplicate jobs. Cockpit dependencies are installed from `cockpit/bun.lock` with `bun install --frozen-lockfile`; the account job uses Go 1.26.5 and requires a Docker-capable runner for its isolated PostgreSQL 18 fixture.
 
 A separate job runs Gitleaks over repository files up to 5 MB and Trivy scans that fail on high or critical dependency vulnerabilities and configuration issues. Gitleaks uses the default detector set with exact path-and-value exceptions for a published release digest and two verified recording source digests; these scoped exceptions are in `.gitleaks.toml`. The workflow uses read-only repository permissions and needs no repository secrets.
 

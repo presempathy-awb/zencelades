@@ -26,7 +26,9 @@ def _manifest_entries(root: Path) -> dict[str, tuple[int, str]]:
             continue
         data = json.loads(manifest.read_text())
         records = data.get("files", data.get("sources", data.get("inputs", [])))
-        if manifest.name == "catalog.json" and "enceladus-" in str(manifest):
+        if manifest.name == "catalog.json" and manifest.parent.name.startswith(
+            "enceladus-"
+        ):
             records = data.get("sources", data.get("inputs", []))
         if not isinstance(records, list):
             continue
@@ -54,8 +56,8 @@ def _manifest_entries(root: Path) -> dict[str, tuple[int, str]]:
             }:
                 raise ValueError(f"Noncanonical or unsupported catalog path: {path}")
             size, digest = record.get("bytes"), record.get("content_sha256")
-            if not isinstance(size, int) or not isinstance(digest, str):
-                continue
+            if type(size) is not int or not isinstance(digest, str):
+                raise TypeError(f"Invalid local catalog length or digest: {path}")
             value = (size, digest)
             if path in entries and entries[path] != value:
                 raise ValueError(f"Conflicting catalog records: {path}")

@@ -24,10 +24,11 @@ def entry(path: str, data: bytes, category: str = "original-upload") -> dict:
 
 @pytest.mark.unit
 @pytest.mark.parametrize("manifest_name", ["catalog.json", "build-inputs.json"])
+@pytest.mark.parametrize("root_name", ["target", "enceladus-checkout"])
 def test_apply_copies_exact_bytes_and_is_idempotent(
-    tmp_path, monkeypatch, manifest_name
+    tmp_path, monkeypatch, manifest_name, root_name
 ):
-    root, retained = tmp_path / "target", tmp_path / "retained"
+    root, retained = tmp_path / root_name, tmp_path / "retained"
     root.mkdir()
     data = b"original bytes"
     record = entry("deliveries/enceladus_v3/models/original.glb", data, "models")
@@ -43,6 +44,28 @@ def test_apply_copies_exact_bytes_and_is_idempotent(
     assert restore_assets.restore(retained, apply=True) == (1, len(data))
     assert (root / record["path"]).read_bytes() == data
     assert restore_assets.restore(retained, apply=True) == (0, len(data))
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "field,value", [("bytes", None), ("content_sha256", None), ("bytes", True)]
+)
+def test_malformed_local_record_refuses_before_any_copy(
+    tmp_path, monkeypatch, field, value
+):
+    root, retained = tmp_path / "target", tmp_path / "retained"
+    root.mkdir()
+    good = entry("source/uploads/good.bin", b"good")
+    bad = entry("source/uploads/bad.bin", b"x")
+    bad[field] = value
+    write_catalog(root, [good, bad])
+    (retained / "source/uploads").mkdir(parents=True)
+    (retained / good["path"]).write_bytes(b"good")
+    (retained / bad["path"]).write_bytes(b"x")
+    monkeypatch.setattr(restore_assets, "ROOT", root)
+    with pytest.raises((ValueError, TypeError), match="catalog"):
+        restore_assets.restore(retained, apply=True)
+    assert not (root / good["path"]).exists()
 
 
 @pytest.mark.unit

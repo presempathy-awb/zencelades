@@ -2,7 +2,7 @@ name: checks
 
 on:
   push:
-    branches: [main, "draft/**"]
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
