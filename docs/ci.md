@@ -12,7 +12,16 @@ the compiler directory from another. The first hosted run exposed missing
 Ruff/Gitleaks version selections and an unavailable Docker CLI; the source
 configuration and service-backed account job address those failures.
 
-A separate job runs Gitleaks over repository files up to 5 MB and Trivy scans that fail on high or critical dependency vulnerabilities and configuration issues. Gitleaks uses the default detector set with exact path-and-value exceptions for a published release digest and two verified recording source digests; these scoped exceptions are in `.gitleaks.toml`. The workflow uses read-only repository permissions and needs no repository secrets.
+A separate job runs Gitleaks over repository files up to 5 MB and Trivy's
+dependency scan, configured to fail on high or critical vulnerabilities. The
+Trivy configuration command has the same severity threshold but currently
+recognizes no configuration targets in this repository: exit 0 is not proof
+that deployment configuration was checked. The first hosted run stopped before
+these scans, so hosted scan execution must be established separately. Gitleaks
+uses the default detector set with exact path-and-value exceptions for a
+published release digest and two verified recording source digests; these scoped
+exceptions are in `.gitleaks.toml`. The workflow uses read-only repository
+permissions and needs no repository secrets.
 
 The cockpit production build and tests that load ignored GLB files are not part of this clean-checkout workflow. `bun run build` runs `cockpit/scripts/prepare.ts`, which copies original GLB files from ignored `deliveries/` directories; those files are not available in a fresh checkout. Package installation skips lifecycle scripts so it does not invoke that asset-dependent preparation. The test command skips `src/showtime/projection-sphere.test.ts`, `src/showtime/projection-haze.test.ts`, `src/showtime/installation-sway.test.ts`, and `src/showtime/installation-access.test.ts`, which read those same files. CI therefore reports the remaining cockpit source-test coverage only and does not claim a production build or model verification.
 
