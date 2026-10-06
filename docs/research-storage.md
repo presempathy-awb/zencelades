@@ -22,6 +22,13 @@ Each batch creates separate staging and completion records, refuses existing
 records, and verifies the exact object set and every object's bytes at an
 immutable commit before recording success. No executor merges a branch.
 
+If an applied run fails after creating its staging record, retries refuse that
+record. Andrew or the storage owner must inspect the recorded branch, commit
+and status first; a lost response may hide a successful remote mutation. Keep
+that evidence until the outcome is reconciled. After explicit recovery of the
+owned record, use a fresh, unshared ingest branch. Never delete remote data or
+another operator's records simply to make a retry proceed.
+
 Fresh local verification checked all **151 planned files**: 14 research PDFs,
 55 model files and 82 v4 files. Their recorded sizes and SHA-256 hashes match
 the retained originals. The model plan describes a frozen older build; newer

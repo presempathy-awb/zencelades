@@ -26,6 +26,7 @@ def test_digest_exceptions_require_the_exact_path_and_value(tmp_path):
         for label, relative, value, expected in [
             ("allowed", allowed_path, digest, 0),
             ("wrong-path", "another-document.txt", digest, 1),
+            ("wrong-component", "other" + allowed_path, digest, 1),
             ("wrong-value", allowed_path, changed, 1),
         ]:
             folder = tmp_path / f"{number}-{label}"

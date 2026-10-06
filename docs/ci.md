@@ -1,6 +1,16 @@
 # Continuous integration
 
-Gitea Actions runs the repository's declared `just check` recipe, the cockpit's Bun source tests, and `just account-check` on pushes to `main`, pull requests, and manual dispatches. Branch pushes rely on the pull-request event to avoid duplicate jobs. Cockpit dependencies are installed from `cockpit/bun.lock` with `bun install --frozen-lockfile`; the account job uses Go 1.26.5 and requires a Docker-capable runner for its isolated PostgreSQL 18 fixture.
+Gitea Actions runs the repository's declared `just check` recipe, the cockpit's Bun source tests, and account-service race, vet, and PostgreSQL persistence checks on pushes to `main`, pull requests, and manual dispatches. Branch pushes rely on the pull-request event to avoid duplicate jobs. Cockpit dependencies are installed from `cockpit/bun.lock` with `bun install --frozen-lockfile`. The account job uses Go 1.26.5 and a job-owned PostgreSQL 18 service container; it connects through `ZENCELADES_TEST_DATABASE_URL` and requires no Docker CLI or host socket access.
+
+Local `just account-check` retains its disposable Docker-managed PostgreSQL 18 fixture. CI instead runs the shared `just account-service-check` recipe against its isolated service container, so the integration test executes in the ordinary Go test process.
+
+The workflow and `mise.toml` pin the same Go, Ruff, Gitleaks and Trivy versions.
+Run the recipes through `mise exec -- just ...`; the project enables
+`activate_aggressive` so child shells retain those tools ahead of competing
+system installations. This prevents a Go binary from one installation using
+the compiler directory from another. The first hosted run exposed missing
+Ruff/Gitleaks version selections and an unavailable Docker CLI; the source
+configuration and service-backed account job address those failures.
 
 A separate job runs Gitleaks over repository files up to 5 MB and Trivy scans that fail on high or critical dependency vulnerabilities and configuration issues. Gitleaks uses the default detector set with exact path-and-value exceptions for a published release digest and two verified recording source digests; these scoped exceptions are in `.gitleaks.toml`. The workflow uses read-only repository permissions and needs no repository secrets.
 

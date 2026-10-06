@@ -80,10 +80,13 @@ private-studio-release *args:
 private-studio-http-check:
     uv run --no-project python -m tests.private_studio_http_probe --fragment deploy/private-studio.caddy
 
-# Account boundary tests run without production secrets; PG18 uses an isolated fixture.
-account-check:
+# Account boundary checks shared by local and service-backed CI runs.
+account-service-check:
     (cd account-service && go test -race ./...)
     (cd account-service && go vet ./...)
+
+# Account boundary tests run without production secrets; local PG18 uses Docker.
+account-check: account-service-check
     sh account-service/test-postgres.sh
 
 # Prints additive SQL only; execution requires an explicit --apply and credential file.

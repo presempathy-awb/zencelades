@@ -6,7 +6,7 @@ description = "The published native API release SHA-256 digest is not a credenti
 targetRules = ["generic-api-key"]
 condition = "AND"
 regexTarget = "secret"
-paths = ['''docs/naming-verification\.md$''']
+paths = ['''(^|/)docs/naming-verification\.md$''']
 regexes = ['''^867bbc4cf698c11b662e98d419b58bfb72db99cc3236f0eb75ac3590afd85954$''']
 
 [[allowlists]]
