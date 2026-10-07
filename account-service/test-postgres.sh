@@ -13,6 +13,7 @@ trap cleanup EXIT HUP INT TERM
 fixture_arch=$(docker image inspect postgres:18-bookworm --format '{{.Architecture}}')
 GOOS=linux GOARCH="$fixture_arch" CGO_ENABLED=0 go test -c -o "$fixture_dir/account-tests"
 fixture_id=$(docker run --detach --rm --pull never --network none \
+    --tmpfs /var/lib/postgresql:rw,nosuid,nodev,size=256m \
     --env POSTGRES_HOST_AUTH_METHOD=trust \
     --env POSTGRES_DB=zencelades_account_test postgres:18-bookworm)
 attempt=0

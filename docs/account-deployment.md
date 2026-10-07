@@ -125,6 +125,35 @@ contract nor service was installed at that check.
 Application tests are documented in [account-saves.md](account-saves.md).
 They establish local behavior and isolated PG18 behavior, not production login.
 
+## Hosted account fixture
+
+The account CI job runs `just account-check`: race tests, vet, then the complete
+test binary inside an owned PostgreSQL 18 fixture with `--network none`. The
+database URL names only that disposable database over container loopback; no
+service-network DNS, published port or production credential is used. The
+existing fixture script waits for TCP readiness and removes its own container.
+Its disposable data directory uses a bounded 256 MiB tmpfs at PG18's volume
+root, `/var/lib/postgresql`. PostgreSQL still exercises real SQL, pool reopen,
+owner isolation, revision conflicts and migration round trips. This fixture
+does not establish disk durability or recovery after container removal.
+
+The disposable x86_64 Linux job extracts only the Docker 29.8.1 client from
+Docker's official static archive, verifies its pinned SHA-256 before execution,
+and uses the runner's existing Docker socket. It does not install or start a
+daemon. The PostgreSQL image is pulled before the fixture's `--pull never` run.
+This follows the [official binary archive instructions](https://docs.docker.com/engine/install/binaries/)
+for the client; neither the runner nor the shared Docker network is changed.
+
+The earlier hosted fixture timed out while connecting over the shared runner
+network. On October 7, the same PG18 image started with networking disabled in
+1.88 seconds, while attaching it to `telpher_default` timed out after 45 seconds.
+That establishes the startup/network boundary, not its underlying cause. A
+passing hosted run is still required before calling this repair delivered.
+The network-disabled disk-backed fixture separately exceeded its existing
+30-second readiness limit during initialization. The same image with the
+bounded tmpfs became TCP-ready in 1.22 seconds. The limit remains unchanged;
+no production database storage or durability setting is modified.
+
 ## Candidate validation — October 1
 
 The Linux/amd64 build completed successfully. Telpher's existing
