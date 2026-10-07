@@ -69,6 +69,34 @@ class ResearchUploadIntegration(unittest.TestCase):
                 elif parsed.path == "/api/v1/repositories/thatsnozorb-assets":
                     # The client proceeds only when repository metadata is denied.
                     self.answer(200 if case.mode == "metadata-readable" else 403, {})
+                elif (
+                    parsed.path
+                    == "/api/v1/repositories/thatsnozorb-assets/refs/main/objects/ls"
+                ):
+                    if case.mode == "preflight-populated":
+                        value = {
+                            "results": [{"path": case.key}],
+                            "pagination": {"has_more": False},
+                        }
+                    elif case.mode == "preflight-pagination":
+                        value = {"results": [], "pagination": {"has_more": True}}
+                    elif case.mode == "preflight-missing":
+                        value = {"pagination": {"has_more": False}}
+                    elif case.mode == "preflight-invalid":
+                        value = {"results": None, "pagination": {"has_more": False}}
+                    elif case.mode == "listing-outside-prefix":
+                        value = {
+                            "results": [{"path": case.stray}],
+                            "pagination": {"has_more": False},
+                        }
+                    elif case.mode == "listing-malformed":
+                        value = {
+                            "results": [{"size_bytes": 0}],
+                            "pagination": {"has_more": False},
+                        }
+                    else:
+                        value = {"results": [], "pagination": {"has_more": False}}
+                    self.answer(200, value)
                 elif parsed.path.endswith("/objects/ls"):
                     rows = [{"path": case.key, "size_bytes": len(case.payload)}]
                     if case.mode == "size":
@@ -77,10 +105,6 @@ class ResearchUploadIntegration(unittest.TestCase):
                         rows.append(
                             {"path": "imports/research/unexpected", "size_bytes": 0}
                         )
-                    if case.mode == "listing-outside-prefix":
-                        rows.append({"path": case.stray, "size_bytes": 0})
-                    if case.mode == "listing-malformed":
-                        rows = [{"size_bytes": 0}]
                     self.answer(
                         200,
                         {
@@ -328,6 +352,52 @@ class ResearchUploadIntegration(unittest.TestCase):
         self.assertEqual([], self.calls)
         self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
 
+    def test_research_aggregate_totals_are_required_before_network(self):
+        self.args.apply = False
+        for field, invalid in (
+            ("file_count", "missing"),
+            ("total_bytes", "missing"),
+            ("file_count", True),
+        ):
+            with self.subTest(field=field, invalid=invalid):
+                plan = dict(self.plan)
+                if invalid == "missing":
+                    del plan[field]
+                else:
+                    plan[field] = invalid
+                (self.root / "assets/research-upload-plan.json").write_text(
+                    json.dumps(plan)
+                )
+                with self.assertRaises(ValueError):
+                    self.execute()
+                self.assertEqual([], self.calls)
+
+    def test_nonempty_or_invalid_destination_leaves_no_record_or_remote_write(self):
+        for mode, error, reason in (
+            ("preflight-populated", ValueError, "empty"),
+            ("preflight-pagination", ValueError, "empty"),
+            ("preflight-missing", RuntimeError, "malformed"),
+            ("preflight-invalid", RuntimeError, "malformed"),
+        ):
+            with self.subTest(mode=mode):
+                self.mode = mode
+                self.calls.clear()
+                # Clear only records from this synthetic fixture between regressions.
+                for name in (
+                    "research-upload-staging.json",
+                    "research-upload-receipt.json",
+                ):
+                    (self.root / "assets" / name).unlink(missing_ok=True)
+                with self.assertRaisesRegex(error, reason):
+                    self.execute()
+                self.assertFalse(any(method == "POST" for method, _ in self.calls))
+                self.assertFalse(
+                    (self.root / "assets/research-upload-staging.json").exists()
+                )
+                self.assertFalse(
+                    (self.root / "assets/research-upload-receipt.json").exists()
+                )
+
     def test_generated_models_and_v4_have_separate_exact_receipts(self):
         for batch, folder, prefix, filename in (
             (
@@ -355,6 +425,10 @@ class ResearchUploadIntegration(unittest.TestCase):
                 )
                 entry.pop("source_id")
                 plan = dict(self.plan, prefix=prefix, files=[entry])
+                if batch == "v4":
+                    # The real v4 plan omits aggregate metadata; keep that contract.
+                    del plan["file_count"]
+                    del plan["total_bytes"]
                 (self.root / f"assets/{batch}-upload-plan.json").write_text(
                     json.dumps(plan)
                 )

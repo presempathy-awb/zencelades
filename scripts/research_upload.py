@@ -134,21 +134,29 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
     ):
         request(path, denied=True)
     # A revoked token can receive the same denials; prove scoped read access first.
-    # Only the one returned row is checked against the prefix: this refuses a broker
-    # that answers outside it, but does not prove the broker enforces the prefix.
+    # The scoped destination must be empty before any record or remote write. A row
+    # outside the prefix is named on its own: it shows the broker does not scope.
     probe = json.loads(
         request(
             base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})
         )
     )
     rows = probe.get("results") if isinstance(probe, dict) else None
-    if not isinstance(rows, list) or any(
-        not isinstance(row, dict) or not isinstance(row.get("path"), str)
-        for row in rows
+    pages = probe.get("pagination") if isinstance(probe, dict) else None
+    if (
+        not isinstance(rows, list)
+        or any(
+            not isinstance(row, dict) or not isinstance(row.get("path"), str)
+            for row in rows
+        )
+        or not isinstance(pages, dict)
+        or not isinstance(pages.get("has_more"), bool)
     ):
         raise RuntimeError("Broker listing is malformed; scope not proven")
     if any(not in_prefix(row["path"], prefix) for row in rows):
         raise RuntimeError(f"Broker listed objects outside {prefix}; scope not proven")
+    if rows or pages["has_more"]:
+        raise ValueError("Scoped destination prefix must be empty before ingestion")
     record = {
         "repository": plan["repository"],
         "branch": args.branch,

@@ -13,6 +13,10 @@ and SHA-256 readback remain required.
 The loopback integration fixture follows the owner's denied-metadata contract.
 This correction does not deploy the broker or complete an upload.
 
+Before any execution record or remote write, the scoped `main` listing must
+contain an empty result set and explicitly report no further pages. Existing
+objects or malformed listing metadata stop ingestion without leaving a record.
+
 The separate `just batch-upload model` and `just batch-upload v4` entry points
 now accept the fixed plans in `assets/`, with the same `--endpoint`, `--branch`
 and optional `--apply` flags as research ingestion. Model inputs are read only
