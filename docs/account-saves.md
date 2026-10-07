@@ -113,6 +113,9 @@ L=~/code/branch/thatsnozorb/account-drafts/main
 whole suite in an isolated PG18 container. The fixture requires the already
 available `postgres:18-bookworm` image, never pulls it, publishes no port and has
 network disabled. Test authentication is confined to that disposable container.
+Its data volume is a bounded 256 MiB tmpfs at `/var/lib/postgresql`, the PG18
+image's volume root. The tests exercise PostgreSQL persistence across pool
+reconnects within that fixture, not disk durability or container-loss recovery.
 Its database must be named `zencelades_account_test` and must report PG18 or the
 integration test refuses to write. Readiness and the test connection use TCP on
 the container's own loopback, so the image's temporary socket-only initialization
