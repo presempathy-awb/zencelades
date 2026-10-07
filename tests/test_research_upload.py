@@ -26,6 +26,7 @@ class ResearchUploadIntegration(unittest.TestCase):
         self.payload = b"%PDF-1.7 synthetic preservation fixture\n"
         (self.root / "source/research/sample.pdf").write_bytes(self.payload)
         self.key = "imports/research/fixture/sample.pdf"
+        self.prefix = "imports/research/"
         self.entry = {
             "path": "source/research/sample.pdf",
             "lakefs_path": self.key,
@@ -73,6 +74,9 @@ class ResearchUploadIntegration(unittest.TestCase):
                     parsed.path
                     == "/api/v1/repositories/thatsnozorb-assets/refs/main/objects/ls"
                 ):
+                    if query != {"prefix": [case.prefix], "amount": ["1"]}:
+                        self.answer(403, {})
+                        return
                     if case.mode == "preflight-populated":
                         value = {
                             "results": [{"path": case.key}],
@@ -358,6 +362,8 @@ class ResearchUploadIntegration(unittest.TestCase):
             ("file_count", "missing"),
             ("total_bytes", "missing"),
             ("file_count", True),
+            ("file_count", 1.0),
+            ("total_bytes", float(self.plan["total_bytes"])),
         ):
             with self.subTest(field=field, invalid=invalid):
                 plan = dict(self.plan)
@@ -371,6 +377,19 @@ class ResearchUploadIntegration(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     self.execute()
                 self.assertEqual([], self.calls)
+
+    def test_boolean_byte_total_is_rejected_even_when_equal_to_payload_size(self):
+        self.args.apply = False
+        source = self.root / self.entry["path"]
+        source.write_bytes(b"x")
+        entry = dict(
+            self.entry, bytes=1, content_sha256=hashlib.sha256(b"x").hexdigest()
+        )
+        plan = dict(self.plan, files=[entry], total_bytes=True)
+        (self.root / "assets/research-upload-plan.json").write_text(json.dumps(plan))
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual([], self.calls)
 
     def test_nonempty_or_invalid_destination_leaves_no_record_or_remote_write(self):
         for mode, error, reason in (
@@ -418,6 +437,7 @@ class ResearchUploadIntegration(unittest.TestCase):
                 source.parent.mkdir(parents=True, exist_ok=True)
                 source.write_bytes(self.payload)
                 self.key = prefix + filename
+                self.prefix = prefix
                 entry = dict(
                     self.entry,
                     path=str(source.relative_to(self.root)),
@@ -429,6 +449,21 @@ class ResearchUploadIntegration(unittest.TestCase):
                     # The real v4 plan omits aggregate metadata; keep that contract.
                     del plan["file_count"]
                     del plan["total_bytes"]
+                for field, invalid in (
+                    ("file_count", True),
+                    ("file_count", 1.0),
+                    ("total_bytes", float(len(self.payload))),
+                    ("total_bytes", len(self.payload) + 1),
+                ):
+                    with self.subTest(field=field, invalid=invalid):
+                        self.calls.clear()
+                        invalid_plan = dict(plan, **{field: invalid})
+                        (self.root / f"assets/{batch}-upload-plan.json").write_text(
+                            json.dumps(invalid_plan)
+                        )
+                        with self.assertRaises(ValueError):
+                            research_upload.run(self.args, batch=batch)
+                        self.assertEqual([], self.calls)
                 (self.root / f"assets/{batch}-upload-plan.json").write_text(
                     json.dumps(plan)
                 )

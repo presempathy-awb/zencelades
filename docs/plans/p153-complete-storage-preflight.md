@@ -1,8 +1,11 @@
 # P153 — Continue delivery and close ingestion preflight gaps
 
 Continuation of Andrew's active objective: "get project goals all done".
-PR28 remains reviewed at a20f93da/current main fc63ca6c, with hosted checks running.
-Its source and original owner lane must remain stable while CI runs. This separate
+Zencelades `feat/backlog-completion` (#28) remains reviewed at head
+`a20f93daa74169ec44dfb49098612a8cb4f70c46` against main
+`fc63ca6c024876e1fb26563efafc7edaf40a412c`. Hosted source and security checks
+passed, but its account fixture timed out; landing remains blocked. Its source
+and original owner lane must remain stable. This separate
 lane addresses Sonnet's two operational findings before real owner-host ingestion:
 
 1. Require research aggregate count/byte metadata and reject malformed totals
@@ -20,6 +23,21 @@ runner restart, broadened access, credential creation, purchase or physical
 occupied test is authorized by this planning record.
 
 Verification on maxipaxi, October 7: the new cases produced seven failures before
-the production repair. The full applicable source check then exited 0 with 95
-tests and 37 subtests passing, Ruff check/format passing and the ledger matching.
+the production repair. `mise exec -- just check` then exited 0 with 95 tests and
+37 subtests passing, Ruff check/format passing and the grant-resource ledger
+matching the published pricing table. This is the pre-review test count.
 No real storage upload, account service activation or new site release occurred.
+
+Grok's complete eight-file review returned PASS and was posted verbatim at
+https://git.telpher.stream/telpher/zencelades/pulls/32#issuecomment-18239 for
+published head `1566b1c9fa1c61e566d45111375f64d93bd5680b`. Its should-fix test
+and plan-reference findings are addressed in a separate child revision. The
+strengthened loopback tests enforce the exact scoped prefix/amount and reject
+numerically equal floats/booleans and supplied invalid model/v4 totals before
+network access. Temporarily weakening the integer guards produced eight
+expected failures; the original guards were restored. The first full rerun
+passed 94 tests/47 subtests but two unchanged fixture-harness cases timed out
+at their 10-second child limit. Both passed unchanged on focused rerun. The
+subsequent complete `mise exec -- just check` exited 0 with 96 tests and 47
+subtests, Ruff check/format and the grant-resource ledger check passing. No
+timeout was relaxed. The published PASS does not review this new child revision.
