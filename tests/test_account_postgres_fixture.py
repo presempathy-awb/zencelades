@@ -1,6 +1,7 @@
 """Reject the temporary socket-only server during fixture initialization."""
 
 import os
+import re
 import shutil
 import signal
 import subprocess
@@ -11,9 +12,11 @@ import pytest
 
 
 @pytest.mark.unit
-@pytest.mark.parametrize("initializing", [0, 2])
+@pytest.mark.parametrize(
+    ("initializing", "logs_exit"), [(0, 0), (2, 0), (31, 0), (31, 7)]
+)
 def test_persistence_waits_for_completed_database_initialization(
-    tmp_path, initializing
+    tmp_path, initializing, logs_exit
 ):
     script = Path(__file__).resolve().parents[1] / "account-service/test-postgres.sh"
     state = tmp_path / "initializing"
@@ -30,6 +33,10 @@ if [ "${0##*/}" = sleep ]; then exit; fi
 case "$1" in
 image) printf 'arm64\n' ;;
 run) printf 'owned-fixture\n' ;;
+logs)
+    if [ "$FIXTURE_LOGS_EXIT" -ne 0 ]; then exit "$FIXTURE_LOGS_EXIT"; fi
+    echo 'initdb: synthetic disk allocation failure'
+    ;;
 exec)
     case "$*" in
     *pg_isready*)
@@ -64,6 +71,7 @@ esac
         "PATH": f"{tools}:{os.environ['PATH']}",
         "TMPDIR": str(tmp_path),
         "FIXTURE_TEST_STATE": str(state),
+        "FIXTURE_LOGS_EXIT": str(logs_exit),
     }
     result = subprocess.run(
         ["sh", str(script)],
@@ -73,8 +81,16 @@ esac
         timeout=10,
         check=False,
     )
-    assert result.returncode == 0, result.stderr
-    assert "PASS: persistence after initialization" in result.stdout
+    if initializing > 30:
+        assert result.returncode == 1, result.stderr
+        if logs_exit:
+            assert "Owned PG18 fixture logs unavailable" in result.stderr
+        else:
+            assert "initdb: synthetic disk allocation failure" in result.stderr
+        assert "PASS: persistence after initialization" not in result.stdout
+    else:
+        assert result.returncode == 0, result.stderr
+        assert "PASS: persistence after initialization" in result.stdout
 
 
 @pytest.mark.integration
@@ -96,11 +112,15 @@ case "$1" in
 image) printf 'arm64\n' ;;
 run)
     bounded=false
+    mount=
     while [ "$1" != postgres:18-bookworm ]; do
         if [ "$1" = --entrypoint ] && [ "$2" = timeout ]; then bounded=true; fi
+        if [ "$1" = --tmpfs ]; then mount="$2"; fi
         shift
     done
     shift
+    printf '%s' "$mount" > "$FIXTURE_TEST_ROOT/mount"
+    printf '%s' "$3" > "$FIXTURE_TEST_ROOT/duration"
     (
         # Start the shortened clock after cancellation, independent of host load.
         while [ ! -f "$FIXTURE_TEST_ROOT/cancelled" ]; do sleep 0.01; done
@@ -150,6 +170,31 @@ esac
                 time.sleep(0.01)
             assert not (tmp_path / "expired").exists(), (
                 "fixture expired before cancellation"
+            )
+            root, _, mount_options = (tmp_path / "mount").read_text().partition(":")
+            assert root == "/var/lib/postgresql", "PG18 data is not in tmpfs"
+            options = dict(
+                option.partition("=")[::2] for option in mount_options.split(",")
+            )
+            size = re.fullmatch(r"([0-9]+)([bkmg]?)", options.get("size", ""))
+            assert size is not None, "fixture tmpfs must have a finite memory cap"
+            size_bytes = (
+                int(size[1])
+                * {"": 1, "b": 1, "k": 1024, "m": 1024**2, "g": 1024**3}[size[2]]
+            )
+            assert 0 < size_bytes <= 256 * 1024**2, (
+                "fixture tmpfs exceeds its memory budget"
+            )
+            duration = re.fullmatch(
+                r"([0-9]+(?:\.[0-9]+)?)([smhd]?)", (tmp_path / "duration").read_text()
+            )
+            assert duration is not None, "fixture must have a finite lifetime"
+            seconds = (
+                float(duration[1])
+                * {"": 1, "s": 1, "m": 60, "h": 3600, "d": 86400}[duration[2]]
+            )
+            assert 0 < seconds <= 600, (
+                "fixture lifetime exceeds its cancellation budget"
             )
             caller.kill()
             caller.wait(timeout=1)
