@@ -1,14 +1,23 @@
 .column-cockpit .app-header {
   display: grid;
-  grid-template-columns: auto minmax(20rem, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 0.75rem;
+  gap: 0.5rem;
+  min-height: 0;
+  padding: 0.25rem 0.5rem;
   flex-shrink: 0;
 }
+.column-cockpit .brand {
+  gap: 0.5rem;
+}
+.column-cockpit .brand small,
+.column-cockpit .brand-name span {
+  display: none;
+}
 .column-cockpit .header-actions {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 2.75rem 2.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.25rem;
 }
 .scenario-transfer {
@@ -23,7 +32,6 @@
   grid-row: 2;
 }
 .column-control {
-  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -46,14 +54,33 @@
   padding-left: 0.5rem;
 }
 .view-selector > .choice-control:last-child {
-  flex: 1 1 100%;
+  border-left: 1px solid var(--cockpit-line);
+  padding-left: 0.5rem;
 }
-.view-selector legend {
+.view-selector legend,
+.column-control legend {
   position: absolute;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip-path: inset(50%);
+}
+.app-header .choice-buttons button {
+  padding-inline: 0.45rem;
+  flex-shrink: 0;
+}
+.app-header .account-controls > summary {
+  min-height: 2.75rem;
+  align-content: center;
+  font-size: 0.8rem;
+}
+@media (min-width: 80rem) {
+  .column-cockpit .header-actions {
+    flex-wrap: nowrap;
+  }
+  .app-header[data-columns="1"] .choice-buttons button {
+    white-space: nowrap;
+  }
 }
 .column-number {
   display: none;
