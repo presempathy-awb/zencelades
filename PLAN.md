@@ -1,5 +1,15 @@
 # Zencelades working plan
 
+## Current continuation — October 7, remaining project goals
+
+[P150](docs/plans/p150-complete-project-goals.md) preserves the full active
+objective. The compact header is merged/deployed; the next observed failure is
+PR28's PostgreSQL account CI job, which has finished unsuccessfully rather than
+remaining queued. Reproduce and repair the established cause while preserving
+PR28's independent lane and all deployed media. Account-owned production saves,
+remaining scoped preservation and full inventory integration need their own
+current acceptance evidence. Older dated statuses below do not replace it.
+
 ## Current continuation — deployed studio and access verification
 
 [P128](docs/plans/p128-approved-cache-cleanup.md): approved cache cleanup is

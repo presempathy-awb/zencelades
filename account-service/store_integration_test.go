@@ -12,6 +12,7 @@ import (
 	"strings"
 	"sync"
 	"testing"
+	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -31,6 +32,19 @@ func TestPostgresPersistence(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { pool.Close() })
+	// Some CI runners start tests before the service container is healthy.
+	// Wait for a real connection, bounded independently of the persistence test.
+	readyCtx, cancel := context.WithTimeout(ctx, time.Minute)
+	defer cancel()
+	ticker := time.NewTicker(250 * time.Millisecond)
+	defer ticker.Stop()
+	for err := pool.Ping(readyCtx); err != nil; err = pool.Ping(readyCtx) {
+		select {
+		case <-readyCtx.Done():
+			t.Fatalf("PG18 fixture did not become ready: %v (last connection error: %v)", readyCtx.Err(), err)
+		case <-ticker.C:
+		}
+	}
 	var database string
 	var version int
 	if err := pool.QueryRow(ctx, "SELECT current_database(), current_setting('server_version_num')::int").Scan(&database, &version); err != nil {

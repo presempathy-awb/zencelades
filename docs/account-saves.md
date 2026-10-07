@@ -4,6 +4,13 @@ Implementation status: local source and isolated PostgreSQL 18 verification.
 This service is **not deployed**. The public site continues to serve the existing
 homepage-loop release. The Go service and pgx were approved in P098.
 
+The October 7 [fixture-readiness repair](plans/p150-complete-project-goals.md)
+addresses a reproduced startup refusal in the persistence test. The test now
+waits up to 60 seconds for a real connection, then still verifies the disposable
+database name and PostgreSQL 18 before writing. A timeout fails with the final
+connection error; it does not skip persistence or report success. This is test
+infrastructure, not production account deployment or hosted CI acceptance.
+
 ## Cockpit behavior
 
 The account control in the top bar checks sign-in without loading or changing a
@@ -107,8 +114,10 @@ whole suite in an isolated PG18 container. The fixture requires the already
 available `postgres:18-bookworm` image, never pulls it, publishes no port and has
 network disabled. Test authentication is confined to that disposable container.
 Its database must be named `zencelades_account_test` and must report PG18 or the
-integration test refuses to write. The fixture cleans up only its own container
-and temporary binary.
+integration test refuses to write. Readiness and the test connection use TCP on
+the container's own loopback, so the image's temporary socket-only initialization
+server cannot start persistence early. The fixture cleans up only its own
+container and temporary binary.
 
 Coverage includes forged identity rejection, account isolation, origin/content/
 size validation, expiry, outages, stale revisions, account switching, two

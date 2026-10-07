@@ -664,6 +664,15 @@ Andrew: "do a pr and merge, temporarily set website to public and link to the gi
 Plan: [P056](p056-public-grant-release.md). PR/merge/deploy, temporary public
 website and public repository visibility, with source links and rollback.
 
+### P150 — Complete the remaining project goals
+
+Andrew's active objective: "get project goals all done".
+
+Plan: [P150](p150-complete-project-goals.md). Audit every requirement against
+current source/runtime evidence and continue the unfinished delivery. First
+investigate PR28's failed PG18 account check; preserve the deployed artwork and
+other agents' lanes. Keep the broad goal active until all requirements are proven.
+
 ## Already completed work to preserve
 
 The seven originals, 125 extracted members and catalog are verified. All 132
