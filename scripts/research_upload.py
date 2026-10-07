@@ -33,7 +33,8 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
             "Research destination differs from the scoped preservation plan"
         )
     entries = plan["files"]
-    if not entries or len(entries) != plan.get("file_count", len(entries)):
+    count = plan.get("file_count", len(entries) if batch != "research" else None)
+    if not entries or type(count) is not int or len(entries) != count:
         raise ValueError("Research file count differs from the plan")
     expected = {}
     for entry in entries:
@@ -55,7 +56,10 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
             )
         expected[key] = entry
     total_bytes = sum(e["bytes"] for e in entries)
-    if total_bytes != plan.get("total_bytes", total_bytes):
+    planned_bytes = plan.get(
+        "total_bytes", total_bytes if batch != "research" else None
+    )
+    if type(planned_bytes) is not int or total_bytes != planned_bytes:
         raise ValueError("Research byte count differs from the plan")
     print(
         json.dumps(
@@ -118,9 +122,18 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
     ):
         request(path, denied=True)
     # A revoked token can receive the same denials; prove scoped read access first.
-    request(
-        base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})
+    destination = json.loads(
+        request(
+            base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})
+        )
     )
+    if (
+        not isinstance(destination, dict)
+        or destination.get("results") != []
+        or not isinstance(destination.get("pagination"), dict)
+        or destination["pagination"].get("has_more") is not False
+    ):
+        raise ValueError("Scoped destination prefix must be empty before ingestion")
     record = {
         "repository": plan["repository"],
         "branch": args.branch,
