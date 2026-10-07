@@ -15,7 +15,7 @@ import { advanceShowtime, loopFade } from "./timeline";
 
 type ProjectionContent = "moon" | "body" | "both";
 type MovementMode = "random" | "control";
-const viewingPresets = ["realistic", "dusk", "day", "inspect", "wireframe"] as const;
+const viewingPresets = ["realistic", "night", "dusk", "day", "inspect", "wireframe"] as const;
 const routineLabels = {
   settle: "Routine · Settle",
   look: "Routine · Look",
@@ -269,11 +269,13 @@ export function mountShowtime(
         const hours =
           viewingPreset === "realistic"
             ? 22
-            : viewingPreset === "dusk"
-              ? 18
-              : viewingPreset === "day"
-                ? 12
-                : undefined;
+            : viewingPreset === "night"
+              ? 0
+              : viewingPreset === "dusk"
+                ? 18
+                : viewingPreset === "day"
+                  ? 12
+                  : undefined;
         if (hours !== undefined) {
           selectedTimeOfDay = hours;
           timeOfDay.value = String(hours);
@@ -301,7 +303,7 @@ export function mountShowtime(
     "input",
     () => {
       selectedTimeOfDay = readTimeOfDay();
-      if (viewingPreset === "dusk" || viewingPreset === "day") {
+      if (viewingPreset === "night" || viewingPreset === "dusk" || viewingPreset === "day") {
         viewingPreset = "realistic";
         updatePresetButtons();
       }

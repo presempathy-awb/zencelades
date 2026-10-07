@@ -25,7 +25,7 @@ permissions and needs no repository secrets.
 
 The cockpit production build and tests that load ignored GLB files are not part of this clean-checkout workflow. `bun run build` runs `cockpit/scripts/prepare.ts`, which copies original GLB files from ignored `deliveries/` directories; those files are not available in a fresh checkout. Package installation skips lifecycle scripts so it does not invoke that asset-dependent preparation. The test command skips `src/showtime/projection-sphere.test.ts`, `src/showtime/projection-haze.test.ts`, `src/showtime/installation-sway.test.ts`, and `src/showtime/installation-access.test.ts`, which read those same files. CI therefore reports the remaining cockpit source-test coverage only and does not claim a production build or model verification.
 
-The PostgreSQL fixture waits for loopback TCP readiness before running Unix-socket
+The PostgreSQL fixture waits for loopback TCP readiness before running TCP
 persistence tests. The official image starts a temporary socket-only server during
 initialization and then stops it before the final server starts; socket readiness
 alone can release the test into that shutdown. The fixture retains its bounded

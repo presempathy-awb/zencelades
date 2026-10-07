@@ -49,7 +49,7 @@ test("the document defaults to full brightness, randomized motion and fading wit
   expect(controls.get("brightness")?.value).toBe("1");
   expect(controls.get("fade")?.checked).toBe(true);
   expect(
-    ["realistic", "dusk", "day", "inspect", "wireframe"].filter(
+    ["realistic", "night", "dusk", "day", "inspect", "wireframe"].filter(
       (id) => controls.get(`preset-${id}`)?.pressed === "true",
     ),
   ).toEqual(["realistic"]);

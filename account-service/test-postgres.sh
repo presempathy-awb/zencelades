@@ -23,5 +23,5 @@ until docker exec "$fixture_id" pg_isready -h 127.0.0.1 -U postgres -d zencelade
     sleep 1 # Condition polling for the newly created database, bounded to 30 seconds.
 done
 docker cp "$fixture_dir/account-tests" "$fixture_id:/tmp/account-tests" >/dev/null
-docker exec --env 'ZENCELADES_TEST_DATABASE_URL=postgres://postgres@/zencelades_account_test?host=/var/run/postgresql' \
+docker exec --env 'ZENCELADES_TEST_DATABASE_URL=postgres://postgres@127.0.0.1/zencelades_account_test?sslmode=disable' \
     "$fixture_id" /tmp/account-tests -test.v

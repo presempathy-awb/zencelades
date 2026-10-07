@@ -165,8 +165,8 @@ function fixture(): { content: FakeElement; controls: Record<string, FakeElement
   environmentPhases.append(environmentLabel, hazerToggle);
   const contentPhases = element(document, "fieldset", "", "phases");
   const presetPhases = element(document, "fieldset", "", "phases");
-  const presetControls = ["realistic", "dusk", "day", "inspect", "wireframe"].map((preset) =>
-    element(document, "button", `preset-${preset}`),
+  const presetControls = ["realistic", "night", "dusk", "day", "inspect", "wireframe"].map(
+    (preset) => element(document, "button", `preset-${preset}`),
   );
   presetPhases.append(...presetControls);
   const moon = element(document, "button", "content-moon");
@@ -287,7 +287,7 @@ test("homepage Showtime keeps the looping stage without operable playback or vie
   expect(controls.contentPhases.parent?.classList.contains("controls")).toBe(true);
   expect(controls.movementPhases.parent?.classList.contains("controls")).toBe(true);
   expect(controls.presetPhases.parent?.classList.contains("controls")).toBe(true);
-  for (const preset of ["realistic", "dusk", "day", "inspect", "wireframe"])
+  for (const preset of ["realistic", "night", "dusk", "day", "inspect", "wireframe"])
     expect(content.querySelector(`#preset-${preset}`)?.parent).toBe(controls.presetPhases);
   expect(content.querySelector("#environment")).toBe(controls.environment);
   expect(controls.camera.parent?.parent?.classList.contains("controls")).toBe(true);

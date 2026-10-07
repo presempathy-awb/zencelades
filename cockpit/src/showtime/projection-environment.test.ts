@@ -37,7 +37,7 @@ test("dark hours retain faint ground and scenery detail below daylight brightnes
     if (!(ground?.material instanceof StandardMaterial) || !(fill instanceof HemisphericLight))
       throw new Error("Expected the beach and its fill light.");
     const material = ground.material;
-    for (const hour of [0, 2, 4, 20, 22, 24]) {
+    for (const hour of [2, 4, 20, 22]) {
       environment.setTimeOfDay(hour);
       expect(material.diffuseColor.asArray().every((channel) => channel >= 0.06)).toBe(true);
       expect(material.diffuseColor.asArray().every((channel) => channel <= 0.12)).toBe(true);
@@ -59,6 +59,35 @@ test("dark hours retain faint ground and scenery detail below daylight brightnes
     expect(
       (scene.getLightByName("cold night fill") as HemisphericLight).direction.asArray(),
     ).toEqual([-0.3, 1, 0.2]);
+  } finally {
+    scene.dispose();
+    engine.dispose();
+  }
+});
+
+test("full night darkens natural scenery while preserving practical lights and projection spill", () => {
+  const engine = new NullEngine();
+  const scene = new Scene(engine);
+  try {
+    const spill = new PointLight("projection spill", Vector3.Zero(), scene);
+    spill.intensity = 0.34;
+    const environment = createProjectionEnvironment(scene);
+    const realistic = appearance(scene);
+    const fill = scene.getLightByName("cold night fill") as HemisphericLight;
+    const ground = scene.getMeshByName("night playa")?.material as StandardMaterial;
+    const bulbs = scene.getMeshByName("coastal string bulbs")?.material as StandardMaterial;
+    const groundGlow = ground.emissiveColor.r;
+    const bulbGlow = bulbs.emissiveColor.asArray();
+    environment.setTimeOfDay(0);
+    expect(fill.intensity).toBeLessThan(0.05);
+    expect(scene.ambientColor.b).toBeLessThan(0.01);
+    expect(scene.clearColor.b).toBeLessThan(0.005);
+    expect(ground.emissiveColor.r).toBeLessThan(groundGlow / 5);
+    expect(bulbs.emissiveColor.asArray()).toEqual(bulbGlow);
+    expect(spill.intensity).toBe(0.34);
+    environment.setTimeOfDay(22);
+    expect(appearance(scene)).toEqual(realistic);
+    expect(ground.emissiveColor.r).toBe(groundGlow);
   } finally {
     scene.dispose();
     engine.dispose();

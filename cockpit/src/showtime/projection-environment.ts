@@ -78,6 +78,9 @@ export function createProjectionEnvironment(scene: Scene): ProjectionEnvironment
     const daylight = bright * bright * (3 - 2 * bright);
     const warm = Math.max(0, 1 - Math.abs(height) / 0.26);
     const dusk = warm * warm * (3 - 2 * warm) * (1 - daylight);
+    const midnight = Math.max(0, 1 - Math.min(hours, 24 - hours) / 2);
+    const darkness = midnight * midnight * (3 - 2 * midnight);
+    const naturalLight = 1 - darkness * 0.94;
     blend(scene.ambientColor, night.ambient, day.ambient, twilight.ambient, daylight, dusk);
     blend(fill.diffuse, night.fill, day.fill, twilight.fill, daylight, dusk);
     blend(fill.groundColor, night.groundFill, day.groundFill, twilight.groundFill, daylight, dusk);
@@ -86,12 +89,17 @@ export function createProjectionEnvironment(scene: Scene): ProjectionEnvironment
       night.intensity +
       daylight * (day.intensity - night.intensity) +
       dusk * (twilight.intensity - night.intensity);
+    fill.intensity *= naturalLight;
+    scene.ambientColor.scaleInPlace(naturalLight);
     if (enabled) {
       blend(scene.clearColor, night.backdrop, day.backdrop, twilight.backdrop, daylight, dusk);
+      scene.clearColor.r *= naturalLight;
+      scene.clearColor.g *= naturalLight;
+      scene.clearColor.b *= naturalLight;
     } else {
       scene.clearColor.r = scene.clearColor.g = scene.clearColor.b = 0.005;
     }
-    coast.setLighting(daylight, dusk);
+    coast.setLighting(daylight, dusk, naturalLight);
     coast.root.setEnabled(enabled);
   };
   update();
