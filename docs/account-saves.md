@@ -109,8 +109,11 @@ L=~/code/branch/thatsnozorb/account-drafts/main
 (cd "$L/cockpit" && bun run build)
 ```
 
-`account-check` runs the whole Go suite with the race detector, go vet, then the
-whole suite in an isolated PG18 container. The fixture requires the already
+`account-check` runs the Go suite with the race detector without a database URL,
+go vet, then the whole suite in an isolated PG18 container. The persistence test
+skips in that race pass. The fixture's cross-platform `CGO_ENABLED=0` test binary
+is not race-instrumented; real database concurrency checks run separately.
+The fixture requires the already
 available `postgres:18-bookworm` image, never pulls it, publishes no port and has
 network disabled. Test authentication is confined to that disposable container.
 Its data volume is a bounded 256 MiB tmpfs at `/var/lib/postgresql`, the PG18
@@ -120,7 +123,10 @@ Its database must be named `zencelades_account_test` and must report PG18 or the
 integration test refuses to write. Readiness and the test connection use TCP on
 the container's own loopback, so the image's temporary socket-only initialization
 server cannot start persistence early. The fixture cleans up only its own
-container and temporary binary.
+container and temporary binary, preserving a test failure if cleanup also fails.
+PostgreSQL runs under a container-local lifetime limit of 600 seconds plus a
+10-second TERM-to-KILL grace period. Docker's `--rm` removes the stopped
+container even if the caller is killed before running its shell trap.
 
 Coverage includes forged identity rejection, account isolation, origin/content/
 size validation, expiry, outages, stale revisions, account switching, two

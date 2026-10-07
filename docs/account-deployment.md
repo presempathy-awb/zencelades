@@ -127,11 +127,19 @@ They establish local behavior and isolated PG18 behavior, not production login.
 
 ## Hosted account fixture
 
-The account CI job runs `just account-check`: race tests, vet, then the complete
-test binary inside an owned PostgreSQL 18 fixture with `--network none`. The
+The account CI job runs `just account-check`: race tests without the database
+URL, vet, then the complete test binary inside an owned PostgreSQL 18 fixture
+with `--network none`. The persistence test skips during the race pass; the
+cross-platform fixture binary uses `CGO_ENABLED=0` and is not race-instrumented.
+The fixture runs the real database and concurrent-writer checks separately. The
 database URL names only that disposable database over container loopback; no
 service-network DNS, published port or production credential is used. The
 existing fixture script waits for TCP readiness and removes its own container.
+The container itself runs PostgreSQL under GNU `timeout`: TERM after 600 seconds,
+then KILL after another 10 seconds if necessary. With Docker's `--rm`, this
+bounds the orphan's lifetime even if cancellation kills the caller before its
+cleanup trap runs. Normal cleanup stops the fixture immediately and preserves
+the original test failure if cleanup also fails.
 Its disposable data directory uses a bounded 256 MiB tmpfs at PG18's volume
 root, `/var/lib/postgresql`. PostgreSQL still exercises real SQL, pool reopen,
 owner isolation, revision conflicts and migration round trips. This fixture
@@ -139,10 +147,26 @@ does not establish disk durability or recovery after container removal.
 
 The disposable x86_64 Linux job extracts only the Docker 29.8.1 client from
 Docker's official static archive, verifies its pinned SHA-256 before execution,
-and uses the runner's existing Docker socket. It does not install or start a
-daemon. The PostgreSQL image is pulled before the fixture's `--pull never` run.
+and sets `DOCKER_HOST=unix:///var/run/docker.sock`. It requires that socket and
+checks daemon connectivity before pulling the fixture image. This is host Docker
+control, not an isolated Docker daemon: repository-controlled job code can
+access the host daemon and its networks, and the image pull writes its image
+store. The installed runner already mounts this socket into job containers;
+this change does not add privileges or change runner/network configuration.
+It does not install or start a daemon. The PostgreSQL image is pulled before
+the fixture's `--pull never` run. The `postgres:18-bookworm` tag deliberately
+tracks PG18 maintenance updates; it is not a digest-pinned image. The test
+refuses a server outside PG18 or the named disposable database before writing.
 This follows the [official binary archive instructions](https://docs.docker.com/engine/install/binaries/)
-for the client; neither the runner nor the shared Docker network is changed.
+for the client.
+
+On October 7, the mounted presvd1 runner configuration specified
+`container.docker_host: unix:///var/run/docker.sock` and
+`container.network: telpher_default`. Actual run 15804/account job 53014 logs
+showed the socket bind and that shared network for both the node job and its
+former PostgreSQL service. This deployment does not use a separate per-job
+bridge for that service. A runner without the socket fails the new preflight;
+these host-specific observations are not portable runner defaults.
 
 The earlier hosted fixture timed out while connecting over the shared runner
 network. On October 7, the same PG18 image started with networking disabled in
@@ -153,6 +177,15 @@ The network-disabled disk-backed fixture separately exceeded its existing
 30-second readiness limit during initialization. The same image with the
 bounded tmpfs became TCP-ready in 1.22 seconds. The limit remains unchanged;
 no production database storage or durability setting is modified.
+
+The cancellation regression kills the caller without running its trap and
+observes the entrypoint expire; removing the lifetime wrapper makes it fail.
+The cleanup regressions reject a replacement error code and retained temporary
+files when stopping the fixture fails. All 98 Python tests and 30 subtests,
+Ruff checks/format and the grant ledger passed on October 7. A separate real
+PG18 probe on presvd1 shortened only the entrypoint duration to five seconds:
+TCP-ready at 0.79 seconds, automatically removed at 5.74 seconds without any
+stop command. These tests do not establish hosted CI or production acceptance.
 
 ## Candidate validation — October 1
 
