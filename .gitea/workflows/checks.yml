@@ -81,18 +81,31 @@ jobs:
           install_args: "just go@1.26.5"
           cache: true
       - name: Run account-service checks against isolated PostgreSQL 18
+        env:
+          DOCKER_HOST: unix:///var/run/docker.sock
         run: |
           set -eu
+          # The installed runner mounts this socket; require it explicitly.
+          test -S /var/run/docker.sock
           client_dir=$(mktemp -d)
-          trap 'rm -f "$client_dir/docker.tgz" "$client_dir/docker"; rmdir "$client_dir"' EXIT
+          cleanup_client() {
+            result=$?
+            if ! rm -f "$client_dir/docker.tgz" "$client_dir/docker" || ! rmdir "$client_dir"; then
+              echo 'Could not remove owned Docker client directory' >&2
+              if [ "$result" -eq 0 ]; then result=1; fi
+            fi
+            return "$result"
+          }
+          trap cleanup_client EXIT
           curl --fail --location --max-time 120 \
             https://download.docker.com/linux/static/stable/x86_64/docker-29.8.1.tgz \
             --output "$client_dir/docker.tgz"
           printf '%s  %s\n' \
             d8db66739d2e28d4933786d73e918d9be643a67fbd835db1bf740d650a259e70 \
-            "$client_dir/docker.tgz" | sha256sum --check --status
+            "$client_dir/docker.tgz" | sha256sum --check
           tar -xOzf "$client_dir/docker.tgz" docker/docker > "$client_dir/docker"
           chmod 700 "$client_dir/docker"
           export PATH="$client_dir:$PATH"
+          docker version --format '{{.Server.Version}}'
           docker pull postgres:18-bookworm
           mise exec -- just account-check
