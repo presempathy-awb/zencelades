@@ -32,7 +32,13 @@ attempt=0
 # Initialization uses a socket-only server that shuts down before normal startup.
 until docker exec "$fixture_id" pg_isready -h 127.0.0.1 -U postgres -d zencelades_account_test >/dev/null 2>&1; do
     attempt=$((attempt + 1))
-    if [ "$attempt" -ge 30 ]; then echo 'PG18 fixture did not become ready' >&2; exit 1; fi
+    if [ "$attempt" -ge 30 ]; then
+        echo 'PG18 fixture did not become ready' >&2
+        if ! docker logs "$fixture_id" >&2; then
+            echo 'Owned PG18 fixture logs unavailable (container may have exited)' >&2
+        fi
+        exit 1
+    fi
     sleep 1 # Condition polling for the newly created database, bounded to 30 seconds.
 done
 docker cp "$fixture_dir/account-tests" "$fixture_id:/tmp/account-tests" >/dev/null

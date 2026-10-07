@@ -179,9 +179,13 @@ bounded tmpfs became TCP-ready in 1.22 seconds. The limit remains unchanged;
 no production database storage or durability setting is modified.
 
 The cancellation regression kills the caller without running its trap and
-observes the entrypoint expire; removing the lifetime wrapper makes it fail.
+observes GNU timeout return exit 124 for a simulated container workload;
+removing the lifetime wrapper makes it fail. It also rejects a missing PG18
+tmpfs mount, a memory cap above 256 MiB and a lifetime above 600 seconds.
+Readiness-failure cases verify that container logs are surfaced when available
+and that unavailable logs do not replace the original readiness failure.
 The cleanup regressions reject a replacement error code and retained temporary
-files when stopping the fixture fails. All 98 Python tests and 30 subtests,
+files when stopping the fixture fails. All 100 Python tests and 30 subtests,
 Ruff checks/format and the grant ledger passed on October 7. A separate real
 PG18 probe on presvd1 shortened only the entrypoint duration to five seconds:
 TCP-ready at 0.79 seconds, automatically removed at 5.74 seconds without any
