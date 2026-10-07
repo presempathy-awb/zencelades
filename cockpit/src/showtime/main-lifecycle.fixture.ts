@@ -386,6 +386,7 @@ const ids = [
   "movement-energy",
   "movement-direction",
   "preset-realistic",
+  "preset-night",
   "preset-dusk",
   "preset-day",
   "preset-inspect",
@@ -864,9 +865,10 @@ projectionToggle.dispatchEvent(new Event("click"));
 worlds[0].frame?.();
 assert.equal(firstSphere.frames.at(-1)?.projectionEnabled, false);
 assert.equal(projectionToggle.getAttribute("aria-pressed"), "false");
-const presetIds = ["realistic", "dusk", "day", "inspect", "wireframe"] as const;
+const presetIds = ["realistic", "night", "dusk", "day", "inspect", "wireframe"] as const;
 for (const [preset, expectedTime, mode] of [
   ["realistic", "22", "realistic"],
+  ["night", "0", "realistic"],
   ["dusk", "18", "realistic"],
   ["day", "12", "realistic"],
   ["inspect", "12", "inspect"],
@@ -891,7 +893,7 @@ for (const [preset, expectedTime, mode] of [
   assert.equal(fixture.root.element("live-video").src, videoUrlBeforeRig);
   assert.equal(liveInputs[0].stopCalls, inputStopsBeforeRig);
 }
-assert.deepEqual(firstSphere.timesOfDay, [6.25, 18.5, 22, 18, 12]);
+assert.deepEqual(firstSphere.timesOfDay, [6.25, 18.5, 22, 0, 18, 12]);
 timeOfDay.value = "7";
 timeOfDay.dispatchEvent(new Event("input"));
 assert.equal(fixture.root.element("preset-wireframe").getAttribute("aria-pressed"), "true");
@@ -900,7 +902,7 @@ timeOfDay.value = "6.5";
 timeOfDay.dispatchEvent(new Event("input"));
 assert.equal(fixture.root.element("preset-inspect").getAttribute("aria-pressed"), "true");
 assert.equal(firstSphere.displayModes.at(-1), "inspect");
-for (const preset of ["dusk", "day"]) {
+for (const preset of ["night", "dusk", "day"]) {
   fixture.root.element(`preset-${preset}`).dispatchEvent(new Event("click"));
   timeOfDay.value = "8.5";
   timeOfDay.dispatchEvent(new Event("input"));

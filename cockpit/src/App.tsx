@@ -321,7 +321,7 @@ export default function App(): JSX.Element {
       >
         Skip to workspace
       </button>
-      <header className="app-header">
+      <header className="app-header" data-columns={fitted}>
         <div className="brand">
           <Orbit size={30} aria-hidden="true" />
           <div>
@@ -331,6 +331,20 @@ export default function App(): JSX.Element {
             <small>A human sphere · Love Burn 2027</small>
           </div>
         </div>
+        <nav
+          className="column-selectors"
+          aria-label="Cockpit views"
+          style={{ gridTemplateColumns: `repeat(${fitted}, minmax(0, 1fr))` }}
+        >
+          {visiblePages.map((page, index) => (
+            <ViewSelector
+              key={index}
+              path={page}
+              column={index + 1}
+              onSelect={(next) => choosePage(index, next)}
+            />
+          ))}
+        </nav>
         <div className="header-actions">
           <div className="column-control">
             <ChoiceButtons
@@ -357,19 +371,23 @@ export default function App(): JSX.Element {
           />
           <Button
             variant="ghost"
+            className="scenario-transfer"
+            aria-label="Import scenario"
             hint="Load a scenario file into this temporary draft; shared data is unchanged."
             onClick={() => fileInput.current?.click()}
           >
             <Upload size={16} />
-            Import
+            <span className="sr-only">Import scenario</span>
           </Button>
           <Button
             variant="outline"
+            className="scenario-transfer"
+            aria-label="Export scenario"
             hint="Download your current draft and applied note. This does not save to an account."
             onClick={exportScenario}
           >
             <Download size={16} />
-            Export scenario
+            <span className="sr-only">Export scenario</span>
           </Button>
           <input
             ref={fileInput}
@@ -398,20 +416,6 @@ export default function App(): JSX.Element {
           />
         </div>
       </header>
-      <nav
-        className="column-selectors"
-        aria-label="Cockpit views"
-        style={{ gridTemplateColumns: `repeat(${fitted}, minmax(0, 1fr))` }}
-      >
-        {visiblePages.map((page, index) => (
-          <ViewSelector
-            key={index}
-            path={page}
-            column={index + 1}
-            onSelect={(next) => choosePage(index, next)}
-          />
-        ))}
-      </nav>
       <main
         ref={workspaceRef}
         id="workspace"

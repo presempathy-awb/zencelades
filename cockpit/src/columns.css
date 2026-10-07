@@ -1,8 +1,29 @@
 .column-cockpit .app-header {
+  display: grid;
+  grid-template-columns: auto minmax(20rem, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
   flex-shrink: 0;
-  flex-wrap: wrap;
+}
+.column-cockpit .header-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2.75rem 2.75rem;
+  gap: 0.25rem;
+}
+.scenario-transfer {
+  width: 2.75rem;
+  padding-inline: 0;
+}
+.app-header:not([data-columns="1"]) {
+  grid-template-columns: 1fr auto;
+}
+.app-header:not([data-columns="1"]) .column-selectors {
+  grid-column: 1 / -1;
+  grid-row: 2;
 }
 .column-control {
+  grid-column: 1 / -1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -10,20 +31,22 @@
 .column-selectors {
   display: grid;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--cockpit-line);
-  background: #122b38;
+  min-width: 0;
 }
 .view-selector {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
   align-items: start;
-  padding: 0.5rem;
+  padding: 0;
   min-width: 0;
-  border-right: 1px solid var(--cockpit-line);
+}
+.view-selector + .view-selector {
+  border-left: 1px solid var(--cockpit-line);
+  padding-left: 0.5rem;
 }
 .view-selector > .choice-control:last-child {
-  flex: 1 1 25rem;
+  flex: 1 1 100%;
 }
 .view-selector legend {
   position: absolute;
@@ -94,12 +117,14 @@
 }
 @media (max-width: 48rem) {
   .column-cockpit .app-header {
-    gap: 0.65rem;
-    padding: 0.75rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-header .column-selectors {
+    grid-column: 1 / -1;
+    grid-row: 3;
   }
   .column-cockpit .header-actions {
-    gap: 0.4rem;
-    flex-wrap: wrap;
+    align-items: end;
   }
   .column-cockpit .notes-strip {
     max-height: 26dvh;

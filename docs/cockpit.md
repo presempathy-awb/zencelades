@@ -7,6 +7,10 @@ which revision has actually reached the live site.
 
 ## What is implemented
 
+- **Unified header:** section and view buttons share the top header with the
+  brand, column choices and account controls. Import and export use labelled
+  icon buttons. Multiple columns retain independent view selectors; narrow
+  screens wrap the header without hiding primary navigation in menus.
 - **Page fit implementation:** the shell uses a fixed viewport. Long-form pages
   use section selectors; functional forms keep their controls together in a
   contained reading panel. The homepage stacks lander and aerial images with

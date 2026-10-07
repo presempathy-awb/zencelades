@@ -10,7 +10,7 @@ import type { Scene } from "@babylonjs/core/scene";
 export interface CoastalEnvironment {
   root: TransformNode;
   groundMaterial: StandardMaterial;
-  setLighting: (daylight: number, dusk: number) => void;
+  setLighting: (daylight: number, dusk: number, naturalLight: number) => void;
 }
 
 /** Build a static, artistic beachfront camp with a clear installation area. */
@@ -286,7 +286,7 @@ export function createCoastalEnvironment(scene: Scene): CoastalEnvironment {
   }
   merge(timber, "coastal trunks and poles", wood);
   merge(bulbs, "coastal string bulbs", lamps);
-  const setLighting = (daylight: number, dusk: number): void => {
+  const setLighting = (daylight: number, dusk: number, naturalLight: number): void => {
     if (scene.isDisposed) return;
     water.diffuseColor.set(
       0.025 + daylight * 0.07 + dusk * 0.06,
@@ -309,8 +309,10 @@ export function createCoastalEnvironment(scene: Scene): CoastalEnvironment {
     grass.emissiveColor.set(0.018 * night, 0.028 * night, 0.011 * night);
     wood.emissiveColor.set(0.022 * night, 0.013 * night, 0.007 * night);
     for (const skin of canvas) skin.emissiveColor.set(0.052 * night, 0.03 * night, 0.014 * night);
+    for (const skin of [water, foam, groundMaterial, leaves, grass, wood, ...canvas])
+      skin.emissiveColor.scaleInPlace(naturalLight);
     lamps.emissiveColor.set(0.95 - daylight * 0.8, 0.42 - daylight * 0.35, 0.085 - daylight * 0.06);
   };
-  setLighting(0, 0);
+  setLighting(0, 0, 1);
   return { root, groundMaterial, setLighting };
 }

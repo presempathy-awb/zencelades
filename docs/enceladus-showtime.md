@@ -84,8 +84,11 @@ Both content layers are enabled at full brightness by default. **Moon**,
 projection area. Brightness and the content selection are separate controls.
 Projection and the hazer can each be switched off.
 
-**Realistic** starts at 22:00, **Dusk** at 18:00 and **Day** at 12:00. The
-night scene retains a faint ground and environment fill. **See-through** keeps
+**Realistic** starts at 22:00, **Full night** at 00:00, **Dusk** at 18:00 and
+**Day** at 12:00. Realistic retains a faint ground and environment fill;
+Full night dims the natural sky, fill and scenery glow while keeping projection,
+boarding lights and camp bulbs visible. The time slider smoothly darkens toward
+midnight and restores the normal night fill by 02:00. **See-through** keeps
 realistic material detail while exposing the interior; **Full wireframe** shows
 the meshes. Inspection modes retain the chosen time of day. The coastal Love
 Burn environment can be toggled independently of the film clock.
