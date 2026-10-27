@@ -1,0 +1,91 @@
+# Trivy licence categories for a project that may ship a closed fork.
+# Used by scripts/license-audit.sh:
+#   trivy fs --scanners license --config .trivy-license.yaml \
+#     --severity UNKNOWN,HIGH,CRITICAL --exit-code 1 .
+# Categories map to severities: forbidden CRITICAL, restricted HIGH,
+# reciprocal MEDIUM, notice/permissive/unencumbered LOW, unknown UNKNOWN.
+# Only `forbidden` and `restricted` are set here; the other categories keep
+# Trivy's defaults (MPL/EPL/CDDL reciprocal, MIT/BSD/Apache notice).
+# A licence listed in both wins as forbidden: that list is checked first.
+# A category set here replaces Trivy's whole default list for it, so an
+# exception goes under `ignored` (CONTRIBUTING.md), never a new category: an id
+# listed there is dropped before any category, `restricted` included, applies.
+license:
+  # Terms a shipped or hosted closed build cannot meet: source disclosure of
+  # the combined work, network or service copyleft, a production-use bar, or
+  # a non-commercial restriction.
+  forbidden:
+    - AGPL-1.0
+    - AGPL-1.0-only
+    - AGPL-1.0-or-later
+    - AGPL-3.0
+    - AGPL-3.0-only
+    - AGPL-3.0-or-later
+    - GPL-1.0
+    - GPL-1.0-only
+    - GPL-1.0-or-later
+    - GPL-2.0
+    - GPL-3.0
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - GPL-3.0-or-later
+    - SSPL-1.0
+    - BUSL-1.1
+    - Elastic-2.0
+    - Commons-Clause
+    # Copyleft that reaches network use as well as distribution: EUPL-1.2 ("Communication"
+    # covers providing access over a network, art. 1 and 5), CPAL-1.0 (s. 14, network use is
+    # distribution) and CAL-1.0 (s. 2.3, network users get the source). Trivy's default lists
+    # know none of the three, so without this they fail the audit only as UNKNOWN.
+    - EUPL-1.2
+    - CPAL-1.0
+    - CAL-1.0
+    - CC-BY-NC-1.0
+    - CC-BY-NC-2.0
+    - CC-BY-NC-2.5
+    - CC-BY-NC-3.0
+    - CC-BY-NC-4.0
+    - CC-BY-NC-ND-1.0
+    - CC-BY-NC-ND-2.0
+    - CC-BY-NC-ND-2.5
+    - CC-BY-NC-ND-3.0
+    - CC-BY-NC-ND-4.0
+    - CC-BY-NC-SA-1.0
+    - CC-BY-NC-SA-2.0
+    - CC-BY-NC-SA-2.5
+    - CC-BY-NC-SA-3.0
+    - CC-BY-NC-SA-4.0
+  # Usable only under a condition the scanner cannot see: LGPL needs dynamic
+  # linking or relinkable objects (LGPL-3.0 s. 4(d)); share-alike reaches
+  # docs and snippets; ND forbids changes; WTFPL has no warranty disclaimer.
+  # Take an exception deliberately, in the PR that adds the dependency.
+  restricted:
+    - LGPL-2.0
+    - LGPL-2.0-only
+    - LGPL-2.0-or-later
+    - LGPL-2.1
+    - LGPL-3.0
+    - LGPL-2.1-only
+    - LGPL-2.1-or-later
+    - LGPL-3.0-only
+    - LGPL-3.0-or-later
+    - CC-BY-SA-1.0
+    - CC-BY-SA-2.0
+    - CC-BY-SA-2.5
+    - CC-BY-SA-3.0
+    - CC-BY-SA-4.0
+    - CC-BY-ND-1.0
+    - CC-BY-ND-2.0
+    - CC-BY-ND-2.5
+    - CC-BY-ND-3.0
+    - CC-BY-ND-4.0
+    - OSL-1.0
+    - OSL-1.1
+    - OSL-2.0
+    - OSL-2.1
+    - OSL-3.0
+    - QPL-1.0
+    - Sleepycat
+    - BCL
+    - WTFPL

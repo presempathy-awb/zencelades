@@ -1,0 +1,54 @@
+name: DCO
+
+"on":
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  signoff:
+    name: DCO sign-off
+    runs-on: ubuntu-latest
+    steps:
+      # actions/checkout v4.2.2
+      - name: Check out repository
+        uses: https://github.com/actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      # Runs the base branch's copy of the script, never the PR's. The third argument is the
+      # forge account that opened the pull request: a maintainer account listed in MAINTAINERS
+      # (read at the base commit) is exempt, because maintainers certify after reading through
+      # the sign-off ledger; the commit author line is never trusted for this.
+      # Where the base branch has no script, which is the pull request that brings the kit in
+      # and any pull request into a branch the kit never reached, nothing can be enforced from
+      # the base, so the step says so and passes. It never falls back to the pull request's copy;
+      # on the default branch, enforcement starts with the next pull request once the kit is
+      # merged; legal-index's `just protect` makes this check required there once the kit has landed.
+      - name: Check Signed-off-by on every commit
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          OPENER: ${{ github.event.pull_request.user.login }}
+        run: |
+          set -euo pipefail
+          # The event's values arrive through the environment, so nothing of the pull request is
+          # parsed by this shell. Only one case passes without running the check: the base commit
+          # is here and has no script. A base or head that is not in the checkout, or a script that
+          # is there but cannot be read, fails.
+          if ! git cat-file -e "$BASE_SHA^{commit}"; then
+            echo "::error::base commit '$BASE_SHA' is not in the checkout;" \
+              "the DCO check cannot read the base branch's script"
+            exit 1
+          fi
+          if ! git cat-file -e "$HEAD_SHA^{commit}"; then
+            echo "::error::head commit '$HEAD_SHA' is not in the checkout; the DCO check cannot list its commits"
+            exit 1
+          fi
+          if ! git cat-file -e "$BASE_SHA:scripts/dco-check.sh"; then
+            echo "::notice::scripts/dco-check.sh is not on the base branch yet;" \
+              "the DCO check enforces nothing until this kit is merged"
+            exit 0
+          fi
+          git show "$BASE_SHA:scripts/dco-check.sh" > "$RUNNER_TEMP/dco-check.sh"
+          bash "$RUNNER_TEMP/dco-check.sh" "$BASE_SHA" "$HEAD_SHA" "$OPENER"

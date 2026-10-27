@@ -97,3 +97,16 @@ Update the ledger and affected plan before substantive work on each new prompt.
 Andrew has selected Zencelades; this is the historical naming exploration. The naming exploration lives at `site/naming/index.html` and is included by `just site-build` at `/naming/index.html`, linked from the project footer. It includes the archived 144-word roll, the current 264-word palette, 20 invented proposals and three sets of 40 actual generated names (three words, four words and multi-mesh descendants). The form independently chooses word count and blend strength, records every join, supports submitted seeds and water-play roots, and requests 40 names per roll. Eight scores use adjustable normalized weights, initially 50% Codex preference. Favorites, Andrew's creations, forgotten names, earlier rolls and score edits persist in browser storage and can be exported; this is not cross-device sync. Current optional research uses Brave, GitHub, npm and .com. The original eighteen-source receipts remain in the earlier report. It is published at https://thatsnozorb.muchadoaboutoneside.com/naming/index.html. This historical report predates Andrew's Zencelades selection.
 
 `site/rooms.json` and `site/dist/` match the existing Much Ado module contract. Registration and isolated PG18/broker settings are implemented in Much Ado's separate `feat/enceladus-module` lane. The live service observations, proposed scoped policy, PG18 confinement rules and deployment sequence are in `docs/stack-rollout.md`. The static site and owner-managed lakeFS import are live. Scoped application credentials, membership and the shared Much Ado release remain pending. No grant has been submitted. Further pytest work is paused at Andrew's request.
+
+## License
+
+Licensed under either of
+
+- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE))
+- MIT License ([LICENSE-MIT](LICENSE-MIT))
+
+at your option. That covers the project's code and tooling only: likenesses, scientific
+media, artwork, renders, models and the project record are not licensed by these files;
+see [NOTICE](NOTICE). Contributions are accepted under both; see
+[CONTRIBUTING.md](CONTRIBUTING.md). The zencelades name and logo are not
+licensed; see [TRADEMARKS.md](TRADEMARKS.md).

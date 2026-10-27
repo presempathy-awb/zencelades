@@ -1,0 +1,6 @@
+zencelades
+Copyright 2026 Andrew Briscoe and the zencelades contributors.
+
+Licensed under MIT OR Apache-2.0. See LICENSE-MIT and LICENSE-APACHE.
+
+Scope: the licence covers the project's own code and tooling: account-service/, cockpit/, deploy/, scripts/, tests/, the HTML, CSS, JavaScript and JSON source of site/, and the root build and configuration files. It licenses nothing else in this repository, in particular: anyone's likeness; NASA/JPL imagery and other scientific media, which keep their source-specific credits and use conditions; generated, concept and supplied artwork, renders, images and 3D models, wherever they sit; assets/, docs/ and output/ (the project record, design plates, grant research and delivered packages); and the archived v3 and v4 project packages, whose own MIT notices stay limited to their original project-side source. Ask before reusing that material. Dependencies keep their own licences and notices.
