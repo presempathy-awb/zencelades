@@ -25,3 +25,6 @@ output/grant-attachments/
 output/grant-3d/
 tmp/form-research/
 tmp/pdfs/
+
+# CodeGraph index: local to each machine
+.codegraph/
