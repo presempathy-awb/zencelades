@@ -25,4 +25,4 @@
 
 ---
 
-By opening this pull request I submit it under the licence of contributions in CONTRIBUTING.md. Each commit carries my `Signed-off-by` (`git commit -s` for each commit I author), unless I am a maintainer listed in MAINTAINERS, whose certification is recorded afterwards in the sign-off ledger.
+By opening this pull request I submit it under the licence of contributions in CONTRIBUTING.md. Each non-merge commit carries its author's `Signed-off-by` (`git commit -s` for each commit I author), unless this pull request is opened by a forge account listed in MAINTAINERS at its base commit: then every commit in it is exempt, and a maintainer's certification is recorded afterwards in the sign-off ledger.
