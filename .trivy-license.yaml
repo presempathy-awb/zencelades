@@ -34,10 +34,18 @@ license:
     - BUSL-1.1
     - Elastic-2.0
     - Commons-Clause
-    # Copyleft that reaches network use as well as distribution: EUPL-1.2 ("Communication"
-    # covers providing access over a network, art. 1 and 5), CPAL-1.0 (s. 14, network use is
-    # distribution) and CAL-1.0 (s. 2.3, network users get the source). Trivy's default lists
-    # know none of the three, so without this they fail the audit only as UNKNOWN.
+    # Copyleft that reaches network use as well as distribution: EUPL ("Communication" covers
+    # providing access over a network, art. 1 and 5 of 1.2; 1.0 and 1.1 are the same licence's
+    # earlier versions), CPAL-1.0 (s. 15, network use is distribution) and CAL-1.0 (s. 2.3,
+    # network users get the source). Trivy knows none of these ids: each comes back in the unknown
+    # category (UNKNOWN), which the audit's severity line already fails. The kit's own test,
+    # legal-index's templates/oss/common/scripts/test_license_audit.py, runs the same tree without
+    # these lines to show it with whichever Trivy runs that suite (0.72.0 and 0.75.0 when this was
+    # written, 2026-11-04). They are named here so the failure says why,
+    # and so they keep failing if a later Trivy files one under reciprocal (MEDIUM, which that
+    # line lets pass).
+    - EUPL-1.0
+    - EUPL-1.1
     - EUPL-1.2
     - CPAL-1.0
     - CAL-1.0

@@ -1,7 +1,7 @@
 # Trademark policy
 
 "zencelades", and any zencelades logo, are trademarks of Andrew Briscoe. The licence the
-code is distributed under grants no rights to these marks: Apache-2.0 says so expressly in section 6, and MIT grants nothing beyond the code.
+code is distributed under grants no rights to these marks: Apache-2.0 says so in section 6, which withholds trademark permission except as required for reasonable and customary use in describing the origin of the work and reproducing the content of the NOTICE file, and MIT grants nothing beyond the code.
 
 Allowed without asking:
 

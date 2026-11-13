@@ -1,11 +1,11 @@
 # Forge accounts (git.telpher.stream logins) whose pull requests are certified through the
 # project's sign-off ledger instead of a per-commit Signed-off-by: a maintainer reads each
 # change on main after it lands and records a signed attestation (see AUTHORSHIP.md).
-# One login per line. Read by scripts/dco-check.sh at the pull request's base commit, so a
-# pull request cannot add its own account while .gitea/workflows/dco.yml runs unchanged and
-# its check is required on the default branch (legal-index's `just protect`, once the kit has landed);
-# a pull request that edits that workflow is read for exactly that. Agents commit under these
-# accounts and never write a human's sign-off.
+# One login per line. Read by scripts/dco-check.sh at the pull request's base commit, so while
+# .gitea/workflows/dco.yml runs unchanged a pull request cannot exempt itself by adding its own
+# account (one that edits that workflow is read for exactly that). The check blocks a merge only
+# where it is required on the default branch, as legal-index's `just protect --apply` makes it
+# once the kit has landed. Agents commit under these accounts and never write a human's sign-off.
 awb
 claude-pres
 claude-maxi
