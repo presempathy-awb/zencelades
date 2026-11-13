@@ -101,9 +101,9 @@ PY_ALLOW='MIT License;MIT;Apache Software License;Apache-2.0;Apache License 2.0;
 project_dirs() {
 	local names=() n err line rc=0
 	for n in "$@"; do names+=(-o -name "${n}"); done
-	# A template both GNU and BSD mktemp take. Its complaint (no mktemp, a TMPDIR that is missing or
-	# not writable, a full disk) names the cause, and TMPDIR's path, so it is printed as find's are,
-	# after a prefix and through shown.
+	# A template both GNU and BSD mktemp take. Its complaint names the cause: with no mktemp, the
+	# shell's command-not-found; for a TMPDIR that is missing or not writable, or a full disk, also
+	# TMPDIR's path. So it is printed as find's are, after a prefix and through shown.
 	if ! err="$(mktemp "${TMPDIR:-/tmp}/license-audit.XXXXXX" 2>&1)"; then
 		echo "cannot create a temporary file for find's complaints" >&2
 		while IFS= read -r line; do
