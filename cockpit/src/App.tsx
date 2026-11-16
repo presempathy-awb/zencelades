@@ -36,6 +36,7 @@ import { fitColumns, selectColumn } from "./cockpit-layout";
 import ViewSelector from "./ViewSelector";
 import ChoiceButtons from "./ChoiceButtons";
 import AccountControls from "./AccountControls";
+import emblem from "./brand/emblem-128.png";
 import PrivateStudioLink from "./PrivateStudioLink";
 import "./audio.css";
 import TopicPane from "./TopicPane";
@@ -323,7 +324,7 @@ export default function App(): JSX.Element {
       </button>
       <header className="app-header" data-columns={fitted}>
         <div className="brand">
-          <img className="brand-mark" src="/brand/emblem-128.png" width={107} height={128} alt="" />
+          <img className="brand-mark" src={emblem} width={107} height={128} alt="" />
           <div>
             <a className="brand-name" href="#/">
               Zencelades <span>cockpit</span>

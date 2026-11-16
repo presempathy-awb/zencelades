@@ -1,5 +1,6 @@
 import { type JSX, useEffect, useRef } from "react";
 import artwork from "../../site/about/index.html?raw";
+import lockup from "./brand/lockup-1600.webp";
 import "../../site/about/pages.css";
 import "./home.css";
 
@@ -17,6 +18,11 @@ const poster = new URL(
   import.meta.url,
 ).href;
 const content = `<div class="artwork-content">${body}<footer>${footer}</footer></div>`
+  // The logo opens the page. It is bundled, so a release carries it with the shell.
+  .replace(
+    '<p class="kicker">',
+    `<img class="brand-lockup" src="${lockup}" width="1600" height="517" alt="Zencelades"><p class="kicker">`,
+  )
   .replace('src="/media/above-the-ice.mp4"', `src="${movie}"`)
   .replace("<video autoplay", `<video poster="${poster}" autoplay`)
   .replaceAll('href="/studio/"', 'href="#/model"')

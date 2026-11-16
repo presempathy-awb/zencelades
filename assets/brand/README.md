@@ -51,19 +51,22 @@ light ground use the icon tile or the one-colour files.
 
 ## On the site
 
-Web-sized copies live in `cockpit/public/brand/` and are published at `/brand/`. The whole
-public site is served through the cockpit, so its page head and header reach every route.
+Web-sized copies live in `cockpit/src/brand/`. The build bundles them into `studio-assets/`
+under hashed names, because a release of the live site carries only the cockpit shell and
+its bundled assets (`scripts/private_studio.py`). Nothing may point at a fixed `/brand/`
+path: a release would not publish it. The whole public site is served through the cockpit,
+so its page head and header reach every route.
 
 | File | Where it shows |
 |---|---|
-| `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | Browser tab and home-screen icon, from the cockpit's page head. Each authored page under `site/` and the private studio page name the 32 px icon too, for when they are opened outside the cockpit. |
+| `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | Browser tab and home-screen icon, from the cockpit's page head. |
 | `emblem-128.png` | The cockpit header, on every route. |
-| `lockup-1600.webp` | The opening of the artwork page, above its first heading. |
-| `og.jpg` | The share card (`og:image`), 1200x630: the lockup centred on a star field. |
+| `lockup-1600.webp` | The opening of the artwork page, placed by `HomePage.tsx` above the first heading. |
+| `og.jpg` | The share card (`og:image`), 1200x630: the lockup centred on a star field. The build writes its address as an absolute URL. |
 
 They are exports of the masters in this folder, not separate artwork. When a master
-changes, export them again. `cockpit/src/brand.test.tsx` fails if a page names a `/brand/`
-file that is not there.
+changes, export them again. `cockpit/src/brand.test.tsx` covers the page head, the share
+card address, the artwork page and the rule against `/brand/` paths.
 
 ## Colours
 
