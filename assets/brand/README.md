@@ -8,7 +8,7 @@ Masters for the Zencelades emblem and lettering. Nothing on the site uses them y
 The projectors fire what the moon fires: straight blue-white jets, not light cones. A
 curtain of the moon's own jets rises from the pole, where the tiger stripes glow teal.
 
-**The figure.** A seated female Buddha is raised out of the moon's surface as lit relief:
+**The figure.** A seated female Buddha is raised out of the centre of the moon as lit relief:
 smooth bright ice for her body, a crater rim for her halo, fracture lines for her robe,
 braids and the folds at her knees, and ridges for the lotus she sits on. A warm light sits
 at her chest and a few motes drift up from it towards the vents. She is drawn, not found
@@ -29,8 +29,8 @@ the gold stands for the E ring, which Enceladus's jets feed; it is not to scale,
 real E ring lies much further out. In the side-by-side lockup the
 near tip of the rings is hidden behind the moon, so the moon sits on their edge.
 
-**Probe.** A Cassini-like spacecraft in gold floats above the rings in the side-by-side
-lockup and the hero.
+**Probe.** A Cassini-like spacecraft in gold foil dives towards the rings in the
+side-by-side lockup and the hero, dish leading and engines burning.
 
 ## Files
 
@@ -60,7 +60,7 @@ the gold.
 | Ice blue | `#8fdcff`, jets `#d6f3ff` fading to `#79ccff` | Jets, projector outlines, letter glow, E ring haze. |
 | Rim white | `#f0fcff` | Letter outlines, sphere rim. |
 | Tiger-stripe teal | `#7dfff0` to `#3fe6d6` | The stripes at the pole. |
-| Saturn gold | brightest `#ffd495`, glow `#ffd98a`, probe `#f6cf82` | The rings and the probe. |
+| Saturn gold | brightest `#ffd495`, glow `#ffd98a`, probe foil `#f2c66d` | The rings and the probe. |
 | Warm light | `#ffc869` | The light in the figure. |
 
 ## Sources
