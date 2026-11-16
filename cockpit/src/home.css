@@ -175,3 +175,9 @@
     margin-top: 1.5rem;
   }
 }
+.artwork-home .brand-lockup {
+  display: block;
+  width: min(100%, 40rem);
+  height: auto;
+  margin: 0 0 1.5rem;
+}
