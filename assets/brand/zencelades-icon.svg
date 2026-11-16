@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-256 -256 512 512" role="img" aria-labelledby="t">
+<title id="t">Zencelades icon</title>
+<defs>
+  <linearGradient id="f0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c4f1fa"/></linearGradient>
+  <linearGradient id="f1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eefcff"/><stop offset="1" stop-color="#86dbee"/></linearGradient>
+  <linearGradient id="f2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a5e7f4"/><stop offset="1" stop-color="#3a9fc0"/></linearGradient>
+  <linearGradient id="f3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58b9d4"/><stop offset="1" stop-color="#1a6a8b"/></linearGradient>
+  <linearGradient id="heat" gradientUnits="userSpaceOnUse" x1="-150" y1="150" x2="150" y2="-150">
+    <stop offset="0" stop-color="#5a31f4"/>
+    <stop offset=".34" stop-color="#ee3f8e"/>
+    <stop offset=".7" stop-color="#ff8a3c"/>
+    <stop offset="1" stop-color="#ffd166"/>
+  </linearGradient>
+  <linearGradient id="jet" gradientUnits="userSpaceOnUse" x1="130" y1="-140" x2="290" y2="-312">
+    <stop offset="0" stop-color="#ffd166"/>
+    <stop offset=".3" stop-color="#eafbff"/>
+    <stop offset="1" stop-color="#8fe0f2"/>
+  </linearGradient>
+  <linearGradient id="heatz" x1="0" y1="1" x2="1" y2="0">
+    <stop offset="0" stop-color="#5a31f4"/><stop offset=".4" stop-color="#ee3f8e"/>
+    <stop offset=".8" stop-color="#ff8a3c"/><stop offset="1" stop-color="#ffd166"/>
+  </linearGradient>
+  <clipPath id="disc"><circle r="200"/></clipPath>
+  <filter id="soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
+</defs>
+<rect x="-256" y="-256" width="512" height="512" rx="116" fill="#0a1922"/>
+<g transform="rotate(-6) scale(.96)">
+<circle r="198.5" fill="url(#heat)"/>
+<path d="M-131.95,-150.3 A200,200 0 0 1 116.29,-162.72 Z" fill="url(#f0)"/>
+<path d="M-140.73,-142.11 A200,200 0 0 0 -149.68,132.65 L95.52,-130.29 Z" fill="url(#f1)"/>
+<path d="M140.73,142.11 A200,200 0 0 0 149.68,-132.65 L-95.52,130.29 Z" fill="url(#f2)"/>
+<path d="M131.95,150.3 A200,200 0 0 1 -116.29,162.72 Z" fill="url(#f3)"/>
+</g>
+</svg>
