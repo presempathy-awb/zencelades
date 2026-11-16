@@ -1,6 +1,6 @@
 # Zencelades logo
 
-Masters for the Zencelades emblem and lettering. Nothing on the site uses them yet.
+Masters for the Zencelades emblem and lettering, and a record of where the site uses them.
 
 ## What is in it
 
@@ -48,6 +48,22 @@ side-by-side lockup and the hero, dish leading and engines burning.
 
 The colour files need a dark ground: the jets, rings and glow are light on dark. On a
 light ground use the icon tile or the one-colour files.
+
+## On the site
+
+Web-sized copies live in `cockpit/public/brand/` and are published at `/brand/`. The whole
+public site is served through the cockpit, so its page head and header reach every route.
+
+| File | Where it shows |
+|---|---|
+| `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png` | Browser tab and home-screen icon, from the cockpit's page head. Each authored page under `site/` and the private studio page name the 32 px icon too, for when they are opened outside the cockpit. |
+| `emblem-128.png` | The cockpit header, on every route. |
+| `lockup-1600.webp` | The opening of the artwork page, above its first heading. |
+| `og.jpg` | The share card (`og:image`), 1200x630: the lockup centred on a star field. |
+
+They are exports of the masters in this folder, not separate artwork. When a master
+changes, export them again. `cockpit/src/brand.test.tsx` fails if a page names a `/brand/`
+file that is not there.
 
 ## Colours
 

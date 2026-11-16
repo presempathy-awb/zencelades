@@ -107,6 +107,10 @@ small {
 .brand svg {
   color: #a1d2e2;
 }
+.brand .brand-mark {
+  width: auto;
+  height: 44px;
+}
 .brand h1 {
   font-size: 17px;
   letter-spacing: 0.24em;

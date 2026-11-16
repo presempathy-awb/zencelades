@@ -323,7 +323,7 @@ export default function App(): JSX.Element {
       </button>
       <header className="app-header" data-columns={fitted}>
         <div className="brand">
-          <Orbit size={30} aria-hidden="true" />
+          <img className="brand-mark" src="/brand/emblem-128.png" width={107} height={128} alt="" />
           <div>
             <a className="brand-name" href="#/">
               Zencelades <span>cockpit</span>
