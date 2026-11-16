@@ -1,15 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-400 -560 800 1000" role="img" aria-labelledby="t">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-440 -560 880 1060" role="img" aria-labelledby="t">
 <title id="t">Zencelades emblem, one colour</title>
-<g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
-<circle r="195.5"/>
-<path d="M-294.45,-170 L-121.36,-170"/>
-<path d="M-294.45,-170 L-207.9,-20.1"/>
-<path d="M294.45,-170 L121.36,-170"/>
-<path d="M294.45,-170 L207.9,-20.1"/>
-<path d="M0,340 L-86.55,190.1"/>
-<path d="M0,340 L86.55,190.1"/>
+<g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round">
+<circle r="195.5" stroke-width="9"/>
+<circle cx="42.8" cy="-16.25" r="53.14" stroke-width="4"/>
 </g>
-<g fill="currentColor"><g transform="translate(0,22) scale(.74)"><circle cx="0" cy="12" r="22"/><path d="M-14,34 C-34,36 -44,46 -44,60 L-30,122 L30,122 L44,60 C44,46 34,36 14,34 Z"/><ellipse cx="0" cy="146" rx="104" ry="25"/><path d="M-38,56 L-84,132 M38,56 L84,132" fill="none" stroke="currentColor" stroke-width="19" stroke-linecap="round"/></g>
+<g fill="currentColor" transform="translate(42.8,141.9) scale(0.6326)"><ellipse cx="0" cy="-12" rx="150" ry="20"/><path d="M-145,-12 Q-143,-40 -120,-52 Q-97,-40 -95,-12 Z"/><path d="M-105,-12 Q-103,-40 -80,-52 Q-57,-40 -55,-12 Z"/><path d="M-65,-12 Q-63,-40 -40,-52 Q-17,-40 -15,-12 Z"/><path d="M-25,-12 Q-23,-40 0,-52 Q23,-40 25,-12 Z"/><path d="M15,-12 Q17,-40 40,-52 Q63,-40 65,-12 Z"/><path d="M55,-12 Q57,-40 80,-52 Q103,-40 105,-12 Z"/><path d="M95,-12 Q97,-40 120,-52 Q143,-40 145,-12 Z"/><ellipse cx="0" cy="-70" rx="120" ry="29"/><ellipse cx="0" cy="-90" rx="25" ry="11"/><path d="M-23,-84 C-24,-98 -20,-110 -24,-124 C-34,-134 -39,-150 -34,-164 C-36,-172 -40,-178 -46,-186 C-36,-197 -16,-202 -9,-204 L9,-204 C16,-202 36,-197 46,-186 C40,-178 36,-172 34,-164 C39,-150 34,-134 24,-124 C20,-110 24,-98 23,-84 Z"/><path d="M-44,-184 C-63,-162 -70,-134 -61,-112 C-54,-98 -37,-91 -16,-89 M44,-184 C63,-162 70,-134 61,-112 C54,-98 37,-91 16,-89" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"/><rect x="-8" y="-226" width="16" height="24"/><ellipse cx="0" cy="-250" rx="27" ry="30"/><ellipse cx="0" cy="-262" rx="29" ry="20"/><circle cx="0" cy="-291" r="14"/><path d="M-28,-240 q-4,11 0,18 q4,-7 0,-18 Z M28,-240 q4,11 0,18 q-4,-7 0,-18 Z"/></g>
+<g fill="currentColor">
+<path d="M-278.86,-166.4 L-159.37,-134.51 L-157.48,-142.69 Z"/>
+<path d="M-279.83,-163.49 L-178.02,-113.56 L-174.6,-121.24 Z"/>
+<path d="M-281.5,-160.6 L-192.29,-90.59 L-187.36,-97.39 Z"/>
+<path d="M-283.54,-158.3 L-202.32,-65.04 L-196.17,-70.77 Z"/>
+<path d="M283.54,-158.3 L196.17,-70.77 L202.32,-65.04 Z"/>
+<path d="M281.5,-160.6 L187.36,-97.39 L192.29,-90.59 Z"/>
+<path d="M279.83,-163.49 L174.6,-121.24 L178.02,-113.56 Z"/>
+<path d="M278.86,-166.4 L157.48,-142.69 L159.37,-134.51 Z"/>
+<path d="M-4.68,324.7 L-36.8,205.27 L-44.83,207.73 Z"/>
+<path d="M-1.67,324.09 L-9.34,210.95 L-17.69,211.83 Z"/>
+<path d="M1.67,324.09 L17.69,211.83 L9.34,210.95 Z"/>
+<path d="M4.68,324.7 L44.83,207.73 L36.8,205.27 Z"/>
 <path transform="translate(127.18,-167.11) rotate(17.09)" d="M-3.02,0 L3.02,0 L1.09,-53.93 L-1.09,-53.93 Z"/>
 <path transform="translate(110.72,-178.44) rotate(15.67)" d="M-4.45,0 L4.45,0 L1.6,-72.29 L-1.6,-72.29 Z"/>
 <path transform="translate(93.25,-188.16) rotate(14.25)" d="M-4.08,0 L4.08,0 L1.47,-103.34 L-1.47,-103.34 Z"/>
@@ -21,8 +29,8 @@
 <path transform="translate(-23.28,-208.71) rotate(5.75)" d="M-2.56,0 L2.56,0 L0.92,-147.96 L-0.92,-147.96 Z"/>
 <path transform="translate(-43.01,-205.55) rotate(4.33)" d="M-3.99,0 L3.99,0 L1.44,-108.03 L-1.44,-108.03 Z"/>
 <path transform="translate(-62.35,-200.53) rotate(2.91)" d="M-4.02,0 L4.02,0 L1.45,-55.42 L-1.45,-55.42 Z"/>
-<g transform="translate(-294.45,-170) rotate(30)"><rect x="-78" y="-23" width="62" height="46" rx="9"/><path d="M-18,-15 L4,-21 L4,21 L-18,15 Z"/></g>
-<g transform="translate(294.45,-170) rotate(150)"><rect x="-78" y="-23" width="62" height="46" rx="9"/><path d="M-18,-15 L4,-21 L4,21 L-18,15 Z"/></g>
-<g transform="translate(0,340) rotate(-90)"><rect x="-78" y="-23" width="62" height="46" rx="9"/><path d="M-18,-15 L4,-21 L4,21 L-18,15 Z"/></g>
+<g transform="translate(-294.45,-170) rotate(30) scale(1.5)"><path d="M-27,-13 L-37,-22 L-66,-22 L-78,-12 L-78,12 L-66,22 L-37,22 L-27,13 Z"/><path d="M0,-17 L-27,-11 L-27,11 L0,17 Z"/><path d="M-78,-9 L-96,-22 L-90,-5 Z M-78,9 L-96,22 L-90,5 Z"/></g>
+<g transform="translate(294.45,-170) rotate(150) scale(1.5)"><path d="M-27,-13 L-37,-22 L-66,-22 L-78,-12 L-78,12 L-66,22 L-37,22 L-27,13 Z"/><path d="M0,-17 L-27,-11 L-27,11 L0,17 Z"/><path d="M-78,-9 L-96,-22 L-90,-5 Z M-78,9 L-96,22 L-90,5 Z"/></g>
+<g transform="translate(0,340) rotate(-90) scale(1.5)"><path d="M-27,-13 L-37,-22 L-66,-22 L-78,-12 L-78,12 L-66,22 L-37,22 L-27,13 Z"/><path d="M0,-17 L-27,-11 L-27,11 L0,17 Z"/><path d="M-78,-9 L-96,-22 L-90,-5 Z M-78,9 L-96,22 L-90,5 Z"/></g>
 </g>
 </svg>
