@@ -12,7 +12,7 @@ to the same angle as the jets, with jets rising from the letters.
 
 | File | Use |
 |---|---|
-| `zencelades-hero.png` | Emblem and lettering on a star field, 2400 px wide. Headers and cards. |
+| `zencelades-hero.png` | Emblem and lettering on a star field, 4800 px wide. Headers and cards. |
 | `zencelades-lockup.svg`, `.png` | Emblem and lettering side by side, transparent, for dark grounds. |
 | `zencelades-lockup-stacked.svg` | Emblem above lettering, which spans the emblem's width. Transparent, for dark grounds. |
 | `zencelades-emblem.svg`, `.png` | Emblem alone, transparent, for dark grounds. |
@@ -28,15 +28,26 @@ Colours: ground `#050d17`, ice `#8fdcff`, jets `#d6f3ff` fading to `#79ccff`, ri
 
 ## The frames
 
-Both pictures come from catalog source E02 (`assets/enceladus-videos/catalog.json`),
-"South-pole surface to Enceladus and Webb", 1920x1080.
+Both pictures come from NASA's 4K master of catalog source E05
+(`assets/enceladus-videos/catalog.json`), the complete ice, geyser and ocean journey:
+`AssemblyCut_ProRes.mov`, 3840x2160 ProRes HQ, from the page credited below. The catalog
+holds only the compact WebM of that cut, which is too compressed for close crops, so the
+two frames were read from the master by byte range. The master is 6.6 GB and is not
+stored in this project.
 
-- The moon is the frame at 5.7 seconds, when the whole globe is in shot, cropped to the
-  disc (centre 820, 736, radius 304).
-- The lettering's ice is the frame at 0.4 seconds, the close pass over the tiger stripes,
-  cropped to 1500x330 at 0, 720.
+- The moon is the frame at 35.235 seconds, when the whole globe is first in shot,
+  cropped to the disc (centre 1610, 1516, radius 626). It is 1252 px across.
+- The lettering's ice is the frame at 30.297 seconds, the close pass over the tiger
+  stripes, cropped to 3000x660 at 0, 1440.
 
-Each is sharpened, graded towards ice blue and embedded in the colour SVGs that use it.
+Each is lightly denoised, sharpened, graded towards ice blue and embedded in the colour
+SVGs that use it. The PNG exports are 4800 px (hero), 4000 px (lockup), 2048x2560
+(emblem) and 1024 px (icon).
+
+The moon is the limit on size. It is 1252 px across at source and 1024 px across in the
+emblem export, so it holds up to about 1.2 times that export, or roughly 4 inches across
+in print at 300 dpi. Past that it softens. The beams, jets and letter outlines are vector
+and stay sharp at any size.
 
 Credit: NASA's Goddard Space Flight Center Conceptual Image Lab,
 <https://svs.gsfc.nasa.gov/20384/>. The catalog records the source as public domain under
