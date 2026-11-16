@@ -4,6 +4,7 @@
 .project-page .masthead > a { font-size: 1.65rem; }
 .project-page nav { gap: .25rem 1.15rem; }
 .project-page nav a[aria-current="page"] { color: var(--ink); text-decoration-thickness: .15em; }
+.project-page .brand-lockup { display: block; width: min(100%, 40rem); height: auto; margin: 0 0 1.5rem; }
 .project-page .lead { padding-block: clamp(3rem, 8vw, 6rem) 3rem; max-width: 64rem; }
 .project-page .home-visuals { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .project-page .home-visuals > * { margin: 0; }
