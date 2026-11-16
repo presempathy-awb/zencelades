@@ -1,5 +1,6 @@
 import { type JSX, useEffect, useRef, useState } from "react";
 import { cockpitHref, documentPages } from "./page-routes";
+import { pageSource } from "./page-source";
 import { focusSection, mountTopics } from "./pane-topics";
 import "./documents.css";
 
@@ -41,9 +42,10 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
     setFailure("");
     setReady(false);
     const load = async (): Promise<void> => {
-      const response = await fetch(`/page-content/${page}.html`, { signal: abort.signal });
-      if (!response.ok) throw new Error(`Page content unavailable (${response.status})`);
-      const html = new DOMParser().parseFromString(await response.text(), "text/html");
+      const html = new DOMParser().parseFromString(
+        await pageSource(page, abort.signal),
+        "text/html",
+      );
       if (disposed) return;
       const main = html.querySelector("main");
       if (!main) throw new Error("This page has no published content");
@@ -124,8 +126,7 @@ function DocumentPage({ page, column }: { page: string; column: number }): JSX.E
     if (!active || !ready) return;
     const scroll = (): void => {
       const section = new URLSearchParams(location.hash.split("?")[1]).get("section");
-      if (section)
-        focusSection(host.current?.shadowRoot?.getElementById(section) ?? null);
+      if (section) focusSection(host.current?.shadowRoot?.getElementById(section) ?? null);
     };
     scroll();
     window.addEventListener("hashchange", scroll);

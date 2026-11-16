@@ -64,6 +64,9 @@ so its page head and header reach every route.
 | `lockup-1600.webp` | The opening of the artwork page, placed by `HomePage.tsx` above the first heading. |
 | `og.jpg` | The share card (`og:image`), 1200x630: the lockup centred on a star field. The build writes its address as an absolute URL. |
 
+The logo's credit and AI note are on the open-source and AI disclosure page. That page is
+bundled with the app too (`cockpit/src/page-source.ts`), so a release publishes its text.
+
 They are exports of the masters in this folder, not separate artwork. When a master
 changes, export them again. `cockpit/src/brand.test.tsx` covers the page head, the share
 card address, the artwork page and the rule against `/brand/` paths.
