@@ -4,9 +4,10 @@
 # Licence audit of the dependencies this project ships. Exit 1 when a
 # dependency of any project in the tree is outside the policy: each ecosystem's
 # tool runs in every folder that holds its lockfile, the root and each
-# sub-project (a lockfile in an installed, vendored or built tree, or in Go's
-# testdata, makes no project; Trivy and license_gaps.py still read the whole
-# tree), and each Node project must have its packages installed. Policy files: deny.toml
+# sub-project (a lockfile in a folder the walk skips, an installed, vendored,
+# built or generated tree or a testdata fixture, as project_dirs lists them, makes
+# no project; Trivy and license_gaps.py still read the whole tree), and each Node
+# project must have its packages installed. Policy files: deny.toml
 # (Rust; a project's own, else the root's), .trivy-license.yaml (Node, Go,
 # licence text), PY_ALLOW below (Python). A dependency with no licence at all
 # fails too: cargo-deny and pip-licenses reject it, and license_gaps.py (Node)
@@ -39,7 +40,7 @@ shown() {
 		before="${value}"
 		value="$(printf '%s' "${value}" | LC_ALL=C tr -d '\000-\037\177' |
 			LC_ALL=C sed -e "s/$(printf '\302')[$(printf '\200')-$(printf '\237')]//g" -e "s/$(printf '\342\200')[$(printf '\250\251')]//g")"
-		[[ ${value} != "${before}" ]] || break
+		[[ "${value}" != "${before}" ]] || break
 	done
 	printf '%s' "${value}"
 }
@@ -55,7 +56,10 @@ shown() {
 limit="${LICENSE_AUDIT_TIMEOUT-1800}"
 case "${limit}" in
 "" | *[!0-9]*)
-	printf '%s\n' "LICENSE_AUDIT_TIMEOUT must be a whole number of seconds, not '$(shown "${limit}")'"
+	# The value is quoted as printf %q writes it in the C locale, every byte shown would delete (a
+	# line break, a carriage return, U+2028, U+2029) escaped, so 1800 and a break is not quoted as
+	# 1800, a value that would have passed, and nothing in it can start a line of its own.
+	printf '%s\n' "LICENSE_AUDIT_TIMEOUT must be a whole number of seconds, not $(LC_ALL=C printf '%q' "${limit}")"
 	exit 2
 	;;
 *) ;;
@@ -75,9 +79,11 @@ bounded() {
 	else
 		"$@" || rc=$?
 	fi
+	# bounded's own lines go to stderr: a caller that takes the tool's output in $( ) (hidden_by_ignores)
+	# would otherwise capture them with it, and the reason the step failed would be lost.
 	case "${rc}" in
-	124) printf '%s\n' "$(shown "$*") stopped: no result after ${limit}s" ;;
-	137 | 143) printf '%s\n' "$(shown "$*") was killed (exit ${rc}): the time limit of ${limit}s, or a signal from outside" ;;
+	124) printf '%s\n' "$(shown "$*") stopped: no result after ${limit}s" >&2 ;;
+	137 | 143) printf '%s\n' "$(shown "$*") was killed (exit ${rc}): the time limit of ${limit}s, or a signal from outside" >&2 ;;
 	*) ;;
 	esac
 	return "${rc}"
@@ -87,11 +93,11 @@ command -v timeout >/dev/null 2>&1 || command -v gtimeout >/dev/null 2>&1 ||
 
 # pip-licenses reports names, not SPDX ids, and the same licence appears in
 # several spellings (Trove classifier or metadata). Both forms are listed.
-PY_ALLOW='MIT License;MIT;Apache Software License;Apache-2.0;Apache License 2.0;Apache 2.0;BSD License;BSD-2-Clause;BSD-3-Clause;ISC License (ISCL);ISC;Python Software Foundation License;PSF-2.0;Mozilla Public License 2.0 (MPL 2.0);MPL-2.0;The Unlicense (Unlicense);Unlicense;Zero-Clause BSD (0BSD);0BSD;CC0-1.0;Public Domain;zlib/libpng License;Zlib;MIT OR Apache-2.0;Apache-2.0 OR MIT;Apache-2.0 OR BSD-2-Clause'
+PY_ALLOW='MIT License;MIT;Apache Software License;Apache-2.0;Apache License 2.0;Apache 2.0;BSD License;BSD-2-Clause;BSD-3-Clause;ISC License (ISCL);ISC;Python Software Foundation License;PSF-2.0;Mozilla Public License 2.0 (MPL 2.0);MPL-2.0;The Unlicense (Unlicense);Unlicense;Zero-Clause BSD (0BSD);0BSD;CC0-1.0;Public Domain;zlib/libpng License;Zlib;MIT OR Apache-2.0;Apache-2.0 OR MIT;Apache-2.0 OR BSD-2-Clause;BSD-2-Clause OR Apache-2.0'
 
 # Every folder that holds one of the named files, the root as ".", one per line. The skipped
 # names follow SKIP_DIRS in legal-index's templates/oss/oss_setup.py (the kit this script comes
-# from), plus Go's testdata: a lockfile there belongs to an
+# from), plus testdata in any language: a lockfile there belongs to an
 # installed package, a vendored copy, build output or a fixture, not to a project here.
 # find hands the paths over NUL-separated, so a line break in a folder's name cannot split it into
 # two lines; every list below is one folder per line, so such a folder is refused, and the function
@@ -182,24 +188,62 @@ fi
 # go-licenses looks for a licence file inside each module, so it finds none for the packages of
 # a module in a sub-folder; the tree's own modules are ignored, and their dependencies checked.
 go_dirs="$(project_dirs go.mod)" || walk_failed go.mod
+go_modules=()
 go_ignores=()
 while IFS= read -r d <&3; do
 	[[ -n ${d} ]] || continue
-	# The first module line only; sed stops there, so a second one cannot break the pipe.
-	if m="$(sed -n '/^module[[:space:]]/{s/^module[[:space:]]\{1,\}"\{0,1\}\([^"[:space:]]*\).*/\1/p;q;}' "${d}/go.mod" 2>/dev/null)"; then
-		[[ -z ${m} ]] || go_ignores+=(--ignore "${m}")
+	# The first module line only; sed stops there, so a second one cannot break the pipe. Its own
+	# complaint (a permission, an I/O error) names the cause, so it is printed as find's are.
+	if out="$(sed -n '/^module[[:space:]]/{s/^module[[:space:]]\{1,\}"\{0,1\}\([^"[:space:]]*\).*/\1/p;q;}' "${d}/go.mod" 2>&1)"; then
+		m="${out}"
+		# go-licenses takes each --ignore as a list split at commas, and no module path go accepts
+		# starts with a dash or holds a comma, so such a line is refused rather than passed on.
+		if [[ "${m}" == -* || "${m}" == *,* ]]; then
+			printf '%s\n' "refused: $(shown "${d}")/go.mod names module $(shown "${m}"), which is no module path; its module is checked without being told to skip itself"
+			status=1
+		elif [[ -n "${m}" ]]; then
+			go_modules+=("${m}")
+			go_ignores+=(--ignore "${m}")
+		fi
 	else
 		printf '%s\n' "cannot read $(shown "${d}")/go.mod: its module is checked without being told to skip itself"
+		while IFS= read -r line; do
+			printf '%s\n' "sed reported: $(shown "${line}")"
+		done <<<"${out}"
 		status=1
 	fi
 done 3<<<"${go_dirs}"
+# go-licenses v2.0.1 skips every package whose import path starts with an --ignore value
+# (strings.HasPrefix in its licenses/library.go). The tree's example.com/a would so also hide
+# example.com/a-other, a package of a shorter required module example.com, or example.com/a/ext, a
+# module of its own. The packages its check walks are listed (./... and their dependencies, the
+# standard library aside), each with the module it comes from: one from a module that is not one of
+# the tree's, whose import path starts with one of the tree's module paths, fails the audit by name,
+# since its licence would go unchecked.
+hidden_by_ignores() {
+	local listed p mod m mine hit=0
+	listed="$(bounded go list -mod=readonly -deps -f '{{if not .Standard}}{{.ImportPath}} {{with .Module}}{{.Path}}{{end}}{{end}}' ./...)" || return 1
+	while read -r p mod; do
+		[[ -n "${p}" ]] || continue
+		mine=0
+		for m in ${go_modules[@]+"${go_modules[@]}"}; do [[ "${mod}" != "${m}" ]] || mine=1; done
+		((mine == 0)) || continue
+		for m in ${go_modules[@]+"${go_modules[@]}"}; do
+			if [[ ${p} == "${m}"* ]]; then
+				printf '%s\n' "go-licenses would skip the package $(shown "${p}") (module $(shown "${mod:-none}")) with the tree's module $(shown "${m}"): it matches an ignored path by prefix, so its licence is not checked"
+				hit=1
+			fi
+		done
+	done <<<"${listed}"
+	return "${hit}"
+}
 # Trivy and go-licenses read licences from the module cache, hence the download first.
 # proxy.golang.org lists v2.0.0-alpha.1, v2.0.0 and v2.0.1 of go-licenses (checked
 # 2026-10-25); `go run` checks the download against sum.golang.org.
 while IFS= read -r d <&3; do
 	[[ -n ${d} ]] || continue
 	printf '%s\n' "== Go: go-licenses check, unknown licences fail ($(shown "${d}"))"
-	(cd "${d}" && bounded go mod download && bounded go run github.com/google/go-licenses/v2@v2.0.1 check \
+	(cd "${d}" && bounded go mod download && hidden_by_ignores && bounded go run github.com/google/go-licenses/v2@v2.0.1 check \
 		${go_ignores[@]+"${go_ignores[@]}"} --disallowed_types=forbidden,restricted,unknown ./...) || status=1
 done 3<<<"${go_dirs}"
 

@@ -37,9 +37,10 @@ package's link to a folder of the tree outside every node_modules folder (a
 workspace member, or anything else linked in) is read as the package installed
 there, from that folder's own package.json, so it needs a licence like any
 other. Either kind of package link fails when the folder it leads to holds no
-package.json. Any other link fails, out of the tree or to nothing, since what it holds
-would go unread; so does a folder the walk cannot read, and a link whose target, or
-whose package.json, cannot be looked at, which is named by the error's type rather
+package.json. Any other link at those places fails, out of the tree or to
+nothing, since what it holds would go unread; so does a folder the walk cannot
+read, and a link whose target, or whose package.json, cannot be looked at, which
+is named by the error's type rather
 than reported as missing. A package.json that is a link, not a regular file, or
 larger than MAX_MANIFEST bytes (at most MAX_MANIFEST + 1 are read), is not parsed,
 and a read or parse that fails (one nested too deep for the parser included) is
@@ -65,6 +66,11 @@ from pathlib import Path
 # Three values that are not a licence: npm's UNLICENSED, SPDX's NONE (the package states it
 # has no licence) and SPDX's NOASSERTION (no statement is made at all). Each is a gap.
 NOT_A_LICENCE = {"UNLICENSED", "NONE", "NOASSERTION"}
+# What a value is compared without: controls, format characters (a zero-width space, a byte
+# order mark, a soft hyphen), separators and spaces, so UNLICENSED followed by a zero-width space is
+# still UNLICENSED, and a value of nothing but them is empty. Spaces (Zs) are ignored on purpose:
+# NO ASSERTION or UN LICENSED is still a gap, and no licence id is one of the three spelt apart.
+UNSEEN = ("Cc", "Cf", "Zl", "Zp", "Zs")
 USAGE = "Usage: license_gaps.py node PROJECT_ROOT [PROJECT ...]"
 NO_PACKAGE_JSON = "a link to a package's folder that holds no package.json"
 # A manifest is opened without following a link, and without waiting: a fifo opens at once and
@@ -87,7 +93,9 @@ def shown(name):
     C1) and the line and paragraph separators (Zl, Zp), as the kit's shell scripts drop them.
     Only whole characters are dropped, so the bytes around one cannot join into another, and a
     newline in a folder's name cannot start a line of its own, nor a workflow command."""
-    text = name if isinstance(name, str) else str(name)
+    if name is None:
+        return ""
+    text = os.fsdecode(name) if isinstance(name, bytes) else str(name)
     try:
         raw = text.encode("utf-8", "surrogateescape")  # the bytes the file system gave
     # A surrogate outside U+DC80-U+DCFF, which stands for no byte, so surrogateescape cannot encode
@@ -109,12 +117,6 @@ def at_package_place(folder):
 def at_scope_place(folder):
     """True for node_modules/@scope."""
     return folder.parent.name == "node_modules" and folder.name.startswith("@")
-
-
-def is_package_root(manifest):
-    """True for node_modules/<name>/package.json and
-    node_modules/@scope/<name>/package.json."""
-    return at_package_place(manifest.parent)
 
 
 def walk(root):
@@ -210,7 +212,13 @@ def holds_a_package(node_modules, manifests, accepted):
     a link to one that the walk vouches for (a pnpm or workspace link)."""
     packages = [manifest.parent for manifest in manifests]
     packages += [link for link in accepted if at_package_place(link)]
-    return any(install_of(package) == node_modules for package in packages)
+    if any(install_of(package) == node_modules for package in packages):
+        return True
+    # A scope link the walk vouched for (node_modules/@scope leading to another install's @scope):
+    # the packages behind it were walked where its target is, so they are this install's too.
+    scopes = {Path(os.path.realpath(link)) for link in accepted
+              if at_scope_place(link) and Path(link).parent.resolve() == node_modules}
+    return any(manifest.parent.parent in scopes for manifest in manifests)
 
 
 def declared_licences(meta):
@@ -224,7 +232,10 @@ def declared_licences(meta):
     for item in value if isinstance(value, list) else [value]:
         if isinstance(item, dict):
             item = item.get("type")
-        if isinstance(item, str) and item.strip() and item.strip().upper() not in NOT_A_LICENCE:
+        if not isinstance(item, str):
+            continue
+        seen = "".join(ch for ch in item if unicodedata.category(ch) not in UNSEEN)
+        if seen and seen.upper() not in NOT_A_LICENCE:
             values.append(item.strip())
     return values
 
@@ -243,7 +254,8 @@ def read_manifest(path):
     except OSError as exc:
         return None, type(exc).__name__
     try:
-        # Checked on the descriptor before anything wraps it: Python refuses a folder's outright.
+        # Checked on the descriptor before anything wraps it: os.open of a folder succeeds on
+        # Linux, so this S_ISREG check is what refuses one (and a fifo, a socket, a device).
         if not stat.S_ISREG(os.fstat(fd).st_mode):
             return None, "not a regular file"
         with open(fd, "rb", closefd=False) as manifest:
@@ -261,19 +273,21 @@ def read_manifest(path):
 
 
 def node_missing(root, manifests, linked=()):
-    """The packages that declare no licence: MANIFESTS, each named by its folder, then LINKED, the
-    (link, package.json) pairs own_package found, each named by its link."""
+    """(the packages that declare no licence, the packages whose package.json was not read):
+    MANIFESTS, each named by its folder, then LINKED, the (link, package.json) pairs own_package
+    found, each named by its link. A manifest that was not read is no claim that its package
+    declares nothing, so it is listed apart, with the reason."""
     root = Path(root).resolve()
     named = [(manifest.parent, manifest) for manifest in manifests] + list(linked)
-    missing = []
+    missing, unread = [], []
     for place, meta_path in named:
         name = shown(place.relative_to(root))
         meta, reason = read_manifest(meta_path)
         if meta is None:
-            missing.append(f"{name} (unreadable package.json: {reason})")
+            unread.append(f"{name} (unreadable package.json: {reason})")
         elif not declared_licences(meta):
             missing.append(name)
-    return missing
+    return missing, unread
 
 
 def main(argv=None):
@@ -290,14 +304,16 @@ def main(argv=None):
         print("this platform has no O_NOFOLLOW or O_NONBLOCK, so a package.json cannot be opened "
               "without following a link or waiting: nothing is read", file=sys.stderr)
         return 2
+    # Every line opens with fixed text, never with a name from the tree or the arguments: a name
+    # that starts with :: would be read as a workflow command, which dropping breaks cannot stop.
     try:
         is_dir = stat.S_ISDIR(Path(argv[1]).stat().st_mode)
-    except OSError as exc:
-        why = shown(exc.strerror or type(exc).__name__)
+    except (OSError, ValueError) as exc:  # ValueError: a NUL byte in the name
+        why = shown(getattr(exc, "strerror", None) or type(exc).__name__)
         print(f"cannot read {shown(argv[1])}: {why}", file=sys.stderr)
         return 2
     if not is_dir:
-        print(f"{shown(argv[1])} is not a directory", file=sys.stderr)
+        print(f"not a directory: {shown(argv[1])}", file=sys.stderr)
         return 2
     root = Path(argv[1]).resolve()
     manifests, links, unread = walk(root)
@@ -305,7 +321,11 @@ def main(argv=None):
     for kind, exc in unread:
         what = "read the folder" if kind == "folder" else "look at"
         why = shown(exc.strerror or type(exc).__name__)
-        print(f"cannot {what} {shown(exc.filename)}: {why}")
+        if exc.filename is None:
+            what = "read a folder" if kind == "folder" else "look at an entry"
+            print(f"cannot {what} the error does not name ({type(exc).__name__}): {why}")
+        else:
+            print(f"cannot {what} {shown(exc.filename)}: {why}")
         failed = True
     walked = set(manifests)
     accepted, linked, refused = [], [], set()
@@ -338,21 +358,52 @@ def main(argv=None):
     # sentence would name the wrong cause.
     reported = [Path(exc.filename) for _, exc in unread if exc.filename] + sorted(refused)
     for project in argv[2:]:
+        # Path.resolve raises RuntimeError on a loop of links (Python 3.12) and ValueError on a NUL
+        # byte, before looked_at could name either: the project is named, the next still checked.
+        try:
+            here = Path(project).resolve()
+        except (OSError, RuntimeError, ValueError) as exc:  # from 3.13 a loop is OSError(ELOOP)
+            loop = isinstance(exc, RuntimeError) or getattr(exc, "errno", None) == errno.ELOOP
+            reason = "a loop of links" if loop else type(exc).__name__
+            print(f"project not checked: {shown(project)} ({reason})")
+            failed = True
+            continue
+        # A project that is not there, or is no folder, has nothing to install into; one outside the
+        # root is never walked, so no install could make it pass: each is said as such.
+        info, why = looked_at(here)
+        if why is not None or not stat.S_ISDIR(info.st_mode):
+            if why == "missing":
+                print(f"project missing: {shown(project)}")
+            elif why == "loop":
+                print(f"project not checked: {shown(project)} (a loop of links)")
+            elif why is not None:
+                print(f"cannot look at the project {shown(project)}: {why}")
+            else:
+                print(f"project is not a folder: {shown(project)}")
+            failed = True
+            continue
+        if here != root and root not in here.parents:
+            print(f"project outside the tree, so its packages are not read: {shown(project)}")
+            failed = True
+            continue
         node_modules = Path(project) / "node_modules"
-        if Path(project).resolve() / "node_modules" in refused:
+        if here / "node_modules" in refused:
             continue  # the refused link is the finding, printed above
         # Path.is_dir raises on a permission error (Python 3.12): stat it, and name an error that
         # is not an absence by its type, a loop of links as one.
         info, why = looked_at(node_modules)
         if why == "loop":
-            print(f"{shown(project)}/node_modules is in a loop of links")
+            print(f"in a loop of links: {shown(project)}/node_modules")
             failed = True
         elif why not in (None, "missing"):
             print(f"cannot look at {shown(project)}/node_modules: {why}")
             failed = True
-        elif info is None or not stat.S_ISDIR(info.st_mode):
+        elif info is None:
             problem = f"node_modules missing in {shown(project)}: install its dependencies first"
             print(problem + " (licences are read from it)")
+            failed = True
+        elif not stat.S_ISDIR(info.st_mode):
+            print(f"not a folder: {shown(project)}/node_modules")
             failed = True
         elif not holds_a_package(node_modules.resolve(), manifests, accepted):
             here = node_modules.resolve()
@@ -366,10 +417,12 @@ def main(argv=None):
         if not failed:
             print("no installed packages under node_modules: run the install first")
         return 1
-    missing = node_missing(root, manifests, linked)
+    missing, unread_manifests = node_missing(root, manifests, linked)
+    for name in unread_manifests:
+        print(f"not read: {name}")
     for name in missing:
         print(f"no licence declared: {name}")
-    return 1 if missing or failed else 0
+    return 1 if missing or unread_manifests or failed else 0
 
 
 if __name__ == "__main__":
