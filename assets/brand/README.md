@@ -26,7 +26,8 @@ are taken from Cassini's own scan across the rings, so the C ring, the B ring, t
 Division, the A ring with the Encke Gap and the F ring fall at their true proportions. The
 moons Pan, Prometheus and Pandora are dots at their real radii. A faint blue haze outside
 the gold stands for the E ring, which Enceladus's jets feed; it is not to scale, since the
-real E ring lies much further out. In the side-by-side lockup the
+real E ring lies much further out. The rings are drawn in one piece behind the letters, and
+the word sits inside their opening, so no ring crosses a letter. In the side-by-side lockup the
 near tip of the rings is hidden behind the moon, so the moon sits on their edge.
 
 **Probe.** A Cassini-like spacecraft in gold foil dives towards the rings in the
