@@ -65,8 +65,8 @@ jobs:
         run: trivy config --severity HIGH,CRITICAL --exit-code 1 --quiet .
 
   account:
-    # Uses the runner's Docker socket (root on the host): reviewed code only.
-    # Andrew, 2026-11-16: pushes to main and manual runs, never pull requests.
+    # Uses the runner's Docker socket (root on the host). Andrew, 2026-11-16: run on
+    # pushes to main and on manual dispatch of the selected ref, never on pull requests.
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -85,6 +85,7 @@ jobs:
           install_args: "just go@1.26.5"
           cache: true
       - name: Run account-service checks against isolated PostgreSQL 18
+        shell: bash
         env:
           DOCKER_HOST: unix:///var/run/docker.sock
         run: |
@@ -101,7 +102,7 @@ jobs:
               echo 'Could not remove owned Docker client directory' >&2
               if [ "$result" -eq 0 ]; then result=1; fi
             fi
-            return "$result"
+            exit "$result"
           }
           trap cleanup_client EXIT
           # The pinned client below is the x86_64 build; refuse any other runner.

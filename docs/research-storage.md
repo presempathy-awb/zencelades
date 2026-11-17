@@ -19,7 +19,9 @@ and optional `--apply` flags as research ingestion. Model inputs are read only
 from the local root `cockpit/public/studio-models/` and written only under the
 remote prefix `imports/models/p041/`; v4 inputs are read only from
 `deliveries/enceladus_v4_fixed15/` and written only under `imports/v4-fixed15/`.
-Every plan must declare its `file_count` and `total_bytes`.
+A research plan must declare its `file_count` and `total_bytes`. The frozen v4
+plan declares neither, so for model and v4 they are optional, but a declared total
+must be an integer that matches the entries.
 The v4 executor refuses ZIPs. Research ingestion retains its original scope.
 Each batch creates separate staging and completion records, refuses existing
 records, and verifies the exact object set and every object's bytes at an
@@ -37,23 +39,24 @@ October 5 check is in the tree, and the packet it names lives outside it. Treat
 the 151 and 158 figures as unchecked until a dated command and the packet's
 size and SHA-256 manifest are committed.
 
-An October 5 local verification reported all **151 planned files**: 14 research
-PDFs, 55 model files and 82 v4 files. Their recorded sizes and SHA-256 hashes match
-the retained originals. The model plan describes a frozen older build; newer
+An October 5 local check, reported but not committed, covered **151 planned
+files**: 14 research PDFs, 55 model files and 82 v4 files, and reported that their
+recorded sizes and SHA-256 hashes matched the retained originals. The model plan describes a frozen older build; newer
 generated model bytes must not silently substitute for that preservation batch.
 No remote upload or completion receipt exists for these three batches.
 
-The verified execution packet on maxipaxi is
-`~/.cache/codex/zencelades/p148-publisher-candidate`: 158 files / 235,090,949
-bytes including the 151 objects, three plans and four Python modules.
-`packet.json` records every included file's size and SHA-256. All three clients
-pass plan-only validation within that packet. It preserves the frozen P041
+The execution packet was reported on October 5 at
+`~/.cache/codex/zencelades/p148-publisher-candidate` on maxipaxi: 158 files /
+235,090,949 bytes including the 151 objects, three plans and four Python modules,
+with a `packet.json` said to record every file's size and SHA-256. All three
+clients were reported to pass plan-only validation within it. It preserves the frozen P041
 model inputs separately; the current site's rebuilt model directory contains
 newer bytes and is not a valid substitute for this immutable batch. Transfer
 and credential-backed execution have not occurred. Revalidate the packet
 against its receipt and plans before any owner-host execution.
-The client module and its receipt entry were refreshed after Sonnet's
-positive-permission-control finding; all 158 records were reverified.
+The client module and its receipt entry were reported refreshed after Sonnet's
+positive-permission-control finding, with all 158 records reverified. None of
+these October 5 reports is a committed receipt (see above).
 
 Use the complete owner changes, not the historical config-only patch:
 [hesellsheshells `feat/thatsnozorb-publisher` (#65)](https://git.telpher.stream/awb/hesellsheshells/pulls/65)

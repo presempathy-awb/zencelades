@@ -120,13 +120,18 @@ image) printf 'arm64\n' ;;
 run)
     bounded=false
     mount=
+    network=
+    removed=false
     while [ "$1" != postgres:18-bookworm ]; do
         if [ "$1" = --entrypoint ] && [ "$2" = timeout ]; then bounded=true; fi
         if [ "$1" = --tmpfs ]; then mount="$2"; fi
+        if [ "$1" = --network ]; then network="$2"; fi
+        if [ "$1" = --rm ]; then removed=true; fi
         shift
     done
     shift
     printf '%s' "$mount" > "$FIXTURE_TEST_ROOT/mount"
+    printf '%s %s' "$network" "$removed" > "$FIXTURE_TEST_ROOT/isolation"
     printf '%s' "$3" > "$FIXTURE_TEST_ROOT/duration"
     (
         # Start the shortened clock after cancellation, independent of host load.
@@ -178,6 +183,9 @@ esac
             assert not (tmp_path / "expired").exists(), (
                 "fixture expired before cancellation"
             )
+            assert (tmp_path / "isolation").read_text() == "none true", (
+                "fixture must run with --network none and --rm"
+            )
             root, _, mount_options = (tmp_path / "mount").read_text().partition(":")
             assert root == "/var/lib/postgresql", "PG18 data is not in tmpfs"
             options = dict(
@@ -209,7 +217,7 @@ esac
             deadline = time.monotonic() + 2
             while not (tmp_path / "expired").exists():
                 assert time.monotonic() < deadline, (
-                    "fixture outlived its cancelled caller"
+                    "the simulated fixture lifetime did not end in timeout"
                 )
                 time.sleep(0.01)
             assert (tmp_path / "expired").read_text() == "124"

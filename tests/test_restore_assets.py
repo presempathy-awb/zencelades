@@ -70,6 +70,7 @@ def test_malformed_local_record_refuses_before_any_copy(
     with pytest.raises((ValueError, TypeError), match="catalog"):
         restore_assets.restore(retained, apply=True)
     assert not (root / good["path"]).exists()
+    assert not (root / bad["path"]).exists()
 
 
 @pytest.mark.unit
@@ -151,6 +152,7 @@ def test_refuses_invalid_paths_and_linked_sources_or_destinations(
         restore_assets.restore(retained, apply=True)
     assert sorted(p.name for p in outside.iterdir()) == ["input.bin"]
     assert (outside / "input.bin").read_bytes() == b"x"
+    assert (root / "source").is_symlink()
 
 
 @pytest.mark.unit
