@@ -64,6 +64,9 @@ jobs:
         run: trivy config --severity HIGH,CRITICAL --exit-code 1 --quiet .
 
   account:
+    # Uses the runner's Docker socket (root on the host): reviewed code only.
+    # Andrew, 2026-11-16: pushes to main and manual runs, never pull requests.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     container:
