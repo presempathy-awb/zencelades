@@ -108,9 +108,9 @@ building or running the model integration tests. `just assets-restore RETAINED`
 validates catalogued originals in a retained checkout and plans local hydration;
 adding `--apply` copies missing files. It verifies source and destination hashes,
 rejects linked paths or differing existing files, verifies staged copies and
-publishes without overwriting. It does not fetch credentials or remote assets.
-Publication is per file: an interrupted publish may leave earlier verified files
-in place. Re-running validates those files and resumes the missing copies.
+moves them into the checkout without overwriting. It does not fetch credentials
+or remote assets. Copying is per file: an interrupted run may leave earlier
+verified files in place. Re-running validates those files and resumes the missing copies.
 The homepage recording remains separate: restore its receipt, movie and poster,
 then run the existing stale-recording gate before building. Retrieve any remote
 originals using their existing archive records. The catalog records are the

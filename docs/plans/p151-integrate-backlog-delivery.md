@@ -21,8 +21,8 @@ names are history: on 2026-11-16 the branch was rebuilt on main `90fe5fd5`
    needs them. Run the source, complete account and relevant frontend/build
    checks. Record any fixture, hosted, browser, provider or source limitation.
 4. Publish the descendant to the existing PR only after a fresh remote-head
-   check and a forward-only dry run. Obtain a full current-head/base independent
-   review through review-scout, plus real hosted source/security/account checks.
+   check and a forward-only dry run. Obtain the merge policy's review by another
+   vendor on the current head and base, plus real hosted source/security checks.
    Older PASS receipts and local tests do not prove the new revision reviewed.
 5. Land through the project's shipping gate when the configured requirements
    are met, then continue actual scoped preservation, account installation and

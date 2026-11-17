@@ -46,7 +46,10 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
         if (
             not source.resolve().is_relative_to(ROOT.resolve() / source_folder)
             or source.is_symlink()
-            or (batch == "model" and source.suffix not in {".glb", ".babylon", ".json"})
+            or (
+                batch == "model"
+                and source.suffix.lower() not in {".glb", ".babylon", ".json"}
+            )
             or (batch == "v4" and source.suffix.lower() == ".zip")
             or str(safe_path(key)) != key
             or not key.startswith(prefix)
@@ -121,8 +124,9 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
         base + "/refs/main/objects?path=public%2Fpublisher-denial-probe",
     ):
         request(path, denied=True)
-    # A revoked token can receive the same denials; prove scoped read access first,
-    # and that the broker confined the listing to this batch's prefix.
+    # A revoked token can receive the same denials; prove scoped read access first.
+    # Only the one returned row is checked against the prefix: this refuses a broker
+    # that answers outside it, but does not prove the broker enforces the prefix.
     probe = json.loads(
         request(
             base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})

@@ -3,14 +3,14 @@
 Andrew's request: "great deploy".
 
 Complete P151's current-main integration and full validation, update the existing
-backlog PR forward only, and obtain a fresh complete Sonnet review and hosted CI.
-Land the eligible revision and deploy using the existing additive release recipe.
+backlog PR forward only, and obtain the merge policy's review by another vendor on
+the current head and base, plus hosted CI. Land the eligible revision. Deploying it
+with the existing additive release recipe is a separate step (see below).
 Preserve the compact header, Full night, interactive Showtime, all gallery media
 and private-studio access. Verify the active release and public/private endpoints.
-Superseded on 2026-11-16 for the review step: the gate is the merge policy's
-review by another vendor on the current head and base, not a Sonnet review.
-The deployment wording below is Andrew's October 7 request as recorded; this
-branch itself deploys nothing.
-
-This request authorizes this project's deployment; it does not mark the remaining
-account installation, scoped storage publication or inventory acceptance complete.
+Andrew's request is recorded as he gave it. It is not a scoped deployment
+decision: `docs/decisions.md` records none, and DEC-06 says prose cannot
+transfer that responsibility. A deployment of this branch needs Andrew's own
+go-ahead at the time. This branch deploys nothing, and nothing here marks the
+remaining account installation, scoped storage publication or inventory
+acceptance complete.

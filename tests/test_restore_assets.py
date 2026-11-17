@@ -112,9 +112,11 @@ def test_bad_hash_and_missing_source_prevalidate_before_any_copy(tmp_path, monke
     with pytest.raises(ValueError):
         restore_assets.restore(retained, apply=True)
     assert not (root / good["path"]).exists()
+    assert not (root / bad["path"]).exists()
     (retained / bad["path"]).unlink()
     with pytest.raises(ValueError):
         restore_assets.restore(retained, apply=True)
+    assert not (root / bad["path"]).exists()
     assert not (root / good["path"]).exists()
 
 
@@ -251,7 +253,7 @@ def test_changed_source_during_copy_is_not_published(tmp_path, monkeypatch):
     with pytest.raises(ValueError, match="changed while copying"):
         restore_assets.restore(retained, apply=True)
     assert not (root / record["path"]).exists()
-    assert not list((root / "source/uploads").glob(".restore-assets-*"))
+    assert list((root / "source/uploads").iterdir()) == []
 
 
 @pytest.mark.unit
@@ -264,7 +266,9 @@ def test_rejects_dangling_source_and_destination_parent_links(tmp_path, monkeypa
     (retained / "source").mkdir(parents=True)
     (retained / "source/uploads").symlink_to(tmp_path / "missing-source")
     with pytest.raises(ValueError, match="Symbolic link"):
-        restore_assets.restore(retained)
+        restore_assets.restore(retained, apply=True)
+    assert not (tmp_path / "missing-source").exists()
+    assert not (root / record["path"]).exists()
 
     (retained / "source/uploads").unlink()
     (retained / "source/uploads").mkdir()

@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT OR Apache-2.0
+# Copyright 2026 Andrew Briscoe and the zencelades contributors
 """Preserve the fixed model or v4 batch through the scoped publisher."""
 
 import argparse

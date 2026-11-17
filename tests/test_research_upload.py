@@ -7,13 +7,13 @@ import tempfile
 import threading
 import unittest
 from argparse import Namespace
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import parse_qs, urlsplit
 
-from scripts import research_upload
+from scripts import batch_upload, research_upload
 
 
 class ResearchUploadIntegration(unittest.TestCase):
@@ -239,6 +239,12 @@ class ResearchUploadIntegration(unittest.TestCase):
         self.mode = "listing-outside-prefix"
         with self.assertRaisesRegex(RuntimeError, "outside"):
             self.execute()
+        probes = [
+            parse_qs(urlsplit(path).query)
+            for method, path in self.calls
+            if urlsplit(path).path.endswith("/refs/main/objects/ls")
+        ]
+        self.assertEqual([{"prefix": ["imports/research/"], "amount": ["1"]}], probes)
         self.assertNotIn("POST", {method for method, _ in self.calls})
         self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
 
@@ -318,6 +324,36 @@ class ResearchUploadIntegration(unittest.TestCase):
                 with self.assertRaises(ValueError), redirect_stdout(io.StringIO()):
                     research_upload.run(self.args, batch=batch)
                 self.assertEqual(self.calls, [])
+
+
+class BatchUploadCommand(unittest.TestCase):
+    def test_each_batch_choice_reaches_run(self):
+        for batch in ("model", "v4"):
+            with self.subTest(batch=batch):
+                argv = [
+                    "batch_upload",
+                    batch,
+                    "--endpoint",
+                    "https://e",
+                    "--branch",
+                    "b",
+                ]
+                with patch.object(batch_upload, "run") as run, patch("sys.argv", argv):
+                    batch_upload.main()
+                run.assert_called_once()
+                self.assertEqual({"batch": batch}, run.call_args.kwargs)
+                self.assertFalse(run.call_args.args[0].apply)
+
+    def test_unknown_batch_is_refused_by_the_parser(self):
+        argv = ["batch_upload", "research", "--endpoint", "https://e", "--branch", "b"]
+        with (
+            patch.object(batch_upload, "run") as run,
+            patch("sys.argv", argv),
+            redirect_stderr(io.StringIO()),
+            self.assertRaises(SystemExit),
+        ):
+            batch_upload.main()
+        run.assert_not_called()
 
 
 if __name__ == "__main__":

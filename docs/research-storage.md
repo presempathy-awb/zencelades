@@ -66,7 +66,7 @@ review of that current pair. Repository metadata is denied to prefix-limited
 clients; the new client tests retain that denial.
 See [integration readiness](integration-readiness.md) for test and review evidence.
 
-The actual REST broker is published only on presvd1 loopback at port 13330.
+As observed on October 5, the REST broker was published only on presvd1 loopback at port 13330; this was not rechecked on 2026-11-16 (see pr-backlog-reconciliation.md).
 No declared laptop-to-broker route was found. The existing direct lakeFS tunnel
 and the human-readable shelf are not publisher endpoints. October 5 plan-only
 commands use the observed server endpoint as metadata, make no HTTP requests

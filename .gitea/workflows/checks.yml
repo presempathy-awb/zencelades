@@ -31,6 +31,7 @@ jobs:
         working-directory: cockpit
         run: |
           bun install --frozen-lockfile --ignore-scripts
+          # These four read GLB files from ignored deliveries/, absent in a clean checkout.
           bun test \
             --path-ignore-patterns=src/showtime/projection-sphere.test.ts \
             --path-ignore-patterns=src/showtime/projection-haze.test.ts \
@@ -89,7 +90,10 @@ jobs:
         run: |
           set -eu
           # The installed runner mounts this socket; require it explicitly.
-          test -S /var/run/docker.sock
+          if [ ! -S /var/run/docker.sock ]; then
+            echo "No Docker socket at /var/run/docker.sock; the account job needs the runner's daemon" >&2
+            exit 1
+          fi
           client_dir=$(mktemp -d)
           cleanup_client() {
             result=$?

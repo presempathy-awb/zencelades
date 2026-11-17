@@ -126,7 +126,6 @@ def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
                     shutil.copyfileobj(src, dst)
                     dst.flush()
                     os.fsync(dst.fileno())
-                stage.chmod(source.stat().st_mode & 0o777)
                 expected_size, expected_hash = entries[
                     destination.relative_to(target_root).as_posix()
                 ]
@@ -137,9 +136,22 @@ def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
                     raise ValueError(
                         f"Retained original changed while copying: {source}"
                     )
+                # Widen to the original's mode only once the bytes are proven.
+                stage.chmod(source.stat().st_mode & 0o777)
+                descriptor = os.open(stage, os.O_RDONLY)
+                try:
+                    os.fsync(descriptor)
+                finally:
+                    os.close(descriptor)
             for stage, destination in staged:
                 os.link(stage, destination)
-            for directory in {destination.parent for _, destination in staged}:
+            # Sync each directory that gained an entry, up to the checkout root.
+            directories = set()
+            for _, destination in staged:
+                directories.update(
+                    parent for parent in destination.relative_to(target_root).parents
+                )
+            for directory in sorted(target_root / d for d in directories):
                 descriptor = os.open(directory, os.O_RDONLY)
                 try:
                     os.fsync(descriptor)
