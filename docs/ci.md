@@ -1,16 +1,16 @@
 # Continuous integration
 
-Gitea Actions runs the repository's declared `just check` recipe, the cockpit's Bun source tests, and account-service race, vet, and PostgreSQL persistence checks on pushes to `main`, pull requests, and manual dispatches. Branch pushes rely on the pull-request event to avoid duplicate jobs. Cockpit dependencies are installed from `cockpit/bun.lock` with `bun install --frozen-lockfile`. The account job uses Go 1.26.5 and a job-owned PostgreSQL 18 service container; it connects through `ZENCELADES_TEST_DATABASE_URL` and requires no Docker CLI or host socket access.
+Gitea Actions runs the repository's declared `just check` recipe, the cockpit's Bun source tests, and account-service race, vet, and PostgreSQL persistence checks on pushes to `main`, pull requests, and manual dispatches. Branch pushes rely on the pull-request event to avoid duplicate jobs. Cockpit dependencies are installed from `cockpit/bun.lock` with `bun install --frozen-lockfile`. The account job uses Go 1.26.5 and runs `just account-check`, the same recipe as a local run: it starts the disposable PostgreSQL 18 fixture in `account-service/test-postgres.sh` (no network, no published port, a 256 MiB tmpfs, a 600-second lifetime).
 
-Local `just account-check` retains its disposable Docker-managed PostgreSQL 18 fixture. CI instead runs the shared `just account-service-check` recipe against its isolated service container, so the integration test executes in the ordinary Go test process.
+To start that fixture the job needs the runner's Docker daemon. It requires the host socket `/var/run/docker.sock`, which the presvd1 runner mounts into every job container, and downloads a SHA-256-pinned static Docker 29.8.1 client for x86_64. **Access to that socket is control of the host's Docker daemon, which is equivalent to root on the runner host.** Any code a pull request can run in this job has that access. The fixture container itself has no network; the job does not have that limit.
 
 The workflow and `mise.toml` pin the same Go, Ruff, Gitleaks and Trivy versions.
 Run the recipes through `mise exec -- just ...`; the project enables
 `activate_aggressive` so child shells retain those tools ahead of competing
 system installations. This prevents a Go binary from one installation using
 the compiler directory from another. The first hosted run exposed missing
-Ruff/Gitleaks version selections and an unavailable Docker CLI; the source
-configuration and service-backed account job address those failures.
+Ruff/Gitleaks version selections and an unavailable Docker CLI; the pinned tools
+and the job's own pinned Docker client address those failures.
 
 A separate job runs Gitleaks over repository files up to 5 MB and Trivy's
 dependency scan, configured to fail on high or critical vulnerabilities. The

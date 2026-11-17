@@ -16,7 +16,8 @@ The retained original is
 `source/research/enceladus-avatar/originals/Universal Base Characters[Standard].zip`:
 128,968,391 bytes, SHA-256
 `fdbf1804c90dfc1ea03e992bff7da2dfd1a79318e13270a660180f9308455f40`.
-No archive program was executed.
+The ZIP's contents were read to build the packed candidate below; no separate
+archive program was run.
 
 The packed candidate is
 `source/research/enceladus-avatar/generated/quaternius-superhero-male.glb`:

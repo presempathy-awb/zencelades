@@ -27,14 +27,18 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
     endpoint = endpoint_origin(args.endpoint)
     if not re.fullmatch(r"ingest-[a-z0-9-]{1,80}", args.branch):
         raise ValueError("Use a fresh ingest-* branch")
+    name = batch.capitalize()
     plan = json.loads((ROOT / f"assets/{batch}-upload-plan.json").read_text())
     if plan["repository"] != "thatsnozorb-assets" or plan["prefix"] != prefix:
         raise ValueError(
-            "Research destination differs from the scoped preservation plan"
+            f"{name} destination differs from the scoped preservation plan"
         )
+    for field in ("file_count", "total_bytes"):
+        if type(plan.get(field)) is not int:
+            raise ValueError(f"{name} plan must declare an integer {field}")
     entries = plan["files"]
-    if not entries or len(entries) != plan.get("file_count", len(entries)):
-        raise ValueError("Research file count differs from the plan")
+    if not entries or len(entries) != plan["file_count"]:
+        raise ValueError(f"{name} file count differs from the plan")
     expected = {}
     for entry in entries:
         source = ROOT / safe_path(entry["path"])
@@ -51,12 +55,12 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
             or sha256(source) != entry["content_sha256"]
         ):
             raise ValueError(
-                "Research path, key, length or digest differs from the plan"
+                f"{name} path, key, length or digest differs from the plan"
             )
         expected[key] = entry
     total_bytes = sum(e["bytes"] for e in entries)
-    if total_bytes != plan.get("total_bytes", total_bytes):
-        raise ValueError("Research byte count differs from the plan")
+    if total_bytes != plan["total_bytes"]:
+        raise ValueError(f"{name} byte count differs from the plan")
     print(
         json.dumps(
             {
@@ -81,7 +85,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
     staging_path = ROOT / f"assets/{batch}-upload-staging.json"
     if receipt_path.exists() or staging_path.exists():
         raise ValueError(
-            "Research execution record already exists; inspect it before recovery"
+            f"{name} execution record already exists; inspect it before recovery"
         )
     opener = build_opener(NoRedirect())
 
@@ -117,10 +121,15 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
         base + "/refs/main/objects?path=public%2Fpublisher-denial-probe",
     ):
         request(path, denied=True)
-    # A revoked token can receive the same denials; prove scoped read access first.
-    request(
-        base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})
+    # A revoked token can receive the same denials; prove scoped read access first,
+    # and that the broker confined the listing to this batch's prefix.
+    probe = json.loads(
+        request(
+            base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})
+        )
     )
+    if any(not row["path"].startswith(prefix) for row in probe["results"]):
+        raise RuntimeError(f"Broker listed objects outside {prefix}; scope not proven")
     record = {
         "repository": plan["repository"],
         "branch": args.branch,
@@ -147,7 +156,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
             len(content) != entry["bytes"]
             or hashlib.sha256(content).hexdigest() != entry["content_sha256"]
         ):
-            raise ValueError("Research source changed during ingestion")
+            raise ValueError(f"{name} source changed during ingestion")
         request(
             branch + "/objects?" + urlencode({"path": entry["lakefs_path"]}),
             "POST",
@@ -184,7 +193,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
         or len(rows) != len(expected)
         or {row["path"] for row in rows} != set(expected)
     ):
-        raise ValueError("Immutable research object set differs from the exact batch")
+        raise ValueError(f"Immutable {batch} object set differs from the exact batch")
     for row in rows:
         if row["size_bytes"] != expected[row["path"]]["bytes"]:
             raise ValueError("Immutable listed size differs from the plan")
@@ -194,7 +203,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
             len(content) != entry["bytes"]
             or hashlib.sha256(content).hexdigest() != entry["content_sha256"]
         ):
-            raise ValueError("Immutable research readback differs from the original")
+            raise ValueError(f"Immutable {batch} readback differs from the original")
     record.update(
         status="verified",
         readback_complete=True,

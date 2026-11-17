@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT OR Apache-2.0
+# Copyright 2026 Andrew Briscoe and the zencelades contributors
 import hashlib
 import json
 from pathlib import Path
@@ -37,12 +39,14 @@ def test_apply_copies_exact_bytes_and_is_idempotent(
         (root / "assets/catalog.json").rename(root / "assets" / manifest_name)
     (retained / "deliveries/enceladus_v3/models").mkdir(parents=True)
     (retained / record["path"]).write_bytes(data)
+    (retained / record["path"]).chmod(0o644)
     monkeypatch.setattr(restore_assets, "ROOT", root)
 
     assert restore_assets.restore(retained) == (1, len(data))
     assert not (root / record["path"]).exists()
     assert restore_assets.restore(retained, apply=True) == (1, len(data))
     assert (root / record["path"]).read_bytes() == data
+    assert (root / record["path"]).stat().st_mode & 0o777 == 0o644
     assert restore_assets.restore(retained, apply=True) == (0, len(data))
 
 
@@ -62,6 +66,31 @@ def test_malformed_local_record_refuses_before_any_copy(
     (retained / "source/uploads").mkdir(parents=True)
     (retained / good["path"]).write_bytes(b"good")
     (retained / bad["path"]).write_bytes(b"x")
+    monkeypatch.setattr(restore_assets, "ROOT", root)
+    with pytest.raises((ValueError, TypeError), match="catalog"):
+        restore_assets.restore(retained, apply=True)
+    assert not (root / good["path"]).exists()
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    "catalog",
+    [
+        {"files": {"path": "source/uploads/bad.bin"}},
+        {"files": ["source/uploads/bad.bin"]},
+        {"files": [{"bytes": 1, "content_sha256": "0" * 64}]},
+    ],
+    ids=["records-not-a-list", "record-not-an-object", "record-without-a-path"],
+)
+def test_malformed_catalog_structure_refuses_before_any_copy(
+    tmp_path, monkeypatch, catalog
+):
+    root, retained = tmp_path / "target", tmp_path / "retained"
+    good = entry("source/uploads/good.bin", b"good")
+    write_catalog(root, [good])
+    (root / "assets/build-inputs.json").write_text(json.dumps(catalog))
+    (retained / "source/uploads").mkdir(parents=True)
+    (retained / good["path"]).write_bytes(b"good")
     monkeypatch.setattr(restore_assets, "ROOT", root)
     with pytest.raises((ValueError, TypeError), match="catalog"):
         restore_assets.restore(retained, apply=True)
@@ -96,9 +125,13 @@ def test_refuses_invalid_paths_and_linked_sources_or_destinations(
     root, retained = tmp_path / "target", tmp_path / "retained"
     root.mkdir()
     monkeypatch.setattr(restore_assets, "ROOT", root)
+    retained.mkdir()
+    # The catalogued bytes exist where an unchecked ".." would open them.
+    (retained / "escape").write_bytes(b"x")
     write_catalog(root, [entry("source/../escape", b"x")])
-    with pytest.raises(ValueError):
-        restore_assets.restore(retained)
+    with pytest.raises(ValueError, match="Unsafe archive path"):
+        restore_assets.restore(retained, apply=True)
+    assert not (root / "escape").exists()
     record = entry("source/uploads/input.bin", b"x")
     write_catalog(root, [record])
     outside = tmp_path / "outside"
@@ -106,13 +139,16 @@ def test_refuses_invalid_paths_and_linked_sources_or_destinations(
     (outside / "input.bin").write_bytes(b"x")
     (retained / "source/uploads").mkdir(parents=True)
     (retained / record["path"]).symlink_to(outside / "input.bin")
-    with pytest.raises(ValueError):
-        restore_assets.restore(retained)
+    with pytest.raises(ValueError, match="Symbolic link"):
+        restore_assets.restore(retained, apply=True)
+    assert not (root / record["path"]).exists()
     (retained / record["path"]).unlink()
     (retained / record["path"]).write_bytes(b"x")
     (root / "source").symlink_to(outside, target_is_directory=True)
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="Symbolic link"):
         restore_assets.restore(retained, apply=True)
+    assert sorted(p.name for p in outside.iterdir()) == ["input.bin"]
+    assert (outside / "input.bin").read_bytes() == b"x"
 
 
 @pytest.mark.unit
@@ -207,9 +243,9 @@ def test_changed_source_during_copy_is_not_published(tmp_path, monkeypatch):
     monkeypatch.setattr(restore_assets, "ROOT", root)
     copyfileobj = restore_assets.shutil.copyfileobj
 
-    def change_before_copy(src, dst):
+    def change_before_copy(*args, **kwargs):
         source.write_bytes(b"changed")
-        copyfileobj(src, dst)
+        copyfileobj(*args, **kwargs)
 
     monkeypatch.setattr(restore_assets.shutil, "copyfileobj", change_before_copy)
     with pytest.raises(ValueError, match="changed while copying"):
@@ -236,3 +272,4 @@ def test_rejects_dangling_source_and_destination_parent_links(tmp_path, monkeypa
     (root / "source").symlink_to(tmp_path / "missing-destination")
     with pytest.raises(ValueError, match="Symbolic link"):
         restore_assets.restore(retained, apply=True)
+    assert not (tmp_path / "missing-destination").exists()

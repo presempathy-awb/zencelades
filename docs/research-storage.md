@@ -5,8 +5,9 @@
 October 5 client correction: the prefix-restricted publisher refuses repository
 metadata. The research uploader now verifies that refusal instead of requiring
 a successful metadata read before ingestion. Its four scope probes and a
-successful, prefix-limited object listing on `main` precede every execution
-record and branch creation. The positive read distinguishes an authorized
+successful object listing on `main` precede every execution record and branch
+creation. The client refuses to continue if that listing returns any object
+outside the batch's remote prefix. The positive read distinguishes an authorized
 publisher from a revoked token returning only refusals. Immutable object length
 and SHA-256 readback remain required.
 The loopback integration fixture follows the owner's denied-metadata contract.
@@ -14,9 +15,11 @@ This correction does not deploy the broker or complete an upload.
 
 The separate `just batch-upload model` and `just batch-upload v4` entry points
 now accept the fixed plans in `assets/`, with the same `--endpoint`, `--branch`
-and optional `--apply` flags as research ingestion. Model inputs are confined
-to `cockpit/public/studio-models/` and `imports/models/p041/`; v4 inputs are
-confined to `deliveries/enceladus_v4_fixed15/` and `imports/v4-fixed15/`.
+and optional `--apply` flags as research ingestion. Model inputs are read only
+from the local root `cockpit/public/studio-models/` and written only under the
+remote prefix `imports/models/p041/`; v4 inputs are read only from
+`deliveries/enceladus_v4_fixed15/` and written only under `imports/v4-fixed15/`.
+Every plan must declare its `file_count` and `total_bytes`.
 The v4 executor refuses ZIPs. Research ingestion retains its original scope.
 Each batch creates separate staging and completion records, refuses existing
 records, and verifies the exact object set and every object's bytes at an
@@ -29,8 +32,13 @@ that evidence until the outcome is reconciled. After explicit recovery of the
 owned record, use a fresh, unshared ingest branch. Never delete remote data or
 another operator's records simply to make a retry proceed.
 
-Fresh local verification checked all **151 planned files**: 14 research PDFs,
-55 model files and 82 v4 files. Their recorded sizes and SHA-256 hashes match
+Unverified in this repository: no command output or receipt for the following
+October 5 check is in the tree, and the packet it names lives outside it. Treat
+the 151 and 158 figures as unchecked until a dated command and the packet's
+size and SHA-256 manifest are committed.
+
+An October 5 local verification reported all **151 planned files**: 14 research
+PDFs, 55 model files and 82 v4 files. Their recorded sizes and SHA-256 hashes match
 the retained originals. The model plan describes a frozen older build; newer
 generated model bytes must not silently substitute for that preservation batch.
 No remote upload or completion receipt exists for these three batches.
@@ -89,8 +97,9 @@ TreePod, a six-foot trampoline comparison and a swivel technical notice:
 scope; a page count is not a claim of close inspection of every page. The
 validation used `https://example.invalid` and `ingest-basket-plan-only` as
 explicit inert placeholders with apply=false; no broker request or remote
-branch was created. The three earlier hardware rows now carry source IDs
-required by the uploader's progress metadata. No new upload receipt exists.
+branch was created. The three earlier hardware rows carry source IDs; the
+uploader prints a `source_id` as progress metadata when one is present and the
+object key otherwise, so the field is optional. No new upload receipt exists.
 
 That checkpoint proposed tracking the generated model build at the time. The
 current P041 plan identifies a frozen preservation batch; newer generated

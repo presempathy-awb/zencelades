@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT OR Apache-2.0
+# Copyright 2026 Andrew Briscoe and the zencelades contributors
 """Reject the temporary socket-only server during fixture initialization."""
 
 import os
@@ -95,7 +97,12 @@ esac
 
 @pytest.mark.integration
 def test_fixture_expires_after_its_caller_is_killed(tmp_path):
-    """The daemon-owned fixture must expire without the caller's shell trap."""
+    """Argv contract: the fixture's lifetime belongs to the container, not the caller.
+
+    The fake Docker client runs the requested GNU timeout itself, so this test
+    checks the command line test-postgres.sh builds (entrypoint, duration, tmpfs);
+    it does not prove that a real daemon reaps the container when the caller dies.
+    """
     timeout = shutil.which("timeout") or shutil.which("gtimeout")
     if timeout is None:
         pytest.skip("requires GNU timeout for the simulated container entrypoint")

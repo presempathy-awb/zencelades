@@ -75,7 +75,8 @@ its loopback listener is absent. The canonical public `/account/api/session`
 returns HTTP 404. The website remains on release `c9ca948ae710bd0fc342765a6151ad1c204c7bb1fa77450219dc0c14ff347988`.
 Local race, vet and isolated PG18 checks passed earlier after updating the
 existing `golang.org/x/text` dependency to v0.39.0 for
-[GO-2026-5970](https://pkg.go.dev/vuln/GO-2026-5970). After the CI toolchain
+[GO-2026-5970](https://pkg.go.dev/vuln/GO-2026-5970). The module files now
+record v0.41.0, moved on 2026-11-16 for CVE-2026-56851 (zencelades #45). After the CI toolchain
 repair, pinned Go race tests and vet passed again, but the PostgreSQL fixture
 stalled at Docker startup and was interrupted with exit 137. That rerun does
 not establish persistence on the repaired revision; hosted service-backed

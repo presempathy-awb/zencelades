@@ -76,6 +76,8 @@ class ResearchUploadIntegration(unittest.TestCase):
                         rows.append(
                             {"path": "imports/research/unexpected", "size_bytes": 0}
                         )
+                    if case.mode == "listing-outside-prefix":
+                        rows.append({"path": "public/unscoped.pdf", "size_bytes": 0})
                     self.answer(
                         200,
                         {
@@ -221,6 +223,24 @@ class ResearchUploadIntegration(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     self.execute()
                 self.assertEqual([], self.calls)
+
+    def test_plan_without_declared_totals_refuses_before_network(self):
+        for field in ("file_count", "total_bytes"):
+            with self.subTest(missing=field):
+                plan = {k: v for k, v in self.plan.items() if k != field}
+                (self.root / "assets/research-upload-plan.json").write_text(
+                    json.dumps(plan)
+                )
+                with self.assertRaisesRegex(ValueError, field):
+                    self.execute()
+                self.assertEqual([], self.calls)
+
+    def test_listing_outside_the_prefix_stops_before_any_record(self):
+        self.mode = "listing-outside-prefix"
+        with self.assertRaisesRegex(RuntimeError, "outside"):
+            self.execute()
+        self.assertNotIn("POST", {method for method, _ in self.calls})
+        self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
 
     def test_plan_needs_no_token_and_does_not_connect(self):
         self.args.apply = False

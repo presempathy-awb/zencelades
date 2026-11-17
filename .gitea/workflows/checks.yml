@@ -55,7 +55,7 @@ jobs:
       - name: Verify narrow secret-scanner exceptions
         run: |
           command -v gitleaks
-          uv run --no-project --with pytest pytest -q tests/test_secret_scan.py
+          uv run --no-project --with pytest==9.2.0 pytest -q tests/test_secret_scan.py
       - name: Scan repository for secrets
         run: gitleaks dir . --config .gitleaks.toml --no-banner --no-color --redact --timeout 90 --max-target-megabytes 5
       - name: Scan dependencies for high and critical vulnerabilities
@@ -97,6 +97,11 @@ jobs:
             return "$result"
           }
           trap cleanup_client EXIT
+          # The pinned client below is the x86_64 build; refuse any other runner.
+          if [ "$(uname -m)" != x86_64 ]; then
+            echo "The account job needs an x86_64 runner, not $(uname -m)" >&2
+            exit 1
+          fi
           curl --fail --location --max-time 120 \
             https://download.docker.com/linux/static/stable/x86_64/docker-29.8.1.tgz \
             --output "$client_dir/docker.tgz"

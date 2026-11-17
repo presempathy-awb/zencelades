@@ -4,10 +4,14 @@ Continuation of Andrew's active objective: "get project goals all done".
 The previous turn delivered the real PG18 startup repair in PR31. This turn
 continues the original broad objective; source integration is one prerequisite.
 
+Snapshot of October 7, 2026, kept as the plan was written. The revisions it
+names are history: on 2026-11-16 the branch was rebuilt on main `90fe5fd5`
+(see the pull request description for its current head).
+
 1. Refresh PR28 and its owner chat, current main, source cleanliness and CI.
-   The owner chat is idle and its lane is clean. PR28 remains at `39d2d85f`;
-   its account job failed with a fixture connection refusal. Main `fc63ca6c`
-   contains the tested readiness repair and the newer compact-header/Full-night
+   On October 7 the owner chat was idle and its lane clean. PR28 was at
+   `39d2d85f`; its account job had failed with a fixture connection refusal.
+   Main `fc63ca6c` contained the readiness repair and the newer compact-header/Full-night
    features. Preserve all of both changes in a separate integration workspace.
 2. Add current main as a parent, resolve conflicts hunk by hunk, and verify that
    the combined tree retains the current application/media behavior plus the

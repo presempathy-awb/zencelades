@@ -46,7 +46,7 @@ assets-v4 *args:
     uv run --no-project python -m scripts.catalog_v4 {{args}}
 
 check:
-    uv run --no-project --with pytest --with reportlab==5.0.1 --with pypdf==6.19.0 pytest -q
+    uv run --no-project --with pytest==9.2.0 --with reportlab==5.0.1 --with pypdf==6.19.0 pytest -q
     ruff check scripts tests
     ruff format --check scripts tests
     uv run --no-project python -m scripts.grant_ledger --check

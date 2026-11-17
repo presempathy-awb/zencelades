@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT OR Apache-2.0
+# Copyright 2026 Andrew Briscoe and the zencelades contributors
 """Restore cataloged original assets from a retained checkout without overwriting."""
 
 from __future__ import annotations
@@ -21,34 +23,37 @@ def _manifest_entries(root: Path) -> dict[str, tuple[int, str]]:
     ]
     manifests.extend(sorted((root / "assets").glob("enceladus-*/catalog.json")))
     manifests.append(root / "assets/engineering-sources.json")
+    # Citation records describe sources without a retained local copy.
+    citations = root / "assets/engineering-sources.json"
     for manifest in manifests:
         if not manifest.is_file():
             continue
         data = json.loads(manifest.read_text())
-        records = data.get("files", data.get("sources", data.get("inputs", [])))
-        if manifest.name == "catalog.json" and manifest.parent.name.startswith(
+        enceladus = manifest.name == "catalog.json" and manifest.parent.name.startswith(
             "enceladus-"
-        ):
+        )
+        if enceladus:
             records = data.get("sources", data.get("inputs", []))
+        else:
+            records = data.get("files", data.get("sources", data.get("inputs", [])))
         if not isinstance(records, list):
-            continue
+            raise TypeError(f"Malformed catalog, records are not a list: {manifest}")
         for record in records:
             if not isinstance(record, dict):
-                continue
-            path = record.get("path")
-            if not path and record.get("local_path"):
-                path = record["local_path"]
+                raise TypeError(f"Malformed catalog record in {manifest}: {record!r}")
+            path = record.get("path") or record.get("local_path")
             relative_path = record.get("relative_path")
             if (
                 not path
+                and enceladus
                 and isinstance(relative_path, str)
                 and relative_path.startswith("originals/")
             ):
-                path = (
-                    f"source/research/{manifest.parent.name}/{record['relative_path']}"
-                )
+                path = f"source/research/{manifest.parent.name}/{relative_path}"
             if not path:
-                continue
+                if manifest == citations:
+                    continue
+                raise ValueError(f"Catalog record without a local path in {manifest}")
             relative = safe_path(path)
             if relative.as_posix() != path or relative.parts[0] not in {
                 "source",
@@ -119,6 +124,9 @@ def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
                 staged.append((stage, destination))
                 with os.fdopen(fd, "wb") as dst, source.open("rb") as src:
                     shutil.copyfileobj(src, dst)
+                    dst.flush()
+                    os.fsync(dst.fileno())
+                stage.chmod(source.stat().st_mode & 0o777)
                 expected_size, expected_hash = entries[
                     destination.relative_to(target_root).as_posix()
                 ]
@@ -131,6 +139,12 @@ def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
                     )
             for stage, destination in staged:
                 os.link(stage, destination)
+            for directory in {destination.parent for _, destination in staged}:
+                descriptor = os.open(directory, os.O_RDONLY)
+                try:
+                    os.fsync(descriptor)
+                finally:
+                    os.close(descriptor)
         finally:
             for stage, _ in staged:
                 stage.unlink(missing_ok=True)
