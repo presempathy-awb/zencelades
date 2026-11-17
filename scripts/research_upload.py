@@ -15,6 +15,14 @@ from scripts.assets import ROOT, safe_path, sha256
 from scripts.lake_upload import TOKEN_ENV, NoRedirect, endpoint_origin
 
 
+def in_prefix(path: str, prefix: str) -> bool:
+    """True for a plain relative path under prefix: no empty, `.` or `..` segment."""
+    try:
+        return str(safe_path(path)) == path and path.startswith(prefix)
+    except ValueError:
+        return False
+
+
 def run(args: argparse.Namespace, *, batch: str = "research") -> None:
     scopes = {
         "research": ("imports/research/", "source/research"),
@@ -53,8 +61,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
                 and source.suffix.lower() not in {".glb", ".babylon", ".json"}
             )
             or (batch == "v4" and source.suffix.lower() == ".zip")
-            or str(safe_path(key)) != key
-            or not key.startswith(prefix)
+            or not in_prefix(key, prefix)
             or key in expected
             or source.stat().st_size != entry["bytes"]
             or sha256(source) != entry["content_sha256"]
@@ -140,7 +147,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
         for row in rows
     ):
         raise RuntimeError("Broker listing is malformed; scope not proven")
-    if any(not row["path"].startswith(prefix) for row in rows):
+    if any(not in_prefix(row["path"], prefix) for row in rows):
         raise RuntimeError(f"Broker listed objects outside {prefix}; scope not proven")
     record = {
         "repository": plan["repository"],

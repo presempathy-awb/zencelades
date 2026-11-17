@@ -82,6 +82,15 @@ def _no_links(root: Path, path: Path) -> None:
             raise ValueError(f"Symbolic link is not allowed: {current}")
 
 
+def _fsync_directories(directories) -> None:
+    for directory in directories:
+        descriptor = os.open(directory, os.O_RDONLY)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+
+
 def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
     """Validate every original and destination, then copy only missing exact files."""
     target_root = ROOT.resolve()
@@ -154,16 +163,18 @@ def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
                     parent for parent in destination.relative_to(target_root).parents
                 )
             # Deepest first, so a parent's entry is durable only after its child's.
-            for directory in sorted(
-                (target_root / d for d in directories),
-                key=lambda path: len(path.parts),
-                reverse=True,
-            ):
-                descriptor = os.open(directory, os.O_RDONLY)
-                try:
-                    os.fsync(descriptor)
-                finally:
-                    os.close(descriptor)
+            _fsync_directories(
+                sorted(
+                    (target_root / d for d in directories),
+                    key=lambda path: len(path.parts),
+                    reverse=True,
+                )
+            )
+            # Only now drop the stage names, so a crash never leaves a file without one,
+            # and sync again so the removals are as durable as the links.
+            for stage, _ in staged:
+                stage.unlink()
+            _fsync_directories({stage.parent for stage, _ in staged})
         finally:
             for stage, _ in staged:
                 stage.unlink(missing_ok=True)

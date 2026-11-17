@@ -42,6 +42,7 @@ class ResearchUploadIntegration(unittest.TestCase):
         }
         self.write_plan()
         self.mode = "ok"
+        self.stray = "public/unscoped.pdf"
         self.calls = []
         self.objects = {}
         case = self
@@ -77,7 +78,7 @@ class ResearchUploadIntegration(unittest.TestCase):
                             {"path": "imports/research/unexpected", "size_bytes": 0}
                         )
                     if case.mode == "listing-outside-prefix":
-                        rows.append({"path": "public/unscoped.pdf", "size_bytes": 0})
+                        rows.append({"path": case.stray, "size_bytes": 0})
                     if case.mode == "listing-malformed":
                         rows = [{"size_bytes": 0}]
                     self.answer(
@@ -289,15 +290,34 @@ class ResearchUploadIntegration(unittest.TestCase):
 
     def test_listing_outside_the_prefix_stops_before_any_record(self):
         self.mode = "listing-outside-prefix"
-        with self.assertRaisesRegex(RuntimeError, "outside"):
-            self.execute()
-        probes = [
-            parse_qs(urlsplit(path).query)
-            for method, path in self.calls
-            if urlsplit(path).path.endswith("/refs/main/objects/ls")
-        ]
-        self.assertEqual([{"prefix": ["imports/research/"], "amount": ["1"]}], probes)
-        self.assertNotIn("POST", {method for method, _ in self.calls})
+        for stray in (
+            "public/unscoped.pdf",
+            "imports/research/../public/x",
+            "imports/research/./x",
+            "imports/research//x",
+        ):
+            with self.subTest(stray=stray):
+                self.stray = stray
+                self.calls.clear()
+                with self.assertRaisesRegex(RuntimeError, "outside"):
+                    self.execute()
+                probes = [
+                    parse_qs(urlsplit(path).query)
+                    for method, path in self.calls
+                    if urlsplit(path).path.endswith("/refs/main/objects/ls")
+                ]
+                self.assertEqual(
+                    [{"prefix": ["imports/research/"], "amount": ["1"]}], probes
+                )
+                self.assertNotIn("POST", {method for method, _ in self.calls})
+
+    def test_branch_outside_the_ingest_pattern_refuses_before_network(self):
+        for branch in ("main", "ingest-", "ingest-Upper", "work/ingest-x"):
+            with self.subTest(branch=branch):
+                self.args.branch = branch
+                with self.assertRaisesRegex(ValueError, "ingest"):
+                    self.execute()
+                self.assertEqual([], self.calls)
         self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
         self.assertFalse((self.root / "assets/research-upload-receipt.json").exists())
 
