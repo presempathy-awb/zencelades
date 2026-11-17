@@ -26,6 +26,7 @@ class ResearchUploadIntegration(unittest.TestCase):
         self.payload = b"%PDF-1.7 synthetic preservation fixture\n"
         (self.root / "source/research/sample.pdf").write_bytes(self.payload)
         self.key = "imports/research/fixture/sample.pdf"
+        self.prefix = "imports/research/"
         self.entry = {
             "path": "source/research/sample.pdf",
             "lakefs_path": self.key,
@@ -69,6 +70,43 @@ class ResearchUploadIntegration(unittest.TestCase):
                 elif parsed.path == "/api/v1/repositories/thatsnozorb-assets":
                     # The client proceeds only when repository metadata is denied.
                     self.answer(200 if case.mode == "metadata-readable" else 403, {})
+                elif (
+                    parsed.path
+                    == "/api/v1/repositories/thatsnozorb-assets/refs/main/objects/ls"
+                ):
+                    if query != {"prefix": [case.prefix], "amount": ["1"]}:
+                        self.answer(403, {})
+                        return
+                    if case.mode == "preflight-populated":
+                        value = {
+                            "results": [{"path": case.key}],
+                            "pagination": {"has_more": False},
+                        }
+                    elif case.mode == "preflight-pagination":
+                        value = {"results": [], "pagination": {"has_more": True}}
+                    elif case.mode == "preflight-missing":
+                        value = {"pagination": {"has_more": False}}
+                    elif case.mode == "preflight-invalid":
+                        value = {"results": None, "pagination": {"has_more": False}}
+                    elif case.mode == "preflight-no-pagination":
+                        value = {"results": []}
+                    elif case.mode == "preflight-null-has-more":
+                        value = {"results": [], "pagination": {"has_more": None}}
+                    elif case.mode == "preflight-zero-has-more":
+                        value = {"results": [], "pagination": {"has_more": 0}}
+                    elif case.mode == "listing-outside-prefix":
+                        value = {
+                            "results": [{"path": case.stray}],
+                            "pagination": {"has_more": False},
+                        }
+                    elif case.mode == "listing-malformed":
+                        value = {
+                            "results": [{"size_bytes": 0}],
+                            "pagination": {"has_more": False},
+                        }
+                    else:
+                        value = {"results": [], "pagination": {"has_more": False}}
+                    self.answer(200, value)
                 elif parsed.path.endswith("/objects/ls"):
                     rows = [{"path": case.key, "size_bytes": len(case.payload)}]
                     if case.mode == "size":
@@ -77,10 +115,6 @@ class ResearchUploadIntegration(unittest.TestCase):
                         rows.append(
                             {"path": "imports/research/unexpected", "size_bytes": 0}
                         )
-                    if case.mode == "listing-outside-prefix":
-                        rows.append({"path": case.stray, "size_bytes": 0})
-                    if case.mode == "listing-malformed":
-                        rows = [{"size_bytes": 0}]
                     self.answer(
                         200,
                         {
@@ -328,6 +362,71 @@ class ResearchUploadIntegration(unittest.TestCase):
         self.assertEqual([], self.calls)
         self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
 
+    def test_research_aggregate_totals_are_required_before_network(self):
+        self.args.apply = False
+        for field, invalid in (
+            ("file_count", "missing"),
+            ("total_bytes", "missing"),
+            ("file_count", True),
+            ("file_count", 1.0),
+            ("total_bytes", float(self.plan["total_bytes"])),
+        ):
+            with self.subTest(field=field, invalid=invalid):
+                plan = dict(self.plan)
+                if invalid == "missing":
+                    del plan[field]
+                else:
+                    plan[field] = invalid
+                (self.root / "assets/research-upload-plan.json").write_text(
+                    json.dumps(plan)
+                )
+                with self.assertRaises(ValueError):
+                    self.execute()
+                self.assertEqual([], self.calls)
+
+    def test_boolean_byte_total_is_rejected_even_when_equal_to_payload_size(self):
+        self.args.apply = False
+        source = self.root / self.entry["path"]
+        source.write_bytes(b"x")
+        entry = dict(
+            self.entry, bytes=1, content_sha256=hashlib.sha256(b"x").hexdigest()
+        )
+        plan = dict(self.plan, files=[entry], total_bytes=True)
+        (self.root / "assets/research-upload-plan.json").write_text(json.dumps(plan))
+        with self.assertRaises(ValueError):
+            self.execute()
+        self.assertEqual([], self.calls)
+
+    def test_nonempty_or_invalid_destination_leaves_no_record_or_remote_write(self):
+        for mode, error, reason in (
+            ("preflight-populated", ValueError, "empty"),
+            ("preflight-pagination", ValueError, "empty"),
+            ("preflight-missing", RuntimeError, "malformed"),
+            ("preflight-invalid", RuntimeError, "malformed"),
+            ("preflight-no-pagination", RuntimeError, "malformed"),
+            # A falsy has_more that is not false must not read as "no more pages".
+            ("preflight-null-has-more", RuntimeError, "malformed"),
+            ("preflight-zero-has-more", RuntimeError, "malformed"),
+        ):
+            with self.subTest(mode=mode):
+                self.mode = mode
+                self.calls.clear()
+                # Clear only records from this synthetic fixture between regressions.
+                for name in (
+                    "research-upload-staging.json",
+                    "research-upload-receipt.json",
+                ):
+                    (self.root / "assets" / name).unlink(missing_ok=True)
+                with self.assertRaisesRegex(error, reason):
+                    self.execute()
+                self.assertFalse(any(method == "POST" for method, _ in self.calls))
+                self.assertFalse(
+                    (self.root / "assets/research-upload-staging.json").exists()
+                )
+                self.assertFalse(
+                    (self.root / "assets/research-upload-receipt.json").exists()
+                )
+
     def test_generated_models_and_v4_have_separate_exact_receipts(self):
         for batch, folder, prefix, filename in (
             (
@@ -348,6 +447,7 @@ class ResearchUploadIntegration(unittest.TestCase):
                 source.parent.mkdir(parents=True, exist_ok=True)
                 source.write_bytes(self.payload)
                 self.key = prefix + filename
+                self.prefix = prefix
                 entry = dict(
                     self.entry,
                     path=str(source.relative_to(self.root)),
@@ -355,6 +455,25 @@ class ResearchUploadIntegration(unittest.TestCase):
                 )
                 entry.pop("source_id")
                 plan = dict(self.plan, prefix=prefix, files=[entry])
+                if batch == "v4":
+                    # The real v4 plan omits aggregate metadata; keep that contract.
+                    del plan["file_count"]
+                    del plan["total_bytes"]
+                for field, invalid in (
+                    ("file_count", True),
+                    ("file_count", 1.0),
+                    ("total_bytes", float(len(self.payload))),
+                    ("total_bytes", len(self.payload) + 1),
+                ):
+                    with self.subTest(field=field, invalid=invalid):
+                        self.calls.clear()
+                        invalid_plan = dict(plan, **{field: invalid})
+                        (self.root / f"assets/{batch}-upload-plan.json").write_text(
+                            json.dumps(invalid_plan)
+                        )
+                        with self.assertRaises(ValueError):
+                            research_upload.run(self.args, batch=batch)
+                        self.assertEqual([], self.calls)
                 (self.root / f"assets/{batch}-upload-plan.json").write_text(
                     json.dumps(plan)
                 )
