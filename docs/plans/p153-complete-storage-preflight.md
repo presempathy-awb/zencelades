@@ -46,4 +46,10 @@ Rebased onto main as zencelades #48, 2026-11-16, measured by Claude on that tree
 with `pytest -q -rf tests/test_research_upload.py`. Relaxing the totals guard to
 `isinstance(..., int)` reports `8 failed` and removing it reports `16 failed`. Each
 total counts two outer `subTest(batch=...)` blocks that fail because a case inside
-them failed, so the distinct failing cases are 6 and 14.
+them failed, so the distinct failing cases are 6 and 14. With the guard removed,
+the 14 are `test_boolean_byte_total_is_rejected_even_when_equal_to_payload_size` and
+13 subtests: 2 in `test_generated_models_and_v4_have_separate_exact_receipts` (the
+boolean `file_count` per batch), 4 in
+`test_model_and_v4_totals_are_optional_but_exact_when_declared`, 2 in
+`test_plan_without_declared_totals_refuses_before_network` and 5 in
+`test_research_aggregate_totals_are_required_before_network`.
