@@ -86,7 +86,10 @@ projection-only agents metadata. Sources: CTX01, CTX03, CTX11.
 
 ## DEC-08 — Verification and dependencies
 
-Confirmed current constraint, Andrew: pytest remains paused. Browser control
+Confirmed current constraint, Andrew: pytest remains paused.
+Revisit pending, 2026-11-16: `just check` on main runs pytest (pinned to 9.2.0
+from this change) and the checks workflow runs it on every pull request. That
+contradicts the pause; whether it still stands is Andrew's call. Browser control
 requires a scoped go-ahead. Documentation/schema/link checks can proceed; build,
 HTTP, browser, storage and physical proofs are distinct. No new production
 dependency is justified by this authoring task. Python packages, tools, services

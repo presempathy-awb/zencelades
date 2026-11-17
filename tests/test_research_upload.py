@@ -7,13 +7,13 @@ import tempfile
 import threading
 import unittest
 from argparse import Namespace
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from unittest.mock import patch
 from urllib.parse import parse_qs, urlsplit
 
-from scripts import research_upload
+from scripts import batch_upload, research_upload
 
 
 class ResearchUploadIntegration(unittest.TestCase):
@@ -61,10 +61,13 @@ class ResearchUploadIntegration(unittest.TestCase):
                 case.calls.append(("GET", self.path))
                 parsed = urlsplit(self.path)
                 query = parse_qs(parsed.query)
-                if parsed.path == "/redirect-destination":
+                if case.mode == "revoked":
+                    self.answer(403, {})
+                elif parsed.path == "/redirect-destination":
                     self.answer(200, b"unexpected redirect")
                 elif parsed.path == "/api/v1/repositories/thatsnozorb-assets":
-                    self.answer(200, {})
+                    # The deployed prefix-restricted publisher denies repository metadata.
+                    self.answer(200 if case.mode == "metadata-readable" else 403, {})
                 elif parsed.path.endswith("/objects/ls"):
                     rows = [{"path": case.key, "size_bytes": len(case.payload)}]
                     if case.mode == "size":
@@ -73,6 +76,8 @@ class ResearchUploadIntegration(unittest.TestCase):
                         rows.append(
                             {"path": "imports/research/unexpected", "size_bytes": 0}
                         )
+                    if case.mode == "listing-outside-prefix":
+                        rows.append({"path": "public/unscoped.pdf", "size_bytes": 0})
                     self.answer(
                         200,
                         {
@@ -92,7 +97,9 @@ class ResearchUploadIntegration(unittest.TestCase):
                 case.calls.append(("POST", self.path))
                 data = self.rfile.read(int(self.headers.get("Content-Length", 0)))
                 parsed = urlsplit(self.path)
-                if parsed.path.endswith("/branches"):
+                if case.mode == "revoked":
+                    self.answer(403, {})
+                elif parsed.path.endswith("/branches"):
                     if case.mode == "redirect":
                         self.send_response(302)
                         self.send_header("Location", "/redirect-destination")
@@ -161,6 +168,7 @@ class ResearchUploadIntegration(unittest.TestCase):
             "pagination",
             "redirect",
             "missing-refusal",
+            "metadata-readable",
         ):
             with self.subTest(mode=mode):
                 self.mode = mode
@@ -174,8 +182,19 @@ class ResearchUploadIntegration(unittest.TestCase):
                     (self.root / "assets/research-upload-receipt.json").exists()
                 )
                 self.assertNotIn(("GET", "/redirect-destination"), self.calls)
-                if mode == "missing-refusal":
+                if mode in {"missing-refusal", "metadata-readable"}:
                     self.assertFalse(any(method == "POST" for method, _ in self.calls))
+
+    def test_revoked_token_leaves_no_record_and_allows_corrected_retry(self):
+        self.mode = "revoked"
+        with self.assertRaisesRegex(RuntimeError, "HTTP 403"):
+            self.execute()
+        self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
+        self.assertFalse((self.root / "assets/research-upload-receipt.json").exists())
+        self.assertFalse(any(method == "POST" for method, _ in self.calls))
+        self.mode = "ok"
+        self.execute()
+        self.assertEqual(self.objects, {self.key: self.payload})
 
     def test_local_tampering_and_wrong_destination_refuse_before_network(self):
         for kind in ("hash", "destination", "duplicate", "symlink", "root-link"):
@@ -205,12 +224,136 @@ class ResearchUploadIntegration(unittest.TestCase):
                     self.execute()
                 self.assertEqual([], self.calls)
 
+    def test_plan_without_declared_totals_refuses_before_network(self):
+        for field in ("file_count", "total_bytes"):
+            with self.subTest(missing=field):
+                plan = {k: v for k, v in self.plan.items() if k != field}
+                (self.root / "assets/research-upload-plan.json").write_text(
+                    json.dumps(plan)
+                )
+                with self.assertRaisesRegex(ValueError, field):
+                    self.execute()
+                self.assertEqual([], self.calls)
+
+    def test_listing_outside_the_prefix_stops_before_any_record(self):
+        self.mode = "listing-outside-prefix"
+        with self.assertRaisesRegex(RuntimeError, "outside"):
+            self.execute()
+        probes = [
+            parse_qs(urlsplit(path).query)
+            for method, path in self.calls
+            if urlsplit(path).path.endswith("/refs/main/objects/ls")
+        ]
+        self.assertEqual([{"prefix": ["imports/research/"], "amount": ["1"]}], probes)
+        self.assertNotIn("POST", {method for method, _ in self.calls})
+        self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
+
     def test_plan_needs_no_token_and_does_not_connect(self):
         self.args.apply = False
         with patch.dict(research_upload.os.environ, {}, clear=True):
             self.execute()
         self.assertEqual([], self.calls)
         self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
+
+    def test_generated_models_and_v4_have_separate_exact_receipts(self):
+        for batch, folder, prefix, filename in (
+            (
+                "model",
+                "cockpit/public/studio-models",
+                "imports/models/p041/",
+                "fixture.glb",
+            ),
+            (
+                "v4",
+                "deliveries/enceladus_v4_fixed15",
+                "imports/v4-fixed15/",
+                "fixture.txt",
+            ),
+        ):
+            with self.subTest(batch=batch):
+                source = self.root / folder / filename
+                source.parent.mkdir(parents=True, exist_ok=True)
+                source.write_bytes(self.payload)
+                self.key = prefix + filename
+                entry = dict(
+                    self.entry,
+                    path=str(source.relative_to(self.root)),
+                    lakefs_path=self.key,
+                )
+                entry.pop("source_id")
+                plan = dict(self.plan, prefix=prefix, files=[entry])
+                (self.root / f"assets/{batch}-upload-plan.json").write_text(
+                    json.dumps(plan)
+                )
+                with redirect_stdout(io.StringIO()):
+                    research_upload.run(self.args, batch=batch)
+                receipt = json.loads(
+                    (self.root / f"assets/{batch}-upload-receipt.json").read_text()
+                )
+                self.assertTrue(receipt["readback_complete"])
+                self.assertEqual(receipt["files"], [entry])
+                self.assertFalse(
+                    (self.root / "assets/research-upload-receipt.json").exists()
+                )
+
+    def test_batch_cannot_widen_local_or_remote_scope(self):
+        for batch, path, prefix in (
+            ("model", "source/research/sample.pdf", "imports/models/p041/"),
+            ("model", "source/research/sample.pdf", "imports/research/"),
+            (
+                "model",
+                "cockpit/public/studio-models/sample.pdf",
+                "imports/models/p041/",
+            ),
+            (
+                "v4",
+                "deliveries/enceladus_v4_fixed15/archive.zip",
+                "imports/v4-fixed15/",
+            ),
+            ("unknown", "source/research/sample.pdf", "imports/research/"),
+        ):
+            with self.subTest(batch=batch, prefix=prefix):
+                source = self.root / path
+                source.parent.mkdir(parents=True, exist_ok=True)
+                source.write_bytes(self.payload)
+                entry = dict(self.entry, path=path, lakefs_path=prefix + source.name)
+                plan = dict(self.plan, prefix=prefix, files=[entry])
+                (self.root / f"assets/{batch}-upload-plan.json").write_text(
+                    json.dumps(plan)
+                )
+                with self.assertRaises(ValueError), redirect_stdout(io.StringIO()):
+                    research_upload.run(self.args, batch=batch)
+                self.assertEqual(self.calls, [])
+
+
+class BatchUploadCommand(unittest.TestCase):
+    def test_each_batch_choice_reaches_run(self):
+        for batch in ("model", "v4"):
+            with self.subTest(batch=batch):
+                argv = [
+                    "batch_upload",
+                    batch,
+                    "--endpoint",
+                    "https://e",
+                    "--branch",
+                    "b",
+                ]
+                with patch.object(batch_upload, "run") as run, patch("sys.argv", argv):
+                    batch_upload.main()
+                run.assert_called_once()
+                self.assertEqual({"batch": batch}, run.call_args.kwargs)
+                self.assertFalse(run.call_args.args[0].apply)
+
+    def test_unknown_batch_is_refused_by_the_parser(self):
+        argv = ["batch_upload", "research", "--endpoint", "https://e", "--branch", "b"]
+        with (
+            patch.object(batch_upload, "run") as run,
+            patch("sys.argv", argv),
+            redirect_stderr(io.StringIO()),
+            self.assertRaises(SystemExit),
+        ):
+            batch_upload.main()
+        run.assert_not_called()
 
 
 if __name__ == "__main__":

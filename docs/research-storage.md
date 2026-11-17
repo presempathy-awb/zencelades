@@ -1,18 +1,78 @@
 # P009 research storage: prepared publisher and upload evidence
 
-## Current delivery requirements — October 2
+## Current delivery requirements — October 5
+
+October 5 client correction: the prefix-restricted publisher refuses repository
+metadata. The research uploader now verifies that refusal instead of requiring
+a successful metadata read before ingestion. Its four scope probes and a
+successful object listing on `main` precede every execution record and branch
+creation. The client refuses to continue if that listing returns any object
+outside the batch's remote prefix. The positive read distinguishes an authorized
+publisher from a revoked token returning only refusals. Immutable object length
+and SHA-256 readback remain required.
+The loopback integration fixture follows the owner's denied-metadata contract.
+This correction does not deploy the broker or complete an upload.
+
+The separate `just batch-upload model` and `just batch-upload v4` entry points
+now accept the fixed plans in `assets/`, with the same `--endpoint`, `--branch`
+and optional `--apply` flags as research ingestion. Model inputs are read only
+from the local root `cockpit/public/studio-models/` and written only under the
+remote prefix `imports/models/p041/`; v4 inputs are read only from
+`deliveries/enceladus_v4_fixed15/` and written only under `imports/v4-fixed15/`.
+Every plan must declare its `file_count` and `total_bytes`.
+The v4 executor refuses ZIPs. Research ingestion retains its original scope.
+Each batch creates separate staging and completion records, refuses existing
+records, and verifies the exact object set and every object's bytes at an
+immutable commit before recording success. No executor merges a branch.
+
+If an applied run fails after creating its staging record, retries refuse that
+record. Andrew or the storage owner must inspect the recorded branch, commit
+and status first; a lost response may hide a successful remote mutation. Keep
+that evidence until the outcome is reconciled. After explicit recovery of the
+owned record, use a fresh, unshared ingest branch. Never delete remote data or
+another operator's records simply to make a retry proceed.
+
+Unverified in this repository: no command output or receipt for the following
+October 5 check is in the tree, and the packet it names lives outside it. Treat
+the 151 and 158 figures as unchecked until a dated command and the packet's
+size and SHA-256 manifest are committed.
+
+An October 5 local verification reported all **151 planned files**: 14 research
+PDFs, 55 model files and 82 v4 files. Their recorded sizes and SHA-256 hashes match
+the retained originals. The model plan describes a frozen older build; newer
+generated model bytes must not silently substitute for that preservation batch.
+No remote upload or completion receipt exists for these three batches.
+
+The verified execution packet on maxipaxi is
+`~/.cache/codex/zencelades/p148-publisher-candidate`: 158 files / 235,090,949
+bytes including the 151 objects, three plans and four Python modules.
+`packet.json` records every included file's size and SHA-256. All three clients
+pass plan-only validation within that packet. It preserves the frozen P041
+model inputs separately; the current site's rebuilt model directory contains
+newer bytes and is not a valid substitute for this immutable batch. Transfer
+and credential-backed execution have not occurred. Revalidate the packet
+against its receipt and plans before any owner-host execution.
+The client module and its receipt entry were refreshed after Sonnet's
+positive-permission-control finding; all 158 records were reverified.
 
 Use the complete owner changes, not the historical config-only patch:
 [hesellsheshells `feat/thatsnozorb-publisher` (#65)](https://git.telpher.stream/awb/hesellsheshells/pulls/65)
 and [telpher `feat/thatsnozorb-publisher` (#554)](https://git.telpher.stream/awb/telpher/pulls/554).
-The broker's pushed head `3f0d3572` requires policy version 2, confines object
-access to `imports/*`, and confines writes to `ingest-*`. It validates branch
-creation bodies before forwarding them and retains immutable commit reads.
-The b55ad71d PASS predates the follow-up repair. The current full-head review
-is running; both current-head hosted CI checks pass. Repository metadata is
-denied to prefix-limited clients. Tests prove canonical branch-body forwarding
-and refusal when source-read authority is missing.
+The broker owner PR is merged. Its version-2 policy confines object access to
+`imports/*` and writes to `ingest-*`, validates branch creation bodies before
+forwarding them and retains immutable commit reads. Telpher #554 remains open
+at head `c5106437`, base `fb78eccd`. Its earlier review does not establish a
+review of that current pair. Repository metadata is denied to prefix-limited
+clients; the new client tests retain that denial.
 See [integration readiness](integration-readiness.md) for test and review evidence.
+
+As observed on October 5, the REST broker was published only on presvd1 loopback at port 13330; this was not rechecked on 2026-11-16 (see pr-backlog-reconciliation.md).
+No declared laptop-to-broker route was found. The existing direct lakeFS tunnel
+and the human-readable shelf are not publisher endpoints. October 5 plan-only
+commands use the observed server endpoint as metadata, make no HTTP requests
+and do not prove laptop connectivity, a fresh remote branch or publication.
+Execution must use the scoped token on presvd1, or a separately reviewed
+broker-only connection; no administrator endpoint is a substitute.
 
 `deploy/research-publisher.toml` mirrors the selected principal for inspection;
 it is not a standalone migration. The broker implementation, version-2 policy,
@@ -37,12 +97,15 @@ TreePod, a six-foot trampoline comparison and a swivel technical notice:
 scope; a page count is not a claim of close inspection of every page. The
 validation used `https://example.invalid` and `ingest-basket-plan-only` as
 explicit inert placeholders with apply=false; no broker request or remote
-branch was created. The three earlier hardware rows now carry source IDs
-required by the uploader's progress metadata. No new upload receipt exists.
+branch was created. The three earlier hardware rows carry source IDs; the
+uploader prints a `source_id` as progress metadata when one is present and the
+object key otherwise, so the field is optional. No new upload receipt exists.
 
-The model plan must track the final generated model bytes; model and research
-uploads remain distinct, and the research uploader's source-path boundary is
-unchanged. The P019 count below is an earlier checkpoint.
+That checkpoint proposed tracking the generated model build at the time. The
+current P041 plan identifies a frozen preservation batch; newer generated
+bytes require a separate plan. Model and research uploads remain distinct,
+and the research uploader's source-path boundary is unchanged. The P019 count
+below is an earlier checkpoint.
 
 P019 update, September 30: the prepared research batch now contains **nine
 PDFs / 126,444,705 bytes**. Three added manufacturer documents are catalogued

@@ -24,3 +24,9 @@ Projection/capture testing; exact vehicle-interface/manufacturer evidence; struc
   Claude can build it. `scripts/private_studio.py` could refuse to run from a folder that
   does not contain `origin/main`. It changes a hardened tool, so it needs a review first,
   and the check must cope with scratch copies that carry no git history.
+- **Decide how the presvd1 runner hands out the Docker socket.** Owner: Andrew to decide;
+  the change is Telpher's. `/srv/telpher/gitea-runner/config.yaml` sets `docker_host`, so
+  the runner mounts `/var/run/docker.sock` into every job container in every repository,
+  which is root on presvd1. This repository's account job runs only on pushes to main and
+  manual runs for that reason, but any workflow a pull request can run still reaches the
+  socket. Not checked: whether Gitea runs a fork's pull-request workflows without approval.
