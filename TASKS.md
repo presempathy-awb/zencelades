@@ -11,3 +11,16 @@ Choose the actual Love Burn deliverable and requested funding, confirm the publi
 ## Specialist and venue gates — owners to be appointed by Andrew
 
 Projection/capture testing; exact vehicle-interface/manufacturer evidence; structural and whole-truck stability review; electrical and wet-site design; placement and authority determinations. Any occupied design additionally needs purpose-designed enclosure, performer support, egress and rescue review.
+
+## Release hygiene — open since 2026-11-16
+
+- **Rebase older lanes and pull-request branches onto main before releasing from them.**
+  Owner: whoever next works in each. Every lane and open pull-request branch created before
+  2026-11-16 predates the logo (#39 to #41). On maxipaxi that is 16 lanes under
+  `~/code/branch/thatsnozorb/`, including the ones behind #10 and #28. A release built from
+  one would remove the live logo and return the open-source page to its old text. See
+  [docs/releasing.md](docs/releasing.md).
+- **Decide whether the release tool should refuse a stale build.** Owner: Andrew to decide;
+  Claude can build it. `scripts/private_studio.py` could refuse to run from a folder that
+  does not contain `origin/main`. It changes a hardened tool, so it needs a review first,
+  and the check must cope with scratch copies that carry no git history.
