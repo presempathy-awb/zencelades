@@ -32,7 +32,7 @@ shown() {
 		before="${value}"
 		value="$(printf '%s' "${value}" | LC_ALL=C tr -d '\000-\037\177' |
 			LC_ALL=C sed -e "s/$(printf '\302')[$(printf '\200')-$(printf '\237')]//g" -e "s/$(printf '\342\200')[$(printf '\250\251')]//g")"
-		[[ ${value} != "${before}" ]] || break
+		[[ "${value}" != "${before}" ]] || break
 	done
 	printf '%s' "${value}"
 }
@@ -62,7 +62,10 @@ if [[ -n ${opener} ]]; then
 		maintainers="$(printf '%s\n' "${listed}" | sed -e 's/#.*//' -e 's/[[:space:]]*$//' | grep -v '^$' || true)"
 	fi
 	if printf '%s\n' "${maintainers}" | grep -Fxq -- "${opener}"; then
-		echo "pull request opened by maintainer account '${opener}': every commit in ${base:0:12}..${head:0:12} is exempt from the per-commit sign-off; the maintainer certifies after reading, through the project's sign-off ledger on the signoff-ledger branch (procedure: AUTHORSHIP.md), which this check does not read"
+		# The login matched a MAINTAINERS line, which the repository holds; it is still printed
+		# through shown, as the author is. The revisions beside it are the hashes git rev-parse
+		# printed, so nothing a contributor typed reaches this line unfiltered.
+		printf '%s\n' "pull request opened by maintainer account '$(shown "${opener}")': every commit in ${base:0:12}..${head:0:12} is exempt from the per-commit sign-off; the maintainer certifies after reading, through the project's sign-off ledger on the signoff-ledger branch (procedure: AUTHORSHIP.md), which this check does not read"
 		exit 0
 	fi
 fi
@@ -84,10 +87,14 @@ for c in ${commits}; do
 		# with any character shown() drops is never printed, since a carriage return there could
 		# start a line of its own; the message below asks for the commit to be rewritten with a plain
 		# author instead. shown() returning the author unchanged means no such character is in it.
+		# The amend command rewrites the newest commit only, and takes the author from the committer
+		# identity, so it is offered for the head commit alone; an older one is named for a rewrite.
 		if [[ "$(shown "${author}")" == "${author}" ]]; then
 			printf '  it needs: Signed-off-by: %s\n' "${author}"
+		elif [[ ${c} == "${head}" ]]; then
+			echo "  its author holds characters that break a log line, so it is not printed: rewrite commit ${c:0:12} with a plain author and its sign-off (it is the newest commit: git commit --amend --reset-author --no-edit -s sets the author from your committer identity)"
 		else
-			echo "  its author holds characters that break a log line, so it is not printed: rewrite commit ${c:0:12} with a plain author and its sign-off (for the newest commit: git commit --amend --reset-author --no-edit -s)"
+			echo "  its author holds characters that break a log line, so it is not printed: rewrite commit ${c:0:12} with a plain author and its sign-off"
 		fi
 		fail=1
 	fi
