@@ -78,6 +78,8 @@ class ResearchUploadIntegration(unittest.TestCase):
                         )
                     if case.mode == "listing-outside-prefix":
                         rows.append({"path": "public/unscoped.pdf", "size_bytes": 0})
+                    if case.mode == "listing-malformed":
+                        rows = [{"size_bytes": 0}]
                     self.answer(
                         200,
                         {
@@ -253,11 +255,20 @@ class ResearchUploadIntegration(unittest.TestCase):
                 for k, v in self.plan.items()
                 if k not in ("file_count", "total_bytes")
             }
-            for declared, ok in ((None, True), (1, True), (2, False), (True, False)):
-                with self.subTest(batch=batch, file_count=declared):
+            size = len(self.payload)
+            for field, declared, ok in (
+                ("file_count", None, True),
+                ("file_count", 1, True),
+                ("file_count", 2, False),
+                ("file_count", True, False),
+                ("total_bytes", size, True),
+                ("total_bytes", size + 1, False),
+                ("total_bytes", float(size), False),
+            ):
+                with self.subTest(batch=batch, field=field, declared=declared):
                     case = dict(plan, prefix=prefix, files=[entry])
                     if declared is not None:
-                        case["file_count"] = declared
+                        case[field] = declared
                     (self.root / f"assets/{batch}-upload-plan.json").write_text(
                         json.dumps(case)
                     )
@@ -268,6 +279,13 @@ class ResearchUploadIntegration(unittest.TestCase):
                             with self.assertRaises(ValueError):
                                 research_upload.run(self.args, batch=batch)
                     self.assertEqual([], self.calls)
+
+    def test_malformed_listing_is_named_as_such_and_stops(self):
+        self.mode = "listing-malformed"
+        with self.assertRaisesRegex(RuntimeError, "malformed"):
+            self.execute()
+        self.assertNotIn("POST", {method for method, _ in self.calls})
+        self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
 
     def test_listing_outside_the_prefix_stops_before_any_record(self):
         self.mode = "listing-outside-prefix"
@@ -367,8 +385,13 @@ class ResearchUploadIntegration(unittest.TestCase):
 
 class BatchUploadCommand(unittest.TestCase):
     def test_each_batch_choice_reaches_run(self):
-        for batch, extra, apply in (("model", [], False), ("v4", ["--apply"], True)):
-            with self.subTest(batch=batch):
+        for batch, extra, apply in (
+            ("model", [], False),
+            ("model", ["--apply"], True),
+            ("v4", [], False),
+            ("v4", ["--apply"], True),
+        ):
+            with self.subTest(batch=batch, apply=apply):
                 argv = ["batch_upload", batch, "--endpoint", "https://e"]
                 argv += ["--branch", "ingest-b", *extra]
                 with patch.object(batch_upload, "run") as run, patch("sys.argv", argv):
