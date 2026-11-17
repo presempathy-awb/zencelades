@@ -13,3 +13,6 @@ markers = ["unit: isolated tests with no external services"]
 
 [tool.ruff]
 target-version = "py312"
+# scripts/license_gaps.py is the licensing kit's text, written byte for byte by legal-index's
+# oss_setup.py update and checked there; formatting it here would make the next update refuse it.
+extend-exclude = ["scripts/license_gaps.py"]
