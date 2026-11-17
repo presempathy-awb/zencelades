@@ -229,11 +229,12 @@ esac
 
 
 @pytest.mark.unit
+@pytest.mark.parametrize("shell", ["sh", "bash"])
 @pytest.mark.parametrize(
     ("test_exit", "stop_exit", "expected"), [(0, 0, 0), (5, 0, 5), (5, 7, 5), (0, 7, 1)]
 )
 def test_cleanup_preserves_test_failure_and_removes_owned_files(
-    tmp_path, test_exit, stop_exit, expected
+    tmp_path, shell, test_exit, stop_exit, expected
 ):
     script = Path(__file__).resolve().parents[1] / "account-service/test-postgres.sh"
     tools = tmp_path / "tools"
@@ -256,7 +257,7 @@ esac
         executable.write_text(fake)
         executable.chmod(0o700)
     result = subprocess.run(
-        ["sh", str(script)],
+        [shell, str(script)],
         env={
             **os.environ,
             "PATH": f"{tools}:{os.environ['PATH']}",
@@ -271,3 +272,52 @@ esac
     )
     assert result.returncode == expected, result.stderr
     assert list(tmp_path.iterdir()) == [tools]
+
+
+def workflow_function(name: str) -> str:
+    """The text of a shell function defined in the account job's run block."""
+    workflow = Path(__file__).resolve().parents[1] / ".gitea/workflows/checks.yml"
+    lines = workflow.read_text().splitlines()
+    start = next(i for i, line in enumerate(lines) if line.strip() == f"{name}() {{")
+    indent = len(lines[start]) - len(lines[start].lstrip())
+    end = next(
+        i for i in range(start + 1, len(lines)) if lines[i] == " " * indent + "}"
+    )
+    return "\n".join(line[indent:] for line in lines[start : end + 1])
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize(
+    ("main_exit", "cleanup_fails", "expected"),
+    [(0, False, 0), (0, True, 1), (5, False, 5), (5, True, 5)],
+)
+def test_account_job_cleanup_reports_its_failure_and_keeps_an_earlier_one(
+    tmp_path, main_exit, cleanup_fails, expected
+):
+    # The account step runs its block under `shell: bash` and `set -eu`, as here.
+    # There a trap that returns non-zero also fails the step through errexit;
+    # `exit` reports the failed cleanup without relying on it.
+    client_dir = tmp_path / "client"
+    client_dir.mkdir()
+    (client_dir / "docker").write_text("client")
+    if cleanup_fails:
+        (client_dir / "unowned").write_text("")  # rmdir refuses a non-empty folder
+    script = "\n".join(
+        [
+            "set -eu",
+            'client_dir="$1"',
+            workflow_function("cleanup_client"),
+            "trap cleanup_client EXIT",
+            f"exit {main_exit}",
+        ]
+    )
+    result = subprocess.run(
+        ["bash", "-c", script, "bash", str(client_dir)],
+        capture_output=True,
+        text=True,
+        timeout=3,
+        check=False,
+    )
+    assert result.returncode == expected, result.stderr
+    assert client_dir.exists() == cleanup_fails
+    assert not (client_dir / "docker").exists()

@@ -2,6 +2,7 @@
 # Copyright 2026 Andrew Briscoe and the zencelades contributors
 import hashlib
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -96,6 +97,50 @@ def test_malformed_catalog_structure_refuses_before_any_copy(
     with pytest.raises((ValueError, TypeError), match="catalog"):
         restore_assets.restore(retained, apply=True)
     assert not (root / good["path"]).exists()
+
+
+@pytest.mark.unit
+@pytest.mark.parametrize("top_level", [["source/uploads/bad.bin"], "catalog"])
+def test_catalog_that_is_not_an_object_refuses_before_any_copy(
+    tmp_path, monkeypatch, top_level
+):
+    root, retained = tmp_path / "target", tmp_path / "retained"
+    good = entry("source/uploads/good.bin", b"good")
+    write_catalog(root, [good])
+    (root / "assets/build-inputs.json").write_text(json.dumps(top_level))
+    (retained / "source/uploads").mkdir(parents=True)
+    (retained / good["path"]).write_bytes(b"good")
+    monkeypatch.setattr(restore_assets, "ROOT", root)
+    with pytest.raises(TypeError, match="not a JSON object"):
+        restore_assets.restore(retained, apply=True)
+    assert not (root / good["path"]).exists()
+
+
+@pytest.mark.unit
+def test_stage_names_are_gone_before_the_last_directory_sync(tmp_path, monkeypatch):
+    root, retained = tmp_path / "target", tmp_path / "retained"
+    good = entry("source/uploads/deep/good.bin", b"good")
+    write_catalog(root, [good])
+    (retained / "source/uploads/deep").mkdir(parents=True)
+    (retained / good["path"]).write_bytes(b"good")
+    monkeypatch.setattr(restore_assets, "ROOT", root)
+    folder = root / "source/uploads/deep"
+    stage_names_at_folder_sync = []
+    real_fsync = os.fsync
+
+    def recording_fsync(descriptor):
+        if os.path.samestat(os.fstat(descriptor), folder.stat()):
+            stage_names_at_folder_sync.append(
+                sorted(p.name for p in folder.glob(".restore-assets-*"))
+            )
+        real_fsync(descriptor)
+
+    monkeypatch.setattr(restore_assets.os, "fsync", recording_fsync)
+    restore_assets.restore(retained, apply=True)
+    assert (root / good["path"]).read_bytes() == b"good"
+    assert stage_names_at_folder_sync, "the destination folder was never synced"
+    assert stage_names_at_folder_sync[-1] == []
+    assert not list(folder.glob(".restore-assets-*"))
 
 
 @pytest.mark.unit
