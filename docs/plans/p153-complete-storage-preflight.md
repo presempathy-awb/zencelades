@@ -42,6 +42,8 @@ subsequent complete `mise exec -- just check` exited 0 with 96 tests and 47
 subtests, Ruff check/format and the grant-resource ledger check passing. No
 timeout was relaxed. The published PASS does not review this new child revision.
 
-Rebased onto main as zencelades #48, 2026-11-16, measured by Claude on that tree:
-relaxing the totals guard to `isinstance(..., int)` fails 8 cases and removing it
-fails 16, in `tests/test_research_upload.py`.
+Rebased onto main as zencelades #48, 2026-11-16, measured by Claude on that tree
+with `pytest -q -rf tests/test_research_upload.py`. Relaxing the totals guard to
+`isinstance(..., int)` reports `8 failed` and removing it reports `16 failed`. Each
+total counts two outer `subTest(batch=...)` blocks that fail because a case inside
+them failed, so the distinct failing cases are 6 and 14.
