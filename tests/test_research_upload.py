@@ -88,6 +88,8 @@ class ResearchUploadIntegration(unittest.TestCase):
                         value = {"pagination": {"has_more": False}}
                     elif case.mode == "preflight-invalid":
                         value = {"results": None, "pagination": {"has_more": False}}
+                    elif case.mode == "preflight-no-pagination":
+                        value = {"results": []}
                     elif case.mode == "listing-outside-prefix":
                         value = {
                             "results": [{"path": case.stray}],
@@ -397,6 +399,7 @@ class ResearchUploadIntegration(unittest.TestCase):
             ("preflight-pagination", ValueError, "empty"),
             ("preflight-missing", RuntimeError, "malformed"),
             ("preflight-invalid", RuntimeError, "malformed"),
+            ("preflight-no-pagination", RuntimeError, "malformed"),
         ):
             with self.subTest(mode=mode):
                 self.mode = mode
