@@ -90,6 +90,10 @@ class ResearchUploadIntegration(unittest.TestCase):
                         value = {"results": None, "pagination": {"has_more": False}}
                     elif case.mode == "preflight-no-pagination":
                         value = {"results": []}
+                    elif case.mode == "preflight-null-has-more":
+                        value = {"results": [], "pagination": {"has_more": None}}
+                    elif case.mode == "preflight-zero-has-more":
+                        value = {"results": [], "pagination": {"has_more": 0}}
                     elif case.mode == "listing-outside-prefix":
                         value = {
                             "results": [{"path": case.stray}],
@@ -400,6 +404,9 @@ class ResearchUploadIntegration(unittest.TestCase):
             ("preflight-missing", RuntimeError, "malformed"),
             ("preflight-invalid", RuntimeError, "malformed"),
             ("preflight-no-pagination", RuntimeError, "malformed"),
+            # A falsy has_more that is not false must not read as "no more pages".
+            ("preflight-null-has-more", RuntimeError, "malformed"),
+            ("preflight-zero-has-more", RuntimeError, "malformed"),
         ):
             with self.subTest(mode=mode):
                 self.mode = mode

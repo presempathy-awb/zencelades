@@ -41,3 +41,7 @@ at their 10-second child limit. Both passed unchanged on focused rerun. The
 subsequent complete `mise exec -- just check` exited 0 with 96 tests and 47
 subtests, Ruff check/format and the grant-resource ledger check passing. No
 timeout was relaxed. The published PASS does not review this new child revision.
+
+Rebased onto main as zencelades #48, 2026-11-16, measured by Claude on that tree:
+relaxing the totals guard to `isinstance(..., int)` fails 8 cases and removing it
+fails 16, in `tests/test_research_upload.py`.
