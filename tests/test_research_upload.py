@@ -66,7 +66,7 @@ class ResearchUploadIntegration(unittest.TestCase):
                 elif parsed.path == "/redirect-destination":
                     self.answer(200, b"unexpected redirect")
                 elif parsed.path == "/api/v1/repositories/thatsnozorb-assets":
-                    # The deployed prefix-restricted publisher denies repository metadata.
+                    # The client proceeds only when repository metadata is denied.
                     self.answer(200 if case.mode == "metadata-readable" else 403, {})
                 elif parsed.path.endswith("/objects/ls"):
                     rows = [{"path": case.key, "size_bytes": len(case.payload)}]
@@ -247,6 +247,7 @@ class ResearchUploadIntegration(unittest.TestCase):
         self.assertEqual([{"prefix": ["imports/research/"], "amount": ["1"]}], probes)
         self.assertNotIn("POST", {method for method, _ in self.calls})
         self.assertFalse((self.root / "assets/research-upload-staging.json").exists())
+        self.assertFalse((self.root / "assets/research-upload-receipt.json").exists())
 
     def test_plan_needs_no_token_and_does_not_connect(self):
         self.args.apply = False
@@ -292,6 +293,7 @@ class ResearchUploadIntegration(unittest.TestCase):
                 )
                 self.assertTrue(receipt["readback_complete"])
                 self.assertEqual(receipt["files"], [entry])
+                self.assertEqual(self.payload, self.objects[self.key])
                 self.assertFalse(
                     (self.root / "assets/research-upload-receipt.json").exists()
                 )
@@ -324,25 +326,26 @@ class ResearchUploadIntegration(unittest.TestCase):
                 with self.assertRaises(ValueError), redirect_stdout(io.StringIO()):
                     research_upload.run(self.args, batch=batch)
                 self.assertEqual(self.calls, [])
+                for record in ("staging", "receipt"):
+                    path = self.root / f"assets/{batch}-upload-{record}.json"
+                    self.assertFalse(path.exists(), path)
 
 
 class BatchUploadCommand(unittest.TestCase):
     def test_each_batch_choice_reaches_run(self):
-        for batch in ("model", "v4"):
+        for batch, extra, apply in (("model", [], False), ("v4", ["--apply"], True)):
             with self.subTest(batch=batch):
-                argv = [
-                    "batch_upload",
-                    batch,
-                    "--endpoint",
-                    "https://e",
-                    "--branch",
-                    "b",
-                ]
+                argv = ["batch_upload", batch, "--endpoint", "https://e"]
+                argv += ["--branch", "ingest-b", *extra]
                 with patch.object(batch_upload, "run") as run, patch("sys.argv", argv):
                     batch_upload.main()
                 run.assert_called_once()
                 self.assertEqual({"batch": batch}, run.call_args.kwargs)
-                self.assertFalse(run.call_args.args[0].apply)
+                args = run.call_args.args[0]
+                self.assertEqual(
+                    ("https://e", "ingest-b", apply),
+                    (args.endpoint, args.branch, args.apply),
+                )
 
     def test_unknown_batch_is_refused_by_the_parser(self):
         argv = ["batch_upload", "research", "--endpoint", "https://e", "--branch", "b"]

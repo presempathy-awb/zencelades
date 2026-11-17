@@ -132,7 +132,13 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
             base + "/refs/main/objects/ls?" + urlencode({"prefix": prefix, "amount": 1})
         )
     )
-    if any(not row["path"].startswith(prefix) for row in probe["results"]):
+    rows = probe.get("results") if isinstance(probe, dict) else None
+    if not isinstance(rows, list) or any(
+        not isinstance(row, dict)
+        or not isinstance(row.get("path"), str)
+        or not row["path"].startswith(prefix)
+        for row in rows
+    ):
         raise RuntimeError(f"Broker listed objects outside {prefix}; scope not proven")
     record = {
         "repository": plan["repository"],

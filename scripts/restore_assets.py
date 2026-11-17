@@ -29,6 +29,8 @@ def _manifest_entries(root: Path) -> dict[str, tuple[int, str]]:
         if not manifest.is_file():
             continue
         data = json.loads(manifest.read_text())
+        if not isinstance(data, dict):
+            raise TypeError(f"Malformed catalog, not a JSON object: {manifest}")
         enceladus = manifest.name == "catalog.json" and manifest.parent.name.startswith(
             "enceladus-"
         )
@@ -151,7 +153,12 @@ def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
                 directories.update(
                     parent for parent in destination.relative_to(target_root).parents
                 )
-            for directory in sorted(target_root / d for d in directories):
+            # Deepest first, so a parent's entry is durable only after its child's.
+            for directory in sorted(
+                (target_root / d for d in directories),
+                key=lambda path: len(path.parts),
+                reverse=True,
+            ):
                 descriptor = os.open(directory, os.O_RDONLY)
                 try:
                     os.fsync(descriptor)

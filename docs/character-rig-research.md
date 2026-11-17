@@ -31,6 +31,9 @@ the original archive was not modified. The license stays beside the candidate.
 
 ## Native runtime proof
 
+A local run, reported here as a note: no command, log or test for it is in the
+repository, and CI does not re-run it.
+
 The installed Babylon.js 9.26.1 loader imported one skeleton, 65 bones and three
 meshes. The body has 7,281 vertices. A native `AnimationGroup` applied a bounded
 upper-arm quaternion change to its linked transform node. CPU skinning changed

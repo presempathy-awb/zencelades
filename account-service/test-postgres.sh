@@ -14,7 +14,7 @@ cleanup() {
         echo 'Could not remove owned fixture build directory' >&2
         if [ "$result" -eq 0 ]; then result=1; fi
     fi
-    return "$result"
+    exit "$result"
 }
 trap cleanup EXIT
 trap 'exit 129' HUP
