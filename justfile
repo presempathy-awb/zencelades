@@ -68,7 +68,7 @@ private-studio-check:
     (cd cockpit && bun test && bun run build)
     uv run --no-project python -m unittest tests.test_private_studio
 
-# Additive overlay from the actual live release; no writes unless --apply.
+# Additive overlay from the actual live release; no writes unless --apply. Build from current main: docs/releasing.md.
 private-studio-release *args:
     uv run --no-project python -m scripts.private_studio {{args}}
 
