@@ -33,11 +33,13 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
         raise ValueError(
             f"{name} destination differs from the scoped preservation plan"
         )
+    # Research plans must declare both totals. The frozen v4 plan has none, so for
+    # model and v4 they are optional, but a declared total must be an exact integer.
     for field in ("file_count", "total_bytes"):
-        if type(plan.get(field)) is not int:
+        if (batch == "research" or field in plan) and type(plan.get(field)) is not int:
             raise ValueError(f"{name} plan must declare an integer {field}")
     entries = plan["files"]
-    if not entries or len(entries) != plan["file_count"]:
+    if not entries or len(entries) != plan.get("file_count", len(entries)):
         raise ValueError(f"{name} file count differs from the plan")
     expected = {}
     for entry in entries:
@@ -62,7 +64,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
             )
         expected[key] = entry
     total_bytes = sum(e["bytes"] for e in entries)
-    if total_bytes != plan["total_bytes"]:
+    if total_bytes != plan.get("total_bytes", total_bytes):
         raise ValueError(f"{name} byte count differs from the plan")
     print(
         json.dumps(

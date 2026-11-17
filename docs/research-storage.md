@@ -19,7 +19,9 @@ and optional `--apply` flags as research ingestion. Model inputs are read only
 from the local root `cockpit/public/studio-models/` and written only under the
 remote prefix `imports/models/p041/`; v4 inputs are read only from
 `deliveries/enceladus_v4_fixed15/` and written only under `imports/v4-fixed15/`.
-Every plan must declare its `file_count` and `total_bytes`.
+A research plan must declare its `file_count` and `total_bytes`. The frozen v4
+plan declares neither, so for model and v4 they are optional, but a declared total
+must be an integer that matches the entries.
 The v4 executor refuses ZIPs. Research ingestion retains its original scope.
 Each batch creates separate staging and completion records, refuses existing
 records, and verifies the exact object set and every object's bytes at an

@@ -235,6 +235,40 @@ class ResearchUploadIntegration(unittest.TestCase):
                     self.execute()
                 self.assertEqual([], self.calls)
 
+    def test_model_and_v4_totals_are_optional_but_exact_when_declared(self):
+        self.args.apply = False
+        for batch, folder, prefix in (
+            ("model", "cockpit/public/studio-models", "imports/models/p041/"),
+            ("v4", "deliveries/enceladus_v4_fixed15", "imports/v4-fixed15/"),
+        ):
+            source = self.root / folder / "fixture.glb"
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_bytes(self.payload)
+            entry = dict(
+                self.entry, path=f"{folder}/fixture.glb", lakefs_path=prefix + "f.glb"
+            )
+            # The frozen v4 plan declares no totals; that shape must plan.
+            plan = {
+                k: v
+                for k, v in self.plan.items()
+                if k not in ("file_count", "total_bytes")
+            }
+            for declared, ok in ((None, True), (1, True), (2, False), (True, False)):
+                with self.subTest(batch=batch, file_count=declared):
+                    case = dict(plan, prefix=prefix, files=[entry])
+                    if declared is not None:
+                        case["file_count"] = declared
+                    (self.root / f"assets/{batch}-upload-plan.json").write_text(
+                        json.dumps(case)
+                    )
+                    with redirect_stdout(io.StringIO()):
+                        if ok:
+                            research_upload.run(self.args, batch=batch)
+                        else:
+                            with self.assertRaises(ValueError):
+                                research_upload.run(self.args, batch=batch)
+                    self.assertEqual([], self.calls)
+
     def test_listing_outside_the_prefix_stops_before_any_record(self):
         self.mode = "listing-outside-prefix"
         with self.assertRaisesRegex(RuntimeError, "outside"):
