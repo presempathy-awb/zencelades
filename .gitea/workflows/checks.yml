@@ -82,7 +82,7 @@ jobs:
         with:
           version: "2026.7.18"
           github_token: ""
-          install_args: "just go@1.26.5"
+          install_args: "just go@1.27.4"
           cache: true
       - name: Run account-service checks against isolated PostgreSQL 18
         shell: bash
