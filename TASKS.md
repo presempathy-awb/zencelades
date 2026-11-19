@@ -29,4 +29,10 @@ Projection/capture testing; exact vehicle-interface/manufacturer evidence; struc
   the runner mounts `/var/run/docker.sock` into every job container in every repository,
   which is root on presvd1. This repository's account job runs only on pushes to main and
   manual runs for that reason, but any workflow a pull request can run still reaches the
-  socket. Not checked: whether Gitea runs a fork's pull-request workflows without approval.
+  socket. Checked 2026-11-18, read-only: no outsider can open a pull request. Gitea runs with
+  `DISABLE_REGISTRATION=true` and its web pages sit behind Authentik, so whether it asks
+  approval for a fork's workflows does not arise (that setting was not read). The accounts
+  that can are the telpher org's six (`awb`, `claude-maxi`, `claude-pres`, `codex-cli`,
+  `codex-gui`, `grok-cli`); zencelades has no other collaborators. Other repositories on the
+  same runner were not enumerated. So the exposure is a stolen or misused account or token,
+  not a stranger.
