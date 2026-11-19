@@ -5,7 +5,7 @@ Historical P010 contracts. Relevant pytest coverage has since resumed; read the
 
 Codex, September 30, 2026. VER numbers match [REQ numbers](spec.md).
 These are behavioral acceptance procedures, not a claim that tests ran.
-Andrew paused pytest. Browser control and owner/provider work retain their
+Andrew paused pytest then; he lifted the pause on 2026-11-18 (DEC-08). Browser control and owner/provider work retain their
 separate authority gates. No new test framework or fake API is required.
 
 ## Recording results

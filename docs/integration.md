@@ -189,7 +189,7 @@ threats THR-08/THR-09/THR-10.
 | Category | Actual boundary |
 | --- | --- |
 | Python production packages | `pyproject.toml` declares Python >=3.12 and no third-party production dependencies; helpers use the standard library |
-| Development/tooling | uv, just, Ruff/pytest, Coroidinator and preprompts helper are separate tools; pytest remains paused |
+| Development/tooling | uv, just, Ruff/pytest, Coroidinator and preprompts helper are separate tools; pytest runs in `just check` and CI ([DEC-08](decisions.md)) |
 | Sibling applications | Much Ado/Bun and its private packages, Shakesplurian/Go and its naming model workflow are separately owned |
 | Runtime/platform services | PG18, Caddy/Telpher, Authentik/Pawthentik, hesellsheshells/lakeFS and B2 are not Python package dependencies |
 | Physical equipment | Sphere/screen, projection, power, support and any vehicle/water system require actual selection and acceptance |

@@ -75,8 +75,8 @@ hesellsheshells; original ZIP archives belong in B2. Keep the ordinary .com HTTP
 route and the tailnet-or-restricted-login policy.
 
 Preserve other chats' source and release ownership. Every new human prompt in
-this chat gets a durable plan. Pytest remains paused; browser control has not
-been approved. Authoring this packet does not authorize a deployment, purchase,
+this chat gets a durable plan. The pytest pause was lifted on 2026-11-18 (DEC-08);
+browser control has not been approved. Authoring this packet does not authorize a deployment, purchase,
 provider message, grant submission, human trial, permanent name or forge creation.
 
 Do not infer a cutoff hour from the date-only Love Burn deadline. Do not treat
