@@ -377,6 +377,66 @@ class StaleBuildRefusal(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "does not contain origin/main"):
                 source_check(lane, unverified=False)
 
+    def behind(self, directory):
+        """A checkout one commit behind its forge's main, and a clone that is current."""
+        forge, root = self.checkout_and_forge(directory)
+        self.commit(root, "a")
+        self.git(root, "push", "-q", "origin", "main")
+        ahead = Path(directory) / "ahead"
+        subprocess.run(["git", "clone", "-q", str(forge), str(ahead)], check=True)
+        self.commit(ahead, "b")
+        self.git(ahead, "push", "-q", "origin", "main")
+        return root, ahead
+
+    def test_unverified_does_not_skip_a_folder_that_has_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, _ = self.behind(directory)
+            with self.assertRaisesRegex(ValueError, "does not contain origin/main"):
+                source_check(root, unverified=True)
+
+    def test_an_inherited_git_dir_cannot_stand_in_for_the_folder(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, ahead = self.behind(directory)
+            env = {"GIT_DIR": str(ahead / ".git"), "GIT_WORK_TREE": str(ahead)}
+            with (
+                patch.dict("os.environ", env),
+                self.assertRaisesRegex(ValueError, "does not contain origin/main"),
+            ):
+                source_check(root, unverified=False)
+
+    def test_a_main_that_is_not_a_commit_id_is_refused(self):
+        real_run = subprocess.run
+
+        def forged(command, **kwargs):
+            if "ls-remote" in command:
+                return subprocess.CompletedProcess(
+                    command, 0, "--upload-pack=x\trefs/heads/main\n", ""
+                )
+            return real_run(command, **kwargs)
+
+        with tempfile.TemporaryDirectory() as directory:
+            _, root = self.checkout_and_forge(directory)
+            self.commit(root, "a")
+            with (
+                patch("scripts.private_studio.subprocess.run", side_effect=forged),
+                self.assertRaisesRegex(ValueError, "not a commit id"),
+            ):
+                source_check(root, unverified=False)
+
+    def test_unverified_source_flag_reaches_the_check(self):
+        with (
+            patch.object(
+                sys, "argv", ["release", "--host", "fixture", "--unverified-source"]
+            ),
+            patch(
+                "scripts.private_studio.source_check",
+                side_effect=ValueError("stop here"),
+            ) as check,
+            self.assertRaisesRegex(ValueError, "stop here"),
+        ):
+            main()
+        self.assertEqual(check.call_args.kwargs, {"unverified": True})
+
     def test_the_check_runs_before_any_remote_call(self):
         with (
             patch.object(sys, "argv", ["release", "--host", "fixture"]),
