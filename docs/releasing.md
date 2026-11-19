@@ -7,9 +7,14 @@ records: [public pages](public-pages-release.md) and
 
 ## Build from current main
 
-**The release tool publishes the app as built in the folder it runs from. It does not
-check that folder against main.** A checkout or lane that is behind main puts an older
-app live.
+**The release tool publishes the app as built in the folder it runs from.** A checkout
+or lane that is behind main would put an older app live, so since 2026-11-19 the tool
+refuses one: before any call to the host it reads the forge's `main` with
+`git ls-remote origin` and stops unless that commit is in the folder's history (`HEAD` in
+a git checkout, the working-copy commit in a jj lane). The plan names the main it checked
+as `source_main`. A scratch copy with no git history is refused too, unless
+`--unverified-source` is passed, and the plan then says `unverified`. The check covers the
+folder's history, not the build output: `cockpit/dist` must still be rebuilt from it.
 
 After 2026-11-16 this matters for the logo. A folder that predates
 zencelades `feat/logo` (#39), `fix/logo-in-bundle` (#40) and `fix/logo-credit` (#41)
