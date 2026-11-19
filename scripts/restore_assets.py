@@ -170,8 +170,8 @@ def restore(retained: Path, *, apply: bool = False) -> tuple[int, int]:
                     reverse=True,
                 )
             )
-            # Only now drop the stage names, so a crash never leaves a file without one,
-            # and sync again so the removals are as durable as the links.
+            # The new names are durable now, so dropping the stage names cannot leave a
+            # restored file without one; sync again so the removals are durable too.
             for stage, _ in staged:
                 stage.unlink()
             _fsync_directories({stage.parent for stage, _ in staged})
