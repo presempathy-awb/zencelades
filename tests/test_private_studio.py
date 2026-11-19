@@ -3,6 +3,8 @@
 import importlib.util
 import io
 import json
+import shutil
+import subprocess
 import sys
 import tarfile
 import tempfile
@@ -16,11 +18,18 @@ from scripts.private_studio import (
     prompt_markers,
     public_payload,
     retired_config,
+    source_check,
     write_private_artifacts,
 )
 
 
 class PrivateStudioBoundary(unittest.TestCase):
+    def setUp(self):
+        # These tests start main() past the source check, which StaleBuildRefusal covers.
+        stub = patch("scripts.private_studio.source_check", return_value="checked")
+        stub.start()
+        self.addCleanup(stub.stop)
+
     def test_complete_publisher_refuses_replacing_an_existing_release(self):
         from scripts import deploy_site
 
@@ -286,6 +295,100 @@ class PrivateStudioBoundary(unittest.TestCase):
             with self.assertRaises(ValueError):
                 retired_config([bad])
         self.assertEqual(retired_config([]), "# No retired private prompt bundles.\n")
+
+
+class StaleBuildRefusal(unittest.TestCase):
+    """A release builds from the folder it runs in, so that folder must contain the forge's main."""
+
+    def git(self, root, *args):
+        return subprocess.run(
+            ["git", "-C", str(root), *args], check=True, capture_output=True, text=True
+        ).stdout.strip()
+
+    def commit(self, root, name):
+        (root / name).write_text(name)
+        self.git(root, "add", name)
+        self.git(
+            root, "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", name
+        )
+        return self.git(root, "rev-parse", "HEAD")
+
+    def checkout_and_forge(self, directory):
+        forge, root = Path(directory) / "forge.git", Path(directory) / "work"
+        subprocess.run(
+            ["git", "init", "-q", "--bare", "-b", "main", str(forge)], check=True
+        )
+        subprocess.run(["git", "init", "-q", "-b", "main", str(root)], check=True)
+        self.git(root, "remote", "add", "origin", str(forge))
+        return forge, root
+
+    def test_a_folder_holding_the_forge_main_passes_and_names_it(self):
+        with tempfile.TemporaryDirectory() as directory:
+            _, root = self.checkout_and_forge(directory)
+            main_sha = self.commit(root, "a")
+            self.git(root, "push", "-q", "origin", "main")
+            self.commit(root, "local-ahead")
+            self.assertEqual(source_check(root, unverified=False), main_sha)
+
+    def test_a_folder_behind_the_forge_main_is_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            forge, root = self.checkout_and_forge(directory)
+            self.commit(root, "a")
+            self.git(root, "push", "-q", "origin", "main")
+            ahead = Path(directory) / "ahead"
+            subprocess.run(["git", "clone", "-q", str(forge), str(ahead)], check=True)
+            self.commit(ahead, "b")
+            self.git(ahead, "push", "-q", "origin", "main")
+            with self.assertRaisesRegex(ValueError, "does not contain origin/main"):
+                source_check(root, unverified=False)
+
+    def test_a_scratch_copy_without_history_is_refused_unless_marked_unverified(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(ValueError, "no git history"):
+                source_check(Path(directory), unverified=False)
+            self.assertEqual(
+                source_check(Path(directory), unverified=True), "unverified"
+            )
+
+    @unittest.skipUnless(shutil.which("jj"), "needs jj")
+    def test_a_jj_lane_is_checked_through_its_working_copy_commit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            forge, root = self.checkout_and_forge(directory)
+            main_sha = self.commit(root, "a")
+            self.git(root, "push", "-q", "origin", "main")
+            jj = ["jj", "--config", "user.name=t", "--config", "user.email=t@t"]
+            subprocess.run(
+                [*jj, "git", "init", "--colocate", str(root)],
+                check=True,
+                capture_output=True,
+            )
+            lane = Path(directory) / "lane"
+            subprocess.run(
+                [*jj, "-R", str(root), "workspace", "add", "-r", main_sha, str(lane)],
+                check=True,
+                capture_output=True,
+            )
+            self.assertFalse((lane / ".git").exists())
+            self.assertEqual(source_check(lane, unverified=False), main_sha)
+            ahead = Path(directory) / "ahead"
+            subprocess.run(["git", "clone", "-q", str(forge), str(ahead)], check=True)
+            self.commit(ahead, "b")
+            self.git(ahead, "push", "-q", "origin", "main")
+            with self.assertRaisesRegex(ValueError, "does not contain origin/main"):
+                source_check(lane, unverified=False)
+
+    def test_the_check_runs_before_any_remote_call(self):
+        with (
+            patch.object(sys, "argv", ["release", "--host", "fixture"]),
+            patch(
+                "scripts.private_studio.source_check",
+                side_effect=ValueError("does not contain origin/main"),
+            ),
+            patch("scripts.private_studio.subprocess.check_output") as remote,
+        ):
+            with self.assertRaisesRegex(ValueError, "origin/main"):
+                main()
+            remote.assert_not_called()
 
 
 if __name__ == "__main__":

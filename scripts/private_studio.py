@@ -184,13 +184,72 @@ def write_private_artifacts(
     staged_deny.replace(deny_file)
 
 
+def source_check(root: Path, *, unverified: bool) -> str:
+    """Refuse to release from a folder whose history lacks the forge's main; return what was checked.
+
+    A release publishes the app as built in this folder, so a checkout or lane behind main would
+    put an older app live (docs/releasing.md). A scratch copy with no git history cannot be
+    checked; it is refused unless the caller marks it unverified, and the plan says so."""
+    if unverified:
+        return "unverified"
+
+    def run(*command: str) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            command, capture_output=True, text=True, timeout=60, check=False
+        )
+
+    # A git checkout answers for its HEAD. A jj workspace without its own .git (a lane)
+    # answers for its working-copy commit, through the git directory jj stores it in.
+    git: tuple[str, ...] = ("git", "-C", str(root))
+    head = "HEAD"
+    if not (root / ".git").exists() and (root / ".jj").is_dir():
+        jj = ("jj", "-R", str(root), "--ignore-working-copy")
+        store = run(*jj, "git", "root")
+        commit = run(*jj, "log", "--no-graph", "-r", "@", "-T", "commit_id")
+        if store.returncode == 0 and commit.returncode == 0:
+            git, head = (
+                ("git", f"--git-dir={store.stdout.strip()}"),
+                commit.stdout.strip(),
+            )
+    if (
+        run(*git, "rev-parse", "--verify", "--quiet", f"{head}^{{commit}}").returncode
+        != 0
+    ):
+        raise ValueError(
+            f"{root} has no git history to check against main; build from a checkout "
+            "of main, or pass --unverified-source"
+        )
+
+    def git_run(*args: str) -> subprocess.CompletedProcess[str]:
+        return run(*git, *args)
+
+    live = git_run("ls-remote", "origin", "refs/heads/main")
+    if live.returncode != 0 or not live.stdout.split():
+        raise ValueError(
+            f"Could not read origin's main from {root}: {live.stderr.strip()}"
+        )
+    main_sha = live.stdout.split()[0]
+    if git_run("merge-base", "--is-ancestor", main_sha, head).returncode != 0:
+        raise ValueError(
+            f"{root} does not contain origin/main {main_sha[:12]}; bring it up to main "
+            "before releasing (docs/releasing.md)"
+        )
+    return main_sha
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", required=True)
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument(
+        "--unverified-source",
+        action="store_true",
+        help="release from a folder with no git history; the plan records it as unverified",
+    )
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", args.host):
         raise ValueError("Expected a hostname or SSH alias")
+    source = source_check(ROOT, unverified=args.unverified_source)
 
     def remote(command: str) -> bytes:
         return subprocess.check_output(["ssh", args.host, command], timeout=60)
@@ -297,6 +356,7 @@ def main() -> None:
             archive.addfile(item, io.BytesIO(data))
     plan = {
         "base": Path(base).name,
+        "source_main": source,
         "release": release,
         "archive_sha256": digest(bundle_path.read_bytes()),
         "retired_public_paths": retired,

@@ -20,10 +20,6 @@ Projection/capture testing; exact vehicle-interface/manufacturer evidence; struc
   `~/code/branch/thatsnozorb/`, including the ones behind #10 and #28. A release built from
   one would remove the live logo and return the open-source page to its old text. See
   [docs/releasing.md](docs/releasing.md).
-- **Decide whether the release tool should refuse a stale build.** Owner: Andrew to decide;
-  Claude can build it. `scripts/private_studio.py` could refuse to run from a folder that
-  does not contain `origin/main`. It changes a hardened tool, so it needs a review first,
-  and the check must cope with scratch copies that carry no git history.
 - **The presvd1 runner hands every job the Docker socket; waiting for crackinfires C9.**
   Decided by Andrew, 2026-11-18; the eventual change is Telpher's and crackinfires'. `/srv/telpher/gitea-runner/config.yaml` sets `docker_host`, so
   the runner mounts `/var/run/docker.sock` into every job container in every repository,
