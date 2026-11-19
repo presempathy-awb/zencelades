@@ -139,6 +139,8 @@ def test_stage_names_are_gone_before_the_last_directory_sync(tmp_path, monkeypat
     restore_assets.restore(retained, apply=True)
     assert (root / good["path"]).read_bytes() == b"good"
     assert stage_names_at_folder_sync, "the destination folder was never synced"
+    # A sync while the stage name still existed means the link was durable first.
+    assert any(stage_names_at_folder_sync[:-1]), "no sync before the stage names went"
     assert stage_names_at_folder_sync[-1] == []
     assert not list(folder.glob(".restore-assets-*"))
 

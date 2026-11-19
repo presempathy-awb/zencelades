@@ -53,6 +53,7 @@ def run(args: argparse.Namespace, *, batch: str = "research") -> None:
     for entry in entries:
         source = ROOT / safe_path(entry["path"])
         key = entry["lakefs_path"]
+        safe_path(key)  # an unsafe key is refused with safe_path's own reason
         if (
             not source.resolve().is_relative_to(ROOT.resolve() / source_folder)
             or source.is_symlink()

@@ -261,6 +261,19 @@ class ResearchUploadIntegration(unittest.TestCase):
                     self.execute()
                 self.assertEqual([], self.calls)
 
+    def test_unsafe_plan_key_is_refused_with_its_reason_before_network(self):
+        for key in ("imports/research/../public/x.pdf", "/imports/research/x.pdf"):
+            with self.subTest(key=key):
+                self.calls.clear()
+                plan = json.loads(json.dumps(self.plan))
+                plan["files"][0]["lakefs_path"] = key
+                (self.root / "assets/research-upload-plan.json").write_text(
+                    json.dumps(plan)
+                )
+                with self.assertRaisesRegex(ValueError, "Unsafe archive path"):
+                    self.execute()
+                self.assertEqual([], self.calls)
+
     def test_plan_without_declared_totals_refuses_before_network(self):
         for field in ("file_count", "total_bytes"):
             with self.subTest(missing=field):
@@ -344,6 +357,9 @@ class ResearchUploadIntegration(unittest.TestCase):
                     [{"prefix": ["imports/research/"], "amount": ["1"]}], probes
                 )
                 self.assertNotIn("POST", {method for method, _ in self.calls})
+                for record in ("staging", "receipt"):
+                    path = self.root / f"assets/research-upload-{record}.json"
+                    self.assertFalse(path.exists(), path)
 
     def test_branch_outside_the_ingest_pattern_refuses_before_network(self):
         for branch in ("main", "ingest-", "ingest-Upper", "work/ingest-x"):
