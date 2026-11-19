@@ -24,8 +24,8 @@ Projection/capture testing; exact vehicle-interface/manufacturer evidence; struc
   Claude can build it. `scripts/private_studio.py` could refuse to run from a folder that
   does not contain `origin/main`. It changes a hardened tool, so it needs a review first,
   and the check must cope with scratch copies that carry no git history.
-- **Decide how the presvd1 runner hands out the Docker socket.** Owner: Andrew to decide;
-  the change is Telpher's. `/srv/telpher/gitea-runner/config.yaml` sets `docker_host`, so
+- **The presvd1 runner hands every job the Docker socket; waiting for crackinfires C9.**
+  Decided by Andrew, 2026-11-18; the eventual change is Telpher's and crackinfires'. `/srv/telpher/gitea-runner/config.yaml` sets `docker_host`, so
   the runner mounts `/var/run/docker.sock` into every job container in every repository,
   which is root on presvd1. This repository's account job runs only on pushes to main and
   manual runs for that reason, but any workflow a pull request can run still reaches the
@@ -35,4 +35,19 @@ Projection/capture testing; exact vehicle-interface/manufacturer evidence; struc
   that can are the telpher org's six (`awb`, `claude-maxi`, `claude-pres`, `codex-cli`,
   `codex-gui`, `grok-cli`); zencelades has no other collaborators. Other repositories on the
   same runner were not enumerated. So the exposure is a stolen or misused account or token,
-  not a stranger.
+  not a stranger: any of the five agent accounts could open a pull request whose job uses
+  the socket. A separate socket-only runner would not close that, because a pull request's
+  own workflow can name any runner label.
+  Survey, 2026-11-18, of the default-branch workflows in the 135 repositories `claude-maxi`
+  can read: 13 workflows in 10 repositories really use the socket (17 files: mcparade and
+  classyfriar keep copies in both `.gitea/` and `.github/`). On pull requests:
+  awb/erebe `devcontainer.yml`, awb/mcparade `portable-hooks.yml`, awb/muchadoaboutoneside
+  `site.yml`, awb/trichromatrix `ci.yml`, presempathy/hyperdx `docker-build.yml` and
+  `main.yml`. Only on push, release, schedule or manual runs: awb/prollytree `release.yml`,
+  awb/teesque `release.yml`, fas/fair-access-shield `harness-regression-warning.yml`,
+  presempathy/classyfriar `release.yml` and `renovate.yml`, presempathy/hyperdx
+  `release.yml` and `release-nightly.yml`, and this repository's account job. Scripts those
+  workflows call were not read.
+  Andrew chose to wait for a per-job guest runner in crackinfires (roadmap row C9, parked
+  until nested Firecracker on presvd1 passes and the spawner and door run) rather than an
+  interim Sysbox setup, cutting Docker from CI, or accepting the risk.
