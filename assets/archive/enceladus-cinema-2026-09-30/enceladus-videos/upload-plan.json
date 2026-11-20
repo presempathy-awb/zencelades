@@ -1,0 +1,284 @@
+{
+  "repository": "thatsnozorb-assets",
+  "branch": "ingest-enceladus-videos-20260930",
+  "prefix": "imports/research/enceladus-videos/2026-09-30/",
+  "file_count": 20,
+  "total_bytes": 215391322,
+  "files": [
+    {
+      "relative_path": "originals/cassini-approach.mov",
+      "bytes": 8964040,
+      "content_sha256": "9f9b1b0251818819673a37ac1142f0582d6ca9a2cf0327dea7b2309cebb95baf",
+      "content_type": "video/quicktime",
+      "media": {
+        "codec_name": "svq3",
+        "codec_type": "video",
+        "width": 320,
+        "height": 240,
+        "r_frame_rate": "2997/100",
+        "duration_seconds": 173.563333,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-approach.mov"
+    },
+    {
+      "relative_path": "originals/cassini-final-plume-2017.gif",
+      "bytes": 4279193,
+      "content_sha256": "ea6ecf5428a572c3a9a469bde22d1b0f1496fbfb87777ca78e6bd5fbf3061280",
+      "content_type": "image/gif",
+      "media": {
+        "codec_name": "gif",
+        "codec_type": "video",
+        "width": 441,
+        "height": 372,
+        "r_frame_rate": "10/1",
+        "duration_seconds": 11,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-final-plume-2017.gif"
+    },
+    {
+      "relative_path": "originals/cassini-jets-timelapse.mp4",
+      "bytes": 6083532,
+      "content_sha256": "7160bcec21e72c887ff4e0179c47158a5dc3b2b10e7263543766dce356a59ce1",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 31,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-jets-timelapse.mp4"
+    },
+    {
+      "relative_path": "originals/cassini-plume-2005.mp4",
+      "bytes": 17313,
+      "content_sha256": "995b16713e3c0b4838b2381f58a707f5f6ea60674a75fd39c40386dde1278529",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 500,
+        "height": 300,
+        "r_frame_rate": "6/1",
+        "duration_seconds": 1.833333,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/cassini-plume-2005.mp4"
+    },
+    {
+      "relative_path": "originals/enceladus-journey-4k.webm",
+      "bytes": 18965112,
+      "content_sha256": "a92bd295e0e34f543516f5755f2670e7ff0181b71eeb39d6689c82022950a8c7",
+      "content_type": "video/webm",
+      "media": {
+        "codec_name": "vp8",
+        "codec_type": "video",
+        "width": 3840,
+        "height": 2160,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 61.595,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/enceladus-journey-4k.webm"
+    },
+    {
+      "relative_path": "originals/geyser-basin-360.m4v",
+      "bytes": 9046913,
+      "content_sha256": "c8492edc09f3e28a264e94e8c1ec6ca70295b8ee0d6f297825bec82f4e13e531",
+      "content_type": "video/x-m4v",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 798,
+        "height": 682,
+        "r_frame_rate": "24/1",
+        "duration_seconds": 15,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/geyser-basin-360.m4v"
+    },
+    {
+      "relative_path": "originals/geyser-directions-3d.mp4",
+      "bytes": 5767228,
+      "content_sha256": "858d045af333f96b5de457860395e51ebc2d5361c92276eeced36b4c2b2ec432",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 29.5,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/geyser-directions-3d.mp4"
+    },
+    {
+      "relative_path": "originals/geyser-flythrough.mp4",
+      "bytes": 26704233,
+      "content_sha256": "347c795b2423b5c7033159cbaa8ac4625f8b4a4ba26a95378ab5b5da391e0e0e",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "24/1",
+        "duration_seconds": 14.166667,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/geyser-flythrough.mp4"
+    },
+    {
+      "relative_path": "originals/ice-layer-pan.mp4",
+      "bytes": 4147447,
+      "content_sha256": "e1280323c74bf96e666ffa0ac4e49550efe636d31cc1278f0b0726f5d9ecb7c7",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 3.737067,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/ice-layer-pan.mp4"
+    },
+    {
+      "relative_path": "originals/ocean-vents.mp4",
+      "bytes": 7300131,
+      "content_sha256": "ff94e6071ac885ed0643679b2062c59efedeea7f5ba0ce57b14f7118244bded5",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "24/1",
+        "duration_seconds": 11.25,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/ocean-vents.mp4"
+    },
+    {
+      "relative_path": "originals/surface-to-space.mp4",
+      "bytes": 59768403,
+      "content_sha256": "79440c4741c331ea115c5c157c95105f62345677e94a04376978d0e28da8a4e4",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 32.065375,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/surface-to-space.mp4"
+    },
+    {
+      "relative_path": "originals/webb-plume-torus.mp4",
+      "bytes": 27364996,
+      "content_sha256": "79609297bb4c2ae4a198f02b611b82d5fc04b6daa8ee55d6b6f625ef636dfac5",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 3840,
+        "height": 2160,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 21.7,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/originals/webb-plume-torus.mp4"
+    },
+    {
+      "relative_path": "derived/above-the-ice.mp4",
+      "bytes": 28448277,
+      "content_sha256": "180fb205e8a76847ab392ff1a8d15f6398d8163f6f791da522a312581739e058",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 44.266667,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/above-the-ice.mp4"
+    },
+    {
+      "relative_path": "derived/cassini-final-plume-2017.mp4",
+      "bytes": 152413,
+      "content_sha256": "9a74187e89a9a8ce5220b0a5868b3a68645ca7731ef7ef7b7bb03e617a322e32",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 442,
+        "height": 372,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 11,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/cassini-final-plume-2017.mp4"
+    },
+    {
+      "relative_path": "derived/cassini-approach-preview.mp4",
+      "bytes": 8222215,
+      "content_sha256": "cb3e862d5faca9211343e8b3ceaef2da181f4e6e72f07531f385c1d3c8561861",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 320,
+        "height": 240,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 173.5,
+        "has_audio": false
+      },
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/cassini-approach-preview.mp4"
+    },
+    {
+      "relative_path": "derived/above-the-ice-poster.jpg",
+      "bytes": 30101,
+      "content_sha256": "c09db4e029f71d1059d31fc69af00d0fbd687cf24af9ac38e77b93fc782565e9",
+      "content_type": "image/jpeg",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/above-the-ice-poster.jpg"
+    },
+    {
+      "relative_path": "derived/caption-0.png",
+      "bytes": 31068,
+      "content_sha256": "9e0b5cd15ac2296574e1e423c239327e92a822eef99e62c57c1b4682d0a6fcb4",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/caption-0.png"
+    },
+    {
+      "relative_path": "derived/caption-1.png",
+      "bytes": 32492,
+      "content_sha256": "d8af4359559ba24fa54a4b25aaf37a766b7e28b1955f3d530276ce749e6c4e3f",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/caption-1.png"
+    },
+    {
+      "relative_path": "derived/caption-2.png",
+      "bytes": 33382,
+      "content_sha256": "f0e6138ffcddcc3fe8650b983a27a2677b556d4a58031c9f9a46cbb2bc9427f6",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/caption-2.png"
+    },
+    {
+      "relative_path": "derived/caption-3.png",
+      "bytes": 32833,
+      "content_sha256": "e61b85f88b96aff9444fbee61bdb4e7150cd291f35f8a337ae84913ac2d9dede",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-videos/2026-09-30/derived/caption-3.png"
+    }
+  ]
+}

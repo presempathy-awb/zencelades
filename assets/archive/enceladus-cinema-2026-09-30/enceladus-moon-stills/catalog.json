@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "title": "Enceladus moon-only night projection phases",
+  "generator": "built-in image_gen",
+  "interpretation": "AI concept edits derived from supplied installation renders and NASA visualization frames. All three remove the enlarged face/body projection and wrap Enceladus content across the full sphere. The small occupant of the original render remains visible, especially in the geyser phase. Not a measured projection simulation or exact movie frame.",
+  "stills": [
+    {
+      "relative_path": "derived/01-moon-ice.png",
+      "bytes": 2723232,
+      "content_sha256": "73decf2ee3d5c9c0f8881970d13c541b2aaf0f36fddeee00050b321752555abc",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-moon-stills/2026-10-01/derived/01-moon-ice.png",
+      "id": "M01",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_id": "E02",
+      "source_frame_seconds": 4,
+      "input_catalog": "../enceladus-night-stills/catalog.json",
+      "input_render": "ground-reference.png",
+      "input_frame": "orbit-4.jpg",
+      "local_root": "source/research/enceladus-moon-stills"
+    },
+    {
+      "relative_path": "derived/02-moon-geyser-dive.png",
+      "bytes": 2583670,
+      "content_sha256": "21b158b70894d6b8f2b208a98904841f3c77676ef8882a981124308c69ab8fbf",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-moon-stills/2026-10-01/derived/02-moon-geyser-dive.png",
+      "id": "M02",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_id": "E01",
+      "source_frame_seconds": 6,
+      "input_catalog": "../enceladus-night-stills/catalog.json",
+      "input_render": "ground-reference.png",
+      "input_frame": "geyser.jpg",
+      "local_root": "source/research/enceladus-moon-stills"
+    },
+    {
+      "relative_path": "derived/03-moon-under-ice-ocean.png",
+      "bytes": 2322483,
+      "content_sha256": "9355a3afb8ff52b1e2ea89b43ff0baf38c2d5433e859539eb7c954e198306ef1",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-moon-stills/2026-10-01/derived/03-moon-under-ice-ocean.png",
+      "id": "M03",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_id": "E04",
+      "source_frame_seconds": 5,
+      "input_catalog": "../enceladus-night-stills/catalog.json",
+      "input_render": "suspended-reference.png",
+      "input_frame": "ocean.jpg",
+      "local_root": "source/research/enceladus-moon-stills"
+    }
+  ],
+  "verification": {
+    "visual_inspection": true,
+    "ffprobe_dimensions": true,
+    "lakefs_readback": false
+  },
+  "generation_failures": [],
+  "storage": {
+    "repository": "thatsnozorb-assets",
+    "branch": "ingest-enceladus-videos-moon-stills-20261001",
+    "prefix": "imports/research/enceladus-moon-stills/2026-10-01/",
+    "commit": null,
+    "status": "pending",
+    "reason": "presvd1 hid-in gunlock-status confirms general vault is locked; no upload attempted for this batch",
+    "remote_staging": "/home/andr/.cache/codex/enceladus-moon-stills.Ck81kUic"
+  },
+  "credits": "Enceladus frame references: NASA Goddard Space Flight Center Conceptual Image Lab. Andrew supplied the installation renders. Ocean lighting, colors and geology arrangement are artistic interpretations, not observations.",
+  "prompts": "prompts.json"
+}

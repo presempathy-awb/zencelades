@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "title": "Full sphere human projection revisions",
+  "generator": "built-in image_gen",
+  "interpretation": "AI concept edits of the existing night stills. The large projected face, shoulders, torso and arms now cover the curved sphere like Andrew's original mockup; not a measured optical simulation.",
+  "stills": [
+    {
+      "relative_path": "derived/01-ground-orbital-full-wrap.png",
+      "bytes": 2508497,
+      "content_sha256": "f683272e413dcb9002855cc78695c86e4ad748a80318fcae605d318fc8f11e5d",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-wrap/2026-10-01/derived/01-ground-orbital-full-wrap.png",
+      "id": "N01-v2",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "revises": "N01",
+      "source_catalog": "../enceladus-night-stills/catalog.json",
+      "local_root": "source/research/enceladus-night-wrap"
+    },
+    {
+      "relative_path": "derived/04-suspended-ocean-full-wrap.png",
+      "bytes": 2325483,
+      "content_sha256": "23551149a29380643a450b4e42feaf27f276359fb42bb9344cae7043aa8ab8ee",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-wrap/2026-10-01/derived/04-suspended-ocean-full-wrap.png",
+      "id": "N04-v2",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "revises": "N04",
+      "source_catalog": "../enceladus-night-stills/catalog.json",
+      "local_root": "source/research/enceladus-night-wrap"
+    }
+  ],
+  "prompts": "prompts.json",
+  "verification": {
+    "visual_inspection": true,
+    "ffprobe_dimensions": true,
+    "lakefs_readback": false
+  },
+  "storage": {
+    "repository": "thatsnozorb-assets",
+    "branch": "ingest-enceladus-videos-night-wrap-20261001",
+    "prefix": "imports/research/enceladus-night-wrap/2026-10-01/",
+    "commit": null,
+    "status": "blocked",
+    "reason": "presvd1 hid-in general vault locked; uploader stopped before branch creation or object upload",
+    "remote_staging": "/home/andr/.cache/codex/enceladus-wrap.moBNI8Wd"
+  },
+  "generation_failures": [
+    {
+      "requested_revision": "N03-v2 full sphere geyser",
+      "status": "moderation_blocked",
+      "category": "sexual",
+      "no_image_returned": true
+    }
+  ],
+  "rights": "Andrew supplied the installation and identity references; no blanket public reuse license is asserted. Enceladus visual references retain the credits in the prior catalogue."
+}

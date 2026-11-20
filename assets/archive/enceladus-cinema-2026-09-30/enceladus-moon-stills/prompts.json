@@ -1,0 +1,28 @@
+{
+  "mode": "built-in image_gen",
+  "interpretation": "Moon-only projection concept edits, not measured optical simulations",
+  "inputs_root": "source/research/enceladus-night-stills",
+  "jobs": [
+    {
+      "key": "ice",
+      "file": "01-moon-ice.png",
+      "target": "ground-reference.png",
+      "frame": "orbit-4.jpg",
+      "prompt": "Use case: compositing. Asset type: photorealistic installation concept still. Image 1 is the edit target: the user's zorb render. Image 2 is a NASA Enceladus video frame used only as the content/texture reference. Preserve the exact target's physical sphere proportions, rig, projectors, seams, handles, entrance rim, camera viewpoint, landscape format and typography. Change the scene to deep night with warm distant beach festival lights. Remove the giant human face projection completely. Fill the entire curved sphere from crown to base and from left to right rim with ONLY Enceladus imagery, seamless spherical projection wrapping, with edge curvature and believable projected light scattering. The moon imagery should be strong enough to largely hide the small person inside, with at most a faint seated silhouette. No human face or torso in the projected imagery. Keep all moon effects confined to the sphere except realistic ground light spill. Do not add another small globe inside the zorb, rectangular screen, giant external planet or extra equipment. Make one clean, impressive landscape concept still, not a collage. Phase: Enceladus as a whole moon. Make the physical zorb itself read as the icy moon, its skin fully covered with detailed white-grey ridged terrain, craters, long cyan tiger-stripe fissures, a gently shadowed left edge and brilliant icy rim light. A subtle sparse star texture can blend at the edge but the major visible content is the moon's surface. Opaque-looking projected moon texture with actual clear-zorb seams and circular entrance faintly visible. Cool silver, glacial white and restrained cyan. Do not reproduce the human portrait."
+    },
+    {
+      "key": "jets",
+      "file": "02-moon-geyser-dive.png",
+      "target": "ground-reference.png",
+      "frame": "geyser.jpg",
+      "prompt": "Use case: compositing. Asset type: photorealistic installation concept still. Image 1 is the edit target: the user's zorb render. Image 2 is a NASA Enceladus video frame used only as the content/texture reference. Preserve the exact target's physical sphere proportions, rig, projectors, seams, handles, entrance rim, camera viewpoint, landscape format and typography. Change the scene to deep night with warm distant beach festival lights. Remove the giant human face projection completely. Fill the entire curved sphere from crown to base and from left to right rim with ONLY Enceladus imagery, seamless spherical projection wrapping, with edge curvature and believable projected light scattering. The moon imagery should be strong enough to largely hide the small person inside, with at most a faint seated silhouette. No human face or torso in the projected imagery. Keep all moon effects confined to the sphere except realistic ground light spill. Do not add another small globe inside the zorb, rectangular screen, giant external planet or extra equipment. Make one clean, impressive landscape concept still, not a collage. Phase: flight just above Enceladus's icy surface into enormous south-polar geyser jets. The sphere is filled by cracked ice across the lower hemisphere and tall luminous vapor streams rising along its entire upper hemisphere. Plumes and ice particles surround the viewer in every direction inside the spherical projection, with a diagonal sweep of Saturn's rings behind them. Light is silver-blue with intense icy white jets. Turn the whole zorb into the moon-and-plume scene, with no human portrait."
+    },
+    {
+      "key": "ocean",
+      "file": "03-moon-under-ice-ocean.png",
+      "target": "suspended-reference.png",
+      "frame": "ocean.jpg",
+      "prompt": "Use case: compositing. Asset type: photorealistic installation concept still. Image 1 is the edit target: the user's zorb render. Image 2 is a NASA Enceladus video frame used only as the content/texture reference. Preserve the exact target's physical sphere proportions, rig, projectors, seams, handles, entrance rim, camera viewpoint, landscape format and typography. Change the scene to deep night with warm distant beach festival lights. Remove the giant human face projection completely. Fill the entire curved sphere from crown to base and from left to right rim with ONLY Enceladus imagery, seamless spherical projection wrapping, with edge curvature and believable projected light scattering. The moon imagery should be strong enough to largely hide the small person inside, with at most a faint seated silhouette. No human face or torso in the projected imagery. Keep all moon effects confined to the sphere except realistic ground light spill. Do not add another small globe inside the zorb, rectangular screen, giant external planet or extra equipment. Make one clean, impressive landscape concept still, not a collage. Phase: artistic journey beneath Enceladus's ice into its ocean. Preserve the suspended A-frame and orange straps. Across the top curved hemisphere show a thick luminous blue ice ceiling with fissures, below it luminous teal particulate water, deep dark ocean, tall hydrothermal vent columns and subtle amber vent bases around the lower curved rim. Entire sphere richly filled with the ocean content, no human portrait. Keep the moon's ocean imagery legible and cinematic with realistic translucent spherical projection rather than a literal aquarium."
+    }
+  ]
+}
