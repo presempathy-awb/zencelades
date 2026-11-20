@@ -377,6 +377,172 @@ class StaleBuildRefusal(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "does not contain origin/main"):
                 source_check(lane, unverified=False)
 
+    def behind(self, directory):
+        """A checkout one commit behind its forge's main, and a clone that is current."""
+        forge, root = self.checkout_and_forge(directory)
+        self.commit(root, "a")
+        self.git(root, "push", "-q", "origin", "main")
+        ahead = Path(directory) / "ahead"
+        subprocess.run(["git", "clone", "-q", str(forge), str(ahead)], check=True)
+        self.commit(ahead, "b")
+        self.git(ahead, "push", "-q", "origin", "main")
+        return root, ahead
+
+    def test_unverified_does_not_skip_a_folder_that_has_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, _ = self.behind(directory)
+            with self.assertRaisesRegex(ValueError, "does not contain origin/main"):
+                source_check(root, unverified=True)
+
+    def test_an_inherited_git_dir_cannot_stand_in_for_the_folder(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, ahead = self.behind(directory)
+            env = {"GIT_DIR": str(ahead / ".git"), "GIT_WORK_TREE": str(ahead)}
+            with (
+                patch.dict("os.environ", env),
+                self.assertRaisesRegex(ValueError, "does not contain origin/main"),
+            ):
+                source_check(root, unverified=False)
+
+    def test_a_main_that_is_not_a_commit_id_is_refused(self):
+        real_run = subprocess.run
+
+        def forged(command, **kwargs):
+            if "ls-remote" in command:
+                return subprocess.CompletedProcess(
+                    command, 0, "--upload-pack=x\trefs/heads/main\n", ""
+                )
+            return real_run(command, **kwargs)
+
+        with tempfile.TemporaryDirectory() as directory:
+            _, root = self.checkout_and_forge(directory)
+            self.commit(root, "a")
+            with (
+                patch("scripts.private_studio.subprocess.run", side_effect=forged),
+                self.assertRaisesRegex(ValueError, "not a commit id"),
+            ):
+                source_check(root, unverified=False)
+
+    def test_a_folder_that_fetched_main_but_is_behind_it_is_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, _ = self.behind(directory)
+            self.git(
+                root, "fetch", "-q", "origin"
+            )  # holds main's commit, HEAD does not
+            with self.assertRaisesRegex(ValueError, "does not contain origin/main"):
+                source_check(root, unverified=False)
+
+    def test_an_inherited_url_rewrite_cannot_swap_the_forge(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, _ = self.behind(directory)
+            stale_forge = Path(directory) / "stale.git"
+            subprocess.run(
+                ["git", "clone", "-q", "--bare", str(root), str(stale_forge)],
+                check=True,
+            )
+            forge = self.git(root, "remote", "get-url", "origin")
+            env = {
+                "GIT_CONFIG_COUNT": "1",
+                "GIT_CONFIG_KEY_0": f"url.{stale_forge}.insteadOf",
+                "GIT_CONFIG_VALUE_0": forge,
+            }
+            with (
+                patch.dict("os.environ", env),
+                self.assertRaisesRegex(ValueError, "does not contain origin/main"),
+            ):
+                source_check(root, unverified=False)
+
+    def failing(self, subcommand, stderr):
+        """subprocess.run as usual, except that one git subcommand fails outright."""
+        real_run = subprocess.run
+
+        def run(command, **kwargs):
+            if subcommand in command:
+                return subprocess.CompletedProcess(command, 128, "", stderr)
+            return real_run(command, **kwargs)
+
+        return patch("scripts.private_studio.subprocess.run", side_effect=run)
+
+    def current(self, directory):
+        _, root = self.checkout_and_forge(directory)
+        self.commit(root, "a")
+        self.git(root, "push", "-q", "origin", "main")
+        return root
+
+    def test_a_failing_ancestry_check_stops_the_release(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.current(directory)
+            with (
+                self.failing("merge-base", "fatal: bad object"),
+                self.assertRaisesRegex(ValueError, "Could not compare.*bad object"),
+            ):
+                source_check(root, unverified=False)
+
+    def test_a_failing_object_lookup_stops_the_release(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.current(directory)
+            with (
+                self.failing("--batch-check", "fatal: corrupt pack"),
+                self.assertRaisesRegex(ValueError, "Could not read.*corrupt pack"),
+            ):
+                source_check(root, unverified=False)
+
+    def test_a_replace_ref_cannot_make_a_stale_head_contain_main(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root, _ = self.behind(directory)
+            self.git(root, "fetch", "-q", "origin")
+            # Grafted, the stale HEAD would show main as its parent.
+            self.git(root, "replace", "--graft", "HEAD", "origin/main")
+            with (
+                patch.dict("os.environ", {"GIT_NO_REPLACE_OBJECTS": "0"}),
+                self.assertRaisesRegex(ValueError, "does not contain origin/main"),
+            ):
+                source_check(root, unverified=False)
+
+    def test_a_malformed_jj_commit_id_is_refused(self):
+        real_run = subprocess.run
+
+        def run(command, **kwargs):
+            if command[:1] == ("jj",) and "log" in command:
+                return subprocess.CompletedProcess(command, 0, "not-a-commit", "")
+            if command[:1] == ("jj",):
+                return subprocess.CompletedProcess(command, 0, "/tmp/x/.git\n", "")
+            return real_run(command, **kwargs)
+
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / ".jj").mkdir()
+            with (
+                patch("scripts.private_studio.subprocess.run", side_effect=run),
+                self.assertRaisesRegex(ValueError, "malformed commit id"),
+            ):
+                source_check(Path(directory), unverified=True)
+
+    def test_unverified_source_lets_a_scratch_copy_reach_the_host(self):
+        class Reached(Exception):
+            pass
+
+        with tempfile.TemporaryDirectory() as directory:
+            for flags, outcome in (
+                ([], "no git history"),
+                (["--unverified-source"], None),
+            ):
+                with (
+                    self.subTest(flags=flags),
+                    patch("scripts.private_studio.ROOT", Path(directory)),
+                    patch.object(sys, "argv", ["release", "--host", "fixture", *flags]),
+                    patch(
+                        "scripts.private_studio.subprocess.check_output",
+                        side_effect=Reached,
+                    ) as remote,
+                ):
+                    if outcome:
+                        with self.assertRaisesRegex(ValueError, outcome):
+                            main()
+                        remote.assert_not_called()
+                    else:
+                        with self.assertRaises(Reached):
+                            main()
+
     def test_the_check_runs_before_any_remote_call(self):
         with (
             patch.object(sys, "argv", ["release", "--host", "fixture"]),

@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import re
 import shlex
 import shutil
@@ -184,18 +185,37 @@ def write_private_artifacts(
     staged_deny.replace(deny_file)
 
 
+COMMIT_ID = re.compile(r"[0-9a-f]{40}|[0-9a-f]{64}")
+# Inherited GIT_* variables could point git at another repository, rewrite origin's URL
+# (GIT_CONFIG_COUNT with url.*.insteadOf) or graft history; only ssh settings are kept.
+GIT_ENV_KEPT = ("GIT_SSH", "GIT_SSH_COMMAND", "GIT_SSH_VARIANT")
+
+
 def source_check(root: Path, *, unverified: bool) -> str:
     """Refuse to release from a folder whose history lacks the forge's main; return what was checked.
 
     A release publishes the app as built in this folder, so a checkout or lane behind main would
-    put an older app live (docs/releasing.md). A scratch copy with no git history cannot be
-    checked; it is refused unless the caller marks it unverified, and the plan says so."""
-    if unverified:
-        return "unverified"
+    put an older app live (docs/releasing.md). A folder with no git history (a scratch copy)
+    cannot be checked: it is refused unless the caller passes unverified, and the plan says so.
+    A folder with history is always checked; unverified does not skip that."""
+    env = {
+        k: v
+        for k, v in os.environ.items()
+        if not k.startswith("GIT_") or k in GIT_ENV_KEPT
+    }
+    env["GIT_NO_REPLACE_OBJECTS"] = "1"
 
-    def run(*command: str) -> subprocess.CompletedProcess[str]:
+    def run(
+        *command: str, stdin: str | None = None
+    ) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
-            command, capture_output=True, text=True, timeout=60, check=False
+            command,
+            input=stdin,
+            capture_output=True,
+            text=True,
+            timeout=60,
+            check=False,
+            env=env,
         )
 
     # A git checkout answers for its HEAD. A jj workspace without its own .git (a lane)
@@ -207,6 +227,11 @@ def source_check(root: Path, *, unverified: bool) -> str:
         store = run(*jj, "git", "root")
         commit = run(*jj, "log", "--no-graph", "-r", "@", "-T", "commit_id")
         if store.returncode == 0 and commit.returncode == 0:
+            if not COMMIT_ID.fullmatch(commit.stdout.strip()):
+                raise ValueError(
+                    f"jj gave {root}'s working copy a malformed commit id: "
+                    f"{commit.stdout.strip()[:80]!r}"
+                )
             git, head = (
                 ("git", f"--git-dir={store.stdout.strip()}"),
                 commit.stdout.strip(),
@@ -215,24 +240,45 @@ def source_check(root: Path, *, unverified: bool) -> str:
         run(*git, "rev-parse", "--verify", "--quiet", f"{head}^{{commit}}").returncode
         != 0
     ):
+        if unverified:
+            return "unverified"
         raise ValueError(
             f"{root} has no git history to check against main; build from a checkout "
             "of main, or pass --unverified-source"
         )
 
-    def git_run(*args: str) -> subprocess.CompletedProcess[str]:
-        return run(*git, *args)
+    def git_run(
+        *args: str, stdin: str | None = None
+    ) -> subprocess.CompletedProcess[str]:
+        return run(*git, *args, stdin=stdin)
 
     live = git_run("ls-remote", "origin", "refs/heads/main")
-    if live.returncode != 0 or not live.stdout.split():
+    fields = live.stdout.split()
+    if live.returncode != 0 or not fields:
         raise ValueError(
             f"Could not read origin's main from {root}: {live.stderr.strip()}"
         )
-    main_sha = live.stdout.split()[0]
-    if git_run("merge-base", "--is-ancestor", main_sha, head).returncode != 0:
+    main_sha = fields[0]
+    if not COMMIT_ID.fullmatch(main_sha):
+        raise ValueError(f"origin's main is not a commit id: {main_sha[:80]!r}")
+    stale = (
+        f"{root} does not contain origin/main {main_sha[:12]}; bring it up to main "
+        "before releasing (docs/releasing.md)"
+    )
+    # A folder that never fetched main's newest commit lacks the object itself; --batch-check
+    # tells that apart from a failing repository, which `cat-file -e` reports the same way.
+    found = git_run("cat-file", "--batch-check", stdin=main_sha + "\n")
+    if found.returncode != 0:
+        raise ValueError(f"Could not read {root}'s objects: {found.stderr.strip()}")
+    if found.stdout.split()[1:2] == ["missing"]:
+        raise ValueError(stale)
+    ancestor = git_run("merge-base", "--is-ancestor", main_sha, head)
+    if ancestor.returncode == 1:
+        raise ValueError(stale)
+    if ancestor.returncode != 0:
         raise ValueError(
-            f"{root} does not contain origin/main {main_sha[:12]}; bring it up to main "
-            "before releasing (docs/releasing.md)"
+            f"Could not compare {root} with origin/main {main_sha[:12]}: "
+            f"{ancestor.stderr.strip()}"
         )
     return main_sha
 

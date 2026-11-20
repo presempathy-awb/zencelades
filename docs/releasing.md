@@ -13,7 +13,8 @@ refuses one: before any call to the host it reads the forge's `main` with
 `git ls-remote origin` and stops unless that commit is in the folder's history (`HEAD` in
 a git checkout, the working-copy commit in a jj lane). The plan names the main it checked
 as `source_main`. A scratch copy with no git history is refused too, unless
-`--unverified-source` is passed, and the plan then says `unverified`. The check covers the
+`--unverified-source` is passed, and the plan then says `unverified`; a folder with
+history is checked whether or not the flag is given. The check covers the
 folder's history, not the build output: `cockpit/dist` must still be rebuilt from it.
 
 After 2026-11-16 this matters for the logo. A folder that predates
