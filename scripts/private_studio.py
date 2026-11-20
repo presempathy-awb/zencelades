@@ -186,8 +186,10 @@ def write_private_artifacts(
 
 
 COMMIT_ID = re.compile(r"[0-9a-f]{40}|[0-9a-f]{64}")
-# Inherited GIT_* variables could point git at another repository, rewrite origin's URL
-# (GIT_CONFIG_COUNT with url.*.insteadOf) or graft history; only ssh settings are kept.
+# Inherited GIT_* variables could point git at another repository or rewrite origin's URL
+# (GIT_CONFIG_COUNT with url.*.insteadOf), so only ssh settings are kept. Replace refs
+# (refs/replace/*) live in the repository itself; GIT_NO_REPLACE_OBJECTS=1, set below, is
+# what stops them grafting a stale HEAD onto main.
 GIT_ENV_KEPT = ("GIT_SSH", "GIT_SSH_COMMAND", "GIT_SSH_VARIANT")
 
 
@@ -223,19 +225,30 @@ def source_check(root: Path, *, unverified: bool) -> str:
     git: tuple[str, ...] = ("git", "-C", str(root))
     head = "HEAD"
     if not (root / ".git").exists() and (root / ".jj").is_dir():
+        # A jj lane is checked through jj or not at all: a failing jj never falls through
+        # to "no history", where --unverified-source would wave it on.
         jj = ("jj", "-R", str(root), "--ignore-working-copy")
-        store = run(*jj, "git", "root")
-        commit = run(*jj, "log", "--no-graph", "-r", "@", "-T", "commit_id")
-        if store.returncode == 0 and commit.returncode == 0:
-            if not COMMIT_ID.fullmatch(commit.stdout.strip()):
+        try:
+            store = run(*jj, "git", "root")
+            commit = run(*jj, "log", "--no-graph", "-r", "@", "-T", "commit_id")
+        except FileNotFoundError:
+            raise ValueError(
+                f"{root} is a jj workspace and jj is not installed"
+            ) from None
+        for answer in (store, commit):
+            if answer.returncode != 0:
                 raise ValueError(
-                    f"jj gave {root}'s working copy a malformed commit id: "
-                    f"{commit.stdout.strip()[:80]!r}"
+                    f"jj could not read {root}: {answer.stderr.strip()[:200]}"
                 )
-            git, head = (
-                ("git", f"--git-dir={store.stdout.strip()}"),
-                commit.stdout.strip(),
+        if not COMMIT_ID.fullmatch(commit.stdout.strip()):
+            raise ValueError(
+                f"jj gave {root}'s working copy a malformed commit id: "
+                f"{commit.stdout.strip()[:80]!r}"
             )
+        git, head = (
+            ("git", f"--git-dir={store.stdout.strip()}"),
+            commit.stdout.strip(),
+        )
     if (
         run(*git, "rev-parse", "--verify", "--quiet", f"{head}^{{commit}}").returncode
         != 0
