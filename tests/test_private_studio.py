@@ -499,6 +499,32 @@ class StaleBuildRefusal(unittest.TestCase):
             ):
                 source_check(root, unverified=False)
 
+    def test_a_jj_lane_whose_jj_fails_is_refused_even_when_unverified(self):
+        real_run = subprocess.run
+
+        def broken(command, **kwargs):
+            if command[:1] == ("jj",):
+                return subprocess.CompletedProcess(command, 1, "", "Error: no jj repo")
+            return real_run(command, **kwargs)
+
+        def absent(command, **kwargs):
+            if command[:1] == ("jj",):
+                raise FileNotFoundError("jj")
+            return real_run(command, **kwargs)
+
+        for stub, reason in (
+            (broken, "jj could not read.*no jj repo"),
+            (absent, "jj is not installed"),
+        ):
+            with tempfile.TemporaryDirectory() as directory:
+                (Path(directory) / ".jj").mkdir()
+                with (
+                    self.subTest(reason=reason),
+                    patch("scripts.private_studio.subprocess.run", side_effect=stub),
+                    self.assertRaisesRegex(ValueError, reason),
+                ):
+                    source_check(Path(directory), unverified=True)
+
     def test_a_malformed_jj_commit_id_is_refused(self):
         real_run = subprocess.run
 
