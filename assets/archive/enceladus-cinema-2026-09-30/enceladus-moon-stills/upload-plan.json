@@ -1,0 +1,30 @@
+{
+  "repository": "thatsnozorb-assets",
+  "branch": "ingest-enceladus-videos-moon-stills-20261001",
+  "prefix": "imports/research/enceladus-moon-stills/2026-10-01/",
+  "file_count": 3,
+  "total_bytes": 7629385,
+  "files": [
+    {
+      "relative_path": "derived/01-moon-ice.png",
+      "bytes": 2723232,
+      "content_sha256": "73decf2ee3d5c9c0f8881970d13c541b2aaf0f36fddeee00050b321752555abc",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-moon-stills/2026-10-01/derived/01-moon-ice.png"
+    },
+    {
+      "relative_path": "derived/02-moon-geyser-dive.png",
+      "bytes": 2583670,
+      "content_sha256": "21b158b70894d6b8f2b208a98904841f3c77676ef8882a981124308c69ab8fbf",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-moon-stills/2026-10-01/derived/02-moon-geyser-dive.png"
+    },
+    {
+      "relative_path": "derived/03-moon-under-ice-ocean.png",
+      "bytes": 2322483,
+      "content_sha256": "9355a3afb8ff52b1e2ea89b43ff0baf38c2d5433e859539eb7c954e198306ef1",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-moon-stills/2026-10-01/derived/03-moon-under-ice-ocean.png"
+    }
+  ]
+}

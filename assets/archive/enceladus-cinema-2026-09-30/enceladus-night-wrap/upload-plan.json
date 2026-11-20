@@ -1,0 +1,23 @@
+{
+  "repository": "thatsnozorb-assets",
+  "branch": "ingest-enceladus-videos-night-wrap-20261001",
+  "prefix": "imports/research/enceladus-night-wrap/2026-10-01/",
+  "file_count": 2,
+  "total_bytes": 4833980,
+  "files": [
+    {
+      "relative_path": "derived/01-ground-orbital-full-wrap.png",
+      "bytes": 2508497,
+      "content_sha256": "f683272e413dcb9002855cc78695c86e4ad748a80318fcae605d318fc8f11e5d",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-wrap/2026-10-01/derived/01-ground-orbital-full-wrap.png"
+    },
+    {
+      "relative_path": "derived/04-suspended-ocean-full-wrap.png",
+      "bytes": 2325483,
+      "content_sha256": "23551149a29380643a450b4e42feaf27f276359fb42bb9344cae7043aa8ab8ee",
+      "content_type": "image/png",
+      "lakefs_path": "imports/research/enceladus-night-wrap/2026-10-01/derived/04-suspended-ocean-full-wrap.png"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "repository": "thatsnozorb-assets",
+  "branch": "ingest-enceladus-videos-extra-20261001",
+  "prefix": "imports/research/enceladus-extra/2026-10-01/",
+  "file_count": 5,
+  "total_bytes": 280719234,
+  "files": [
+    {
+      "relative_path": "originals/cold-faithful.m4v",
+      "bytes": 32763657,
+      "content_sha256": "66a762a354abfcf358c9859adbc29431563cde401728616f8c215a83a5a6724f",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 320,
+        "height": 240,
+        "r_frame_rate": "2997/100",
+        "duration_seconds": 191.06,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/cold-faithful.m4v"
+    },
+    {
+      "relative_path": "originals/deep-dive-2015.m4v",
+      "bytes": 93603400,
+      "content_sha256": "74ffbae236fac5bf377013e9dd3461c5a8096c955340c7efa95da06219b5530b",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 111.466667,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/deep-dive-2015.m4v"
+    },
+    {
+      "relative_path": "originals/mystery-of-the-icy-moon.m4v",
+      "bytes": 117639308,
+      "content_sha256": "989a2e0ca801f92364fc9a273e789d7a4ec0efb4977a7f1bb4016c7cbcc8132e",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "duration_seconds": 154.7,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/mystery-of-the-icy-moon.m4v"
+    },
+    {
+      "relative_path": "originals/surprising-enceladus.en_US.srt",
+      "bytes": 677,
+      "content_sha256": "c4d4f6b2c5edce186b0ab99de71f72350f5ecd1120adc00656163816e56ff36d",
+      "content_type": "application/x-subrip",
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/surprising-enceladus.en_US.srt"
+    },
+    {
+      "relative_path": "originals/surprising-enceladus.mp4",
+      "bytes": 36712192,
+      "content_sha256": "7089fe4a095dda40fe43abe7cc4af076c2f524c48fc35c4a2de139124f6328f9",
+      "content_type": "video/mp4",
+      "media": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30000/1001",
+        "duration_seconds": 28.728708,
+        "has_audio": true
+      },
+      "lakefs_path": "imports/research/enceladus-extra/2026-10-01/originals/surprising-enceladus.mp4"
+    }
+  ]
+}
