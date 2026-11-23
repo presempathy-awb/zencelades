@@ -1,0 +1,20 @@
+# ahoyhoy project opt-in (docs/discovery.md in ahoyhoy), shaped as walterville's. Opened at
+# Andrew's direction 2026-11-23, with every other Gitea project, so work queued for zencelades reaches
+# the next session that works here. Entries travel through origin/main. Both recipients sit on
+# presvd1, where discovery delivers; neither has a queue thread named, so both use the event
+# log, which a live session tails.
+[channel.zencelades]
+file = "inbox/claude-x-codex.md"
+participants = ["Claude", "Codex"]
+human = "Andrew"
+marker = "<!-- ↑↑ append your reply directly under this line ↑↑ -->"
+mode = "git"
+remote_ref = "refs/remotes/origin/main"
+
+[channel.zencelades.agent.Claude]
+host = "presvd1"
+adapter = "event-log"
+
+[channel.zencelades.agent.Codex]
+host = "presvd1"
+adapter = "event-log"
